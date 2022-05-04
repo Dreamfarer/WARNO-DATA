@@ -1,0 +1,1502 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Capacite_Aura_Commandement_1 is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{c5266c39-d304-4d30-8c15-7ff72e65cf4e}
+    Name             = "Aura_Commandement_1"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_position
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1000.00 * Metre
+    Range               = 1250.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Gain_un_niveau_XP
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_selected | ~/CapaciteFeedbackActivationMask_anyalliance
+    DisplayRangeColor      = RGBA[255,255,255,255]
+    DisplayRangeThickness  = 0.80
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "GagneXP",
+    ]
+
+)
+export Capacite_Aura_Commandement_2 is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{3b515032-11c0-4948-9360-7e389019da94}
+    Name             = "Aura_Commandement_2"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_position
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1000.00 * Metre
+    Range               = 1500.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Gain_un_niveau_XP
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_selected | ~/CapaciteFeedbackActivationMask_anyalliance
+    DisplayRangeColor      = RGBA[255,255,255,255]
+    DisplayRangeThickness  = 0.80
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "GagneXP",
+    ]
+
+)
+export Capacite_Aura_Commandement_3 is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{a946282c-af30-490b-b121-9184d813dc55}
+    Name             = "Aura_Commandement_3"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_position
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1500.00 * Metre
+    Range               = 1750.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Gain_un_niveau_XP
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_selected | ~/CapaciteFeedbackActivationMask_anyalliance
+    DisplayRangeColor      = RGBA[255,255,255,255]
+    DisplayRangeThickness  = 0.80
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "GagneXP",
+    ]
+
+)
+export Capacite_Aura_capture_allie_solo is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{212e3fe5-13da-47ad-a015-f418b57f8f71}
+    Name             = "Aura_capture_allie_solo"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_position
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie_different_de_caster
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 200.00 * Metre
+    Range               = 350.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_capture_allie_solo
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[255,255,255,255]
+    DisplayRangeThickness  = 0.80
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "GroundUnits",
+    ]
+
+)
+export Capacite_Autodestruction_camion is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{ae35a44e-8a0e-4092-b3ab-7561ec26dec1}
+    Name             = "Autodestruction_camion"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 1.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Destruction
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = False
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Bouclier_Anti_Suppression_50 is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{0f882623-2007-4cd6-8643-4b72b8582393}
+    Name             = "Bouclier_Anti_Suppression_50"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_position
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1000.00 * Metre
+    Range               = 1000.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Bouclier_Suppression_50
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_selected | ~/CapaciteFeedbackActivationMask_anyalliance
+    DisplayRangeColor      = RGBA[255,255,255,255]
+    DisplayRangeThickness  = 0.80
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Bouclier_Anti_Suppression_99 is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{5bbc7ba8-708c-4418-bc5f-7f6148dc5aaa}
+    Name             = "Bouclier_Anti_Suppression_99"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_position
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 250.00 * Metre
+    Range               = 250.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Bouclier_Suppression_99
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_selected | ~/CapaciteFeedbackActivationMask_anyalliance
+    DisplayRangeColor      = RGBA[255,0,0,255]
+    DisplayRangeThickness  = 0.40
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Cowering_Rampe_Capacite is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{2f7b9b74-2d8c-4883-babf-2fe3607e1b15}
+    Name             = "Cowering_Rampe_Capacite"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Infanterie_Cowering_Rampe
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = False
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Cowering_Stop_Capacite is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{10fd9b1b-7702-4c6a-9df7-b2afc8595400}
+    Name             = "Cowering_Stop_Capacite"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Infanterie_Cowering_Stop
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = False
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Debarque_camion is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{c5233e7f-e71a-4884-8df7-80e1b4cd14a8}
+    Name             = "Debarque_camion"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 2.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = False
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Declare_hors_transport is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{13f8a78f-6d73-48e7-9fb1-4c3b2a535d4b}
+    Name             = "Declare_hors_transport"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Ajoute_Tag_Hors_Transport
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = False
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Discipline is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{3425d814-c4d4-4904-b631-3a2bb758301a}
+    Name             = "Discipline"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1000.00 * Metre
+    Range               = 1000.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Ajoute_Tag_Allie_Proche_Discipline
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_selected | ~/CapaciteFeedbackActivationMask_anyalliance
+    DisplayRangeColor      = RGBA[207,0,15,255]
+    DisplayRangeThickness  = 0.80
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Infanterie_Dissimulee is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{da97526b-947b-4690-9066-254e4b06106c}
+    Name             = "Infanterie_Dissimulee"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 0.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 1.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = False
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Infanterie_bonus_discretion
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = False
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "Infanterie",
+        "Armes_tractees",
+    ]
+
+)
+export Capacite_Infanterie_Retraite is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{aa44e698-2912-4f90-a9b6-4ccf23afb35d}
+    Name             = "Infanterie_Retraite"
+    NameToken        = "ht_Repli"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_ordre_cibles_une_seule_fois
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 30.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Autoprotection
+    TargetEffectDuration = 30.00
+    SelfEffectDuration   = 30.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = True
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    FeedbackOnTarget = "FeedbackMessage_OnWithdrawOrder"
+    FeedbackOnSelf = "FeedbackMessage_OnWithdrawOrder"
+    FeedbackOnCastByPlayer = "FeedbackMessage_OnWithdrawOrder"
+    FeedbackOnCastOnPlayer = "FeedbackMessage_OnWithdrawOrder"
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Infanterie_Retraite_Auto is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{575aa8f0-4a44-406c-bcde-5d59de80cb09}
+    Name             = "Infanterie_Retraite_Auto"
+    NameToken        = "ht_Repli"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 30.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Autoprotection
+    TargetEffectDuration = 30.00
+    SelfEffectDuration   = 30.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    FeedbackOnTarget = "FeedbackMessage_OnWithdrawOrder"
+    FeedbackOnSelf = "FeedbackMessage_OnWithdrawOrder"
+    FeedbackOnCastByPlayer = "FeedbackMessage_OnWithdrawOrder"
+    FeedbackOnCastOnPlayer = "FeedbackMessage_OnWithdrawOrder"
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Infanterie_Retranchee is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{43c036c8-70ef-48de-b223-e9ce406db313}
+    Name             = "Infanterie_Retranchee"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 0.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 1.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = False
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Infanterie_bonus_defense
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = False
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "Infanterie",
+    ]
+
+)
+export Capacite_Malus_Suppress_AllTime is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{9449549b-03f5-4bf7-bc64-eef556033256}
+    Name             = "Malus_Suppress_AllTime"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 30.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Effet_Suppress_Recu_125pourcent
+    TargetEffectDuration = 30.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Malus_Suppress_Zone_Influence_Ennemie is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{ad4f4562-2bb2-4b42-9dbd-cfd8b30c1cd2}
+    Name             = "Malus_Suppress_Zone_Influence_Ennemie"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/ennemi
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 0.60
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Effet_Suppress_Recu_125pourcent
+    TargetEffectDuration = 0.60
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Menace_Ennemi_Proche is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{f7541be5-1442-46ea-8f96-8128dd7ea358}
+    Name             = "Menace_Ennemi_Proche"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_ennemi
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 500.00 * Metre
+    Range               = 500.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Ajoute_Tag_Ennemi_Proche
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Ordre_Unload_NonArmes is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{889498fc-c2fb-45fd-8f96-b3805e45cf87}
+    Name             = "Ordre_Unload_NonArmes"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_post_ordre
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Destruction
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = False
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Reddition is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{4a373239-974c-40ea-8314-f4f82a5ae414}
+    Name             = "Reddition"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/ennemi
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Reddition_Effet_kill
+    TargetEffectDuration = -1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    FeedbackOnTarget = "FeedbackMessage_OnCapturedEnemyUnit"
+    FeedbackOnSelf = "FeedbackMessage_OnUnitSurrender"
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Soutien_Allie_Proche is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{36a751a7-90b7-483b-acb1-0e4e4a453e2d}
+    Name             = "Soutien_Allie_Proche"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 500.00 * Metre
+    Range               = 500.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Ajoute_Tag_Allie_Proche
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Soutien_Allie_Proche_Commandant is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{8dfc841b-48a1-4239-9c82-c7d7d84702c7}
+    Name             = "Soutien_Allie_Proche_Commandant"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1000.00 * Metre
+    Range               = 1000.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Ajoute_Tag_Allie_Proche
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Soutien_Allie_Proche_Commandant_2 is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{ccab4429-5f21-4352-90fb-3eb48ef12c78}
+    Name             = "Soutien_Allie_Proche_Commandant_2"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1250.00 * Metre
+    Range               = 1250.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Ajoute_Tag_Allie_Proche
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Soutien_Allie_Proche_Commandant_3 is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{3a13891d-9dbb-489c-856b-7e235ee578d5}
+    Name             = "Soutien_Allie_Proche_Commandant_3"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_allie
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1500.00 * Metre
+    Range               = 1500.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = True
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Ajoute_Tag_Allie_Proche
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = -1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = True
+    TargetInSelf           = True
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Suicide_IciEtMaintenant is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{0a0223ea-c271-46ef-a271-f7f465c05cb5}
+    Name             = "Suicide_IciEtMaintenant"
+    NameToken        = "ht_suicide"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_ordre_cibles_une_seule_fois
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 2.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = False
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Effet_Meurt
+    TargetEffectDuration = 1.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = True
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = False
+    TargetInSelf           = True
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_selected | ~/CapaciteFeedbackActivationMask_anyalliance
+    DisplayRangeColor      = RGBA[255,0,0,255]
+    DisplayRangeThickness  = 0.80
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Suicide_SurCetteCibleEnnemie is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{b4be9015-fd8e-4f32-92b5-8a0c006aabca}
+    Name             = "Suicide_SurCetteCibleEnnemie"
+    NameToken        = "ht_kamikaz"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_ordre_cibles_une_seule_fois
+    TypeCible            = ~/CapaciteTypeCible_unite
+    TargetTeamFilter     = ~/CapaciteTargetFilter_ennemi
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_circulaire
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = True
+    Radius              = 100.00 * Metre
+    Range               = 100.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 2.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = False
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Effet_Vide
+    TargetEffectDuration = 1.00
+    SelfEffect       = ~/UnitEffect_Effet_Meurt
+    SelfEffectDuration   = 1.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = True
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = True
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = False
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)
+export Capacite_Suicide_SurCettePosition is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{b0442fa7-73fa-41c6-be1a-4aba6e7217e9}
+    Name             = "Suicide_SurCettePosition"
+    NameToken        = "ht_movedie"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_ordre_zone
+    TypeCible            = ~/CapaciteTypeCible_position
+    TargetTeamFilter     = ~/CapaciteTargetFilter_tout
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = True
+    Radius              = 1.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 0.00
+    Cooldown            = 2.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = False
+    CanBeCastFromTransport  = False
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Effet_Vide
+    TargetEffectDuration = 1.00
+    SelfEffect       = ~/UnitEffect_Effet_Meurt
+    SelfEffectDuration   = 1.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = False
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+        "GroundUnits",
+    ]
+
+)
+export Capacite_Tank_Dissimule is TCapaciteDescriptor
+(
+    DescriptorId     = GUID:{db9adea3-7f78-4360-b9cd-62e078ee81ce}
+    Name             = "Tank_Dissimule"
+    NameToken        = "None"
+    CumulEffect          = ~/CapaciteCumulEffect_jamais
+    Declenchement        = ~/CapaciteDeclenchementType_automatique
+    TypeCible            = ~/CapaciteTypeCible_soi
+    TargetTeamFilter     = ~/CapaciteTargetFilter_joueur
+    InfluenceMapAlliance = ~/AllianceRelation/vide
+    TargetWoundedFilter  = ~/CapaciteWoundedFilterType_tout
+    AreaShape            = ~/CapaciteAreaShape_soi
+    InfluenceMapType     = ~/CapaciteInfluenceMapType_zones
+    ActionRadiusWithBoundingBox = False
+    Radius              = 0.00 * Metre
+    Range               = 1.00 * Metre
+    AutomaticOrderRange = 0.00 * Metre
+    CastRangeTolerance  = 0.00 * Metre
+    CastTime            = 1.00
+    Cooldown            = 1.00
+    CheckVisibility     = True
+    AllowReflexDuringCast   = True
+    AllowMovementDuringCast = False
+    CanBeCastFromTransport  = True
+    CastEffectDuration = -1.00
+    CastEffectBound    = True
+    TargetEffect         = ~/UnitEffect_Tank_bonus_discretion
+    TargetEffectDuration = 2.00
+    SelfEffectDuration   = 0.00
+    MinVirtualUnits         = 1
+    OrderMustSpreadTargets = False
+    MaxTargetNb            = 1
+    DivideEffect           = False
+    MultiplyCost           = False
+    TargetInBuilding       = False
+    TargetInTransport      = False
+    TargetInSelf           = False
+    TargetMySelf           = True
+    FeedbackActivationMask = ~/CapaciteFeedbackActivationMask_never
+    DisplayRangeColor      = RGBA[0,0,0,0]
+    DisplayRangeThickness  = 0.00
+    DisplayRadius             = False
+    DisplayRadiusONColor      = RGBA[0,0,0,0]
+    DisplayRadiusOFFColor     = RGBA[0,0,0,0]
+    DisplayRadiusONThickness  = 0.00
+    DisplayRadiusOFFThickness = 0.00
+    Price = MAP[]
+    TagsCiblePossible = [
+    ]
+
+)

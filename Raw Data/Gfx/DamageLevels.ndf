@@ -1,0 +1,1346 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export DamageLevelsPackDescriptor_Airplanes_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{96f0b695-5a0c-44c2-a260-373c33976cd1}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Airplanes_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{6286ac3b-9768-4cb9-97a4-a8e1ae3d1f38}
+            Value = 0
+            LocalizationToken = "mrl_4"
+            MoralModifier = 20
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Airplanes_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_Airplanes_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{f872d989-cb42-4b0f-9afc-6e45f39ba198}
+            Value = 0.2
+            LocalizationToken = "mrl_4"
+            MoralModifier = 20
+            HitRollModifier = 0
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+            ]
+            NameForDebug = "Airplanes_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_Airplanes_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{fe7b8633-9be1-4114-8ef9-752f98b30f94}
+            Value = 0.35
+            LocalizationToken = "mrl_3"
+            MoralModifier = 20
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+            ]
+            NameForDebug = "Airplanes_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_Airplanes_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{052d2268-37f9-4dee-a073-aa3471411442}
+            Value = 0.5
+            LocalizationToken = "mrl_2"
+            MoralModifier = 20
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+            ]
+            NameForDebug = "Airplanes_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_Airplanes_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{ad5cb804-3329-4274-8a4d-90f14b775f1e}
+            Value = 0.65
+            LocalizationToken = "mrl_1"
+            MoralModifier = 20
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+            ]
+            NameForDebug = "Airplanes_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_Airplanes_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{1fc8e9ef-9370-464a-a732-0214b54dd49a}
+            Value = 0.8
+            LocalizationToken = "mrl_1"
+            MoralModifier = 0
+            HitRollModifier = 0
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Airplanes_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "Airplanes_packSupp"
+)
+export DamageLevelsPackDescriptor_ArtillerieInf_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{bbd98092-57b7-4907-b811-9634b47463be}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_ArtillerieInf_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{e70d4688-ce19-4252-afe0-73c3c4708930}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "ArtillerieInf_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_ArtillerieInf_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{3ac7387f-9555-48ee-90c1-e1c27861ec0f}
+            Value = 0.2
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 99
+            HitRollModifier = -10
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_ArtInf_Engaged,
+            ]
+            NameForDebug = "ArtillerieInf_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_ArtillerieInf_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{8335aa01-f72e-4ba3-82e6-16b843d289c2}
+            Value = 0.35
+            LocalizationToken = "WORRIED"
+            MoralModifier = 99
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_ArtInf_Stressed,
+            ]
+            NameForDebug = "ArtillerieInf_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_ArtillerieInf_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{a2870b16-d67f-41a2-afa9-13eca4689b5e}
+            Value = 0.5
+            LocalizationToken = "STRESSED"
+            MoralModifier = 99
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_ArtInf_Suppressed,
+            ]
+            NameForDebug = "ArtillerieInf_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_ArtillerieInf_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{138bdea4-d28b-4136-9cf1-4ede51075ef5}
+            Value = 0.65
+            LocalizationToken = "SHAKEN"
+            MoralModifier = 99
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+                ~/UnitEffect_ArtInf_Pinned,
+            ]
+            NameForDebug = "ArtillerieInf_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_ArtillerieInf_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{52150b31-c771-4c14-9c5a-2bfae5326fac}
+            Value = 0.8
+            LocalizationToken = "PINNED"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_ArtInf_Cowering,
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "ArtillerieInf_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "ArtillerieInf_packSupp"
+)
+export DamageLevelsPackDescriptor_Artillerie_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{b331f780-1683-433b-82e3-35eacc5131a9}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Artillerie_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{6ece6d2d-07e8-4be9-afc1-9886687a5cf2}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Artillerie_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_Artillerie_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{9e7b7d72-73ec-4204-a7ac-e9409172cf7c}
+            Value = 0.2
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 99
+            HitRollModifier = -10
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Artillerie_Engaged,
+            ]
+            NameForDebug = "Artillerie_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_Artillerie_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{43abe273-915a-496c-a91e-dcc0f6983e10}
+            Value = 0.35
+            LocalizationToken = "WORRIED"
+            MoralModifier = 99
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Artillerie_Stressed,
+            ]
+            NameForDebug = "Artillerie_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_Artillerie_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{afeb6f6a-d065-4dfb-a785-ea9b0de7fb56}
+            Value = 0.5
+            LocalizationToken = "STRESSED"
+            MoralModifier = 99
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Artillerie_Suppressed,
+            ]
+            NameForDebug = "Artillerie_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_Artillerie_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{77b7d712-7d54-47a0-b4cf-a2f39c40ebd1}
+            Value = 0.65
+            LocalizationToken = "SHAKEN"
+            MoralModifier = 99
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+                ~/UnitEffect_Artillerie_Pinned,
+            ]
+            NameForDebug = "Artillerie_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_Artillerie_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{549db538-5c56-4c93-a3dc-2b3fd36e33ad}
+            Value = 0.8
+            LocalizationToken = "PANICKED"
+            MoralModifier = 0
+            HitRollModifier = 0
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_Artillerie_Cowering,
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Artillerie_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "Artillerie_packSupp"
+)
+export DamageLevelsPackDescriptor_Bombardier_Cluster_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{95770a77-5cb1-4e64-9495-cfa50be74330}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Bombardier_Cluster_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{812661d2-2cbd-4a4d-a25b-6716667e5d5f}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 20
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Bombardier_Cluster_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_Bombardier_Cluster_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{78804522-680e-4da8-965f-4f52bf447aa7}
+            Value = 0.2
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 20
+            HitRollModifier = -10
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+            ]
+            NameForDebug = "Bombardier_Cluster_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_Bombardier_Cluster_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{28b82e26-0213-4510-9b78-0cf8dfb7071c}
+            Value = 0.35
+            LocalizationToken = "WORRIED"
+            MoralModifier = 20
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+            ]
+            NameForDebug = "Bombardier_Cluster_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_Bombardier_Cluster_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{3ed8a14b-cb6a-4825-87e4-ee1fa8375131}
+            Value = 0.5
+            LocalizationToken = "STRESSED"
+            MoralModifier = 20
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+            ]
+            NameForDebug = "Bombardier_Cluster_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_Bombardier_Cluster_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{b6bf3d19-14fb-442e-9d10-803236c84088}
+            Value = 0.65
+            LocalizationToken = "SHAKEN"
+            MoralModifier = 20
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+            ]
+            NameForDebug = "Bombardier_Cluster_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_Bombardier_Cluster_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{9525d50b-e645-4574-b627-196e575bb8e0}
+            Value = 0.8
+            LocalizationToken = "PANICKED"
+            MoralModifier = -60
+            HitRollModifier = 0
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Bombardier_Cluster_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "Bombardier_Cluster_packSupp"
+)
+export DamageLevelsPackDescriptor_Bombardier_Leger_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{5a211ddb-634e-4681-85d1-9a0c6cbc8935}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Bombardier_Leger_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{1c7b5dfe-ab68-4d44-b26e-63cf7ae0eb86}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 20
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Bombardier_Leger_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_Bombardier_Leger_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{fd4db636-437c-45d9-8030-1be36ec81e94}
+            Value = 0.2
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 20
+            HitRollModifier = -10
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus25,
+            ]
+            NameForDebug = "Bombardier_Leger_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_Bombardier_Leger_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{a4d90806-72f3-4c82-8543-9595ecb285e8}
+            Value = 0.35
+            LocalizationToken = "WORRIED"
+            MoralModifier = 20
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus50,
+            ]
+            NameForDebug = "Bombardier_Leger_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_Bombardier_Leger_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{380cd252-a02a-4131-8261-3dd51907f260}
+            Value = 0.5
+            LocalizationToken = "STRESSED"
+            MoralModifier = 20
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus100,
+            ]
+            NameForDebug = "Bombardier_Leger_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_Bombardier_Leger_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{03318a41-99b4-4b6a-b201-1a4b3d60e47f}
+            Value = 0.65
+            LocalizationToken = "SHAKEN"
+            MoralModifier = 20
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus150,
+            ]
+            NameForDebug = "Bombardier_Leger_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_Bombardier_Leger_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{58a1ac5e-505c-43ae-9d09-bda5af21dead}
+            Value = 0.8
+            LocalizationToken = "PANICKED"
+            MoralModifier = -60
+            HitRollModifier = 0
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Bombardier_Leger_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "Bombardier_Leger_packSupp"
+)
+export DamageLevelsPackDescriptor_Bombardier_Lourd_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{55681cc9-af7f-4ace-a516-35e4b1995ced}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Bombardier_Lourd_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{490eb44e-e1c0-44b5-8809-b3237714f24b}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 20
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Bombardier_Lourd_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_Bombardier_Lourd_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{4e7ed361-1b99-4440-8010-8abe6ac10e16}
+            Value = 0.2
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 20
+            HitRollModifier = -10
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus100,
+            ]
+            NameForDebug = "Bombardier_Lourd_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_Bombardier_Lourd_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{6d693186-e1b2-4166-918c-eb6572a99591}
+            Value = 0.35
+            LocalizationToken = "WORRIED"
+            MoralModifier = 20
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus150,
+            ]
+            NameForDebug = "Bombardier_Lourd_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_Bombardier_Lourd_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{bf39f6a9-3efe-4e41-b277-3e7b07b050dc}
+            Value = 0.5
+            LocalizationToken = "STRESSED"
+            MoralModifier = 20
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus200,
+            ]
+            NameForDebug = "Bombardier_Lourd_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_Bombardier_Lourd_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{cb49f2e6-6e67-4e81-aa07-f9a31fc9885c}
+            Value = 0.65
+            LocalizationToken = "SHAKEN"
+            MoralModifier = 20
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus300,
+            ]
+            NameForDebug = "Bombardier_Lourd_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_Bombardier_Lourd_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{cf71b578-6250-445b-a7f2-6aaee414cdd4}
+            Value = 0.8
+            LocalizationToken = "PANICKED"
+            MoralModifier = -60
+            HitRollModifier = 0
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Bombardier_Lourd_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "Bombardier_Lourd_packSupp"
+)
+export DamageLevelsPackDescriptor_CanonAT_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{6035e583-c604-41d3-9cf3-fd05b404f97a}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_CanonAT_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{a517d88e-e43b-48c3-99b3-5c803cfd9021}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "CanonAT_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_CanonAT_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{6ad5898f-36db-4e73-abd9-2cc65cdbfb9a}
+            Value = 0.2
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 99
+            HitRollModifier = -10
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_CanonAT_Engaged,
+            ]
+            NameForDebug = "CanonAT_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_CanonAT_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{9900659b-a70e-470d-be12-7c37970a90ba}
+            Value = 0.35
+            LocalizationToken = "WORRIED"
+            MoralModifier = 99
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_CanonAT_Stressed,
+            ]
+            NameForDebug = "CanonAT_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_CanonAT_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{d8a6f780-3029-4968-a254-25f6f750e716}
+            Value = 0.5
+            LocalizationToken = "STRESSED"
+            MoralModifier = 99
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_CanonAT_Suppressed,
+            ]
+            NameForDebug = "CanonAT_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_CanonAT_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{e24ba949-c718-45e1-a122-b8bff5661fd4}
+            Value = 0.65
+            LocalizationToken = "SHAKEN"
+            MoralModifier = 99
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+                ~/UnitEffect_CanonAT_Pinned,
+            ]
+            NameForDebug = "CanonAT_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_CanonAT_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{51463e56-bd3c-48aa-ba83-266e24ce3df1}
+            Value = 0.8
+            LocalizationToken = "PINNED"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_CanonAT_Cowering,
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "CanonAT_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "CanonAT_packSupp"
+)
+export DamageLevelsPackDescriptor_Default_pack_paliers_suppression is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{b701f707-92ff-4fe6-9c93-9b825f85a42c}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Default_pack_paliers_suppression_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{1bbff4bf-f3a4-4a62-898a-536c441b1219}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_suppression_palier_1"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_suppression_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{bdba440d-52b8-41ac-851a-c4b681b42421}
+            Value = 0.2
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 99
+            HitRollModifier = -10
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Nb_Places_Transport_0,
+            ]
+            NameForDebug = "Default_pack_paliers_suppression_palier_2"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_suppression_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{d73e9761-a10b-4268-bdfb-786d2ddfe41b}
+            Value = 0.35
+            LocalizationToken = "WORRIED"
+            MoralModifier = 99
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Nb_Places_Transport_0,
+            ]
+            NameForDebug = "Default_pack_paliers_suppression_palier_3"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_suppression_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{4dd2a742-8f4d-4c5b-9de4-b47de4256395}
+            Value = 0.5
+            LocalizationToken = "STRESSED"
+            MoralModifier = 99
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_suppression_palier_4"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_suppression_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{1e61b074-2776-46ba-be5e-e4c34978ea13}
+            Value = 0.65
+            LocalizationToken = "SHAKEN"
+            MoralModifier = 99
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_suppression_palier_5"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_suppression_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{88e97985-e380-482f-aece-903a1929f6ae}
+            Value = 0.8
+            LocalizationToken = "PANICKED"
+            MoralModifier = 0
+            HitRollModifier = 0
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_suppression_palier_6"
+        ),
+    ]
+    NameForDebug = "Default_pack_paliers_suppression"
+)
+export DamageLevelsPackDescriptor_GroundUnits_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{e6812caa-2e57-4247-9583-3c2518472857}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_GroundUnits_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{045a8671-9d4e-4773-9ed7-0062c0c69415}
+            Value = 0
+            LocalizationToken = "mrl_4"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+                ~/UnitEffect_GroundUnit_Cohesion_High,
+            ]
+            NameForDebug = "GroundUnits_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_GroundUnits_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{9dce6755-8d45-48b3-b7a1-39d42a6975ef}
+            Value = 0.1
+            LocalizationToken = "mrl_4"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_GroundUnit_Cohesion_High,
+            ]
+            NameForDebug = "GroundUnits_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_GroundUnits_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{bc0d8d47-9a72-4cf4-a067-c2418d6adca5}
+            Value = 0.25
+            LocalizationToken = "mrl_3"
+            MoralModifier = 99
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_GroundUnit_Cohesion_Normal,
+            ]
+            NameForDebug = "GroundUnits_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_GroundUnits_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{eb51bc27-6dc3-4196-b6d6-6f9031a136a1}
+            Value = 0.5
+            LocalizationToken = "mrl_2"
+            MoralModifier = 99
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_GroundUnit_Cohesion_Mediocre,
+            ]
+            NameForDebug = "GroundUnits_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_GroundUnits_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{cb9a37ad-12c2-43ff-bef2-5c4cd95d71b1}
+            Value = 0.75
+            LocalizationToken = "mrl_1"
+            MoralModifier = 99
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+                ~/UnitEffect_GroundUnit_Cohesion_Low,
+            ]
+            NameForDebug = "GroundUnits_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_GroundUnits_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{7b0dd037-e912-47e9-aab9-fd802312a7cf}
+            Value = 0.8
+            LocalizationToken = "mrl_1"
+            HitRollModifier = -70
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_GroundUnit_Cohesion_Low,
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "GroundUnits_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "GroundUnits_packSupp"
+)
+export DamageLevelsPackDescriptor_Infanterie_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{cbc745d2-9548-4702-9db7-b2f47874d2d0}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Infanterie_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{aa486b35-ae8d-48d7-a975-ec7f60dec89c}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Infanterie_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_Infanterie_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{eef206d0-1291-425c-91ac-6c45b7d24801}
+            Value = 0.2
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 99
+            HitRollModifier = -10
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Infanterie_Engaged,
+            ]
+            NameForDebug = "Infanterie_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_Infanterie_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{f4c696d4-ac99-4a42-a8ba-b11bda3a5bd7}
+            Value = 0.35
+            LocalizationToken = "WORRIED"
+            MoralModifier = 99
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Infanterie_Stressed,
+            ]
+            NameForDebug = "Infanterie_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_Infanterie_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{a113b342-0ea0-4c32-9a68-410da73fef61}
+            Value = 0.5
+            LocalizationToken = "STRESSED"
+            MoralModifier = 99
+            HitRollModifier = -45
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Infanterie_Suppressed,
+            ]
+            NameForDebug = "Infanterie_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_Infanterie_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{cb6ae7a2-d3fe-482f-ad83-7493e138a68e}
+            Value = 0.65
+            LocalizationToken = "SHAKEN"
+            MoralModifier = 99
+            HitRollModifier = -70
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+                ~/UnitEffect_Infanterie_Pinned,
+            ]
+            NameForDebug = "Infanterie_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_Infanterie_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{983c7dc1-4885-42be-a25b-70e33758a320}
+            Value = 0.8
+            LocalizationToken = "PINNED"
+            MoralModifier = 99
+            HitRollModifier = 0
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_Infanterie_Cowering,
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Infanterie_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "Infanterie_packSupp"
+)
+export DamageLevelsPackDescriptor_Moral_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{b4247dc2-93e4-40b9-b4af-1dd4bed403d9}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Moral1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{b7abce68-ead1-45b2-964f-487d32befbfe}
+            Value = 0
+            LocalizationToken = "moral1"
+            MoralModifier = 99
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Moral1"
+        ),
+        DamageLevelDescriptor_Moral2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{adb008d1-a07a-44c5-bc84-ea338871f748}
+            Value = 0.3
+            LocalizationToken = "STRESSED"
+            MoralModifier = 99
+            HitRollModifier = -25
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Moral2"
+        ),
+        DamageLevelDescriptor_Moral3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{a3acb334-cd15-48ba-bfb1-6463e71e3e80}
+            Value = 0.6
+            LocalizationToken = "moral3"
+            MoralModifier = 50
+            HitRollModifier = -50
+            TextColor = RGBA[0,0,0,0]
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+            ]
+            NameForDebug = "Moral3"
+        ),
+        DamageLevelDescriptor_Moral4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{b752e53e-a4f2-43c6-93b5-522efc8c030f}
+            Value = 0.8
+            LocalizationToken = "moral3"
+            MoralModifier = 0
+            TextColor = RGBA[0,0,0,0]
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+            ]
+            NameForDebug = "Moral4"
+        ),
+    ]
+    NameForDebug = "Moral_packSupp"
+)
+export DamageLevelsPackDescriptor_Multiroles_bombardier_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{5a700165-6ed1-4a55-9da0-e5178fcfb44c}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Multiroles_bombardier_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{bf5be2c2-c55b-4e15-b821-b46aecccbf90}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 20
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Multiroles_bombardier_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_Multiroles_bombardier_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{c5e79446-9e78-4376-ac07-91c2e41bfb1c}
+            Value = 0.1
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 20
+            HitRollModifier = -5
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus150,
+            ]
+            NameForDebug = "Multiroles_bombardier_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_Multiroles_bombardier_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{eb5fda94-75ff-4fef-9cd4-74c6695c8c34}
+            Value = 0.2
+            LocalizationToken = "WORRIED"
+            MoralModifier = 20
+            HitRollModifier = -15
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus200,
+            ]
+            NameForDebug = "Multiroles_bombardier_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_Multiroles_bombardier_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{5c936ef1-8ac3-4fcd-9add-6ec0ebca836d}
+            Value = 0.3
+            LocalizationToken = "STRESSED"
+            MoralModifier = 20
+            HitRollModifier = -30
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus300,
+            ]
+            NameForDebug = "Multiroles_bombardier_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_Multiroles_bombardier_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{043dde12-d234-49e8-a5d7-04641b89e53f}
+            Value = 0.4
+            LocalizationToken = "SHAKEN"
+            MoralModifier = -20
+            HitRollModifier = -50
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Multiroles_bombardier_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_Multiroles_bombardier_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{4b7515e9-2364-47d3-8147-557f6a72c0c1}
+            Value = 0.8
+            LocalizationToken = "PANICKED"
+            MoralModifier = -60
+            HitRollModifier = 25
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Multiroles_bombardier_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "Multiroles_bombardier_packSupp"
+)
+export DamageLevelsPackDescriptor_Multiroles_packSupp is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{e3a4a647-3424-4336-a5bf-7ba0744a0cfe}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Multiroles_packSupp_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{e83588e9-b3fb-4f3d-93a0-47cef30057d0}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 20
+            HitRollModifier = 0
+            TextColor = RGBA[208,191,166,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Multiroles_packSupp_palier_1"
+        ),
+        DamageLevelDescriptor_Multiroles_packSupp_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{5e9ed3fd-5b53-4d56-87a7-2700faf1e526}
+            Value = 0.1
+            LocalizationToken = "ENGAGED"
+            MoralModifier = 20
+            HitRollModifier = -5
+            TextColor = RGBA[127,255,150,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus25,
+            ]
+            NameForDebug = "Multiroles_packSupp_palier_2"
+        ),
+        DamageLevelDescriptor_Multiroles_packSupp_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{cfdd3fdb-2ec9-4627-a76f-04deee6bdf78}
+            Value = 0.2
+            LocalizationToken = "WORRIED"
+            MoralModifier = 20
+            HitRollModifier = -15
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus50,
+            ]
+            NameForDebug = "Multiroles_packSupp_palier_3"
+        ),
+        DamageLevelDescriptor_Multiroles_packSupp_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{64f92ea5-1c98-4cae-988a-c620087a4e17}
+            Value = 0.3
+            LocalizationToken = "STRESSED"
+            MoralModifier = 20
+            HitRollModifier = -30
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Dispersion_Bombes_plus100,
+            ]
+            NameForDebug = "Multiroles_packSupp_palier_4"
+        ),
+        DamageLevelDescriptor_Multiroles_packSupp_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{7003439b-0fcb-4a3e-9b6a-8a42a5a209fb}
+            Value = 0.4
+            LocalizationToken = "SHAKEN"
+            MoralModifier = -20
+            HitRollModifier = -50
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Pinned
+            EffectsPacks = [
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Multiroles_packSupp_palier_5"
+        ),
+        DamageLevelDescriptor_Multiroles_packSupp_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{df39fe45-369a-446b-aada-c6a9b21ef944}
+            Value = 0.8
+            LocalizationToken = "PANICKED"
+            MoralModifier = -60
+            HitRollModifier = 25
+            TextColor = RGBA[255,84,84,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            FeedbackOnSelf = "OnUnitPanicking"
+            EffectsPacks = [
+                ~/UnitEffect_Baisse_Dangerosite_et_Transport_0_Effet,
+            ]
+            NameForDebug = "Multiroles_packSupp_palier_6"
+        ),
+    ]
+    NameForDebug = "Multiroles_packSupp"
+)
+export DamageLevelsPackDescriptor_New_Default_packSuppression is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{e4c1ee59-c732-4b07-9194-df8183113e89}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Default_Suppression_Calm is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{cbcf340d-7cd3-44ff-9508-fb68121cbda0}
+            Value = 0
+            LocalizationToken = "CALM"
+            MoralModifier = 99
+            TextColor = RGBA[255,0,0,255]
+            AnimationType = ESoldierSuppressStatus/Operational
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_Suppression_Calm"
+        ),
+        DamageLevelDescriptor_Default_Suppression_Worried is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{44bf1fb2-881f-4c17-8b24-5cd2f2f9dc3d}
+            Value = 0.25
+            LocalizationToken = "WORRIED"
+            MoralModifier = 99
+            HitRollModifier = -25
+            TextColor = RGBA[255,225,125,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Default_Worried,
+            ]
+            NameForDebug = "Default_Suppression_Worried"
+        ),
+        DamageLevelDescriptor_Default_Suppression_Stressed is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{ba0e5b15-a9f4-4868-9f4c-570d8046d623}
+            Value = 0.5
+            LocalizationToken = "STRESSED"
+            MoralModifier = 99
+            HitRollModifier = -50
+            TextColor = RGBA[255,255,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Default_Stressed,
+            ]
+            NameForDebug = "Default_Suppression_Stressed"
+        ),
+        DamageLevelDescriptor_Default_Suppression_Panicked is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{d32c77af-848f-40f8-a98a-fde792ecca4c}
+            Value = 0.75
+            LocalizationToken = "PANICKED"
+            MoralModifier = 99
+            HitRollModifier = -75
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Suppressed
+            EffectsPacks = [
+                ~/UnitEffect_Default_Panicked,
+            ]
+            NameForDebug = "Default_Suppression_Panicked"
+        ),
+        DamageLevelDescriptor_Default_Suppression_Routed is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{109d4918-1f5c-4d4a-b153-d22e8ea908dc}
+            Value = 0.9
+            LocalizationToken = "PINNED"
+            MoralModifier = 0
+            HitRollModifier = 0
+            TextColor = RGBA[255,100,0,255]
+            AnimationType = ESoldierSuppressStatus/Cowering
+            EffectsPacks = [
+                ~/UnitEffect_Infanterie_Cowering,
+            ]
+            NameForDebug = "Default_Suppression_Routed"
+        ),
+    ]
+    NameForDebug = "New_Default_packSuppression"
+)
+
+export DamageLevelsPackDescriptor_Default_pack_paliers_degats_phy is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{1eceabc4-2c92-41e8-9df2-eb11cc9a75b8}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Default_pack_paliers_degats_phy_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{a2c36381-241f-4634-8b1b-0c0e1d9ccc30}
+            Value = 0
+            MoralModifier = 1
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_degats_phy_palier_1"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_degats_phy_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{f67fabdc-f81a-467f-ab0b-1523273c54e8}
+            Value = 0.16
+            MoralModifier = 0
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_degats_phy_palier_2"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_degats_phy_palier_3 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{ab9d47f7-9b4e-4da9-b20e-bf502f011267}
+            Value = 0.33
+            MoralModifier = -1
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_degats_phy_palier_3"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_degats_phy_palier_4 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{0c8dfd47-e14d-419b-a92e-6a36b0eae4fb}
+            Value = 0.5
+            MoralModifier = -2
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_degats_phy_palier_4"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_degats_phy_palier_5 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{2eec674f-a069-4dd4-a66f-5add52bc9b70}
+            Value = 0.66
+            MoralModifier = -3
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_degats_phy_palier_5"
+        ),
+        DamageLevelDescriptor_Default_pack_paliers_degats_phy_palier_6 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{621a4963-da91-46cb-8c6d-27a95f868ec8}
+            Value = 0.83
+            MoralModifier = -4
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Default_pack_paliers_degats_phy_palier_6"
+        ),
+    ]
+    NameForDebug = "Default_pack_paliers_degats_phy"
+)
+
+export DamageLevelsPackDescriptor_Default_pack_paliers_stun is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{a15b3e65-ceba-4c2b-ad0b-b23a1439428e}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Unit_packStun_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{61b21544-2ab2-4d30-9522-461a0f8dcef7}
+            Value = 0
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Unit_packStun_palier_1"
+        ),
+    ]
+    NameForDebug = "Default_pack_paliers_stun"
+)
+export DamageLevelsPackDescriptor_Unit_packNoStun is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{6605c12a-44c7-4c67-befc-aaea45d1cdee}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Unit_packNoStun_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{94f96cd8-fac8-4f22-83c5-ab965ba74ff1}
+            Value = 0
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Unit_packNoStun_palier_1"
+        ),
+    ]
+    NameForDebug = "Unit_packNoStun"
+)
+export DamageLevelsPackDescriptor_Unit_packStun is TDamageLevelsPackDescriptor
+(
+    DescriptorId = GUID:{6aa7c2a1-a2de-40e7-ad34-17f6fedf56da}
+    DamageLevelsDescriptors = [
+        DamageLevelDescriptor_Unit_packStun_palier_1 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{61b21544-2ab2-4d30-9522-461a0f8dcef7}
+            Value = 0
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+            ]
+            NameForDebug = "Unit_packStun_palier_1"
+        ),
+        DamageLevelDescriptor_Unit_packStun_palier_2 is TDamageLevelDescriptor
+        (
+            DescriptorId = GUID:{545cdc9d-4892-4a44-9a1a-16efd979b270}
+            Value = 0.99
+            TextColor = RGBA[0,0,0,0]
+            EffectsPacks = [
+                ~/UnitEffect_Unit_Stunned,
+                ~/UnitEffect_Infanterie_Cowering_Rampe,
+            ]
+            NameForDebug = "Unit_packStun_palier_2"
+        ),
+    ]
+    NameForDebug = "Unit_packStun"
+)

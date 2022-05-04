@@ -1,0 +1,472 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Fire_Incendie is TEntityDescriptor
+(
+    World              = WorldIndices_Fires
+    DescriptorId       = GUID:{329c7b13-6b92-473c-b24f-0212c1c6a252}
+    ClassNameForDebug  = 'Fire_Incendie'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Fire
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((75) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorFire_Depiction
+                (
+                     Radius               = 75 * Metre
+                     FX                   = $/GFX/GameFx/fx_binder_fire
+                     Density              = 1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Fire
+            TFireModuleDescriptor
+            (
+                TimeToLive                     = ((60) * Seconde)
+                TimeBeforeSpreading            = ((10) * Seconde)
+                TimeBeforeSpreadAttempt        = ((10) * Seconde)
+                SpreadProbability              = 0.5
+                IsNewFireProbability           = 0.5
+                Radius                         = ((75) * Metre)
+                AmmunitionForBurn              = Ammo_Degats_incendie
+                TimeBetweenBurns               = ((5) * Seconde)
+                OverridenSpreadDescriptor      = nil
+                SmokeDescriptor                = Descriptor_Smoke_FumiIncendie
+            ),
+
+    ]
+)
+export Descriptor_Fire_Napalm is TEntityDescriptor
+(
+    World              = WorldIndices_Fires
+    DescriptorId       = GUID:{38066a34-ab59-4a5e-98c2-9c65879f679e}
+    ClassNameForDebug  = 'Fire_Napalm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Fire
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((500) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorFire_Depiction
+                (
+                     Radius               = 500 * Metre
+                     FX                   = $/GFX/GameFx/fx_binder_fire
+                     Density              = 1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Fire
+            TFireModuleDescriptor
+            (
+                TimeToLive                     = ((60) * Seconde)
+                TimeBeforeSpreading            = ((1) * Seconde)
+                TimeBeforeSpreadAttempt        = ((1) * Seconde)
+                SpreadProbability              = 1.0
+                IsNewFireProbability           = 0.5
+                Radius                         = ((500) * Metre)
+                AmmunitionForBurn              = Ammo_Degats_napalm
+                TimeBetweenBurns               = ((5) * Seconde)
+                OverridenSpreadDescriptor      = Descriptor_Fire_Incendie
+                SmokeDescriptor                = Descriptor_Smoke_FumiNapalm
+            ),
+
+    ]
+)
+export Descriptor_Fire_NapalmCluster is TEntityDescriptor
+(
+    World              = WorldIndices_Fires
+    DescriptorId       = GUID:{4e44dc5d-f1e6-4a4d-8f65-91d96c87d60a}
+    ClassNameForDebug  = 'Fire_NapalmCluster'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Fire
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((75) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorFire_Depiction
+                (
+                     Radius               = 75 * Metre
+                     FX                   = $/GFX/GameFx/fx_binder_fire
+                     Density              = 1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Fire
+            TFireModuleDescriptor
+            (
+                TimeToLive                     = ((60) * Seconde)
+                TimeBeforeSpreading            = ((1) * Seconde)
+                TimeBeforeSpreadAttempt        = ((1) * Seconde)
+                SpreadProbability              = 1.0
+                IsNewFireProbability           = 0.5
+                Radius                         = ((75) * Metre)
+                AmmunitionForBurn              = Ammo_Degats_napalm_leger_Cluster
+                TimeBetweenBurns               = ((5) * Seconde)
+                OverridenSpreadDescriptor      = Descriptor_Fire_Incendie
+                SmokeDescriptor                = Descriptor_Smoke_FumiIncendie
+            ),
+
+    ]
+)
+export Descriptor_Fire_NapalmCluster_petit is TEntityDescriptor
+(
+    World              = WorldIndices_Fires
+    DescriptorId       = GUID:{45a8401c-18e8-41ec-90fb-944ef6c74002}
+    ClassNameForDebug  = 'Fire_NapalmCluster_petit'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Fire
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((50) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorFire_Depiction
+                (
+                     Radius               = 50 * Metre
+                     FX                   = $/GFX/GameFx/fx_binder_fire
+                     Density              = 1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Fire
+            TFireModuleDescriptor
+            (
+                TimeToLive                     = ((30) * Seconde)
+                TimeBeforeSpreading            = ((1) * Seconde)
+                TimeBeforeSpreadAttempt        = ((1) * Seconde)
+                SpreadProbability              = 1.0
+                IsNewFireProbability           = 0.5
+                Radius                         = ((50) * Metre)
+                AmmunitionForBurn              = Ammo_Degats_napalm_leger_Cluster_petit
+                TimeBetweenBurns               = ((5) * Seconde)
+                OverridenSpreadDescriptor      = Descriptor_Fire_Incendie
+                SmokeDescriptor                = Descriptor_Smoke_FumiIncendie
+            ),
+
+    ]
+)
+export Descriptor_Fire_NapalmLeger is TEntityDescriptor
+(
+    World              = WorldIndices_Fires
+    DescriptorId       = GUID:{13815b3d-41eb-46d1-8ab4-703566fb3f26}
+    ClassNameForDebug  = 'Fire_NapalmLeger'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Fire
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((150) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorFire_Depiction
+                (
+                     Radius               = 150 * Metre
+                     FX                   = $/GFX/GameFx/fx_binder_fire_Napalm_Leger
+                     Density              = 1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Fire
+            TFireModuleDescriptor
+            (
+                TimeToLive                     = ((60) * Seconde)
+                TimeBeforeSpreading            = ((1) * Seconde)
+                TimeBeforeSpreadAttempt        = ((1) * Seconde)
+                SpreadProbability              = 1.0
+                IsNewFireProbability           = 0.5
+                Radius                         = ((150) * Metre)
+                AmmunitionForBurn              = Ammo_Degats_napalm_leger
+                TimeBetweenBurns               = ((5) * Seconde)
+                OverridenSpreadDescriptor      = Descriptor_Fire_Incendie
+                SmokeDescriptor                = Descriptor_Smoke_FumiIncendie
+            ),
+
+    ]
+)
+export Descriptor_Fire_NapalmLourd is TEntityDescriptor
+(
+    World              = WorldIndices_Fires
+    DescriptorId       = GUID:{390d2ca4-fd9d-4341-a998-10a910f7b03f}
+    ClassNameForDebug  = 'Fire_NapalmLourd'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Fire
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((500) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorFire_Depiction
+                (
+                     Radius               = 500 * Metre
+                     FX                   = $/GFX/GameFx/fx_binder_fire_Napalm_Lourd
+                     Density              = 1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Fire
+            TFireModuleDescriptor
+            (
+                TimeToLive                     = ((60) * Seconde)
+                TimeBeforeSpreading            = ((1) * Seconde)
+                TimeBeforeSpreadAttempt        = ((1) * Seconde)
+                SpreadProbability              = 1.0
+                IsNewFireProbability           = 0.5
+                Radius                         = ((500) * Metre)
+                AmmunitionForBurn              = Ammo_Degats_napalm_lourd
+                TimeBetweenBurns               = ((1) * Seconde)
+                OverridenSpreadDescriptor      = Descriptor_Fire_Incendie
+                SmokeDescriptor                = Descriptor_Smoke_FumiNapalmlourd
+            ),
+
+    ]
+)
+export Descriptor_Fire_NapalmMoyen is TEntityDescriptor
+(
+    World              = WorldIndices_Fires
+    DescriptorId       = GUID:{9f8584c1-0d2c-40fd-888e-b5f9a86597ff}
+    ClassNameForDebug  = 'Fire_NapalmMoyen'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Fire
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((300) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorFire_Depiction
+                (
+                     Radius               = 300 * Metre
+                     FX                   = $/GFX/GameFx/fx_binder_fire_Napalm_Moyen
+                     Density              = 1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Fire
+            TFireModuleDescriptor
+            (
+                TimeToLive                     = ((60) * Seconde)
+                TimeBeforeSpreading            = ((1) * Seconde)
+                TimeBeforeSpreadAttempt        = ((1) * Seconde)
+                SpreadProbability              = 1.0
+                IsNewFireProbability           = 0.5
+                Radius                         = ((300) * Metre)
+                AmmunitionForBurn              = Ammo_Degats_napalm_buratino
+                TimeBetweenBurns               = ((1) * Seconde)
+                OverridenSpreadDescriptor      = Descriptor_Fire_Incendie
+                SmokeDescriptor                = Descriptor_Smoke_FumiIncendie
+            ),
+
+    ]
+)

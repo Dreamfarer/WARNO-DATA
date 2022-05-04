@@ -1,0 +1,193 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Unit_test is TEntityDescriptor
+(
+    DescriptorId        = GUID:{44177471-2e57-4f73-954c-a5ec9bac80cc}
+    ClassNameForDebug   = 'Unit_test'
+    ModulesDescriptors = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/ArtHowit
+                    Nationalite                      = ENationalite/Allied
+                    MotherCountry                    = 'US'
+                    AcknowUnitType                   = ~/TAcknowUnitType_OffMap
+                    TypeUnitFormation                = 'None'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilterIfGhost
+                    (
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            MotherCountry                    = 'US'
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/ArtHowit
+                        )
+                    )
+                ]
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllUnits",
+                    "Unite",
+                    "UNITE_test",
+                    "Artillerie_Hors_Carte",
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Selectionnable,
+                    Flag_LdDetectable,
+                    Flag_Artillerie,
+                ]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // WeaponManager
+        WeaponManager is
+            TModuleSelector
+            (
+                Default        = $/GFX/Everything/WeaponDescriptor_test
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // StateEngineCompany
+            TModuleSelector
+            (
+                Default        = TStateEngineCompanyModuleDescriptor
+                (
+                    InitialStateId = 'CompanyInit'
+                    StateEngineUpdateMode = WorldControllerAccess_InWorld
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // StateEngine
+            TModuleSelector
+            (
+                Default        = TStateEngineModuleDescriptor
+                (
+                    InitialStateId = 'UnitIdle'
+                    StateEngineUpdateMode = WorldControllerAccess_InWorld
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // Selection
+            TModuleSelector
+            (
+                Default            = TSelectionModuleDescriptor
+                (
+                    IsSelectable       = True
+                    IsHighlightable    = False
+                    HasSelectionShader = False
+                    HasHighlightShader = True
+                    MultipleSelectionFilterPriorityDefault      = 0
+                    MultipleSelectionFilterPrioritySecondary    = 0
+                )
+                Selection = [ ~/NilDescriptorIfCadavre ]
+            ),
+
+        // CubeAction
+            TCubeActionModuleDescriptor
+            (
+                CubeActionDescriptor = ~/CubeAction_Menu_Ordres_Arty_OffMap
+            ),
+
+        // Orderable
+            TModuleSelector
+            (
+                Default                   = TOrderableModuleDescriptor
+                (
+                UnlockableOrders          = ~/Descriptor_OrderAvailability_test
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // IAStrat
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // GroupableUnit
+            ~/GroupableUnitModuleSelector,
+
+        // LinkToObserver
+            TModuleSelector
+            (
+                Default = TLinkToObserverModuleDescriptor
+                (
+                    ShootModeToWeaponReference = MAP
+                    [
+                        (EOutMapArtilleryShootMode/Warning, (0, 0)),
+                    ]
+                )
+                Selection = [ ~/NilDescriptorIfGhostOrCadavre ]
+            ),
+
+        // PackSignaux
+            ~/PackSignauxModuleDescriptor,
+
+        // UnitUI
+            TModuleSelector
+            (
+                Default = TUnitUIModuleDescriptor
+                (
+                    HintToken = 'ArtHowit'
+                    RoleList = [
+                    ]
+                    SpecialtiesList = [
+                    ]
+                    NameToken = 'None'
+                    InfoPanelConfigurationToken = 'Default'
+                    TypeSpecificToken = ''
+                    ShowInMenu = True
+                    IsAce = False
+                    GenerateName = true
+                    MenuIconTexture = 'Texture_MenuIcon_default'
+                    ButtonTexture = 'Texture_Button_Unit_test'
+                    CountryTexture = 'CommonTexture_MotherCountryFlag_US'
+                    TypeStrategicCount = ETypeStrategicCount/NotCounted
+                )
+                Selection = [
+                    TModuleSelectorFilterIfGhost
+                    (
+                        Descriptor = TUnitUIModuleDescriptor
+                        (
+                            HintToken = 'ArtHowit'
+                            NameToken = 'None'
+                            InfoPanelConfigurationToken = 'Default'
+                            TypeSpecificToken = ''
+                            MenuIconTexture = 'Texture_MenuIcon_default'
+                            ButtonTexture = 'Texture_Button_Unit_test'
+                            CountryTexture = 'CommonTexture_MotherCountryFlag_US'
+                            TypeStrategicCount = ETypeStrategicCount/NotCounted
+                        )
+                    )
+                ]
+            ),
+
+    ]
+)
