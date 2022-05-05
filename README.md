@@ -9,15 +9,15 @@ Following there is a list of varibles I've found so far:
 All useful values to be found in `UniteDescriptor.ndf`
 
 #### Unit Type
-`String` &nbsp; &nbsp; &nbsp; **MotherCountry**\
-`String` &nbsp; &nbsp; &nbsp; **AcknowUnitType**\
-`String` &nbsp; &nbsp; &nbsp; **TypeUnitFormation**\
-`String` &nbsp; &nbsp; &nbsp; **TypeUnitValue**
+`str` **MotherCountry**\
+`str` **AcknowUnitType**\
+`str` **TypeUnitFormation**\
+`str` **TypeUnitValue**
 
 #### Experience
-`Reference`**ExperienceGainBySecond**\
-`Reference`**ExperienceMultiplierBonusOnKill**\
-`Boolean`&nbsp;&nbsp;**CanWinExperience**
+`ref` **ExperienceGainBySecond**\
+`ref` **ExperienceMultiplierBonusOnKill**\
+`bol` **CanWinExperience**
 
 #### Visibility
 * **UnitConcealmentBonus**
