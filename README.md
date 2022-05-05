@@ -9,10 +9,10 @@ Following there is a list of varibles I've found so far:
 All useful values to be found in `UniteDescriptor.ndf`
 
 #### Unit Type
-`String` &nbsp; &nbsp; &nbsp; **MotherCountry**\
-`String` **AcknowUnitType**\
-`String` **TypeUnitFormation**\
-`String` &nbsp; &nbsp; &nbsp; **TypeUnitValue**
+`String` &nbsp; &nbsp; &nbsp;**MotherCountry**\
+`String` &nbsp; &nbsp; &nbsp;**AcknowUnitType**\
+`String` &nbsp; &nbsp; &nbsp;**TypeUnitFormation**\
+`String` &nbsp; &nbsp; &nbsp;**TypeUnitValue**
 
 #### Experience
 `Reference` **ExperienceGainBySecond**\
