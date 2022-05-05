@@ -145,3 +145,6 @@ All useful values to be found in `Ammunition.ndf`
 `bol` **CanHarmGuidedMissiles**\
 `bol` **IsHarmlessForAllies**\
 `bol` **PiercingWeapon** &mdash; Function not known\
+
+## Copyright Notice
+Each and every bit of this data belongs to [Eugen Systems](https://eugensystems.com/). I soley dig through it to create a database for an WARNO API that will be accessible to the public for free.
