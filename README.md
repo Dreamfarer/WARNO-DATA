@@ -5,6 +5,21 @@ Feel free to contribute!
 
 Following there is a list of varibles I've found so far:
 
+## Useful Information
+WARNO has some twists and turns when it comes down to comprehensibility. These are some useful tools to guide you through the jungle of WARNO data.
+
+#### Constant Factors
+Some values presented in `.ndf` files need to be multiplied by a constant factor. I know of **two** constants that are defined in `GDConstantes.ndf`:\
+`1.0 div 2.83` **MultiplicateurMetreRTSVersDistanceFeedbackTactique** &mdash; Needs to be multiplied with the *distance* to receive accurat results. E.g. 6000 \* (1.0 / 2.83)\
+`0.45 div 1.0` **MultiplicateurMetreRTSVersVitesseTactiquePourVehicule **  &mdash; Needs to be multiplied with the *speed* to receive accurat results. E.g. 120 \* (0.45 / 1.0)
+
+#### Calculate Road Speed
+In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed*, which represents the off-road speed, and add *MaxSpeed* \* *SpeedBonusOnRoad* to get the true road speed. A huge thanks to WARNO modder *eMeM* for pointing this out to me over on Discord.
+
+#### Armor-Piercing Damage (AP)
+Currently, we do not understand how to retrieve the in-game displayed AP value. HE and suppress damage are no problems at all. What we currently believe:\
+In `Ammunition.ndf` there is a value called *Arme* which references another file called `DamageResistance.ndf`. This file presents a table which holds all damage types in its rows and the damage dealt to every type of armor in its columns.
+
 ## Unit Descriptor
 All useful values to be found in `UniteDescriptor.ndf`
 
@@ -41,7 +56,6 @@ All useful values to be found in `UniteDescriptor.ndf`
 
 #### Movement
 `int` **MaxSpeed**\
-`int` **VitesseCombat**\
 `flt` **SpeedBonusOnRoad**\
 `flt` **MaxAcceleration**\
 `flt` **MaxDeceleration**\
@@ -82,7 +96,6 @@ All useful values to be found in `UniteDescriptor.ndf`
 
 #### User Interface
 `str` **NameToken**\
-`int` **RealRoadSpeed**\
 `str` **UpgradeFromUnit**
 
 ## Weapon Descriptor
@@ -91,7 +104,7 @@ All useful values to be found in `WeaponDescriptor.ndf`
 `bol` **NeedsExplicitOrderToUseSmoke**\
 `arr` **Salves** &mdash; Poorly understood\
 `bol` **AlwaysOrientArmorTowardsThreat**\
-`ref` **Ammunition** &mdash; Reference in `Ammunition.ndf`\
+`ref` **Ammunition** &mdash; References an object in `Ammunition.ndf`\
 `flt` **OutOfRangeTrackingDuration** &mdash; Function not known
 
 ## Ammunition Descriptor
