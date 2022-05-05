@@ -10,8 +10,8 @@ WARNO has some twists and turns when it comes down to comprehensibility. These a
 
 #### Constant Factors
 Some values presented in `.ndf` files need to be multiplied by a constant factor. I know of **two** constants that are defined in `GDConstantes.ndf`:
-* MultiplicateurMetreRTSVersDistanceFeedbackTactique: **1.0 div 2.83** &mdash; Needs to be multiplied with the *distance* to receive accurat results. E.g. 6000 \* (**1.0 / 2.83**)
-* MultiplicateurMetreRTSVersVitesseTactiquePourVehicule: **0.45 div 1.0** &mdash; Needs to be multiplied with the *speed* to receive accurat results. E.g. 120 \* (**0.45 / 1.0**)
+* MultiplicateurMetreRTSVersDistanceFeedbackTactique: **1.0 div 2.83** &mdash; Needs to be multiplied with the *distance* to receive accurat results. E.g. 6000m \* (**1.0 / 2.83**) = 1120m
+* MultiplicateurMetreRTSVersVitesseTactiquePourVehicule: **0.45 div 1.0** &mdash; Needs to be multiplied with the *speed* to receive accurat results. E.g. 120 km/h \* (**0.45 / 1.0**) = 54 km/h
 
 #### Calculate Road Speed
 In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed*, which represents the off-road speed, and add *MaxSpeed* \* *SpeedBonusOnRoad* to get the true road speed. A huge thanks to WARNO modder *eMeM* for pointing this out to me over on Discord.
