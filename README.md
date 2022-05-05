@@ -17,7 +17,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 #### Experience
 `Reference` **ExperienceGainBySecond**\
 `Reference` **ExperienceMultiplierBonusOnKill**\
-`Bool` **CanWinExperience**
+`Boolean` &nbsp; &nbsp;**CanWinExperience**
 
 #### Visibility
 * **UnitConcealmentBonus**
