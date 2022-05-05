@@ -1,0 +1,14 @@
+DefaultTransportLoadRadius                       is 221 * Metre // Metre
+
+WreckUnloadDamageBonus_Default_Physical          is 20
+WreckUnloadDamageBonus_Default_Suppress          is 0
+WreckUnloadDamageBonus_Default_Stun              is 0
+
+WreckUnloadDamageBonus_Chopper_Physical          is 5 //12
+WreckUnloadDamageBonus_Chopper_Suppress          is 1  // le feedback "stunned" n'apparait pas ( même si l'unité est bien stun ) si on met 0... ( tim le 13/06/2013 )
+WreckUnloadDamageBonus_Chopper_Stun              is 500
+
+
+DefaultTransportableSuppressDamageRatioIfTransporterKilled is 0
+
+CanonsLoadingTime                                is 0 // secondes

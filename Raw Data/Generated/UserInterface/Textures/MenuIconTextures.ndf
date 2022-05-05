@@ -1,0 +1,21 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+
+
+
+
+
+
+export Texture_MenuIcon_default is TUIResourceTexture_InGame
+(
+    FileName = "GameData:/Assets/2D/Interface/UseInGame/LabelIcons/MenuIcons/default.png"
+)
+
+UnitMenuIconAdditionalTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+        ("Texture_MenuIcon_default", MAP [(~/ComponentState/Normal, ~/Texture_MenuIcon_default)]),
+    ]
+)

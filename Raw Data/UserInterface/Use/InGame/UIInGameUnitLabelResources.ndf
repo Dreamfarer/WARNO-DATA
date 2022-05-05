@@ -1,0 +1,59 @@
+
+//A maintenir synchro avec WarGame\Code\Eugen\CPP\InterfaceSpecific\UISpecificUnitLabelFeedbackType.h
+InGameUnitLabelUpdateFeedbackType is TBaseClass
+(
+    Bullets is 3
+    Missile is 4
+    Shell is 5
+    Smoke is 6
+    Flamethrower is 7
+    Grenade is 8
+    Artillery is 9
+    NoFeedback is 11
+)
+
+SpecificInGameUnitLabelResources is TUISpecificUnitLabelResources
+(
+    UILayer                         = $/UserInterface/UILayer_Labels
+    UI3DLayer                       = $/UserInterface/UI3DLayer_General
+    Camera                          = $/M3D/Camera/CameraPrincipale
+
+    CameraMoverHelperProxy          = $/M3D/Scene/IngameCameraMoverHelperProxy
+    FadeHeightTansitionStart        = 20*1000
+    FadeHeightTansitionEnd          = 10*1000
+    // ---------
+
+    // pour configurer il faut ouvrir les ajustables : label et agregate
+    LabelInAggregatMagnifiableBox = [UnitLabelAggregationWidth, UnitLabelAggregationHeight]
+    LabelMagnifiableBox = [80, 30]
+    RatioToLabelInAggregatMagnifiableBox = [0.5, 0.5]
+    RatioToLabelMagnifiableBox = [0.40, 0.5]
+    MagnifiableOffsetCenter = [27.0, 0.0]
+    MagnifiableOffsetAggregatCenter = [0.0, 0.0]
+
+    NbMaxAggregatedUnits = 12
+
+    MagnificationMultiplier = 1
+    UI3DTransformation = TModernWarfareLabelTransformation
+    (
+        Camera = $/M3D/Camera/CameraPrincipale
+        ScalePerAltitudeConstReso = 1.0 // pas touche! - voir sebastien
+        Scene2D = $/M3D/Scene/Scene_2D_Interface
+        ConstnessFactor = 1
+        PreTranslate = [0.0, 0.0, 0.0]
+        PostTranslate = [0.0, 250.0, 0.0] // valeur pour régler la hauteur des étiquettes par rapport à l'unité
+        RefResolution = [ 1920.0, 1080.0 ]
+    )
+
+    DamageTypeNameToFeedbackType = MAP
+    [
+        ("balle", ~/InGameUnitLabelUpdateFeedbackType/Bullets),
+        ("balleaa", ~/InGameUnitLabelUpdateFeedbackType/Bullets),
+        ("balledca", ~/InGameUnitLabelUpdateFeedbackType/Bullets),
+        ("ap_missile", ~/InGameUnitLabelUpdateFeedbackType/Missile),
+        ("flamme", ~/InGameUnitLabelUpdateFeedbackType/Flamethrower),
+        ("smoke", ~/InGameUnitLabelUpdateFeedbackType/Smoke),
+        ("artillerie", ~/InGameUnitLabelUpdateFeedbackType/Artillery),
+    ]
+)
+

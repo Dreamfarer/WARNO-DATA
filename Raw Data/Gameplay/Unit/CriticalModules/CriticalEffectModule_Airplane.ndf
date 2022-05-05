@@ -1,0 +1,76 @@
+
+export CriticalEffectModule_Airplane is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,400)
+    TerrainCriticalEffectTimer = 5.0
+
+    EffectsOnFront =
+    [
+        //AirplaneCriticalEffect_WingRippedOff(Roll = (1,5)),   //Wing ripped off -> Death
+        AirplaneCriticalEffect_WingsDamaged(Roll = (1,10)),   //Wings damaged -> Loss 1 HP
+        AirplaneCriticalEffect_EngineOnFire(Roll = (11,11)),   //Engine on fire -> Death
+        AirplaneCriticalEffect_PropellerDamaged(Roll = (12,17)),   //Propeller damaged -> Loss 1 HP
+        AirplaneCriticalEffect_EngineDamaged(Roll = (18,21)),   //Engine damaged -> Loss 1 HP
+        AirplaneCriticalEffect_FloatCarburatorFailure(Roll = (22,25)),   //Float carburator failure -> Loose control during 5s
+        AirplaneCriticalEffect_OilLeak(Roll = (26,35)),   //Oil leak -> Précision 0.5
+        AirplaneCriticalEffect_EngineOverheating(Roll = (36,38)),   //Engine Overheating -> Falling back
+        AirplaneCriticalEffect_EngineStalling(Roll = (39,40)),   //Engine stalling -> Falling back
+        AirplaneCriticalEffect_ElevatorDamaged(Roll = (41,42)),
+        AirplaneCriticalEffect_FuelTankLeaking(Roll = (43,45)),   //Fuel tank leaking -> Loss 1 HP
+        AirplaneCriticalEffect_RadiatorDamaged(Roll = (46,48)),   //Radiator damaged -> Loss 1 HP
+        AirplaneCriticalEffect_RadiatorOverheating(Roll = (49,50)),   //Radiator Overheating -> Falling back
+        //AirplaneCriticalEffect_PilotKilled(Roll = (21,25)),   //Pilot killed -> Death
+        AirplaneCriticalEffect_PilotInjured(Roll = (51,58)),   //Pilot injured -> Falling back
+        AirplaneCriticalEffect_PilotPanicked(Roll = (59,67)),   //Pilot panicked -> Falling back
+        AirplaneCriticalEffect_PilotUnconscious(Roll = (68,73)),   //Pilot unconscious  -> Loose control during 5s
+        AirplaneCriticalEffect_WeaponsJammed(Roll = (74,80)),   //Weapons jammed -> No more shots
+    ]
+
+    EffectsOnSides =
+    [
+        //AirplaneCriticalEffect_WingRippedOff(Roll = (1,5)),   //Wing ripped off -> Death
+        AirplaneCriticalEffect_WingsDamaged(Roll = (1,5)),   //Wings damaged -> Loss 1 HP
+        AirplaneCriticalEffect_EngineOnFire(Roll = (6,12)),   //Engine on fire -> Death
+        AirplaneCriticalEffect_PropellerDamaged(Roll = (13,20)),   //Propeller damaged -> Loss 1 HP
+        AirplaneCriticalEffect_EngineDamaged(Roll = (21,24)),   //Engine damaged -> Loss 1 HP
+        AirplaneCriticalEffect_FloatCarburatorFailure(Roll = (25,25)),   //Float carburator failure -> Loose control during 5s
+        AirplaneCriticalEffect_AileronDamaged(Roll = (26,27)),
+        AirplaneCriticalEffect_TailDamaged(Roll = (28,30)),
+        //AirplaneCriticalEffect_OilLeak(Roll = (30,30)),   //Oil leak -> Précision 0.5
+        AirplaneCriticalEffect_EngineOverheating(Roll = (31,32)),   //Engine Overheating -> Falling back
+        AirplaneCriticalEffect_EngineStalling(Roll = (33,34)),   //Engine stalling -> Falling back
+        AirplaneCriticalEffect_FuelTankOnFire(Roll = (35,38)),   //Fuel tank on fire -> Death
+        AirplaneCriticalEffect_FuelTankLeaking(Roll = (39,50)),   //Fuel tank leaking -> Loss 1 HP
+        AirplaneCriticalEffect_RadiatorDamaged(Roll = (51,58)),   //Radiator damaged -> Loss 1 HP
+        AirplaneCriticalEffect_RadiatorOverheating(Roll = (59,65)),   //Radiator Overheating -> Falling back
+        //AirplaneCriticalEffect_PilotKilled(Roll = (21,25)),   //Pilot killed -> Death
+        AirplaneCriticalEffect_PilotInjured(Roll = (66,68)),   //Pilot injured -> Falling back
+        AirplaneCriticalEffect_PilotPanicked(Roll = (69,71)),   //Pilot panicked -> Falling back
+        AirplaneCriticalEffect_PilotUnconscious(Roll = (72,77)),   //Pilot unconscious  -> Loose control during 5s
+        AirplaneCriticalEffect_WeaponsJammed(Roll = (78,80)),   //Weapons jammed -> No more shots
+    ]
+
+    EffectsOnRear =
+    [
+        //AirplaneCriticalEffect_WingRippedOff(Roll = (1,5)),   //Wing ripped off -> Death
+        AirplaneCriticalEffect_WingsDamaged(Roll = (1,10)),   //Wings damaged -> Loss 1 HP
+        AirplaneCriticalEffect_EngineOnFire(Roll = (11,20)),   //Engine on fire -> Death
+        AirplaneCriticalEffect_AileronDamaged(Roll = (21,23)),
+        AirplaneCriticalEffect_PropellerDamaged(Roll = (24,25)),   //Propeller damaged -> Loss 1 HP
+        AirplaneCriticalEffect_EngineDamaged(Roll = (26,30)),   //Engine damaged -> Loss 1 HP
+        AirplaneCriticalEffect_FloatCarburatorFailure(Roll = (31,35)),   //Float carburator failure -> Loose control during 5s
+        //AirplaneCriticalEffect_OilLeak(Roll = (26,28)),   //Oil leak -> Précision 0.5
+        AirplaneCriticalEffect_EngineOverheating(Roll = (36,38)),   //Engine Overheating -> Falling back
+        AirplaneCriticalEffect_RudderDamaged(Roll = (39,41)),
+        AirplaneCriticalEffect_EngineStalling(Roll = (42,44)),   //Engine stalling -> Falling back
+        AirplaneCriticalEffect_FuelTankOnFire(Roll = (45,50)),   //Fuel tank on fire -> Death
+        AirplaneCriticalEffect_FuelTankLeaking(Roll = (51,60)),   //Fuel tank leaking -> Loss 1 HP
+        AirplaneCriticalEffect_RadiatorDamaged(Roll = (61,65)),   //Radiator damaged -> Loss 1 HP
+        AirplaneCriticalEffect_RadiatorOverheating(Roll = (66,68)),   //Radiator Overheating -> Falling back
+        //AirplaneCriticalEffect_PilotKilled(Roll = (21,25)),   //Pilot killed -> Death
+        AirplaneCriticalEffect_PilotInjured(Roll = (69,70)),   //Pilot injured -> Falling back
+        AirplaneCriticalEffect_PilotPanicked(Roll = (71,75)),   //Pilot panicked -> Falling back
+        AirplaneCriticalEffect_PilotUnconscious(Roll = (76,80)),   //Pilot unconscious  -> Loose control during 5s
+        //AirplaneCriticalEffect_WeaponsJammed(Roll = (81,85)),   //Weapons jammed -> No more shots
+    ]
+)

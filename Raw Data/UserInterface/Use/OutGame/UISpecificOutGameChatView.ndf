@@ -1,0 +1,301 @@
+// Liste des channels
+private OutGameChatChannelList is BUCKContainerDescriptor
+(
+    ElementName = "OutGameChatChannelList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 20.0]
+    )
+    // envoie ChannelListContainer
+)
+
+// Button list
+
+private OutGameChatButtonDim is 38.0
+
+template ChatButton
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    Grayed : bool = false,
+    ButtonTextureToken : string = "",
+    HintableAreaElementName : string = '',
+    HintTitleToken : string = '',
+    HintBodyToken : string = '',
+    HintExtendedToken : string = '',
+    TextureColorToken : string = 'Blanc',
+    TextToken : string,
+
+    IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = nil,
+    IsTogglable : bool = false,
+    DefaultToggleValue : bool = false,
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [80.0, 20.0]
+    )
+
+    Grayed = <Grayed>
+
+    IsTogglable = <IsTogglable>
+    DefaultToggleValue = <DefaultToggleValue>
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [80.0, 20.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+            ParagraphStyle = paragraphStyleTextCenter
+            TextStyle = "Default"
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+            TypefaceToken = "IBM"
+            BigLineAction = ~/BigLineAction/MultiLine
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextColor = "BlancTexte"
+            TextSize = "10"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = <HintableAreaElementName>
+            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        ),
+    ]
+
+    IsFocusable = <IsFocusable>
+    FocusMapping = <FocusMapping>
+)
+
+//-------------------------------------------------------------------------------------
+
+private OutGameBUCKChatButtonList is BUCKListDescriptor
+(
+    ElementName = "ChatButtonList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableWidthHeight = [0.0, ~/OutGameChatButtonDim]
+        AlignementToAnchor = [0.0, 1.0]
+        AlignementToFather = [0.0, 1.0]
+        MagnifiableOffset = [0.0, 23.0]
+    )
+
+    FirstMargin = TRTTILength(Magnifiable = 19.0)
+    InterItemMargin = TRTTILength(Magnifiable = 61.0)
+    LastMargin = TRTTILength()
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    HidePointerEvents = true
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ChatButton
+            (
+                ElementName = 'ButtonClearChat'
+
+                ButtonTextureToken = "OutgameTexture_WG2_BgOutGame_Erase_Button"
+                TextToken = 'OC_HTCLR'
+                HintTitleToken = 'OC_HTCLR'
+                HintBodyToken = 'OC_HCLR'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ChatButton
+            (
+                ElementName = 'ButtonAddFriend'
+
+                ButtonTextureToken = "OutgameTexture_WG2_BgOutGame_AddFriend_Button"
+                HintTitleToken = 'OC_HTADD'
+                HintBodyToken = 'OC_HADD'
+                TextToken = 'OC_HTADD'
+                TextureColorToken = 'Orange'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ChatButton
+            (
+                ElementName = 'ButtonBlackList'
+
+                ButtonTextureToken = "OutgameTexture_WG2_BgOutGame_BlackList_Button"
+                HintTitleToken = 'OC_HTBL'
+                HintBodyToken = 'OC_HTTBL'
+                TextureColorToken = 'Rouge'
+                TextToken = 'OC_HTBL'
+            )
+        ),
+
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private OutGameLobbyChatChannelList is BUCKContainerDescriptor
+(
+    ElementName = "OutGameChatChannelList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-142.0, -87.0]
+        MagnifiableOffset = [75.0, 67.0]
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+template BUCKChatToggleButtonDescriptor
+[
+    UniqueName : string = "",
+    ComponentFrame : TUIFramePropertyRTTI,
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    BackgroundTextureFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0]),
+]
+is ImageButton
+(
+    UniqueName = <UniqueName>
+    ElementName = 'ChatButton'
+    ComponentFrame = <ComponentFrame>
+    HasBorder = false
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+    BackgroundTextureToken = "Outgame_chat_fond"
+    HintableAreaElementName = "ChatToggleButtonHintableArea"
+    Components = <Components>
+    BackgroundTextureFrame = <BackgroundTextureFrame>
+
+    LeftClickSound = SoundEvent_OpenCloseWarchat
+)
+
+//-------------------------------------------------------------------------------------
+
+BUCKSpecificOutGameChatMainComponentDescriptor is BUCKTranslationAnimatedContainerDescriptor
+(
+    ElementName = "ChatTranslationContainer"
+
+    FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [540.0, 312.0]
+        AlignementToAnchor = [1.0, 1.0]
+        AlignementToFather = [1.0, 1.0]
+        MagnifiableOffset = [0.0, 260.0]
+    )
+
+    FramePropertyAfterAnimation = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [540.0, 312.0]
+        AlignementToAnchor = [1.0, 1.0]
+        AlignementToFather = [1.0, 1.0]
+    )
+
+    ButtonNameForTrigger = "ChatButton"
+    AnimationTotalDuration = 0.5
+
+    Components =
+    [
+        BUCKChatToggleButtonDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            BackgroundTextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableOffset = [0.0, 22.0]
+            )
+
+            Components =
+            [
+                BUCKContainerDescriptor
+                (
+                    ElementName = "ChatMainComponentDescriptor"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+
+                    Components =
+                    [
+                        BUCKContainerDescriptor
+                        (
+                            ElementName = "HideEvents"
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 1.0]
+                                MagnifiableWidthHeight = [0.0, -55.0]
+                                AlignementToFather = [1.0, 1.0]
+                                AlignementToAnchor = [1.0, 1.0]
+                            )
+
+                            HidePointerEvents = true
+                        ),
+                        BUCKContainerDescriptor
+                        (
+                            ElementName = 'ChatMessageListContainer'
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [563.0, 189.0]
+                                MagnifiableOffset = [-20.0, 82.0]
+                            )
+                        ),
+
+                        // liste des boutons
+                        ~/OutGameBUCKChatButtonList,
+                        ~/OutGameLobbyChatChannelList,
+                    ]
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+UISpecificOutGameChatViewDescriptor is TUISpecificOutGameChatViewDescriptor
+(
+    MainComponentContainerUniqueName = "ChatContainer"
+    MainComponentDescriptor = ~/BUCKSpecificOutGameChatMainComponentDescriptor
+
+    SpecificOutGameChatChannelList = ~/UISpecificOutGameChatChannelListViewDescriptor
+    SpecificOutGameChatMessageList = ~/UISpecificOutGameChatMessageListViewDescriptor
+)
+
+//-------------------------------------------------------------------------------------
+
+UISpecificOutGameShowRoomChatViewDescriptor is TUISpecificOutGameChatViewDescriptor
+(
+    MainComponentContainerUniqueName = "ShowRoomChatContainer"
+    MainComponentDescriptor = ~/BUCKSpecificOutGameChatMainComponentDescriptor
+
+    SpecificOutGameChatChannelList = ~/UISpecificOutGameChatChannelListViewDescriptor
+    SpecificOutGameChatMessageList = ~/UISpecificOutGameChatMessageListViewDescriptor
+)
+

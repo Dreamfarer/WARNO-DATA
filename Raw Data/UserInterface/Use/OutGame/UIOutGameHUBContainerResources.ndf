@@ -1,0 +1,59 @@
+//Toplights locals
+TopLights_XOffset is 148.
+TopLights_YOffset is 157.
+TopLights_XMultiplicant is 1.5
+
+private VideoFondOutgame is TUIResourceVideo
+(
+    VideoFile =  "GameData:/Assets/Videos/fond_outgame.webm"
+    DicoVideo =  ~/DicoVideoOutGame
+)
+
+private VideoFondEscapeMenu is TUIResourceVideo
+(
+    VideoFile =  "GameData:/Assets/Videos/fond_escape_menu.webm"
+    DicoVideo =  ~/DicoVideoOutGame
+)
+
+outGameHUBContainerResource is TUISpecificOutGameHUBContainerResource
+(
+    RefMagnification = ~/RefMagnification
+    ContentRefSize = [ 1920 , 1080 ]
+    SafeBoxMin     = [    0 ,    0 ]
+    SafeBoxSize    = [ 1920 , 1080 ]
+    //En partant du bas
+    ScreenMinY     = (154. + 18.) div ~/RefMagnification
+    ScreenMaxY     = (154. + 699. - 40.) div ~/RefMagnification
+    EventInterceptorLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_EscapeMenuInterceptor
+
+    BackgroundVideoOutgame = ~/VideoFondOutgame
+    BackgroundVideoEscapeMenu = ~/VideoFondEscapeMenu
+
+    ForegroundContent = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 1.0]
+        )
+
+        Components =
+        [
+            BUCKContainerDescriptor
+            (
+                UniqueName = "LobbyContainer"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            ),
+            BUCKContainerDescriptor
+            (
+                UniqueName = "ChatContainer"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            ),
+        ]
+    )
+)

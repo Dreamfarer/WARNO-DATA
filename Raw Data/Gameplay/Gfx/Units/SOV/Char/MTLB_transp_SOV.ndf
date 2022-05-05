@@ -1,0 +1,24 @@
+export ModelFile_MTLB_transp_SOV is 'GameData:/Assets/3D/Units/URSS/APC/MTLB/MTLB.Ase2NdfBin'
+
+Modele_MTLB_transp_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_MTLB_transp_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_transp_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    // FileName     = 'GameData:/Assets/3D/Units/URSS/APC/MTLB_MID/MTLB_MID.Ase2NdfBin'
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/MTLB/MTLB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_transp_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    // FileName     = 'GameData:/Assets/3D/Units/URSS/APC/LODS/MTLB_LOW.Ase2NdfBin'
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/MTLB/MTLB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

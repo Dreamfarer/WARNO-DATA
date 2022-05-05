@@ -1,0 +1,307 @@
+
+private OpticalFieldPanelWidth is CubeActionWargameWidth
+
+OpticalFieldPanel is BUCKListDescriptor
+(
+    ElementName = 'OpticalFieldPanel'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [~/OpticalFieldPanelWidth, 0.0]
+    )
+
+    HidePointerEvents = true
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    LastMargin = TRTTILength(Magnifiable = 10.0)
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "OpticalFieldTitleText"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 25.0]
+                    AlignementToFather = [0.0, 0.0]
+                    AlignementToAnchor = [0.0, 0.0]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+                TextPadding = TRTTILength4(Magnifiable = [6.0, 0.0, 6.0, 0.0])
+
+                ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/UserDefined
+
+                TextColor       = "BlancEquipe"
+                TextSize        = "16"
+                TextToken       = "OF_TITLE"
+                TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                TypefaceToken   = "UIMainFont"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                 Axis = ~/ListAxis/Horizontal
+                 BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                 InterItemMargin = TRTTILength(Magnifiable = 5.0)
+                 Elements =
+                 [
+                    BUCKListElementDescriptor
+                    (
+                            ExtendWeight = 1.0
+                            ComponentDescriptor = BUCKContainerDescriptor ( ComponentFrame = TUIFramePropertyRTTI())
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKRackDescriptor
+                        (
+                            ElementName = "OpticalField_OpenField"
+
+                            ComponentFrame = TUIFramePropertyRTTI()
+
+                            Axis = ~/ListAxis/Vertical
+                            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                            FirstMargin = TRTTILength(Magnifiable = 20.0)
+                            InterItemMargin = TRTTILength(Magnifiable = 10.0)
+                            LastMargin = TRTTILength(Magnifiable = 5.0)
+
+                            BladeDescriptor = CheckboxDefinition
+                            (
+                                Margins = TRTTILength(Magnifiable = 5.0)
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                ForegroundComponents =
+                                [
+                                    BUCKSpecificHintableArea
+                                    (
+
+                                        HintBodyToken = 'OF_hint'
+                                        HintExtendedToken = 'OF_hinte'
+                                        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                                    )
+                                ]
+                            )
+
+                            BackgroundComponents =
+                            [
+                                BUCKTextDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [96,20]
+
+                                        )
+                                    ParagraphStyle = paragraphStyleTextCenter
+                                    TextStyle = "Default"
+                                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                                    VerticalFitStyle = ~/FitStyle/UserDefined
+                                    TypefaceToken = "Liberator"
+                                    BigLineAction = ~/BigLineAction/MultiLine
+                                    TextToken = 'OF_OPENF'
+                                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    TextColor = "BlancTexte"
+                                    TextSize = "10"
+                                ),
+
+                                PanelRoundedCorner( BackgroundBlockColorToken = 'Transparent')
+                            ]
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKRackDescriptor
+                        (
+                            ElementName = "OpticalField_Forest"
+
+                            ComponentFrame = TUIFramePropertyRTTI()
+
+                            Axis = ~/ListAxis/Vertical
+                            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                            FirstMargin = TRTTILength(Magnifiable = 20.0)
+                            InterItemMargin = TRTTILength(Magnifiable = 10.0)
+                            LastMargin = TRTTILength(Magnifiable = 5.0)
+
+                            BladeDescriptor = CheckboxDefinition
+                            (
+                                Margins = TRTTILength(Magnifiable = 5.0)
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                ForegroundComponents =
+                                [
+                                    BUCKSpecificHintableArea
+                                    (
+
+                                        HintBodyToken = 'OF_hint'
+                                        HintExtendedToken = 'OF_hinte'
+                                        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                                    )
+                                ]
+                            )
+
+                            BackgroundComponents =
+                            [
+                                BUCKTextDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [96,20]
+
+                                        )
+                                    ParagraphStyle = paragraphStyleTextCenter
+                                    TextStyle = "Default"
+                                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                                    VerticalFitStyle = ~/FitStyle/UserDefined
+                                    TypefaceToken = "Liberator"
+                                    BigLineAction = ~/BigLineAction/MultiLine
+                                    TextToken = 'OF_FOREST'
+                                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    TextColor = "BlancTexte"
+                                    TextSize = "10"
+                                ),
+
+                                PanelRoundedCorner( BackgroundBlockColorToken = 'Transparent')
+                            ]
+                        )
+
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                            ExtendWeight = 1.0
+                            ComponentDescriptor = BUCKContainerDescriptor ( ComponentFrame = TUIFramePropertyRTTI())
+                    ),
+                 ]
+            )
+        ),
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner()
+    ]
+
+    SpotlightComponent = SpotlightDescriptor()
+)
+
+
+
+template OpticalFieldCircleDescriptor
+[
+    Text : string = "",
+    CheckboxTextColorToken : string = "Cyan",
+    TextSize : int = 0,
+    OpticalCircleColor,
+    Thickness : float = 0.0,
+] is TOpticalFieldCircleDescriptor
+(
+    Text = <Text>
+    CheckboxTextColorToken = <CheckboxTextColorToken>
+    TextSize = <TextSize>
+    OpticalCircleColor = <OpticalCircleColor>
+    Thickness = <Thickness>
+)
+
+VehicleOpenFieldOpticalFieldCircleDescriptor is OpticalFieldCircleDescriptor
+(
+    Text = "OF_VEHI"
+    CheckboxTextColorToken = "Rouge"
+    TextSize = 4000
+    OpticalCircleColor = [255,96,96,255]
+    Thickness = 4000
+)
+VehicleForestFieldOpticalFieldCircleDescriptor is OpticalFieldCircleDescriptor
+(
+    Text = "OF_VEHI"
+    CheckboxTextColorToken = "Rouge"
+    TextSize = 4000
+    OpticalCircleColor = [255,96,96,255]
+    Thickness = 1000
+)
+
+
+VehicleRecoOpenFieldOpticalFieldCircleDescriptor is OpticalFieldCircleDescriptor
+(
+    Text = "OF_VEHIR"
+    CheckboxTextColorToken = "Gold"
+    TextSize = 4000
+    OpticalCircleColor = [255,168,69,255]
+    Thickness = 4000
+)
+
+
+VehicleRecoForestFieldOpticalFieldCircleDescriptor is OpticalFieldCircleDescriptor
+(
+    Text = "OF_VEHIR"
+    CheckboxTextColorToken = "Gold"
+    TextSize = 4000
+    OpticalCircleColor = [255,168,69,255]
+    Thickness = 1000
+)
+
+
+InfantryOpenFieldOpticalFieldCircleDescriptor is OpticalFieldCircleDescriptor
+(
+    Text = "OF_INF"
+    CheckboxTextColorToken = "Fulda_Turquoise"
+    TextSize = 4000
+    OpticalCircleColor = [129,240,121,255]
+    Thickness = 4000
+)
+InfantryForestFieldOpticalFieldCircleDescriptor is OpticalFieldCircleDescriptor
+(
+    Text = "OF_INF"
+    CheckboxTextColorToken = "Fulda_Turquoise"
+    TextSize = 4000
+    OpticalCircleColor = [129,240,121,255]
+    Thickness = 1000
+)
+
+InfantryRecoOpenFieldOpticalFieldCircleDescriptor is OpticalFieldCircleDescriptor
+(
+    Text = "OF_INFR"
+    CheckboxTextColorToken = "Cyan"
+    TextSize = 4000
+    OpticalCircleColor = [119,241,241,255]
+    Thickness = 4000
+)
+InfantryRecoForestFieldOpticalFieldCircleDescriptor is OpticalFieldCircleDescriptor
+(
+    Text = "OF_INFR"
+    CheckboxTextColorToken = "Cyan"
+    TextSize = 4000
+    OpticalCircleColor = [119,241,241,255]
+    Thickness = 1000
+)
+OpenFieldConfiguration is MAP[
+    (~/DissimulationValue/VEHICLE, ~/VehicleOpenFieldOpticalFieldCircleDescriptor),
+    (~/DissimulationValue/VEHICLE_RECO, ~/VehicleRecoOpenFieldOpticalFieldCircleDescriptor),
+    (~/DissimulationValue/INFANTRY, ~/InfantryOpenFieldOpticalFieldCircleDescriptor),
+    (~/DissimulationValue/INFANTRY_RECO, ~/InfantryRecoOpenFieldOpticalFieldCircleDescriptor),
+]
+
+ForestFieldConfiguration is MAP[
+    (~/DissimulationValue/VEHICLE, ~/VehicleForestFieldOpticalFieldCircleDescriptor),
+    (~/DissimulationValue/VEHICLE_RECO, ~/VehicleRecoForestFieldOpticalFieldCircleDescriptor),
+    (~/DissimulationValue/INFANTRY, ~/InfantryForestFieldOpticalFieldCircleDescriptor),
+    (~/DissimulationValue/INFANTRY_RECO, ~/InfantryRecoForestFieldOpticalFieldCircleDescriptor),
+]
+
+UISpecificOpticalFieldViewDescriptor is TUISpecificOpticalFieldViewDescriptor
+(
+    MainComponentDescriptor = ~/OpticalFieldPanel
+    MainComponentContainerUniqueName = "UISpecificOpticalFieldViewDescriptor" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    OpenFieldOpticalCirclesDescription = ~/OpenFieldConfiguration
+    ForestOpticalCirclesDescription = ~/ForestFieldConfiguration
+
+    ForestGameplayTerrain = ~/ETerrainType/ForetLegere
+)

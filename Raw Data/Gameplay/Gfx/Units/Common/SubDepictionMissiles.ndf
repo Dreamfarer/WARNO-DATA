@@ -1,0 +1,59 @@
+private LodHighNoneLimit_Missile is 400  //100
+
+template DepictionMissileSelector
+[
+    PhysicalProperty,
+    Value
+]
+is TSubDepictionMissileSelector
+(
+    HighNoneLimitInMeter = LodHighNoneLimit_Missile
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    PhysicalProperty = <PhysicalProperty>
+    ThresholdAsUInt = <Value>
+)
+
+template TemplateDepictionMissile
+[
+    PhysicalProperty,
+    MissileNumber,
+    ProjectileModelFile
+]
+is TDepictionTemplate
+(
+    ShadowLessInitialValue = True
+    Scaler = CommonIdentityScaler
+    Selector = DepictionMissileSelector( PhysicalProperty = <PhysicalProperty> Value = <MissileNumber> )
+    DepictionAlternatives = [
+        TDepictionDescriptor(
+            SelectorId = ['high']
+            MeshDescriptor = TResourceMultiMaterialMesh
+                (
+                    FileName = <ProjectileModelFile>
+                    UsefulnessMask = CivMask/Common + TypeMask/Common
+                )
+            ),
+        TDepictionDescriptor( SelectorId = ['none']),
+    ]
+)
+
+template TemplateDepictionMissileShowroom
+[
+    ProjectileModelFile
+]
+is TDepictionTemplate
+(
+    Scaler = CommonIdentityScaler
+    Selector = OnlyHighDepictionSelector
+    DepictionAlternatives = [
+        TDepictionDescriptor(
+            SelectorId = ['high']
+            MeshDescriptor = TResourceMultiMaterialMesh
+                (
+                    FileName = <ProjectileModelFile>
+                    UsefulnessMask = CivMask/Common + TypeMask/Common
+                )
+            )
+    ]
+)
+

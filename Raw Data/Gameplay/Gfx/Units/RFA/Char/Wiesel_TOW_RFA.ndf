@@ -1,0 +1,25 @@
+export ModelFile_Wiesel_TOW_RFA is 'GameData:/Assets/3D/Units/US/APC/M150/M150.Ase2NdfBin'
+
+Modele_Wiesel_TOW_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Wiesel_TOW_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Wiesel_TOW_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/M150_MID/M150_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Wiesel_TOW_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/LODS/M150_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Wiesel_TOW_RFA_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/M1025_Humvee_TOW/TOW_t2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

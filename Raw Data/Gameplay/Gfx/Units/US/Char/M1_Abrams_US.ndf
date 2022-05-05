@@ -1,0 +1,74 @@
+export ModelFile_M1_Abrams_US is 'GameData:/Assets/3D/Units/US/Char/M1_Abrams/M1_Abrams.Ase2NdfBin'
+
+Modele_M1_Abrams_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M1_Abrams_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M1_Abrams_MID/M1_Abrams_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/LODS/M1_Abrams_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_US_Test is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M1_Abrams_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_US_Test_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M1_Abrams_MID/M1_Abrams_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_US_Test_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/LODS/M1_Abrams_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+//-------------------------------------------------------------------------------------
+
+Gfx_Modele_M1_Abrams_US is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Socle_USA ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Depiction = TDepictionTemplate
+            (
+                Scaler = CommonIdentityScaler
+                Selector = OnlyHighDepictionSelector
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_courte ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Anchor = "vehicule"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 7)
+                        Selector = CommonDepictionSelector
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_M1_Abrams_US ),
+                            DepictionDescriptor_LOD_Mid ( MeshDescriptor = Modele_M1_Abrams_US ),
+                            DepictionDescriptor_LOD_Low ( MeshDescriptor = Modele_M1_Abrams_US DisabledOperators = ['tourelle3'] ),
+                        ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)

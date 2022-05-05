@@ -1,0 +1,19 @@
+export ModelFile_M48_Chaparral_MIM72F_US is 'GameData:/Assets/3D/Units/US/DCA/M48A1_Chaparral/M48A1_Chaparral.Ase2NdfBin'
+
+Modele_M48_Chaparral_MIM72F_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M48_Chaparral_MIM72F_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M48_Chaparral_MIM72F_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/DCA/M48A1_Chaparral_MID/M48A1_Chaparral_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M48_Chaparral_MIM72F_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/DCA/LODS/M48A1_Chaparral_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,18 @@
+Strategic_IAGroupEntityDescriptor is TEntityDescriptor
+(
+    World = WorldIndices_IA_Group
+    DescriptorId = GUID:{00000000-0000-0000-0000-000155000000}
+
+    ModulesDescriptors  =
+    [
+        TIAGroupPawnsModuleDescriptor
+        (
+        ),
+        TIALinkToObjectivesModuleDescriptor
+        (
+        ),
+        TIATargetObjectiveModuleDescriptor
+        (
+        ),
+    ]
+)

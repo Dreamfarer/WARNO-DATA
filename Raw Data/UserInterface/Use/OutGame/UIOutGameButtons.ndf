@@ -1,0 +1,590 @@
+template ImageButton
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    TextureElementName : string = '',
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( MagnifiableWidthHeight = DefaultImageButtonDims ),
+    Grayed : bool = false,
+    BackgroundTextureToken : string = "",
+    BackgroundTextureFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0]),
+
+    IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_SPACE ) ),
+
+    Mapping : TEugBMutablePBaseClass = nil,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+
+    SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+
+    ChildFitToContent : bool = false,
+
+    HasBorder : bool = true,
+    BorderThicknessToken : string = "BoutonsDAction/Image",
+    BorderLineColorToken : string = "BoutonsDAction/Image",
+
+    HasBackground : bool = true,
+    BackgroundBlockColorToken : string = "BoutonsDAction/Image",
+
+    LeftClickSound : TSoundDescriptor = nil,
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = <ComponentFrame>
+
+    Grayed = <Grayed>
+
+    IsFocusable = <IsFocusable>
+    FocusMapping = <FocusMapping>
+
+    Mapping = <Mapping>
+
+    UniformDrawer = <UniformDrawer>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    ChildFitToContent = <ChildFitToContent>
+
+    HasBorder = <HasBorder>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    LeftClickSound = <LeftClickSound>
+
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            ElementName = <HintableAreaElementName> != "" ? <HintableAreaElementName> : <ElementName> + "HintableArea"
+            DicoToken = <HintDico>
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        ),
+        BUCKTextureDescriptor
+        (
+            ElementName = <TextureElementName>
+
+            ComponentFrame = <BackgroundTextureFrame>
+
+            TextureToken = <BackgroundTextureToken>
+
+            TextureFrame = TUIFramePropertyRTTI()
+
+            TileTextureInComponent = false
+            ClipTextureToComponent = true
+
+            ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+        )
+    ] + <Components>
+)
+
+template HUBButton
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    ButtonMagnifiableOffset : float2 = [0.0, 0.0],
+    ButtonRelativeOffset : float2 = [0.0, 0.0],
+    ButtonAlignementToFather : float2 = [0.0, 0.0],
+    ButtonAlignementToAnchor : float2 = [0.0, 0.0],
+    TextToken : string,
+    TextColor : string = "Fulda2_Orange100",
+    TextElementName : string = 'TextElement',
+    BackgroundTextureToken : string = 'Outgame_iconeNavigationTest',
+
+    IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_SPACE ) ),
+
+    Mapping : TEugBMutablePBaseClass = nil,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+
+    SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [100.0, 50.0]
+        MagnifiableOffset = <ButtonMagnifiableOffset>
+        RelativeOffset = <ButtonRelativeOffset>
+        AlignementToFather = <ButtonAlignementToFather>
+        AlignementToAnchor = <ButtonAlignementToAnchor>
+    )
+
+    Grayed = false
+
+    IsFocusable = <IsFocusable>
+    FocusMapping = <FocusMapping>
+
+    Mapping = <Mapping>
+
+    UniformDrawer = <UniformDrawer>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [70.0, 38.0]
+                AlignementToAnchor = [0.5,0]
+                AlignementToFather = [0.5,0]
+            )
+
+            TextureToken        = <BackgroundTextureToken>
+
+            TextureFrame   = TUIFramePropertyRTTI
+            (
+            )
+
+            TileTextureInComponent = false
+            ClipTextureToComponent = true
+
+            ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+        ),
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName> + <TextElementName>
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                //RelativeWidthHeight = [1.0, 1.0]
+                AlignementToAnchor = [0.5,0]
+                AlignementToFather = [0.5,0]
+                MagnifiableOffset = [0,32]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = <TextColor>
+            TextSize = "19"
+
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = <HintableAreaElementName> != "" ? <HintableAreaElementName> : <ElementName> + "HintableArea"
+            DicoToken = <HintDico>
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        )
+    ] + <Components>
+)
+//-------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------
+template HUBActionButtonResizeWithMax
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    ButtonMagnifiableMaxWidth: float = 100.0,
+    ButtonMagnifiableHeight: float = 50.0,
+    ButtonMagnifiableOffset : float2 = [0.0, 0.0],
+    ButtonRelativeOffset : float2 = [0.0, 0.0],
+    ButtonAlignementToFather : float2 = [0.0, 0.0],
+    ButtonAlignementToAnchor : float2 = [0.0, 0.0],
+    TextToken : string,
+    TextColor : string = "HUBActionButton",
+    TextSize : string = "20",
+    TextElementName : string = 'TextElement',
+    BigLineAction : int = ~/BigLineAction/CutByDots,
+
+    LeftClickSound : TSoundDescriptor = nil,
+
+    IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_SPACE ) ),
+
+    Mapping : TEugBMutablePBaseClass = nil,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+
+    HasAutoHint : bool = false,
+    AutoHintElementName : string = "AutoHint",
+
+    SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, <ButtonMagnifiableHeight>]
+        MagnifiableOffset = <ButtonMagnifiableOffset>
+        RelativeOffset = <ButtonRelativeOffset>
+        AlignementToFather = <ButtonAlignementToFather>
+        AlignementToAnchor = <ButtonAlignementToAnchor>
+    )
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "Vert"
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    Grayed = false
+
+    IsFocusable = <IsFocusable>
+    FocusMapping = <FocusMapping>
+
+    Mapping = <Mapping>
+    LeftClickSound = <LeftClickSound>
+
+    UniformDrawer = <UniformDrawer>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    Components =
+    [
+        BUCKSpecificTextWithHint
+        (
+            ElementName = <ElementName> + <TextElementName>
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [<ButtonMagnifiableMaxWidth>, 0.0]
+                AlignementToFather = <ButtonAlignementToFather>
+                AlignementToAnchor = <ButtonAlignementToAnchor>
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Left
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+            TypefaceToken = "Liberator"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            ChildFitToContent = true
+
+            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+            BigLineAction = ~/BigLineAction/ResizeFont
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = <TextColor>
+            TextSize = <TextSize>
+
+            HasAutoHint = <HasAutoHint>
+            AutoHintElementName = <AutoHintElementName>
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = <HintableAreaElementName> != "" ? <HintableAreaElementName> : <ElementName> + "HintableArea"
+            DicoToken = <HintDico>
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        )
+    ] + <Components>
+)
+
+//-------------------------------------------------------------------------------------
+template HUBActionButton
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    ButtonMagnifiableWidthHeight: float2 = [100.0, 50.0],
+    ButtonMagnifiableOffset : float2 = [0.0, 0.0],
+    ButtonRelativeOffset : float2 = [0.0, 0.0],
+    ButtonAlignementToFather : float2 = [0.0, 0.0],
+    ButtonAlignementToAnchor : float2 = [0.0, 0.0],
+    TextToken : string,
+    TextColor : string = "HUBActionButton",
+    TextSize : string = "20",
+    TextElementName : string = 'TextElement',
+
+    LeftClickSound : TSoundDescriptor = nil,
+
+    IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_SPACE ) ),
+
+    Mapping : TEugBMutablePBaseClass = nil,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+
+    SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <ButtonMagnifiableWidthHeight>
+        MagnifiableOffset = <ButtonMagnifiableOffset>
+        RelativeOffset = <ButtonRelativeOffset>
+        AlignementToFather = <ButtonAlignementToFather>
+        AlignementToAnchor = <ButtonAlignementToAnchor>
+    )
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "Vert"
+
+    Grayed = false
+
+    IsFocusable = <IsFocusable>
+    FocusMapping = <FocusMapping>
+
+    Mapping = <Mapping>
+    LeftClickSound = <LeftClickSound>
+
+    UniformDrawer = <UniformDrawer>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName> + <TextElementName>
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,0]
+                AlignementToAnchor = [0.5,0]
+                AlignementToFather = [0.5,0]
+                MagnifiableOffset = [0,0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+            TextStyle = "Default"
+            TypefaceToken = "Liberator"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = <TextColor>
+            TextSize = <TextSize>
+
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = <HintableAreaElementName> != "" ? <HintableAreaElementName> : <ElementName> + "HintableArea"
+            DicoToken = <HintDico>
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        )
+    ] + <Components>
+)
+
+
+
+template TURLButton
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    ButtonMagnifiableOffset : float2 = [0.0, 0.0],
+    ButtonRelativeOffset : float2 = [0.0, 0.0],
+    ButtonAlignementToFather : float2 = [0.0, 0.0],
+    ButtonAlignementToAnchor : float2 = [0.0, 0.0],
+    TextToken : string,
+
+    IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_SPACE ) ),
+
+    Mapping : TEugBMutablePBaseClass = nil,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+
+    SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [300.0, 30.0] //Taille calculee automatiquement par le button pour s'adapter a son texte // TEMP
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = <ButtonMagnifiableOffset>
+        RelativeOffset = <ButtonRelativeOffset>
+        AlignementToFather = <ButtonAlignementToFather>
+        AlignementToAnchor = <ButtonAlignementToAnchor>
+    )
+
+    Grayed = false
+
+    IsFocusable = <IsFocusable>
+    FocusMapping = <FocusMapping>
+
+    Mapping = <Mapping>
+
+    UniformDrawer = <UniformDrawer>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "Liberator"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = "Noir"
+            TextSize = "BoutonURL"
+        ),
+
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, 2.0]
+                AlignementToAnchor = [0.5, 1.0]
+                AlignementToFather = [0.5, 1.0]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "BoutonURL"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = <HintableAreaElementName> != "" ? <HintableAreaElementName> : <ElementName> + "HintableArea"
+            DicoToken = <HintDico>
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        ),
+    ] + <Components>
+)
+
+
+
+ModaleButtonForMissingDLCs is BUCKButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = DefaultButtonDims
+    )
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    BorderThicknessToken = "BoutonsDAction/MissingDLCs"
+    BackgroundBlockColorToken = "BoutonsDAction/MissingDLCs"
+    BorderLineColorToken = "BoutonsDAction/MissingDLCs"
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = "Blanc"
+            TextSize = "BoutonsDAction/MissingDLCs"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = "ButtonHintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+        )
+    ]
+)

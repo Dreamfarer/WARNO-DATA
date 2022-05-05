@@ -1,0 +1,388 @@
+
+// -------------------------------------------------------------------------------------------------
+// Unit texture (e.g. plane icon)
+OffMapUnitTexture is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [28, ~/OFF_MAP/MiddleElementHeight -2]
+        AlignementToFather = [0, 0.5]
+        AlignementToAnchor = [0, 0.5]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = 'UnitTexture'
+            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+
+            // UseLocalRenderLayer = true
+            // LocalRenderLayer = 4
+
+            TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+            TextureColorToken = "Fulda2_Orange100"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = 'UnitTextureHint'
+            DicoToken = ~/LocalisationConstantes/dico_unites
+            HintTitleToken = "UNKNOWN"
+            HintBodyToken = "UNKNOWN"
+            HintExtendedToken = "UNKNOWN"
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// Unit name ("P-47D25", "JU 88"...)
+OffMapUnitName is BUCKTextDescriptor
+(
+    ElementName = "UnitName"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor  = [0.0, 0.5]
+        AlignementToFather  = [0.0, 0.5]
+    )
+
+    TextStyle = "Default"
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Left
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    // UseLocalRenderLayer = true
+    // LocalRenderLayer = 4
+
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    TextSize = "12"
+    TextColor = "ButtonHUD/Text2"
+    TextToken = ""
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TypefaceToken = "UIMainFont"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = "HOM_UNNAMT"
+        HintBodyToken = "HOM_UNNAMB"
+        HintExtendedToken = "HOM_UNNAME"
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// Unit experience stars
+OffMapUnitExperience is BUCKTextDescriptor
+(
+    ElementName = "UnitExperience"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0,1]
+        AlignementToAnchor = [0.0, 0.5]
+        AlignementToFather = [0.0, 0.5]
+    )
+
+    TextStyle = "Default"
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Left
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    // UseLocalRenderLayer = true
+    // LocalRenderLayer = 4
+
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    TextSize = "12"
+    TextColor = "ButtonHUD"
+    TextToken = ""
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TypefaceToken = "UIMainFont"
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/UserDefined
+)
+
+//--------------------------------------------------------------------------------------------------
+// Gauge displaying the unit state. Starts at 100, lowers and then replenishes, once the unit is ready again.
+
+
+//--------------------------------------------------------------------------------------------------
+template BUCKSpecificOffMapButton
+[
+    ElementName : string = '',
+    UniqueName : string = '',
+
+    ButtonWidthHeight : float2 = DefaultButtonDims,
+    ButtonMagnifiableOffset : float2 = [0.0, 0.0],
+    ButtonAlignementToAnchor : float2 = [0.0, 0.0],
+    ButtonAlignementToFather : float2 = [0.0, 0.0],
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+    HeightCoefficientToRemoveFromInteriorButtonWidth : float = 0.8, //Percentage of the button height removed from the button to create a rectangular shape
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+
+    AllowMultipleInputsPerFrame : bool = false,
+
+    Grayed : bool = false,
+    IsTogglable : bool = false,
+    HidePointerEvents : bool = false,
+    MaskEvents : bool = true,
+
+    HasText : bool = false,
+    TextComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( RelativeWidthHeight = [0.75, 1.0] AlignementToFather = [0.5, 0.5] AlignementToAnchor = [0.5, 0.5] ),
+    TextParagraphStyle : TParagraphStyleRTTI = ~/paragraphStyleTextCenter,
+    TextSizeToken : string = "12",
+    TextStyle : string = "Default",
+    TextToken : string = '',
+    TextTypefaceToken : string = "UIMainFont",
+    TextDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+    TextElementName : string = "TextElement",
+    OverrideTextElementName : bool = false,
+
+    HintTitleToken : string = "HLB_BUTTOT",
+    HintBodyToken : string = "HLB_BUTTOB",
+    HintExtendedToken : string = "HLB_BUTTOE",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+    HintableAreaElementName : string = "",
+    UseInGameHintStyle : bool = true,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HoverSound : TSoundDescriptor = nil,
+    LeftClickSound : TSoundDescriptor = nil,
+
+    Mapping : TEugBMutablePBaseClass = nil,
+    RequiredTags : LIST<string> = [],
+    ForbiddenTags : LIST<string> = [],
+
+    BorderThicknessToken = "1",
+    BorderLineColorToken : string = "LigneA",
+
+    MainBackgroundColorToken : string = "LighterGray",
+    SecondBackgroundColorToken : string = "DarkGray",
+
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    UseLocalRenderLayer : bool = false,
+    MainBackgroundLocalRenderLayer : int = 0,
+    SecondBackgroundLocalRenderLayer : int = 0,
+    TextLocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+    ForegroundLocalRenderLayer : int = 0,
+
+    SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+]
+is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <ButtonWidthHeight>
+        MagnifiableOffset = <ButtonMagnifiableOffset>
+        AlignementToAnchor = <ButtonAlignementToAnchor>
+        AlignementToFather = <ButtonAlignementToFather>
+    )
+    hintComponent is <UseInGameHintStyle> ?
+    BUCKSpecificHintableArea
+    (
+        ElementName = <HintableAreaElementName>
+        DicoToken = <HintDico>
+        HintTitleToken = <HintTitleToken>
+        HintBodyToken = <HintBodyToken>
+        HintExtendedToken = <HintExtendedToken>
+    ) : BUCKSpecificHintableArea
+    (
+        ElementName = <HintableAreaElementName>
+        DicoToken = <HintDico>
+        HintTitleToken = <HintTitleToken>
+        HintBodyToken = <HintBodyToken>
+        HintExtendedToken = <HintExtendedToken>
+    )
+
+    RequiredTags = <RequiredTags>
+    ForbiddenTags = <ForbiddenTags>
+
+    HasBorder = true
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+
+    BackgroundBlockColorToken = <MainBackgroundColorToken>
+
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <MainBackgroundLocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    Components =
+    [
+        // Interior Button
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-<ButtonWidthHeight>[1] * <HeightCoefficientToRemoveFromInteriorButtonWidth>, 0.0]
+                PixelWidthHeight = [-2.0, -2.0]
+                AlignementToAnchor = [1.0, 0.5]
+                AlignementToFather = [1.0, 0.5]
+            )
+
+            UniformDrawer = <UniformDrawer>
+
+            HasBackground = false
+            BackgroundBlockColorToken = <SecondBackgroundColorToken>
+
+            UseLocalRenderLayer = <UseLocalRenderLayer>
+            BackgroundLocalRenderLayer = <SecondBackgroundLocalRenderLayer>
+        ),
+    ] + <Components> +
+
+    (<HintTitleToken> != "" | <HintBodyToken> != "" | <HintExtendedToken> != "" | <HintableAreaElementName> != "" ?
+    [
+        hintComponent,
+    ] : [])
+)
+
+DummyOffMapPanel is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = ~/OffMapAirplaneComponentDimension
+    )
+)
+
+BUCKSpecificOffMapMainComponentDescriptor is BUCKContainerDescriptor
+(
+    UniqueName = "OffMapPanelContainer"
+    ElementName = "Container"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [360.0, 0.0]
+        MagnifiableOffset = [10.0, -5.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    SpotlightComponent = SpotlightDescriptor()
+
+    Components =
+    [
+        PanelRoundedCorner (),
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            LastMargin = TRTTILength (Magnifiable = 5)
+            ChildFitToContent = true
+
+            Elements =
+            [
+                // titre
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor =  BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 25.0]
+                        )
+
+                        TextPadding = TRTTILength4(Magnifiable = [6.0, 0.0, 6.0, 0.0])
+
+                        ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TextColor       = "BlancEquipe"
+                        TextSize        = "16"
+                        TextToken       = "TTL_OFFMAP"
+                        TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                        TypefaceToken   = "UIMainFont"
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintTitleToken = "HOM_TITLET"
+                            HintBodyToken = "HOM_TITLEB"
+                            HintExtendedToken = "HOM_TITLEE"
+                        )
+                    )
+                ),
+                // liste avions / arti off max
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 228.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKGridDescriptor
+                            (
+                                ElementName = 'UnitGrid'
+                                ComponentFrame = TUIFramePropertyRTTI()
+
+                                AssumeChildrenAreClippable = true
+
+                                FirstElementMargin = TRTTILength2(Magnifiable = [10.0, 0.0])
+                                InterElementMargin = TRTTILength2(Magnifiable = [3.0, 3.0])
+
+                                MaxElementsPerDimension = [3, 3]
+
+                                // => On insert les TUISpecificOffMapAirplaneViewDescriptor à l'intérieur de ces dummies
+                                // Doit contenir NbMaxPlanes (dans UISpecificSkirmishProductionMenuView) slots
+                                GridElements = MAP
+                                [
+                                    ( [0, 0], ~/DummyOffMapPanel ),
+                                    ( [0, 1], ~/DummyOffMapPanel ),
+                                    ( [0, 2], ~/DummyOffMapPanel ),
+                                    ( [1, 0], ~/DummyOffMapPanel ),
+                                    ( [1, 1], ~/DummyOffMapPanel ),
+                                    ( [1, 2], ~/DummyOffMapPanel ),
+                                    ( [2, 0], ~/DummyOffMapPanel ),
+                                    ( [2, 1], ~/DummyOffMapPanel ),
+                                    ( [2, 2], ~/DummyOffMapPanel ),
+                                ]
+                            )
+                        ]
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+UISpecificOffMapViewDescriptor is TUISpecificOffMapViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOffMapMainComponentDescriptor
+    MainComponentContainerUniqueName = "SpecificOffMapViewMainContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

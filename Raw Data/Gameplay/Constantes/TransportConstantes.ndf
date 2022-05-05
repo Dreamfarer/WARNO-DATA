@@ -1,0 +1,44 @@
+
+// CONSTANTES POUR LE GAME DESIGN
+
+export TransportConstantes is TTransportConstantesDescriptor
+(
+    // Comportement de la sélection lors de l'unload
+    AjouterLesUnitesDebarqueesDansLaSelection = true
+    AppliquerLesChangementsDeSelectionSurTousLesTransports = false
+    DeSelectionnerLesTransportsApresDebarquement = true
+
+    // Hauteur à partir de laquelle un hélico peut décharger ses unités
+    HauteurUnloadHelicos = 20.0
+
+    HelicoCheckAlitudeToLoad = true
+
+    InterpreterOrdrePostUnload = true
+
+    // Si activé, les hélicos n'atterrisent plus pour charger/décharger des unités, ils descendent seulement en basse altitude
+    LoadUnloadInNearGroundAltitude = false
+
+    // Soit on utilise le comportement de load plus réaliste mais moins réactif (Wargame)
+    // Soit on utilise le comportement de load moins réaliste mais plus réactif (AOR, Starcraft)
+    // A voir si la seule difference de comportement ne devrait pas être que l'atterrissage ou non des unités volantes
+    // Toutes les autres différences (améliorations apportées au starcraftmode me semble pas mal pour wargame aussi...)
+    LoadIsInStarcraftMode = true
+
+    // Algo de repartition des unites d'une compagnie transportes dans les unites d'une compagnie transportante
+    OneTransportableInOneTransporter = false
+
+    // True on utilise le système de catégorie (à la wargame)
+    // False on utilise le système de tag (à la AOR)
+    UseCategoriesForTransportCondition = false
+
+    // Si on donne un ordre à l'unité transportée (par exemple en cliquant sur la vignette)
+    // True on arrête le transport si c'est la dernière unité transportée
+    // False le transport continue son ordre actuel
+    ArreterLeTransportSiOnDechargeTout = true
+
+    // Vitesse maximale autorisée pour décharger les unités du transport
+    // 0.0 = le transport doit être arrêté pour décharger
+    // X = quand on donne l'ordre d'Unload, le transport ralenti et décharge les unités dès qu'il passe en dessous de X
+    // En unité ingame, cf. shift+F2 / Unit Infos / Speed
+    MaximalSpeedToUnload = 1000 //0.0
+)

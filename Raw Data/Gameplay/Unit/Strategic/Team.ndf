@@ -1,0 +1,70 @@
+
+export Strategic_TeamUnitDescriptor is TEntityDescriptor
+(
+    World = WorldIndices_Team
+    DescriptorId = GUID:{00000000-0000-0000-0000-000132000000}
+
+    ModulesDescriptors =
+    [
+        TTeamCurrencyManagerModuleDescriptor
+        (
+            PiggyBanks = [
+                TPiggyBankDescriptor
+                (
+                    CurrencyType = ~/Resource_StrategicPoints
+                    BankMaxValue = 2147483647
+                ),
+            ]
+        ),
+        TStrategicTeamProductionModuleDescriptor
+        (
+        ),
+        TFactoryModuleDescriptor
+        (
+            Factories = [
+                TVirtualFactoryDescriptor
+                (
+                    FactoryType = EDefaultFactories/UniversalFactory
+                    IsSimultaneous = False
+                ),
+            ]
+        ),
+        TTeamDescriptionModuleDescriptor
+        (
+        ),
+        TTeamUnitsModuleDescriptor
+        (
+        ),
+        TTagsModuleDescriptor
+        (
+        ),
+        TEffectApplierModuleDescriptor
+        (
+        ),
+        TLinkAllianceModuleDescriptor
+        (
+        ),
+        TTeamForAIModuleDescriptor
+        (
+        ),
+        TTeamGameRulesModuleDescriptor
+        (
+        ),
+        TFumigeneModuleDescriptor
+        (
+        ),
+        TStatisticsModuleDescriptor
+        (
+        ),
+        TIATeamStrategyModuleDescriptor
+        (
+        ),
+        TStrategicTraitModuleDescriptor
+        (
+            TraitList = []
+        ),
+        TStrategicSuppliableCacheModuleDescriptor
+        (
+        ),
+    ]
+)

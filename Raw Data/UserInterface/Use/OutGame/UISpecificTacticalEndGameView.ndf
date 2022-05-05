@@ -1,0 +1,1668 @@
+
+TacticalEndgameTitleFont is "Liberator"
+TacticalEndgameTitleFontSize is "Debrief/Title"
+
+TacticalEndgameKillLossTextFont is "Liberator"
+TacticalEndgameKillLossUnitTextFontSize is "Debrief/UnitName"
+TacticalEndgameKillLossSoldierTextFontSize is "Debrief/SoldierName"
+TacticalEndgameKillLossPlayerTextFontSize is "Debrief/SoldierName"
+
+TacticalEndgameKillLossTimerTextFont is "Liberator"
+TacticalEndgameKillLossTimerTextFontSize is "Debrief/Timer"
+
+TacticalEndgameScoreTextFont is "Liberator"
+TacticalEndgameScoreTextFontSize is "Debrief/Score"
+
+TacticalEndgamePostItTextFont is "HandPen"
+TacticalEndgamePostItTextFontSize is "Debrief/PostIt"
+
+TacticalEndgameBattleInfosfont is "HandPen"
+
+//-------------------------------------------------------------------
+
+template DebriefSimpleText
+[
+    ElementName : string = '',
+    ComponentFrame : TUIFramePropertyRTTI,
+    TextToken : string,
+    TextColor : string,
+    TextSize : string,
+    TypefaceToken : string = "IBM",
+]
+is BUCKSpecificTextWithHint
+(
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Right
+        VerticalAlignment = UIText_Bottom
+    )
+    TypefaceToken = <TypefaceToken>
+    TextStyle = 'TextStyleEcranMoniteur_cyan'
+    TextToken = <TextToken>
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextColor = <TextColor>
+    TextSize = <TextSize>
+
+    HasAutoHint = true
+    AutoHintElementName = <ElementName> + "AutoHint"
+)
+
+template DebriefLegendText
+[
+    ElementName : string = '',
+    ComponentFrame : TUIFramePropertyRTTI,
+    TextToken : string,
+]
+is DebriefSimpleText
+(
+    TypefaceToken = "IBM"
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+    TextToken = <TextToken>
+    TextColor = "Blanc"
+    TextSize = "SD2_Petit"
+)
+
+template DebriefStandardText
+[
+    ElementName : string = '',
+    ComponentFrame : TUIFramePropertyRTTI,
+    TextToken : string,
+]
+is DebriefSimpleText
+(
+    TypefaceToken = "IBM"
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+    TextToken = <TextToken>
+    TextColor = "Blanc"
+    TextSize = "SD2_Petit"
+)
+
+template DebriefValueText
+[
+    ElementName : string = '',
+    ComponentFrame : TUIFramePropertyRTTI,
+    TextToken : string,
+]
+is DebriefSimpleText
+(
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+    TextToken = <TextToken>
+    TextColor = "Blanc"
+    TextSize = "SD2_Petit"
+)
+
+//-------------------------------------------------------------------
+
+template DebriefCategoryHeaderText
+[
+    ElementName : string = '',
+    ComponentFrame : TUIFramePropertyRTTI,
+    TextToken : string,
+]
+is DebriefSimpleText
+(
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+    TextToken = <TextToken>
+    TextColor = "ListeExcel/Cartouche"
+    TextSize = "SD2_Moyen"
+)
+
+//-------------------------------------------------------------------
+
+template TacticalEndgameButton
+[
+    ElementName : string = "",
+    TextToken : string = "",
+    Mapping : TEugBMutablePBaseClass = nil,
+] is BUCKSpecificButton
+(
+    ElementName = <ElementName>
+
+    ButtonRelativeWidthHeight = [1.0, 0.0]
+    ButtonMagnifiableWidthHeight = [-20, 30]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+    ButtonAlignementToFather = [0.5, 0.0]
+
+    TextToken = <TextToken>
+    TextSizeToken = "28"
+    TextColorToken = "NoirEndgameButton"
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    BigLineAction = ~/BigLineAction/MultiLine
+
+    Mapping = <Mapping>
+
+    HasAutoHint = true
+    AutoHintElementName = <ElementName> + "AutoHint"
+)
+
+//-------------------------------------------------------------------
+
+private EndGamePanelNextMatchButton is TacticalEndgameButton
+(
+    ElementName = 'RematchButton'
+    TextToken = 'BTN_NEXT'
+)
+
+private EndGameSaveReplayButton is TacticalEndgameButton
+(
+    ElementName = 'SaveReplayButton'
+    TextToken = 'AB_SAVER'
+)
+
+private EndGameExitButton is TacticalEndgameButton
+(
+    ElementName = 'ExitButton'
+    TextToken = 'AB_QUITGAM'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+
+//-------------------------------------------------------------------
+
+template EndGameBattleInfosComponent
+[
+    TextColor : string = "Rouge",
+    TextColor2 : string = "Transparent", // couleur des textes non branchés
+    TextStyle : string = "Default",
+] is BUCKContainerDescriptor
+(
+    ElementName = "EndGameBattleInfosComponent"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0 , 0.0]
+        MagnifiableWidthHeight = [0,120]
+    )
+
+    Components =
+    [
+        BUCKSimpleGaugeDescriptor
+        (
+            ElementName = "BackgroundGauge"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather  = [0.5, 0.5]
+                AlignementToAnchor  = [0.5, 0.5]
+            )
+
+            GaugeValueMinSize = TRTTILength( Pixel = 0.0 )
+
+            GaugeComponentName = 'BackgroundGaugeValue'
+            GaugeMax = 1000
+
+            Components =
+            [
+                BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+
+                    HasBackground = false
+                ),
+
+                BUCKSimpleGaugeValueDescriptor
+                (
+                    ElementName = 'BackgroundGaugeValue'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight    = [0.0, 1.0]
+                        AlignementToFather     = [0.0, 0.5]
+                        AlignementToAnchor     = [0.0, 0.5]
+                    )
+
+                    ValueContainerName = 'BackgroundGaugeValueContainer'
+                    ValueContainerComponent = BUCKContainerDescriptor
+                    (
+                        ElementName = 'BackgroundGaugeValueContainer'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = "Transparent"
+                    )
+                ),
+            ]
+        ),
+        BUCKListDescriptor
+        (
+            ElementName = "TextsList"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0 , 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            ChildFitToContent = true
+
+            FirstMargin = TRTTILength(Magnifiable = 10.0)
+            LastMargin = TRTTILength(Magnifiable = 10.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                ),
+                // texte titre "battlefield"
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = <TextStyle>
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken  = "EG_BATTFLD"
+
+                        TextColor = <TextColor>
+                        TextSize = "Debrief/BattlefieldTitle"
+                    )
+                ),
+
+                // texte indiquant le battlefield de la map
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'MapName'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = <TextStyle>
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_maps
+
+                        TextColor = <TextColor>
+                        TextSize = "Debrief/Battlefield"
+                    )
+                ),
+
+                BUCKListElementVerticalSpacer( Magnifiable = 10.0),
+
+                // texte titre "time"
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ForbiddenTags =
+                        [
+                            'ScenarioHistoricalBattle'
+                        ]
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = <TextStyle>
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken  = "EG_TIME"
+
+                        TextColor = <TextColor>
+                        TextSize = "Debrief/TimeTitle"
+                    )
+                ),
+
+                BUCKListElementVerticalSpacer( Magnifiable = 5.0),
+
+                // texte indiquant le temps de la partie
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'Time'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.5,0.0]
+                            AlignementToAnchor = [0.5,0.0]
+                        )
+
+                        ForbiddenTags =
+                        [
+                            'ScenarioHistoricalBattle'
+                        ]
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = <TextStyle>
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextColor = <TextColor>
+                        TextSize = "Debrief/Time"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 10.0]
+                        )
+                    )
+                ),
+
+                // texte titre "points to reach"
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'PointsTitle'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ForbiddenTags =
+                        [
+                            'ScenarioBreakthrough', 'ScenarioHistoricalBattle'
+                        ]
+
+                        RequiredTags =
+                        [
+                            'ScenarioWithPoints'
+                        ]
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = <TextStyle>
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken  = "EG_POINTS"
+
+                        TextColor = <TextColor>
+                        TextSize = "Debrief/PointsTitle"
+                    )
+                ),
+
+                // texte indiquant le nombre de points
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'Points'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ForbiddenTags =
+                        [
+                            'ScenarioBreakthrough', 'ScenarioHistoricalBattle'
+                        ]
+
+                        RequiredTags =
+                        [
+                            'ScenarioWithPoints'
+                        ]
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = <TextStyle>
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = <TextColor>
+                        TextSize = "Debrief/Points"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 10.0]
+                        )
+                    )
+                ),
+                //-------------------------------------------------------------------------------------
+                // texte titre "nb objectives"
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        RequiredTags = []
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken  = "EG_OBJECT"
+
+                        TextColor = <TextColor2>
+                        TextSize = "Debrief/PointsTitle"
+                    )
+                ),
+
+                // texte indiquant le nombre d'objectif capturé
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'NbObjectives'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        RequiredTags = []
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = <TextColor2>
+                        TextSize = "Debrief/Points"
+                    )
+                ),
+
+                // texte titre "nb objectives"
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.35, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        RequiredTags =
+                        [
+                            'ScenarioWithObjectivesAndDestructionPoints'
+                        ]
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken  = "EG_OBJECT"
+
+                        TextColor = <TextColor2>
+                        TextSize = "Debrief/PointsTitle"
+                    )
+                ),
+
+                // texte indiquant le nombre d'objectif capturé
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'NbObjectives'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.35, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        RequiredTags =
+                        [
+                            'ScenarioWithObjectivesAndDestructionPoints'
+                        ]
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = <TextColor2>
+                        TextSize = "Debrief/Points"
+                    )
+                ),
+
+                // texte titre "points to reach"
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'PointsTitle'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.65, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        RequiredTags =
+                        [
+                            'ScenarioWithObjectivesAndDestructionPoints'
+                        ]
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken  = "EG_DESTRU"
+
+                        TextColor = <TextColor2>
+                        TextSize = "Debrief/PointsTitle"
+                    )
+                ),
+
+                // texte indiquant le nombre de points
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'DestructionPoints'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToFather = [0.65, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        RequiredTags =
+                        [
+                            'ScenarioWithObjectivesAndDestructionPoints'
+                        ]
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = TacticalEndgameBattleInfosfont
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = <TextColor2>
+                        TextSize = "Debrief/Points"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                ),
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+PlainSeparator is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 2.0]
+        RelativeWidthHeight = [0.85, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'Cyan_xp'
+
+    HasBorder = false
+    BorderThicknessToken = '3'
+    BorderLineColorToken = "Cyan"
+    Components = []
+)
+
+//-------------------------------------------------------------------------------------
+
+private XpLeftOffset is 10.0
+private XpColumnWidth is 125.0
+
+//-------------------------------------------------------------------------------------
+
+template DebriefXpLine
+[
+    LineName : string,
+    LegendToken : string,
+    ModificatorToken : string,
+    ValueToken : string,
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+
+        MagnifiableWidthHeight = [450.0, 24.0]
+    )
+
+    Components =
+    [
+        DebriefLegendText
+        (
+            ElementName = <LineName> + "Legend"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [XpLeftOffset, 0.0]
+                MagnifiableWidthHeight = [XpColumnWidth, 0.0]
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+            TextToken = <LegendToken>
+        ),
+        DebriefValueText
+        (
+            ElementName = <LineName> + "Value"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [XpLeftOffset + XpColumnWidth, 0.0]
+                MagnifiableWidthHeight = [XpColumnWidth, 0.0]
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+            TextToken = <ValueToken>
+        ),
+        DebriefStandardText
+        (
+            ElementName = <LineName> + "Modificator"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [XpLeftOffset + XpColumnWidth + XpColumnWidth, 0.0]
+                MagnifiableWidthHeight = [XpColumnWidth, 0.0]
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+            TextToken = <ModificatorToken>
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private DebriefXpTitleLine is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [450.0, 30.0]
+    )
+    Components =
+    [
+        DebriefLegendText
+        (
+            ElementName = "XPTitleValue"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [XpLeftOffset + XpColumnWidth, 0.0]
+                MagnifiableWidthHeight = [XpColumnWidth, 30.0]
+            )
+            TextToken = "EG_VALUE"
+        ),
+        DebriefLegendText
+        (
+            ElementName = "XPModifValue"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [XpLeftOffset + XpColumnWidth + XpColumnWidth, 0.0]
+                MagnifiableWidthHeight = [XpColumnWidth, 30.0]
+            )
+            TextToken = "EG_MODIF"
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+AffichageEcran is BUCKContainerDescriptor
+(
+    ElementName = "EcranXPContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [450, 292.0]
+        MagnifiableOffset = [190.0, -139.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [539.0*0.77 , 559*0.77]
+                AlignementToAnchor = [0.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+                MagnifiableOffset = [-20, 5]
+            )
+            TextureToken = 'EndGame_ForegroundEcranXP'
+            TextureColorToken = 'Blanc_multi'
+            TextureDrawer = 'MonochromeMonitorEffect'
+        ),
+        BUCKPerspectiveWarpOffscreenContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [450, 292.0]
+            )
+            DistortTextureDrawer = $/UserInterface/UIDistortTextureDrawer
+            PointerEventsToAllow = ~/EAllowablePointerEventType/Move
+            MagnifiableTopLeftOffset = [0.0, 0.0 ]
+            MagnifiableTopRightOffset = [-70.0, 15.0]
+            MagnifiableBottomLeftOffset = [0.0, 103.0]
+            MagnifiableBottomRightOffset = [-70.0, 40.0]
+
+            Components =
+            [
+                DebriefXpContent,
+            ]
+        ),
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [539.0*0.77 , 559*0.77]
+                AlignementToAnchor = [0.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+                MagnifiableOffset = [-20, 5]
+            )
+            TextureToken = 'EndGame_ForegroundEcranXP'
+            TextureDrawer = 'ColorMultiply_Additive'
+        )
+
+    ]
+)
+private DebriefXpContent is BUCKListDescriptor
+(
+    ElementName = "DebriefXpContent"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [450, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    FirstMargin = TRTTILength(Magnifiable = 10.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/DebriefXpTitleLine
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'Time'
+                LegendToken = 'EG_ELAPSED'
+                ModificatorToken = 'PLUSFORMAT'
+                ValueToken = 'TMINFORMAT'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'VictoryLevel'
+                LegendToken = 'EG_VICTLVL'
+                ModificatorToken = 'MULTFORMAT'
+                ValueToken = ''
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'WinStreak'
+                LegendToken = 'EG_WINSTRK'
+                ModificatorToken = 'MULTFORMAT'
+                ValueToken = 'VALUFORMAT'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PlainSeparator
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'BaseXp'
+                LegendToken = 'EG_BASEXP'
+                ModificatorToken = 'VALUFORMAT'
+                ValueToken = ''
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PlainSeparator
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'Commands'
+                LegendToken = 'EG_COMMAND'
+                ModificatorToken = 'PLUSFORMAT'
+                ValueToken = 'FPERFORMAT'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'Kills'
+                LegendToken = 'EG_KILLSB'
+                ModificatorToken = 'PLUSFORMAT'
+                ValueToken = 'FPERFORMAT'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'Losses'
+                LegendToken = 'EG_LOSSESB'
+                ModificatorToken = 'PLUSFORMAT'
+                ValueToken = 'FPERFORMAT'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PlainSeparator
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'GameXp'
+                LegendToken = 'EG_TOTGXP'
+                ModificatorToken = 'VALUFORMAT'
+                ValueToken = ''
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'GameModifier'
+                LegendToken = 'EG_GAMEM'
+                ModificatorToken = 'MULTFORMAT'
+                ValueToken = 'VALUFORMAT'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PlainSeparator
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DebriefXpLine
+            (
+                LineName = 'TotalXp'
+                LegendToken = 'EG_TOTXP'
+                ModificatorToken = 'VALUFORMAT'
+                ValueToken = ''
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template DebriefHeader
+[
+    TextToken : string,
+    ElementName : string
+] is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, ~/DebriefHeaderLineHeight]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "ListeExcel/Cartouche"
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            TextToken = <TextToken>
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            TextStyle = "Default"
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TypefaceToken = TacticalEndgameTitleFont
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextSize = TacticalEndgameTitleFontSize
+            TextColor = "ListeExcel/Cartouche"
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private TacticalEndGameResultComponent is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1176+200, 0.0]
+        MagnifiableOffset = [400,-55]
+    )
+    InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = EndGameBattleInfosComponent
+            (
+                TextColor = "SD2_Blanc184"
+            )
+        ),
+
+    ]
+)
+
+
+//-------------------------------------------------------------------------------------
+
+template TabTitle
+[
+    FirstColumnToken,
+    SecondColumnToken,
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, ~/DebriefKillLineHeight]
+        AlignementToFather = [0.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            TextToken = <FirstColumnToken>
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.5, 1.0]
+            )
+
+            TextStyle = "Default"
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TypefaceToken = TacticalEndgameTitleFont
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextSize = TacticalEndgameTitleFontSize
+            TextColor = "GrisFoncePapier"
+        ),
+
+        BUCKTextDescriptor
+        (
+            TextToken = <SecondColumnToken>
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.5, 1.0]
+                AlignementToFather = [0.5, 0.0]
+            )
+
+            TextStyle = "Default"
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TypefaceToken = TacticalEndgameTitleFont
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextSize = TacticalEndgameTitleFontSize
+            TextColor = "GrisFoncePapier"
+        )
+    ]
+)
+
+private KillTabTitle is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, ~/DebriefKillLineHeight]
+    )
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.0, 0.0]
+            )
+
+            Components =
+            [
+                BUCKContainerDescriptor is TabTitle
+                (
+                    FirstColumnToken = "EG_SHOOT"
+                    SecondColumnToken = "EG_VICTIM"
+                )
+            ]
+        )
+    ]
+)
+
+private HistoryTabTitle is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, ~/DebriefKillLineHeight]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        TextToken = "EG_TIME"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [~/DebriefTimeWidth, 0.0]
+                        )
+
+                        TextStyle = "Default"
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TypefaceToken = TacticalEndgameTitleFont
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextSize = TacticalEndgameTitleFontSize
+                        TextColor = "GrisFoncePapier"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = TabTitle
+                    (
+                        FirstColumnToken = "EG_SHOOT"
+                        SecondColumnToken = "EG_VICTIM"
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+EngamePanelTab is BUCKContainerDescriptor
+(
+    ElementName = 'EndGamePanelGameTab'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        // fond pour traces sur board
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [1525.0, 1026.0]
+                AlignementToAnchor = [1.0, 0.0]
+                AlignementToFather = [1.0, 0.0]
+                MagnifiableOffset = [0,-75+23]
+            )
+            TextureToken = 'Outgame_fond_EndGame_foreground'
+            //TextureDrawer = 'ColorMultiply_Additive'
+        ),
+
+        // info en haut
+        TacticalEndGameResultComponent,
+        AffichageEcran,
+
+        //-------------------------------------------------------------------------------------
+        // scrolls
+        TacticalEndgameKillLossDetails,
+
+        // Buttons
+        TacticalEndgameButtonsArea,
+
+        // Whiteboard foreground effect
+       { BUCKTextureDescriptor
+               (
+                   ComponentFrame = TUIFramePropertyRTTI
+                   (
+                       MagnifiableWidthHeight = [1525.0, 1026.0]
+                       AlignementToAnchor = [1.0, 0.0]
+                       AlignementToFather = [1.0, 0.0]
+                       MagnifiableOffset = [0,-75]
+                   )
+                   TextureToken = 'Outgame_fond_EndGame_foreground'
+                   TextureDrawer = 'ColorMultiply_Additive'
+               ),}
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalEndgameButtonsArea is BUCKContainerDescriptor
+(
+    ElementName = "TacticalEndgameButtonsArea"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        // This size is set so that this container occupies the whole whiteboard space between :
+        // the title (top), to TV screen (bottom), the whiteboard limit (left) and the scores (right)
+        // To move the buttons and the frame, please modify 'TacticalEndgameButtonsPanel'
+        MagnifiableWidthHeight = [290.0, 420.0]
+        MagnifiableOffset = [400.0, 100.0]
+    )
+
+    Components =
+    [
+        TacticalEndgameButtonsPanel
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalEndgameButtonsPanel is BUCKContainerDescriptor
+(
+    ElementName = "TacticalEndgameButtonsPanel"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [240.0, 300.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        MagnifiableOffset = [0.0, 50.0]
+    )
+
+    HasBorder = true
+    BorderThicknessToken = "3"
+    BorderLineColorToken = "Noir"
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "TacticalEndgameButtonsList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            FirstMargin = TRTTILength( Magnifiable = 20.0 )
+            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+            LastMargin = TRTTILength( Magnifiable = 20.0 )
+
+            Elements =
+            [
+                //------------------------------------------------------
+                // Navigation buttons
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/EndGamePanelNextMatchButton
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/EndGameSaveReplayButton
+                ),
+                //------------------------------------------------------
+                // FILLER
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI ( RelativeWidthHeight = [1.0, 1.0] )
+                    )
+                ),
+                //------------------------------------------------------
+                // Exit button
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/EndGameExitButton
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalEndgameKillLossDetails is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = "TacticalEndgameKillLossDetails"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1176.0, 860.0+40]
+        MagnifiableOffset = [690.0, 50.0]
+    )
+
+    HasVerticalScrollbar = true
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [10.0, 0.0]
+        MagnifiableOffset = [15,0]
+        AlignementToAnchor = [1.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = DebriefTeamStatsMultiList
+                ),
+                //-------------------------------------------------------------------------------------
+                // kills
+                BUCKListElementVerticalSpacer( Magnifiable = 25.0),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = DebriefHeader
+                    (
+                        ElementName = 'EndGamePanelKillsHeader'
+                        TextToken = "EG_MKILLS"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/KillTabTitle
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'EndGamePanelKillsTab'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+                        FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                        Components =
+                        [
+                            DebriefKillRack
+                            (
+                                ElementName = 'EndGamePanelKills'
+                                DisplayChronology = false
+                                LeftUnitName = "Left"
+                                RightUnitName = "Right"
+                            )
+                        ]
+                    )
+                ),
+                //-------------------------------------------------------------------------------------
+                // Losses
+                BUCKListElementVerticalSpacer( Magnifiable = 25.0),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = DebriefHeader
+                    (
+                        ElementName = 'EndGamePanelLossesHeader'
+                        TextToken = "EG_MLOSSES"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/KillTabTitle
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'EndGamePanelLossesTab'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+                        FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                        Components =
+                        [
+                            DebriefKillRack
+                            (
+                                ElementName = 'EndGamePanelLosses'
+                                DisplayChronology = false
+                                LeftUnitName = "Left"
+                                RightUnitName = "Right"
+                            )
+                        ]
+                    )
+                ),
+                //-------------------------------------------------------------------------------------
+                // History
+                BUCKListElementVerticalSpacer( Magnifiable = 25.0),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = DebriefHeader
+                    (
+                        ElementName = 'EndGamePanelHistoryHeader'
+                        TextToken = "EG_MHIST"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/HistoryTabTitle
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'EndGamePanelHistTab'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+                        FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                        Components =
+                        [
+                            DebriefKillRack
+                            (
+                                ElementName = 'EndGamePanelHist'
+                                DisplayChronology = true
+                                LeftUnitName = "Left"
+                                RightUnitName = "Right"
+                            )
+                        ]
+                    )
+                ),
+
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------
+template BUCKSpecificTacticalEndGameMainComponentDescriptor
+[
+    IsSoloScreen : bool = false
+] is WindowFrame
+(
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    ContentExtendWeight = 1.0
+    TitleToken = 'EG_DEBRIEF'
+
+    ContentComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [1920.0, 1080.0]
+                AlignementToAnchor = [0.0, 1.0]
+                AlignementToFather = [0.0, 1.0]
+            )
+            TextureToken = 'Outgame_fond_EndGame'
+        ),
+        EngamePanelTab
+    ]
+)
+
+
+
+//-------------------------------------------------------------------------------------
+
+UISpecificTacticalEndGameViewDescriptor is TUISpecificTacticalEndGameViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificTacticalEndGameMainComponentDescriptor(IsSoloScreen = true)
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    NationalityBlockColors =
+    [
+        "playerHelper/Otan_line_Endgame", //"GameDebrief/TeamStats/PlayerLine/Nato", // ENationalite/OTAN
+        "playerHelper/Pact_line",   //"GameDebrief/TeamStats/PlayerLine/Pact", // ENationalite/PACT
+    ]
+
+    DefeatAnimation =
+    [
+
+        "UseOutGameTexture_DefeatAnimation_89",
+    ]
+
+    VictoryAnimationList =
+    [
+        // ENationalite/OTAN
+        [
+
+            "UseOutGameTexture_AlliesVictoryAnimation_89",
+        ],
+        // ENationalite/PACT
+        [
+
+            "UseOutGameTexture_AxisVictoryAnimation_89",
+        ]
+    ]
+
+    FadedAnimation = TUIAnimFactorRTTI
+    (
+        ParamsAnim = [0.5]
+        AnimDuration = 2.0
+        Modificator = ~/AnimModificator/SquareAccelerate
+    )
+)
+
+//-------------------------------------------------------------------------------------

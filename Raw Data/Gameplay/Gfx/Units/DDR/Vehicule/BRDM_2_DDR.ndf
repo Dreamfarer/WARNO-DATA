@@ -1,0 +1,19 @@
+export ModelFile_BRDM_2_DDR is 'GameData:/Assets/3D/Units/DDR/Vehicule/BRDM2/BRDM2.Ase2NdfBin'
+
+Modele_BRDM_2_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BRDM_2_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_2_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/BRDM2/BRDM2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_2_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/BRDM2/BRDM2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

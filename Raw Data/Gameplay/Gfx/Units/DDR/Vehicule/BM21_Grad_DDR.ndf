@@ -1,0 +1,21 @@
+export ModelFile_BM21_Grad_DDR is 'GameData:/Assets/3D/Units/DDR/Artillerie/BM21_Grad/BM21_Grad.Ase2NdfBin'
+
+Modele_BM21_Grad_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BM21_Grad_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_BM21_Grad_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    // FileName = 'GameData:/Assets/3D/Units/DDR/Artillerie/BM21_Grad_MID/BM21_Grad_MID.Ase2NdfBin'
+    FileName = ModelFile_BM21_Grad_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_BM21_Grad_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    // FileName = 'GameData:/Assets/3D/Units/DDR/Artillerie/LODS/BM21_Grad_LOW.Ase2NdfBin'
+    FileName = ModelFile_BM21_Grad_DDR
+    CivMask =  CivMask/Common
+)

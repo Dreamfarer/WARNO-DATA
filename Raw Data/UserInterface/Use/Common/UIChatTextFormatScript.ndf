@@ -1,0 +1,97 @@
+ChatTextFormatScript is TTextFormatScriptRTTI
+(
+    Commands = MAP
+    [
+        (
+            "TCH",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_TCH")
+        ),
+        (
+            "CZ",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_TCH")
+        ),
+        (
+            "FR",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_FR")
+        ),
+        (
+            "FRA",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_FR")
+        ),
+        (
+            "POL",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_POL")
+        ),
+        (
+            "RFA",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_GERW")
+        ),
+        (
+            "UK",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_UK")
+        ),
+        (
+            "SOV",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_SOV")
+        ),
+        (
+            "US",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_US")
+        ),
+        (
+            "CAN",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_CAN")
+            ),
+        (
+            "DAN",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_DAN")
+        ),
+        (
+            "SWE",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_SWE")
+        ),
+        (
+            "NOR",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_NOR")
+        ),
+        (
+            "NK",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_NK")
+        ),
+        (
+            "ROK",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_ROK")
+        ),
+        (
+            "CHI",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_CHI")
+        ),
+        (
+            "JAP",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_JAP")
+        ),
+        (
+            "ANZ",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_ANZ")
+        ),
+        (
+            "GER",
+            TemplateTFS_Flag(TextureToken = "CommonTexture_MotherCountryFlag_GERW")
+        ),
+        (
+            "default",
+            TTFSCommand_StyleChangeRTTI
+            (
+                Style = TTextStyleRTTI
+                (
+                    FontSize    = 1.0
+                    ColorBottom = [255, 255, 255, 255]
+                    ColorUp     = [255, 255, 255, 255]
+                    ColorStroke = [  0,   0,   0, 255]
+                    Stroke = false
+                    AllowSmallFont = true
+                )
+            )
+        ),
+    ]
+)

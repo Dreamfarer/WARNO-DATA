@@ -1,0 +1,43 @@
+
+export FullScreenCutSceneVideo is BUCKVideoDescriptor
+(
+    ElementName = "CutSceneVideo"
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+    VideoFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1920.0, 1080.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+    HasBackground = true
+    BackgroundBlockColorToken = "PureBlack"
+    SceneForSubtitles = $/M3D/Scene/Scene_2D_TopInterface
+    SoundVolume = 3.0
+)
+
+export DefaultSubtitleDescriptor is BUCKTextDescriptor
+(
+    ElementName = "SubtitleText"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.40, 0.0]
+        MagnifiableWidthHeight = [0.0, 100.0]
+        AlignementToFather = [0.5, 0.98]
+        AlignementToAnchor = [0.5, 1]
+    )
+
+    ParagraphStyle = ~/VideoSubtitleParagraphStyle
+    TextStyle = "DefaultSubtitle"
+
+    TypefaceToken = "Subtitles"
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    BigLineAction = ~/BigLineAction/MultiLine
+
+    TextColor = "Subtitle/Text"
+    TextSize = "Subtitle/Text"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+)

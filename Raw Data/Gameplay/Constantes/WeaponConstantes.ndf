@@ -1,0 +1,73 @@
+export WeaponConstantes is TWeaponConstantsDescriptor
+(
+    //---------------------------------------------------------------------------------------//
+    //------------------------------------- Constantes --------------------------------------//
+    //---------------------------------------------------------------------------------------//
+
+    DefaultStressMultiplier = 1.0
+    StressMultiplierPerDamageFamily = MAP
+    [
+        (
+            "suppress",
+            0.0
+        ),
+        (
+            "suppressap",
+            0.0
+        ),
+    ]
+
+    DefaultSuppressDamage = TDamageTypeRTTI(Family="suppress" Index=1)
+    SuppressDamagePerFamily = MAP
+    [
+        (
+            "ap",
+            TDamageTypeRTTI(Family="suppressap" Index=1)
+        ),
+        (
+            "balledca",
+            TDamageTypeRTTI(Family="suppressdca" Index=1)
+        ),
+    ]
+
+    //Types de blindage qui doivent être percées pour subir des dégâts
+    ResistanceWithBlindageFamilies =
+    [
+        "blindage",
+    ]
+
+    PierceBonusForDamageFamilies = MAP
+    [
+        (
+            "ap_missile",
+            59
+        ),
+    ]
+
+    ResistanceToMimeticImpact = MAP
+    [
+        ("batiment", EImpactSurface/Wall),
+        ("infanterie", EImpactSurface/Ground),
+    ]
+
+    DefaultMimeticProjectile = EImpactProjectile/Bullet
+    DamageTypeToMimeticProjectile = MAP
+    [
+        ("ap", EImpactProjectile/APShell),
+        ("ap_missile", EImpactProjectile/APShell),
+        ("he", EImpactProjectile/HEShell),
+    ]
+
+    BlindagesToIgnoreForDamageFamilies = MAP
+    [
+        ("he", ["blindage",]),
+        ("he_autocanon", ["blindage",]),
+        ("balle", ["blindage",]),
+        ("balledca", ["blindage",]),
+    ]
+
+    //-----------------------------------------
+    // Valeurs de SmartHoldFire par défaut
+    SmartHoldFireMinAccuracy = 0.0
+    SmartHoldFireMinPenetration = 0.4
+)

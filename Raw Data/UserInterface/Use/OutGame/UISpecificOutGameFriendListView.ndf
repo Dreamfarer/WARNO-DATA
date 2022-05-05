@@ -1,0 +1,1022 @@
+BUCKSpecificOutGameFriendModaleViewDescriptor is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [850.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 200.0]
+
+    TitleToken = 'T_INVITE'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/FriendPanelConfirmButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/FriendPanelCancelButton ),
+    ]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [750, 0.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            InterItemMargin = TRTTILength(Magnifiable = 25.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'MainText'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = paragraphStyleTextCenter
+                        TextStyle = "TextStyleEcranMoniteur"
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TypefaceToken = "IBM"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Blanc"
+                        TextSize = "24"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'FriendLineContainer'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+                        FitStyle = ~/ContainerFitStyle/FitToContent
+                        Components = []
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'ErrorText'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        TextStyle = "Default"
+                        TypefaceToken = "UIMainFont"
+                        TextColor = 'SD2_Blanc184'
+                        TextSize = '20'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        BigLineAction = ~/BigLineAction/MultiLine
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Balanced = true
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                    )
+                )
+            ]
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [-27,-150]
+            )
+            TextureToken = 'Outgame_modale_foreground'
+            TextureDrawer = 'ColorMultiply_Additive'
+        )
+    ]
+
+    AdditionalComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [-27,-150]
+            )
+            TextureToken = 'Outgame_modale_fond'
+            TextureDrawer = 'MonochromeMonitorEffect'
+        )
+    ]
+)
+
+UISpecificOutGameFriendModaleViewDescriptor is TUISpecificOutGameFriendModaleViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameFriendModaleViewDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)
+
+
+BUCKOutGameFriendLineMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [280.0, 39.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 0.0]
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            HasBackground = false
+            BackgroundBlockColorToken = 'Green'
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 39.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+
+                        FirstMargin = TRTTILength(Magnifiable = 0.0)
+                        InterItemMargin = TRTTILength(Magnifiable = 5.0)
+                        LastMargin = TRTTILength(Magnifiable = 0.0)
+
+                        Elements =
+                        [
+                            // bouton friend
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = ~/BoutonFriend
+                            ),
+                        ]
+                    )
+                ),
+            ]
+        ),
+        ~/LigneAction,
+        BUCKSensibleAreaDescriptor
+        (
+            ElementName = "MainArea"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+boutonInviteFriend is BUCKButtonDescriptor
+(
+    ElementName = 'AddButton'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+
+        MagnifiableWidthHeight = [50.0, 19.0]
+        AlignementToAnchor = [0.0, 0.5]
+        AlignementToFather = [0.0, 0.5]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Black80"
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [19.0, 19.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+            TextureToken = "AddFriendTexture"
+            TextureColorToken = "FriendState/InShowRoom"
+        )
+    ]
+)
+//-------------------------------------------------------------------------------------
+private LigneAction is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,0]
+        MagnifiableWidthHeight = [-49-15,0]
+        MagnifiableOffset = [0,1]
+    )
+
+    Components =
+    [
+    BUCKListDescriptor
+    (
+        ElementName = 'ConfirmCancelList'
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 19.0]
+            MagnifiableOffset = [49,20]
+        )
+
+        Axis = ~/ListAxis/Horizontal
+
+        Elements =
+        [
+            BUCKListElementDescriptor
+            (
+                ExtendWeight = 1.0
+                ComponentDescriptor = BUCKButtonDescriptor
+                (
+                    ElementName = 'JoinButton'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = 'Friend/JoinButton'
+
+                    Components =
+                    [
+                        BUCKTextDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 1.0]
+                                AlignementToAnchor = [0.5, 0.5]
+                                AlignementToFather = [0.5, 0.5]
+                            )
+
+                             ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                VerticalAlignment = ~/UIText_VerticalCenter
+                                Alignment = ~/UIText_Center
+                            )
+
+                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                            TextStyle = 'Default'
+                            TypefaceToken = "UIMainFont"
+
+                            TextSize = '16'
+                            TextColor = 'HUBActionButton'
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                            TextToken = 'FR_JOIN'
+                        )
+                    ]
+                )
+            ),
+
+            BUCKListElementDescriptor
+            (
+                ExtendWeight = 1.0
+                ComponentDescriptor = BUCKButtonDescriptor
+                (
+                    ElementName = 'RemoveButton'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = 'Friend/DeclineButton'
+
+                    Components =
+                    [
+                        BUCKTextDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 1.0]
+                                AlignementToAnchor = [0.5, 0.5]
+                                AlignementToFather = [0.5, 0.5]
+                            )
+
+                             ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                VerticalAlignment = ~/UIText_VerticalCenter
+                                Alignment = ~/UIText_Center
+                            )
+
+                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                            TextStyle = 'Default'
+                            TypefaceToken = "UIMainFont"
+
+                            TextSize = '16'
+                            TextColor = 'HUBActionButton'
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                            TextToken = 'FR_REMOVE'
+                        )
+                    ]
+                )
+            ),
+
+            BUCKListElementDescriptor
+            (
+                ExtendWeight = 1.0
+                ComponentDescriptor = BUCKButtonDescriptor
+                (
+                    ElementName = 'AcceptButton'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = 'Friend/AcceptButton'
+
+
+                    Components =
+                    [
+                        BUCKTextDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 1.0]
+                                AlignementToAnchor = [0.5, 0.5]
+                                AlignementToFather = [0.5, 0.5]
+                            )
+
+                             ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                VerticalAlignment = ~/UIText_VerticalCenter
+                                Alignment = ~/UIText_Center
+                            )
+
+                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                            TextStyle = 'Default'
+                            TypefaceToken = "UIMainFont"
+
+                            TextSize = '16'
+                            TextColor = 'HUBActionButton'
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                            TextToken = 'FR_ACCEPT'
+                        )
+                    ]
+                )
+            ),
+
+            BUCKListElementDescriptor
+            (
+                ExtendWeight = 1.0
+                ComponentDescriptor = BUCKButtonDescriptor
+                (
+                    ElementName = 'DeclineButton'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = 'Friend/DeclineButton'
+
+
+                    Components =
+                    [
+                        BUCKTextDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 1.0]
+                                AlignementToAnchor = [0.5, 0.5]
+                                AlignementToFather = [0.5, 0.5]
+                            )
+
+                             ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                VerticalAlignment = ~/UIText_VerticalCenter
+                                Alignment = ~/UIText_Center
+                            )
+
+                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                            TextStyle = 'Default'
+                            TypefaceToken = "UIMainFont"
+
+                            TextSize = '16'
+                            TextColor = 'HUBActionButton'
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                            TextToken = 'FR_DECLIN'
+                        )
+                    ]
+                )
+            ),
+
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKContainerDescriptor
+                (
+                    ElementName = "FriendButtonDummy"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [70.0, 0.0]
+                        RelativeWidthHeight = [0.0, 1.0]
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+                )
+            ),
+        ]
+    )
+    ]
+)
+
+private BoutonFriend is BUCKButtonDescriptor
+(
+    ElementName = "MainButton"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 40.0]
+    )
+    HasBackground = false
+    BackgroundBlockColorToken = 'Orange'
+    Components =
+    [
+        // avatar, nom et barre
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+
+            FirstMargin = TRTTILength(Magnifiable = 0.0)
+            InterItemMargin = TRTTILength(Magnifiable = 0.0)
+            LastMargin = TRTTILength(Magnifiable = 0.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [54,38]
+                            AlignementToAnchor = [0.0, 0.5]
+                            AlignementToFather = [0.0, 0.5]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = 'Blanc_leaderboard'
+                        Components =
+                        [
+                            BUCKSpecificAvatarDescriptor
+                            (
+                                ElementName = 'Avatar'
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [38.0, 38.0]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                    AlignementToFather = [0.5, 0.5]
+                                )
+                            )
+                        ]
+                    )
+                ),
+
+                // nom du joueur avec logo steam
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'TextName'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableOffset = [0,3]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = 'Default'
+                        TypefaceToken = "Liberator"
+                        TextSize = '14'
+                        TextColor = 'Noir'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI (MagnifiableWidthHeight = [50,19])
+                        Components = [boutonInviteFriend]
+                    )
+                ),
+                // couleur de connexion
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'StatusContainer'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [15.0, 0.0]
+                            AlignementToAnchor = [0.0, 0.5]
+                            AlignementToFather = [0.0, 0.5]
+                        )
+
+                        HasBackground = true
+                    )
+                ),
+            ]
+        ),
+        // level
+        BUCKTextDescriptor
+        (
+            ElementName = 'LevelName'
+            HasBackground = true
+            BackgroundBlockColorToken = "Blanc_leaderboard"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [50.0, 19.0]
+                AlignementToFather = [1,1]
+                AlignementToAnchor = [1,1]
+                MagnifiableOffset = [-15,0]
+
+            )
+
+             ParagraphStyle = TParagraphStyleRTTI
+            (
+                VerticalAlignment = ~/UIText_VerticalCenter
+                Alignment = ~/UIText_Center
+            )
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TextStyle = 'Default'
+            TypefaceToken = "UIMainFont"
+            TextSize = '14'
+            TextColor = 'Noir'
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        ),
+        // status
+        BUCKTextDescriptor
+        (
+            ElementName = 'TextStatus'
+            HasBackground = false
+            BackgroundBlockColorToken = "Orange"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-39.0, 19.0]
+                AlignementToAnchor = [0.0, 1]
+                AlignementToFather = [0.0, 1]
+                MagnifiableOffset = [39+25,0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                VerticalAlignment = ~/UIText_VerticalCenter
+            )
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TextStyle = 'Default'
+            TypefaceToken = "Liberator"
+            TextSize = '14'
+            TextColor = 'Noir'
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        )
+    ]
+)
+//-------------------------------------------------------------------------------------
+
+UIOutgameFriendLineViewDescriptor is TUIOutgameFriendLineViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKOutGameFriendLineMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)
+
+private template BUCKSpecificOutGameFriendListMainComponentDescriptor
+[
+    IsSubView : bool,
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    //FirstMargin = TRTTILength(Magnifiable = 5.0 )
+    InterItemMargin = TRTTILength(Magnifiable = 1.0 )
+    HasBackground = false
+    BackgroundBlockColorToken = 'Orange'
+    Elements =
+    (<IsSubView> ?
+    [] :
+    [
+
+    ])
+    +
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/Titre
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/Legende
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKGridDescriptor
+            (
+                ElementName = 'FriendGrid'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+
+                )
+
+                FirstElementMargin = TRTTILength2( Pixel = [1.0, 0.0] Magnifiable = [0.0, 0.0] )
+                InterElementMargin = TRTTILength2( Pixel = [1.0, 1.0] Magnifiable = [0.0, 0.0] )
+                LastElementMargin = TRTTILength2( Pixel = [1.0, 1.0] Magnifiable = [0.0, 0.0] )
+
+                MaxElementsPerDimension = [1, 8]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI()
+
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                Axis = ~/ListAxis/Horizontal
+
+                Elements = (<IsSubView> ?
+                    []
+                :
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = HUBButton
+                            (
+                                ButtonAlignementToFather = [0.0, 0.0]
+                                ButtonAlignementToAnchor = [0.0, 0.0]
+                                ElementName = "BackButton"
+                                TextToken = "NV_BACK"
+
+                                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+                            )
+                        ),
+                    ]
+                )+
+                [
+                    BUCKListElementHorizontalSpacer( Magnifiable = 110.0 ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = 'PageText'
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+
+                            ParagraphStyle = ~/paragraphStyleTextCenter
+                            TextStyle = "Default"
+
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                            TextColor       = 'Noir'
+                            TextSize        = "14"
+                            TextToken       = "T_PAGE"
+                            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                            BigLineAction = ~/BigLineAction/MultiLine
+                            TypefaceToken   = "Liberator"
+                        )
+                    ),
+
+                    BUCKListElementHorizontalSpacer( Magnifiable = 5.0 ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = 'PageNumber'
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+
+                            ParagraphStyle = ~/paragraphStyleTextCenter
+                            TextStyle = "Default"
+
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                            TextColor       = 'Noir'
+                            TextSize        = "14"
+                            TextToken       = 'DIVFORMAT'
+                            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                            BigLineAction = ~/BigLineAction/MultiLine
+                            TypefaceToken   = "Liberator"
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = BUCKContainerDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI()
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKButtonDescriptor
+                        (
+                            ElementName = "PreviousButton"
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [15.0, 15.0]
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+
+                            Components =
+                            [
+                                BUCKTextureDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                        AlignementToAnchor = [0.5, 0.5]
+                                        AlignementToFather = [0.5, 0.5]
+                                    )
+
+                                    Rotation = -90
+                                    TextureToken = "show_hide_arrow"
+                                    TextureColorToken = "Lobby/ShowHideButton"
+                                )
+                            ]
+                        )
+                    ),
+                    BUCKListElementHorizontalSpacer( Magnifiable = 10.0 ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKButtonDescriptor
+                        (
+                            ElementName = "NextButton"
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [15.0, 15.0]
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+                            Components =
+                            [
+                                BUCKTextureDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                        AlignementToAnchor = [0.5, 0.5]
+                                        AlignementToFather = [0.5, 0.5]
+                                    )
+
+                                    Rotation = 90
+                                    TextureToken = "show_hide_arrow"
+                                    TextureColorToken = "Lobby/ShowHideButton"
+                                )
+                            ]
+                        )
+                    ),
+                    BUCKListElementHorizontalSpacer( Magnifiable = 20.0 ),
+                ]
+            )
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+private Titre is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 22.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength(Magnifiable = 5.0 )
+    LastMargin = TRTTILength(Magnifiable = 5.0 )
+    HasBackground = false
+    BackgroundBlockColorToken = 'Green'
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.3
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    AlignementToFather  = [0.0, 0.5]
+                    AlignementToAnchor  = [0.0, 0.5]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextLeftAlign
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextColor       = 'Blanc_leaderboard'
+                TextSize        = "14"
+                TextToken       = "T_FRIENDS"
+                TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                BigLineAction = ~/BigLineAction/CutByDots
+                TypefaceToken   = "Liberator"
+            )
+        ),
+
+        // nb joueurs
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'FriendsConnected'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextCenter
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                TextColor       = 'Blanc_leaderboard'
+                TextSize        = "14"
+                TextToken       = 'T_NBFRIEND'
+                TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                BigLineAction = ~/BigLineAction/MultiLine
+                TypefaceToken   = "Liberator"
+            )
+        ),
+    ]
+)
+private Legende is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 20.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength(Magnifiable = 65.0 )
+    LastMargin = TRTTILength(Magnifiable = 5.0 )
+
+    Elements =
+    [
+        // names
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.9
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextLeftAlign
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextColor       = 'Gris_Friends'
+                TextSize        = "12"
+                TextToken       = "T_NAME"
+                TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                BigLineAction = ~/BigLineAction/CutByDots
+                TypefaceToken   = "Liberator"
+            )
+        ),
+        // leve
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.3
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextLeftAlign
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextColor       = 'Gris_Friends'
+                TextSize        = "12"
+                TextToken       = "T_LEVEL"
+                TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                BigLineAction = ~/BigLineAction/CutByDots
+                TypefaceToken   = "Liberator"
+            )
+        ),
+
+
+    ]
+)
+//-------------------------------------------------------------------------------------
+template UISpecificOutGameFriendListViewDescriptor
+[
+    IsSubView : bool = false,
+    ComponentContainerUniqueName : string = "",
+] is TUISpecificOutGameFriendListViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificOutGameFriendListMainComponentDescriptor(IsSubView = <IsSubView>)
+    MainComponentContainerUniqueName = <ComponentContainerUniqueName> // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    ShortcutsLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_2DInterfaceAboveBlur_OutGame
+)

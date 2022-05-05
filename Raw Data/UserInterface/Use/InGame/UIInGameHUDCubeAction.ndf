@@ -1,0 +1,250 @@
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+
+private SpreadOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_SPREAD'
+    HintLocalisationToken    = 'HNT_SPREAD'
+    Mapping                  = $/KeyboardOption/Mapping_Spread
+    DebugName                = "InGameCubeAction_ButtonSpread"
+
+    OrderToken = "Spread"
+    ActionType = OrderInstant
+)
+
+//-----------------------------------------------------------------------------
+
+private AttackOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_ATTACK'
+    HintLocalisationToken    = 'HNT_ATTACK'
+    Mapping                  = $/KeyboardOption/Mapping_Attack
+    ValidationTargetToken    = 'CA_VALTAR'
+    DebugName                = "InGameCubeAction_ButtonAttack"
+
+    OrderToken = "MoveAndAttack"
+    ActionType = OrderWithClickValidation
+)
+
+private FastMoveAndAttackOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_FSTATK'
+    HintLocalisationToken    = 'HNT_FSTATK'
+    Mapping                  = $/KeyboardOption/Mapping_FastMoveAndAttack
+    ValidationTargetToken    = 'CA_VALTAR'
+    DebugName                = "InGameCubeAction_ButtonFastMoveAndAttack"
+
+    OrderToken = "FastMoveAndAttack"
+    ActionType = OrderWithClickValidation
+)
+
+private StopOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_STOP'
+    HintLocalisationToken    = 'HNT_STOP'
+    Mapping                  = $/KeyboardOption/Mapping_Stop
+    DebugName                = "InGameCubeAction_ButtonStop"
+
+    OrderToken = "Stop"
+    ActionType = OrderInstant
+)
+
+private AIAttackOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_AIATT'
+    HintLocalisationToken    = 'HNT_AIATT'
+    Mapping                  = $/KeyboardOption/Mapping_AIAttack
+    DebugName                = "InGameCubeAction_ButtonAIAttack"
+
+    OrderToken = "AIAttack"
+    ActionType = OrderWithClickValidation
+)
+
+private AIManageArtilleryFocusOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_AIARF'
+    HintLocalisationToken    = 'HNT_AIARF'
+    Mapping                  = $/KeyboardOption/Mapping_AIAttack
+    DebugName                = "InGameCubeAction_ButtonAIManageArtillery_Focus"
+
+    OrderToken = "AIManageArtillery_Focus"
+    ActionType = OrderInstant
+)
+
+private ShootOnPositionOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_SHOPOS'
+    HintLocalisationToken    = 'HNT_SHOPOS'
+    Mapping                  = $/KeyboardOption/Mapping_ShootOnPosition
+    ValidationTargetToken    = 'CA_VALPOS'
+    DebugName                = "InGameCubeAction_ButtonShoot"
+
+    OrderToken = "ShootOnPosition"
+    ActionType = OrderWithClickValidation
+)
+
+//-----------------------------------------------------------------------------
+
+private MoveOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_MOVE'
+    HintLocalisationToken    = 'HNT_MOVE'
+    Mapping                  = $/KeyboardOption/Mapping_Move
+    ValidationTargetToken    = 'CA_VALPOS'
+    DebugName                = "InGameCubeAction_ButtonMove"
+
+    OrderToken = "Move"
+    ActionType = OrderWithClickValidation
+)
+
+private QuickMoveOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_QKMOVE'
+    HintLocalisationToken    = 'HNT_QKMOVE'
+    Mapping                  = $/KeyboardOption/Mapping_QuickMove
+    ValidationTargetToken    = 'CA_VALPOS'
+    DebugName                = "InGameCubeAction_ButtonQMove"
+
+    OrderToken = "QuickMove"
+    ActionType = OrderWithClickValidation
+)
+
+private SmartMoveOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_SMMOVE'
+    HintLocalisationToken    = 'HNT_SMMOVE'
+    Mapping                  = $/KeyboardOption/Mapping_SmartMove
+    ValidationTargetToken    = 'CA_VALPOS'
+    DebugName                = "InGameCubeAction_ButtonSmartMove"
+
+    OrderToken = "SmartMove"
+    ActionType = OrderWithClickValidation
+)
+
+private ReverseOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_RVRSE'
+    HintLocalisationToken    = 'HNT_RVRSE'
+    Mapping                  = $/KeyboardOption/Mapping_Reverse
+    ValidationTargetToken    = 'CA_VALPOS'
+    DebugName                = "InGameCubeAction_ButtonReverse"
+
+    OrderToken = "Reverse"
+    ActionType = OrderWithClickValidation
+)
+
+private UnloadAtPositionOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_UNLDAT'
+    HintLocalisationToken    = 'HNT_UNLDAT'
+    Mapping                  = $/KeyboardOption/Mapping_UnloadAtPosition
+    DebugName                = "InGameCubeAction_ButtonUnloadAtPosition"
+
+    OrderToken  = "UnloadAtPosition"
+    ActionType = OrderInstant
+)
+
+private UnloadFromTransportOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_UNLDFT'
+    HintLocalisationToken    = 'HNT_UNLDFT'
+    Mapping                  = $/KeyboardOption/Mapping_UnloadFromTransport
+    DebugName                = "InGameCubeAction_ButtonUnloadFromTransport"
+
+    OrderToken  = "UnloadFromTransport"
+    ActionType = OrderWithClickValidation
+)
+
+private ShootOnPositionSmokeOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_SMOKE'
+    HintLocalisationToken    = 'HNT_SMOKE'
+    Mapping                  = $/KeyboardOption/Mapping_Smoke
+    ValidationTargetToken    = 'CA_VALPOS'
+    DebugName                = "InGameCubeAction_ButtonSmoke"
+
+    OrderToken  = "ShootOnPositionSmoke"
+    ActionType = OrderWithClickValidation
+)
+
+private EvacuateOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_EVAC'
+    HintLocalisationToken    = 'HNT_EVAC'
+    Mapping                  = $/KeyboardOption/Mapping_Evacuate
+    DebugName                = "InGameCubeAction_ButtonEvac"
+
+    OrderToken  = "AirplaneEvacuate"
+    ActionType = OrderInstant
+)
+
+private LandOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_LAND'
+    HintLocalisationToken    = 'HNT_LAND'
+    Mapping                  = $/KeyboardOption/Mapping_Land
+    DebugName                = "InGameCubeAction_ButtonLand"
+
+    OrderToken  = "Land"
+    ActionType = OrderInstant
+)
+
+private ChangeAltitudeOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_CHGALT'
+    HintLocalisationToken    = 'HNT_CHGALT'
+    Mapping                  = $/KeyboardOption/Mapping_ChangeAltitude
+    DebugName                = "InGameCubeAction_ButtonChangeAltitude"
+
+    OrderToken  = "ChangeAltitude"
+    ActionType = OrderInstant
+)
+
+private SellOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_SELL'
+    HintLocalisationToken    = 'HNT_SELL'
+    Mapping                  = $/KeyboardOption/Mapping_Sell
+    DebugName                = "InGameCubeAction_Sell"
+
+    OrderToken  = "Sell"
+    ActionType = OrderInstant
+)
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+
+HUDOrderButtonListDescriptor is TUISpecificInGameHUDOrderButtonListDescriptor
+(
+    UserInputLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+
+    CompanyOrderButtons =
+    [
+        ~/SpreadOrderButton,
+    ]
+
+    BasicOrderButtons =
+    [
+        ~/AttackOrderButton,
+        ~/StopOrderButton,
+        ~/ShootOnPositionOrderButton,
+    ]
+
+    //MAJ a impacter sur le fichier OrderDescriptor.ndf
+    SpecificOrderButtons =
+    [
+        ~/FastMoveAndAttackOrderButton,
+        ~/MoveOrderButton,
+        ~/QuickMoveOrderButton,
+        ~/UnloadAtPositionOrderButton,
+        ~/UnloadFromTransportOrderButton,
+        ~/EvacuateOrderButton,
+        ~/ShootOnPositionSmokeOrderButton,
+        ~/ReverseOrderButton,
+        ~/AIAttackOrderButton,
+        ~/AIManageArtilleryFocusOrderButton,
+        ~/SellOrderButton,
+    ]
+)

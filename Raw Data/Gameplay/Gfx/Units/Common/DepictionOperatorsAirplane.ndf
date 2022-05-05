@@ -1,0 +1,4 @@
+//Notation : prefix (DepictionOperator), feature (Chassis, ...), classe (small, heavy, etc)
+DepictionOperator_AirplaneParts is TCosmeticAirplanePartsOperatorDesc( OperatorId   = 'airplane_parts' )
+DepictionOperator_Airplane is TCosmeticMovementAirplaneOperatorDesc( OperatorId = 'AirplaneOperator')
+DepictionOperator_AirplaneShadow is TCosmeticAirplaneShadowOperatorDesc( OperatorId = 'AirplaneShadow' )

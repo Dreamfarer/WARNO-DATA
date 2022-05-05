@@ -1,0 +1,320 @@
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+//                    Window Frame                      //
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+
+private DefaultGlobalExtBorderOffset is [ 11.0, 11.0 ]
+private DefaultGlobalExtBorderWidthHeight is [ -22.0, -22.0 ]
+private DefaultGlobalExtBorderSize is "5"
+
+private DefaultInterBorderMargin is 3.0
+
+private DefaultGlobalIntBorderOffset is [ 19.0, 19.0 ]
+private DefaultGlobalIntBorderWidthHeight is [ -38.0, -38.0 ]
+private DefaultGlobalIntBorderSize is "3"
+
+private DefaultThinBorderOffset is [ 38.0, 30.0]
+private DefaultThinBorderWidthHeight is [ -76.0, -128.0]
+private DefaultThinBorderSize is 3.0
+private DefaultThinBorderSizeToken is "3"
+
+private DistanceFromTitleToContent is 17.0
+private DistanceFromTitleToContentForModale is 16.0
+
+DistanceFromButtonListToBottom is 20.0
+DistanceFromContentToButton is 7.0
+ContentBottomMargin is 7.0
+
+
+template WindowFrame
+[
+    UniqueName : string = '',
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 0.0] AlignementToAnchor = [0.5, 0.5] AlignementToFather = [0.5, 0.5] ),
+    HidePointerEvents : bool = false,
+    TitleElementName = "ScreenName",
+    TitleToken : string = '',
+    HasTitle : bool = true,
+    MargeHorizontale : int = 20.0,
+    HasBackground : bool = true,
+
+    ContentExtendWeight : float = 0.0,
+    ContentRelativeWidthHeight : float2 = [0.0, 0.0],
+    ContentMagnifiableWidthHeight : float2 = [0.0, 0.0],
+    ContentComponents : LIST<TBUCKContainerDescriptor> = [],
+    ContentFitStyle : int = ~/ContainerFitStyle/None,
+    ContentAlignementToFather : float2 = [0.5, 0.0],
+    ContentAlignementToAnchor : float2 = [0.5, 0.0],
+    ButtonList : LIST<TBUCKListElementDescriptor> = [],
+    AdditionalComponents = [],
+]
+is BUCKListDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <UniqueName>
+    ComponentFrame = <ComponentFrame>
+    HidePointerEvents = <HidePointerEvents>
+    InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+    BackgroundComponents = <AdditionalComponents>
+
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    (<HasTitle> ?
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKSpecificOutGameScreenTitle
+                (
+                    ElementName = <TitleElementName>
+                    TextToken =  <TitleToken>
+                )
+            ),
+        ] : []
+    )
+    +
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = <ContentExtendWeight>
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = 'Content'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = <ContentRelativeWidthHeight>
+                    MagnifiableWidthHeight = <ContentMagnifiableWidthHeight>
+                    AlignementToFather  = <ContentAlignementToFather>
+                    AlignementToAnchor  = <ContentAlignementToAnchor>
+                )
+                FitStyle = <ContentFitStyle>
+
+                HasBackground = <HasBackground>
+                BackgroundBlockColorToken = "Black80"
+
+                Components = <ContentComponents>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = 'ButtonList'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather  = [0.5, 0.0]
+                    AlignementToAnchor  = [0.5, 0.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+                InterItemMargin = TRTTILength(Magnifiable = <MargeHorizontale>)
+
+                Elements = <ButtonList>
+            )
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+template WindowFrameContainer
+[
+    UniqueName : string = '',
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] AlignementToAnchor = [0.5, 0.5] AlignementToFather = [0.5, 0.5] ),
+
+    TitleElementName = "ScreenName",
+    TitleToken : string = '',
+    HasTitle : bool = true,
+    MargeHorizontale : int = 20.0,
+    HasBackground : bool = true,
+
+    ContentExtendWeight : float = 0.0,
+    ContentRelativeWidthHeight : float2 = [0.0, 0.0],
+    ContentMagnifiableWidthHeight : float2 = [0.0, 0.0],
+    ContentMagnifiableOffset : float2 = [0,0],
+    ContentComponents : LIST<TBUCKContainerDescriptor> = [],
+    ContentFitStyle : int = ~/ContainerFitStyle/None,
+
+    ButtonList : LIST<TBUCKListElementDescriptor> = [],
+    BoutonsAlignementToFather : float2 = [0.5, 1],
+    BoutonsAlignementToAnchor : float2 = [0.5, 1],
+    BoutonsMagnifiableOffset : float2 = [0,0],
+    AdditionalComponents = [],
+]
+is BUCKContainerDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <UniqueName>
+    ComponentFrame = <ComponentFrame>
+
+    Components =
+    (<HasTitle> ?
+        [
+           BUCKSpecificOutGameScreenTitle
+            (
+                ElementName = <TitleElementName>
+                TextToken =  <TitleToken>
+            )
+        ] : []
+    )
+    +
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = 'Content'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = <ContentRelativeWidthHeight>
+                MagnifiableWidthHeight = <ContentMagnifiableWidthHeight>
+                AlignementToFather  = [0.5, 0.0]
+                AlignementToAnchor  = [0.5, 0.0]
+                MagnifiableOffset = <ContentMagnifiableOffset>
+            )
+            FitStyle = <ContentFitStyle>
+
+            HasBackground = <HasBackground>
+            BackgroundBlockColorToken = "Black80"
+
+            Components = <ContentComponents>
+        ),
+        BUCKListDescriptor
+        (
+            ElementName = 'ButtonList'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0,50]
+                AlignementToFather  = <BoutonsAlignementToFather>
+                AlignementToAnchor  = <BoutonsAlignementToAnchor>
+                MagnifiableOffset = <BoutonsMagnifiableOffset>
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength(Magnifiable = <MargeHorizontale>)
+
+            Elements = <ButtonList>
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+// Template used for modale window frames such as the login panel
+template SpecificModaleWindowFrame
+[
+    UniqueName : string = '',
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 0.0] AlignementToAnchor = [0.5, 0.5] AlignementToFather = [0.5, 0.5] ),
+
+    TitleElementName = "ScreenName",
+    TitleToken : string = '',
+    TitleBigLineAction : int = ~/BigLineAction/CutByDots,
+
+    ContentExtendWeight : float = 0.0,
+    ContentRelativeWidthHeight : float2 = [0.0, 0.0],
+    ContentMagnifiableWidthHeight : float2 = [0.0, 0.0],
+    ContentComponents : LIST<TBUCKContainerDescriptor> = [],
+    ContentFitStyle : int = ~/ContainerFitStyle/None,
+
+    HasBlackBackground : bool = true,
+
+    ButtonList : List<TBUCKListElementDescriptor> = [],
+    AdditionalComponents = [],
+    AdditionalComponentsForeground = [],
+    FirstMargin = TRTTILength( Magnifiable = 0.0 ),
+    InterItemMargin = TRTTILength( Magnifiable = 0.0 ),
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+]
+is BUCKListDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <UniqueName>
+    ComponentFrame = <ComponentFrame>
+
+    FirstMargin = <FirstMargin>
+    InterItemMargin = <InterItemMargin>
+    LastMargin = <LastMargin>
+
+    BackgroundComponents = <AdditionalComponents>
+    ForegroundComponents = <AdditionalComponentsForeground>
+    HasBackground = <HasBlackBackground>
+    BackgroundBlockColorToken = "Black80"
+
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = <TitleElementName>
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    AlignementToFather  = [0.5, 0.0]
+                    AlignementToAnchor  = [0.5, 0.0]
+                )
+
+                TextToken = <TitleToken>
+                BigLineAction = <TitleBigLineAction>
+
+                ParagraphStyle = paragraphStyleTextCenter
+                TextStyle = "TextStyleEcranMoniteur"
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                TypefaceToken = "IBM"
+
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextColor       = "White"
+                TextSize        = "24"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0,20]
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = <ContentExtendWeight>
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = 'Content'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = <ContentRelativeWidthHeight>
+                    MagnifiableWidthHeight = <ContentMagnifiableWidthHeight>
+                    AlignementToFather  = [0.5, 0.0]
+                    AlignementToAnchor  = [0.5, 0.0]
+                )
+
+                FitStyle = <ContentFitStyle>
+
+                Components = <ContentComponents>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = 'ButtonList'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather  = [0.5, 0.0]
+                    AlignementToAnchor  = [0.5, 0.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+                InterItemMargin = TRTTILength(Magnifiable = 20.0)
+
+                Elements = <ButtonList>
+            )
+        ),
+    ]
+
+
+)

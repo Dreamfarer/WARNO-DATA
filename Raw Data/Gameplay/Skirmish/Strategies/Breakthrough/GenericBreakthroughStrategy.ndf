@@ -1,0 +1,104 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export GenericBreakthroughStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenBTAI"
+    FirstGenerator = GenBT_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    ShouldUseTaggedCorridorsForTouchDown = true
+    TransitionList =
+    [
+        GenBT_Transition_DefMod,
+        GenBT_Transition_AtkMod,
+
+        GenBTDef_Transition_StartToDeploy,
+        GenBTDef_Transition_StartToFrontLineDefense,
+        GenBTDef_Transition_StartToBackLineDefense,
+        GenBTDef_Transition_DeployToFrontLineDefense,
+        GenBTDef_Transition_FrontLineDefenseToBackLineDefense,
+        GenBTDef_Transition_BackLineDefenseToStrikeBack,
+
+        GenBTAtk_Transition_StartToPhaseC,
+        GenBTAtk_Transition_StartToPhaseB,
+        GenBTAtk_Transition_StartToPhaseA,
+        GenBTAtk_Transition_StartToLowCost,
+        GenBTAtk_Transition_StartToGeneric,
+        GenBTAtk_Transition_DeployToPhaseA,
+        GenBTAtk_Transition_Phase_B,
+        GenBTAtk_Transition_Phase_C,
+        GenBTAtk_Transition_DeployToPhaseA_LowCost,
+        GenBTAtk_Transition_PhaseB_LowCost,
+        GenBTAtk_Transition_PhaseC_LowCost,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export GenBT_Condition_GotoDefMod is TSequenceCondition_MapPossession
+(
+    PossessionRatio = 0.6
+)
+
+export GenBT_Condition_GotoAtkMod is TSequenceCondition_Not
+(
+    Condition = ~/GenBT_Condition_GotoDefMod
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export GenBT_Transition_DefMod is TIAGeneralStrategyTransition
+(
+    Origine = GenBT_Choose_Strategy
+    Condition = GenBT_Condition_GotoDefMod
+    Destination = GenBTDef_Choose_Strategy
+)
+
+export GenBT_Transition_AtkMod is TIAGeneralStrategyTransition
+(
+    Origine = GenBT_Choose_Strategy
+    Condition = GenBT_Condition_GotoAtkMod
+    Destination = GenBTAtk_Choose_Strategy
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export GenBT_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/GenBT_FakeSupport,
+    ]
+)
+
+//-------------------------------------------------------------------------
+export GenBT_FakeSupport is TMacroActionDescriptor_Support_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/GenBT_FakePool]),
+        TCounterTagSettingHolder(TagDeContre = "ThisUnitDoesNotExist"),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBT_FakePool is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6fe1740-6a89-11e9-a18a-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "ThisUnitDoesNotExist",
+            ]
+        ),
+    ]
+)

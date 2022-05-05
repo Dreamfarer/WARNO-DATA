@@ -1,0 +1,19 @@
+export ModelFile_Alouette_II_reco_RFA is 'GameData:/Assets/3D/Units/RFA/Helico/Alouette_II_reco/Alouette_II_reco.Ase2NdfBin'
+
+Modele_Alouette_II_reco_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Alouette_II_reco_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Alouette_II_reco_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Helico/Alouette_II_reco/Alouette_II_reco.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Alouette_II_reco_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Helico/Alouette_II_reco/Alouette_II_reco.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

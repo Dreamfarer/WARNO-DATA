@@ -1,0 +1,47 @@
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+// Ce fichier peut uniquement être chargé dans une transaction qui charge
+// en même temps les fichiers suivants :
+// - using CommonData:/System/GridConstants.ndf (template GridHelper)
+// - using CommonData:/Map/template/DefaultValues.ndf (DefaultValues/CellSize)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+// Constantes permettant de paramétrer la grille et la taille des cases
+// à la fois pour l'IA et le LevelBuild.
+// Merci d'utiliser exclusivement ces constantes et pas autre chose...
+// Tout changement doit être effectué avec une précaution extrême.
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+private GridParameters is TBaseClass
+(
+    RefSize is ~/DefaultValues/CellSize // Taille case de Low (synchro avec la taille des maps)
+    RefSubdivisionCount is 128
+
+    // (AdrienF 24/02/2015) On multiplie la RefSize au lieu de diviser RefSubdivisionCount
+    // car toutes les opérations doivent rester entières
+    IAStratGridSizeScale is 3
+)
+//------------------------------------------------------------------------------
+GridHelper is templateSquareGridHelper
+(
+    RefSize = ~/GridParameters/RefSize
+    RefSubdivisionCount = ~/GridParameters/RefSubdivisionCount
+)
+//------------------------------------------------------------------------------
+APGridHelper is templateSquareGridHelper
+(
+    RefSize = ~/GridParameters/RefSubdivisionCount * ~/ActionPointConsumptionRefs/CaseSize
+    RefSubdivisionCount = ~/GridParameters/RefSubdivisionCount
+)
+//------------------------------------------------------------------------------
+IAStratGridHelper is templateSquareGridHelper
+(
+    RefSize = ~/GridParameters/RefSize * ~/GridParameters/IAStratGridSizeScale
+    RefSubdivisionCount = ~/GridParameters/RefSubdivisionCount
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------

@@ -1,0 +1,371 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export GenericBreakthroughAttackStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenBTAtkAI"
+    FirstGenerator = GenBTAtk_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        GenBTAtk_Transition_StartToPhaseC,
+        GenBTAtk_Transition_StartToPhaseB,
+        GenBTAtk_Transition_StartToPhaseA,
+        GenBTAtk_Transition_StartToLowCost,
+        GenBTAtk_Transition_StartToGeneric,
+        GenBTAtk_Transition_DeployToPhaseA,
+        GenBTAtk_Transition_Phase_B,
+        GenBTAtk_Transition_Phase_C,
+        GenBTAtk_Transition_DeployToPhaseA_LowCost,
+        GenBTAtk_Transition_PhaseB_LowCost,
+        GenBTAtk_Transition_PhaseC_LowCost
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export GenBTAtk_Condition_GotoLowCost is TSequenceCondition_Compare
+(
+    Value1 = [TSequenceConditionValues_RessourcesPointsSharedInTeam]
+    Operator = Less
+    AddToValue2 = 501
+    ResourceType = ~/Resource_CommandPoints
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Condition_GotoGeneric is TSequenceCondition_Not
+(
+    Condition = ~/GenBTAtk_Condition_GotoLowCost
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Condition_PhaseB is TSequenceCondition_Wait
+(
+    Time = 600
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Condition_PhaseC is TSequenceCondition_Wait
+(
+    Time = 1200
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export GenBTAtk_Transition_StartToPhaseC is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_Choose_Strategy
+    Condition = GenBTAtk_Condition_PhaseC
+    Destination = GenBTAtk_Phase_C
+)
+export GenBTAtk_Transition_StartToPhaseB is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_Choose_Strategy
+    Condition = GenBTAtk_Condition_PhaseB
+    Destination = GenBTAtk_Phase_B
+)
+export GenBTAtk_Transition_StartToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_Choose_Strategy
+    Condition = GenBTAtk_Condition_CommandPhase
+    Destination = GenBTAtk_Phase_A
+)
+export GenBTAtk_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_Choose_Strategy
+    Condition = GenBTAtk_Condition_GotoGeneric
+    Destination = GenBTAtk_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Transition_DeployToPhaseA is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_PhaseDeploiement
+    Condition = GenBTAtk_Condition_CommandPhase
+    Destination = GenBTAtk_Phase_A
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Transition_Phase_B is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_Phase_A
+    Condition = GenBTAtk_Condition_PhaseB
+    Destination = GenBTAtk_Phase_B
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Transition_Phase_C is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_Phase_B
+    Condition = GenBTAtk_Condition_PhaseC
+    Destination = GenBTAtk_Phase_C
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Transition_StartToLowCost is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_Choose_Strategy
+    Condition = GenBTAtk_Condition_GotoLowCost
+    Destination = GenBTAtk_PhaseDeploiement_LowCost
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Transition_DeployToPhaseA_LowCost is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_PhaseDeploiement_LowCost
+    Condition = GenBTAtk_Condition_CommandPhase
+    Destination = GenBTAtk_Phase_A_LowCost
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Transition_PhaseB_LowCost is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_Phase_A_LowCost
+    Condition = GenBTAtk_Condition_PhaseB
+    Destination = GenBTAtk_Phase_B_LowCost
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Transition_PhaseC_LowCost is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_Phase_B_LowCost
+    Condition = GenBTAtk_Condition_PhaseC
+    Destination = GenBTAtk_Phase_C_LowCost
+)
+
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export GenBTAtk_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //~/Support_AntiTank,
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_PhaseDeploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+
+        // Capture de zones
+        ~/CaptureAllZoneObjectif,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Support_AntiTank,
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Grosse attaque
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200 => un cmd pas cher, une reco pas cher, et le reste de tanks pour fill le budget en random.
+        ~/GenBTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+        ~/GenBTAtk_Artillery_TriggerHappy_1for4Corridors,
+
+
+        // Reste du front
+        ~/Attack_Adaptive,          // ~100
+        ~/Attack_Adaptive,          // ~100
+        ~/Attack_Adaptive,          // ~100
+        ~/Attack_Filler,            // budget 40
+        ~/Reco,            // 40 par reco
+        ~/AirReco,
+        ~/Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+    ] + ~/GenBTAtk_Defenses_Airstrike_Arti_Shuffle_Deploy
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    // Dans les difficultés supérieures il faudra surement maintenir
+    // ça avec des maintain à la phase d'après pour être sur qu'on
+    // produise de nouvelles unités
+    ScalingGeneratorList = ~/GenBTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Phase_A is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Capture de zones
+        ~/CaptureAllZoneObjectif,
+
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Support_AntiTank,
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+        ~/Attack_Filler,
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        ~/Defense_Static_AA,
+        ~/GenBTAtk_Artillery_TriggerHappy_1for4Corridors,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/GenBTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+        ~/GenBTAtk_Artillery_Expensive,
+
+        ~/Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Attack_Adaptive,
+        ~/Attack_Adaptive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/Attack_Objectives,
+
+        ~/Airstrike_Offense,
+        ~/Airstrike_Defense,
+
+        ~/SuperCommander,
+
+        ~/Reco,
+        ~/Attack_MBT, // MBT devient low prio en phase A pour éviter de pomper trop de thune
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Maintain_CorridorDefenses,
+        ~/Supply_Skirmish_Allied,
+
+    ] + ~/Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    // Dans les difficultés supérieures il faudra surement maintenir
+    // ça avec des maintain à la phase d'après pour être sur qu'on
+    // produise de nouvelles unités
+    ScalingGeneratorList = ~/GenBTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+private template GenBTAtk_Phases_B_and_C_template
+[
+]
+is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/Maintain_CorridorAttacks,
+        ~/Maintain_ObjectiveAttacks,
+        ~/Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Support_AntiTank,
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+        ~/Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Attack_Objectives,
+
+        ~/Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Attack_Adaptive,
+        ~/Attack_Adaptive,
+
+        ~/SuperCommander,
+
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/GenBTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+        ~/GenBTAtk_Artillery_Expensive,
+
+        //------------------------------
+        // Support de la main Attack
+        //------------------------------
+        ~/Attack_MBT,       // On enlève le status support
+
+        ~/Airstrike_Offense,
+        ~/Airstrike_Defense,
+
+        // Maintien
+        ~/Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+
+    ] + ~/Defenses_Airstrike_Arti_Shuffle
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    // Dans les difficultés supérieures il faudra surement maintenir
+    // ça avec des maintain à la phase d'après pour être sur qu'on
+    // produise de nouvelles unités
+    ScalingGeneratorList = ~/GenBTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Phase_B is GenBTAtk_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+export GenBTAtk_Phase_C is GenBTAtk_Phases_B_and_C_template()
+//-------------------------------------------------------------------------
+
+// Le concept de ces blocs de missions
+// est d'à la fois défendre ses arrières
+// mais aussi de faire usage d'unités diverses
+// (artillerie et avions) pour débloquer
+// les situations et appuyer le reste des missions
+GenBTAtk_Defenses_Airstrike_Arti_Shuffle_Deploy is
+[
+    ~/Airstrike_Assault,
+    ~/GenBTAtk_Artillery_Expensive,
+    ~/Defense_Static_AA,
+    ~/Airstrike_Offense,
+    ~/AirReco,
+    ~/Airstrike_Defense,
+    ~/GenBTAtk_Artillery_TriggerHappy_1for4Corridors,
+]
+
+GenBTAtk_Scaling is
+[
+    ~/Attack_Main_Autogen,
+    ~/Attack_Adaptive_Autogen,
+    ~/GenBTAtk_Artillery_Expensive_Autogen,
+    ~/Attack_Objectives_Autogen,
+    ~/Attack_Adaptive_Autogen,
+    ~/Defense_Dynamic_Adaptive_Autogen,
+    ~/Defense_Dynamic_Adaptive_Autogen,
+    ~/Airstrike_Defense_Autogen,
+    ~/Defense_Dynamic_Adaptive_Autogen,
+    ~/Defense_Static_AA_Autogen,
+    ~/GenBTAtk_Artillery_TriggerHappy_Autogen,
+    ~/Airstrike_Offense_Autogen,
+    ~/GenBTAtk_Artillery_TriggerHappy_Autogen,
+    ~/Airstrike_Assault_Autogen,
+]
+

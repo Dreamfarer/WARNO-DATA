@@ -1,0 +1,19 @@
+export ModelFile_OH58D_Kiowa_Warrior_US is 'GameData:/Assets/3D/Units/US/Helico/OH_58D_Kiowa_Warrior/OH_58D_Kiowa_Warrior.Ase2NdfBin'
+
+Modele_OH58D_Kiowa_Warrior_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_OH58D_Kiowa_Warrior_US
+    CivMask =  CivMask/Common
+)
+
+Modele_OH58D_Kiowa_Warrior_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/OH_58D_Kiowa_Warrior_MID/OH_58D_Kiowa_Warrior_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_OH58D_Kiowa_Warrior_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/LODS/OH_58D_Kiowa_Warrior_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

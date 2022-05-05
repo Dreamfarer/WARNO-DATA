@@ -1,0 +1,19 @@
+export ModelFile_Mi_2_reco_SOV is 'GameData:/Assets/3D/Units/URSS/Helico/Mi_2_reco/Mi_2_reco.Ase2NdfBin'
+
+Modele_Mi_2_reco_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_2_reco_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_2_reco_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/Mi_2_reco/Mi_2_reco.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_2_reco_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/Mi_2_reco/Mi_2_reco.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

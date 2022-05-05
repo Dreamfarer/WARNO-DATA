@@ -1,0 +1,19 @@
+export ModelFile_OH58C_Scout_US is 'GameData:/Assets/3D/Units/US/Helico/OH_58D_Combat_Scout/OH_58C_Scout.Ase2NdfBin'
+
+Modele_OH58C_Scout_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_OH58C_Scout_US
+    CivMask =  CivMask/Common
+)
+
+Modele_OH58C_Scout_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/OH_58D_Combat_Scout_MID/OH_58C_Scout_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_OH58C_Scout_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/LODS/OH_58C_Scout_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,159 @@
+StrategicObjectivesResources is TUIObjectivesResources
+(
+    Layer = $/UserInterface/UILayer_Labels
+
+    ObjectiveLabelMagnificationMultiplier = 1.0
+
+    ObjectiveLabelDescriptors =
+    [
+        PrimaryStrategicObjectiveLabel, // Primary
+        BonusStrategicObjectiveLabel,   // Bonus
+        InfoStrategicObjectiveLabel,    // Hint
+        CaptureStrategicObjectiveLabel, // CapturePoint
+        nil                             //ConquestObjective
+    ]
+
+    ObjectiveFlagBorderColor = RGBA[184.0, 184.0, 184.0, 255.0] //La couleur de la bordure autour du drapeau
+    ObjectiveFlagBorderWidth = 2 // La largeur de la bordure autour du drapeau
+    ObjectiveFlagNotchWidth = 0.2 //Par exemple, 0.2 = l'encoche du drapeau fait 20% de la largeur du "FlagContainer"
+)
+
+PrimaryStrategicObjectiveLabel is StrategicObjectiveLabelTemplate
+(
+    NewObjectiveToken = "OBJ_NEWP"
+)
+
+BonusStrategicObjectiveLabel is StrategicObjectiveLabelTemplate
+(
+    NewObjectiveToken = "OBJ_NEWS"
+)
+
+InfoStrategicObjectiveLabel is StrategicObjectiveLabelTemplate
+(
+    NewObjectiveToken = "OBJ_NEWI"
+)
+
+CaptureStrategicObjectiveLabel is StrategicObjectiveLabelTemplate
+(
+    NewObjectiveToken = "OBJ_NEWCP"
+)
+
+private template StrategicObjectiveLabelTemplate
+[
+    NewObjectiveToken : string = ""
+]
+is TUIObjectiveLabelDescriptor
+(
+    ScaleFactor = 0.0
+    AltitudeMaxSize = 500000.0
+    MinScale = 0.0
+    MaxScale = 1.0
+
+    NewObjectiveToken = <NewObjectiveToken>
+
+    ObjectiveLabelTransformation = TLabelTransformationComposition
+    (
+        Transformations = [
+            TLabelTransformFaceCam
+            (
+                Camera = $/M3D/Camera/CameraPrincipale
+            ),
+            TLabelTransformFakePerspective
+            (
+                ScalePerAltitudeConstReso = 0.6
+                Camera = $/M3D/Camera/CameraPrincipale
+                Scene2D = $/M3D/Scene/Scene_2D_Interface
+                ConstnessFactor = 0.6
+            ),
+        ]
+    )
+
+    ComponentDescriptor = BUCKListDescriptor
+    (
+        Axis = ~/ListAxis/Vertical
+        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            AlignementToAnchor = [ 0.5, 1.0 ]
+        )
+
+        Elements =
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [ 1.0, 1.0 ]
+                    )
+
+                    Components =
+                    [
+                        //Poteau du drapeau
+                        BUCKContainerDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [ 2.0, 60.0 ]
+                                AlignementToAnchor = [ 0.5, 1.0 ]
+                                AlignementToFather = [ 0.5, 1.0 ]
+                            )
+
+                            ElementName = "Pole"
+
+                            HasBackground = true
+                            BackgroundBlockColorToken = 'Steelman_Background_BoutonOrdreDeBataille' //SD2_Blanc184'
+                        ),
+                        //Petit texte indiquant les points rapportés
+                        // Alexis : j'ai mis enc ommentaire car selon les retours que j'avais les gens trouvaient que c'était trop intrusif
+                        {BUCKTextDescriptor
+                                                (
+                                                    ComponentFrame = TUIFramePropertyRTTI
+                                                    (
+                                                        AlignementToAnchor = [ 0.5, 1.0 ]
+                                                        AlignementToFather = [ 0.5, 1.0 ]
+                                                    )
+                                                    ElementName = "Title"
+
+                                                    TextStyle = "Default"
+                                                    TypefaceToken = "UISecondFont"
+
+                                                    ParagraphStyle = TParagraphStyleRTTI
+                                                    (
+                                                        Alignment = UIText_Center
+                                                        VerticalAlignment = UIText_VerticalCenter
+                                                    )
+
+                                                    ClipContent = true
+                                                    TextSize = '8'
+                                                    TextColor = 'SD2_Transparent' // mis en transparent car pas génial sur SD2
+
+                                                    HasBackground = false
+                                                    BackgroundBlockColorToken = 'SD2_Blanc184'
+
+                                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                                                    VerticalFitStyle = ~/FitStyle/FitToContent
+                                                ),}
+                        //Forme du drapeau (ce container est récupéré dans le C++ et la texture du drapeau est découpée puis appliquée à l'intérieur)
+                        BUCKHintableAreaDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [ 48.0, 30.0 ]
+                                MagnifiableOffset = [4, -59.0]
+                                AlignementToFather = [ 0.5, 1.0 ]
+                            )
+
+                            ElementName = "FlagContainer"
+
+                            HintStandardBUCKComponent = ~/HintInGameBUCKComponent
+                            MaskEvents = true //Évite que le hint du terrain s'affiche si la souris est immobile sur le drapeau
+                        )
+                    ]
+                )
+            )
+        ]
+    )
+)

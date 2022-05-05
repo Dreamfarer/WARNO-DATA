@@ -1,0 +1,100 @@
+BUCKSpecificStrategicObjectiveScoreMainComponentDescriptor is BUCKRackDescriptor
+(
+    ElementName = 'TextScoreRack'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 25.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    //HasBackground = true
+
+    //HasBorder = true
+        BorderThicknessToken = "2"
+        BorderLineColorToken = "LigneSeparatricePanelRessources"
+        BordersToDraw = ~/TBorderSide/Right
+
+    //FirstMargin = TRTTILength(Magnifiable = 10.0
+
+    BladeDescriptor = BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 25.0]
+            AlignementToFather = [0.0, 0.5]
+            AlignementToAnchor = [0.0, 0.5]
+        )
+        Axis = ~/ListAxis/Horizontal
+
+
+
+        FirstMargin = TRTTILength(Magnifiable = 10.0)
+        LastMargin = TRTTILength(Magnifiable = 10.0)
+
+        Elements =
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextureDescriptor
+                (
+                    ElementName = 'Flag'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [45.0, 25.0]
+
+                    )
+
+                    TextureFrame = TUIFramePropertyRTTI()
+                    ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                )
+            ),
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = 'Score'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [0.0, 25.0]
+                    )
+
+                    ParagraphStyle = ~/LDHintParagraphStyleLeftAlignedExact
+                    TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 10.0, 0.0])
+                    TextStyle = "Default"
+
+                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                    VerticalFitStyle = ~/FitStyle/UserDefined
+
+                    TypefaceToken = "UIMainFont"
+                    BigLineAction = ~/BigLineAction/MultiLine
+                    ColorMode = ~/ColorMode/Override
+
+                    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                    TextColor = "SD2_Blanc184"
+                    TextSize = "15"
+                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                )
+            )
+        ]
+    )
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner
+        (
+            RoundedVertexes = [false, false, true, true]
+            BackgroundBlockColorToken = 'SM_RifleGreen_75'
+            BorderLineColorToken = 'SM_Grullo'
+        )
+    ]
+
+)
+//-------------------------------------------------------------------------------------
+UISpecificStrategicObjectiveScoreViewDescriptor is TUISpecificStrategicObjectiveScoreViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicObjectiveScoreMainComponentDescriptor
+    MainComponentContainerUniqueName = "StrategicGlobalObjectivesScoreContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

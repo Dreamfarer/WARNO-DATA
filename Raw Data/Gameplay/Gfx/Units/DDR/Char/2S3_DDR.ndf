@@ -1,0 +1,20 @@
+export ModelFile_2S3_DDR is 'GameData:/Assets/3D/Units/DDR/Artillerie/2S3M_Akatsiya/2S3M_Akatsiya.Ase2NdfBin'
+
+Modele_2S3_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_2S3_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_2S3_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Artillerie/2S3M_Akatsiya/2S3M_Akatsiya.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_2S3_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Artillerie/2S3M_Akatsiya/2S3M_Akatsiya.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

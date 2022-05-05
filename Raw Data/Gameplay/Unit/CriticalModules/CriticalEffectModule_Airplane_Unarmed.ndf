@@ -1,0 +1,39 @@
+
+export CriticalEffectModule_Airplane_Unarmed is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,100)
+    TerrainCriticalEffectTimer = 5.0
+
+    EffectsOnFront =
+    [
+        AirplaneCriticalEffect_WingRippedOff(Roll = (1,10)), // Wing ripped off -> mort
+        AirplaneCriticalEffect_ElevatorRippedOff(Roll = (11,20)), // Elevator ripped off -> mort
+        AirplaneCriticalEffect_EngineOnFire(Roll = (21,30)), // Engine on fire -> mort
+        AirplaneCriticalEffect_FuelTankOnFire(Roll = (31,40)), // Fuel tank on fire -> mort
+        AirplaneCriticalEffect_PilotKilled(Roll = (41,50)), // Pilot killed -> mort
+        AirplaneCriticalEffect_PilotInjured(Roll = (51,60)), // Pilot injured -> Deroute
+        AirplaneCriticalEffect_PilotPanicked(Roll = (61,70)), // Pilot Panicked -> Deroute
+    ]
+
+    EffectsOnSides =
+    [
+        AirplaneCriticalEffect_WingRippedOff(Roll = (1,10)), // Wing ripped off -> mort
+        AirplaneCriticalEffect_ElevatorRippedOff(Roll = (11,20)), // Elevator ripped off -> mort
+        AirplaneCriticalEffect_EngineOnFire(Roll = (21,30)), // Engine on fire -> mort
+        AirplaneCriticalEffect_FuelTankOnFire(Roll = (31,40)), // Fuel tank on fire -> mort
+        AirplaneCriticalEffect_PilotKilled(Roll = (41,50)), // Pilot killed -> mort
+        AirplaneCriticalEffect_PilotInjured(Roll = (51,60)), // Pilot injured -> Deroute
+        AirplaneCriticalEffect_PilotPanicked(Roll = (61,70)), // Pilot Panicked -> Deroute
+    ]
+
+    EffectsOnRear =
+    [
+        AirplaneCriticalEffect_WingRippedOff(Roll = (1,10)), // Wing ripped off -> mort
+        AirplaneCriticalEffect_ElevatorRippedOff(Roll = (11,20)), // Elevator ripped off -> mort
+        AirplaneCriticalEffect_EngineOnFire(Roll = (21,30)), // Engine on fire -> mort
+        AirplaneCriticalEffect_FuelTankOnFire(Roll = (31,40)), // Fuel tank on fire -> mort
+        AirplaneCriticalEffect_PilotKilled(Roll = (41,50)), // Pilot killed -> mort
+        AirplaneCriticalEffect_PilotInjured(Roll = (51,60)), // Pilot injured -> Deroute
+        AirplaneCriticalEffect_PilotPanicked(Roll = (61,70)), // Pilot Panicked -> Deroute
+    ]
+)

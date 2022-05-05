@@ -1,0 +1,116 @@
+
+GameDurationXPEvaluator is TFunctionDeclaration
+(
+    Params = [ inGameDuration is TAlias(ExpectedType = 'unsigned') ]
+
+    GameDurationForMaxXP is 35.0 // minutes
+
+    // D'après l'ODS : =MIN((1-((M2-C2)/M2))*100;100)
+    XP is (1 - ((GameDurationForMaxXP - inGameDuration) div GameDurationForMaxXP)) * 100
+
+    Code = ifte[XP > 100, 100, XP]
+)
+
+// Ne pas toucher
+GameDurationXPEvaluation is GameDurationXPEvaluator[ TGetFromContext_U32(Name = 'InGameDuration' Variability = $/Variability/Fx) ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+VictoryLevelXPEvaluator is TFunctionDeclaration
+(
+    Params = [ inGameDurationXP is TAlias(ExpectedType = 'unsigned'),
+               inVictoryLevelMultiplier is TAlias(ExpectedType = 'float') ]
+
+    // D'après l'ODS : =D4*E3
+    Code = inGameDurationXP * inVictoryLevelMultiplier
+)
+
+// Ne pas toucher
+VictoryLevelXPEvaluation is VictoryLevelXPEvaluator[ TGetFromContext_U32(Name = 'InGameDurationXP' Variability = $/Variability/Fx),
+                                                     TGetFromContext_Float(Name = 'InVictoryLevelMultiplier' Variability = $/Variability/Fx) ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+WinstreakMultiplierEvaluator is TFunctionDeclaration
+(
+    Params = [ inWinstreak is TAlias(ExpectedType = 'unsigned') ]
+
+    // D'après l'ODS : =MIN(C5/10+1;2)
+    WinstreakMultiplier is (inWinstreak div 10.0) + 1
+
+    MaxWinstreakMultiplier is 2
+
+    Code = ifte[WinstreakMultiplier > MaxWinstreakMultiplier, MaxWinstreakMultiplier, WinstreakMultiplier]
+)
+
+// Ne pas toucher
+WinstreakMultiplierEvaluation is WinstreakMultiplierEvaluator[ TGetFromContext_U32(Name = 'InWinstreak' Variability = $/Variability/Fx) ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+BonusEvaluator is TFunctionDeclaration
+(
+    Params = [ inGameDurationXP is TAlias(ExpectedType = 'unsigned'),
+               inWinStreakMultiplier is TAlias(ExpectedType = 'float'),
+               inPercent is TAlias(ExpectedType = 'unsigned'),
+               inTheMoreTheBest is TAlias(ExpectedType = 'bool') ]
+
+    // D'après l'ODS : =(E3*C6/1000)*D5  OU  =(E3*(100-C8)/1000)*D5 si + le % est faible + on gagne d'xp (cf. inTheMoreTheBest)
+    BaseBonus is inGameDurationXP * inWinStreakMultiplier div 1000.0
+    Bonus is ifte[inTheMoreTheBest, BaseBonus * inPercent
+                                  , BaseBonus * (100 - inPercent)]
+    Code = Bonus
+)
+
+// Ne pas toucher
+BonusEvaluation is BonusEvaluator[ TGetFromContext_U32(Name = 'InGameDurationXP' Variability = $/Variability/Fx),
+                                   TGetFromContext_Float(Name = 'InWinStreakMultiplier' Variability = $/Variability/Fx),
+                                   TGetFromContext_U32(Name = 'InPercent' Variability = $/Variability/Fx),
+                                   TGetFromContext_Bool(Name = 'InTheMoreTheBest' Variability = $/Variability/Fx) ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+TotalXPEvaluator is TFunctionDeclaration
+(
+    Params = [ inVictoryLevelXP is TAlias(ExpectedType = 'unsigned'),
+               inKillsBonusXP is TAlias(ExpectedType = 'unsigned'),
+               inCommandPointsBonusXP is TAlias(ExpectedType = 'unsigned'),
+               inCasualtiesBonusXP is TAlias(ExpectedType = 'unsigned'),
+               inTotalXpMultiplier is TAlias(ExpectedType = 'float') ]
+
+    // D'après l'ODS : =E4+E6+E7+E8
+    Code = (inVictoryLevelXP + inKillsBonusXP + inCommandPointsBonusXP + inCasualtiesBonusXP) * inTotalXpMultiplier
+)
+
+// Ne pas toucher
+TotalXPEvaluation is TotalXPEvaluator[ TGetFromContext_U32(Name = 'InVictoryLevelXP' Variability = $/Variability/Fx),
+                                       TGetFromContext_U32(Name = 'InKillsBonusXP' Variability = $/Variability/Fx),
+                                       TGetFromContext_U32(Name = 'InCommandPointsBonusXP' Variability = $/Variability/Fx),
+                                       TGetFromContext_U32(Name = 'InCasualtiesBonusXP' Variability = $/Variability/Fx),
+                                       TGetFromContext_Float(Name = 'InTotalXPMultiplier' Variability = $/Variability/Fx), ]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+export WargamePlayerXPCalculatorDescriptor is TModernWarfarePlayerXPCalculatorDescriptor
+(
+    XPMultiplierByVictoryType =
+    [
+        0.4, // TotalDefeat
+        0.5, // MajorDefeat
+        0.6, // MinorDefeat
+        0.7, // Draw
+        0.8, // MinorVictory
+        0.9, // MajorVictory
+        1.0, // TotalVictory
+    ]
+
+    XPMultiplierSkirmish = 0.8
+    XPMultiplierMulti = 1
+    XPMultiplierRanked = 1.2
+
+    GameDurationXPEvaluable = ~/GameDurationXPEvaluation
+    VictoryLevelXPEvaluable = ~/VictoryLevelXPEvaluation
+    WinstreakMultiplierEvaluable = ~/WinstreakMultiplierEvaluation
+    BonusEvaluable = ~/BonusEvaluation
+    TotalXPEvaluable = ~/TotalXPEvaluation
+)

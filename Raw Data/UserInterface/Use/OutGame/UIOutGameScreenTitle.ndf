@@ -1,0 +1,30 @@
+template BUCKSpecificOutGameScreenTitle
+[
+    ElementName : string = "ScreenName",
+    TextToken : string = "",
+    BigLineAction : int = ~/BigLineAction/CutByDots,
+]
+is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToFather  = [0.5, 0.0]
+        AlignementToAnchor  = [0.5, 0.0]
+    )
+
+    ParagraphStyle = ~/paragraphStyleTextCenter
+    TextStyle = "Default"
+
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TextColor       = "White"
+    TextSize        = "50"
+    TextToken       = <TextToken>
+    TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+    BigLineAction = <BigLineAction>
+    TypefaceToken   = "UISecondFont"
+)

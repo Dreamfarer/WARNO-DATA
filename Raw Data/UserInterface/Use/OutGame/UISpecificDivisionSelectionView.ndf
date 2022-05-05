@@ -1,0 +1,788 @@
+DivisionsBriefRadioManager is TBUCKRadioButtonManager()
+
+//-------------------------------------------------------------------------------------
+
+private DivisionBriefSelectionBackButton is ConfirmButton
+(
+    ElementName = 'BackButton'
+    TextToken = 'NV_BACK'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+    ButtonMagnifiableWidthHeight = [175.0, 35.0]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+
+//-------------------------------------------------------------------------------------
+
+private DivisionBriefSelectionSelectButton is ConfirmButton
+(
+    ElementName = 'SelectButton'
+    TextToken = 'DS_SELECT'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+    ButtonMagnifiableWidthHeight = [175.0, 35.0]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur_cyan'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'Cyan'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_cyan'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+
+//-------------------------------------------------------------------------------------
+private SoloLaunchButton is ConfirmButton
+(
+    ElementName = 'SelectButton'
+    TextToken = 'DS_SELECT'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+    ButtonMagnifiableWidthHeight = [175.0, 35.0]
+    TextTypefaceToken = "Liberator"
+    TextStyle = 'TextStyleEcranMoniteur_cyan'
+    TextColorToken = 'VertConfirm'
+    BorderLineColorToken = 'VertConfirm'
+    HasBackground = false
+    BackgroundBlockColorToken = 'loginBoutonBackground_cyan'
+    TextSizeToken = '32'
+    BorderThicknessToken = '3'
+    BigLineAction = ~/BigLineAction/ResizeFont
+    TextPadding = TRTTILength4( Magnifiable = [5.0, 0.0, 5.0, 0.0] )
+)
+
+private SoloQuitButton is ConfirmButton
+(
+    ElementName = 'BackButton'
+    TextToken = 'BTN_CLOSE'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+    ButtonMagnifiableWidthHeight = [175.0, 35.0]
+    TextTypefaceToken = "Liberator"
+    //TextStyle = 'TextStyleEcranMoniteur_gris'
+    TextColorToken = 'boutonFiltre'
+    BorderLineColorToken = 'boutonFiltre'
+    HasBackground = false
+    BackgroundBlockColorToken = 'loginBoutonBackground_cyan'
+    TextSizeToken = '32'
+    BorderThicknessToken = '3'
+)
+//-------------------------------------------------------------------------------------
+
+private DivisionBriefSelectionCloseButton is MenuActionButton
+(
+    ElementName = 'BackButton'
+    TextToken = 'BTN_CLOSE'
+)
+
+//-------------------------------------------------------------------------------------
+
+private DivisionBriefSelectionSelectVersusButton is ConfirmButton
+(
+    ElementName = 'SelectButtonVersus'
+    TextToken = 'DS_SELECTV'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_FR_V ) )
+)
+
+//-------------------------------------------------------------------------------------
+
+private DivisionBriefSelectionSelectCoopButton is ConfirmButton
+(
+    ElementName = 'SelectButtonCoop'
+    TextToken = 'DS_SELECTC'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_FR_C ) )
+)
+
+//-------------------------------------------------------------------------------------
+
+DivisionBriefDescriptorForSelection is BUCKSpecificDivisionBriefMainComponentDescriptor
+(
+    AlignementToAnchor = [0.0, 0.0]
+    AlignementToFather = [0.0, 0.0]
+    IsTogglable = true
+    CannotDeselect = true
+    RadioButtonManager = ~/DivisionsBriefRadioManager
+    HasBattlegroup = false
+
+    // envoie BUCKSpecificDivisionBriefMainComponentDescriptor
+)
+
+//-------------------------------------------------------------------------------------
+
+DivisionBriefsScrollingContainer is BUCKSpecificScrollingContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    HasVerticalScrollbar = true
+    ScrollBarBackgroundToken = "Transparent"
+    ScrollBarElevatorBackgroundToken = "VertLogin"
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [7.0, 0.0]
+        MagnifiableOffset = [7.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKRackDescriptor
+        (
+            ElementName = "DivisionsBriefRack"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+            FirstMargin = TRTTILength(Magnifiable = 10.0)
+            InterItemMargin = TRTTILength(Magnifiable = 0.0)
+            LastMargin = TRTTILength(Magnifiable = 10.0)
+
+            BladeDescriptor = ~/DivisionBriefDescriptorForSelection
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+DivisionsBriefMultiListTitle is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 20.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "VertLogin"
+
+    Axis = ~/ListAxis/Horizontal
+    FirstMargin = TRTTILength(Magnifiable = 53.0)
+    Elements =
+    [
+
+        MultilistTitle
+        (
+            ElementName = 'DivisionFlagMultiList'
+            SortingType = ~/MultiListSorting/Integer
+            TextToken = 'DB_FLAG'
+            HintBodyToken = "div_counB"
+            HintExtendedToken = ""
+            MagnifiableWidthHeight = [55.0, 0.0]
+        ),
+        MultilistTitle
+        (
+            ElementName = 'AllianceTextMultiList'
+            SortingType = ~/MultiListSorting/Integer
+            TextToken = 'DB_ALLIA'
+            HintBodyToken = "div_alliB"
+            HintExtendedToken = "div_alliE"
+        ),
+        MultilistTitle
+        (
+            ElementName = 'DivisionNameMultiList'
+            SortingType = ~/MultiListSorting/StringStartingWithNumber
+            TextToken = 'DB_NAME'
+            HintBodyToken = "div_nameB"
+            HintExtendedToken = ""
+            MagnifiableWidthHeight = [505.0, 0.0]
+        ),,
+        MultilistTitle
+        (
+            ElementName = 'DivisionPowerTextMultiList'
+            TextToken = 'DB_RATE'
+            HintBodyToken = "div_rateB"
+            HintExtendedToken = "div_rateE"
+            MagnifiableWidthHeight = [52.0, 0.0]
+        ),
+        MultilistTitle
+        (
+            ElementName = 'DivisionUnitTypeMultiList'
+            SortingType = ~/MultiListSorting/Integer
+            TextToken = 'DB_UTYPE'
+            HintBodyToken = "div_typeB"
+            HintExtendedToken = "div_typeE"
+            MagnifiableWidthHeight = [52.0, 0.0]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+template MultilistTitle
+[
+    ElementName : string,
+    TextToken : string,
+    HintBodyToken : string,
+    HintExtendedToken : string,
+    ShowCheckbox : bool = false,
+    SortingType : int = ~/MultiListSorting/String,
+    ExtendWeight : float = 0.0,
+    MagnifiableWidthHeight : float2 = [70.0, 0.0],
+] is BUCKListElementDescriptor
+(
+    ExtendWeight = <ExtendWeight>
+    ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+    (
+
+        ElementName = <ElementName>
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+            MagnifiableWidthHeight = <MagnifiableWidthHeight>
+        )
+        ShowCheckbox = false
+        SortingType = <SortingType>
+
+        HidePointerEvents = true
+        HasBorder = true
+        BorderThicknessToken = '2'
+        BorderLineColorToken = 'MarronPanel_noir'
+        BordersToDraw = ~/TBorderSide/Left
+        Components =
+        [
+            BUCKTextDescriptor
+            (
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/UserDefined
+                ParagraphStyle = paragraphStyleTextCenter
+                BigLineAction = ~/BigLineAction/ResizeFont
+                TextStyle = 'Default'
+                TypefaceToken = "IBM"
+                TextSize = '22'
+                TextColor = 'Noir'
+                TextToken = <TextToken>
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextPadding = TRTTILength4( Magnifiable = [2.0, 0.0, 2.0, 0.0] )
+            ),
+            BUCKSpecificHintableArea
+            (
+                DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                HintBodyToken = <HintBodyToken>
+                HintExtendedToken = <HintExtendedToken>
+            )
+        ]
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+private DivisionEmblem is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+    (
+        ElementName = 'DivisionEmblemMultiList'
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+            MagnifiableWidthHeight = [80.0, 0.0]
+        )
+
+        HidePointerEvents = true
+        Components =
+        [
+            // Title Text
+            TitreTexte (TextToken = 'DB_EMBLEM'),
+            BUCKSpecificHintableArea
+            (
+                DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                HintBodyToken = "div_embB"
+                HintExtendedToken = "div_embE"
+            )
+        ]
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+DivisionsBriefMultiList is BUCKMultiListDescriptor
+(
+    ElementName = "DivisionsBriefMultiList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [800.0, 400.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    ColumnNames =
+    [
+        "DivisionEmblemMultiList",
+    ]
+
+    SortableColumnNames =
+    [
+        "AllianceTextMultiList",
+        "DivisionPowerTextMultiList",
+        "DivisionUnitTypeMultiList",
+        "DivisionNameMultiList",
+        "DivisionFlagMultiList"
+    ]
+
+    RackName = "DivisionsBriefRack"
+
+    TitleDescriptor = ~/DivisionsBriefMultiListTitle
+    ContentDescriptor = ~/DivisionBriefsScrollingContainer
+)
+
+//-------------------------------------------------------------------------------------
+
+DivisionInfosDisplay is BUCKContainerDescriptor
+(
+    ElementName = "DivisionInfosDisplay"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0 , 170.0 ]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [50.0, 0.0]
+                MagnifiableWidthHeight = [790.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            InterItemMargin = TRTTILength(Magnifiable = 20.0)
+            HasBorder = true
+            BorderThicknessToken = '3'
+            BorderLineColorToken = 'VertLogin'
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = DisplayInfoGreenLine
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificScrollingContainerDescriptor
+                    (
+                        ElementName = "DivisionHistoryScrollingContainer"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 130.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        HasVerticalScrollbar = true
+                        ScrollBarBackgroundToken = 'Transparent'
+                        ScrollBarElevatorBackgroundToken = 'VertLogin'
+                        VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [7.0, 0.0]
+                            AlignementToFather = [1.0, 0.0]
+                            MagnifiableOffset = [7.0, 0.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = "DivisionHistoryText"
+
+                                ComponentFrame = TUIFramePropertyRTTI()
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Left
+                                    VerticalAlignment = ~/UIText_Up
+                                    BigWordAction = ~/BigWordAction/BigWordNewLine
+                                    InterLine = 0.2
+                                )
+
+                                BigLineAction = ~/BigLineAction/MultiLine
+
+                                HorizontalFitStyle = ~/FitStyle/FitToParent
+                                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                TextStyle = 'TextStyleEcranMoniteur'
+                                TypefaceToken = "IBM"
+                                TextSize = '18'
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                TextColor = "Blanc"
+                                TextPadding = TRTTILength4 (Magnifiable = [10.0, 0.0, 5.0, 10.0])
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    ElementName = 'DivisionDescriptionHint'
+                                    DicoToken = ~/LocalisationConstantes/dico_unites
+                                )
+                            )
+                        ]
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template TitreTexte
+[
+    TextToken : string,
+]
+is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+    TextPadding = TRTTILength4(Magnifiable = [3.0, 0.0, 0.0, 0.0])
+    ParagraphStyle = TParagraphStyleRTTI (VerticalAlignment = ~/UIText_VerticalCenter)
+    BigLineAction = ~/BigLineAction/ResizeFont
+    TextStyle = 'Default'
+    TypefaceToken = "UIMainFont"
+    TextSize = '14'
+    TextColor = 'MarronPanel_noir'
+    TextToken = <TextToken>
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+//-------------------------------------------------------------------------------------
+
+DisplayInfoGreenLine is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [790.0, 1.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'VertLogin'
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 20.0]
+            )
+
+            InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+            LastMargin = TRTTILength( Magnifiable = 0.0 )
+            Axis = ~/ListAxis/Horizontal
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = "DivisionEmblem"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [1.0, 1.0]
+                        )
+
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+
+                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = "DivisionPortrait"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [1.0, 1.0]
+                        )
+
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+
+                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private SpecificDivisionSelectionContent is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    InterItemMargin = TRTTILength(Magnifiable = 10.0 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/DivisionsBriefMultiList
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/DivisionInfosDisplay
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+ScreenMainList is BUCKListDescriptor
+(
+    ElementName = "ScreenMainList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableOffset = [10.0, -150.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    InterItemMargin = TRTTILength(Magnifiable = 0.0)
+
+    Elements =
+    [
+        // ligne ****
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 20.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = paragraphStyleTextCenter
+                TextStyle = "TextStyleEcranMoniteur"
+
+                VerticalFitStyle = ~/FitStyle/UserDefined
+                TypefaceToken = "IBM"
+                BigLineAction = ~/BigLineAction/MultiLine
+                TextToken = 'seldiv'
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextColor = "Blanc"
+                TextSize = "24"
+            )
+        ),
+
+        BUCKListElementVerticalSpacer( Magnifiable = 20.0),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/SpecificDivisionSelectionContent
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                    MagnifiableWidthHeight = [0.0, 20.0]
+                )
+
+                InterItemMargin = TRTTILength( Magnifiable = 20.0 )
+                LastMargin = TRTTILength( Magnifiable = 0.0 )
+                Axis = ~/ListAxis/Horizontal
+
+                Elements =
+                [
+                    BUCKListElementDescriptor( ComponentDescriptor = ~/DivisionBriefSelectionSelectButton ),
+                    BUCKListElementDescriptor( ComponentDescriptor = ~/DivisionBriefSelectionBackButton ),
+                ]
+            )
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private BUCKSpecificDivisionSelectionMainComponentDescriptor is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [850.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 110.0]
+    TitleToken = ''
+
+    ButtonList = []
+
+    ContentComponents =
+    [
+        ScreenMainList,
+        BUCKCheckBoxListDescriptor
+        (
+            ElementName = "FiltersList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [175.0, 40.0]
+                MagnifiableOffset = [10.0, -110.0]
+            )
+
+            UseExcelStyle = true
+            HauteurBox = 20.0
+            HasBackgroundAll = true
+            BackgroundAllBlockColorToken = 'VertLogin'
+            BoxMagnifiableWidthHeight = [20.0, 20.0]
+
+            TextColor = 'loginBlanc'
+            HasBackground = true
+            BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+            TextSize = '24'
+            MagnifiableOffsetRack = [-130.0, 35.0]
+            ListData = ~/DivisionFilterList
+            ItemListBackgroundBlockColorToken = 'VertLogin'
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [0.0, -150.0]
+            )
+            TextureToken = 'Outgame_modale_foreground'
+            TextureDrawer = 'ColorMultiply_Additive'
+        )
+    ]
+
+    AdditionalComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [0.0, -150.0]
+            )
+
+            TextureToken = 'Outgame_modale_fond'
+            TextureDrawer = 'MonochromeMonitorEffect'
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+// rester synchro avec TagsVector dans le descripteur de la vue
+DivisionFilterList is
+[
+    (
+        "Countries",
+        [
+            (
+                "FLTDK_ALLY",
+                0
+            ),
+            (
+                "FLTDK_AXE",
+                1
+            ),
+        ]
+    ),
+    (
+        "Types",
+        [
+            (
+                "FLTDK_ARM",
+                2
+            ),
+            (
+                "FLTDK_SOL",
+                3
+            ),
+            (
+                "FLTDK_MEC",
+                4
+            ),
+        ]
+    ),
+    (
+        "Ratings",
+        [
+            (
+                "FLTDK_RK1",
+                5
+            ),
+            (
+                "FLTDK_RK2",
+                6
+            ),
+            (
+                "FLTDK_RK3",
+                7
+            ),
+        ]
+    ),
+]
+
+DivisionHiddenTags is
+[
+    "DEFAULT",
+]
+
+DivisionTagsVector is
+[
+    "Allied",
+    "Axis",
+    "armored",
+    "infantryReg",
+    "armoredRecon",
+    "DC_PWR1",
+    "DC_PWR2",
+    "DC_PWR3",
+]
+
+//-------------------------------------------------------------------------------------
+
+UISpecificDivisionSelectionViewDescriptor is TUISpecificDivisionSelectionViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificDivisionSelectionMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    DivisionBriefDescriptor = UISpecificDivisionBriefViewDescriptor(MainComponentDescriptor = ~/DivisionBriefDescriptorForSelection)
+    FlagTransparency = 0.3
+
+    HiddenTags = ~/DivisionHiddenTags
+    TagsVector = ~/DivisionTagsVector
+)

@@ -1,0 +1,25 @@
+export ModelFile_F104G_Starfighter_RFA is 'GameData:/Assets/3D/Units/RFA/Avion/F104G_Starfighter/F104G_Starfighter.Ase2NdfBin'
+
+Modele_F104G_Starfighter_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_F104G_Starfighter_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_F104G_Starfighter_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/F104G_Starfighter/F104G_Starfighter.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F104G_Starfighter_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/F104G_Starfighter/F104G_Starfighter.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F104G_Starfighter_RFA_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/F104G_Starfighter/F104G_Starfighter_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

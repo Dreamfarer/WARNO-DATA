@@ -1,0 +1,131 @@
+private rankDefaultFrameProperty is TUIFramePropertyRTTI
+(
+    MagnifiableWidthHeight = [50.0, 25.0]
+    AlignementToAnchor = [0.0, 0.5]
+    AlignementToFather = [0.0, 0.5]
+)
+
+template BUCKSpecificRankDescriptor
+[
+    // ++ BUCKContainerDescriptor
+    ElementName : string = "",
+    UniqueName : string = "",
+    RequiredTags : LIST<string> = [],
+    ComponentFrame : TUIFramePropertyRTTI = ~/rankDefaultFrameProperty,
+
+    MagnifierMultiplication : float = 0.0,
+
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+    HidePointerEvents : bool = false,
+
+    GridAlign : bool = false,
+
+    IsDroppable : bool = false,
+    ForegroundForDropBlockColor : string = "",
+    BorderForDropLineColor : string = "",
+    BorderForDropLineThicknessToken : string = "",
+
+    FitStyle : int = ~/ContainerFitStyle/None,
+    ChildFitToContent : bool = false,
+
+    ClipContent : bool = false,
+
+    SpotlightComponent : TBUCKContainerDescriptor = nil,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HasBackground : bool = false,
+    BackgroundBlockColorToken : string = "",
+
+    HasBorder : bool = false,
+    BordersToDraw : int = ~/TBorderSide/Default,
+    BorderThicknessToken : string = "",
+    BorderLineColorToken : string = "",
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    LocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+
+    ComponentStateLocked : bool = false,
+    // -- BUCKContainerDescriptor
+
+    // ++ BUCKTextureDescriptor
+    TextureDrawer : string = 'ColorMultiply',
+    TextureFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+    TextureToken : string = '',
+    TextureColorToken : string = '',
+    ResizeMode : int = ~/TextureResizeMode/FitToParent,
+    TileTextureInComponent : bool = false,
+    ClipTextureToComponent : bool = false,
+    // -- BUCKTextureDescriptor
+
+    RankHintableAreaElementName : string = 'HintableArea'
+]
+is TBUCKSpecificRankDescriptor
+(
+    // ++ BUCKContainerDescriptor
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    RequiredTags = <RequiredTags>
+    ComponentFrame = <ComponentFrame>
+
+    MagnifierMultiplication = <MagnifierMultiplication>
+
+    PointerEventsToAllow = <PointerEventsToAllow>
+    HidePointerEvents = <HidePointerEvents>
+
+    GridAlign = <GridAlign>
+
+    IsDroppable = <IsDroppable>
+    ForegroundForDropBlockColor = <ForegroundForDropBlockColor>
+    BorderForDropLineColor = <BorderForDropLineColor>
+    BorderForDropLineThicknessToken = <BorderForDropLineThicknessToken>
+
+    FitStyle = <FitStyle>
+    ChildFitToContent = <ChildFitToContent>
+
+    ClipContent = <ClipContent>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    UniformDrawer = <UniformDrawer>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BordersToDraw = <BordersToDraw>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    LocalRenderLayer = <LocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+
+    ComponentStateLocked = <ComponentStateLocked>
+    // -- BUCKContainerDescriptor
+
+    // ++ BUCKTextureDescriptor
+    TextureDrawer = <TextureDrawer>
+    TextureFrame = <TextureFrame>
+    TextureToken = <TextureToken>
+    TextureColorToken = <TextureColorToken>
+    ResizeMode = <ResizeMode>
+    TileTextureInComponent = <TileTextureInComponent>
+    ClipTextureToComponent = <ClipTextureToComponent>
+    // -- BUCKTextureDescriptor
+
+    RankHintableAreaElementName = <RankHintableAreaElementName>
+
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            ElementName = <RankHintableAreaElementName>
+        ),
+    ]
+)

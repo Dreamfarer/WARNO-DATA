@@ -1,0 +1,251 @@
+private UnitButtonWidth is 60.0
+private UnitButtonHeight is  60.0
+
+template BUCKSpecificSelectionPanelPawnUnitMainComponentDescriptor
+[
+    UnitUniqueSelectionMode : bool = false,
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+    IsClickable : bool = true,
+] is BUCKContainerDescriptor
+(
+    ElementName = 'UnitButtonMainComponentContainer'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [UnitButtonWidth, UnitButtonHeight]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = 'UnitButtonListContainer'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [UnitButtonWidth, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            HidePointerEvents = true
+            PointerEventsToAllow = ~/EAllowablePointerEventType/Scroll | ~/EAllowablePointerEventType/Move
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'UnitButtonContainer'
+
+                        ComponentFrame = TUIFramePropertyRTTI()
+                        FitStyle = ~/ContainerFitStyle/FitToContent
+                        Components =
+                        [
+                            BUCKButtonDescriptor
+                            (
+                                ElementName = 'UnitButton'
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [UnitButtonWidth, UnitButtonHeight]
+                                )
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Noir30"
+
+                                HasBorder = true
+                                BorderThicknessToken = '1'
+                                BorderLineColorToken = 'SD2_Stroke_Bouton2a'
+
+                                ChildFitToContent = true
+
+                                IsTogglable = <UnitUniqueSelectionMode> ? false : true
+                                RadioButtonManager = <RadioButtonManager>
+
+                                Grayed = !<IsClickable>
+
+                                Components =
+                                [
+                                    BUCKTextureDescriptor
+                                    (
+                                        ElementName = 'UnitPortrait'
+
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [1.0, 1.0]
+                                        )
+
+                                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+
+                                        TextureFrame = TUIFramePropertyRTTI
+                                        (
+                                            AlignementToFather = [0.5, 0.0]
+                                            AlignementToAnchor = [0.5, 0.0]
+                                        )
+                                    ),
+                                    BUCKTextDescriptor
+                                    (
+                                        ElementName = 'UnitCount'
+
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            MagnifiableWidthHeight = [0.0, 0.0]
+                                        )
+
+                                        ParagraphStyle = TParagraphStyleRTTI
+                                        (
+                                            Alignment = ~/UIText_Center
+                                            VerticalAlignment = ~/UIText_VerticalCenter
+                                        )
+
+                                        HasBackground = true
+
+                                        TextPadding = TRTTILength4(Magnifiable = [2.0, 2.0, 2.0, 2.0])
+                                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                        TextStyle = 'Default'
+                                        TypefaceToken = "UIMainFont"
+                                        TextSize = 'SD2_Petit'
+                                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                        TextColor = 'SD2_Noir'
+                                    ),
+                                    BUCKRackDescriptor
+                                    (
+                                        ElementName = 'ExperienceRack'
+
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            AlignementToAnchor = [1.0, 0.0]
+                                            AlignementToFather = [1.0, 0.0]
+                                        )
+
+                                        Axis = ~/ListAxis/Horizontal
+
+                                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                                        BladeDescriptor = BUCKTextureDescriptor
+                                        (
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [12.0, 12.0]
+                                            )
+
+                                            TextureFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 1.0]
+                                            )
+
+                                            TextureToken = "CommonTexture_Etoile_Grande"
+                                        )
+                                    )
+                                ]
+                            ),
+                            BUCKContainerDescriptor
+                            (
+                                ElementName = 'UnitButtonSelectedContour'
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                HasBorder = true
+                                BorderThicknessToken = '2'
+                                BorderLineColorToken = 'PawnSelection/UnitUniqueSelection'
+                            ),
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKButtonDescriptor
+                    (
+                        ElementName = 'UnitSecondaryInfo'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [UnitButtonWidth, UnitButtonHeight]
+                        )
+                        HasBackground = false
+                        BackgroundBlockColorToken = 'DarkerGray'
+
+                        HasBorder = true
+                        BorderThicknessToken = '1'
+                        BorderLineColorToken = 'PawnSelection/Unit'
+
+                        IsTogglable = <UnitUniqueSelectionMode> ? false : true
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ElementName = 'UnitSecondaryInfoTexture'
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+
+                                TextureFrame = TUIFramePropertyRTTI
+                                (
+                                    AlignementToFather = [0.5, 0.0]
+                                    AlignementToAnchor = [0.5, 0.0]
+                                )
+                            ),
+                        ]
+                    )
+                )
+            ]
+
+            ForegroundComponents =
+            [
+                BUCKSensibleAreaDescriptor
+                (
+                    ElementName = 'SensibleArea'
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+template UISpecificSelectionPanelPawnUnitViewDescriptor
+[
+    UnitUniqueSelectionMode : bool = false,
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+    IsClickable : bool = true,
+] is TUISpecificSelectionPanelPawnUnitViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificSelectionPanelPawnUnitMainComponentDescriptor
+    (
+        UnitUniqueSelectionMode = <UnitUniqueSelectionMode>
+        RadioButtonManager = <RadioButtonManager>
+        IsClickable = <IsClickable>
+    )
+
+    UniqueSelectionMode = <UnitUniqueSelectionMode>
+
+    StrategicTypeToUse = MAP
+    [
+        (
+            ETypeStrategicCount/Soldier,
+            "Strategic/PawnPower/AssaultTop"
+        ),
+        (
+            ETypeStrategicCount/Tank,
+            "Strategic/PawnPower/ArmoredTop"
+        ),
+        (
+            ETypeStrategicCount/Artillery,
+            "Strategic/PawnPower/ArtilleryTop"
+        ),
+        (
+            ETypeStrategicCount/Plane,
+            "Strategic/PawnPower/AirplaneTop"
+        ),
+    ]
+)

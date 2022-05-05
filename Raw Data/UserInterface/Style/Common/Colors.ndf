@@ -1,0 +1,458 @@
+// /!\ A l'attention du mec qui s'apprête a modifier ce fichier:
+// Tu veux ajouter une couleur : fais comme chez toi mais fais le par ordre alphabétique!!!
+// Tu veux en modifier une : je sors ma tronçoneuse et je viens te couper tous tes doigts afin que ca ne se reproduise plus !!!!! /!\
+
+Beige               is [173,156,135,255]        // Block color - beige
+Beige2              is [176,145,113,255]        // Line color - beige
+Beige25             is [235,200,152,64]         // Block color - beige 25%
+BeigeClair          is [236,203,157,255]        // Font color - beige clair
+BeigeClair2         is [236,203,157,255]        // Line color - beige clair
+BeigeClair3         is [216,197,176,255]        // Font color - beige clair
+BeigeClair4         is [188,176,146,255]
+BeigeClair5         is [208,195,160,255]
+BeigeCreme          is [255,230,200,255]        // Font color - beige crème
+
+GrisChat            is [185,170,157,255]           // Font color - gris chat
+GrisMarronChat      is [68,53,40,255]           // Block color - gris marron
+
+BeigeDesature       is [205,190,175,255]        // Block color - beige désaturé
+BeigeMoyen          is [173,158,135,255]        // Font color - beige moyen
+BeigeMoyenPlus      is [202,170,126,255]        // Font color - beige moyen +
+BeigeMoyenPlusPlus  is [208,191,166,255]        // Font color - beige moyen ++
+BeigePale           is [247,233,205,255]        // Font color - beige pale
+BeigeSombre         is [142,130,111,255]        // Font color - beige sombre
+BeigeSombrePlus     is [163,140,113,255]        // Font color - beige sombre +
+BeigeSombrePlusPlus is [184,179,146,255]        // Font color - beige sombre ++
+BeigeSombre2        is [111,102,93,255]
+BeigeSombre3        is [129,121,105,255]
+BeigeSombre4        is [153,145,124,255]
+BeigeSombre5        is [153,145,124,125]
+BeigeStandard       is [206,175,135,255]        // Block color - beige standard
+Blanc               is [235,235,235,255]        // Block color - blanc
+Blanc2              is [235,235,235,255]        // Line color - blanc
+Blanc50_2           is [235,235,235,128]        // Line color - blanc 50%
+Blanc3              is [250,250,250,255]        // Font color - blanc
+Blanc4              is [240,240,240,255]        // Font color - blanc
+Blanc5              is [210,210,210,255]        // Font color - blanc
+Blanc6              is [255,224,220,255]
+Blanc7              is [220,220,220,255]
+Blanc750            is [220,220,220,220]
+Blanc8              is [206,206,206,200]
+Blanc9              is [210,205,199,255]
+BlancPur            is [255,255,255,255]        // Font Color - blanc
+Blanc50             is [255,255,255,154]        // Block color - blanc 50%
+Blanc20             is [255,255,255,50]         // Block color - blanc 20%
+Blanc30             is [255,255,255,76]         // Block color - blanc 30%
+Blanc70             is [255,255,255,179]        // Line color - blanc 70%
+Blanc80             is [255,255,255,202]        // Line color - blanc 80%
+BlancCasse          is [175,175,175,255]        // Line color - blanc cassé
+BlancCasse2         is [191,191,191,255]        // Line color - blanc cassé
+Bleu                is [52,0,78,128]            // Block color - bleu
+Bleu2               is [0,0,147,255]
+Bleu3               is [28,187,255,255]         // Text Color - bleu
+Bleu4               is [0,156,214,255]         // Text Color - bleu
+Bleu4_strat         is [81,130,131,255]         // Text Color - bleu
+Bleu_info_unit      is [53,62,58,255]         // Text Color - bleu
+BleuCiel            is [60,100,110]             // Block color - bleu ciel
+BleuCiel2           is [98,205,255,255]         // Block color - bleu ciel 2
+BleuCiel3           is [96,206,255,255]         // Block color - bleu ciel 3
+BleuCiel4           is [166,231,255,255]         // Block color - bleu ciel 3
+BleuCielPale        is [200,238,254,255]        // Block color - bleu ciel pale
+VraiBleu            is [0,0,255,255]            // Block color - bleu
+BleuMoyen           is [0,174,255,255]          // Block color - bleu moyen
+BleuMoyen2          is [43,65,96,255]
+BleuSombre          is [87,113,127,255]          // Block color - bleu sombre
+BleuSombre2         is [81,130,131,255]         // Block color - bleu sombre 2
+BleuTeam            is [71,95,104,255]          // Block color - bleu team
+BleuTresSombre      is [31,41,50,255]           // Block color - bleu tres sombre
+BleuTurquoise       is [97,255,164,255]
+BordeauTresSombre   is [23,0,0,255]             // Font color - bordeau tres sombre
+BordeauSombre       is [45,5,5,255]             // Font color - bordeau sombre
+BordeauClair        is [136,7,6,255]            // Font color - bordeau clair
+Creme               is [195,165,126,255]
+CremeMoyen50        is [125,100,60,128]         // Block color - crème moyen 50%
+Creme60             is [125,100,60,145]         // Block Color gradient - crème 60%
+Cyan                is [129,236,239,255]        // Font color - cyan
+Cyan50p                is [129,236,239,128]        // Font color - cyan
+CyanPlus            is [110,255,223,255]        // Font color - cyan +
+CyanMoyen           is [135,230,208,255]        // Font color - cyan moyen
+Cyan2               is [153,235,255,255]        // Font color - cyan2
+Gris                is [50,50,50,128]           // Block color - gris
+Gris2               is [64,60,48,255]           // Font color - gris
+Gris3               is [18,14,9,255]            // Font color - gris
+GrisBleu            is [124,147,157,255]            // Font color - gris
+
+GrisClair           is [168,168,168,255]        // Font color - gris clair
+GrisClair2          is [170,170,170,255]        // Block color - gris clair
+GrisClair3          is [168,168,168,255]        // Line color - gris clair
+GrisClair4          is [200,200,200,255]        // Block color - gris clair
+GrisClair5          is [214,214,214,255]        // Block color - gris clair
+GrisClair6          is [125,125,125,255]        // Block color - gris clair
+GrisClair7          is [170,170,170,255]        // Block color - gris clair
+GrisClair8          is [230,230,230,255]        // Block color - gris clair
+GrisClair9          is [157,146,130,255]        // Block color - gris clair
+GrisClair10         is [205,205,201,200]        // Block color - gris clair
+GrisDesature        is [91,85,70,76]            // Block color - gris desature
+GrisMoyen           is [114,100,90,255]         // Font color - gris moyen
+GrisMoyen50         is [90,90,90,128]           // Block color - gris moyen 50%
+GrisMoyen50_2       is [90,90,90,128]           // Font color - gris moyen 50%
+GrisMoyen50_3       is [56,55,55,128]           // Line color - gris moyen 50%
+GrisMoyen60         is [90,90,90,153]           // Line color - gris moyen 60%
+GrisMoyen100        is [90,90,90,255]           // Line color - gris moyen 100%
+GrisMoyen2_100      is [83,83,83,255]           // Line color - gris moyen 100%
+GrisMoyen2          is [128,119,107,255]        // Block color - gris moyen 100%
+GrisMoyen2_92       is [128,119,107,225]        // Font color - gris moyen 92%
+GrisMoyen3          is [138,138,138,255]        // Line color - gris moyen +
+GrisMoyen4          is [69,69,65,205]
+GrisMoyen5          is [130,130,130,178]
+GrisMoyen6          is [67,67,67,255]
+GrisMoyenPlus       is [150,150,150,255]        // Line color - gris moyen +
+GrisSelection       is [80,85,95,255]           // Block color - gris sélection
+GrisSombre          is [46,38,26,255]           // Block color - gris sombre
+GrisSombre2         is [48,44,37,255]           // Font color - gris sombre
+GrisSombre3         is [55,55,55,255]           // Line color - gris sombre
+GrisSombre3_45      is [55,55,55,117]           // Font color - gris moyen 25%
+GrisSombre4         is [30,30,30,255]           // Font color - gris très sombre
+GrisSombre5         is [34,34,34,255]
+clair_titi          is [197,197,197,255]           // Font color - gris très sombre
+GrisTeam            is [50,50,50,20]            // Block color - gris team
+GrisVisee           is [104,101,87,255]         // Block color - gris visée
+Jaune               is [250,244,23,255]         // Block color - jaune
+JauneLeger          is [239,218,174,255]
+JauneLeger2         is [225,216, 34,255]
+JauneSombreDesature is [72,72,66,255]           // Block color - jaune sombre désaturé
+JauneOrange         is [255,168,69,255]         // Block color - jaune orange
+JauneOrange2        is [255,180,0,255]          // Block color - jaune orange 2
+JauneOrange3        is [254,183,38,255]          // Block color - jaune orange 3
+JauneOrange4        is [196,141,29,255]         // Block color - jaune orange
+JauneOrangeClair    is [217,186,146,255]        // Block color - jaune orange Clair
+JaunePisse          is [255,222,0,255]          // Block color - jaune pisse
+JauneVert           is [100,212,13,255]         // Block color - jaune vert
+JauneVert_sombre    is [132,180,0,255]         // Block color - jaune vert sombre
+Marron              is [73,60,41,255]           // Block color - marron
+Marron2             is [95,56,34,255]           // Line color - marron
+MarronCartouche     is [62,47,28,255]           // Block color - marron cartouche
+MarronClair         is [140,103,60,255]         // Line color - marron clair
+MarronClair2        is [193,165,130,255]        // Block color - marron clair
+MarronClair3        is [147,122,89,255]         // Text color - marron clair
+MarronClairDesature is [172,143,104,255]        // Block color - marron clair désaturé
+MarronDesature      is [105,83,58,255]          // Line color - marron désaturé
+MarronDesature2     is [102,70,48,255]          // Line color - marron désaturé 02
+MarronDesature3     is [137,121,102,76]         // Font color - marron désaturé
+MarronDesature4     is [75,59,41,255]           // Block color - marron désaturé 03
+MarronDesature5     is [41,0,0,255]             // Line color - marron désaturé
+MarronDesaturePlus  is [158,120,80,255]         // Font color - marron désaturé +
+MarronDesature50    is [106,74,39,179]          // Block color - marron désaturé 50%
+MarronDesature50_2  is [106,74,39,179]          // Line color - marron désaturé 50%
+MarronGris          is [63,46,31,255]           // Line color - marron désaturé 50%
+MarronInferieur     is [60,41,31,255]           // Block color gradient - marron inferieur
+MarronInferieur2    is [31,29,28,255]           // Block color gradient - marron inferieur
+MarronLigne30       is [135,68,40,85]           // Block color - marron ligne 30%
+MarronMoyen         is [151,118,78,255]         // Block color - marron moyen
+MarronMoyen50       is [127,92,46,128]          // Block color gradient - (marron moyen 50%)
+MarronMoyen2        is [62,43,19,255]           // Font color - marron moyen
+MarronOranger       is [161,145,90,255]         // Font color - marron oranger
+MarronOranger2      is [98,75,45,255]           // Line color - marron oranger
+MarronRose          is [145,103,70,255]         // Block color - marron rosé
+MarronRose35        is [145,103,70,90]          // Block color - marron rosé 35%
+MarronScrollbar     is [81,48,27,255]           // Block color - marron scrollbar
+MarronSombre        is [67,52,36,255]           // Line color - marron sombre
+MarronSombre2       is [55,45,36,255]           // Font color - marron sombre 2
+MarronSombre3       is [48,30,22,255]           // Font color - marron sombre
+MarronSombre50      is [83,58,31,128]           // Block color gradient - (marron sombre 50%)
+MarronSombrePlus    is [50,42,32,255]           // Block color - marron sombre +
+MarronSombreDesature is [88,80,65,255]          // Font color - marron sombre désaturé
+MarronSuperieur     is [38,25,18,255]           // Block color gradient - marron superieur
+MarronSuperieur2    is [40,38,37,255]           // Block color gradient - marron superieur
+MarronBleu          is [76,61,61,255]
+MarronRouge         is [154,121,114,255]
+MarronRougeSombre   is [85,66,63,255]
+Noir                is [25,25,25,255]           // Block color - noir
+Noir2               is [30,5,0,255]             // Line color - noir_2
+Noir3               is [41,17,2,255]            // Line color - noir
+Noir4               is [0,0,0,145]              // Block color gradient - noir
+Noir5               is [15,15,15,255]           // Line color - noir_3
+Noir6               is [18,14,9,180]            // Font color - noir 6
+Noir7               is [12,12,12,255]           // Block color gradient
+Noir8               is [30,30,30,255]           // Block color gradient
+Noir60              is [25,25,25,153]           // Block color - noir 60%
+Noir90              is [25,25,25,222]           // Block color - noir 80%
+NoirCasse           is [50,50,50,255]           // Font color - Noir Cassé
+NoirCasse60         is [50,50,50,153]           // Font color - Noir Cassé 60%
+NoirGris            is [33,27,17,255]           // Block color - noir-gris
+NoirGris80          is [33,33,32,204]
+NoirGris60          is [33,33,32,153]
+NoirPur             is [0,0,0,255]              // Block color - noir pur | Font color - noir pur | Line color - noir pur
+NoirPur10           is [0,0,0,25]
+NoirPur15           is [0,0,0,38]               // Block color - noir pur 10%
+NoirPur20           is [0,0,0,51]               // Block color - noir pur 20%
+NoirPur30           is [0,0,0,77]               // Block color - noir pur 30%
+NoirPur40           is [0,0,0,102]              // Block color - noir pur 40%
+NoirPur43           is [0,0,0,110]
+NoirPur50           is [0,0,0,128]              // Block color - noir pur 50%
+NoirPur60           is [0,0,0,153]              // Block color - noir pur 60%
+NoirPur70           is [0,0,0,179]              // Block color - noir pur 70%
+NoirPur80           is [0,0,0,204]              // Block color - noir pur 80%
+Ocre                is [162, 123, 81, 255]       // Block color - ocre
+OcreSombre          is [123,60,60,255]
+Or1                 is [251, 191, 47, 255]
+Or2                 is [205, 130, 0, 255]
+Or3                 is [255, 194, 1, 255]
+Or4                 is [244, 187, 50, 255]
+Orange              is [225,148,80,255]         // Font color - orange
+Orange2             is [228,158,52,255]         // Font color - orange
+Orange3             is [240,130,23,255]         // Block color - orange
+Orange4             is [223,55,3,255]
+Orange5             is [120,80,50,200]
+Orange6             is [255,128,0,255]
+Orange7             is [178,97,0,255]
+OrangeClair         is [250,190,50,255]
+OrangeClair2        is [235,199,150,255]
+OrangeDesature      is [196,160,130,255]        // Line color - orange désaturé
+OrangeSombre        is [105,63,5,255]               // Line color - orange sombre
+Rouge               is [160,30,0,255]           // Font color - rouge
+Rouge2              is [126,0,0,255]            // Line color - rouge
+Rouge3              is [247,43,32,255]          // Block color - rouge
+Rouge4              is [255,51,51,255]          // Block color - rouge
+Rouge4_strat        is [181,86,64,255]          // Block color - rouge
+Rouge4_strat2       is [156,30,13,255]          // Block color - rouge
+Rouge_info_unit     is [62,0,0,255]         // Text Color - bleu
+Rouge50             is [126,0,0,128]            // Block color - rouge
+RougeDesature       is [175,62,62,255]          // Block color - rouge désaturé
+RougeClair          is [215,20,20,255]         // Font color - rouge clair
+RougeClair2         is [208,23,21,255]          // Block color - rouge clair
+RougeClair3         is [214,182,182,255]        // Block color - rouge clair
+RougeMoyen          is [146,32,26,255]          // Block color - rouge moyen
+RougeMoyen2         is [255,84,84,255]          // Font color - rouge moyen
+RougeMoyen3         is [235,95,95,255]
+RougeMoyen4         is [143,32,32,255]
+RougeMoyen5         is [204,0,0,255]
+RougeMoyenPlus      is [122,34,14,255]          // Block color - rouge moyen +
+RougeOranger        is [135,88,56,255]          // Font color - rouge oranger
+RougeSombre         is [160,45,20,255]          // Block color - rouge sombre
+RougeSombre2        is [41,0,0,255]
+
+RougeTeam           is [127,52,35,255]          // Block color - rouge team
+RougePur            is [255,0,0,255]            // Font color - rouge vif
+RougeVif            is [255,0,0,255]            // Font color - rouge vif
+RougeVif2           is [255,35,35,255]          // Font color - rouge vif 2
+Rouille             is [100,45,5,255]           // Line color - rouille
+Rouille2            is [102,43,27,255]          // Line color - rouille 2
+Transparent         is [0,0,0,0]                // Block color - transparent | Font color - transparent | Line color - transparent
+Vert                is [127,255,117,255]        // Font color - vert
+Vert2               is [53,152,34,255]          // Block color - vert
+Vert3               is [20,218,20,255]          // Block color - vert 3
+Vert4               is [98,175,8,255]           // Font color - vert 4
+Vert5               is [0,217,10,255]           // Font color - vert 4
+VertCitron          is [97,255,164,255]         // Font color - vert citron
+VertClair           is [62,211,23,255]          // Block color - vert clair
+VertClair2          is [1,220,47,255]           // Block color - vert clair
+VertClair3          is [181,210,182,255]           // Block color - vert clair
+VertPomme           is [83,183,38,255]          // Block color - vert clair
+VertPur             is [0,255,0,255]          // Block color - vert clair
+VertSombre          is [66,108,40,255]          // Block color - vert sombre
+VertSombre2         is [77,105,60,200]
+VertSombre3         is [11,95,17,255]
+VertKakiClair       is [159,208,153,255]        // Chat line color - vert kaki clair
+Violet              is [207,171,235,255]
+Violet2             is [203,132,212,255]
+
+
+
+//OverBlockColors
+
+NoirTransparent1        is [  0,   0,   0,  75]
+BlancTransparent        is [255, 255, 255,  75]
+BlancTransparent2        is [255, 255, 255,  30]
+NoirTransparent2        is [  0,   0,   0, 128]
+NoirTransparent3        is [  0,   0,   0, 200]
+NoirTransparent4        is [  0,   0,   0, 179]
+NoirTransparent5        is [  0,   0,   0,  30]
+BlancTresTransparent    is [255, 255, 255,  22]
+
+// Nouvelles Couleurs
+// Cf SDDEUX-882 / Outgame_UI_00.png pour les correspondances de couleur
+Black                  is [  0,   0,   0, 255]
+Black40                is [  0,   0,   0, 102] // 6
+Black50                is [  0,   0,   0, 122]
+Black60                is [  0,   0,   0, 153]
+Black70                is [  0,   0,   0, 178]
+Black80                is [  0,   0,   0, 204]
+BlueDianne             is [ 31,  64,  82, 255]
+BlueGray               is [155, 175, 187, 255]
+BlueOutgame            is [ 50, 172, 229, 255]
+BlueGrayedOutgame      is [ 18, 100, 139, 255]
+BlueLightOutgame       is [ 87, 186, 234, 255]
+BlueLightOutgame40     is [ 87, 186, 234, 102]
+BlueLightestOutgame    is [117, 199, 238, 255]
+BlueSanMarino          is [ 61, 104, 171, 255]
+DarkCyan               is [ 48, 122, 153, 255]
+DarkestGray            is [  9,   9,   9, 255] // 8
+DarkestGray80          is [  9,   9,   9, 204]
+DarkerGray             is [ 14,  14,  14, 255]
+DarkerGray30           is [ 14,  14,  14,  75]
+DarkerGray70           is [ 14,  14,  14, 179]
+DarkerGray80           is [ 14,  14,  14, 204] // 5
+DarkerGray90           is [ 14,  14,  14, 230]
+DarkGray               is [ 23,  22,  22, 255] // 9
+DarkGold               is [162, 127,  59, 255]
+DarkSunset             is [174, 125,  40, 255]
+DarkYellow             is [135, 132,  50, 255]
+DoveGray               is [102, 101, 101, 255] // à renommer ?
+FlatGray               is [ 96,  89,  84, 255]
+FlatGray80             is [ 96,  89,  84, 204]
+ForestGreen            is [ 36, 110,  36, 255]
+ForestGreenLight       is [ 40, 154,  40, 255]
+Gray                   is [ 34,  34,  34, 255] // 4
+Gray30                 is [ 34,  34,  34,  75]
+Gray70                 is [ 34,  34,  34, 179]
+Gray80                 is [ 34,  34,  34, 204]
+Gray90                 is [ 34,  34,  34, 230]
+GrayDusty              is [153, 153, 153, 255]
+GrayDusty80            is [153, 153, 153, 204]
+GrayDulver80           is [165, 165, 165, 204]
+GrayFuscous            is [ 72,  72,  72, 255]
+GrayGave               is [ 40,  40,  40, 255]
+GrayMineShaft          is [ 56,  56,  56, 255]
+GrayMineShaft80        is [ 56,  56,  56, 200]
+GrayMineShaft50        is [ 56,  56,  56, 128]
+Glacier                is [135, 178, 196, 255]
+Green                  is [ 49, 135,   0, 255]
+Green2                 is [171, 221,  79, 255]
+Green3                 is [ 95, 210,  38, 255]
+GreenPea               is [ 29,  82,  55, 255]
+GreenSea               is [ 51, 141,  93, 255]
+GuardsmanRed           is [153,  48,  48, 255]
+LightGold              is [196, 178,  84, 255]
+LightGrayGave          is [128, 128, 128, 255]
+LightGray              is [ 75,  72,  70, 255] // 3
+LightGray80            is [160, 160, 160, 204]
+LighterGray            is [127, 121, 119, 255] // 2
+LighterGray40          is [127, 121, 119, 102] // 7
+LighterGray80          is [127, 121, 119, 204]
+LightestGray           is [190, 190, 190, 255] // 1
+LightestestGray        is [220, 220, 220, 255]
+Ocher                  is [184,  93,  63, 255]
+OrangeTangerine        is [240, 145,   0, 255]
+OrangeCalifornia       is [250, 179,  71, 255]
+RedNutmeg              is [125,  54,  43, 255]
+RedCocoaBean           is [ 82,  35,  28, 255]
+SeaBlue                is [ 55, 100, 145, 255]
+Sunset                 is [242, 159,  29, 255]
+TundoraGray            is [ 79,  73,  71, 255] // à renommer ?
+VividRed               is [193,   0,   0, 255]
+WhiteGallery           is [140, 140, 140, 255]
+
+
+// nouvelles couleurs alexis
+
+
+Sd2_texte_color             is [205,188,160,255]         // Couleur de texte - a clean
+
+BleuVariable                is [135,178,196,255]
+
+VertGris                    is [96,101,102,240] //
+BleuGris                    is [52,66,75,250] //
+Gris39                      is [39,39,39,255] //
+BleuGrisClair               is [167,186,195,255] // pour le texte dans les boutons
+
+LigneBleuGris               is [109,123,132,255]
+Marron3                     is [84,65,61,255]
+Marron4                     is [211,157,124,255] // pour le texte dans les boutons
+
+Blanc184                    is [184, 184, 184, 255]
+Gris123                     is [123,123,123,255]
+
+
+RougeSovietique_100         is [167,38,8,180]
+RougeSovietique             is [167,38,8,180]
+RougeSovietique_Objectif    is [200,40,10,180]
+RougeSovietique_Pion        is [167,38,8,220]
+RougeSovietique_Pion_survol is [196,144,131,180]
+RougeSovietique_Pion_Toggle is [225,199,193,180]
+
+RougeSovietique_frieze      is [125,34,15,255]
+
+GrisAllemand_100            is [69,72,81,180]
+GrisAllemand                is [89, 103, 114, 255]
+GrisAllemand_Objectif       is [80, 100, 165, 200]
+GrisAllemand_tactic         is [21,  91, 135, 255]
+GrisAllemand_frieze         is [56,77,72,255]
+GrisAllemand_Pion           is [56,77,72,180]
+GrisAllemand_Pion_survol    is [156,166,164,180]
+GrisAllemand_Pion_Toggle    is [205,210,209,180]
+
+GrisAllemand_brief          is [ 53, 62, 58, 255]
+RougeSovietique_brief       is [ 0,   0, 62, 255]
+
+Assault                     is [200,195,177,255]
+Armored                     is [216,151,60,255]
+Artillery                   is [115,132,127,255]
+Airplane                    is [135,188,222,255]
+
+BeigeSteelman               is [200,195,177,255]
+NoirSteelman                is [41,31,30,255]
+GrisSteelman                is [106,101,94,255]
+
+//-------------------------------------------------------------------------------------
+//couleur FULDA
+//
+Fulda_BleuNoir is [6, 25, 40,210]
+Fulda_Gris is [119, 125, 132,255]
+Fulda_Turquoise is [153, 255, 189,255]
+Fulda_Turquoise2 is [178, 228, 202,255]
+Fulda_VertBleu is [46, 71, 77,255]
+Fulda_VertMilitaire is [65, 112, 94,255]
+Fulda_Noir is [9, 33, 37,255]
+
+Otan is [30,54,104,255]
+Otan_vert is [77,105,60,255]
+
+
+Otan_fond is [30,54,104,153]
+Otan_fond_vert is [77,105,60,200]
+
+Otan_fond70 is [30,54,104,80]
+Otan_fond70_vert is [77,105,60,130]
+
+Otan_fond_plus30 is [60,84,134,153]
+Otan_fond_plus30_vert is [107,135,90,200]
+
+Pact is             [159,40,40,255]
+Pact_fond is        [159,40,40,153]
+Pact_fond70 is      [159,40,40,80]
+Pact_fond_plus30 is [189,70,70,153]
+
+Pact_blanc is       [140,111,111,255]
+Pact_blanc_fond is  [220,220,220,153]
+
+Pact_orange is             [120,80,50,255]
+Pact_fond_orange is        [120,80,50,200]
+Pact_fond70_orange is      [120,80,50,130]
+Pact_fond_plus30_orange is [150,110,80,200]
+
+BleuSelection is                [114, 206, 234, 210]
+BleuSelectionHighlighted is     [130, 230, 245, 210]
+BleuSelectionClicked is         [150, 245, 255, 210]
+BleuSelectionGrayed is          [114, 206, 234, 20]
+BleuSelectionQuasiBlanc is      [210, 255, 255, 210]
+
+//-------------------------------------------------------------------------------------
+//test 2 couleur monochrme oragen
+Fulda2_Orange100 is [243, 132, 51,200]
+Fulda2_Jaune100 is [209, 149, 50,200]
+Fulda2_Orange15 is [243, 132, 51,38]
+Fulda2_Orange30 is [243, 132, 51,76]
+Fulda2_Noir is [6, 25, 40,180]
+
+
+xanadu is [117,133,125,255]
+onyx is [48,52,58,255]
+paleSilver is [204,192,182,255]
+rawUmber is [118,97,78,255]
+
+Ebony is [86,85,68,255]
+Feldgrau is [73,91,69,255]
+RifleGreen is [64,77,64,255]
+Grullo is [159,156,135,255]
+DarkLava is [85,77,65,255]

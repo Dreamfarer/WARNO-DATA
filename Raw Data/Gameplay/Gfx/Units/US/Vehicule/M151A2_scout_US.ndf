@@ -1,0 +1,25 @@
+export ModelFile_M151A2_scout_US is 'GameData:/Assets/3D/Units/US/Vehicule/M151A2_Scout/M151A2_Scout.Ase2NdfBin'
+
+Modele_M151A2_scout_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M151A2_scout_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M151A2_scout_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/M151A2_Scout_MID/M151A2_Scout_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M151A2_scout_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/LODS/M151A2_Scout_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M151A2_scout_US_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/Ammo/Tourelles/M60_t1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

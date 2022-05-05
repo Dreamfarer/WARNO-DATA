@@ -1,0 +1,22 @@
+export ModelFile_PT76B_DDR is 'GameData:/Assets/3D/Units/DDR/Char/PT_76B/PT_76B.Ase2NdfBin'
+
+Modele_PT76B_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_PT76B_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_PT76B_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Char/PT_76B/PT_76B.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_PT76B_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Char/PT_76B/PT_76B.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

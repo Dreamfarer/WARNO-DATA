@@ -1,0 +1,21 @@
+
+// CONSTANTES POUR LE GAME DESIGN
+//----------------------------------------------------------------------------------------------------------------//
+export IAStratVisionNoShootDetection is TIAStratVisionParameters
+(
+    UnitsKnowledge = ~/EUnitsKnowledge/Seen
+    KnowledgeMemoTimer = 120 // Une fois une unité repérée, elle est mémorisée ce nombre de secondes (0 = infini)
+)
+//----------------------------------------------------------------------------------------------------------------//
+export IAStratVisionShootDetectionLittleMemory is TIAStratVisionParameters
+(
+    UnitsKnowledge = ~/EUnitsKnowledge/Seen | ~/EUnitsKnowledge/HasShot
+    KnowledgeMemoTimer = 180 // Une fois une unité repérée, elle est mémorisée ce nombre de secondes (0 = infini)
+)
+//----------------------------------------------------------------------------------------------------------------//
+export IAStratVisionShootDetectionInfiniteMemory is TIAStratVisionParameters
+(
+    UnitsKnowledge = ~/EUnitsKnowledge/Seen | ~/EUnitsKnowledge/HasShot
+    KnowledgeMemoTimer = 0 // Une fois une unité repérée, elle est mémorisée ce nombre de secondes (0 = infini)
+)
+//----------------------------------------------------------------------------------------------------------------//

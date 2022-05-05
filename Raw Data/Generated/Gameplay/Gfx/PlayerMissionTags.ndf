@@ -1,0 +1,77 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+// Pour le modifier allez dans PlayerMissionTagsFileWriter puis regénérez les ndf.
+
+///////////////////////////////// Autorisations.
+
+export Attack_AuthorizedTags is [
+    "AllUnits",
+]
+
+export Hold_AuthorizedTags is [
+    "AllUnits",
+]
+
+export ManageArtillery_Focus_AuthorizedTags is [
+    "Artillerie",
+]
+
+export ManageArtillery_CounterBattery_AuthorizedTags is [
+    "Artillerie",
+]
+
+export ManageArtillery_Auto_AuthorizedTags is [
+    "Artillerie",
+]
+
+export ManageAirplanes_AuthorizedTags is [
+    "Avion",
+]
+
+export ManageAirReco_AuthorizedTags is [
+    "Avion_Reco",
+]
+
+export Stop_AuthorizedTags is [
+    "AllUnits",
+]
+
+
+///////////////////////////////// Interdictions.
+
+export Attack_ExcludedTags is [
+    "Artillerie",
+    "Vehicule_Logistique",
+    "Avion",
+    "Vehicule_Transport",
+]
+
+export Hold_ExcludedTags is [
+    "Artillerie",
+    "Vehicule_Logistique",
+    "Avion",
+    "Vehicule_Transport",
+]
+
+export ManageArtillery_Focus_ExcludedTags is [
+    "Avion",
+]
+
+export ManageArtillery_CounterBattery_ExcludedTags is [
+    "Avion",
+]
+
+export ManageArtillery_Auto_ExcludedTags is [
+    "Avion",
+]
+
+export ManageAirplanes_ExcludedTags is [
+    "Avion_Reco",
+]
+
+export ManageAirReco_ExcludedTags is [
+]
+
+export Stop_ExcludedTags is [
+]
+

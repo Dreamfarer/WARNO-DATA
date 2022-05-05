@@ -1,0 +1,857 @@
+//-------------------------------------------------------------------------------------
+
+private DebriefTeamStatsMultiListContent is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 35.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    HasBackground = true
+    BackgroundBlockColorToken = "Menu/SaveLoadLine"
+
+    Elements =
+    [
+        // TeamColor
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "StatsTeamColorMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKContainerDescriptor
+                    (
+                        ElementName = "StatsTeamColor"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [37.0, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        HasBackground = true
+                    )
+                ]
+            )
+        ),
+        // Avatar
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "StatsAvatarMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKSpecificAvatarDescriptor
+                    (
+                        ElementName = "StatsAvatar"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [37.0, 0.0]
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+
+                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                    ),
+                ]
+            )
+        ),
+        // Player
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.2
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "StatsPlayersMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    BUCKButtonDescriptor
+                    (
+                        ElementName = "StatsPlayersButton"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKSpecificTextWithHint
+                            (
+                                ElementName = "StatsPlayers"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Left
+                                    VerticalAlignment = UIText_VerticalCenter
+                                    BigWordAction = ~/BigWordAction/BigWordCut
+                                )
+
+                                BigLineAction = ~/BigLineAction/CutByDots
+
+                                TextStyle = "Default"
+                                TypefaceToken = TacticalEndgameScoreTextFont
+
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                TextColor = "GrisTexteHighlightable"
+                                TextSize = TacticalEndgameScoreTextFontSize
+
+                                TextPadding = TRTTILength4(Magnifiable = [20.0, 0.0, 0.0, 0.0])
+
+                                HasAutoHint = true
+                                AutoHintElementName = "StatsPlayersHint"
+                            ) // BUCKTextDescriptor
+                        ]
+                    ) // BUCKButtonDescriptor
+                ]
+            )
+        ),
+        // Add friend
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "StatsAddFriendMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKButtonDescriptor
+                    (
+                        ElementName = "StatsAddFriend"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [50.0, 0.0]
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ElementName = "AddFriendTexture"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [0.0, 1.0]
+                                    MagnifiableWidthHeight = [50.0, 0]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                    AlignementToFather = [0.5, 0.5]
+                                )
+                                ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+
+                                TextureFrame = TUIFramePropertyRTTI
+                                (
+                                    AlignementToAnchor = [0.5, 0.5]
+                                    AlignementToFather = [0.5, 0.5]
+                                )
+
+                                TextureToken = "Endgame_postit"
+                            ),
+                            BUCKTextDescriptor
+                            (
+                                ElementName = "AddFriendText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [0.0, 1.0]
+                                    MagnifiableWidthHeight = [30.0, 0.0]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                    AlignementToFather = [0.5, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Center
+                                    VerticalAlignment = UIText_VerticalCenter
+                                )
+
+                                BigLineAction = ~/BigLineAction/MultiLine
+
+                                TextStyle = "Default"
+                                TypefaceToken = TacticalEndgamePostItTextFont
+                                TextToken = "OC_HTADD"
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                TextColor = "GrisTexteHighlightable"
+                                TextSize = TacticalEndgamePostItTextFontSize
+                            )
+                        ]
+                    ),
+                ]
+            )
+        ),
+        // Emblem
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "StatsEmblemMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        ElementName = "StatsEmblem"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [50.0, 0.0]
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+
+                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+
+                        Components =
+                        [
+                            BUCKSpecificHintableArea
+                            (
+                                ElementName = "StatsEmblemHint"
+                                DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                            ),
+                        ]
+                    ),
+                ]
+            )
+        ),
+        // Victory Type
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.3
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "StatsVictoryTypeMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "StatsVictoryType"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextStyle = "Default"
+                        TypefaceToken = TacticalEndgameScoreTextFont
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "GrisTexte"
+                        TextSize = TacticalEndgameScoreTextFontSize
+                        //HasBackground = true
+                        BackgroundBlockColorToken = 'Orange'
+                        TextPadding = TRTTILength4(Magnifiable = [20.0, 0.0, 0.0, 0.0])
+                    )
+                ]
+            )
+        ),
+        // CommandPoints
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.1
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "StatsCommandPointsMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "StatsCommandPoints"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextStyle = "Default"
+                        TypefaceToken = TacticalEndgameScoreTextFont
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "GrisTexte"
+                        TextSize = TacticalEndgameScoreTextFontSize
+                    )
+                ]
+            )
+        ),
+        // Kills
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.1
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "StatsKillsMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "StatsKills"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextStyle = "Default"
+                        TypefaceToken = TacticalEndgameScoreTextFont
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "GrisTexte"
+                        TextSize = TacticalEndgameScoreTextFontSize
+                    )
+                ]
+            )
+        ),
+        // Losses
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.1
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "StatsLossesMultiList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "StatsLosses"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextStyle = "Default"
+                        TypefaceToken = TacticalEndgameScoreTextFont
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TextColor = "GrisTexte"
+                        TextSize = TacticalEndgameScoreTextFontSize
+                    )
+                ]
+            )
+        ),
+        // HiddenSortingCriterion
+        // Utilisé par le cpp pour trier les joueur avec la formule : nbKills - nbLosses + nb_points_de_commandement (FUL-1493)
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "HiddenSortingCriterion"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 0.0]
+                )
+
+                Components =
+                [
+                    BUCKContainerDescriptor
+                    (
+                        ElementName = "DummyForHiddenSortingCriterion"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 0.0]
+                        )
+                    )
+                ]
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private DebriefTeamStatsContainer is BUCKContainerDescriptor
+(
+    ElementName = "TeamStatsContainer"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    HasBackground = true
+    BackgroundBlockColorToken = "DivisionBrief/ButtonOverlay"
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        ~/DebriefTeamStatsMultiListContent,
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private DebriefTeamStatsMultiListTitle is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 25.0]
+    )
+
+    //HasBackground = true
+    BackgroundBlockColorToken = "ListeExcel/Cartouche"
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        // TeamColor
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'StatsTeamColorMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [37.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components = []
+            )
+        ),
+        // Avatar
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'StatsAvatarMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [37.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components = []
+            )
+        ),
+        // Name
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.2
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'StatsPlayersMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Left
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = TacticalEndgameTitleFont
+                        TextSize = TacticalEndgameTitleFontSize
+                        TextColor = 'Transparent'
+                        TextToken = 'EG_MPLAY'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        //  TextPadding = TRTTILength4(Magnifiable = [20.0, 0.0, 0.0, 0.0])
+                    ),
+                ]
+            )
+        ),
+        // Add Friend
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'StatsAddFriendMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [50.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+
+                HidePointerEvents = true
+                Components = []
+            )
+        ),
+        // Emblem
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'StatsEmblemMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [50.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+
+                HidePointerEvents = true
+                Components = []
+            )
+        ),
+        // VictoryType
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.3
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'StatsVictoryTypeMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+                ShowCheckbox = false
+
+                HidePointerEvents = true
+                Components = []
+            )
+        ),
+        // Command points
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.1
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'StatsCommandPointsMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                HidePointerEvents = true
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                Components =
+                [
+                    BUCKSpecificTextWithHint
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Left
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = TacticalEndgameTitleFont
+                        TextSize = TacticalEndgameTitleFontSize
+                        TextColor = 'GrisFoncePapier'
+                        TextToken = 'EG_COMMD'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        HasAutoHint = true
+                        AutoHintElementName = "CommandTitleAutoHint"
+                    ),
+                ]
+            )
+        ),
+        // Kills
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.1
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'StatsKillsMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                HidePointerEvents = true
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                Components =
+                [
+                    BUCKSpecificTextWithHint
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Left
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = TacticalEndgameTitleFont
+                        TextSize = TacticalEndgameTitleFontSize
+                        TextColor = 'GrisFoncePapier'
+                        TextToken = 'EG_KILLS'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        HasAutoHint = true
+                        AutoHintElementName = "KillsTitleAutoHint"
+                    ),
+                ]
+            )
+        ),
+        // Losses
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.1
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'StatsLossesMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                HidePointerEvents = true
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                Components =
+                [
+                    BUCKSpecificTextWithHint
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Left
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = TacticalEndgameTitleFont
+                        TextSize = TacticalEndgameTitleFontSize
+                        TextColor = 'GrisFoncePapier'
+                        TextToken = 'EG_LOSSES'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        HasAutoHint = true
+                        AutoHintElementName = "LossesTitleAutoHint"
+                    ),
+                ]
+            )
+        ),
+        // HiddenSortingCriterion
+        // Utilisé par le cpp pour trier les joueur avec la formule : nbKills - nbLosses + nb_points_de_commandement (FUL-1493)
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "HiddenSortingCriterion"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                Components =
+                [
+                    BUCKContainerDescriptor
+                    (
+                        ElementName = "DummyForHiddenSortingCriterion"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 0.0]
+                        )
+                    )
+                ]
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private DebriefTeamStatsMultiList is BUCKMultiListDescriptor
+(
+    ElementName = "DebriefTeamStatsMultiList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    ColumnNames =
+    [
+        "StatsAvatarMultiList",
+        "StatsPlayersMultiList",
+        "StatsAddFriendMultiList",
+        "StatsEmblemMultiList",
+        "StatsVictoryTypeMultiList",
+    ]
+
+    SortableColumnNames =
+    [
+        "StatsTeamColorMultiList",
+        "HiddenSortingCriterion",
+    ]
+
+    RackName = "TeamStatsRack"
+
+    TitleDescriptor = ~/DebriefTeamStatsMultiListTitle
+    ContentDescriptor = BUCKRackDescriptor
+    (
+        ElementName = "TeamStatsRack"
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        FirstMargin = TRTTILength(Magnifiable = 5.0)
+        InterItemMargin = TRTTILength(Magnifiable = 2.0)
+        LastMargin = TRTTILength(Magnifiable = 2.0)
+
+        BladeDescriptor = ~/DebriefTeamStatsContainer
+    )
+)
+
+//-------------------------------------------------------------------------------------

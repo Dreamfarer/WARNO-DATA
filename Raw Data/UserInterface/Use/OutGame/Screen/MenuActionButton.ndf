@@ -1,0 +1,160 @@
+
+template MenuActionButtonSeparator
+[
+    ElementName: string = '',
+    MagnifiableHorizontalMargin : float = 3.0,
+]
+is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1.0 + 2*<MagnifiableHorizontalMargin>, 26.0]
+        AlignementToFather = [0,0.5]
+        AlignementToAnchor = [0,0.5]
+    )
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                PixelWidthHeight = [1.0, 0.0]
+                RelativeWidthHeight = [0.0, 1.0]
+                AlignementToFather = [0.5,0.0]
+                AlignementToAnchor = [0.5,0.0]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "GrisClair"
+        ),
+    ]
+)
+
+private MenuActionRadioButtonManager is TBUCKRadioButtonManager()
+
+template MenuActionButton
+[
+    TextToken : string,
+    ElementName: string = '',
+    DefaultToggleValue: boolean = false,
+    IsTogglable: boolean = false,
+    CannotDeselect : boolean = false,
+    ForceEvents : boolean = false,
+    TextColor : string = "Blanc_multi",
+    TextSize : string = "16",
+    TextureColorToken : string = '',
+    ForbiddenTags : LIST<string> = [],
+    HintTitleToken : string = '',
+    HintExtendedToken : string = '',
+    HintBodyToken : string = '',
+    Mapping : TEugBMutablePBaseClass = nil,
+    TextElementName : string = '',
+    DicoToken : string = ~/LocalisationConstantes/dico_interface_outgame,
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HasIcone : bool = false,
+    Icone_Texture : string = 'Texture_battlegroupe_icone',
+    LeftClickSound : TSoundDescriptor = nil,
+]
+ is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0,0.5]
+        AlignementToAnchor = [0,0.5]
+    )
+
+    IsTogglable = <IsTogglable>
+    DefaultToggleValue = <DefaultToggleValue>
+    RadioButtonManager = <IsTogglable> ? ~/MenuActionRadioButtonManager : nil
+    CannotDeselect = <CannotDeselect>
+    ForceEvents = <ForceEvents>
+    ForbiddenTags = <ForbiddenTags>
+    Mapping = <Mapping>
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    LeftClickSound = <LeftClickSound>
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0,32]
+                AlignementToFather = [0,0.5]
+                AlignementToAnchor = [0,0.5]
+            )
+            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+            Axis = ~/ListAxis/Horizontal
+
+            Elements =
+            (<HasIcone> == true ?
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextureDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [32.0, 32.0]
+                                    AlignementToFather = [0,0.5]
+                                    AlignementToAnchor = [0,0.5]
+                                )
+                                TextureToken = <Icone_Texture>
+                                TextureColorToken = 'Blanc_multi'
+                            )
+                        )
+                    ] : []
+                )
+            +
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = <TextElementName>
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = ~/UIText_Center
+                        )
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            //RelativeWidthHeight = [1.0, 0.0]
+                            //MagnifiableWidthHeight = [0,20]
+                            AlignementToFather = [0,0.5]
+                            AlignementToAnchor = [0,0.5]
+                        )
+
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextColor = <TextColor>
+                        TextSize  = <TextSize>
+                        TextStyle = "Default"
+                        TypefaceToken = "Liberator"
+                        TextToken = <TextToken>
+                        TextDico = <TextDico>
+
+                        Components =
+                        [
+                            BUCKSpecificHintableArea
+                            (
+                                HintTitleToken = <HintTitleToken>
+                                HintBodyToken = <HintBodyToken>
+                                HintExtendedToken = <HintExtendedToken>
+                                DicoToken = <DicoToken>
+                            ),
+                        ]
+                    )
+                ),
+            ]
+        )
+    ]
+)

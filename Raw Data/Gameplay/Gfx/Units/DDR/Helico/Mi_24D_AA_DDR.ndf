@@ -1,0 +1,19 @@
+export ModelFile_Mi_24D_AA_DDR is 'GameData:/Assets/3D/Units/DDR/Helico/Mi_24D/Mi_24V_Hind_AA.Ase2NdfBin'
+
+Modele_Mi_24D_AA_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_24D_AA_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_24D_AA_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_24D_AA_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_24D_AA_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_24D_AA_DDR
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,81 @@
+export SpecificDefaultSupplyRange is 1250.0 * Metre //250m in game //utilisé par le halo également
+export StandardSupply is TSupplyDescriptor
+(
+    // Rayon par défaut de la zone de ravitaillement, cette valeur est utilisée si
+    // aucun rayon n'est défini dans l'ODS
+    DefaultSupplyRange = SpecificDefaultSupplyRange
+
+    // Tous les ravitaillement sont découpé en deux variable
+    // 1 -> SupplyBySecond => Nombre de point de la ressource concerné ravitaillé par seconde
+    // 2 -> SupplyCostBySecond => Le nombre de point de ravitaillement que coûte le ravitaillement ci dessus.
+    // 2 -> SupplyCostBySecond => Le nombre de point de ravitaillement que coûte le ravitaillement ci dessus.
+    //
+    // Exemple :
+    // FuelSupplyBySecond = 1
+    // FuelSupplyCostBySecond = 10
+    //
+    // Une unité ravitaillée en essence recevra un point d'essence par seconde, et ce ravitaillement
+    // coûtera 10 points de ravitaillement a la FOB
+
+    // Point d'essence ravitaillés par seconde
+    FuelSupplyBySecond = 30
+    // Cout du ravitaillement d'essence par seconde
+    FuelSupplyCostBySecond =  5
+
+    // Types de mouvement dont la vie est suppliable. Liste des valeurs dans UnitMovingType.ndf
+    HealthSuppliableMovingTypes = [
+        EUnitMovingType/Track,
+        EUnitMovingType/TrackAmphibious,
+        EUnitMovingType/AllTerrainWheelAmphibious,
+        EUnitMovingType/HalfTrack,
+        EUnitMovingType/AllTerrainWheel,
+        EUnitMovingType/Wheel,
+        EUnitMovingType/Flying,
+        EUnitMovingType/Infantry,
+    ]
+    // Point de vie ravitaillés par seconde
+    HealthSupplyBySecond = 0.3 //0.00001
+    // Cout du ravitaillement de point de vie par seconde
+    HealthSupplyCostBySecond = 0.3 // 0.00001
+
+    // Point de ravitaillement ravitaillés par seconde
+    SupplySupplyBySecond = 20 //30
+    // Cout du ravitaillement de point de ravitaillement par seconde
+    SupplySupplyCostBySecond = 20 //30
+
+    // Point de munition ravitaillés par seconde
+    AmmunitionSupplyBySecond = 600 //20
+    // Cout du ravitaillement de munition par seconde
+    AmmunitionSupplyCostBySecond = 60 //20
+
+    // Types de mouvement dont les critiques sont réparables. Liste des valeurs dans UnitMovingType.ndf
+    CriticsSuppliableMovingTypes = [
+        EUnitMovingType/Track,
+        EUnitMovingType/TrackAmphibious,
+        EUnitMovingType/AllTerrainWheelAmphibious,
+        EUnitMovingType/HalfTrack,
+        EUnitMovingType/AllTerrainWheel,
+        EUnitMovingType/Wheel,
+    ]
+    // Points de "critique" réparés par seconde
+    CriticsSupplyBySecond = 10
+    // Coût de la réparation de "critique" par seconde
+    CriticsSupplyCostBySecond = 20
+
+    FeedbackDrawer = ~/SupplyFeedbackDrawer
+)
+
+SupplyFeedbackDrawer is TSupplyFeedbackDrawerSimpleCercle
+(
+    FillColor = RGBA[0,0,0,0]
+    LineColor = RGBA[244, 187, 50, 255]
+    ZOffset = 250.0
+    LineThickness = 600.0
+    FeedbackDescriptor = ~/SupplyFeedbackDescriptor
+)
+
+SupplyFeedbackDescriptor is TSupplyFeedbackDescriptor
+(
+    FeedbackScreenResilienceDuration = 3.0
+    FeedbackFadeOutTime = 1.0
+)

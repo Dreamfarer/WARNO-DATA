@@ -1,0 +1,20 @@
+//------------------------ Constantes Flare des avions ---------------------------------------//
+
+// configuration des flares pour les bateau
+TempsEntreLancementFlare is 0.1 // 1, en seconde
+TempsBonusLancementFlareParArme is 0.05 // 0.2 en seconde
+TempsMinimalEntreLancementFlare is 0.05 // 0.2 en seconde
+DistanceActivationFlare is 8000 * Metre // 4000
+VitesseInitialFlare is 0
+AngleDispersionFlare is 40 // en degrée
+
+
+// configuration des flares pour les avions
+TempsEntreLancementFlare_Avion is 0.3 //0.2 // 1, en seconde
+TempsBonusLancementFlareParArme_Avion is 0.05 // 0.2 en seconde
+TempsMinimalEntreLancementFlare_Avion is 0.1 // 0.05 en seconde
+DistanceActivationFlare_Avion is 8000 * Metre // 8000 / 4000
+VitesseInitialFlare_Avion is 0
+AngleDispersionFlare_Avion is 5 // 5, en degrée
+
+// Parametres FX dans GameData:/Fx/Constantes/GFXConstantes.ndf

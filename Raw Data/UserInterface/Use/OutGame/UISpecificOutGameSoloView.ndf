@@ -1,0 +1,258 @@
+
+//------------------------------------------------------------------------------
+
+MainOutGameSoloDescriptor is BUCKContainerDescriptor
+(
+    ElementName = 'MainOutGameSoloDescriptor'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            TextureToken = "OutgameTexture_outgame_Solo"
+        ),
+        ListeDesActionsSolo,
+
+        BUCKContainerDescriptor
+        (
+            UniqueName = "SoloPanelViewDescriptor"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        ),
+        MainBackButtonContainer
+        (
+            ButtonDefaultToken = "BTN_BACK"
+            BackMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+        ),
+        // effet par dessus
+        BUCKTextureDescriptor
+        (
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [ 1.0, 1.0 ]
+            )
+            TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+            TextureToken = "outgame_fond_test"
+            TextureDrawer  = 'ColorMultiply_Additive'
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+ListeDesActionsSolo is BUCKListDescriptor
+(
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 200.0]
+        MagnifiableOffset = [-52,265]
+    )
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength(Magnifiable = 200.0)
+    InterItemMargin = TRTTILength(Magnifiable = 42.0)
+    LastMargin = TRTTILength(Magnifiable = 200.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = ThumbnailSoloDescriptor
+            (
+                ElementName = "HUBSoloTutorialButton"
+                TextToken = "SGP_TUTO"
+                ForceEvents = true
+                Locked = true
+                LeftClickSound = SoundEvent_EnterSoloTutorial
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = ThumbnailSoloDescriptor
+            (
+                ElementName = "HUBArmyGeneralButton"
+                TextToken = "SGP_CAMP"
+                ForceEvents = true
+                Locked = true
+                LeftClickSound = SoundEvent_EnterSoloCampaign
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = ThumbnailSoloDescriptor
+            (
+                ElementName = "HUBSkirmishButton"
+                TextToken = "SGP_SKIR"
+                ForceEvents = true
+                LeftClickSound = SoundEvent_EnterSoloSkirmish
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = ThumbnailSoloDescriptor
+            (
+                ElementName = "HUBScenarioButton"
+                TextToken = "SGP_OP"
+                ForceEvents = true
+                Locked = true
+                LeftClickSound = SoundEvent_EnterSoloChallenge
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = ThumbnailSoloDescriptor
+            (
+                ElementName = "HUBLoadFileButton"
+                TextToken = "AB_LOADING"
+                ForceEvents = true
+                LeftClickSound = SoundEvent_EnterSoloLoad
+            )
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+private SoloRadioButtonManager is TBUCKRadioButtonManager()
+
+template ThumbnailSoloDescriptor
+[
+    TextToken : string,
+    ElementName: string,
+    DefaultToggleValue: boolean = false,
+    IsTogglable: boolean = true,
+    ForceEvents: boolean = false,
+    TextColor : string = "menu_titre_solo",
+    TextSize : string = "28",
+    DecalageTextureSurvol : float2 = [-15,40],
+    TextureColorToken : string = '',
+    Locked: boolean = false,
+    LeftClickSound : TSoundDescriptor = nil,
+]
+ is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    IsTogglable = <IsTogglable>
+    DefaultToggleValue = <DefaultToggleValue>
+    RadioButtonManager = <IsTogglable> ? ~/SoloRadioButtonManager : nil
+    CannotDeselect = <IsTogglable>
+    ForceEvents = <ForceEvents>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableWidthHeight = [291.0, 0.0]
+    )
+
+    LeftClickSound = <LeftClickSound>
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [293,38]
+                AlignementToFather = [0.5, 0]
+                AlignementToAnchor = [0.5, 0]
+                MagnifiableOffset = [0,-10]
+            )
+            TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+            TextureToken =  'Outgame_survol_menuSolo'
+            TextureColorToken = <TextureColorToken>
+        ),
+        BUCKTextDescriptor
+        (
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                VerticalAlignment = ~/UIText_Bottom
+                Alignment = ~/UIText_Center
+            )
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0,25]
+            )
+            HasBackground = false
+            BackgroundBlockColorToken = "BlancLight"
+            TextColor = <TextColor>
+            TextSize  = <TextSize>
+            TextStyle = "Default"
+            TypefaceToken = "Liberator"
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextPadding = TRTTILength4( Magnifiable = [0.0, 0.0, 0.0, 2.0] )
+        ),
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [321,211]
+
+                MagnifiableOffset = <DecalageTextureSurvol>
+            )
+            TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+            TextureToken =  'Outgame_survol_photoSolo'
+        ),
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [282,172]
+                MagnifiableOffset = [2,47]
+            )
+
+            HasBackground = <Locked>
+            BackgroundBlockColorToken = (<Locked> ? "SD2_Blanc184_70" : "")
+        ),
+        BUCKTextDescriptor
+        (
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                VerticalAlignment = ~/UIText_VerticalCenter
+                Alignment = ~/UIText_Center
+            )
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0,20]
+                MagnifiableOffset = [0, 110]
+        )
+
+            TextColor = "Blanc"
+            TextSize  = "40"
+            TextStyle = "Default"
+            TypefaceToken = "Liberator"
+            TextToken = (<Locked> ? "AB_BLCK_EA" : "")
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        ),
+    ]
+)
+//------------------------------------------------------------------------------
+
+UISpecificOutGameSoloViewDescriptor is TUISpecificOutGameSoloViewDescriptor
+(
+    MainComponentDescriptor = ~/MainOutGameSoloDescriptor
+    MainComponentContainerUniqueName = ""
+)

@@ -1,0 +1,19 @@
+export ModelFile_BM30_Smerch_SOV is 'GameData:/Assets/3D/Units/URSS/Artillerie/BM30_Smerch/BM30_Smerch.Ase2NdfBin'
+
+Modele_BM30_Smerch_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BM30_Smerch_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BM30_Smerch_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/BM30_Smerch_MID/BM30_Smerch_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BM30_Smerch_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/LODS/BM30_Smerch_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

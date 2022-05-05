@@ -1,0 +1,16 @@
+
+// CONSTANTES POUR LE GAME DESIGN
+
+StrategicCameraConstantes is TStrategicCameraConstantesDescriptor
+(
+    GoingBackDuration = .5              //  temps de certain mouvement de cam
+    GoBackWithStraightPath = true       // a true la camera va tout droit, sinon elle fait une pirouette cacahouète pour rejoindre sa position. Note que la pirouette n'a pas l'air de fonctionner très bien.
+
+    IdleAltitude = 18000 * Metre        //altitude par défaut quand on perd le controle de la camera pendant le tour de l'ia
+    FollowAltitude = 9000 * Metre      //altitude mini de focus sur une/des unités (pendant la bataille ou pendant les ordres si activé)
+
+    ShowAllUnitsInBattle = false        //au lancement de la bataille, quand la camera focus l'unité attaquée, si ce parametre est à true, on va placer la camera de façon a voir toutes les unités qui peuvent participer. Si a false on se mettra juste sur la cible de la bataille à la FollowAltitude
+    OrderSpecificBehavior = false       //si actif, la camera ira se mettre à FollowAltitude au dessus d'une unité qui entame un ordre, ou en follow si UseFollowCam est activé.
+
+    IdleSite = -45
+)

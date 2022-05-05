@@ -1,0 +1,29 @@
+LevelBuildItemFileExtension is 'sav'
+
+HexagonRadius is 11577 //34050
+GridVisibilityRadiusInCaseCount is 35
+
+SparseDBMaxPrecision is 100
+
+ShadowFarClippingDistance is $/GraphicOption/LevelBuild_Low * 1.4
+
+//**************
+// Variables utilisé pour l'affichage du HQ et des routes.
+//**************
+
+TransitionDepthOfFieldHeight     is 400000
+TransitionDepthOfFieldHysteresis is 10000
+TransitionDepthOfFieldTimeInSec  is 0.75
+
+template Template_AdditionnalFilesForMapConstantes
+[
+    LevelBuildDataDirectory:string
+]
+is TBaseClass
+(
+    public Values is [
+        <LevelBuildDataDirectory> + '/SplattingConfig.ndf',
+        'GameData:/Gameplay/Constantes/BaseGDConstantes.ndf',
+        'GameData:/Gameplay/Constantes/ActionPointConsumptionGridRefs.ndf',
+    ]
+)

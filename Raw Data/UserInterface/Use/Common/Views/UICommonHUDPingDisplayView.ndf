@@ -1,0 +1,100 @@
+Connexion_Inactive is 0
+Connexion_Awful is 1
+Connexion_Bad is 2
+Connexion_Average is 3
+Connexion_Good is 4
+
+MagnifiableSpaceBetweenPingBars  is 2.0
+PingBarMagnifiableWidth          is 4.0
+PingBarMagnifiableDefaultHeight  is PingBarMagnifiableWidth
+PingBarMagnifiableMaxHeight      is 4 * PingBarMagnifiableDefaultHeight
+
+BUCKCommonHUDPingDisplayMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [4 * PingBarMagnifiableWidth + 3 * MagnifiableSpaceBetweenPingBars, PingBarMagnifiableMaxHeight]
+        AlignementToAnchor = [0.0, 0.5]
+        AlignementToFather = [0.0, 0.5]
+    )
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = "LittlestPingBar"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [PingBarMagnifiableWidth, PingBarMagnifiableWidth * 1]
+                MagnifiableOffset = [0 * (MagnifiableSpaceBetweenPingBars + PingBarMagnifiableWidth), 0]
+                AlignementToAnchor = [0.0, 1]
+                AlignementToFather = [0.0, 1]
+            )
+
+            HasBackground = true
+        ),
+        BUCKContainerDescriptor
+        (
+            ElementName = "LittlePingBar"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [PingBarMagnifiableWidth, PingBarMagnifiableWidth * 2]
+                MagnifiableOffset = [1 * (MagnifiableSpaceBetweenPingBars + PingBarMagnifiableWidth), 0]
+                AlignementToAnchor = [0.0, 1]
+                AlignementToFather = [0.0, 1]
+            )
+
+            HasBackground = true
+        ),
+        BUCKContainerDescriptor
+        (
+            ElementName = "MediumPingBar"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [PingBarMagnifiableWidth, PingBarMagnifiableWidth * 3]
+                MagnifiableOffset = [2 * (MagnifiableSpaceBetweenPingBars + PingBarMagnifiableWidth), 0]
+                AlignementToAnchor = [0.0, 1]
+                AlignementToFather = [0.0, 1]
+            )
+
+            HasBackground = true
+        ),
+        BUCKContainerDescriptor
+        (
+            ElementName = "BigPingBar"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [PingBarMagnifiableWidth, PingBarMagnifiableWidth * 4]
+                MagnifiableOffset = [3 * (MagnifiableSpaceBetweenPingBars + PingBarMagnifiableWidth), 0]
+                AlignementToAnchor = [0.0, 1]
+                AlignementToFather = [0.0, 1]
+            )
+
+            HasBackground = true
+        ),
+    ]
+)
+
+UICommonHUDPingDisplayViewDescriptor is TUICommonHUDPingDisplayViewDescriptor
+(
+
+    PingValueTable = MAP
+    [
+        (Connexion_Inactive, 0),
+        (Connexion_Awful, 0),
+        (Connexion_Bad, 650),
+        (Connexion_Average, 300),
+        (Connexion_Good, 150),
+    ]
+    PingColorTable = MAP
+    [
+        (Connexion_Inactive, "PingDisplay/InactiveBar"),
+        (Connexion_Awful, "PingDisplay/AwfulBar"),
+        (Connexion_Bad, "PingDisplay/BadBar"),
+        (Connexion_Average, "PingDisplay/AverageBar"),
+        (Connexion_Good, "PingDisplay/GoodBar"),
+    ]
+
+    MainComponentDescriptor = ~/BUCKCommonHUDPingDisplayMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet de récupérer un composant déjà dans l'interface comme MainComponent
+)

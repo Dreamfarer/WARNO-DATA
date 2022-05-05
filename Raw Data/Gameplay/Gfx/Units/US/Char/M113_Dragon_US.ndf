@@ -1,0 +1,25 @@
+export ModelFile_M113_Dragon_US is 'GameData:/Assets/3D/Units/US/APC/M113/M113A1_TOW.Ase2NdfBin'
+
+Modele_M113_Dragon_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_M113_Dragon_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M113_Dragon_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/M113_MID/M113A1_TOW_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M113_Dragon_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/LODS/M113A1_TOW_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M113_Dragon_US_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/Ammo/Tourelles/M47_Dragon_II.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

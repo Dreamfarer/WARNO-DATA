@@ -1,0 +1,234 @@
+LevelUpResources is TBaseClass
+(
+    public BorderWidth is 3.0
+    public BorderWidthToken is "3"
+    public Title_Border is BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = [79,41]
+            MagnifiableWidthHeight = [222,59]
+            RelativeWidthHeight = [0,0]
+        )
+
+        UniformDrawer = $/UserInterface/UIUniformDrawer
+        HasBorder = false
+        BordersToDraw = ~/TBorderSide/Top | ~/TBorderSide/Bottom
+        BorderLineColorToken = "Noir"
+        BorderThicknessToken = "3"
+    )
+    public Title is BUCKTextDescriptor
+    (
+        ElementName = "UIMainFont"
+        ParagraphStyle = ~/paragraphStyleTextCenter
+        TextColor = "SD2_Blanc184"
+        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        TextSize = "42"
+        TextStyle = "Default"
+        TextToken = "T_LEVELUP"
+        TypefaceToken = "UISecondFont"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            //MagnifiableOffset = [0, 53]
+            //MagnifiableWidthHeight = [148, 36]
+            RelativeWidthHeight = [1, 1]
+            AlignementToFather = [0.5, 0]
+            AlignementToAnchor = [0.5, 0.2]
+        )
+    )
+    public Cadre_Texte is BUCKTextDescriptor
+    (
+        ElementName = "Cadre_Texte"
+        ParagraphStyle = ~/paragraphStyleTextLeftAlign
+        TextColor = "SD2_BleuVariable"
+        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        TextSize = "SD2_Petit"
+        TextStyle = "Default"
+        TextToken = "SP_LVL"
+        TypefaceToken = "UIMainFont"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            //MagnifiableOffset = [0,619]
+            //MagnifiableWidthHeight = [100,12]
+            RelativeWidthHeight = [1,1]
+        )
+    )
+    public Cadre is BUCKTextureDescriptor
+    (
+        ClipTextureToComponent = False
+        TextureToken = "OutgameTexture_LevelUp_Cadre"
+        TileTextureInComponent = True
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = [0,32]
+            MagnifiableWidthHeight = [65,86]
+            RelativeWidthHeight = [0,0]
+        )
+        TextureFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = [0, 0]
+            RelativeWidthHeight = [1, 1]
+        )
+    )
+    public Cadre_Level is BUCKTextDescriptor
+    (
+        ElementName = "Cadre_Level"
+        ParagraphStyle = ~/paragraphStyleTextCenter
+        TextColor = "SD2_Blanc184"
+        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        TextSize = "42"
+        TextStyle = "Default"
+        TextToken = "LVLNOW"
+        TypefaceToken = "UISecondFont"
+        BigLineAction = ~/BigLineAction/ResizeFont
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = [16,44]
+            MagnifiableWidthHeight = [30,52]
+            RelativeWidthHeight = [0,0]
+        )
+    )
+    public Total_Xp is BUCKTextDescriptor
+    (
+        ElementName = "Total_Xp"
+        ParagraphStyle = ~/paragraphStyleTextLeftAlign
+        TextColor = "SD2_Blanc184"
+        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        TextSize = "SD2_Moyen"
+        TextStyle = "Default"
+        TextToken = "TOTALXP"
+        TypefaceToken = "UIMainFont"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = [73,32]
+            MagnifiableWidthHeight = [200,20]
+            RelativeWidthHeight = [0,0]
+        )
+    )
+    public Next_Level is BUCKTextDescriptor
+    (
+        ElementName = "Next_Level"
+        ParagraphStyle = ~/paragraphStyleTextLeftAlign
+        TextColor = "SD2_Blanc184"
+        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        TextSize = "SD2_Moyen"
+        TextStyle = "Default"
+        TextToken = "NEXTLEVEL"
+        TypefaceToken = "UIMainFont"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = [73,60]
+            MagnifiableWidthHeight = [200,19]
+            RelativeWidthHeight = [0,0]
+        )
+    )
+    public Xp_Bar is BUCKContainerDescriptor
+    (
+        ElementName = "Xp_Bar"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0, 1]
+            MagnifiableOffset = [0, 0]
+        )
+        HasBackground = true
+        BackgroundBlockColorToken = "SD2_BleuVariable"
+    )
+    public Xp_Frame is BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = [73, 88]
+            MagnifiableWidthHeight = [148, 21]
+        )
+        UniformDrawer = $/UserInterface/UIUniformDrawer
+        HasBorder = false
+        BordersToDraw = ~/TBorderSide/All
+        BorderLineColorToken = "Noir"
+        BorderThicknessToken = ~/LevelUpResources/BorderWidthToken
+        HasBackground = true
+        BackgroundBlockColorToken = "SD2_Gris80"
+
+        Components =
+        [
+            ~/LevelUpResources/Xp_Bar
+        ]
+    )
+    public Medaille is BUCKContainerDescriptor
+    (
+        ElementName = "Medaille"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = [-60, 110]
+            MagnifiableWidthHeight = [500, 500]
+            RelativeWidthHeight = [0,0]
+        )
+    )
+    public Background is BUCKContainerDescriptor
+    (
+        HasBackground = true
+        BackgroundBlockColorToken = "SD2_Gris80"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [900,250]
+            RelativeWidthHeight = [0,0]
+        )
+
+    )
+)
+
+LevelUpPanelDescriptor is BUCKButtonDescriptor
+(
+    ElementName = "MainButton"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [900, 250]
+                AlignementToFather = [.5, .5]
+                AlignementToAnchor = [.5, .5]
+            )
+
+            HidePointerEvents = true
+            HasBackground = true
+            BackgroundBlockColorToken = "SD2_Gris80"
+            Components =
+            [
+                //~/LevelUpResources/Background,
+                ~/LevelUpResources/Medaille,
+                //~/LevelUpResources/Title_Border,
+                ~/LevelUpResources/Title,
+
+
+                BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        //MagnifiableOffset = [153 + ~/LevelUpResources/BorderWidth, 688 + ~/LevelUpResources/BorderWidth]
+                        //MagnifiableWidthHeight = [148 - ~/LevelUpResources/BorderWidth * 2, 21 - ~/LevelUpResources/BorderWidth * 2]
+                        RelativeWidthHeight = [1,1]
+                        AlignementToFather = [0.35,0.35]
+
+
+                    )
+                    Components = [
+
+                                ~/LevelUpResources/Cadre,
+                                ~/LevelUpResources/Cadre_Level,
+                                //~/LevelUpResources/Cadre_Texte,
+                                ~/LevelUpResources/Total_Xp,
+                                ~/LevelUpResources/Next_Level,
+                                ~/LevelUpResources/Xp_Frame,
+                                ]
+                ),
+            ]
+
+        )
+    ]
+)

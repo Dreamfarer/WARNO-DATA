@@ -1,0 +1,23 @@
+private reinforcementManager is TReinforcementManager
+(
+    ReinforcementColor = RGBA[255,255,255,255]
+
+    // Cette valeur est censée représenter la taille (en Game Units) de la bbox du tag de renforts
+    // qui a été posé dans l'éditeur. Ceci car le placement des flèches de renforts nécessite deux
+    // points importants : la pointe de la flèche et son départ (où les unités spawneront). Comme
+    // le tag de renforts n'a qu'une seule position, on utilise sa position pour la pointe de la flèche,
+    // et l'extremité opposée de sa bbox pour le départ de la flèche. Du coup on a besoin de sa longueur,
+    // multipliée par son scale pour avoir la distance entre les deux points. Et oui c'est pas terrible.
+    // Cf TReinforcementManager::StartPositionInWorldForReinforcementArrow
+    ReinforcementDistance = 370 * OneMeterInGameUnits // encore present pour retrocompatibilite, mais faut plus s'en servir (COMMON-2374)
+
+    RoadSnapDistance = 500 * OneMeterInGameUnits
+
+    LandCorridorTextOffset = 5000
+    AerialCorridorTextOffset = 5000
+    MaritimeCorridorTextOffset = 5000
+
+    LandCorridorFeedbackDescriptor = $/GFX/Everything/GfxReinforcementLocation
+    AerialCorridorFeedbackDescriptor = $/GFX/Everything/GfxAerialCorridorLocation
+    MaritimeCorridorFeedbackDescriptor = $/GFX/Everything/GfxMaritimeCorridorLocation
+)
