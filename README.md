@@ -120,6 +120,7 @@ All useful values to be found in `Ammunition.ndf`
 `bol` **AllowSuppressDamageWhenNoImpact**\
 `int` **EBaseHitValueModifier/Idling** &mdash; Accuracy while standing still\
 `int` **EBaseHitValueModifier/Moving** &mdash; Accuracy while moving\
+`int` **MaxSuccessiveHitCount**\
 `flt` **TempsDeVisee** &mdash; Aim time\
 `flt` **TempsEntreDeuxSalves** &mdash; Time between salvos\
 `int` **NbTirParSalves** &mdash; Shot count per salvo\
