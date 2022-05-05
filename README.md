@@ -85,5 +85,43 @@ All useful values to be found in `UniteDescriptor.ndf`
 `int` **RealRoadSpeed**\
 `str` **UpgradeFromUnit**
 
-## Weapon Descriptor
-All useful values to be found in `WeaponDescriptor.ndf`
+## Ammunition Descriptor
+All useful values to be found in `Ammunition.ndf`
+
+`tkn` **Name**\
+`tkn` **TypeCategoryName**\
+`tkn` **Caliber**\
+`str` **ProjectileType**\
+`flt` **Puissance** &mdash; Function not known\
+`flt` **TempsEntreDeuxTirs** &mdash; Time between two shots\
+`int` **PorteeMinimale** &mdash; Maximal engagement distance (Ground)\
+`int` **PorteeMaximale** &mdash; Minimal engagement distance (Ground)\
+`int` **PorteeMinimaleTBA** &mdash; Maximal engagement distance (Helicopter)\
+`int` **PorteeMaximaleTBA** &mdash; Minimal engagement distance (Helicopter)\
+`int` **PorteeMinimaleHA** &mdash; Maximal engagement distance (Aircraft)\
+`int` **PorteeMaximaleHA** &mdash; Minimal engagement distance (Aircraft)\
+`int` **AltitudeAPorteeMaximale** &mdash; Maximal engagement altitude\
+`int` **AltitudeAPorteeMinimale** &mdash; Minimal engagement altitude\
+`int` **DispersionAtMaxRange** &mdash; Dispersion\
+`flt` **CorrectedShotAimtimeMultiplier**\
+`int` **RadiusSplashPhysicalDamages**\
+`flt` **PhysicalDamages** &mdash; HE Damage\
+`int` **RadiusSplashSuppressDamages**\
+`flt` **SuppressDamages** &mdash; Suppress Damage\
+`bol` **AllowSuppressDamageWhenNoImpact**\
+`int` **EBaseHitValueModifier/Idling** &mdash; Accuracy while standing still\
+`int` **EBaseHitValueModifier/Moving** &mdash; Accuracy while moving\
+`flt` **TempsDeVisee** &mdash; Aim time\
+`flt` **TempsEntreDeuxSalves** &mdash; Time between salvos\
+`int` **NbTirParSalves** &mdash; Shot count per salvo\
+`int` **SupplyCost**\
+`flt` **FireTriggeringProbability**\
+`bol` **CanShootOnPosition**\
+`bol` **CanShootWhileMoving**\
+`bol` **CanHarmInfantry**\
+`bol` **CanHarmVehicles**\
+`bol` **CanHarmHelicopters**\
+`bol` **CanHarmAirplanes**\
+`bol` **CanHarmGuidedMissiles**\
+`bol` **IsHarmlessForAllies**\
+`bol` **PiercingWeapon** &mdash; Function not known\

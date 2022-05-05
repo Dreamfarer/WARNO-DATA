@@ -93,3 +93,46 @@ TempsEntreDeuxSalves 		Reload-Time
 TempsDeVisee  				Aiming Time
 SupplyCost
 NbTirParSalves 				Salvo Length
+
+NeedsExplicitOrderToUseSmoke = True
+Salves = [8,-1,-1,-1,-1,-1]
+AlwaysOrientArmorTowardsThreat = True
+Ammunition = ~/Ammo_DCA_2_canons_Oerlikon_GDF_35mm
+OutOfRangeTrackingDuration      = 3.5
+
+Name
+TypeCategoryName
+Caliber
+TraitsToken
+ProjectileType 
+Puissance
+TempsEntreDeuxTirs 
+PorteeMaximale                    = ((3000) * Metre)
+PorteeMinimaleTBA                 = ((100) * Metre)
+PorteeMaximaleTBA                 = ((7995) * Metre)
+PorteeMinimaleHA                  = ((100) * Metre)
+PorteeMaximaleHA                  = ((8504) * Metre)
+PorteeMinimale                    = ((100) * Metre)
+AltitudeAPorteeMinimale           = ((35.0) * Metre)
+AltitudeAPorteeMaximale           = ((70.0) * Metre)
+DispersionAtMaxRange              = ((25) * Metre)
+CorrectedShotAimtimeMultiplier    = 1.0
+RadiusSplashPhysicalDamages       = ((23) * Metre)
+PhysicalDamages                   = 0.9
+RadiusSplashSuppressDamages       = ((45) * Metre)
+SuppressDamages                   = 45.0
+AllowSuppressDamageWhenNoImpact                = True
+TempsDeVisee                      = 0.5
+TempsEntreDeuxSalves              = 1.0
+NbTirParSalves                    = 10 //Shot count per salvo
+SupplyCost                        = 200
+FireTriggeringProbability         = 0.1
+CanShootOnPosition                = True
+CanShootWhileMoving               = True
+CanHarmInfantry                   = True
+CanHarmVehicles                   = True
+CanHarmHelicopters                = True
+CanHarmAirplanes                  = True
+CanHarmGuidedMissiles             = True
+IsHarmlessForAllies               = False
+PiercingWeapon                    = False
