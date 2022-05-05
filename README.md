@@ -85,6 +85,15 @@ All useful values to be found in `UniteDescriptor.ndf`
 `int` **RealRoadSpeed**\
 `str` **UpgradeFromUnit**
 
+## Weapon Descriptor
+All useful values to be found in `WeaponDescriptor.ndf`
+
+`bol` **NeedsExplicitOrderToUseSmoke**\
+`arr` **Salves** &mdash; Poorly understood\
+`bol` **AlwaysOrientArmorTowardsThreat**\
+`ref` **Ammunition** &mdash; Reference in `Ammunition.ndf`\
+`flt` **OutOfRangeTrackingDuration** &mdash; Function not known
+
 ## Ammunition Descriptor
 All useful values to be found in `Ammunition.ndf`
 
