@@ -20,70 +20,70 @@ All useful values to be found in `UniteDescriptor.ndf`
 `bol` **CanWinExperience**
 
 #### Visibility
-* **UnitConcealmentBonus**
-* **UnitIsStealth**
+`flt` **UnitConcealmentBonus**\
+`bol` **UnitIsStealth**
 
 #### Armor
-* **StunFreezesUnits**
-* **MaxSuppressionDamages**
-* **SuppressDamagesRegenRatio**
-* **MaxStunDamages**
-* **StunDamagesRegen**
-* **ArmorDescriptorFront**
-* **ArmorDescriptorSides**
-* **ArmorDescriptorRear**
-* **ArmorDescriptorTop**
-* **MaxDamages**
-* **MaxHPForHUD** &mdash; Function not known
-* **AutoOrientation**
+`bol` **StunFreezesUnits**
+`ref` **MaxSuppressionDamages**
+`ref` **SuppressDamagesRegenRatio**
+`ref` **MaxStunDamages**
+`ref` **StunDamagesRegen**
+`str` **ArmorDescriptorFront**
+`str` **ArmorDescriptorSides**
+`str` **ArmorDescriptorRear**
+`str` **ArmorDescriptorTop**
+`flt` **MaxDamages**
+`int` **MaxHPForHUD** &mdash; Function not known
+`bol` **AutoOrientation**
 
-* **Dangerousness**
+`flt` **Dangerousness**
 
 #### Movement
-* **MaxSpeed**
-* **VitesseCombat**
-* **SpeedBonusOnRoad**
-* **MaxAcceleration**
-* **MaxDeceleration**
-* **TempsDemiTour**
-* **VehicleSubType**
+`int` **MaxSpeed**
+`int` **VitesseCombat**
+`flt` **SpeedBonusOnRoad**
+`flt` **MaxAcceleration**
+`flt` **MaxDeceleration**
+`flt` **TempsDemiTour**
+`str` **VehicleSubType**
 
 #### Supply
-* **SupplyCapacity**
-* **SupplyPriority**
+`flt` **SupplyCapacity**
+`int` **SupplyPriority**
 
 #### Fuel
-* **FuelCapacity**
-* **FuelMoveDuration**
+`int` **FuelCapacity**
+`flt` **FuelMoveDuration**
 
 #### Vision
-* **OpticalStrength**
-* **OpticalStrengthAltitude**
-* **UnitDetectStealthUnit**
+`int` **OpticalStrength**
+`int` **OpticalStrengthAltitude**
+`bol` **UnitDetectStealthUnit**
 
 #### Scanner
-* **IdentifyBaseProbability**
-* **TimeBetweenEachIdentifyRoll**
+`flt` **IdentifyBaseProbability**
+`flt` **TimeBetweenEachIdentifyRoll**
 
 #### Production
-* **ProductionYear**
-* **ProductionTime**
-* **Resource_CommandPoints**
-* **Resource_Tickets**
+`int` **ProductionYear**
+`int` **ProductionTime**
+`int` **Resource_CommandPoints**
+`int` **Resource_Tickets**
 
 #### Label
-* **IsSupply**
-* **IsBuilding**
-* **IsTransporter**
-* **IsCommandementUnit**
-* **IsPlane**
-* **IsParachutist**
-* **UnitName**
+`bol` **IsSupply**
+`bol` **IsBuilding**
+`bol` **IsTransporter**
+`bol` **IsCommandementUnit**
+`bol` **IsPlane**
+`bol` **IsParachutist**
+`str` **UnitName**
 
 #### User Interface
-* **NameToken**
-* **RealRoadSpeed**
-* **UpgradeFromUnit**
+`str` **NameToken**
+`int` **RealRoadSpeed**
+`str` **UpgradeFromUnit**
 
 ## Weapon Descriptor
 All useful values to be found in `WeaponDescriptor.ndf`

@@ -14,8 +14,6 @@ UNIT DESCRIPTOR NDF:
 		UnitConcealmentBonus = 1.0
 		UnitIsStealth = False
 		
-
-		
 	Armor: 														//Can also be Vehicule_1 or Vehicule_leger
 		StunFreezesUnits = False
 		MaxSuppressionDamages = ~/Infanterie_MaxSuppressionDamages
@@ -40,6 +38,8 @@ UNIT DESCRIPTOR NDF:
 		MaxDeceleration = ((155.0) * Metre)
 		TempsDemiTour = 3.0
 		VehicleSubType = LandVehicleSubType/Wheeled
+		
+	Supply:
 		SupplyCapacity = 2500.0
 		SupplyPriority = -1
 		
