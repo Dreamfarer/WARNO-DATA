@@ -24,65 +24,65 @@ All useful values to be found in `UniteDescriptor.ndf`
 `bol` **UnitIsStealth**
 
 #### Armor
-`bol` **StunFreezesUnits**
-`ref` **MaxSuppressionDamages**
-`ref` **SuppressDamagesRegenRatio**
-`ref` **MaxStunDamages**
-`ref` **StunDamagesRegen**
-`str` **ArmorDescriptorFront**
-`str` **ArmorDescriptorSides**
-`str` **ArmorDescriptorRear**
-`str` **ArmorDescriptorTop**
-`flt` **MaxDamages**
-`int` **MaxHPForHUD** &mdash; Function not known
+`bol` **StunFreezesUnits**\
+`ref` **MaxSuppressionDamages**\
+`ref` **SuppressDamagesRegenRatio**\
+`ref` **MaxStunDamages**\
+`ref` **StunDamagesRegen**\
+`str` **ArmorDescriptorFront**\
+`str` **ArmorDescriptorSides**\
+`str` **ArmorDescriptorRear**\
+`str` **ArmorDescriptorTop**\
+`flt` **MaxDamages**\
+`int` **MaxHPForHUD** &mdash; Function not known\
 `bol` **AutoOrientation**
 
 `flt` **Dangerousness**
 
 #### Movement
-`int` **MaxSpeed**
-`int` **VitesseCombat**
-`flt` **SpeedBonusOnRoad**
-`flt` **MaxAcceleration**
-`flt` **MaxDeceleration**
-`flt` **TempsDemiTour**
+`int` **MaxSpeed**\
+`int` **VitesseCombat**\
+`flt` **SpeedBonusOnRoad**\
+`flt` **MaxAcceleration**\
+`flt` **MaxDeceleration**\
+`flt` **TempsDemiTour**\
 `str` **VehicleSubType**
 
 #### Supply
-`flt` **SupplyCapacity**
+`flt` **SupplyCapacity**\
 `int` **SupplyPriority**
 
 #### Fuel
-`int` **FuelCapacity**
+`int` **FuelCapacity**\
 `flt` **FuelMoveDuration**
 
 #### Vision
-`int` **OpticalStrength**
-`int` **OpticalStrengthAltitude**
+`int` **OpticalStrength**\
+`int` **OpticalStrengthAltitude**\
 `bol` **UnitDetectStealthUnit**
 
 #### Scanner
-`flt` **IdentifyBaseProbability**
+`flt` **IdentifyBaseProbability**\
 `flt` **TimeBetweenEachIdentifyRoll**
 
 #### Production
-`int` **ProductionYear**
-`int` **ProductionTime**
-`int` **Resource_CommandPoints**
+`int` **ProductionYear**\
+`int` **ProductionTime**\
+`int` **Resource_CommandPoints**\
 `int` **Resource_Tickets**
 
 #### Label
-`bol` **IsSupply**
-`bol` **IsBuilding**
-`bol` **IsTransporter**
-`bol` **IsCommandementUnit**
-`bol` **IsPlane**
-`bol` **IsParachutist**
+`bol` **IsSupply**\
+`bol` **IsBuilding**\
+`bol` **IsTransporter**\
+`bol` **IsCommandementUnit**\
+`bol` **IsPlane**\
+`bol` **IsParachutist**\
 `str` **UnitName**
 
 #### User Interface
-`str` **NameToken**
-`int` **RealRoadSpeed**
+`str` **NameToken**\
+`int` **RealRoadSpeed**\
 `str` **UpgradeFromUnit**
 
 ## Weapon Descriptor
