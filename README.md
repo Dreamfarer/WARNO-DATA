@@ -1,16 +1,13 @@
 ## Introduction
-Eugen Systems have published their raw game data of WARNO for the first time in their Milestone MURAT.
-This project aims at understanding and interpreting these values for the ultimate goal: WARNO API
-Feel free to contribute!
-
-Following there is a list of varibles I've found so far:
+Eugen Systems have published their raw game data of WARNO for the first time in their Milestone MURAT. This project aims at understanding and interpreting these values for the ultimate goal: **WARNO API**\
+Feel free to contribute! <3\
 
 ## Useful Information
 WARNO has some twists and turns when it comes down to comprehensibility. These are some useful tools to guide you through the jungle of WARNO data.
 
 #### Constant Factors
 Some values presented in `.ndf` files need to be multiplied by a constant factor. I know of **two** constants that are defined in `GDConstantes.ndf`:
-* MultiplicateurMetreRTSVersDistanceFeedbackTactique: **1.0 div 2.83** &mdash; Needs to be multiplied with the *distance* to receive accurat results. E.g. 6000m \* (**1.0 / 2.83**) = 2120m
+* MultiplicateurMetreRTSVersDistanceFeedbackTactique: **1.0 div 2.83** &mdash; Needs to be multiplied with the *distance* to receive accurat results. E.g. 6000 m \* (**1.0 / 2.83**) = 2120 m
 * MultiplicateurMetreRTSVersVitesseTactiquePourVehicule: **0.45 div 1.0** &mdash; Needs to be multiplied with the *speed* to receive accurat results. E.g. 120 km/h \* (**0.45 / 1.0**) = 54 km/h
 
 #### Calculate Road Speed
