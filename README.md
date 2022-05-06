@@ -5,27 +5,27 @@ Feel free to contribute! <3
 ## Useful Information
 WARNO has some twists and turns when it comes down to comprehensibility. These are some useful tools to guide you through the jungle of WARNO data.
 
-#### Constant Factors
+### Constant Factors
 Some values presented in `.ndf` files need to be multiplied by a constant factor. I know of **two** constants so far that are defined in `GDConstantes.ndf`:
 * MultiplicateurMetreRTSVersDistanceFeedbackTactique: **1.0 div 2.83** &mdash; Needs to be multiplied with the *distance* to receive accurat results. E.g. 6000 m \* (**1.0 / 2.83**) = 2120 m
 * MultiplicateurMetreRTSVersVitesseTactiquePourVehicule: **0.45 div 1.0** &mdash; Needs to be multiplied with the *speed* to receive accurat results. E.g. 120 km/h \* (**0.45 / 1.0**) = 54 km/h
 
-#### Calculate Road Speed
+### Calculate Road Speed
 In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed*, which represents the off-road speed, and add *MaxSpeed* \* *SpeedBonusOnRoad* to get the true road speed. A huge thanks to WARNO modder *eMeM* for pointing this out to me over on Discord.
 
-#### Armor-Piercing Damage (AP)
+### Armor-Piercing Damage (AP)
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does *not* decrease with range. However, Kinetic (KE) does.\
 Every ammunition is defined in `Ammunition.ndf`. Firstly, we need to look at *TraitsToken*, these will tell you if a weapon is Kinetic (KE) or not.
 
-##### HE(AT)
+#### HE(AT)
 If it's *not* Kinetic (KE), the index of the variable *Arme* will be the AP value of the weapon (E.g. Arme = TDamageTypeRTTI(Family="ap" Index=11)).
 
-##### Kinetic (KE)
+#### Kinetic (KE)
 The AP value of Kinetic (KE) ammunition **in-game** is given at the weapon's maximum range. In `Ammunition.ndf`, however, it is given at point-blank range. We need to calculate it first:\
 AP_at_max_range = AP_at_point_blank - (max_range / range_factor)\
 You might rightly ask yourself what value **range_factor** is: It is the amount of AP damage decrease over a given range. To find this value we need to look at to what **DamageTypeEvolutionOverRangeDescriptor** (`Ammunition.ndf`) is pointing to in `DamageStairTypeEvolutionOverRangeDescriptor`. E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 175.0, AP= 1.0** in `DamageStairTypeEvolutionOverRangeDescriptor`. This example will tell you that the AP damage decreases **1 point every 175m**.
 
-##### Kinetic (KE) Calculation Example Leopard 2A3
+#### Kinetic (KE) Calculation Example Leopard 2A3
 We need to gather the information first:\
 * AP_at_point_blank = Arme = TDamageTypeRTTI(Family="ap" Index=32) -> 32
 * max_range = PorteeMaximale = ((6495) * Metre) -> 6495 \* (1.0 / 2.83) -> 2295 m
