@@ -11,7 +11,7 @@ Some values presented in `.ndf` files need to be multiplied by a constant factor
 * MultiplicateurMetreRTSVersVitesseTactiquePourVehicule: **0.45 div 1.0** &mdash; Needs to be multiplied with the *speed* to receive accurat results. E.g. 120 km/h \* (**0.45 / 1.0**) = 54 km/h
 
 ### Calculate Road Speed
-In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed*, which represents the off-road speed, and add *MaxSpeed* \* *SpeedBonusOnRoad* to get the true road speed. A huge thanks to WARNO modder *eMeM* for pointing this out to me over on Discord.
+In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed* which represents the off-road speed. Compute *MaxSpeed \* constant_factor* \* *SpeedBonusOnRoad* to get the true road speed.
 
 ### Armor-Piercing Damage (AP)
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does *not* decrease with range. However, Kinetic (KE) does.\
@@ -161,6 +161,11 @@ All useful values to be found in `Ammunition.ndf`
 `bol` **CanHarmGuidedMissiles**\
 `bol` **IsHarmlessForAllies**\
 `bol` **PiercingWeapon** &mdash; Function not known\
+
+## Special Thanks
+I wanted to thank the following people. Whithout them, this project would have gone nowhere:
+* **eMeM** over on Discord for the calculation of the road speed
+* **unipus** over on Discord for pointing me in the right direction to understand AP damage for kinetic weapons
 
 ## Copyright Notice
 Each and every bit of this data belongs to [Eugen Systems](https://eugensystems.com/). I soley dig through it to create a database for an WARNO API that will be accessible to the public for free.
