@@ -22,16 +22,18 @@ If the ammunition type is not Kinetic (KE), the index of the variable *Arme* wil
 
 #### Kinetic (KE)
 The AP value of Kinetic (KE) ammunition **in-game** is given at the weapon's maximum range. In `Ammunition.ndf`, however, it is given at point-blank range. We need to calculate it first:\
-AP_at_max_range = AP_at_point_blank - (max_range / range_factor)\
-You might rightly ask yourself what value **range_factor** is: It is the amount of AP damage decrease over a given range. To find this value we need to look at to what **DamageTypeEvolutionOverRangeDescriptor** (`Ammunition.ndf`) is pointing to in `DamageStairTypeEvolutionOverRangeDescriptor`. E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 175.0, AP= 1.0** in `DamageStairTypeEvolutionOverRangeDescriptor`. This example will tell you that the AP damage decreases **1 point every 175m**.
+
+AP_max_range = AP_point_blank - (max_range / range_factor)\
+
+You might rightly ask yourself what value **range_factor** is: It is the amount of AP damage decrease over a given range. To find this value we need to look at to what **DamageTypeEvolutionOverRangeDescriptor** (`Ammunition.ndf`) is pointing to in `DamageStairTypeEvolutionOverRangeDescriptor.ndf`. E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 175.0, AP= 1.0** in `DamageStairTypeEvolutionOverRangeDescriptor`. This example will tell you that the AP damage decreases **1 point every 175m**.
 
 #### Kinetic (KE) Calculation Example Leopard 2A3
 We need to gather the information first:\
-* AP_at_point_blank = Arme = TDamageTypeRTTI(Family="ap" Index=32) -> 32
+* AP_point_blank = Arme = TDamageTypeRTTI(Family="ap" Index=32) -> 32
 * max_range = PorteeMaximale = ((6495) * Metre) -> 6495 \* (1.0 / 2.83) -> 2295 m
 * range_factor = DamageTypeEvolutionOverRangeDescriptor = ~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km -> 175 m
 Then we need to plug these values in the formula:\
-**AP_at_max_range** = 32 - (2295 /  175) = **19**
+**AP_max_range** = 32 - (2295 /  175) = **19**
 
 ## Unit Descriptor
 All useful values to be found in `UniteDescriptor.ndf`
