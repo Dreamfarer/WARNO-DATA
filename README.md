@@ -25,11 +25,11 @@ The AP value of Kinetic (KE) ammunition **in-game** is given at the weapon's max
 
 *AP_max_range = AP_point_blank - (max_range / range_factor)*
 
-* *AP_max_range*: AP damage at maximum range.\
-* *AP_point_blank*: AP damage at point-blank equivalent to the index defined in **Arme**.\
-* *max_range*: Maximal range defined in **PorteeMaximale**, multiplied with the corresponding constant factor.\
+* *AP_max_range*: AP damage at maximum range.
+* *AP_point_blank*: AP damage at point-blank equivalent to the index defined in **Arme**.
+* *max_range*: Maximal range defined in **PorteeMaximale**, multiplied with the corresponding constant factor.
 * *range_factor*: Defined as the amount of AP damage decrease over a given range. To find this value we need to look at to what **DamageTypeEvolutionOverRangeDescriptor** is pointing to in `DamageStairTypeEvolutionOverRangeDescriptor.ndf`.\
-E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 175.0, AP= 1.0** in `DamageStairTypeEvolutionOverRangeDescriptor`. This example will tell you that the AP damage decreases **1 point every 175m**.
+E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 175.0, AP= 1.0**. In this case the AP damage decreases **1 point every 175m**.
 
 #### Kinetic (KE) Calculation Example Leopard 2A3
 We need to gather the information first:\
