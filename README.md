@@ -15,17 +15,17 @@ In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSp
 
 ### Armor-Piercing Damage (AP)
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does **not** decrease with range, however, Kinetic (KE) does.\
-Every ammunition type is defined in `Ammunition.ndf`. Firstly, we need to look in there at the *TraitsToken*, these will tell you if a weapon is Kinetic (KE) or not.
+Every ammunition type is defined in `Ammunition.ndf`. If \[Kinetic\] is listed in the *TraitsToken*-array, it means that this ammunition type is kinetic. If there is no such tag, the ammunition type is HE(AT).
 
 #### HE(AT)
-If the ammunition type is not Kinetic (KE), the index of the variable *Arme* will be the AP damage value of the weapon (E.g. Arme = TDamageTypeRTTI(Family="ap" Index=11) will mean AP damage = 11).
+If the ammunition type is not Kinetic (KE), the index of the variable *Arme* will be the AP damage value of the weapon (E.g. Arme = TDamageTypeRTTI(Family="ap" Index=11) will mean an AP damage of 11).
 
 #### Kinetic (KE)
-The AP value of Kinetic (KE) ammunition **in-game** is given at the weapon's maximum range. In `Ammunition.ndf`, however, it is given at point-blank range. We need to calculate it first:
+The AP value of Kinetic (KE) ammunition **in-game** is given at the weapon's maximum range. In `Ammunition.ndf`, however, it is given at point-blank range. Therefore, we need to calculate it first:
 
 *AP_max_range = AP_point_blank - (max_range / range_factor)*
 
-**range_factor** is defined as the amount of AP damage decrease over a given range. To find this value we need to look at to what **DamageTypeEvolutionOverRangeDescriptor** (`Ammunition.ndf`) is pointing to in `DamageStairTypeEvolutionOverRangeDescriptor.ndf`.\
+**range_factor** is defined as the amount of AP damage decrease over a given range. To find this value we need to look at to what **DamageTypeEvolutionOverRangeDescriptor** is pointing to in `DamageStairTypeEvolutionOverRangeDescriptor.ndf`.\
 E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 175.0, AP= 1.0** in `DamageStairTypeEvolutionOverRangeDescriptor`. This example will tell you that the AP damage decreases **1 point every 175m**.
 
 #### Kinetic (KE) Calculation Example Leopard 2A3
