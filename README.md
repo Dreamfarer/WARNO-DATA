@@ -34,38 +34,46 @@ E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 17
 ## Unit Descriptor
 All useful values to be found in `UniteDescriptor.ndf`
 
-#### Unit Type
+### Every Unit Type
 `str` **MotherCountry**\
 `str` **AcknowUnitType**\
-`str` **TypeUnitFormation**\
-`str` **TypeUnitValue**
-
-#### Experience
 `ref` **ExperienceGainBySecond**\
 `ref` **ExperienceMultiplierBonusOnKill**\
-`bol` **CanWinExperience**
-
-#### Visibility
+`bol` **CanWinExperience**\
 `flt` **UnitConcealmentBonus**\
-`bol` **UnitIsStealth**
-
-#### Armor
+`bol` **UnitIsStealth**\
 `bol` **StunFreezesUnits**\
-`ref` **MaxSuppressionDamages**\
-`ref` **SuppressDamagesRegenRatio**\
 `ref` **MaxStunDamages**\
 `ref` **StunDamagesRegen**\
+`ref` **MaxSuppressionDamages**\
+`ref` **SuppressDamagesRegenRatio**\
 `str` **ArmorDescriptorFront**\
 `str` **ArmorDescriptorSides**\
 `str` **ArmorDescriptorRear**\
 `str` **ArmorDescriptorTop**\
 `flt` **MaxDamages**\
-`int` **MaxHPForHUD** &mdash; Function not known\
-`bol` **AutoOrientation**
+`flt` **HitRollSize**\
+`flt` **HitRollECM**\
+`bol` **AutoOrientation**\
+`flt` **Dangerousness**\
+`int` **MoralLevel**\
+`int` **FuelCapacity**\
+`flt` **FuelMoveDuration**\
+`int` **PorteeVisionTBA**\
+`int` **DetectionTBA**\
+`int` **PorteeVision**\
+`int` **OpticalStrength**\
+`int` **OpticalStrengthAltitude**\
+`bol` **UnitDetectStealthUnit**\
+`flt` **IdentifyBaseProbability**\
+`flt` **TimeBetweenEachIdentifyRoll**\
+`int` **ProductionYear**\
+`int` **ProductionTime**\
+`int` **Resource_CommandPoints**\
+`int` **Resource_Tickets**\
+`str` **UpgradeFromUnit** &mdash; Predecessor
 
-`flt` **Dangerousness**
-
-#### Movement
+#### Ground Units Movement
 `int` **MaxSpeed**\
 `flt` **SpeedBonusOnRoad**\
 `flt` **MaxAcceleration**\
@@ -73,28 +81,13 @@ All useful values to be found in `UniteDescriptor.ndf`
 `flt` **TempsDemiTour**\
 `str` **VehicleSubType**
 
-#### Supply
+#### Air Units Movement
+`int` **EvacuationTime**\
+`int` **TravelDuration**
+
+#### Supply Units
 `flt` **SupplyCapacity**\
 `int` **SupplyPriority**
-
-#### Fuel
-`int` **FuelCapacity**\
-`flt` **FuelMoveDuration**
-
-#### Vision
-`int` **OpticalStrength**\
-`int` **OpticalStrengthAltitude**\
-`bol` **UnitDetectStealthUnit**
-
-#### Scanner
-`flt` **IdentifyBaseProbability**\
-`flt` **TimeBetweenEachIdentifyRoll**
-
-#### Production
-`int` **ProductionYear**\
-`int` **ProductionTime**\
-`int` **Resource_CommandPoints**\
-`int` **Resource_Tickets**
 
 #### Label
 `bol` **IsSupply**\
@@ -104,10 +97,6 @@ All useful values to be found in `UniteDescriptor.ndf`
 `bol` **IsPlane**\
 `bol` **IsParachutist**\
 `str` **UnitName**
-
-#### User Interface
-`str` **NameToken**\
-`str` **UpgradeFromUnit**
 
 ## Weapon Descriptor
 All useful values to be found in `WeaponDescriptor.ndf`
