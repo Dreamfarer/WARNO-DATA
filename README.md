@@ -21,11 +21,12 @@ Every ammunition type is defined in `Ammunition.ndf`. Firstly, we need to look i
 If the ammunition type is not Kinetic (KE), the index of the variable *Arme* will be the AP damage value of the weapon (E.g. Arme = TDamageTypeRTTI(Family="ap" Index=11) will mean AP damage = 11).
 
 #### Kinetic (KE)
-The AP value of Kinetic (KE) ammunition **in-game** is given at the weapon's maximum range. In `Ammunition.ndf`, however, it is given at point-blank range. We need to calculate it first:\
+The AP value of Kinetic (KE) ammunition **in-game** is given at the weapon's maximum range. In `Ammunition.ndf`, however, it is given at point-blank range. We need to calculate it first:
 
-AP_max_range = AP_point_blank - (max_range / range_factor)\
+*AP_max_range = AP_point_blank - (max_range / range_factor)*
 
-You might rightly ask yourself what value **range_factor** is: It is the amount of AP damage decrease over a given range. To find this value we need to look at to what **DamageTypeEvolutionOverRangeDescriptor** (`Ammunition.ndf`) is pointing to in `DamageStairTypeEvolutionOverRangeDescriptor.ndf`. E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 175.0, AP= 1.0** in `DamageStairTypeEvolutionOverRangeDescriptor`. This example will tell you that the AP damage decreases **1 point every 175m**.
+**range_factor** is defined as the amount of AP damage decrease over a given range. To find this value we need to look at to what **DamageTypeEvolutionOverRangeDescriptor** (`Ammunition.ndf`) is pointing to in `DamageStairTypeEvolutionOverRangeDescriptor.ndf`.\
+E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 175.0, AP= 1.0** in `DamageStairTypeEvolutionOverRangeDescriptor`. This example will tell you that the AP damage decreases **1 point every 175m**.
 
 #### Kinetic (KE) Calculation Example Leopard 2A3
 We need to gather the information first:\
