@@ -14,11 +14,11 @@ Some values presented in `.ndf` files need to be multiplied by a constant factor
 In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed* which represents the off-road speed. Compute *MaxSpeed* \* constant_factor \* *SpeedBonusOnRoad* to get the true road speed.
 
 ### Armor-Piercing Damage (AP)
-We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does *not* decrease with range. However, Kinetic (KE) does.\
+We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does **not** decrease with range, however, Kinetic (KE) does.\
 Every ammunition type is defined in `Ammunition.ndf`. Firstly, we need to look in there at the *TraitsToken*, these will tell you if a weapon is Kinetic (KE) or not.
 
 #### HE(AT)
-If the ammunition type is *not* Kinetic (KE), the index of the variable *Arme* will be the AP damage value of the weapon (E.g. Arme = TDamageTypeRTTI(Family="ap" Index=11) will mean AP damage = 11).
+If the ammunition type is not Kinetic (KE), the index of the variable *Arme* will be the AP damage value of the weapon (E.g. Arme = TDamageTypeRTTI(Family="ap" Index=11) will mean AP damage = 11).
 
 #### Kinetic (KE)
 The AP value of Kinetic (KE) ammunition **in-game** is given at the weapon's maximum range. In `Ammunition.ndf`, however, it is given at point-blank range. We need to calculate it first:\
