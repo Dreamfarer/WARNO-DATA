@@ -1,5 +1,5 @@
 ## Introduction
-Eugen Systems have published their raw game data of WARNO for the first time in their Milestone MURAT. This project aims at understanding and interpreting these values for the ultimate goal: **WARNO API**\
+Eugen Systems have published their raw game data of WARNO for the first time in their Milestone MURAT. This project aims at understanding and interpreting these values for the ultimate goal: **WARNO API**
 
 ## Useful Information
 WARNO has some twists and turns when it comes down to comprehensibility. These are some useful tools to guide you through the jungle of WARNO data.
@@ -12,7 +12,7 @@ Some values presented in `.ndf` files need to be multiplied by a constant factor
 ### Calculate Road Speed
 In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed* which represents the off-road speed. Compute *MaxSpeed* \* constant_factor \* *SpeedBonusOnRoad* to get the true road speed.
 
-### Armor-Piercing Damage (AP)
+### Armor-Piercing (AP) Damage
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does **not** decrease with range, however, Kinetic (KE) does.\
 Every ammunition type is defined in `Ammunition.ndf`. If \[Kinetic\] is listed in the *TraitsToken*-array, it means that this ammunition type is kinetic. If there is no such tag, the ammunition type is HE(AT).
 
@@ -42,6 +42,7 @@ As outlined in `Experience.ndf`, *ExperienceGainBySecond* and *ExperienceMultipl
 
 ## Division Rules
 Describes how every division is built up. For every unit in `DivisionRules.ndf` we have the following values.
+
 `ref` **UnitDescriptor** &mdash; Reference to *UniteDescriptor.ndf*\
 `bol` **AvailableWithoutTransport**\
 `arr` **AvailableTransportList**\
