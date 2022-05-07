@@ -40,6 +40,20 @@ What experience scheme is currently being used can be seen under *ExperienceLeve
 Furthermore, only armed units can gain Experience (described by *CanWinExperience*).\
 As outlined in `Experience.ndf`, *ExperienceGainBySecond* and *ExperienceMultiplierBonusOnKill* are set to 0 and 1 equivalently. This means, at least for now, units are either not able to level up or they only gain experience by killing.
 
+### Stress, Suppression, Cohesion and Moral
+Stress and suppression are one and the same variable. In-game it is called "*stress*" and in the `.ndf` files it is mostly called "*suppression*". Unlike Wargame: Red Dragon, this value is not shown in the WARNO UI. Instead, the current cohesion level is displayed.\
+Moral is poorly understood. The fact that it is only non-zero for aircraft makes it hard to believe that it is a system that has any impact in-game, if any. It might very well be a leftover from a previous game.\
+Cohesion is a direct effect of suppression. There are four levels which are described in `EffetsSurUnite.ndf`. Each comes with its own debuffs.
+
+Which suppression system is being used is individually defined in `UniteDescriptor.ndf` under *SuppressDamageLevelsPack*. This variable is a reference to `DamageLevels.ndf` in which the following can be found: Every system has six different suppression levels (*calm*, *engaged*, *worried*, *stressed*, *shaken* and (*panicked* or *pinned*)), being triggered at different suppress damage levels defined by *Value*. Note that *Value* is most likely only the modifier for another variable, like the maximum amount of suppression damage. Each suppression level comes with custom debuffs: Morale is being modified (*MoralModifier*), chance of hitting the target is decreased (*HitRollModifier*) and *EffectsPacks* are being added. *EffectsPacks* can hold multiple effects, but the most important is the cohesion being changed. Its debuffs are outlined in `EffetsSurUnite.ndf`.
+
+Suppression damage decreases over time. The following variables describe this behavior. They can be found in `UniteDescriptor.ndf` for every unit and are all references to `DamageModules.ndf`.
+* *GroundUnit_SuppressDamagesRegenRatioList*: Array detailing how much suppression damage is being recovered over a given time period: [Time, Suppression damage recovered]
+* *GroundUnit_SuppressDamagesRegenRatioOutOfRange*: How many seconds need to pass until suppression damage recovery starts.
+* *GroundUnit_MaxSuppressionDamages*: Maximum suppression damage that can be received, however, it is unknown what happens if this threshold is being exceeded.
+
+*SuppressDamages* in `Ammunition.ndf` describes how much suppress damage a weapon can generate. I strongly believe that the amount of suppress damage *received* is the same for all units because *MaxSuppressionDamages* is set to 1000 for every unit type and there is no multiplier whatsoever mentioned in `UniteDescriptor.ndf`.
+
 ## Division Rules
 Describes how every division is built up. For every unit in `DivisionRules.ndf` we have the following values.
 
@@ -164,7 +178,7 @@ All useful values to be found in `Ammunition.ndf`
 
 ## Special Thanks
 I wanted to thank the following people. Whithout them, this project would have gone nowhere:
-* **eMeM** over on Discord for the calculation of the road speed and help with experience & veterancy
+* **eMeM** over on Discord for the calculation of the road speed and help with experience & veterancy and the discussion over stress, suppression, cohesion and morale.
 * **unipus** over on Discord for pointing me in the right direction to understand AP damage for kinetic weapons
 
 ## Copyright Notice
