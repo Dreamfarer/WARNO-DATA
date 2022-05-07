@@ -31,7 +31,7 @@ The AP value of Kinetic (KE) ammunition **in-game** is given at the weapon's max
 E.g. *~/DamageTypeEvolutionOverRangeDescriptor_AP1_1Km* points to **Distance= 175.0, AP= 1.0**. In this case the AP damage decreases **1 point every 175m**.
 
 ### Experience & Veterancy
-Every unit uses the same experience scheme at the moment, however, there are other schemes defined in `ExperienceLevels.ndf`.
+What experience scheme is currently being used can be seen under *ExperienceLevelsPackDescriptor* in `UniteDescriptor.ndf`. This string is a reference to `ExperienceLevels.ndf` where all schemes are defined. However, at the moment every unit uses the following experience scheme:
 * *Level 0 (POOR)*: Time in-between salves = *115%*, Precision = *-25*, Suppress Damage = *125%*
 * *Level 1 (TRAINED)*: Everything at standard
 * *Level 2 (VETERAN)*: Time in-between salves = *85%*, Precision = *+15*, Suppress Damage = *75%*
