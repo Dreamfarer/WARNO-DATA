@@ -36,8 +36,9 @@ Every unit uses the same experience scheme at the moment, however, there are oth
 * *Level 1 (TRAINED)*: Everything at standard
 * *Level 2 (VETERAN)*: Time in-between salves = *85%*, Precision = *+15*, Suppress Damage = *75%*
 * *Level 3 (ELITE*: Time in-between salves = *66%*, Precision = *+25*, Suppress Damage = *50%*
+
 Furthermore, only armed units can gain Experience (described by *CanWinExperience*).\
-As outlined in `Experience.ndf`, *ExperienceGainBySecond* and *ExperienceMultiplierBonusOnKill* are set to 0 and 1 equivalently. This means, at least for now, units are either not able to level up or they only gain experience by killing. \
+As outlined in `Experience.ndf`, *ExperienceGainBySecond* and *ExperienceMultiplierBonusOnKill* are set to 0 and 1 equivalently. This means, at least for now, units are either not able to level up or they only gain experience by killing.
 
 ## Division Rules
 Describes how every division is built up. For every unit in `DivisionRules.ndf` we have the following values.
