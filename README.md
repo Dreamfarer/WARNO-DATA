@@ -68,11 +68,11 @@ Describes how every division is built up. For every unit in `DivisionRules.ndf` 
 All useful values to be found in `UniteDescriptor.ndf`
 
 ### General Information
-`str` **Nationalite** &mdash; Filter by Alliance: can either be **ENationalite/Allied** (NATO) or **ENationalite/Axis** (PACT)\
-`str` **MotherCountry** &mdash; Filter by Nation: can either be **SOV**, **US**, **UK**, **DDR**, **RFA** (West-Germany) or **BEL** \
-`arr` **RoleList** &mdash; Filter by Unit Quality: can either be **tank_A** (A | Excellent), **tank_B** (B | Good), **tank_C** (C | Mediocre), **tank_D** (D | Poor)\
-`str` **Factory** &mdash; Filter by Category: can either be **Logistic** (LOG), **Infantry** (INF), **Support** (ART), **Tanks** (TNK), **Recons** (REC), **AT** (AA), **Helis** (HEL), **Planes** (AIR)\
-`arr` **SpecialtiesList** &mdash; Filter by Role: can either be **hq** (Command unit), **supply**, **infantry** (Infantry Squad), **infantry_half** (Infantry Group), **engineer** (Assault Squad), **assault_half** (Assault Group), **mortar**, **howitzer**, **mlrs**, **ifv** (Infantry Fightung Vehicle), **armor** (Main Battle Tank), **reco**, **hel_recp** (Helicopter Reconnaissance), **appui** (Support), **AT** (Anti-Tank), **transport**, **AA** (Air Defence) or **sead**\
+`str` **Nationalite** &mdash; Alliance: can either be **ENationalite/Allied** (NATO) or **ENationalite/Axis** (PACT)\
+`str` **MotherCountry** &mdash; Nation: can either be **SOV**, **US**, **UK**, **DDR**, **RFA** (West-Germany) or **BEL** \
+`arr` **RoleList** &mdash; Quality: can either be **tank_A** (A | Excellent), **tank_B** (B | Good), **tank_C** (C | Mediocre), **tank_D** (D | Poor)\
+`str` **Factory** &mdash; Category: can either be **Logistic** (LOG), **Infantry** (INF), **Support** (ART), **Tanks** (TNK), **Recons** (REC), **AT** (AA), **Helis** (HEL), **Planes** (AIR)\
+`arr` **SpecialtiesList** &mdash; Role: can either be **hq** (Command unit), **supply**, **infantry** (Infantry Squad), **infantry_half** (Infantry Group), **engineer** (Assault Squad), **assault_half** (Assault Group), **mortar**, **howitzer**, **mlrs**, **ifv** (Infantry Fightung Vehicle), **armor** (Main Battle Tank), **reco**, **hel_recp** (Helicopter Reconnaissance), **appui** (Support), **AT** (Anti-Tank), **transport**, **AA** (Air Defence) or **sead**\
 `int` **ProductionYear**\
 `int` **Resource_CommandPoints**\
 `int` **Resource_Tickets**\
