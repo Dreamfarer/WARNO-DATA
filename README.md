@@ -15,7 +15,7 @@ In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSp
 ### Calculate Autonomy
 Autonomy states how far a unit can move until it runs out of fuel. In previous titles, this was measured in seconds, however, in WARNO it is specifically stated in *kilometres*. For planes *Autonomy* is equivalent to their *FuelMoveDuration*. For ground units the following calculation holds very well. Be aware that this calucaltion was created using multiple results and searching a common pattern, hence the strange factor. The idea behind it was *distance* = *speed* \* *time*.
 
-*Autonomy* = *MaxSpeed* \* *FuelMoveDuration* \* *0.0000975*
+*Autonomy* = *MaxSpeed* \* *FuelMoveDuration* \* *0.0000975* (Round up to nearest integer if >= .5, else round down)
 
 ### Armor-Piercing (AP) Damage
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does **not** decrease with range, however, Kinetic (KE) does.\
