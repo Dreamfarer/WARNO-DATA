@@ -13,7 +13,7 @@ Some values presented in `.ndf` files need to be multiplied by a constant factor
 In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed* which represents the off-road speed. Compute (*MaxSpeed* + *MaxSpeed* \* *SpeedBonusOnRoad*) \* *MultiplicateurMetreRTSVersVitesseTactiquePourVehicule* to get the true road speed.
 
 ### Calculate Autonomy
-Autonomy states how far a unit can move until it runs out of fuel. In previous titles, this was measured in seconds, however, in WARNO it is specifically stated in *kilometres*. For planes *Autonomy* is equivalent to their *FuelMoveDuration*. For ground units the following calculation holds very well. Be aware that this calucaltion was created using multiple results and searching a common pattern, hence the strange factor. Round up to the nearest integer if the first decimal place of the result is bigger than 5.
+Autonomy states how far a unit can move until it runs out of fuel. In previous titles, this was measured in seconds, however, in WARNO it is specifically stated in *kilometres*. For planes, *Autonomy* is equivalent to their *FuelMoveDuration*. For ground units, the following calculation holds very well. Be aware that this calculation was created using multiple results and searching a common pattern, hence the strange factor. Round up to the nearest integer if the first decimal place of the result is bigger than 5.
 
 *Autonomy* = *MaxSpeed* \* *FuelMoveDuration* \* *0.0000975*
 
