@@ -13,11 +13,9 @@ Some values presented in `.ndf` files need to be multiplied by a constant factor
 In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed* which represents the off-road speed. Compute (*MaxSpeed* + *MaxSpeed* \* *SpeedBonusOnRoad*) \* *MultiplicateurMetreRTSVersVitesseTactiquePourVehicule* to get the true road speed.
 
 ### Calculate Autonomy
-Autonomy states how far a unit can move until it runs out of fuel. In previous titles, this was measured in seconds, however, in WARNO it is specifically stated in *Km*. The follwoing calculation, especially the constant, is not verified but delivers correct results for all ground units:
+Autonomy states how far a unit can move until it runs out of fuel. In previous titles, this was measured in seconds, however, in WARNO it is specifically stated in *kilometres*. For planes *Autonomy* is equivalent to their *FuelMoveDuration*. For ground units the following calculation holds very well. Be aware that this calucaltion was created using multiple results and searching a common pattern, hence the strange factor. The idea behind it was *distance* = *speed* \* *time*.
 
 *Autonomy* = *MaxSpeed* \* *FuelMoveDuration* \* *0.0000975*
-
-*Autonomy* for planes is equivalent to their *FuelMoveDuration*.
 
 ### Armor-Piercing (AP) Damage
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does **not** decrease with range, however, Kinetic (KE) does.\
