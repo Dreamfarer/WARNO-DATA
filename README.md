@@ -59,7 +59,7 @@ Describes how every division is built up. For every unit in `DivisionRules.ndf` 
 
 `ref` **UnitDescriptor** &mdash; Reference to *UniteDescriptor.ndf*\
 `bol` **AvailableWithoutTransport**\
-`arr` **AvailableTransportList**\
+`arr` **AvailableTransportList** &mdash; Array containing all available transports.\
 `int` **MaxPackNumber** &mdash; How many cards you can take (varies per division)\
 `int` **NumberOfUnitInPack** &mdash; How many units one card holds (Doesn't vary)\
 `arr` **NumberOfUnitInPackXPMultiplier** &mdash; Multiply with *NumberOfUnitInPack* to get the amount of units per card at given veterancy level.
@@ -68,38 +68,31 @@ Describes how every division is built up. For every unit in `DivisionRules.ndf` 
 All useful values to be found in `UniteDescriptor.ndf`
 
 ### Every Unit Type
-`str` **MotherCountry**\
-`str` **AcknowUnitType**\
+`str` **Nationalite** &mdash; Filter by Alliance: can be either *ENationalite/Allied* (NATO) or *ENationalite/Axis* (PACT)\
+`str` **MotherCountry** &mdash; Filter by Nation: can be either *SOV*, *US*, *UK*, *DDR*, *RFA* (République fédérale d'Allemagne = West-Germany) or *BEL* \
 `flt` **UnitConcealmentBonus**\
-`bol` **UnitIsStealth**\
-`bol` **StunFreezesUnits**\
-`ref` **MaxStunDamages**\
 `ref` **StunDamagesRegen**\
-`ref` **MaxSuppressionDamages**\
-`ref` **SuppressDamagesRegenRatio**\
+`ref` **MaxStunDamages**\
+`ref` **SuppressDamagesRegenRatio** &mdash; Described in chapter *Stress, Suppression, Cohesion and Morale*\
+`ref` **SuppressDamagesRegenRatioOutOfRange** &mdash; Described in chapter *Stress, Suppression, Cohesion and Morale*\
+`ref` **MaxSuppressionDamages** &mdash; Described in chapter *Stress, Suppression, Cohesion and Morale*\
 `str` **ArmorDescriptorFront** &mdash; Armor Front\
 `str` **ArmorDescriptorSides** &mdash; Armor Side\
 `str` **ArmorDescriptorRear** &mdash; Armor Rear\
 `str` **ArmorDescriptorTop** &mdash; Armor Top\
-`flt` **MaxDamages**\
-`flt` **HitRollSize**\
-`flt` **HitRollECM**\
-`flt` **Dangerousness**\
-`int` **MoralLevel**\
+`flt` **MaxDamages** &mdash; In-game called *strength* for infantry units\
+`flt` **HitRollECM** &mdash; Multiplier for hit probability. 0 means no Electronic countermeasures (ECM)\
+`flt` **Dangerousness** &mdash; *Guess*: Either quality of unit or used by AI to favor less dangerous units when deciding which to engage.\
 `int` **FuelCapacity**\
 `flt` **FuelMoveDuration**\
-`int` **PorteeVisionTBA**\
-`int` **DetectionTBA**\
-`int` **PorteeVision**\
 `int` **OpticalStrength**\
 `int` **OpticalStrengthAltitude**\
-`bol` **UnitDetectStealthUnit**\
-`flt` **IdentifyBaseProbability**\
-`flt` **TimeBetweenEachIdentifyRoll**\
+`flt` **IdentifyBaseProbability** &mdash; *Guess*: I think *OpticalStrength* defines how well units can be seen, *IdentifyBaseProbability* is the probability that these units can be uniquely identified.\
+`flt` **TimeBetweenEachIdentifyRoll**&mdash; *Guess*: Time in-between trying to uniquely identify units.\
 `int` **ProductionYear**\
-`int` **ProductionTime**\
 `int` **Resource_CommandPoints**\
 `int` **Resource_Tickets**\
+`arr` **SpecialtiesList** &mdash; Filter by Role: can be either *hq* (Command unit), *supply*, *infantry* (Infantry Squad), *infantry_half* (Infantry Group), *engineer* (Assault Squad), *assault_half* (Assault Group), *mortar*, *howitzer*, *mlrs*, *ifv* (Infantry Fightung Vehicle), *armor* (Main Battle Tank), *reco*, *hel_recp* (Helicopter Reconnaissance), *appui* (Support), *AT* (Anti-Tank), *transport*, *AA* (Air Defence) or *sead*\
 `str` **UpgradeFromUnit** &mdash; Predecessor
 
 #### Ground Units Movement
@@ -118,6 +111,9 @@ All useful values to be found in `UniteDescriptor.ndf`
 `flt` **SupplyCapacity**\
 `int` **SupplyPriority**
 
+#### Transport Units
+`int` **NbSeatsAvailable**
+
 #### Label
 `bol` **IsSupply**\
 `bol` **IsBuilding**\
@@ -126,6 +122,12 @@ All useful values to be found in `UniteDescriptor.ndf`
 `bol` **IsPlane**\
 `bol` **IsParachutist**\
 `str` **UnitName**
+
+#### Not Used
+`flt` **HitRollSize** &mdash; Size does no longer effect hit propability.\
+`int` **MoralLevel** Reason not included is described in chapter *Stress, Suppression, Cohesion and Morale*\
+`int` **ProductionTime** *5* for every unit except *-1* for aircraft. I think it's the time between placing units and them spawning in.\
+`des` **TInfluenceScoutModuleDescriptor** Empty for every unit but if present it triggers *Reveal Influenece* to be *yes* in-game.
 
 ## Weapon Descriptor
 All useful values to be found in `WeaponDescriptor.ndf`
@@ -138,7 +140,7 @@ All useful values to be found in `WeaponDescriptor.ndf`
 All useful values to be found in `Ammunition.ndf`
 
 `tkn` **Name**\
-`tkn` **TypeCategoryName**\
+`tkn` **TypeCategoryName** &mdash; Weapon description like *Heavy Machine Gun*, *Howitzer*, *etc.*. However, we can't resolve name tokens for now.\
 `tkn` **Caliber**\
 `str` **ProjectileType**\
 `flt` **Puissance** &mdash; Function not known\
