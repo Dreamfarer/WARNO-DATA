@@ -97,7 +97,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 `str` **ArmorDescriptorTop** &mdash; Armor Top
 
 ### Visibility & Targetability
-`int` **OpticalStrength** &mdash; Optics: can either be **40** (Bad), **60** (Mediocre), **80** (Normal), **120** (Good), **170** (Very Good) or **220** (Exceptional)\
+`int` **OpticalStrength** &mdash; Optics for ground units. Presumably used to determine whether a unit can see enemy units in cover: can either be **40** (Bad), **60** (Mediocre), **80** (Normal), **120** (Good), **170** (Very Good) or **220** (Exceptional)\
 `int` **OpticalStrengthAltitude** &mdash; Optics for air targets. This value is not represented on the in-game UI and does not count towards *OpticalStrength*.\
 `flt` **IdentifyBaseProbability** &mdash; *Guess*: I think *OpticalStrength* defines how well units can be seen, *IdentifyBaseProbability* is the probability that these units can be uniquely identified.\
 `flt` **TimeBetweenEachIdentifyRoll**&mdash; *Guess*: Time in-between trying to uniquely identify units.\
@@ -118,7 +118,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 `flt` **SpeedBonusOnRoad**\
 `flt` **MaxAcceleration**\
 `flt` **MaxDeceleration**\
-`flt` **TempsDemiTour**\
+`flt` **TempsDemiTour** &mdash; The amount of seconds it takes for a unit to make a half-turn.\
 `str` **VehicleSubType**
 
 #### Special to Planes
