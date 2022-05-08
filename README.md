@@ -12,6 +12,9 @@ Some values presented in `.ndf` files need to be multiplied by a constant factor
 ### Calculate Road Speed
 In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed* which represents the off-road speed. Compute (*MaxSpeed* + *MaxSpeed* \* *SpeedBonusOnRoad*) \* *MultiplicateurMetreRTSVersVitesseTactiquePourVehicule* to get the true road speed.
 
+### Calculate Autonomy
+Autonomy states how far a unit can move until it runs out of fuel. In previous titles, this was measured in seconds, however, in WARNO it is specifically stated in *Km*. The follwoing calculation, especially the constant, is not verified but delivers correct results for all ground units: *Autonomy* = *MaxSpeed* \* *FuelMoveDuration* \* *0.0000975*. *Autonomy* for planes is equivalent to their *FuelMoveDuration*.
+
 ### Armor-Piercing (AP) Damage
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does **not** decrease with range, however, Kinetic (KE) does.\
 Every ammunition type is defined in `Ammunition.ndf`. If \[Kinetic\] is listed in the *TraitsToken*-array, it means that this ammunition type is kinetic. If there is no such tag, the ammunition type is HE(AT).
@@ -42,7 +45,7 @@ As outlined in `Experience.ndf`, *ExperienceGainBySecond* and *ExperienceMultipl
 
 ### Stress, Suppression, Cohesion and Morale
 **Stress** and **suppression** are one and the same variable. In-game it is called *stress* and in the `.ndf` files it is mostly called *suppression*. Unlike Wargame: Red Dragon, this value is not shown in the WARNO UI. Instead, the current cohesion level is displayed.\
-**Moral** is poorly understood. The fact that it is only non-zero for aircraft makes it hard to believe that it is a system that has any impact in-game, if any. It might very well be a leftover from a previous game.\
+**Moral** is poorly understood. The fact that it is only non-zero for planes makes it hard to believe that it is a system that has any impact in-game, if any. It might very well be a leftover from a previous game.\
 **Cohesion** is a direct effect of suppression. There are four levels which are described in `EffetsSurUnite.ndf`. Each comes with its own debuffs.
 
 Which suppression system is being used is individually defined in `UniteDescriptor.ndf` under *SuppressDamageLevelsPack*. This variable is a reference to `DamageLevels.ndf` in which the following can be found: Every system has six different suppression levels (*calm*, *engaged*, *worried*, *stressed*, *shaken* and (*panicked* or *pinned*)), being triggered at different suppress damage levels defined by *Value*. Note that *Value* is most likely only the modifier for another variable, like the maximum amount of suppression damage. Each suppression level comes with custom debuffs: Morale is being modified (*MoralModifier*), chance of hitting the target is decreased (*HitRollModifier*) and *EffectsPacks* are being added. *EffectsPacks* can hold multiple effects, but the most important is the cohesion being changed. Its debuffs are outlined in `EffetsSurUnite.ndf`.
@@ -105,8 +108,8 @@ All useful values to be found in `UniteDescriptor.ndf`
 `flt` **Dangerousness** &mdash; Might be used by AI to determine which unit to engage first.
 
 ### Fuel
-`int` **FuelCapacity**\
-`flt` **FuelMoveDuration**
+`int` **FuelCapacity** &mdash; How many liters of fuel a unit can hold\
+`flt` **FuelMoveDuration** &mdash; How many seconds a unit can move before running out of fuel. Described in chapter [Calculate Autonomy](https://github.com/BE3dARt/WARNO-DATA#calculate-autonomy)\
 
 #### Special to Ground Units
 `int` **MaxSpeed**\
@@ -116,7 +119,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 `flt` **TempsDemiTour**\
 `str` **VehicleSubType**
 
-#### Special to Aircraft
+#### Special to Planes
 `int` **EvacuationTime**\
 `int` **TravelDuration**
 
@@ -131,7 +134,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 #### Not Used
 `flt` **HitRollSize** &mdash; Size does no longer effect hit propability.\
 `int` **MoralLevel** Reason not included is described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
-`int` **ProductionTime** *5* for every unit except *-1* for aircraft. I think it's the time between placing units and them spawning in.\
+`int` **ProductionTime** *5* for every unit except *-1* for planes. I think it's the time between placing units and them spawning in.\
 `des` **TInfluenceScoutModuleDescriptor** Empty for every unit but if present it triggers *Reveal Influenece* to be *yes* in-game.\
 `bol` **IsParachutist** &mdash; Currently set to *False* for every unit.\
 `int` **Resource_Tickets** &mdash; Could be used as prices for future campaigns.
@@ -156,8 +159,8 @@ All useful values to be found in `Ammunition.ndf`
 `int` **PorteeMaximale** &mdash; Minimal engagement distance (Ground)\
 `int` **PorteeMinimaleTBA** &mdash; Maximal engagement distance (Helicopter)\
 `int` **PorteeMaximaleTBA** &mdash; Minimal engagement distance (Helicopter)\
-`int` **PorteeMinimaleHA** &mdash; Maximal engagement distance (Aircraft)\
-`int` **PorteeMaximaleHA** &mdash; Minimal engagement distance (Aircraft)\
+`int` **PorteeMinimaleHA** &mdash; Maximal engagement distance (Planes)\
+`int` **PorteeMaximaleHA** &mdash; Minimal engagement distance (Planes)\
 `int` **AltitudeAPorteeMaximale** &mdash; Maximal engagement altitude\
 `int` **AltitudeAPorteeMinimale** &mdash; Minimal engagement altitude\
 `int` **DispersionAtMaxRange** &mdash; Dispersion\
