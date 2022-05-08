@@ -69,7 +69,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 
 ### Every Unit Type
 `str` **Nationalite** &mdash; Filter by Alliance: can be either *ENationalite/Allied* (NATO) or *ENationalite/Axis* (PACT)\
-`str` **MotherCountry** &mdash; Filter by Nation: can be either *SOV*, *US*, *UK*, *DDR*, *RFA* (République fédérale d'Allemagne = West-Germany) or *BEL* \
+`str` **MotherCountry** &mdash; Filter by Nation: can be either *SOV*, *US*, *UK*, *DDR*, *RFA* (West-Germany) or *BEL* \
 `flt` **UnitConcealmentBonus**\
 `ref` **StunDamagesRegen**\
 `ref` **MaxStunDamages**\
@@ -92,7 +92,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 `int` **ProductionYear**\
 `int` **Resource_CommandPoints**\
 `int` **Resource_Tickets**\
-`arr` **SpecialtiesList** &mdash; Filter by Role: can be either *hq* (Command unit), *supply*, *infantry* (Infantry Squad), *infantry_half* (Infantry Group), *engineer* (Assault Squad), *assault_half* (Assault Group), *mortar*, *howitzer*, *mlrs*, *ifv* (Infantry Fightung Vehicle), *armor* (Main Battle Tank), *reco*, *hel_recp* (Helicopter Reconnaissance), *appui* (Support), *AT* (Anti-Tank), *transport*, *AA* (Air Defence) or *sead*\
+`arr` **SpecialtiesList** &mdash; Filter by Role: can be either **hq** (Command unit), **supply**, **infantry** (Infantry Squad), **infantry_half** (Infantry Group), **engineer** (Assault Squad), **assault_half** (Assault Group), **mortar**, **howitzer**, **mlrs**, **ifv** (Infantry Fightung Vehicle), **armor** (Main Battle Tank), **reco**, **hel_recp** (Helicopter Reconnaissance), **appui** (Support), **AT** (Anti-Tank), **transport**, **AA** (Air Defence) or **sead**\
 `str` **UpgradeFromUnit** &mdash; Predecessor
 
 #### Ground Units Movement
