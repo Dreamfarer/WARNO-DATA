@@ -73,9 +73,9 @@ All useful values to be found in `UniteDescriptor.ndf`
 `flt` **UnitConcealmentBonus**\
 `ref` **StunDamagesRegen**\
 `ref` **MaxStunDamages**\
-`ref` **SuppressDamagesRegenRatio** &mdash; Described in chapter *Stress, Suppression, Cohesion and Morale*\
-`ref` **SuppressDamagesRegenRatioOutOfRange** &mdash; Described in chapter *Stress, Suppression, Cohesion and Morale*\
-`ref` **MaxSuppressionDamages** &mdash; Described in chapter *Stress, Suppression, Cohesion and Morale*\
+`ref` **SuppressDamagesRegenRatio** &mdash; Described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
+`ref` **SuppressDamagesRegenRatioOutOfRange** &mdash; Described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
+`ref` **MaxSuppressionDamages** &mdash; Described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
 `str` **ArmorDescriptorFront** &mdash; Armor Front\
 `str` **ArmorDescriptorSides** &mdash; Armor Side\
 `str` **ArmorDescriptorRear** &mdash; Armor Rear\
@@ -125,7 +125,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 
 #### Not Used
 `flt` **HitRollSize** &mdash; Size does no longer effect hit propability.\
-`int` **MoralLevel** Reason not included is described in chapter *Stress, Suppression, Cohesion and Morale*\
+`int` **MoralLevel** Reason not included is described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
 `int` **ProductionTime** *5* for every unit except *-1* for aircraft. I think it's the time between placing units and them spawning in.\
 `des` **TInfluenceScoutModuleDescriptor** Empty for every unit but if present it triggers *Reveal Influenece* to be *yes* in-game.
 
