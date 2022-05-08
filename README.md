@@ -10,7 +10,7 @@ Some values presented in `.ndf` files need to be multiplied by a constant factor
 * MultiplicateurMetreRTSVersVitesseTactiquePourVehicule: **0.45 div 1.0** &mdash; Needs to be multiplied with the *speed* to receive accurate results. E.g. 120 km/h \* (**0.45 / 1.0**) = 54 km/h
 
 ### Calculate Road Speed
-In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed* which represents the off-road speed. Compute *MaxSpeed* \* constant_factor \* *SpeedBonusOnRoad* to get the true road speed.
+In `UniteDescriptor.ndf` there are values called *VitesseCombat* and *RealRoadSpeed* which are not being used. Instead, we should use *MaxSpeed* which represents the off-road speed. Compute (*MaxSpeed* + *MaxSpeed* \* *SpeedBonusOnRoad*) \* *MultiplicateurMetreRTSVersVitesseTactiquePourVehicule* to get the true road speed.
 
 ### Armor-Piercing (AP) Damage
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does **not** decrease with range, however, Kinetic (KE) does.\
@@ -70,12 +70,11 @@ All useful values to be found in `UniteDescriptor.ndf`
 ### General Information
 `str` **Nationalite** &mdash; Alliance: can either be **ENationalite/Allied** (NATO) or **ENationalite/Axis** (PACT)\
 `str` **MotherCountry** &mdash; Nation: can either be **SOV**, **US**, **UK**, **DDR**, **RFA** (West-Germany) or **BEL** \
-`arr` **RoleList** &mdash; Quality: can either be **tank_A** (A | Excellent), **tank_B** (B | Good), **tank_C** (C | Mediocre), **tank_D** (D | Poor)\
+`arr` **RoleList** &mdash; Quality: can either be **tank_A** (A | Excellent), **tank_B** (B | Good), **tank_C** (C | Mediocre) or **tank_D** (D | Poor)\
 `str` **Factory** &mdash; Category: can either be **Logistic** (LOG), **Infantry** (INF), **Support** (ART), **Tanks** (TNK), **Recons** (REC), **AT** (AA), **Helis** (HEL), **Planes** (AIR)\
 `arr` **SpecialtiesList** &mdash; Role: can either be **hq** (Command unit), **supply**, **infantry** (Infantry Squad), **infantry_half** (Infantry Group), **engineer** (Assault Squad), **assault_half** (Assault Group), **mortar**, **howitzer**, **mlrs**, **ifv** (Infantry Fightung Vehicle), **armor** (Main Battle Tank), **reco**, **hel_recp** (Helicopter Reconnaissance), **appui** (Support), **AT** (Anti-Tank), **transport**, **AA** (Air Defence) or **sead**\
 `int` **ProductionYear**\
 `int` **Resource_CommandPoints**\
-`int` **Resource_Tickets**\
 `str` **UpgradeFromUnit** &mdash; Predecessor
 
 ### Damage
@@ -93,13 +92,17 @@ All useful values to be found in `UniteDescriptor.ndf`
 `str` **ArmorDescriptorTop** &mdash; Armor Top
 
 ### Visibility & Targetability
-`int` **OpticalStrength**\
-`int` **OpticalStrengthAltitude**\
+`int` **OpticalStrength** &mdash; Optics: can either be **40** (Bad), **60** (Mediocre), **80** (Normal), **120** (Good), **170** (Very Good) or **220** (Exceptional)\
+`int` **OpticalStrengthAltitude** &mdash; Optics for air targets. This value is not represented on the in-game UI and does not count towards *OpticalStrength*.\
 `flt` **IdentifyBaseProbability** &mdash; *Guess*: I think *OpticalStrength* defines how well units can be seen, *IdentifyBaseProbability* is the probability that these units can be uniquely identified.\
 `flt` **TimeBetweenEachIdentifyRoll**&mdash; *Guess*: Time in-between trying to uniquely identify units.\
-`flt` **UnitConcealmentBonus**\
-`flt` **HitRollECM** &mdash; Multiplier for hit probability. 0 means no Electronic countermeasures (ECM)\
-`flt` **Dangerousness** &mdash; *Guess*: Used by AI to determine which unit to engage first.
+`flt` **UnitConcealmentBonus**&mdash; In-game called *stealth*. Can either be **1.0** (Bad), **1.5** (Mediocre), **2.0** (Good) or **2.5** (Exceptional)\
+`flt` **HitRollECM** &mdash; Multiplier for hit probability. 0 means no Electronic countermeasures (ECM)
+
+### Strategic
+`int` **UnitAttackValue** &mdash; Might be used for AI.\
+`int` **UnitDefenseValue** &mdash; Might be used for AI.\
+`flt` **Dangerousness** &mdash; Might be used by AI to determine which unit to engage first.
 
 ### Fuel
 `int` **FuelCapacity**\
@@ -122,19 +125,16 @@ All useful values to be found in `UniteDescriptor.ndf`
 `int` **SupplyPriority**
 
 #### Label
-`bol` **IsSupply**\
-`bol` **IsBuilding**\
 `bol` **IsTransporter**\
-`bol` **IsCommandementUnit**\
-`bol` **IsPlane**\
-`bol` **IsParachutist**\
 `str` **UnitName**
 
 #### Not Used
 `flt` **HitRollSize** &mdash; Size does no longer effect hit propability.\
 `int` **MoralLevel** Reason not included is described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
 `int` **ProductionTime** *5* for every unit except *-1* for aircraft. I think it's the time between placing units and them spawning in.\
-`des` **TInfluenceScoutModuleDescriptor** Empty for every unit but if present it triggers *Reveal Influenece* to be *yes* in-game.
+`des` **TInfluenceScoutModuleDescriptor** Empty for every unit but if present it triggers *Reveal Influenece* to be *yes* in-game.\
+`bol` **IsParachutist** &mdash; Currently set to *False* for every unit.\
+`int` **Resource_Tickets** &mdash; Could be used as prices for future campaigns.
 
 ## Weapon Descriptor
 All useful values to be found in `WeaponDescriptor.ndf`
@@ -187,7 +187,7 @@ All useful values to be found in `Ammunition.ndf`
 
 ## Special Thanks
 I wanted to thank the following people. Whithout them, this project would have gone nowhere:
-* **eMeM** over on Discord for the calculation of the road speed and help with experience & veterancy and the discussion over stress, suppression, cohesion and morale.
+* **eMeM** over on Discord for the calculation of the road speed, a guess on recource tickets, help with experience & veterancy and the discussion over stress, suppression, cohesion and morale.
 * **unipus** over on Discord for pointing me in the right direction to understand AP damage for kinetic weapons
 * **gagarin** over on Discord for helping me finding the filter by category
 
