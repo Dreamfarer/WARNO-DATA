@@ -111,7 +111,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 
 ### Fuel
 `int` **FuelCapacity** &mdash; How many liters of fuel a unit can hold\
-`flt` **FuelMoveDuration** &mdash; How many seconds a unit can move before running out of fuel. Described in chapter [Calculate Autonomy](https://github.com/BE3dARt/WARNO-DATA#calculate-autonomy)\
+`flt` **FuelMoveDuration** &mdash; How many seconds a unit can move before running out of fuel. Described in chapter [Calculate Autonomy](https://github.com/BE3dARt/WARNO-DATA#calculate-autonomy)
 
 #### Special to Ground Units
 `int` **MaxSpeed**\
