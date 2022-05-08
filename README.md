@@ -67,35 +67,45 @@ Describes how every division is built up. For every unit in `DivisionRules.ndf` 
 ## Unit Descriptor
 All useful values to be found in `UniteDescriptor.ndf`
 
-### Every Unit Type
-`str` **Nationalite** &mdash; Filter by Alliance: can be either *ENationalite/Allied* (NATO) or *ENationalite/Axis* (PACT)\
-`str` **MotherCountry** &mdash; Filter by Nation: can be either *SOV*, *US*, *UK*, *DDR*, *RFA* (West-Germany) or *BEL* \
-`flt` **UnitConcealmentBonus**\
+### General Information
+`str` **Nationalite** &mdash; Filter by Alliance: can either be **ENationalite/Allied** (NATO) or **ENationalite/Axis** (PACT)\
+`str` **MotherCountry** &mdash; Filter by Nation: can either be **SOV**, **US**, **UK**, **DDR**, **RFA** (West-Germany) or **BEL** \
+`arr` **RoleList** &mdash; Filter by Unit Quality: can either be **tank_A** (A | Excellent), **tank_B** (B | Good), **tank_C** (C | Mediocre), **tank_D** (D | Poor)\
+`str` **Factory** &mdash; Filter by Category: can either be **Logistic** (LOG), **Infantry** (INF), **Support** (ART), **Tanks** (TNK), **Recons** (REC), **AT** (AA), **Helis** (HEL), **Planes** (AIR)\
+`arr` **SpecialtiesList** &mdash; Filter by Role: can either be **hq** (Command unit), **supply**, **infantry** (Infantry Squad), **infantry_half** (Infantry Group), **engineer** (Assault Squad), **assault_half** (Assault Group), **mortar**, **howitzer**, **mlrs**, **ifv** (Infantry Fightung Vehicle), **armor** (Main Battle Tank), **reco**, **hel_recp** (Helicopter Reconnaissance), **appui** (Support), **AT** (Anti-Tank), **transport**, **AA** (Air Defence) or **sead**\
+`int` **ProductionYear**\
+`int` **Resource_CommandPoints**\
+`int` **Resource_Tickets**\
+`str` **UpgradeFromUnit** &mdash; Predecessor
+
+### Damage
 `ref` **StunDamagesRegen**\
 `ref` **MaxStunDamages**\
 `ref` **SuppressDamagesRegenRatio** &mdash; Described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
 `ref` **SuppressDamagesRegenRatioOutOfRange** &mdash; Described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
 `ref` **MaxSuppressionDamages** &mdash; Described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
+`flt` **MaxDamages** &mdash; In-game called *strength* for infantry units
+
+### Armor
 `str` **ArmorDescriptorFront** &mdash; Armor Front\
 `str` **ArmorDescriptorSides** &mdash; Armor Side\
 `str` **ArmorDescriptorRear** &mdash; Armor Rear\
-`str` **ArmorDescriptorTop** &mdash; Armor Top\
-`flt` **MaxDamages** &mdash; In-game called *strength* for infantry units\
-`flt` **HitRollECM** &mdash; Multiplier for hit probability. 0 means no Electronic countermeasures (ECM)\
-`flt` **Dangerousness** &mdash; *Guess*: Either quality of unit or used by AI to favor less dangerous units when deciding which to engage.\
-`int` **FuelCapacity**\
-`flt` **FuelMoveDuration**\
+`str` **ArmorDescriptorTop** &mdash; Armor Top
+
+### Visibility & Targetability
 `int` **OpticalStrength**\
 `int` **OpticalStrengthAltitude**\
 `flt` **IdentifyBaseProbability** &mdash; *Guess*: I think *OpticalStrength* defines how well units can be seen, *IdentifyBaseProbability* is the probability that these units can be uniquely identified.\
 `flt` **TimeBetweenEachIdentifyRoll**&mdash; *Guess*: Time in-between trying to uniquely identify units.\
-`int` **ProductionYear**\
-`int` **Resource_CommandPoints**\
-`int` **Resource_Tickets**\
-`arr` **SpecialtiesList** &mdash; Filter by Role: can be either **hq** (Command unit), **supply**, **infantry** (Infantry Squad), **infantry_half** (Infantry Group), **engineer** (Assault Squad), **assault_half** (Assault Group), **mortar**, **howitzer**, **mlrs**, **ifv** (Infantry Fightung Vehicle), **armor** (Main Battle Tank), **reco**, **hel_recp** (Helicopter Reconnaissance), **appui** (Support), **AT** (Anti-Tank), **transport**, **AA** (Air Defence) or **sead**\
-`str` **UpgradeFromUnit** &mdash; Predecessor
+`flt` **UnitConcealmentBonus**\
+`flt` **HitRollECM** &mdash; Multiplier for hit probability. 0 means no Electronic countermeasures (ECM)\
+`flt` **Dangerousness** &mdash; *Guess*: Used by AI to determine which unit to engage first.
 
-#### Ground Units Movement
+### Fuel
+`int` **FuelCapacity**\
+`flt` **FuelMoveDuration**
+
+#### Special to Ground Units
 `int` **MaxSpeed**\
 `flt` **SpeedBonusOnRoad**\
 `flt` **MaxAcceleration**\
@@ -103,16 +113,13 @@ All useful values to be found in `UniteDescriptor.ndf`
 `flt` **TempsDemiTour**\
 `str` **VehicleSubType**
 
-#### Air Units Movement
+#### Special to Aircraft
 `int` **EvacuationTime**\
 `int` **TravelDuration**
 
 #### Supply Units
 `flt` **SupplyCapacity**\
 `int` **SupplyPriority**
-
-#### Transport Units
-`int` **NbSeatsAvailable**
 
 #### Label
 `bol` **IsSupply**\
@@ -176,12 +183,13 @@ All useful values to be found in `Ammunition.ndf`
 `bol` **CanHarmAirplanes**\
 `bol` **CanHarmGuidedMissiles**\
 `bol` **IsHarmlessForAllies**\
-`bol` **PiercingWeapon** &mdash; Function not known\
+`bol` **PiercingWeapon** &mdash; Function not known
 
 ## Special Thanks
 I wanted to thank the following people. Whithout them, this project would have gone nowhere:
 * **eMeM** over on Discord for the calculation of the road speed and help with experience & veterancy and the discussion over stress, suppression, cohesion and morale.
 * **unipus** over on Discord for pointing me in the right direction to understand AP damage for kinetic weapons
+* **gagarin** over on Discord for helping me finding the filter by category
 
 ## Copyright Notice
 Each and every bit of this data belongs to [Eugen Systems](https://eugensystems.com/). I soley dig through it to create a database for an WARNO API that will be accessible to the public for free.
