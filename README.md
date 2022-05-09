@@ -175,8 +175,8 @@ All useful values to be found in `Ammunition.ndf`.
 <details><summary><kbd>flt</kbd> Puissance</summary><p> How noisy the weapon is. This variable is a stealth-negating multiplier that controls how much easier this unit is to spot when it fires this weapon.</p></details>
 <details><summary><kbd>int</kbd> ShotsBeforeMaxNoise</summary><p> Either shot count until <b>Puissance</b> is in its full effect or there is a global maximum noise</p></details>
 <details><summary><kbd>int</kbd> NbTirParSalves</summary><p> Shot count per magazine (salvo)</p></details>
-<details><summary><kbd>flt</kbd> TempsEntreDeuxTirs</summary><p> Time in-between two shots until magazine (one salvo) is empty. For weapons that have a salvo size of one, e.g. tank cannons, this variable will be ignored. Presumably, this variable is <b>NOT</b> effected by lowering morale (If it even exists in WARNO).</p></details>
-<details><summary><kbd>flt</kbd> TempsEntreDeuxSalves</summary><p> Time in-between two salvos, a.k.a reload time. Presumably, this variable is effected by lowering morale (If it even exists in WARNO).</p></details>
+<details><summary><kbd>flt</kbd> TempsEntreDeuxTirs</summary><p> Time in-between two shots until magazine (one salvo) is empty. For weapons that have a salvo size of one, e.g. tank cannons, this variable will be ignored. Presumably, this variable is <b>NOT</b> effected by decreasing morale (If it even exists in WARNO).</p></details>
+<details><summary><kbd>flt</kbd> TempsEntreDeuxSalves</summary><p> Time in-between two salvos, a.k.a reload time. Presumably, this variable is effected by decreasing morale (If it even exists in WARNO).</p></details>
 <details><summary><kbd>int</kbd> PorteeMaximale</summary><p> Maximal range against ground units.</p></details>
 <details><summary><kbd>int</kbd> PorteeMinimale</summary><p> Minimum range against ground units.</p></details>
 <details><summary><kbd>int</kbd> PorteeMaximaleTBA</summary><p> Maximal range against helicopters.</p></details>
@@ -227,10 +227,10 @@ All useful values to be found in `Ammunition.ndf`.
 
 ## Special Thanks
 I wanted to thank the following people. Whithout them, this project would have gone nowhere:
-* **eMeM** over on Discord for the calculation of the road speed, a guess on recource tickets, definition of CanShootOnPosition, help with experience & veterancy and the discussion over stress, suppression, cohesion and morale.
-* **unipus** over on Discord for pointing me in the right direction to understand AP damage for kinetic weapons.
-* **gagarin** over on Discord for helping me finding the filter by category.
-* **Iris** over on Discord for helping me getting accuracy right.
+* **eMeM** over on Discord for the *calculation of the road speed*, a guess on *recource tickets*, definition of *CanShootOnPosition*, help with *experience & veterancy* and the discussion over *stress, suppression, cohesion and morale*.
+* **unipus** over on Discord for pointing me in the right direction to understand *AP damage for kinetic weapons*.
+* **gagarin** over on Discord for helping me finding the *filter by category*.
+* **Iris** over on Discord for helping me getting *accuracy* right.
 * **Terminus Est** over on Discord for defining *Salves*, *SalvoStockIndex*, *YulBoneOrdinal*, *NbFx*, *HasMainSalvo* and *OutOfRangeTrackingDuration* in `WeaponDescriptor.ndf`.
 
 ## Copyright Notice
