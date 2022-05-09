@@ -142,10 +142,14 @@ All useful values to be found in `UniteDescriptor.ndf`
 `int` **Resource_Tickets** &mdash; Could be used as prices for future campaigns.
 
 ## Weapon Descriptor
-All useful values to be found in `WeaponDescriptor.ndf`
+All useful values to be found in `WeaponDescriptor.ndf`. A weapon system (*TWeaponManagerModuleDescriptor*) consist of multiple turret descriptors (*TTurretInfanterieDescriptor* or *TTurretTwoAxisDescriptor*). These turrets have one or multiple weapons attached to it (*TMountedWeaponDescriptor*), each having its own ammunition defined in `Ammunition.ndf`.
 
-`arr` **Salves** &mdash; Poorly understood\
+`arr` **Salves** &mdash; Array holding multiple ammunition pools. An ammunition pool defines the total number of salvos a weapon can fire before running out of ammunition.\
+`int` **SalvoStockIndex** &mdash; Defines which ammunition pool (*Savles*) is being used by this specific weapon. E.g. tank cannons have separate weapon descriptors for HE and AP but will pull from the same ammunition pool. Mod will not compile if *SalvoStockIndex* links to ammunition pools holding *0* or *-1*
 `ref` **Ammunition** &mdash; References an object in `Ammunition.ndf`\
+`int` **YulBoneOrdinal** &mdash; Some kind of animation rig. It is safe to just increment it per turret descriptor.\
+`int` **NbFx** &mdash; Number of graphics effects\
+`bol` **HasMainSalvo** &mdash; Most likely useless\
 `flt` **OutOfRangeTrackingDuration** &mdash; Function not known
 
 ## Ammunition Descriptor
@@ -193,8 +197,9 @@ All useful values to be found in `Ammunition.ndf`
 ## Special Thanks
 I wanted to thank the following people. Whithout them, this project would have gone nowhere:
 * **eMeM** over on Discord for the calculation of the road speed, a guess on recource tickets, help with experience & veterancy and the discussion over stress, suppression, cohesion and morale.
-* **unipus** over on Discord for pointing me in the right direction to understand AP damage for kinetic weapons
-* **gagarin** over on Discord for helping me finding the filter by category
+* **unipus** over on Discord for pointing me in the right direction to understand AP damage for kinetic weapons.
+* **gagarin** over on Discord for helping me finding the filter by category.
+* **Terminus Est** over on Discord for defining *Salves*, *SalvoStockIndex*, *YulBoneOrdinal*, *NbFx*, *HasMainSalvo* and *OutOfRangeTrackingDuration* in `WeaponDescriptor.ndf`.
 
 ## Copyright Notice
 Each and every bit of this data belongs to [Eugen Systems](https://eugensystems.com/). I soley dig through it to create a database for an WARNO API that will be accessible to the public for free.
