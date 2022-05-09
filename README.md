@@ -1,6 +1,9 @@
 ## Introduction
 Eugen Systems have published their raw game data of WARNO for the first time in their Milestone MURAT. This project aims at understanding and interpreting these values for the ultimate goal: **WARNO API**
 
+Through the whole documentary disclosure widgets, like the following, can be found. Click them to get information on the given variable.
+<details><summary><kbd>type</kbd>Click me!</summary><p>Everything you need to know about this variable</p></details>
+
 ## Useful Information
 WARNO has some twists and turns when it comes down to comprehensibility. These are some useful tools to guide you through the jungle of WARNO data.
 
