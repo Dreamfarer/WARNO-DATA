@@ -77,9 +77,9 @@ All useful values to be found in `UniteDescriptor.ndf`
 
 ### General Information
 <details><summary><kbd>str</kbd> Nationalite</summary><p> Alliance: can either be <b>ENationalite/Allied</b> (NATO) or <b>ENationalite/Axis</b> (PACT)</p></details>
-<details><summary><kbd>str</kbd> MotherCountry</summary><p> Nation: can either be <b>SOV</b>, <b>US**, <b>UK</b>, <b>DDR</b>, <b>RFA</b> (West-Germany) or <b>BEL</b></p></details>
+<details><summary><kbd>str</kbd> MotherCountry</summary><p> Nation: can either be <b>SOV</b>, <b>US</b>, <b>UK</b>, <b>DDR</b>, <b>RFA</b> (West-Germany) or <b>BEL</b></p></details>
 <details><summary><kbd>arr</kbd> RoleList</summary><p> Quality: can either be <b>tank_A</b> (A | Excellent), <b>tank_B</b> (B | Good), <b>tank_C</b> (C | Mediocre) or <b>tank_D</b> (D | Poor)</p></details>
-<details><summary><kbd>str</kbd> Factory</summary><p> Category: can either be <b>Logistic** (LOG), <b>Infantry</b> (INF), <b>Support</b> (ART), <b>Tanks</b> (TNK), <b>Recons</b> (REC), <b>AT</b> (AA), <b>Helis</b> (HEL), <b>Planes</b> (AIR)</p></details>
+<details><summary><kbd>str</kbd> Factory</summary><p> Category: can either be <b>Logistic</b> (LOG), <b>Infantry</b> (INF), <b>Support</b> (ART), <b>Tanks</b> (TNK), <b>Recons</b> (REC), <b>AT</b> (AA), <b>Helis</b> (HEL), <b>Planes</b> (AIR)</p></details>
 <details><summary><kbd>arr</kbd> SpecialtiesList</summary><p> Role: can either be <b>hq</b> (Command unit), <b>supply</b>, <b>infantry</b> (Infantry Squad), <b>infantry_half</b> (Infantry Group), <b>engineer</b> (Assault Squad), <b>assault_half</b> (Assault Group), <b>mortar</b>, <b>howitzer</b>, <b>mlrs</b>, <b>ifv</b> (Infantry Fightung Vehicle), <b>armor</b> (Main Battle Tank), <b>reco</b>, <b>hel_recp</b> (Helicopter Reconnaissance), <b>appui</b> (Support), <b>AT</b> (Anti-Tank), <b>transport</b>, <b>AA</b> (Air Defence) or <b>sead</b></p></details>
 <details><summary><kbd>int</kbd> ProductionYear</summary><p></p></details>
 <details><summary><kbd>int</kbd> Resource_CommandPoints</summary><p></p></details>
