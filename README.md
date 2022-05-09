@@ -167,11 +167,10 @@ All useful values to be found in `WeaponDescriptor.ndf`. A weapon system (*TWeap
 All useful values to be found in `Ammunition.ndf`.
 
 <details><summary><kbd>tkn</kbd> Name</summary><p> Ammunition name; unfortunately we can't decode tokens yet.</p></details>
-<details><summary><kbd>tkn</kbd> TypeCategoryName</summary><p> Weapon description like <b>Heavy Machine Gun</b>, <b>Howitzer</b>, <b>etc.</b>. Unfortunately we can't decode tokens yet.</p></details>
+<details><summary><kbd>tkn</kbd> TypeCategoryName</summary><p> Weapon description like <b>Heavy Machine Gun</b>, <b>Howitzer</b>, <b>etc</b>. Unfortunately we can't decode tokens yet.</p></details>
 <details><summary><kbd>tkn</kbd> Caliber</summary><p> Caliber; unfortunately we can't decode tokens yet.</p></details>
 <details><summary><kbd>arr</kbd> TraitsToken</summary><p> Will be added soon!</p></details>
 <details><summary><kbd>int</kbd> Level</summary><p> Controls to which card slot this ammunition is assigned to</p></details>
-<details><summary><kbd>int</kbd> PorteeMinimaleHA</summary><p> Minimum range against planes.</p></details>
 <details><summary><kbd>ref</kbd> Arme</summary><p> How much armor-piercing (AP) damage is dealt. Read through chapter<a href="https://github.com/BE3dARt/WARNO-DATA#armor-piercing-ap-damage"> Armor-Piercing (AP) Damage</a> to get a detailed damage description and how to read this value correctly.</p></details>
 <details><summary><kbd>flt</kbd> Puissance</summary><p> How noisy the weapon is. This variable is a stealth-negating multiplier that controls how much easier this unit is to spot when it fires this weapon.</p></details>
 <details><summary><kbd>int</kbd> ShotsBeforeMaxNoise</summary><p> Either shot count until <b>Puissance</b> is in its full effect or there is a global maximum noise</p></details>
@@ -228,7 +227,7 @@ All useful values to be found in `Ammunition.ndf`.
 
 ## Special Thanks
 I wanted to thank the following people. Whithout them, this project would have gone nowhere:
-* **eMeM** over on Discord for the calculation of the road speed, a guess on recource tickets, help with experience & veterancy and the discussion over stress, suppression, cohesion and morale.
+* **eMeM** over on Discord for the calculation of the road speed, a guess on recource tickets, definition of CanShootOnPosition, help with experience & veterancy and the discussion over stress, suppression, cohesion and morale.
 * **unipus** over on Discord for pointing me in the right direction to understand AP damage for kinetic weapons.
 * **gagarin** over on Discord for helping me finding the filter by category.
 * **Iris** over on Discord for helping me getting accuracy right.
