@@ -145,7 +145,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 All useful values to be found in `WeaponDescriptor.ndf`. A weapon system (*TWeaponManagerModuleDescriptor*) consist of multiple turret descriptors (*TTurretInfanterieDescriptor* or *TTurretTwoAxisDescriptor*). These turrets have one or multiple weapons attached to it (*TMountedWeaponDescriptor*), each having its own ammunition defined in `Ammunition.ndf`.
 
 `arr` **Salves** &mdash; Array holding multiple ammunition pools. An ammunition pool defines the total number of salvos a weapon can fire before running out of ammunition.\
-`int` **SalvoStockIndex** &mdash; Defines which ammunition pool (*Savles*) is being used by this specific weapon. E.g. tank cannons have separate weapon descriptors for HE and AP but will pull from the same ammunition pool. Mod will not compile if *SalvoStockIndex* links to ammunition pools holding *0* or *-1*
+`int` **SalvoStockIndex** &mdash; Defines which ammunition pool (*Savles*) is being used by this specific weapon. E.g. tank cannons have separate weapon descriptors for HE and AP but will pull from the same ammunition pool. Mod will not compile if *SalvoStockIndex* links to ammunition pools holding *0* or *-1*\
 `ref` **Ammunition** &mdash; References an object in `Ammunition.ndf`\
 `int` **YulBoneOrdinal** &mdash; Some kind of animation rig. It is safe to just increment it per turret descriptor.\
 `int` **NbFx** &mdash; Number of graphics effects\
