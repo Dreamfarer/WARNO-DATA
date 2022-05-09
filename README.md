@@ -76,22 +76,22 @@ Describes how every division is built up. For every unit in `DivisionRules.ndf` 
 All useful values to be found in `UniteDescriptor.ndf`
 
 ### General Information
-`str` **Nationalite** &mdash; Alliance: can either be **ENationalite/Allied** (NATO) or **ENationalite/Axis** (PACT)\
-`str` **MotherCountry** &mdash; Nation: can either be **SOV**, **US**, **UK**, **DDR**, **RFA** (West-Germany) or **BEL** \
-`arr` **RoleList** &mdash; Quality: can either be **tank_A** (A | Excellent), **tank_B** (B | Good), **tank_C** (C | Mediocre) or **tank_D** (D | Poor)\
-`str` **Factory** &mdash; Category: can either be **Logistic** (LOG), **Infantry** (INF), **Support** (ART), **Tanks** (TNK), **Recons** (REC), **AT** (AA), **Helis** (HEL), **Planes** (AIR)\
-`arr` **SpecialtiesList** &mdash; Role: can either be **hq** (Command unit), **supply**, **infantry** (Infantry Squad), **infantry_half** (Infantry Group), **engineer** (Assault Squad), **assault_half** (Assault Group), **mortar**, **howitzer**, **mlrs**, **ifv** (Infantry Fightung Vehicle), **armor** (Main Battle Tank), **reco**, **hel_recp** (Helicopter Reconnaissance), **appui** (Support), **AT** (Anti-Tank), **transport**, **AA** (Air Defence) or **sead**\
-`int` **ProductionYear**\
-`int` **Resource_CommandPoints**\
-`str` **UpgradeFromUnit** &mdash; Predecessor
+<details><summary><kbd>str</kbd> Nationalite</summary><p> Alliance: can either be <b>ENationalite/Allied</b> (NATO) or <b>ENationalite/Axis</b> (PACT)</p></details>
+<details><summary><kbd>str</kbd> MotherCountry</summary><p> Nation: can either be <b>SOV</b>, <b>US**, <b>UK</b>, <b>DDR</b>, <b>RFA</b> (West-Germany) or <b>BEL</b></p></details>
+<details><summary><kbd>arr</kbd> RoleList</summary><p> Quality: can either be <b>tank_A</b> (A | Excellent), <b>tank_B</b> (B | Good), <b>tank_C</b> (C | Mediocre) or <b>tank_D</b> (D | Poor)</p></details>
+<details><summary><kbd>str</kbd> Factory</summary><p> Category: can either be <b>Logistic** (LOG), <b>Infantry</b> (INF), <b>Support</b> (ART), <b>Tanks</b> (TNK), <b>Recons</b> (REC), <b>AT</b> (AA), <b>Helis</b> (HEL), <b>Planes</b> (AIR)</p></details>
+<details><summary><kbd>arr</kbd> SpecialtiesList</summary><p> Role: can either be <b>hq</b> (Command unit), <b>supply</b>, <b>infantry</b> (Infantry Squad), <b>infantry_half</b> (Infantry Group), <b>engineer</b> (Assault Squad), <b>assault_half</b> (Assault Group), <b>mortar</b>, <b>howitzer</b>, <b>mlrs</b>, <b>ifv</b> (Infantry Fightung Vehicle), <b>armor</b> (Main Battle Tank), <b>reco</b>, <b>hel_recp</b> (Helicopter Reconnaissance), <b>appui</b> (Support), <b>AT</b> (Anti-Tank), <b>transport</b>, <b>AA</b> (Air Defence) or <b>sead</b></p></details>
+<details><summary><kbd>int</kbd> ProductionYear</summary><p></p></details>
+<details><summary><kbd>int</kbd> Resource_CommandPoints</summary><p></p></details>
+<details><summary><kbd>str</kbd> UpgradeFromUnit</summary><p> Predecessor</p></details>
 
 ### Damage
 <details><summary><kbd>ref</kbd> StunDamagesRegen</summary><p> </p></details>
 <details><summary><kbd>ref</kbd> MaxStunDamages</summary><p> </p></details>
-<details><summary><kbd>ref</kbd> SuppressDamagesRegenRatio</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale">Stress, Suppression, Cohesion and Morale</a></p></details>
-<details><summary><kbd>ref</kbd> SuppressDamagesRegenRatioOutOfRange</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale">Stress, Suppression, Cohesion and Morale</a></p></details>
-<details><summary><kbd>ref</kbd> MaxSuppressionDamages</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale">Stress, Suppression, Cohesion and Morale</a></p></details>
-<details><summary><kbd>ref</kbd> MaxDamages</summary><p>In-game called <b>strength</b> for infantry units</p></details>
+<details><summary><kbd>ref</kbd> SuppressDamagesRegenRatio</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
+<details><summary><kbd>ref</kbd> SuppressDamagesRegenRatioOutOfRange</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
+<details><summary><kbd>ref</kbd> MaxSuppressionDamages</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
+<details><summary><kbd>flt</kbd> MaxDamages</summary><p>In-game called <b>strength</b> for infantry units</p></details>
 
 ### Armor
 <details><summary><kbd>str</kbd> ArmorDescriptorFront</summary><p>Armor Front</p></details>
