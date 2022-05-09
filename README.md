@@ -77,10 +77,10 @@ All useful values to be found in `UniteDescriptor.ndf`
 
 ### General Information
 <details><summary><kbd>str</kbd> Nationalite (Alliance)</summary><p>Can either be <b>ENationalite/Allied</b> (NATO) or <b>ENationalite/Axis</b> (PACT)</p></details>
-<details><summary><kbd>str</kbd> MotherCountry</summary><p> Nation: can either be <b>SOV</b>, <b>US</b>, <b>UK</b>, <b>DDR</b>, <b>RFA</b> (West-Germany) or <b>BEL</b></p></details>
-<details><summary><kbd>arr</kbd> RoleList</summary><p> Quality: can either be <b>tank_A</b> (A | Excellent), <b>tank_B</b> (B | Good), <b>tank_C</b> (C | Mediocre) or <b>tank_D</b> (D | Poor)</p></details>
-<details><summary><kbd>str</kbd> Factory</summary><p> Category: can either be <b>Logistic</b> (LOG), <b>Infantry</b> (INF), <b>Support</b> (ART), <b>Tanks</b> (TNK), <b>Recons</b> (REC), <b>AT</b> (AA), <b>Helis</b> (HEL), <b>Planes</b> (AIR)</p></details>
-<details><summary><kbd>arr</kbd> SpecialtiesList</summary><p> Role: can either be <b>hq</b> (Command unit), <b>supply</b>, <b>infantry</b> (Infantry Squad), <b>infantry_half</b> (Infantry Group), <b>engineer</b> (Assault Squad), <b>assault_half</b> (Assault Group), <b>mortar</b>, <b>howitzer</b>, <b>mlrs</b>, <b>ifv</b> (Infantry Fightung Vehicle), <b>armor</b> (Main Battle Tank), <b>reco</b>, <b>hel_recp</b> (Helicopter Reconnaissance), <b>appui</b> (Support), <b>AT</b> (Anti-Tank), <b>transport</b>, <b>AA</b> (Air Defence) or <b>sead</b></p></details>
+<details><summary><kbd>str</kbd> MotherCountry (Nation)</summary><p> Can either be <b>SOV</b>, <b>US</b>, <b>UK</b>, <b>DDR</b>, <b>RFA</b> (West-Germany) or <b>BEL</b></p></details>
+<details><summary><kbd>arr</kbd> RoleList (Quality)</summary><p> Can either be <b>tank_A</b> (A | Excellent), <b>tank_B</b> (B | Good), <b>tank_C</b> (C | Mediocre) or <b>tank_D</b> (D | Poor)</p></details>
+<details><summary><kbd>str</kbd> Factory (Category)</summary><p> Can either be <b>Logistic</b> (LOG), <b>Infantry</b> (INF), <b>Support</b> (ART), <b>Tanks</b> (TNK), <b>Recons</b> (REC), <b>AT</b> (AA), <b>Helis</b> (HEL), <b>Planes</b> (AIR)</p></details>
+<details><summary><kbd>arr</kbd> SpecialtiesList (Role)</summary><p>Can either be <b>hq</b> (Command unit), <b>supply</b>, <b>infantry</b> (Infantry Squad), <b>infantry_half</b> (Infantry Group), <b>engineer</b> (Assault Squad), <b>assault_half</b> (Assault Group), <b>mortar</b>, <b>howitzer</b>, <b>mlrs</b>, <b>ifv</b> (Infantry Fightung Vehicle), <b>armor</b> (Main Battle Tank), <b>reco</b>, <b>hel_recp</b> (Helicopter Reconnaissance), <b>appui</b> (Support), <b>AT</b> (Anti-Tank), <b>transport</b>, <b>AA</b> (Air Defence) or <b>sead</b></p></details>
 <details><summary><kbd>int</kbd> ProductionYear</summary><p></p></details>
 <details><summary><kbd>int</kbd> Resource_CommandPoints</summary><p></p></details>
 <details><summary><kbd>str</kbd> UpgradeFromUnit</summary><p> Predecessor</p></details>
@@ -94,18 +94,18 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>flt</kbd> MaxDamages</summary><p>In-game called <b>strength</b> for infantry units</p></details>
 
 ### Armor
-<details><summary><kbd>str</kbd> ArmorDescriptorFront</summary><p>Armor Front</p></details>
-<details><summary><kbd>str</kbd> ArmorDescriptorSides</summary><p>Armor Side</p></details>
-<details><summary><kbd>str</kbd> ArmorDescriptorRear</summary><p>Armor Rear</p></details>
-<details><summary><kbd>str</kbd> ArmorDescriptorTop</summary><p>Armor Top</p></details>
+<details><summary><kbd>str</kbd> ArmorDescriptorFront</summary><p> Armor Front</p></details>
+<details><summary><kbd>str</kbd> ArmorDescriptorSides</summary><p> Armor Side</p></details>
+<details><summary><kbd>str</kbd> ArmorDescriptorRear</summary><p> Armor Rear</p></details>
+<details><summary><kbd>str</kbd> ArmorDescriptorTop</summary><p> Armor Top</p></details>
 
 ### Visibility & Targetability
-`int` **OpticalStrength** &mdash; Optics for ground units. Presumably used to determine whether a unit can see enemy units in cover: can either be **40** (Bad), **60** (Mediocre), **80** (Normal), **120** (Good), **170** (Very Good) or **220** (Exceptional)\
-`int` **OpticalStrengthAltitude** &mdash; Optics for air targets. This value is not represented on the in-game UI and does not count towards *OpticalStrength*.\
-`flt` **IdentifyBaseProbability** &mdash; *Guess*: I think *OpticalStrength* defines how well units can be seen, *IdentifyBaseProbability* is the probability that these units can be uniquely identified.\
-`flt` **TimeBetweenEachIdentifyRoll**&mdash; *Guess*: Time in-between trying to uniquely identify units.\
-`flt` **UnitConcealmentBonus**&mdash; In-game called *stealth*. Can either be **1.0** (Bad), **1.5** (Mediocre), **2.0** (Good) or **2.5** (Exceptional)\
-`flt` **HitRollECM** &mdash; Multiplier for hit probability. 0 means no Electronic countermeasures (ECM)
+<details><summary><kbd>int</kbd> OpticalStrength</summary><p> Optics for ground units. Presumably used to determine whether a unit can see enemy units in cover: can either be <b>40</b> (Bad), <b>60</b> (Mediocre), <b>80</b> (Normal), <b>120</b> (Good), <b>170</b> (Very Good) or <b>220</b> (Exceptional)</p></details>
+<details><summary><kbd>int</kbd> OpticalStrengthAltitude</summary><p> Optics for air targets. This value is not represented on the in-game UI and does not count towards <b>OpticalStrength</b>.</p></details>
+<details><summary><kbd>flt</kbd> IdentifyBaseProbability</summary><p> <b>Guess</b>: I think <b>OpticalStrength</b> defines how well units can be seen, <b>IdentifyBaseProbability</b> is the probability that these units can be uniquely identified.</p></details>
+<details><summary><kbd>flt</kbd> TimeBetweenEachIdentifyRoll</summary><p><b>Guess</b>: Time in-between trying to uniquely identify units.</p></details>
+<details><summary><kbd>flt</kbd> UnitConcealmentBonus (Stealth)</summary><p> In-game called <b>stealth</b>. Can either be <b>1.0</b> (Bad), <b>1.5</b> (Mediocre), <b>2.0</b> (Good) or <b>2.5</b> (Exceptional)</p></details>
+<details><summary><kbd>flt</kbd> HitRollECM</summary><p> Multiplier for hit probability. 0 means no Electronic countermeasures (ECM)</p></details>
 
 ### Strategic
 `int` **UnitAttackValue** &mdash; Might be used for AI.\
