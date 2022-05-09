@@ -91,10 +91,10 @@ All useful values to be found in `UniteDescriptor.ndf`
 `flt` **MaxDamages** &mdash; In-game called *strength* for infantry units
 
 ### Armor
-<details> <summary>ArmorDescriptorFront <kbd> str </kbd></summary> <p>Armor Front</p> </details>
-<details> <summary>ArmorDescriptorSides</summary> <p>Armor Side</p> </details>
-`str` **ArmorDescriptorRear** &mdash; Armor Rear\
-`str` **ArmorDescriptorTop** &mdash; Armor Top
+<details><summary><kbd>str</kbd>ArmorDescriptorFront</summary><p>Armor Front</p></details>
+<details><summary><kbd>str</kbd>ArmorDescriptorSides</summary><p>Armor Side</p></details>
+<details><summary><kbd>str</kbd>ArmorDescriptorRear</summary><p>Armor Rear</p></details>
+<details><summary><kbd>str</kbd>ArmorDescriptorTop</summary><p>Armor Top</p></details>
 
 ### Visibility & Targetability
 `int` **OpticalStrength** &mdash; Optics for ground units. Presumably used to determine whether a unit can see enemy units in cover: can either be **40** (Bad), **60** (Mediocre), **80** (Normal), **120** (Good), **170** (Very Good) or **220** (Exceptional)\
