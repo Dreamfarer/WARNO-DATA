@@ -91,7 +91,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 `flt` **MaxDamages** &mdash; In-game called *strength* for infantry units
 
 ### Armor
-`str` **ArmorDescriptorFront** &mdash; Armor Front\
+Markup : <details> <summary>ArmorDescriptorFront</summary> <p>Armor Front</p> </details>
 `str` **ArmorDescriptorSides** &mdash; Armor Side\
 `str` **ArmorDescriptorRear** &mdash; Armor Rear\
 `str` **ArmorDescriptorTop** &mdash; Armor Top
