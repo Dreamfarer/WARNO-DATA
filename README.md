@@ -76,7 +76,7 @@ Describes how every division is built up. For every unit in `DivisionRules.ndf` 
 All useful values to be found in `UniteDescriptor.ndf`
 
 ### General Information
-<details><summary><kbd>str</kbd> Nationalite</summary><p> Alliance: can either be <b>ENationalite/Allied</b> (NATO) or <b>ENationalite/Axis</b> (PACT)</p></details>
+<details><summary><kbd>str</kbd> Nationalite (Alliance)</summary><p>Can either be <b>ENationalite/Allied</b> (NATO) or <b>ENationalite/Axis</b> (PACT)</p></details>
 <details><summary><kbd>str</kbd> MotherCountry</summary><p> Nation: can either be <b>SOV</b>, <b>US</b>, <b>UK</b>, <b>DDR</b>, <b>RFA</b> (West-Germany) or <b>BEL</b></p></details>
 <details><summary><kbd>arr</kbd> RoleList</summary><p> Quality: can either be <b>tank_A</b> (A | Excellent), <b>tank_B</b> (B | Good), <b>tank_C</b> (C | Mediocre) or <b>tank_D</b> (D | Poor)</p></details>
 <details><summary><kbd>str</kbd> Factory</summary><p> Category: can either be <b>Logistic</b> (LOG), <b>Infantry</b> (INF), <b>Support</b> (ART), <b>Tanks</b> (TNK), <b>Recons</b> (REC), <b>AT</b> (AA), <b>Helis</b> (HEL), <b>Planes</b> (AIR)</p></details>
