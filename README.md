@@ -102,6 +102,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 ### Visibility & Targetability
 <details><summary><kbd>int</kbd> OpticalStrength</summary><p> Optics for ground units. Presumably used to determine whether a unit can see enemy units in cover: can either be <b>40</b> (Bad), <b>60</b> (Mediocre), <b>80</b> (Normal), <b>120</b> (Good), <b>170</b> (Very Good) or <b>220</b> (Exceptional)</p></details>
 <details><summary><kbd>int</kbd> OpticalStrengthAltitude</summary><p> Optics for air targets. This value is not represented on the in-game UI and does not count towards <b>OpticalStrength</b>.</p></details>
+<details><summary><kbd>int</kbd> PorteeVision</summary><p> Maximum range at which a unit can see an unidentified ground unit. This variable is set to <b>10000</b> except for SEAD planes it is higher.</p></details>
 <details><summary><kbd>flt</kbd> IdentifyBaseProbability</summary><p> <b>Guess</b>: I think <b>OpticalStrength</b> defines how well units can be seen, <b>IdentifyBaseProbability</b> is the probability that these units can be uniquely identified.</p></details>
 <details><summary><kbd>flt</kbd> TimeBetweenEachIdentifyRoll</summary><p><b>Guess</b>: Time in-between trying to uniquely identify units.</p></details>
 <details><summary><kbd>flt</kbd> UnitConcealmentBonus (Stealth)</summary><p> In-game called <b>stealth</b>. Can either be <b>1.0</b> (Bad), <b>1.5</b> (Mediocre), <b>2.0</b> (Good) or <b>2.5</b> (Exceptional)</p></details>
@@ -111,6 +112,9 @@ All useful values to be found in `UniteDescriptor.ndf`
 `int` **UnitAttackValue** &mdash; Might be used for AI.\
 `int` **UnitDefenseValue** &mdash; Might be used for AI.\
 `flt` **Dangerousness** &mdash; Might be used by AI to determine which unit to engage first.
+
+#### Label
+`bol` **IsTransporter**\
 
 ### Fuel
 `int` **FuelCapacity** &mdash; How many liters of fuel a unit can hold\
@@ -129,79 +133,105 @@ All useful values to be found in `UniteDescriptor.ndf`
 `int` **TravelDuration**
 
 #### Supply Units
-`flt` **SupplyCapacity**\
-`int` **SupplyPriority**
+<details><summary><kbd>flt</kbd> SupplyCapacity</summary><p> How many supplies this unit is carrying.</p></details>
 
-#### Label
-`bol` **IsTransporter**\
-`str` **UnitName**
-
-#### Not Used
-`flt` **HitRollSize** &mdash; Size does no longer effect hit propability.\
-`int` **MoralLevel** Reason not included is described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
-`int` **ProductionTime** *5* for every unit except *-1* for planes. I think it's the time between placing units and them spawning in.\
-`des` **TInfluenceScoutModuleDescriptor** Empty for every unit but if present it triggers *Reveal Influenece* to be *yes* in-game.\
-`bol` **IsParachutist** &mdash; Currently set to *False* for every unit.\
-`int` **Resource_Tickets** &mdash; Could be used as prices for future campaigns.
+#### Probably Not Important
+<details><summary><kbd>flt</kbd> HitRollSize</summary><p> Size does no longer effect hit chance-to-hit.</p></details>
+<details><summary><kbd>int</kbd> MoralLevel</summary><p> Reason not included is described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
+<details><summary><kbd>int</kbd> ProductionTime</summary><p> <b>5</b> for every unit except <b>-1</b> for planes. I think it's the time between placing units and them spawning in.</p></details>
+<details><summary><kbd>des</kbd> TInfluenceScoutModuleDescriptor (Reveal Influenece)</summary><p> Empty for every unit but if present it triggers <b>Reveal Influenece</b> to be <b>yes</b> in-game.</p></details>
+<details><summary><kbd>bol</kbd> IsParachutist</summary><p> Currently set to <b>False</b> for every unit.</p></details>
+<details><summary><kbd>int</kbd> Resource_Tickets</summary><p> Could be used as prices for future campaigns.</p></details>
+<details><summary><kbd>int</kbd> CommanderLevel</summary><p> Only present on command units. However, it is set to <b>1</b> for every unit that has it.</p></details>
+<details><summary><kbd>bol</kbd> UnitIsStealth</summary><p> <b>False</b> for every unit. Stealth is defined by <b>UnitConcealmentBonus</b>.</p></details>
+<details><summary><kbd>tkn</kbd> UnitName</summary><p> Unfortunately we can't decode tokens yet.</p></details>
+<details><summary><kbd>flt</kbd> PorteeVisionTBA</summary><p> Set to <b>0</b> for every unit except <b>14000</b> for planes.</p></details>
+<details><summary><kbd>flt</kbd> PorteeVisionFOW</summary><p> Set to <b>0</b> for every unit except <b>1600</b> for helicopters.</p></details>
+<details><summary><kbd>flt</kbd> DetectionTBA</summary><p> Maximum range at which a unit can see an unidentified helicopter. Set to <b>14000</b> for every unit.</p></details>
+<details><summary><kbd>int</kbd> SupplyPriority</summary><p> Used in WGRD to state how many other supply units this unit could itself draw supplies from. Set to <b>-1</b> for every unit.</p></details>
 
 ## Weapon Descriptor
 All useful values to be found in `WeaponDescriptor.ndf`. A weapon system (*TWeaponManagerModuleDescriptor*) consist of multiple turret descriptors (*TTurretInfanterieDescriptor* or *TTurretTwoAxisDescriptor*). These turrets have one or multiple weapons attached to it (*TMountedWeaponDescriptor*), each having its own ammunition defined in `Ammunition.ndf`.
 
-`arr` **Salves** &mdash; Array holding multiple ammunition pools. An ammunition pool defines the total number of salvos a weapon can fire before running out of ammunition.\
-`int` **SalvoStockIndex** &mdash; Defines which ammunition pool (*Savles*) is being used by this specific weapon. E.g. tank cannons have separate weapon descriptors for HE and AP but will pull from the same ammunition pool. Mod will not compile if *SalvoStockIndex* links to ammunition pools holding *0* or *-1*\
-`ref` **Ammunition** &mdash; References an object in `Ammunition.ndf`\
-`int` **YulBoneOrdinal** &mdash; Some kind of animation rig. It is safe to just increment it per turret descriptor.\
-`int` **NbFx** &mdash; Number of graphics effects\
-`bol` **HasMainSalvo** &mdash; Most likely useless\
-`flt` **OutOfRangeTrackingDuration** &mdash; Function not known
+<details><summary><kbd>arr</kbd> Salves</summary><p> Array holding multiple ammunition pools. An ammunition pool defines the total number of salvos a weapon (which pulls salvos from this pool) can fire before running out of ammunition.</p></details>
+<details><summary><kbd>int</kbd> SalvoStockIndex</summary><p> Defines which ammunition pool (<b>Savles</b>) is being used by this specific weapon. E.g. tank cannons have separate weapon descriptors for HE and AP but will pull from the <b>same</b> ammunition pool.</p></details>
+<details><summary><kbd>bol</kbd> HasMainSalvo</summary><p> Only set to <b>True</b> for planes. It signifies that this plane has a ammunition pool (<b>Salves</b>) that, if empty, makes the plane evac winchester.</p></details>
+<details><summary><kbd>arr</kbd> SalvoIsMainSalvo</summary><p> Only has a <b>True</b> in it for planes. States which ammunition pool (<b>Salves</b>) makes the plane evac winchester when empty.</p></details>
+<details><summary><kbd>ref</kbd> Ammunition</summary><p> References an object in <b>Ammunition.ndf</b>.</p></details>
+<details><summary><kbd>flt</kbd> AngleRotationMax</summary><p> Maximal traverse of turret in radians. Calculation as follows: <b>angle_degrees</b> = <b>angle_radians</b> \* <b>180°</b> / <b>pi</b></p></details>
+<details><summary><kbd>flt</kbd> AngleRotationMaxPitch</summary><p> Maximum turret elevation in radians. Calculation as follows: <b>angle_degrees</b> = <b>angle_radians</b> \* <b>180°</b> / <b>pi</b></p></details>
+<details><summary><kbd>flt</kbd> AngleRotationMinPitch</summary><p> Minimum turret depression in radians. Calculation as follows: <b>angle_degrees</b> = <b>angle_radians</b> \* <b>180°</b> / <b>pi</b></p></details>
+<details><summary><kbd>flt</kbd> VitesseRotation</summary><p> Traverse speed of the turret, presumably in radians per second.</p></details>
 
 ## Ammunition Descriptor
-All useful values to be found in `Ammunition.ndf`
+All useful values to be found in `Ammunition.ndf`.
 
-`tkn` **Name**\
-`tkn` **TypeCategoryName** &mdash; Weapon description like *Heavy Machine Gun*, *Howitzer*, *etc.*. However, we can't resolve name tokens for now.\
-`tkn` **Caliber**\
-`str` **ProjectileType**\
-`flt` **Puissance** &mdash; Function not known\
-`flt` **TempsEntreDeuxTirs** &mdash; Time between two shots\
-`int` **PorteeMinimale** &mdash; Maximal engagement distance (Ground)\
-`int` **PorteeMaximale** &mdash; Minimal engagement distance (Ground)\
-`int` **PorteeMinimaleTBA** &mdash; Maximal engagement distance (Helicopter)\
-`int` **PorteeMaximaleTBA** &mdash; Minimal engagement distance (Helicopter)\
-`int` **PorteeMinimaleHA** &mdash; Maximal engagement distance (Planes)\
-`int` **PorteeMaximaleHA** &mdash; Minimal engagement distance (Planes)\
-`int` **AltitudeAPorteeMaximale** &mdash; Maximal engagement altitude\
-`int` **AltitudeAPorteeMinimale** &mdash; Minimal engagement altitude\
-`int` **DispersionAtMaxRange** &mdash; Dispersion\
-`flt` **CorrectedShotAimtimeMultiplier**\
-`int` **RadiusSplashPhysicalDamages**\
-`flt` **PhysicalDamages** &mdash; HE Damage\
-`int` **RadiusSplashSuppressDamages**\
-`flt` **SuppressDamages** &mdash; Suppress Damage\
-`bol` **AllowSuppressDamageWhenNoImpact**\
-`int` **EBaseHitValueModifier/Idling** &mdash; Accuracy while standing still\
-`int` **EBaseHitValueModifier/Moving** &mdash; Accuracy while moving\
-`int` **MaxSuccessiveHitCount**\
-`flt` **TempsDeVisee** &mdash; Aim time\
-`flt` **TempsEntreDeuxSalves** &mdash; Time between salvos\
-`int` **NbTirParSalves** &mdash; Shot count per salvo\
-`int` **SupplyCost**\
-`flt` **FireTriggeringProbability**\
-`bol` **CanShootOnPosition**\
-`bol` **CanShootWhileMoving**\
-`bol` **CanHarmInfantry**\
-`bol` **CanHarmVehicles**\
-`bol` **CanHarmHelicopters**\
-`bol` **CanHarmAirplanes**\
-`bol` **CanHarmGuidedMissiles**\
-`bol` **IsHarmlessForAllies**\
-`bol` **PiercingWeapon** &mdash; Function not known
+<details><summary><kbd>tkn</kbd> Name</summary><p> Ammunition name; unfortunately we can't decode tokens yet.</p></details>
+<details><summary><kbd>tkn</kbd> TypeCategoryName</summary><p> Weapon description like <b>Heavy Machine Gun</b>, <b>Howitzer</b>, <b>etc.</b>. Unfortunately we can't decode tokens yet.</p></details>
+<details><summary><kbd>tkn</kbd> Caliber</summary><p> Caliber; unfortunately we can't decode tokens yet.</p></details>
+<details><summary><kbd>arr</kbd> TraitsToken</summary><p> Will be added soon!</p></details>
+<details><summary><kbd>int</kbd> Level</summary><p> Controls to which card slot this ammunition is assigned to</p></details>
+<details><summary><kbd>int</kbd> PorteeMinimaleHA</summary><p> Minimum range against planes.</p></details>
+<details><summary><kbd>ref</kbd> Arme</summary><p> How much armor-piercing (AP) damage is dealt. Read through chapter<a href="https://github.com/BE3dARt/WARNO-DATA#armor-piercing-ap-damage"> Armor-Piercing (AP) Damage</a> to get a detailed damage description and how to read this value correctly.</p></details>
+<details><summary><kbd>flt</kbd> Puissance</summary><p> How noisy the weapon is. This variable is a stealth-negating multiplier that controls how much easier this unit is to spot when it fires this weapon.</p></details>
+<details><summary><kbd>int</kbd> ShotsBeforeMaxNoise</summary><p> Either shot count until <b>Puissance</b> is in its full effect or there is a global maximum noise</p></details>
+<details><summary><kbd>int</kbd> NbTirParSalves</summary><p> Shot count per magazine (salvo)</p></details>
+<details><summary><kbd>flt</kbd> TempsEntreDeuxTirs</summary><p> Time in-between two shots until magazine (one salvo) is empty. For weapons that have a salvo size of one, e.g. tank cannons, this variable will be ignored. Presumably, this variable is <b>NOT</b> effected by lowering morale (If it even exists in WARNO).</p></details>
+<details><summary><kbd>flt</kbd> TempsEntreDeuxSalves</summary><p> Time in-between two salvos, a.k.a reload time. Presumably, this variable is effected by lowering morale (If it even exists in WARNO).</p></details>
+<details><summary><kbd>int</kbd> PorteeMaximale</summary><p> Maximal range against ground units.</p></details>
+<details><summary><kbd>int</kbd> PorteeMinimale</summary><p> Minimum range against ground units.</p></details>
+<details><summary><kbd>int</kbd> PorteeMaximaleTBA</summary><p> Maximal range against helicopters.</p></details>
+<details><summary><kbd>int</kbd> PorteeMinimaleTBA</summary><p> Minimum range against helicopters.</p></details>
+<details><summary><kbd>int</kbd> PorteeMaximaleHA</summary><p> Maximal range against planes.</p></details>
+<details><summary><kbd>int</kbd> PorteeMinimaleHA</summary><p> Minimum range against planes.</p></details>
+<details><summary><kbd>flt</kbd> AltitudeAPorteeMaximale</summary><p> Function unknown; exists for every ammunition type except missiles</p></details>
+<details><summary><kbd>flt</kbd> AltitudeAPorteeMinimale</summary><p> Function unknown; exists for every ammunition type except missiles</p></details>
+<details><summary><kbd>bol</kbd> AffecteParNombre</summary><p> Function unknown; exists for every ammunition type except missiles</p></details>
+<details><summary><kbd>flt</kbd> AngleDispersion</summary><p> How much the ammunition spreads on impact or near-miss.</p></details>
+<details><summary><kbd>int</kbd> DispersionAtMaxRange</summary><p> Dispersion at maximum range</p></details>
+<details><summary><kbd>int</kbd> DispersionAtMinRange</summary><p> Dispersion at minimum range</p></details>
+<details><summary><kbd>int</kbd> RadiusSplashPhysicalDamages</summary><p> Area of effect (AeE) of HE damage</p></details>
+<details><summary><kbd>flt</kbd> PhysicalDamages</summary><p> HE damage in case of direct hit</p></details>
+<details><summary><kbd>int</kbd> RadiusSplashSuppressDamages</summary><p> Area of effect (AeE) of suppress damage</p></details>
+<details><summary><kbd>flt</kbd> SuppressDamages</summary><p> Suppress damage in case of direct hit</p></details>
+<details><summary><kbd>int</kbd> RayonPinned</summary><p> Function unknown</p></details>
+<details><summary><kbd>bol</kbd> AllowSuppressDamageWhenNoImpact</summary><p> Allow suppress damage to be dealt in case of near-miss.</p></details>
+<details><summary><kbd>bol</kbd> TirIndirect</summary><p> <b>False</b> if this weapon is direct-fire.</p></details>
+<details><summary><kbd>bol</kbd> TirReflexe</summary><p> Seems to be <b>False</b> for mortars, howitzers and bombs. Good chance that this is set to <b>True</b> if a weapon is able to target projectiles, hence <b>Reflexe</b>.</p></details>
+<details><summary><kbd>bol</kbd> InterdireTirReflexe</summary><p> Prohibit <b>TirReflexe</b>. Good chance that is is the counter to whatever <b>TirReflexe</b> is.</p></details>
+<details><summary><kbd>flt</kbd> NoiseDissimulationMalus</summary><p> Function unknown</p></details>
+<details><summary><kbd>int</kbd> BaseCriticModifier</summary><p> Either set to <b>0</b> or <b>25</b>. Modifies the probability of triggering critial effects.</p></details>
+<details><summary><kbd>int</kbd> EBaseHitValueModifier/Idling (Accuracy)</summary><p> Accuracy per shot while standing still. Accuracy in-game is displayed per salvo: <b>real_accuracy</b> = <b>EBaseHitValueModifier/Idling</b> \* <b>NbTirParSalves</b></p></details>
+<details><summary><kbd>int</kbd> EBaseHitValueModifier/Moving (Accuracy)</summary><p> Accuracy per shot while moving. Accuracy in-game is displayed per salvo: <b>real_accuracy</b> = <b>EBaseHitValueModifier/Idling</b> \* <b>NbTirParSalves</b></p></details></p></details>
+<details><summary><kbd>int</kbd> MaxSuccessiveHitCount</summary><p> Function unknown; Either set to <b>1</b> or <b>5</b></p></details>
+<details><summary><kbd>flt</kbd> TempsDeVisee</summary><p> Aim time; How long, effected by morale (if existent), the unit needs time from seeing the enemy to being ready to engage it.</p></details>
+<details><summary><kbd>flt</kbd> SupplyCost</summary><p> </p></details>
+<details><summary><kbd>bol</kbd> CanShootOnPosition</summary><p> Used to define if button <b>Fire Pos</b> is available and therefore a unit is able to blindly fire without target at your request.</p></details>
+<details><summary><kbd>bol</kbd> CanShootWhileMoving</summary><p> </p></details>
+<details><summary><kbd>int</kbd> NbrProjectilesSimultanes</summary><p> Number of projectiles fired simultaneously</p></details>
+<details><summary><kbd>ref</kbd> MissileDescriptor</summary><p> For missiles, this variable is a reference to <b>MissileDescriptors.ndf</b>, else it is set to <b>nil</b></p></details>
+<details><summary><kbd>ref</kbd> SmokeDescriptor</summary><p> For smoke rounds, this variable is a reference to <b>SmokeDescriptor.ndf</b>, else it is set to <b>nil</b></p></details>
+<details><summary><kbd>ref</kbd> FireDescriptor</summary><p> For incendiary rounds, this variable is a reference to <b>FireDescriptor.ndf</b>, else it is set to <b>nil</b></p></details>
+<details><summary><kbd>bol</kbd> CanHarmInfantry</summary><p> </p></details>
+<details><summary><kbd>bol</kbd> CanHarmVehicles</summary><p> </p></details>
+<details><summary><kbd>bol</kbd> CanHarmHelicopters</summary><p> </p></details>
+<details><summary><kbd>bol</kbd> CanHarmAirplanes</summary><p> </p></details>
+<details><summary><kbd>bol</kbd> CanHarmGuidedMissiles</summary><p> </p></details>
+<details><summary><kbd>bol</kbd> IsHarmlessForAllies</summary><p> </p></details>
+<details><summary><kbd>bol</kbd> PiercingWeapon</summary><p> If ammunition is able to deal armor-piercing (AP) damage. Read through chapter<a href="https://github.com/BE3dARt/WARNO-DATA#armor-piercing-ap-damage"> Armor-Piercing (AP) Damage</a> to get a detailed damage description.</p></details>
+<details><summary><kbd>ref</kbd> DamageTypeEvolutionOverRangeDescriptor</summary><p> If not <b>nil</b>, this variable references <b>DamageStairTypeEvolutionOverRangeDescriptor.ndf</b>, which handles armor-piercing (AP) damage decrease over distance. Moreover, this means that this ammunition is <b>kinetic</b>. Read through chapter<a href="https://github.com/BE3dARt/WARNO-DATA#armor-piercing-ap-damage"> Armor-Piercing (AP) Damage</a> to get a detailed damage description.</p></details>
+<details><summary><kbd>flt</kbd> FlightTimeForSpeed</summary><p> Most likely used to calculate projectile speed together with <b>DistanceForSpeed</b></p></details>
+<details><summary><kbd>flt</kbd> DistanceForSpeed</summary><p> Most likely used to calculate projectile speed together with <b>FlightTimeForSpeed</b></p></details>
+
+#### Probably Not Important
+<details><summary><kbd>flt</kbd> IsAPCR</summary><p> Probably used when Armour-piercing, composite rigid (APCR) (high-velocity armour-piercing (HVAP) in US nomenclature) are implemented into WARNO.</p></details>
 
 ## Special Thanks
 I wanted to thank the following people. Whithout them, this project would have gone nowhere:
 * **eMeM** over on Discord for the calculation of the road speed, a guess on recource tickets, help with experience & veterancy and the discussion over stress, suppression, cohesion and morale.
 * **unipus** over on Discord for pointing me in the right direction to understand AP damage for kinetic weapons.
 * **gagarin** over on Discord for helping me finding the filter by category.
+* **Iris** over on Discord for helping me getting accuracy right.
 * **Terminus Est** over on Discord for defining *Salves*, *SalvoStockIndex*, *YulBoneOrdinal*, *NbFx*, *HasMainSalvo* and *OutOfRangeTrackingDuration* in `WeaponDescriptor.ndf`.
 
 ## Copyright Notice
