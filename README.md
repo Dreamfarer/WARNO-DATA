@@ -87,12 +87,11 @@ All useful values to be found in `UniteDescriptor.ndf`
 
 ### Damage
 <details><summary><kbd>ref</kbd> StunDamagesRegen</summary><p> </p></details>
-<details><summary><kbd>ref</kbd> MaxStunDamages</summary><p>&emsp; Test</p></details>
-<details><summary><kbd>ref</kbd> SuppressDamagesRegenRatio</summary><p>    Described in chapter <a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale">Stress, Suppression, Cohesion and Morale</a></p></details>
-
-`ref` **SuppressDamagesRegenRatioOutOfRange** &mdash; Described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
-`ref` **MaxSuppressionDamages** &mdash; Described in chapter [Stress, Suppression, Cohesion and Morale](https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale)\
-`flt` **MaxDamages** &mdash; In-game called *strength* for infantry units
+<details><summary><kbd>ref</kbd> MaxStunDamages</summary><p> </p></details>
+<details><summary><kbd>ref</kbd> SuppressDamagesRegenRatio</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale">Stress, Suppression, Cohesion and Morale</a></p></details>
+<details><summary><kbd>ref</kbd> SuppressDamagesRegenRatioOutOfRange</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale">Stress, Suppression, Cohesion and Morale</a></p></details>
+<details><summary><kbd>ref</kbd> MaxSuppressionDamages</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale">Stress, Suppression, Cohesion and Morale</a></p></details>
+<details><summary><kbd>ref</kbd> MaxDamages</summary><p>In-game called <b>strength</b> for infantry units</p></details>
 
 ### Armor
 <details><summary><kbd>str</kbd> ArmorDescriptorFront</summary><p>Armor Front</p></details>
