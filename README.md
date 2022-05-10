@@ -51,12 +51,12 @@ Currently, the only way units differ from one another is through *EBaseHitValueM
 ### Armor
 For every unit armor is individually defined in `UniteDescriptor.ndf` by the variables **ArmorDescriptorFront**, **ArmorDescriptorSides**, **ArmorDescriptorRear** and **ArmorDescriptorTop**. They can hold many more strings but these are the ones used in vanilla WARNO:
 
-* *ArmorDescriptor_Batiment_1*: Used for buildings
-* *ArmorDescriptor_Infanterie_1*: Used for Infantry; Can't receive armor-piercing (AP) damage, therefore in-game armory shows zero armor. However, there are multiple damage reductions present against various non-AP ammunition types.
-* *ArmorDescriptor_Vehicule_1*: Used for vehicles; equivalent to *ArmorDescriptor_Blindage_1*.
-* *ArmorDescriptor_Vehicule_leger*: Used for vehicles; Receives damage from **every** ammunition. Usually more than double the amount of damage received than *ArmorDescriptor_Vehicule_1*.
-* *ArmorDescriptor_Blindage_1* to *ArmorDescriptor_Blindage_20*: Used for vehicles;  Having blindage over 2 is utterly important: Going from *ArmorDescriptor_Blindage_1* to *ArmorDescriptor_Blindage_2* **halves** the AP damage received (exception to this rule follow shortly). After that, it is only decreasing by small amounts.
-* *ArmorDescriptor_Helico_1* to *ArmorDescriptor_Helico_3*:
+* **ArmorDescriptor_Batiment_1**: Used for buildings
+* **ArmorDescriptor_Infanterie_1**: Used for Infantry; Can't receive armor-piercing (AP) damage, therefore in-game armory shows zero armor. However, there are multiple damage reductions present against various non-AP ammunition types.
+* **ArmorDescriptor_Vehicule_1**: Used for vehicles; equivalent to *ArmorDescriptor_Blindage_1*.
+* **ArmorDescriptor_Vehicule_leger**: Used for vehicles; Receives damage from **every** ammunition. Usually more than double the amount of damage received than *ArmorDescriptor_Vehicule_1*.
+* **ArmorDescriptor_Blindage_1** to **ArmorDescriptor_Blindage_20**: Used for vehicles;  Having blindage over 2 is utterly important: Going from *ArmorDescriptor_Blindage_1* to *ArmorDescriptor_Blindage_2* **halves** the AP damage received (exception to this rule follow shortly). After that, it is only decreasing by small amounts.
+* **ArmorDescriptor_Helico_1** to **ArmorDescriptor_Helico_3**: Used on helicopters and planes; *ArmorDescriptor_Helico_1* is equivalent to *ArmorDescriptor_Blindage_1*. Using *ArmorDescriptor_Helico_2* at least **halves** the damage received. After that, it is also only decreasing by small amounts.
 
 These strings are referencing `ArmorDescriptor.ndf`, which itself references another file called `DamageResistance.ndf`. In there a giant table can be found listing every damage outcome of every weapon versus every armor. Some voices doubt the reliability of this table, others think it to be an export of WARNO's damage calculation.
 
