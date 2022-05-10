@@ -141,8 +141,6 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>int</kbd> UnitDefenseValue</summary><p> Might be used for AI.</p></details>
 <details><summary><kbd>flt</kbd> Dangerousness</summary><p> Might be used by AI to determine which unit to engage first.</p></details>
 
-<b>
-</b>
 #### Label
 <details><summary><kbd>bol</kbd> IsTransporter</summary><p> </p></details>
 
