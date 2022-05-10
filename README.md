@@ -20,6 +20,32 @@ Autonomy states how far a unit can move until it runs out of fuel. In previous t
 
 *Autonomy* = *MaxSpeed* \* *FuelMoveDuration* \* *0.0000975*
 
+### Accuracy
+Accuracy is defined as the probability of landing a successful hit on an enemy unit. Be aware that this whole accuracy system is not yet understood fully and assumptions are being made.\
+To start off with a fact, *HitRollRuleDescriptor* in `Ammunition.ndf` describes the accuracy for each ammunition type individually. This descriptor consists of:
+
+* *BaseCriticModifier*
+* *BaseEffectModifier*
+* *BaseHitValueModifiers*
+* *HitModifierList*
+
+My best guess is that *BaseCriticModifier* and *BaseEffectModifier* are only used for the probability of triggering critical effects like "reseting targeting computer". We will ignore them for now. What we are really interested in is *BaseHitValueModifiers* and *HitModifierList*.
+
+Now, for every shot a dice is rolled which will define if this particular shot is a hit or a miss. Just a random number would be too boring, we want to spice up the outcome with some parameters. My understanding is that *HitModifierList* is exactly that: Parameters for the dice roll. This list consists of the following items: Precision, DistanceToTarget, SuccesiveShots and Suppress. Now, what do these mean? Do note though, these are pure guesses.
+
+* *Precision*: It think it is the value when active *BaseHitValueModifiers* are summed up. Basically this is the base chance of a hit. If the target has Electronic countermeasures (ECM), subtract its value from the base hit chance.
+* *DistanceToTarget*: In `HitRollConstants.ndf` there is a list called *RangeModifiersTable*. It might state how to translate the distance to this parameter’s value. First off, you would calculate *distance_to_target* / *weapon_maxRange* to get a ratio which needs to be plugged into the left side of the list. Read out the corresponding right side to get the value for this parameter. So if the target is close to the attacker, it will yield a higher parameter value.
+* *SuccesiveShots*: There is a list in `HitRollConstants.ndf` called *SuccessiveHitModifiersTable*. This parameter will yield *0* if the target has not been hit yet, *1* for the first successive shot and *2* for every greater successive shot count.
+* *Suppress*: Current suppress damage this unit has.
+
+If you look closely into the `HitRollConstants.ndf`, you will notice three types of dice rolls: *Hit*, *Pierce* and *critic*:
+
+* *Hit*: Describes the dice roll for the hit probability we just studied above.
+* *Pierce*: Describes the dice roll for the probability that an kinetic AP ammunition will pierce through armor. However, there is not much else known about this dice roll for now.
+* *Critic*: Describes the dice roll for the probability that this shot will trigger critical effects which will render units useless for a given time.
+
+Currently, the only way units differ from one another is through *EBaseHitValueModifier/Idling* and *EBaseHitValueModifier/Moving* of *BaseHitValueModifiers* in `Ammunition.ndf`. These values are the ones which represent the unit's *Accuracy* reading in the armory. However, be aware that the accuracy is displayed **per salvo**. You would need to multiply these values with *NbTirParSalves* in `Ammunition.ndf` to get the in-game displayed results.
+
 ### Armor-Piercing (AP) Damage
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does **not** decrease with range, however, Kinetic (KE) does.\
 Every ammunition type is defined in `Ammunition.ndf`. If \[Kinetic\] is listed in the *TraitsToken*-array, it means that this ammunition type is kinetic. If there is no such tag, the ammunition type is HE(AT).
@@ -65,12 +91,12 @@ Suppression damage decreases over time. The following variables describe this be
 ## Division Rules
 Describes how every division is built up. For every unit in `DivisionRules.ndf` we have the following values.
 
-`ref` **UnitDescriptor** &mdash; Reference to *UniteDescriptor.ndf*\
-`bol` **AvailableWithoutTransport**\
-`arr` **AvailableTransportList** &mdash; Array containing all available transports.\
-`int` **MaxPackNumber** &mdash; How many cards you can take (varies per division)\
-`int` **NumberOfUnitInPack** &mdash; How many units one card holds (Doesn't vary)\
-`arr` **NumberOfUnitInPackXPMultiplier** &mdash; Multiply with *NumberOfUnitInPack* to get the amount of units per card at given veterancy level.
+<details><summary><kbd>ref</kbd> UnitDescriptor</summary><p>Reference to <b>UniteDescriptor.ndf</b></p></details>
+<details><summary><kbd>bol</kbd> AvailableWithoutTransport</summary><p> </p></details>
+<details><summary><kbd>arr</kbd> AvailableTransportList</summary><p> Array containing all available transports.</p></details>
+<details><summary><kbd>int</kbd> MaxPackNumber</summary><p> How many cards of this unit type can be taken (varies per division)</p></details>
+<details><summary><kbd>int</kbd> NumberOfUnitInPack</summary><p> How many units each card holds (does not vary per division)</p></details>
+<details><summary><kbd>arr</kbd> NumberOfUnitInPackXPMultiplier</summary><p>  Multiply with <b>NumberOfUnitInPack</b> to get the amount of units per card at given veterancy level.</p></details>
 
 ## Unit Descriptor
 All useful values to be found in `UniteDescriptor.ndf`
@@ -109,28 +135,30 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>flt</kbd> HitRollECM</summary><p> Multiplier for hit probability. 0 means no Electronic countermeasures (ECM)</p></details>
 
 ### Strategic
-`int` **UnitAttackValue** &mdash; Might be used for AI.\
-`int` **UnitDefenseValue** &mdash; Might be used for AI.\
-`flt` **Dangerousness** &mdash; Might be used by AI to determine which unit to engage first.
+<details><summary><kbd>int</kbd> UnitAttackValue</summary><p> Might be used for AI.</p></details>
+<details><summary><kbd>int</kbd> UnitDefenseValue</summary><p> Might be used for AI.</p></details>
+<details><summary><kbd>flt</kbd> Dangerousness</summary><p> Might be used by AI to determine which unit to engage first.</p></details>
 
+<b>
+</b>
 #### Label
-`bol` **IsTransporter**\
+<details><summary><kbd>bol</kbd> IsTransporter</summary><p> </p></details>
 
 ### Fuel
-`int` **FuelCapacity** &mdash; How many liters of fuel a unit can hold\
-`flt` **FuelMoveDuration** &mdash; How many seconds a unit can move before running out of fuel. Described in chapter [Calculate Autonomy](https://github.com/BE3dARt/WARNO-DATA#calculate-autonomy)
+<details><summary><kbd>int</kbd> FuelCapacity</summary><p> How many liters of fuel a unit can hold.</p></details>
+<details><summary><kbd>flt</kbd> FuelMoveDuration</summary><p>  How many seconds a unit can move before running out of fuel. Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#calculate-autonomy"> Calculate Autonomy</a> </p></details>
 
 #### Special to Ground Units
-`int` **MaxSpeed**\
-`flt` **SpeedBonusOnRoad**\
-`flt` **MaxAcceleration**\
-`flt` **MaxDeceleration**\
-`flt` **TempsDemiTour** &mdash; The amount of seconds it takes for a unit to make a half-turn.\
-`str` **VehicleSubType**
+<details><summary><kbd>int</kbd> MaxSpeed</summary><p> </p></details>
+<details><summary><kbd>flt</kbd> SpeedBonusOnRoad</summary><p> </p></details>
+<details><summary><kbd>flt</kbd> MaxAcceleration</summary><p> </p></details>
+<details><summary><kbd>flt</kbd> MaxDeceleration</summary><p> </p></details>
+<details><summary><kbd>flt</kbd> TempsDemiTour</summary><p> The amount of seconds it takes for a unit to make a half-turn.</p></details>
+<details><summary><kbd>str</kbd> VehicleSubType</summary><p> </p></details>
 
 #### Special to Planes
-`int` **EvacuationTime**\
-`int` **TravelDuration**
+<details><summary><kbd>int</kbd> EvacuationTime</summary><p> </p></details>
+<details><summary><kbd>int</kbd> TravelDuration</summary><p> </p></details>
 
 #### Supply Units
 <details><summary><kbd>flt</kbd> SupplyCapacity</summary><p> How many supplies this unit is carrying.</p></details>
