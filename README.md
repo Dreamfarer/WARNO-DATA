@@ -193,7 +193,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>int</kbd> RollAngle</summary><p> </p></details>
 <details><summary><kbd>int</kbd> RollSpeed</summary><p> </p></details>
 
-#### Special to Helicopters
+### Special to Helicopters
 <details><summary><kbd>int</kbd> UpwardSpeed</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
 <details><summary><kbd>int</kbd> TorqueManoeuvrability</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
 <details><summary><kbd>int</kbd> CyclicManoeuvrability</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
@@ -289,7 +289,7 @@ All useful values to be found in `Ammunition.ndf`.
 <details><summary><kbd>flt</kbd> FlightTimeForSpeed</summary><p> Most likely used to calculate projectile speed together with <b>DistanceForSpeed</b></p></details>
 <details><summary><kbd>flt</kbd> DistanceForSpeed</summary><p> Most likely used to calculate projectile speed together with <b>FlightTimeForSpeed</b></p></details>
 
-#### Probably Not Important
+### Probably Not Important
 <details><summary><kbd>flt</kbd> IsAPCR</summary><p> Probably used when Armour-piercing, composite rigid (APCR) (high-velocity armour-piercing (HVAP) in US nomenclature) are implemented into WARNO.</p></details>
 
 ## Special Thanks
