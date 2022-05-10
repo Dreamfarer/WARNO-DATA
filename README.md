@@ -21,7 +21,7 @@ Autonomy states how far a unit can move until it runs out of fuel. In previous t
 *Autonomy* = *MaxSpeed* \* *FuelMoveDuration* \* *0.0000975*
 
 ### Accuracy
-Accuracy is defined as the probability of landing a successful hit on an enemy unit. Be aware that this whole accuracy system is not yet understood fully and assumptions are being made.\
+Accuracy is defined as the probability of landing a successful shot on an enemy unit. Be aware that this whole accuracy system is not yet understood fully and assumptions are being made.\
 To start off with a fact, *HitRollRuleDescriptor* in `Ammunition.ndf` describes the accuracy for each ammunition type individually. This descriptor consists of:
 
 * *BaseCriticModifier*
@@ -29,7 +29,7 @@ To start off with a fact, *HitRollRuleDescriptor* in `Ammunition.ndf` describes 
 * *BaseHitValueModifiers*
 * *HitModifierList*
 
-My best guess is that *BaseCriticModifier* and *BaseEffectModifier* are only used for the probability of triggering critical effects like "reseting targeting computer". We will ignore them for now. What we are really interested in is *BaseHitValueModifiers* and *HitModifierList*.
+My best guess is that *BaseCriticModifier* and *BaseEffectModifier* are only used for the probability of triggering critical effects like "reseting targeting computer" and so on. We will ignore them both for now. What we are really interested in is *BaseHitValueModifiers* and *HitModifierList*.
 
 Now, for every shot a dice is rolled which will define if this particular shot is a hit or a miss. Just a random number would be too boring, we want to spice up the outcome with some parameters. My understanding is that *HitModifierList* is exactly that: Parameters for the dice roll. This list consists of the following items: Precision, DistanceToTarget, SuccesiveShots and Suppress. Now, what do these mean? Do note though, these are pure guesses.
 
@@ -37,6 +37,8 @@ Now, for every shot a dice is rolled which will define if this particular shot i
 * *DistanceToTarget*: In `HitRollConstants.ndf` there is a list called *RangeModifiersTable*. It might state how to translate the distance to this parameter’s value. First off, you would calculate *distance_to_target* / *weapon_maxRange* to get a ratio which needs to be plugged into the left side of the list. Read out the corresponding right side to get the value for this parameter. So if the target is close to the attacker, it will yield a higher parameter value.
 * *SuccesiveShots*: There is a list in `HitRollConstants.ndf` called *SuccessiveHitModifiersTable*. This parameter will yield *0* if the target has not been hit yet, *1* for the first successive shot and *2* for every greater successive shot count.
 * *Suppress*: Current suppress damage this unit has.
+
+In `HitRollConstants.ndf` a developer described the dice roll calculation to be: *Success if roll > RollSuccessThreshold - modifiersum*. I interpret this to be: *Hit if random_generated_number (RNG) > RollSuccessThreshold - sum_of_every_parameter_in_HitModifierList*
 
 If you look closely into the `HitRollConstants.ndf`, you will notice three types of dice rolls: *Hit*, *Pierce* and *critic*:
 
