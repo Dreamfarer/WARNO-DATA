@@ -1,0 +1,427 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS DE DEFENSE ---------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberLaunchBasedOnGenerationType :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_CorridorDefense_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+// MAINTAINS
+//-------------------------------------------------------------------------
+export Maintain_CorridorDefenses is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_Maintain),
+    ]
+)
+//-------------------------------------------------------------------------
+export Maintain_CorridorDynamicDefenses is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_Maintain),
+    ]
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Template_Defense_Corridor
+[
+    NumberLaunchBasedOnGenerationType:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/Pool_AT_Defense, Pool_HMG_Defense],
+    UseTaggedPool:bool = true
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = <NumberLaunchBasedOnGenerationType>),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Renfort_AT]),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+        PoolModelList = <PoolModelList>
+        TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/Pool_HMG_Defense]),
+            (["DefenseAA"], [~/Pool_AA_Defense]),
+            (["DefenseTank"], [~/Pool_AT_Defense]),
+        ])
+        LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template Template_Dynamic_Defense_Corridor
+[
+    NumberLaunchBasedOnGenerationType:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/Pool_AT_Defense, Pool_HMG_Defense],
+    UseTaggedPool:bool = true
+]
+is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = <NumberLaunchBasedOnGenerationType>),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Renfort_AT]),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+        PoolModelList = <PoolModelList>
+        TaggedPoolModelList = (
+        <UseTaggedPool> == false ? [] :
+        [
+            (["DefenseInfantry"], [~/Pool_HMG_Defense]),
+            (["DefenseAA"], [~/Pool_AA_Defense]),
+            (["DefenseTank"], [~/Pool_AT_Defense]),
+        ])
+        LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+//-------------------------------------------------------------------------
+// Defenses couloir classiques
+//-------------------------------------------------------------------------
+export Defense_Static_Adaptive is Template_Defense_Corridor
+(
+)
+//-------------------------------------------------------------------------
+export Defense_Static_AA is Template_Defense_Corridor
+(
+    PoolModelList = [ ~/Pool_AA_Defense ]
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export Defense_Dynamic_Adaptive is Template_Dynamic_Defense_Corridor
+(
+)
+//-------------------------------------------------------------------------
+// Defenses couloir autogen
+//-------------------------------------------------------------------------
+export Defense_Static_Adaptive_Autogen is Template_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export Defense_Static_AA_Autogen is Template_Defense_Corridor
+(
+    PoolModelList = [ ~/Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export Defense_Dynamic_Adaptive_Autogen is Template_Dynamic_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export Defense_Filler is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(DifficultyList = [IADifficulty/TresFacile]  Setting = ~/VEasy_BasicAirstrikeSupport),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 2 OutMapArtilleryAmount = 0),
+        TMacroActionProductionSettingHolder(PoolModelList = [ ~/Pool_Defense_Filler]),
+        TIgnoreSafePathSettingHolder(),
+    ]
+)
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+ProductionFallback is [
+    "Vehicule_Appui",
+    "Infanterie_Standard",
+    "Canon_AA",
+    "Vehicule_Transport_Arme",
+    "Char"
+] // Ce fallback permet d'assurer la production d'au moins une unite pour les corridors taggués. Sinon ça bloque le couloir
+//-------------------------------------------------------------------------
+export Pool_Defense_Filler is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{f1e0a59e-f2b6-11e6-8c2e-4ccc6a0550f6}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Vehicule_Appui",
+                "Canon_AT_Standard",
+                "Char_Standard",
+                "Infanterie_Spec_Defense",
+                "Char"
+            ]
+            ForbiddenTags = [
+                "InfmapCommander"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{f1e4eb61-f2b6-11e6-bd03-4ccc6a0550f6}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Infanterie_CMD",
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+            ]
+            ForbiddenTags = [
+                "InfmapCommander"
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_HMG_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{e902abc0-d39e-11e8-8ff8-88d7f642f58e}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+                "Vehicule_Appui",
+            ]
+            +~/ProductionFallback
+            ForbiddenTags = [
+                "InfmapCommander"
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_AT_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{d99aef61-e1b5-11e8-b6c1-2c56dc4c150d}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AT_Lourd",
+                "ChasseurDeChar_Lourd",
+                "Canon_AT_Standard",
+                "ChasseurDeChar_Standard",
+            ]
+            +~/ProductionFallback
+            ForbiddenTags = [
+                "InfmapCommander"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{d99aef62-e1b5-11e8-9f25-2c56dc4c150d}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+            ]
+            +~/ProductionFallback
+            ForbiddenTags = [
+                "InfmapCommander"
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_AA_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{e902abc2-d39e-11e8-800a-88d7f642f58e}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            +~/ProductionFallback
+            ForbiddenTags = [
+                "InfmapCommander"
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+private template Template_Capture_Command_Zone
+[
+    GenerationType = TGenerationType_FixedSize,
+    NumberLaunchBasedOnGenerationType:int = 0,
+    AlsoConsiderTheseDescriptorsForMaintain = [],
+    RoundFloor:bool = false,
+    CanTargetAlliance:bool = false,
+]
+is TMacroActionDescriptor_CaptureCommandZone_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = <GenerationType> NumberLaunchBasedOnGenerationType = <NumberLaunchBasedOnGenerationType> ConsiderOnlyAssignedCorridors = true  AlsoConsiderTheseDescriptorsForMaintain = <AlsoConsiderTheseDescriptorsForMaintain> RoundFloor = <RoundFloor>),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/Pool_Commandant] DisableReinforcement = true),
+        TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [~/CommandZoneCustomWeighForIAStrat]),
+        TDefenseBehaviorSettingHolder(
+            DisableAttackDuringZoneDefense = true
+            DefensePointScoringFeature =
+                TDefensePointScoringFeature(DefensePointScoringValue =  MAP
+                [
+                    (EDefensePointScoringFeature/AltitudeCoeff, 0.0),                       // Bonus dépendant de l'altitude min et max sur la carte et appliqué sur toute la carte
+                    (EDefensePointScoringFeature/SlopeCoeff, 0.0),                          // Bonus dépendant de l'altitude min et max sur la carte et appliqué sur les pentes
+
+                    (EDefensePointScoringFeature/DistanceBonus, 1.0),                       // | Entre 0 et DistanceMargin => Bonus de DistanceBonus
+                    (EDefensePointScoringFeature/DistanceMargin, 0.0 * Metre),              // | Entre DistanceMargin et DistanceDecayLength => Diminution progressive du bonus jusqu'à 0
+                    (EDefensePointScoringFeature/DistanceDecayLength, 10000.0 * Metre),     // | Après DistanceDecayLength => Malus progressif
+                    (EDefensePointScoringFeature/DistanceDecayCoeff, -1.0),
+
+                    (EDefensePointScoringFeature/DistrictCoeff, 1.0),                       // | Bonus appliqués en fonction de la présence d'un quartier ou d'un terrain
+                    (EDefensePointScoringFeature/ForetDenseCoeff, 1.0),                     // | Seul le bonus le plus prioritaire est appliqué si plusieurs bonus sont applicables
+                    (EDefensePointScoringFeature/ForetLightCoeff, 1.0),                     // | Ordre de priorité : District > Foret Dense > Foret Legere
+
+                    (EDefensePointScoringFeature/IsObjectifCoeff, 0.0),                     // Bonus si la case contient un objectif
+                    (EDefensePointScoringFeature/MalusDefaultDefensePoint, 10.0),           // Malus si la case a été prise à défaut d'autres possibilités
+                    (EDefensePointScoringFeature/IsDefenseUnit, 0.0),                       // Bonus si la case contient une tranchée ou une position de tir
+                ]
+            DefensePointPositioning = EDefensePointPositioningType/Defensive)
+        ),
+    ]
+    +
+    (
+        <CanTargetAlliance> == false ? []:
+        [
+            TCanTargetAlliedSettingHolder(),
+        ]
+    )
+)
+//-------------------------------------------------------------------------
+export CaptureOneObjectifForAlliance is Template_Capture_Command_Zone
+(
+    GenerationType = TGenerationType_FixedSize
+    NumberLaunchBasedOnGenerationType = 1
+    CanTargetAlliance = true
+)
+//-------------------------------------------------------------------------
+export CaptureAllZoneObjectif is Template_Capture_Command_Zone
+(
+    GenerationType = TGenerationType_BasedOnNumberOfObjectives
+    NumberLaunchBasedOnGenerationType = 1
+    AlsoConsiderTheseDescriptorsForMaintain = [CaptureHalfZoneObjectif_Floor]
+)
+//-------------------------------------------------------------------------
+export CaptureHalfZoneObjectif_Floor is Template_Capture_Command_Zone
+(
+    GenerationType = TGenerationType_BasedOnNumberOfObjectives
+    NumberLaunchBasedOnGenerationType = 2
+    RoundFloor = true
+    AlsoConsiderTheseDescriptorsForMaintain = []
+)
+//-------------------------------------------------------------------------
+export Pool_Commandant is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{06d4d81f-c895-4966-87b2-1c40a298757a}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "InfmapCommander",
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+export Defense_Objectif is TMacroActionDescriptor_Defense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfObjectives NumberLaunchBasedOnGenerationType = 1 ConsiderOnlyOwnedObjectives = true ConsiderOnlyAssignedCorridors = true),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Renfort_AT]),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [ ~/Pool_Defense_Objectif]),
+        TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [~/CommandZoneCustomWeighForIAStrat]),
+        TIgnoreSafePathSettingHolder(),
+    ]
+)
+
+//-------------------------------------------------------------------------
+export Pool_Defense_Objectif is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{beefdfae-432e-4b42-9b46-4d8c47521c16}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Vehicule_Appui",
+                "Canon_AT_Standard",
+                "Char_Standard",
+                "Infanterie_Spec_Defense",
+                "Char"
+            ]
+            ForbiddenTags = [
+                "InfmapCommander"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{88fc254d-5acb-4e49-8636-3a6b308dc142}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Infanterie_CMD",
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+            ]
+            ForbiddenTags = [
+                "InfmapCommander"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{136b6510-30d8-4ddd-bcb4-4517117b6ab7}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            ForbiddenTags = [
+                "InfmapCommander"
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------

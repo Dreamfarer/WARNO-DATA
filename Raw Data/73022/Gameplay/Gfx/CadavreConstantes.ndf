@@ -1,0 +1,17 @@
+export CadavreInvulnerablePeriode is 1 * Seconde
+
+// Temps de vie total = CadavrePeriodeEnFeu + CadavreDurationApresFeu
+export CadavrePeriodeEnFeu_Minimum is 1 * Seconde  //300
+export CadavrePeriodeEnFeu_Maximum is 120 * Seconde  //150
+export CadavreDurationApresFeu is 3000 * Seconde //300
+
+// Temps de vie total = CadavrePeriodEnFeu + CadavreDurationApresFeu
+export CadavrePeriodeEnFeu_Minimum_Batiment is 10 * Seconde
+export CadavrePeriodeEnFeu_Maximum_Batiment is 60 * Seconde
+
+export CadavreDurationApresFeu_Batiment is 10 * 3600 * Seconde
+// doit être inférieur a CadavreDurationApresFeu_Batiment et prévoir le temps pour une éventuelle animation de destruction
+export CadavreFadeDurationApresFeu_Batiment is 3000 * Seconde
+
+// Dans le cas de l'infanterie on a pas de cadavre en feu donc :
+export CadavreDuration_Infanterie is 10 * Seconde

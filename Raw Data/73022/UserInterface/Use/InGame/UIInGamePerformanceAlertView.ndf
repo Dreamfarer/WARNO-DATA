@@ -1,0 +1,209 @@
+
+private template PerformanceAlertIcon
+[
+    Name : string,
+    HintToken : string,
+    TextureName : string
+]
+is BUCKTextureDescriptor
+(
+    ElementName = 'PerformanceAlertIcon' + <Name>
+
+    //ResizeMode = ~/TextureResizeMode/FitToContent
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 22.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    TextureFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+    )
+
+    TextureToken = <TextureName>
+
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HPA_" + <HintToken> + "_T"
+            HintBodyToken = "HPA_" + <HintToken> + "_B"
+            HintExtendedToken = "HPA_" + <HintToken> + "_E"
+        ),
+    ]
+)
+
+private PerformanceAlert_WarningList is BUCKListDescriptor
+(
+    ElementName = "PerformanceAlert/WarningList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Axis = ~/ListAxis/Vertical
+
+    FirstMargin = TRTTILength
+    (
+        Magnifiable = 5.0
+    )
+    InterItemMargin = TRTTILength
+    (
+        Magnifiable = 5.0
+    )
+    LastMargin = TRTTILength
+    (
+        Magnifiable = 5.0
+    )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlertIcon
+            (
+                Name = "LatencyWarning"
+                TextureName = "UseInGame_PerformanceAlert_LatencyWarning"
+                HintToken = "LATW"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlertIcon
+            (
+                Name = "MTFrameWarning"
+                TextureName = "UseInGame_PerformanceAlert_MTFrameWarning"
+                HintToken = "MTFW"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlertIcon
+            (
+                Name = "CPULoadWarning"
+                TextureName = "UseInGame_PerformanceAlert_CPULoadWarning"
+                HintToken = "CPLW"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlertIcon
+            (
+                Name = "NetworkDelayWarning"
+                TextureName = "UseInGame_PerformanceAlert_NetworkDelayWarning"
+                HintToken = "NWDW"
+            )
+        ),
+    ]
+)
+
+private PerformanceAlert_AlertList is BUCKListDescriptor
+(
+    ElementName = "PerformanceAlert/AlertList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Axis = ~/ListAxis/Vertical
+
+    FirstMargin = TRTTILength
+    (
+        Magnifiable = 5.0
+    )
+    InterItemMargin = TRTTILength
+    (
+        Magnifiable = 5.0
+    )
+    LastMargin = TRTTILength
+    (
+        Magnifiable = 5.0
+    )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlertIcon
+            (
+                Name = "LatencyAlert"
+                TextureName = "UseInGame_PerformanceAlert_LatencyAlert"
+                HintToken = "LATA"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlertIcon
+            (
+                Name = "MTFrameAlert"
+                TextureName = "UseInGame_PerformanceAlert_MTFrameAlert"
+                HintToken = "MTFA"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlertIcon
+            (
+                Name = "CPULoadAlert"
+                TextureName = "UseInGame_PerformanceAlert_CPULoadAlert"
+                HintToken = "CPLA"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlertIcon
+            (
+                Name = "NetworkDelayAlert"
+                TextureName = "UseInGame_PerformanceAlert_NetworkDelayAlert"
+                HintToken = "NWDA"
+            )
+        ),
+    ]
+)
+
+PerformanceAlertListDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [30.0, 0.0]
+        MagnifiableOffset = [0.0, 300.0]
+    )
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    HasBackground = true
+    BackgroundBlockColorToken = "PerformanceAlertPanel/Background"
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    FirstMargin = TRTTILength()
+    InterItemMargin = TRTTILength()
+    LastMargin = TRTTILength()
+
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlert_AlertList
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PerformanceAlert_WarningList
+        ),
+    ]
+)
+
+PerformanceAlertViewDescriptor is TUIInGamePerformanceAlertViewDescriptor
+(
+    MainComponentDescriptor = ~/PerformanceAlertListDescriptor
+)

@@ -1,0 +1,15 @@
+
+export WorldInterfaceSelector is TWorldInterfaceDescriptorSelector
+(
+    DescriptorsByName = MAP
+    [
+        (
+            'Tactic',
+            WorldInterfaceTactical
+        ),
+        (
+            'Strategic',
+            WorldInterfaceStrategic
+        )
+    ]
+)

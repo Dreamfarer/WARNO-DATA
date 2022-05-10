@@ -1,0 +1,1379 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+// ---------------------------------------------------------------- //
+// ------------------------- SFX Impacts -------------------------- //
+export AllImpactSoundHappenings is TImpactHappening
+(
+    Happenings = MAP
+    [
+        (   TFxWeaponType_Artillerie2A18122Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_Artillerie2A18122MmSmoke , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieM185155Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieM185155MmNUKE , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactArtillerie_NukelSol() ),
+                ( EImpactSurface/Water         , SoundHappening_ImpactArtillerie_NukelSol() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactArtillerie_NukelSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactArtillerie_NukelSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactArtillerie_NukelSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactArtillerie_NukelSol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieM185155MmSmoke , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieM201203Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieM201203MmSmoke , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieM712155MmCOPPERHEAD , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_ArtillerieMarine , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactArtillerie_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactArtillerie_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactArtillerie_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactArtillerie_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactArtillerie_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeBLU100Mk83 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeFAB250 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeGBU10 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeGBU12 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeGBU24 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeGBU49 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeGBU58 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeM117 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeMk20RockeyeII , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeMk77 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Napalm_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Napalm_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Napalm_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Napalm_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeMk81 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeMk82 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeMk83 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombeMk84 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Mk_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Mk84_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Mk84_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Mk84_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Mk84_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_BombletsMW1 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonAPM48 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonHEM48 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosAPFDSM1Abrams , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosAPFDST80 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosAPFDSU5TSDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosHEAVRE , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosHEM1Abrams , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosHET80 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonGrosHEU5TSDouille , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenAPPT76 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_moyenBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_moyenVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_moyenVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_moyenVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenHEBMP3 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_grosSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_grosBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonMoyenHEPT76 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_moyenBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_moyenVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_moyenVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_moyenVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetit24A2AP , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetit24A2APAIR , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetit24A2HE , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetit24A2HEAIR , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetit2A38HEFI , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetit2A72APT , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetit2A72HEFI , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitAPZ23HEFI , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitDualFK20HEFI , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitFK20HEFI , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitHE , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitM230AP , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitM230HEDP , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitM242APFSDST , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitM242HEIT , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitM693HEFI , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitOerlikonGPFHEFI , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitRARDENAP , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_CanonPetitRARDENHE , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactObus_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionInfanterie , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_Mort_infanterie() ),
+                ( EImpactSurface/Water         , SoundHappening_Mort_infanterie() ),
+                ( EImpactSurface/Air           , SoundHappening_Mort_infanterie() ),
+                ( EImpactSurface/Wall          , SoundHappening_Mort_infanterie() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_Mort_infanterie() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_Mort_infanterie() ),
+                ( EImpactSurface/Missile       , SoundHappening_Mort_infanterie() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUnite , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/Water         , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/Air           , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Wall          , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Missile       , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteAvion , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_DestructionUnite_Avion() ),
+                ( EImpactSurface/Water         , SoundHappening_DestructionUnite_Avion() ),
+                ( EImpactSurface/Air           , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Wall          , SoundHappening_DestructionUnite_Avion() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_DestructionUnite_Avion() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Missile       , SoundHappening_DestructionUnite_Avion() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteAvionGros , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_DestructionUniteGros_Avion() ),
+                ( EImpactSurface/Water         , SoundHappening_DestructionUniteGros_Avion() ),
+                ( EImpactSurface/Air           , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Wall          , SoundHappening_DestructionUniteGros_Avion() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_DestructionUniteGros_Avion() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Missile       , SoundHappening_DestructionUniteGros_Avion() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteHelicoLeger , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/Water         , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/Air           , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Wall          , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Missile       , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteHelicoMoyen , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_DestructionHelico() ),
+                ( EImpactSurface/Water         , SoundHappening_DestructionHelico() ),
+                ( EImpactSurface/Air           , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Wall          , SoundHappening_DestructionHelico() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_DestructionHelico() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Missile       , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteHelicoUltraLeger , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/Water         , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/Air           , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Wall          , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Missile       , SoundHappening_DestructionHelicoPetit() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteRavitaillement , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_DestructionUnite_Ravitaillement() ),
+                ( EImpactSurface/Water         , SoundHappening_DestructionUnite_Ravitaillement() ),
+                ( EImpactSurface/Air           , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Wall          , SoundHappening_DestructionUnite_Ravitaillement() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_DestructionUnite_Ravitaillement() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Missile       , SoundHappening_DestructionUnite_Ravitaillement() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUniteMoyen , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/Water         , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/Air           , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Wall          , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Missile       , SoundHappening_DestructionUnite() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_DestructionUnitePetit , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_DestructionUnitePetit() ),
+                ( EImpactSurface/Water         , SoundHappening_DestructionUnitePetit() ),
+                ( EImpactSurface/Air           , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Wall          , SoundHappening_DestructionUnitePetit() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_DestructionUnitePetit() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_DestructionUniteGros() ),
+                ( EImpactSurface/Missile       , SoundHappening_DestructionUnitePetit() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_FusilMitrailleurM16556Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactBallesSol() ),
+                ( EImpactSurface/Water         , SoundHappening_ImpactBallesSol() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactBalles_burstBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GAU8Gatling , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol_GAU() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactCanon_petitSol_GAU() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactCanon_petitSol_GAU() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadePineapple , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeANM16Smoke , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeSatchem , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeStielhandgranate , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_GrenadeVehicleSmokeX8 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactGrenadeMainSol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_Gsh301 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_LanceGrenadeAGS17 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_Lanceflamme , MAP
+            [
+                ( EImpactSurface/Ground        , nil ),
+                ( EImpactSurface/Water         , nil ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , nil ),
+                ( EImpactSurface/Vehicle       , nil ),
+                ( EImpactSurface/FlyingVehicle , nil ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_M134Gatling , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_M168Gatling , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_M197Gatling , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_M61A1Vulcan , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MIssileAA9M311 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactSAM_moyen() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactSAM_moyen() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactSAM_moyen() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactSAM_moyen() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MIssileAAAMRAAM , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MIssileAABUKM1 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MIssileAAMIM72C , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MIssileAASIDEWINDER , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MIssileAASPARROW , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactSAM_gros() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MauserBK27 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MissileAA9K38Igla , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactSAM_moyen() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactSAM_moyen() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactSAM_moyen() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactSAM_moyen() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MissileATPetit , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactMissileAT_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MissileAGMGen2 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactMissileAT_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MissileAGMGen3 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactMissileAT_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MissileAGMGen4 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactMissileAT_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MissileAGMGros , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_grosSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMissileAT_grosVehicule() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMissileAT_grosVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMissileAT_grosVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMissileAT_grosVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactMissileAT_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MissileATGMGen1 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactMissileAT_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MissileATGMGen2 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactMissileAT_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MissileATGMGen3 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMissileAT_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMissileAT_moyenVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactMissileAT_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseCal50Externe , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactBalles_BalleSol_Sniper() ),
+                ( EImpactSurface/Water         , SoundHappening_ImpactBalles_BalleSol_Sniper() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactBallesBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactBallesVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactBallesVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactBallesVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseM240Externe , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactBalles_burstSol() ),
+                ( EImpactSurface/Water         , SoundHappening_ImpactBalles_burstSol() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactBalles_burstBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseM240Interne , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactBalles_burstSol() ),
+                ( EImpactSurface/Water         , SoundHappening_ImpactBalles_burstSol() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactBalles_burstBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MitrailleuseM60Externe , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactBalles_burstSol() ),
+                ( EImpactSurface/Water         , SoundHappening_ImpactBalles_burstSol() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactBalles_burstBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactBalles_burstVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_MortierM30107Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_MortierM30107MmSmoke , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactMortier_moyenSol() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_grosVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_None , MAP
+            [
+                ( EImpactSurface/Ground        , nil ),
+                ( EImpactSurface/Water         , nil ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , nil ),
+                ( EImpactSurface/Vehicle       , nil ),
+                ( EImpactSurface/FlyingVehicle , nil ),
+                ( EImpactSurface/Missile       , nil ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteBM30300Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteBuratino220Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactRoquettes_Buratino_lourdeSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactRoquettes_Buratino_lourdeSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactRoquettes_Buratino_lourdeSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactRoquettes_Buratino_lourdeSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactRoquettes_Buratino_lourdeSol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteLAW , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactRoquette_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactRoquette_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_moyenVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteM261Hydras , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactRoquette_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactRoquette_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteM26M270227Mm , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactArtillerie_lourdeSol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteM26M270227MmCluster , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Water         , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Bombe_Cluster_sol() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteRecoilessGun , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactRoquette_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactRoquette_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_moyenVehicule() ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteS13 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactRoquette_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactRoquette_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteS13Missile , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactRoquette_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactRoquette_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteS5 , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactRoquette_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactRoquette_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_RoquetteSNEB , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactRoquette_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Gros_Eau() ),
+                ( EImpactSurface/Air           , nil ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactRoquette_petitBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Missile       , SoundHappening_ImpactRoquette_petitVehicule() ),
+                ( EImpactSurface/Ricochet      , nil ),
+            ]
+        ),
+        (   TFxWeaponType_YakBGatling , MAP
+            [
+                ( EImpactSurface/Ground        , SoundHappening_ImpactCanon_petitSol() ),
+                ( EImpactSurface/Water         , SoundHappening_Impact_HE_Petit_Eau() ),
+                ( EImpactSurface/Air           , SoundHappening_ImpactAutocanon_20mmSol() ),
+                ( EImpactSurface/Wall          , SoundHappening_ImpactAutocanon_20mmBatiment() ),
+                ( EImpactSurface/Vehicle       , SoundHappening_ImpactAutocanon_20mmVehicule() ),
+                ( EImpactSurface/FlyingVehicle , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Missile       , SoundHappening_FULDA_Impacts_DCA() ),
+                ( EImpactSurface/Ricochet      , SoundHappening_ImpactObus_petitVehicule() ),
+            ]
+        ),
+    ]
+)

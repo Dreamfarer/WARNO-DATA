@@ -1,0 +1,447 @@
+
+DebriefKillLineHeight is 40//37.0
+DebriefHeaderLineHeight is 30
+DebriefTimeWidth is 60
+
+//-------------------------------------------------------------------------------------
+
+private DebriefKillXpComponent is BUCKTextureDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [10.0, 10.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+    TextureToken = "CommonTexture_Etoile"
+
+)
+
+
+//-------------------------------------------------------------------------------------
+
+private template DebriefKillUnitComponent
+[
+    ElementName : string = "",
+] is BUCKListDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, ~/DebriefKillLineHeight]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    HasBackground = false
+    BackgroundBlockColorToken = "SD2_Gris80"
+    FirstMargin = TRTTILength(Magnifiable = 25.0)
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName =  <ElementName> + 'Emblem'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [25.0, 25.0]
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                TextureFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    BUCKSpecificHintableArea
+                    (
+                        ElementName = <ElementName> + 'EmblemHint'
+                        DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementHorizontalSpacer( Magnifiable = 10),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = <ElementName> + "LabelConteneur"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [54.0, 26.0]
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                Components =
+                [
+                    PanelRoundedCorner
+                    (
+                        BackgroundBlockColorToken = "GrisTexte"
+                        BorderLineColorToken = "Noir"
+                    ),
+                    BUCKListDescriptor
+                    (
+                        ElementName = <ElementName> + "ListeLabelXP"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            AlignementToAnchor = [0.0, 0.5]
+                            AlignementToFather = [0.0, 0.5]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        FirstMargin = TRTTILength(Magnifiable = 2.0)
+                        InterItemMargin = TRTTILength(Magnifiable = 5.0)
+                        LastMargin = TRTTILength(Magnifiable = 2.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor =  BUCKTextureDescriptor
+                                (
+                                    ElementName = <ElementName> + 'Label'
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [28.0, 28.0]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                        AlignementToFather = [0.0, 0.5]
+                                    )
+
+                                    TextureFrame   = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                        AlignementToFather = [0.5, 0.5]
+                                        AlignementToAnchor = [0.5, 0.5]
+                                    )
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKRackDescriptor
+                                (
+                                    ElementName = <ElementName> + "XpRack"
+
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                    )
+
+                                    Axis = ~/ListAxis/Horizontal
+                                    InterItemMargin = TRTTILength( Magnifiable = 3.0)
+
+                                    BladeDescriptor = ~/DebriefKillXpComponent
+                                )
+                            ),
+                        ]
+                    )
+                ]
+            )
+        ),
+        BUCKListElementHorizontalSpacer( Magnifiable = 20),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.50
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                InterItemMargin = TRTTILength(Magnifiable = 10.0)
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = <ElementName> + 'UnitName'
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 1.0]
+                                MagnifiableWidthHeight = [156.0+120, 0.0]
+                            )
+                            //HasBackground = true
+                            BackgroundBlockColorToken = 'Orange'
+                            ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                Alignment = UIText_Left
+                                VerticalAlignment = UIText_VerticalCenter
+                                InterLine = 0
+                            )
+
+                            TextStyle = "Default"
+
+                            HorizontalFitStyle = ~/FitStyle/UserDefined //MinBetweenUserDefinedAndContent
+
+                            TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 5.0, 0.0])
+
+                            TypefaceToken = TacticalEndgameKillLossTextFont
+                            BigLineAction = ~/BigLineAction/CutByDots
+
+                            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TextColor = "GrisTexte"
+                            TextSize = TacticalEndgameKillLossUnitTextFontSize
+
+                            {Components =
+                                                        [
+                                                            BUCKSpecificHintableArea
+                                                            (
+                                                                ElementName = <ElementName> + 'UnitNameHint'
+                                                            ),
+                                                        ]}
+                        )
+                    ),
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.50
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = <ElementName> + 'SoldierName'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = TacticalEndgameKillLossTextFont
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "GrisTexte" //(<ElementName> == "Left" ? "NatoTexte" : "PacteTexte")
+                TextSize = TacticalEndgameKillLossSoldierTextFontSize
+
+                {Components =
+                                [
+                                    BUCKSpecificHintableArea
+                                    (
+                                        ElementName = <ElementName> + 'SoldierNameHint'
+                                    ),
+                                ]}
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = <ElementName> + 'PlayerName'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [1.0, 0.0]
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                TypefaceToken = TacticalEndgameKillLossTextFont
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "Blanc"
+                TextSize = TacticalEndgameKillLossPlayerTextFontSize
+
+                Components =
+                [
+                    BUCKSpecificHintableArea
+                    (
+                        ElementName = <ElementName> + 'PlayerNameHint'
+                    ),
+                ]
+            )
+        ),
+    ]
+
+)
+
+//-------------------------------------------------------------------------------------
+
+private template DebriefKillLine
+[
+    DisplayChronology : bool,
+    LeftUnitName : string,
+    RightUnitName : string
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, ~/DebriefKillLineHeight]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements = (<DisplayChronology> ?
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = "Timer"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [0.0, 1.0]
+                        MagnifiableWidthHeight = [~/DebriefTimeWidth, 0.0]
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Left
+                        VerticalAlignment = UIText_VerticalCenter
+                        InterLine = 0
+                    )
+
+                    TextStyle = "Default"
+
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                    TypefaceToken = TacticalEndgameKillLossTimerTextFont
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                    TextColor = "GrisTexte"
+                    TextSize = TacticalEndgameKillLossTimerTextFontSize
+                )
+            ),
+        ]
+        : []
+    ) +
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = DebriefKillUnitComponent(ElementName = <LeftUnitName>)
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = DebriefKillUnitComponent(ElementName = <RightUnitName>)
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template DebriefKillRack
+[
+    ElementName : string,
+    DisplayChronology : bool,
+    LeftUnitName : string,
+    RightUnitName : string
+] is BUCKRackDescriptor
+(
+    ElementName = <ElementName> + "Rack"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    BladeDescriptor = DebriefKillOneKillerRack
+    (
+        ElementName = <ElementName>
+        DisplayChronology = <DisplayChronology>
+        LeftUnitName = <LeftUnitName>
+        RightUnitName = <RightUnitName>
+    )
+
+)
+
+//-------------------------------------------------------------------------------------
+
+private template DebriefKillOneKillerRack
+[
+    ElementName : string,
+    DisplayChronology : bool,
+    LeftUnitName : string,
+    RightUnitName : string
+] is BUCKRackDescriptor
+(
+    ElementName = <ElementName> + "OneKillerRack"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    BladeDescriptor = DebriefKillLine
+    (
+        DisplayChronology = <DisplayChronology>
+        LeftUnitName = <LeftUnitName>
+        RightUnitName = <RightUnitName>
+    )
+
+    BackgroundComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            HasBackground = false
+            HasBorder = true
+            BordersToDraw = ~/TBorderSide/Top
+            BorderLineColorToken = "CyanFonceFulda"
+            BorderThicknessToken = "1"
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------

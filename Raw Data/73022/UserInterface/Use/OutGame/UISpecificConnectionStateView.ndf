@@ -1,0 +1,83 @@
+// Ecran d'affichage de l'etat de connexion aux serveurs eugen
+
+//------------------------------------------------------------------------------
+
+BUCKSpecificConnectionStateMainComponentDescriptor is LoginTvContainer
+(
+    ElementName = "ConnectionStateComponent"
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "ConnectionStateList"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [450.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength( Magnifiable = 30.0)
+            InterItemMargin = TRTTILength( Magnifiable = 10.0)
+            LastMargin = TRTTILength( Magnifiable = 10.0)
+
+            BackgroundComponents =
+            [
+                ~/LoginPanelMonitorBackground
+            ]
+
+            ForegroundComponents =
+            [
+                ~/LoginPanelMonitorForeground
+            ]
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "ConnectionStateText"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 150.0]
+                        )
+
+                        TextPadding = TRTTILength4( Magnifiable = [18.0, 0.0, 0.0, 0.0] )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_FirstBaseLine
+                            Alignment = UIText_Left
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TextStyle = "TextStyleEcranMoniteur"
+                        TypefaceToken = "UISecondFont"
+
+                        TextColor       = "Blanc"
+                        TextSize        = "22"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+UISpecificConnectionStateViewDescriptor is TUISpecificConnectionStateViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificConnectionStateMainComponentDescriptor
+    MainComponentContainerUniqueName = "LoginPanel" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+    OnlineToken = "NET_ONLN"
+    OfflineToken = ""
+)

@@ -1,0 +1,19 @@
+export ModelFile_FV105_Sultan_BEL is 'GameData:/Assets/3D/Units/BEL/CMD/FV105_Sultan/FV105_Sultan.Ase2NdfBin'
+
+Modele_FV105_Sultan_BEL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FV105_Sultan_BEL
+    CivMask =  CivMask/Common
+)
+
+Modele_FV105_Sultan_BEL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/BEL/CMD/FV105_Sultan/FV105_Sultan.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV105_Sultan_BEL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/BEL/CMD/FV105_Sultan/FV105_Sultan.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

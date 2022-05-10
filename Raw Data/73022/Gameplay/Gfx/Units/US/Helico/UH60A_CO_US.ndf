@@ -1,0 +1,19 @@
+export ModelFile_UH60A_CO_US is 'GameData:/Assets/3D/Units/US/Helico/UH_60A_Black_Hawk/UH_60A_Black_Hawk.Ase2NdfBin'
+
+Modele_UH60A_CO_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_UH60A_CO_US
+    CivMask =  CivMask/Common
+)
+
+Modele_UH60A_CO_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/UH_60A_Black_Hawk_MID/UH_60A_Black_Hawk_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_UH60A_CO_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/LODS/UH_60A_Black_Hawk_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,19 @@
+export ModelFile_M1A1_Abrams_US is 'GameData:/Assets/3D/Units/US/Char/M1A1_Abrams/M1A1_Abrams.Ase2NdfBin'
+
+Modele_M1A1_Abrams_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M1A1_Abrams_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M1A1_Abrams_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M1A1_Abrams/M1A1_Abrams.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M1A1_Abrams_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M1A1_Abrams/M1A1_Abrams.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

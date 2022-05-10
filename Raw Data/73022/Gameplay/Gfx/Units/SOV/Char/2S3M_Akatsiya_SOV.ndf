@@ -1,0 +1,55 @@
+export ModelFile_2S3M_Akatsiya_SOV is 'GameData:/Assets/3D/Units/URSS/Artillerie/2S3M_Akatsiya/2S3M_Akatsiya.Ase2NdfBin'
+
+Modele_2S3M_Akatsiya_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_2S3M_Akatsiya_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_2S3M_Akatsiya_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/2S3M_Akatsiya_MID/2S3M_Akatsiya_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_2S3M_Akatsiya_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/LODS/2S3M_Akatsiya_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+//-------------------------------------------------------------------------------------
+Gfx_Modele_2S3M_Akatsiya_SOV  is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Socle_SOV ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Depiction = TDepictionTemplate
+            (
+                Scaler = CommonIdentityScaler
+                Selector = OnlyHighDepictionSelector
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_courte ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Anchor = "vehicule"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 7)
+                        Selector = CommonDepictionSelector
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_2S3M_Akatsiya_SOV ),
+                            DepictionDescriptor_LOD_Mid ( MeshDescriptor = Modele_2S3M_Akatsiya_SOV ),
+                            DepictionDescriptor_LOD_Low ( MeshDescriptor = Modele_2S3M_Akatsiya_SOV DisabledOperators = ['tourelle3'] ),
+                        ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)

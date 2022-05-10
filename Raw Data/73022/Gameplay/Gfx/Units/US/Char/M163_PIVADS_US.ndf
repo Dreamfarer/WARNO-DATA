@@ -1,0 +1,19 @@
+export ModelFile_M163_PIVADS_US is 'GameData:/Assets/3D/Units/US/DCA/M163_Pivads/M163_Pivads.Ase2NdfBin'
+
+Modele_M163_PIVADS_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M163_PIVADS_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M163_PIVADS_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/DCA/M163_Pivads/M163_Pivads.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M163_PIVADS_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/DCA/M163_Pivads/M163_Pivads.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,54 @@
+InterfaceNonArrayLayersFinal is [
+    $/M3D/Scene/ShadingScene/Calque_OpaqueLevelBuild_Depiction_SelectionMask,
+    $/M3D/Scene/ShadingScene/Calque_Opaque_Depiction_SelectionMask,
+    $/M3D/Scene/ShadingScene/Calque_Fleche_GD,
+    $/M3D/Scene/ShadingSceneStrategic/Calque_OpaqueLevelBuild_Depiction_SelectionMask,
+    $/M3D/Scene/ShadingSceneStrategic/Calque_Opaque_Depiction_SelectionMask,
+    $/M3D/Scene/ShadingSceneStrategic/Calque_Fleche_GD,
+
+    $/M3D/Scene/Scene_2D_Interface/Calque_Interface,
+    $/M3D/Scene/Scene_2D_Interface/Calque_Interface_Text,
+    $/M3D/Scene/Scene_2D_Interface/Calque_FX_First,
+    $/M3D/Scene/Scene_2D_Interface/Calque_FX_Billboard,
+    $/M3D/Scene/Scene_2D_Interface/Calque_FX,
+
+    $/M3D/Scene/Scene3D_AfterPostProcess/Calque_FX_AfterPostProcess,
+    $/M3D/Scene/Scene3D_AfterPostProcess/influenceMapFeedback/DrawOnMap,
+    $/M3D/Scene/Scene3D_AfterPostProcess/Calque_Area,
+    $/M3D/Scene/Scene3D_AfterPostProcess/Calque_Area_Border,
+
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Disc,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Solid,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Circle,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Line,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Line_BeforeSolid,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Billboard,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Disc_AlwaysOnTop,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Solid_AlwaysOnTop,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Circle_AlwaysOnTop,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Line_AlwaysOnTop,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Line_AlwaysOnTop_BeforeSolid,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Billboard_AlwaysOnTop,
+    $/M3D/Scene/Scene3D_AfterPostProcess/feedbackRenderToolbox/Render/Calque_FeedbackRenderToolbox_Solid_UseStencil,
+
+    $/M3D/Scene/ZoCFeedback/Render/Enable_ZoCFeedBack/ZoCFeedBack,
+]
+
+InterfaceArrayLayersFinal is [
+    $/M3D/Scene/Scene_2D_Interface/CalqueArray_Objective,
+    $/M3D/Scene/Scene_2D_Interface/CalqueArray_Labels,
+    $/M3D/Scene/Scene_2D_Interface/CalqueArray_2DInterface_InGame,
+    $/M3D/Scene/Scene_2D_Interface/CalqueArray_2DInterface_OutGame,
+    $/M3D/Scene/Scene_2D_Interface/CalqueArray_2DInterface_ShowRoom,
+
+    $/M3D/Scene/Scene_2D_TopInterface/CalqueArray_Modal,
+    $/M3D/Scene/Scene_2D_TopInterface/CalqueArray_Hint,
+
+    $/M3D/Scene/Scene3D_AfterPostProcess/interface3D/Render/Calque_Labels_Array,
+]
+
+InterfaceArrayLayersForDebug is [
+        $/M3D/Scene/Scene3D_AfterPostProcess/debugInfo/Render/Calque_UIDebug3D_Array,
+        $/M3D/Scene/Scene_2D_AlwaysOnTopInterface/LayerArray_UIDebug,
+        $/M3D/Scene/Scene_2D_AlwaysOnTopInterface/CalqueArray_2DInterface_debug,
+]

@@ -1,0 +1,261 @@
+template ShowInviteCodeLine
+[
+    TokenTitle : string = "",
+    ElementName : string,
+
+] is BUCKListDescriptor
+(
+    ElementName = "ShowInviteCodeLine"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 30.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength(Magnifiable = 5.0)
+    InterItemMargin = TRTTILength( Magnifiable = 15.0)
+    LastMargin = TRTTILength(Magnifiable = 5.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = <ElementName> + "Text"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0,35]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                ParagraphStyle = paragraphStyleTextCenter
+                TextStyle = "TextStyleEcranMoniteur"
+
+                VerticalFitStyle = ~/FitStyle/UserDefined
+                TypefaceToken = "IBM"
+                BigLineAction = ~/BigLineAction/MultiLine
+                TextColor = "Blanc"
+                TextSize = "24"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextToken = <TokenTitle>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKEditableTextInputFieldDescriptor
+            (
+                ElementName = <ElementName> + "EditableText"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [600.0, 35.0]
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                MaxChars = 200
+                SelectTextOnFocus = true
+            )
+        ),
+    ]
+)
+
+private ShowInviteCopyButton is ModalButtonCyan
+(
+    ElementName = "CopyButton"
+    TextToken = "BTN_CPYCOD"
+    IsFilled = true
+)
+
+private ShowInviteCloseButton is ModalButtonCyan
+(
+    ElementName = "CloseButton"
+    TextToken = "BTN_CLOSE"
+    IsFilled = false
+)
+
+BUCKSpecificOutGameShowInviteCodeModaleMainComponentDescriptor is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [850.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 310.0]
+    TitleToken = "CB_INVCOD"
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/ShowInviteCopyButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/ShowInviteCloseButton ),
+    ]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "InviteCodeListe"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength(Magnifiable = 50.0)
+            InterItemMargin = TRTTILength( Magnifiable = 20.0)
+            LastMargin = TRTTILength(Magnifiable = 50.0)
+
+            Elements =
+            [
+                // ligne ****
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0,20]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = paragraphStyleTextCenter
+                        TextStyle = "TextStyleEcranMoniteur"
+
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+                        TypefaceToken = "IBM"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                        TextToken = 'HINT_EX_SP'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Blanc"
+                        TextSize = "24"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "InviteCodeTexte"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [550,40]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = paragraphStyleTextCenter
+                        TextStyle = "TextStyleEcranMoniteur"
+
+                        TypefaceToken = "IBM"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                        TextColor = "Blanc"
+                        TextSize = "24"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "T_INVITCM"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ShowInviteCodeLine
+                    (
+                        ElementName = "InviteCode"
+                        TokenTitle = "T_INVITCOD"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "MessageText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0,20]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = paragraphStyleTextCenter
+                        TextStyle = "TextStyleEcranMoniteur"
+
+                        TypefaceToken = "IBM"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                        TextColor = "Blanc"
+                        TextSize = "18"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    )
+                ),
+                // ligne ****
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0,20]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = paragraphStyleTextCenter
+                        TextStyle = "TextStyleEcranMoniteur"
+
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+                        TypefaceToken = "IBM"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                        TextToken = 'HINT_EX_SP'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Blanc"
+                        TextSize = "24"
+                    )
+                ),
+            ]
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ElementName = "ModaleForegroundEffect"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [0,-150]
+            )
+            TextureToken = 'Outgame_modale_foreground'
+            TextureDrawer = 'ColorMultiply_Additive'
+        )
+    ]
+
+    AdditionalComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = "ModaleBackground"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [0,-150]
+            )
+            TextureToken = 'Outgame_modale_fond'
+            TextureDrawer = 'MonochromeMonitorEffect'
+        )
+    ]
+)
+
+UISpecificOutGameShowInviteCodeModaleViewDescriptor is TUISpecificOutGameShowInviteCodeModaleViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameShowInviteCodeModaleMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

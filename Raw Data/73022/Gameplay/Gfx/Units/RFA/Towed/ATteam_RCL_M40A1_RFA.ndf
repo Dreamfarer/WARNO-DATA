@@ -1,0 +1,22 @@
+export ModelFile_ATteam_RCL_M40A1_RFA is 'GameData:/Assets/3D/Units/US/APC/M113_ACAV/M40A1.Ase2NdfBin'
+
+Modele_ATteam_RCL_M40A1_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_ATteam_RCL_M40A1_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_RCL_M40A1_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/M113_ACAV/M40A1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_RCL_M40A1_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/M113_ACAV/M40A1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

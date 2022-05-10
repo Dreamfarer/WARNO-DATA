@@ -1,0 +1,14 @@
+// Enum TTypeStrategicCount
+ETypeStrategicCount is TBaseClass
+(
+    Soldier           is 0
+    Tank              is 1
+    Artillery         is 2
+    Plane             is 3
+    Helicopter        is 4
+    Supply            is 5
+    MaxCountForUI     is 6
+    Batallion         is 7
+    Length            is 8
+    NotCounted        is 9
+)

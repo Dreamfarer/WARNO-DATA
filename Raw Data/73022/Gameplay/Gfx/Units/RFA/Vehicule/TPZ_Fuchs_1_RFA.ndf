@@ -1,0 +1,27 @@
+export ModelFile_TPZ_Fuchs_1_RFA is 'GameData:/Assets/3D/Units/RFA/APC/TPZ_Fuchs_1/TPZ_Fuchs_1.Ase2NdfBin'
+
+Modele_TPZ_Fuchs_1_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_TPZ_Fuchs_1_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_TPZ_Fuchs_1_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/APC/TPZ_Fuchs_1/TPZ_Fuchs_1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_TPZ_Fuchs_1_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/APC/TPZ_Fuchs_1/TPZ_Fuchs_1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+export ModelFile_MG3_Tourelle_01 is 'GameData:/Assets/3D/Units/Ammo/Tourelles/MG3_t1.Ase2NdfBin'
+
+Modele_TPZ_Fuchs_1_RFA_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MG3_Tourelle_01
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,38 @@
+public coverTypeForInterface is TCoverTypeForInterface(
+    TerrainTypeToCover = MAP
+    [
+        (ETerrainType/Default                , ECoverTypeForInterface/None),
+        (ETerrainType/Tous                   , ECoverTypeForInterface/None),
+
+        (ETerrainType/EauPeuProfonde         , ECoverTypeForInterface/None),
+        (ETerrainType/EauProfonde            , ECoverTypeForInterface/None),
+
+        (ETerrainType/Bloqueur               , ECoverTypeForInterface/None),
+        (ETerrainType/PetitBatiment          , ECoverTypeForInterface/Batiment),
+        (ETerrainType/Batiment               , ECoverTypeForInterface/Batiment),
+        (ETerrainType/Ruin                   , ECoverTypeForInterface/Batiment),
+        (ETerrainType/ForetLegere            , ECoverTypeForInterface/Light),
+        (ETerrainType/ForetDense             , ECoverTypeForInterface/Heavy),
+
+        (ETerrainType/Rocher                 , ECoverTypeForInterface/Rocher),
+
+        (ETerrainType/LightSmoke             , ECoverTypeForInterface/Light),
+        (ETerrainType/MediumSmoke            , ECoverTypeForInterface/Light),
+        (ETerrainType/HeavySmoke             , ECoverTypeForInterface/Heavy),
+
+        (ETerrainType/BloqueConstruction     , ECoverTypeForInterface/None),
+
+
+        (ETerrainType/Barbeles               , ECoverTypeForInterface/BarbedWire),
+
+        (ETerrainType/Tranchee               , ECoverTypeForInterface/Heavy),
+        (ETerrainType/NidMitrailleuse        , ECoverTypeForInterface/Heavy),
+
+
+        (ETerrainType/Urbain                 , ECoverTypeForInterface/Batiment),
+        (ETerrainType/StrategicRalentisseur  , ECoverTypeForInterface/Light),
+        (ETerrainType/StrategicAccelerateur  , ECoverTypeForInterface/BarbedWire),
+    ]
+
+    CoverTypeForDistricts = ECoverTypeForInterface/Heavy
+)

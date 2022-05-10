@@ -1,0 +1,354 @@
+//--------------------------------------------------------
+
+private template AttackCursorText
+[
+    ElementName : string = "",
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+    TextToken : string = "",
+    TextAlignment : int = UIText_Left,
+    TextVerticalAlignment : int = UIText_VerticalCenter,
+    TextColor : string = "MouseWidget/TextModule",
+    TextSize : string = "18",
+    TextStyle : string = "MouseWidget/TextModule",,
+    HasBackground : bool = false,
+] is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = <ComponentFrame>
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = <TextAlignment>
+        VerticalAlignment = <TextVerticalAlignment>
+        InterLine = 0.1
+    )
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = 'Noir_multi2'
+    TextToken = <TextToken>
+
+    HorizontalFitStyle = ~/FitStyle/MaxBetweenUserDefinedAndContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+    TextPadding = TRTTILength4(Magnifiable = [2.0, 0.0, 2.0, 0.0] )
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TypefaceToken = "UISecondFont"
+
+    TextStyle = <TextStyle>
+    TextColor = <TextColor>
+    TextSize = <TextSize>
+)
+
+//--------------------------------------------------------
+
+private template AttackModule_TextElement
+[
+    ExtendWeight : float = 0.0,
+    TextElementName : string = "",
+    TextToken : string = "",
+    TextAlignment : int = UIText_Left,
+    TextVerticalAlignment : int = UIText_VerticalCenter,
+    TextColor : string = "MouseWidget/TextModule",
+    AlignementToFather = [0.0, 0.0],
+    AlignementToAnchor = [0.0, 0.0],
+    TextSize : string = "20",
+    TextStyle : string = "MouseWidget/TextModule",
+    HasBackground : bool = false,
+] is BUCKListElementDescriptor
+(
+    ExtendWeight = <ExtendWeight>
+
+    ComponentDescriptor = AttackCursorText
+    (
+        ElementName = <TextElementName>
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+            AlignementToFather = <AlignementToFather>
+            AlignementToAnchor = <AlignementToAnchor>
+        )
+
+        TextColor = <TextColor>
+        HasBackground = <HasBackground>
+        TextToken = <TextToken>
+        TextAlignment = <TextAlignment>
+        TextVerticalAlignment = <TextVerticalAlignment>
+        TextSize = <TextSize>
+        TextStyle = <TextStyle>
+    )
+)
+
+//--------------------------------------------------------
+
+private template AttackModule_TextList
+[
+    ElementName : string = "",
+    ComponentFrame : TUIFramePropertyRTTI,
+    Axis : int = ~/ListAxis/Vertical,
+    BreadthComputationMode : int = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty,
+    Elements = []
+] is BUCKListDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+
+    Axis = <Axis>
+    BreadthComputationMode = <BreadthComputationMode>
+
+    FirstMargin = TRTTILength(Magnifiable = 3.0)
+    LastMargin = TRTTILength(Magnifiable = 3.0)
+
+    Elements = <Elements>
+)
+
+//--------------------------------------------------------
+
+template BUCKSpecificMouseWidgetAttackMainComponentDescriptor
+[
+    SoftwareCursorTextureName : string = "",
+] is BUCKTextureDescriptor
+(
+    ElementName = "CursorTexture"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    TextureToken = <SoftwareCursorTextureName>
+
+    ResizeMode = ~/TextureResizeMode/FitToContent
+    TextureFrame = TUIFramePropertyRTTI()
+
+    Components =
+    [
+        // Droite
+        AttackModule_TextList
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather = [1.05, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = AttackCursorText
+                    (
+                        ElementName = "WeaponType"
+                    )
+                ),
+                // Damage
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ElementName = "DamageTypeContainer"
+                        ComponentFrame = TUIFramePropertyRTTI()
+
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                        Axis = ~/ListAxis/Horizontal
+                        InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = AttackCursorText
+                                (
+                                    TextToken = "TC_ammo"
+                                )
+                            ),
+                            AttackModule_TextElement
+                            (
+                                TextElementName = "DamageType"
+                                TextToken = "TC_APLVL"
+                            ),
+                        ]
+                    )
+                ),
+                // Damage
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ElementName = "DamagesContainer"
+                        ComponentFrame = TUIFramePropertyRTTI()
+
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                        Axis = ~/ListAxis/Horizontal
+                        InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = AttackCursorText
+                                (
+                                    TextToken = "TC_DAMAGE"
+                                )
+                            ),
+                            AttackModule_TextElement
+                            (
+                                HasBackground = true
+                                TextElementName = "Damages"
+                                TextToken = "TC_HIT"
+                            ),
+                        ]
+                    )
+                ),
+                // chance de toucher
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ElementName = "HitChanceContainer"
+                        ComponentFrame = TUIFramePropertyRTTI()
+
+                        Axis = ~/ListAxis/Horizontal
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = AttackCursorText
+                                (
+                                    TextToken = "TC_HIT_t"
+                                )
+                            ),
+                            AttackModule_TextElement
+                            (
+                                TextElementName = "HitChance"
+                                TextToken = "TC_HIT"
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = AttackCursorText
+                                (
+                                    TextToken = "TC_HIT_p"
+                                )
+                            ),
+                        ]
+                    )
+                ),
+                AttackModule_TextElement
+                (
+                    ExtendWeight = 1.0
+                ),
+                // Damage
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ElementName = "UnitComparatorContainer"
+                        ComponentFrame = TUIFramePropertyRTTI()
+
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                        Axis = ~/ListAxis/Horizontal
+                        InterItemMargin = TRTTILength (Magnifiable = 5.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = AttackCursorText
+                                (
+                                    TextToken = "TC_win" // chance to win
+                                )
+                            ),
+                            AttackModule_TextElement
+                            (
+                                TextElementName = "UnitComparator"
+                                TextToken = "CMP_IMPOS"
+                                HasBackground = true
+                            ),
+                        ]
+                    )
+                ),
+            ]
+        ),
+
+        // gauche
+        AttackModule_TextList
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [1.05, 0.0]
+            )
+
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            Elements =
+            [
+                AttackModule_TextElement
+                (
+                    TextElementName = "ArmorLevel"
+                    TextToken = "TC_ARMOR"
+                    TextAlignment = UIText_Right
+                    TextColor = "VividRed"
+                ),
+                AttackModule_TextElement
+                (
+                    TextElementName = "ArmorSide"
+                    TextAlignment = UIText_Right
+                    TextColor = "VividRed"
+                    TextSize = "12"
+                    TextStyle = 'Default'
+                ),
+                AttackModule_TextElement
+                (
+                    ExtendWeight = 1.0
+                ),
+                AttackModule_TextElement
+                (
+                    TextElementName = "RangeToTarget"
+                    TextToken = "TC_DIST"
+                    TextAlignment = UIText_Right
+                ),
+            ]
+        ),
+        AttackCursorText
+        (
+            ElementName = "WeaponState"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather = [0.5, 1.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+        ),
+    ]
+)
+
+//--------------------------------------------------------
+
+template UISpecificMouseWidgetAttackViewDescriptor
+[
+    SoftwareCursorTextureName : string = "",
+] is TUISpecificMouseWidgetAttackViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificMouseWidgetAttackMainComponentDescriptor(SoftwareCursorTextureName = <SoftwareCursorTextureName>)
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    ElementNamesToHideInMinimalist =
+    [
+        "UnitComparatorContainer",
+                "ArmorLevel",
+                "ArmorSide",
+
+        {"WeaponType",
+                "DamageTypeContainer",
+                "DamagesContainer",
+                "HitChanceContainer",
+                "UnitComparatorContainer",
+                "ArmorLevel",
+                "ArmorSide",
+                "WeaponState",}
+    ]
+)

@@ -1,0 +1,194 @@
+// !!!!!! ATTENTION
+// Toutes les textures listées ici doivent forcement se trouver dans GameData:/Assets/2D/Interface
+// !!!!!! ATTENTION
+
+//Ex : InGameTexture_Blablabla is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/InGame/Blablabla.png")
+
+UseStrategic_AdditionalTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+        ("UseStrategic_Labels_NoSupplyZerosDay",                     MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_NoSupplyZerosDay)] ),
+        ("UseStrategic_Labels_NoSupplyHalfDay",                      MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_NoSupplyHalfDay)] ),
+        ("UseStrategic_Labels_NoSupply",                             MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_NoSupply)] ),
+
+        ("UseStrategic_Labels_Fatigue_0",                             MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Fatigue_0)] ),
+        ("UseStrategic_Labels_Fatigue_1",                             MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Fatigue_1)] ),
+        ("UseStrategic_Labels_Fatigue_2",                             MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Fatigue_2)] ),
+        ("UseStrategic_Labels_Fatigue_3",                             MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Fatigue_3)] ),
+        ("UseStrategic_Labels_Fatigue_4",                             MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Fatigue_4)] ),
+        ("UseStrategic_Labels_Fatigue_5",                             MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Fatigue_5)] ),
+
+        ("UseStrategic_Labels_Boxing",                               MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Boxing)] ),
+        ("UseStrategic_Labels_DenyArea",                             MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_DenyArea)] ),
+        ("UseStrategic_Labels_RecoArea",                             MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_RecoArea)] ),
+        ("UseStrategic_Labels_Stationary",                           MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Stationary)] ),
+        ("UseStrategic_Labels_FortificationEnCours",                 MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_FortificationEnCours)] ),
+        ("UseStrategic_Labels_Fortified",                            MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Fortified)] ),
+        ("UseStrategic_Labels_FortificationAntiAirEnCours",          MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_FortificationAntiAirEnCours)] ),
+        ("UseStrategic_Labels_FortificationAntiAir",                 MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_FortificationAntiAir)] ),
+        ("UseStrategic_Labels_CanLaunchAttack",                      MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_CanLaunchAttack)] ),
+        ("UseStrategic_Labels_Arrow",                                MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Arrow)] ),
+        ("UseStrategic_MapScaleIcon",                                MAP [(~/ComponentState/Normal, ~/UseStrategic_MapScaleIcon)] ),
+        ("UseStrategic_SelectionPawnPanel_Infantry",                 MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_Infantry)] ),
+        ("UseStrategic_SelectionPawnPanel_Cannon",                   MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_Cannon)] ),
+        ("UseStrategic_SelectionPawnPanel_Tank",                     MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_Tank)] ),
+        ("UseStrategic_SelectionPawnPanel_Vehicle",                  MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_Vehicle)] ),
+        ("UseStrategic_SelectionPawnPanel_Plane",                    MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_Plane)] ),
+        ("UseStrategic_SelectionPawnPanel_Artillery",                MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_Artillery)] ),
+
+        ("UseStrategic_SelectionPawnPanel_BMB",                      MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_BMB)] ),
+        ("UseStrategic_SelectionPawnPanel_DCA",                      MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_DCA)] ),
+        ("UseStrategic_SelectionPawnPanel_HQ",                       MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_HQ)] ),
+        ("UseStrategic_SelectionPawnPanel_Motorised",                MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPawnPanel_Motor)] ),
+
+        ("UseStrategic_Labels_Terrain_TerrainUrbain",                MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Terrain_TerrainUrbain)] ),
+        ("UseStrategic_Labels_Terrain_TerrainForet",                 MAP [(~/ComponentState/Normal, ~/UseStrategic_Labels_Terrain_TerrainForet)] ),
+
+        ("UseStrategic_SelectionPanel_Deploy",                       MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Deploy)] ),
+        ("UseStrategic_SelectionPanel_Command",                      MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Command)] ),
+        ("UseStrategic_SelectionPanel_Assault",                      MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Assault)] ),
+        ("UseStrategic_SelectionPanel_Armored",                      MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Armored)] ),
+        ("UseStrategic_SelectionPanel_Artillery",                    MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Artillery)] ),
+        ("UseStrategic_SelectionPanel_Airplane",                     MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Airplane)] ),
+        ("UseStrategic_SelectionPanel_Evasion",                      MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Evasion)] ),
+        ("UseStrategic_SelectionPanel_Attack",                       MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Attack)] ),
+        ("UseStrategic_SelectionPanel_Defense",                      MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Defense)] ),
+        ("UseStrategic_SelectionPanel_PA",                           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/PA.png"))] ),
+        ("UseStrategic_SelectionPanel_fatigue",                      MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/fatigue.png"))] ),
+
+        ("UseStrategic_EndTurnButton",                               MAP [
+                                                                          (~/ComponentState/Normal,      ~/UseStrategic_EndTurnButton_Normal),
+                                                                          (~/ComponentState/Highlighted, ~/UseStrategic_EndTurnButton_Highlight),
+                                                                          (~/ComponentState/Clicked,     ~/UseStrategic_EndTurnButton_Clicked),
+                                                                     ]),
+
+        ("UseStrategic_BoutonMission",                               MAP [
+                                                                          (~/ComponentState/Normal,      TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/objectif3.png")),
+
+                                                                     ]),
+
+        ("UseStrategic_BoutonOrganisation",                               MAP [
+                                                                          (~/ComponentState/Normal,      TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/organisation2.png")),
+
+                                                                     ]),
+
+        ("UseStrategic_BoutonPertes",                               MAP [
+                                                                          (~/ComponentState/Normal,      TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Kills2.png")),
+
+                                                                     ]),
+        ("UseStrategic_BoutonShowHideLabel",                         MAP [
+                                                                          (~/ComponentState/Normal,      TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/ShowLabel.png")),
+                                                                          (~/ComponentState/Highlighted, TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/ShowLabel_h.png")),
+                                                                          (~/ComponentState/Clicked,     TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/ShowLabel.png")),
+                                                                          (~/ComponentState/Toggled,     TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/HideLabel.png")),
+                                                                          (~/ComponentState/ToggleHighlighted,     TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/HideLabel_h.png")),
+                                                                     ]),
+        ("UseStrategic_BoutonShowHideCV",                         MAP [
+                                                                          (~/ComponentState/Normal,      TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/HideCV.png")),
+                                                                          (~/ComponentState/Highlighted, TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/HideCV_h.png")),
+                                                                          (~/ComponentState/Clicked,     TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/HideCV.png")),
+                                                                          (~/ComponentState/Toggled,     TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/ShowCV.png")),
+                                                                          (~/ComponentState/ToggleHighlighted,     TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/ShowCV_h.png")),
+                                                                      ]),
+
+        ("vitesse03Strat", MAP [
+                            (~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/Icons/TimeSpeed2.png' )),
+                            ] ),
+        ("vitesse04Strat", MAP [
+                            (~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/GameSpeed/vitesse04t.png' )),
+                            ] ),
+        ("vitesse05Strat", MAP [
+                            (~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/GameSpeed/vitesse05t.png' )),
+                            ] ),
+
+        ("UseStrategic_Commandement",                               MAP [(~/ComponentState/Normal,      TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/commandement.png"))]),
+
+        ("UseStrategic_SelectionPanel_Wrench",                       MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Wrench)]),
+        ("UseStrategic_SelectionPanel_Skull",                        MAP [(~/ComponentState/Normal, ~/UseStrategic_SelectionPanel_Skull)]),
+        ("UseStrategic_ProductionMenu_Star",                         MAP [(~/ComponentState/Normal, ~/UseStrategic_ProductionMenu_Star)] ),
+        ("UseStrategic_SpawnPoint",                                  MAP [(~/ComponentState/Normal, ~/UseStrategic_SpawnPoint)] ),
+        ("UseStrategic_SpawnPointMain_Pole",                         MAP [(~/ComponentState/Normal, ~/UseStrategic_SpawnPointMain_Pole)] ),
+        ("UseStrategic_SpawnPointMain_HorizontalBorder",             MAP [(~/ComponentState/Normal, ~/UseStrategic_SpawnPointMain_HorizontalBorder)] ),
+        ("UseStrategic_SpawnPointMain_Fill",                         MAP [(~/ComponentState/Normal, ~/UseStrategic_SpawnPointMain_Fill)] ),
+
+        ("UseStrategic_Lock_Company",                                MAP [(~/ComponentState/Normal, ~/UseStrategic_Lock_Company)] ),
+
+        ("UseStrategic_Cursor_Deny",                                MAP [(~/ComponentState/Normal, ~/UseStrategic_Cursor_Deny)] ),
+        ("UseStrategic_Cursor_Reco",                                MAP [(~/ComponentState/Normal, ~/UseStrategic_Cursor_Reco)] ),
+        ("UseStrategic_Cursor_Transfert",                           MAP [(~/ComponentState/Normal, ~/UseStrategic_Cursor_Transfert)] ),
+
+        ("UseInGame_division_icone",  MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/3rd_Armored_Division.png"))] ),
+    ]
+)
+
+UseStrategic_Labels_NoSupplyZerosDay                     is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/NoSupplyingZeroDays.png")
+UseStrategic_Labels_NoSupplyHalfDay                      is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/NoSupplyingHalfDay.png")
+UseStrategic_Labels_NoSupply                             is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/NoSupplying.png")
+
+UseStrategic_Labels_Fatigue_0                            is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Fatigue_0.png")
+UseStrategic_Labels_Fatigue_1                            is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Fatigue_1.png")
+UseStrategic_Labels_Fatigue_2                            is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Fatigue_2.png")
+UseStrategic_Labels_Fatigue_3                            is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Fatigue_3.png")
+UseStrategic_Labels_Fatigue_4                            is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Fatigue_4.png")
+UseStrategic_Labels_Fatigue_5                            is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Fatigue_5.png")
+
+
+UseStrategic_Labels_Boxing                               is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Boxing.png")
+UseStrategic_Labels_DenyArea                             is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/DenyArea.png")
+UseStrategic_Labels_RecoArea                             is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/RecoArea.png")
+UseStrategic_Labels_Stationary                           is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Stationary.png")
+UseStrategic_Labels_FortificationEnCours                 is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/FortificationEnCours.png")
+UseStrategic_Labels_Fortified                            is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Fortified.png")
+UseStrategic_Labels_FortificationAntiAirEnCours          is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/DCAModeEnCours.png")
+UseStrategic_Labels_FortificationAntiAir                 is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/DCA.png")
+UseStrategic_Labels_CanLaunchAttack                      is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/attaque.png")
+
+UseStrategic_Labels_Terrain_TerrainUrbain                is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/TerrainUrbain.png")
+UseStrategic_Labels_Terrain_TerrainForet                 is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/TerrainForet.png")
+//UseStrategic_Labels_HQ                                   is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/mobilisation_HQ.png")
+
+UseStrategic_Labels_Arrow                                is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/fleche.png")
+
+UseStrategic_MapScaleIcon                                is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/ScaleIcon.png")
+UseStrategic_SelectionPawnPanel_Infantry                 is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Infantry.png")
+UseStrategic_SelectionPawnPanel_Cannon                   is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Cannon.png")
+UseStrategic_SelectionPawnPanel_Tank                     is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Tank.png")
+UseStrategic_SelectionPawnPanel_Vehicle                  is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Vehicle.png")
+UseStrategic_SelectionPawnPanel_Plane                    is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Plane.png")
+UseStrategic_SelectionPawnPanel_Artillery                is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Artillery.png")
+
+UseStrategic_SelectionPawnPanel_BMB                      is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Bomber.png")
+UseStrategic_SelectionPawnPanel_DCA                      is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/DCA.png")
+UseStrategic_SelectionPawnPanel_HQ                       is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/mobilisation_HQn.png")
+UseStrategic_SelectionPawnPanel_Motor                    is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Motorised.png")
+
+UseStrategic_SelectionPanel_Deploy                       is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/Deploy.png")
+UseStrategic_SelectionPanel_Command                      is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/Command.png")
+UseStrategic_SelectionPanel_Assault                      is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/Assault.png")
+UseStrategic_SelectionPanel_Armored                      is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/Armored.png")
+UseStrategic_SelectionPanel_Artillery                    is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/Artillery.png")
+UseStrategic_SelectionPanel_Airplane                     is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/Airplane.png")
+UseStrategic_SelectionPanel_Evasion                      is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/Evasion.png")
+UseStrategic_SelectionPanel_Attack                       is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/Attack.png")
+UseStrategic_SelectionPanel_Defense                      is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/Defense.png")
+
+UseStrategic_EndTurnButton_Normal                        is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/EndTurn/NextTurn_Normal.png")
+UseStrategic_EndTurnButton_Highlight                     is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/EndTurn/NextTurn_Highlight.png")
+UseStrategic_EndTurnButton_Clicked                       is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/EndTurn/NextTurn_Clicked.png")
+
+UseStrategic_SelectionPanel_Wrench                       is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SelectionPanel/icone_molette.png")
+UseStrategic_SelectionPanel_Skull                        is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/Kills_normal.png")
+
+UseStrategic_ProductionMenu_Star                         is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/StarProduction.png")
+UseStrategic_SpawnPoint                                  is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SpawnPoint.png")
+UseStrategic_SpawnPointMain_Pole                         is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SpawnPointMain_Pole.png")
+UseStrategic_SpawnPointMain_HorizontalBorder             is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SpawnPointMain_HorizontalBorder.png")
+UseStrategic_SpawnPointMain_Fill                         is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/SpawnPointMain_Fill.png")
+
+UseStrategic_Lock_Company                                is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Icons/lock.png")
+
+UseStrategic_Cursor_Deny                                 is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Cursors/curseur_steelman_deny.png")
+UseStrategic_Cursor_Reco                                 is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Cursors/curseur_steelman_reco.png")
+UseStrategic_Cursor_Transfert                            is TUIResourceTexture_InGame(FileName = "GameData:/Assets/2D/Interface/UseStrategic/Cursors/curseur_transfer.png")
+

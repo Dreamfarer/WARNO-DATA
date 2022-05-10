@@ -1,0 +1,144 @@
+//========================
+// MODE DE JEU NORMAL
+//========================
+export gamePhaseManagerDescriptor is TGamePhaseManagerDescriptor
+(
+    GamePhaseDescriptorList =
+    [
+        commandGamePhaseDescriptor,
+        deploiementGamePhaseDescriptor,
+        strategicGamePhase,
+    ]
+
+    InitPhaseType = ~/CommandPhase
+)
+
+private commandGamePhaseDescriptor is TWargameGamePhaseDescriptor
+(
+    GamePhaseType = ~/CommandPhase
+    ZoneManagerDescriptor = ~/commandementZoneManagerDescriptor
+    ZoneManagerForIAStratDescriptor = ~/zoneManagerForIAStratDescriptor
+)
+
+private deploiementGamePhaseDescriptor is TDeploiementGamePhaseDescriptor
+(
+    GamePhaseType = ~/DeploiementPhase
+    ZoneManagerDescriptor = ~/deploiementZoneManagerDescriptor
+    ZoneManagerForIAStratDescriptor = ~/zoneManagerForIAStratDescriptor
+
+    PourcentPointUniteADepenserPourDegriserBouton = 0
+
+// la description pour NotSpecified est obligatoire, c'est celle par défaut pour tous les modes
+    ListeProprietesTempsGrace = MAP [
+        (
+            EDeploymentMode/NotSpecified,
+            TDeploiementGracePeriodDescriptor
+            (
+                TempsGracePourTimerEnSecond = 30
+
+                //Attention, les elements dans StepList doivent etre tries
+                //C'est a dire que la proprietes TempsMaxEnSecondes doit augmenter pour chaque element et doit finir par -1 qui correspond au temps restant
+                //Si vous ne respectez pas cette contrainte, ca va peter a la generation !!!! Vous etes prevenus !!!!
+                StepList =
+                [
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 40
+                        MultiplicateurTempsGrace = 6
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 80
+                        MultiplicateurTempsGrace = 5
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 120
+                        MultiplicateurTempsGrace = 4
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 160
+                        MultiplicateurTempsGrace = 3
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 200
+                        MultiplicateurTempsGrace = 2
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = -1
+                        MultiplicateurTempsGrace = 1
+                    ),
+                ]
+            )
+        ),
+        (
+            EDeploymentMode/Breakthrough,
+            TDeploiementGracePeriodDescriptor
+            (
+                TempsGracePourTimerEnSecond = 60
+
+                //Attention, les elements dans StepList doivent etre tries
+                //C'est a dire que la proprietes TempsMaxEnSecondes doit augmenter pour chaque element et doit finir par -1 qui correspond au temps restant
+                //Si vous ne respectez pas cette contrainte, ca va peter a la generation !!!! Vous etes prevenus !!!!
+                StepList =
+                [
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 45
+                        MultiplicateurTempsGrace = 6
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 90
+                        MultiplicateurTempsGrace = 5
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 135
+                        MultiplicateurTempsGrace = 4
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 180
+                        MultiplicateurTempsGrace = 3
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = 225
+                        MultiplicateurTempsGrace = 2
+                    ),
+
+                    TGracePeriodStepForDeploiementTimer
+                    (
+                        TempsMaxEnSecondes = -1
+                        MultiplicateurTempsGrace = 1
+                    ),
+                ]
+            )
+        )
+    ]
+
+)
+
+//------------------------------------------------------------------------
+// ------------------------  STRATEGIC ----------------------------------
+//------------------------------------------------------------------------
+
+private strategicGamePhase is TStrategicGamePhaseDescriptor
+(
+    GamePhaseType = ~/StrategicGame
+    ZoneManagerDescriptor = ~/strategicZoneManagerDescriptor
+    ZoneManagerForIAStratDescriptor = ~/strategicZoneManagerForIAStratDescriptor
+)

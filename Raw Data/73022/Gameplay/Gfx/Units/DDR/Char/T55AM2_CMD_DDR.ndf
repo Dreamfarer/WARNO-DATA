@@ -1,0 +1,19 @@
+export ModelFile_T55AM2_CMD_DDR is 'GameData:/Assets/3D/Units/DDR/Char/T55_AM2_CMD/T55_AM2.Ase2NdfBin'
+
+Modele_T55AM2_CMD_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T55AM2_CMD_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_T55AM2_CMD_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Char/T55_AM2_CMD/T55_AM2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_T55AM2_CMD_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Char/T55_AM2_CMD/T55_AM2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

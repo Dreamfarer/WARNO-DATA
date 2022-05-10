@@ -1,0 +1,22 @@
+export ModelFile_Buk_9K37M_SOV is 'GameData:/Assets/3D/Units/URSS/DCA/Buk_9K37M/Buk_9K37M.Ase2NdfBin'
+
+Modele_Buk_9K37M_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Buk_9K37M_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Buk_9K37M_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/Buk_9K37M_MID/Buk_9K37M_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Buk_9K37M_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/LODS/Buk_9K37M_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

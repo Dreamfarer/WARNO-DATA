@@ -1,0 +1,20 @@
+export ModelFile_M270_MLRS_cluster_US is 'GameData:/Assets/3D/Units/US/Artillerie/M270_Cluster/M270_Cluster.Ase2NdfBin'
+
+Modele_M270_MLRS_cluster_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M270_MLRS_cluster_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M270_MLRS_cluster_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Artillerie/M270_Cluster_MID/M270_Cluster_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M270_MLRS_cluster_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Artillerie/LODS/M270_Cluster_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

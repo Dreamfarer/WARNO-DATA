@@ -1,0 +1,55 @@
+export ModelFile_BM21V_GradV_SOV is 'GameData:/Assets/3D/Units/URSS/Artillerie/BM21V_GradV/BM21V_GradV.Ase2NdfBin'
+
+Modele_BM21V_GradV_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BM21V_GradV_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BM21V_GradV_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/BM21V_GradV/BM21V_GradV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BM21V_GradV_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/BM21V_GradV/BM21V_GradV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+//-------------------------------------------------------------------------------------
+Gfx_Modele_BM21V_GradV_SOV  is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Socle_SOV ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Depiction = TDepictionTemplate
+            (
+                Scaler = CommonIdentityScaler
+                Selector = OnlyHighDepictionSelector
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_courte ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Anchor = "vehicule"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 7)
+                        Selector = CommonDepictionSelector
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_BM21V_GradV_SOV ),
+                            DepictionDescriptor_LOD_Mid ( MeshDescriptor = Modele_BM21V_GradV_SOV ),
+                            DepictionDescriptor_LOD_Low ( MeshDescriptor = Modele_BM21V_GradV_SOV DisabledOperators = ['tourelle3'] ),
+                        ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)
+

@@ -1,0 +1,1151 @@
+
+DamageTypeComponentConfigurations is
+[
+    TDamageComponentConfiguration
+    (
+        DamageType = "ap"
+        Button = "APButton"
+        AmmoText = "WeaponAPAmmoText"
+        CalibreText = "WeaponAPCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "he"
+        Button = "HEButton"
+        AmmoText = "WeaponHEAmmoText"
+        CalibreText = "WeaponHECalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "howz"
+        Button = "HOWZAPButton"
+        AmmoText = "WeaponHowzAPAmmoText"
+        CalibreText = "WeaponHowzAPCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "cac"
+        Button = "APCRButton"
+        AmmoText = "WeaponAPCRAmmoText"
+        CalibreText = "WeaponAPCRCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "heat"
+        Button = "HEATButton"
+        AmmoText = "WeaponHEATAmmoText"
+        CalibreText = "WeaponHEATCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "hesap"
+        Button = "HESAPButton"
+        AmmoText = "WeaponHESAPAmmoText"
+        CalibreText = "WeaponHESAPCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "balle"
+        Button = "BulletButton"
+        AmmoText = "WeaponBulletAmmoText"
+        CalibreText = "WeaponBulletCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "fmballe"
+        Button = "BulletAAButton"
+        AmmoText = "WeaponBulletAAAmmoText"
+        CalibreText = "WeaponBulletAACalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "balledca"
+        Button = "BulletDCAButton"
+        AmmoText = "WeaponBulletDCAAmmoText"
+        CalibreText = "WeaponBulletDCACalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "howz_bombe"
+        Button = "RocketHEButton"
+        AmmoText = "WeaponRocketHEAmmoText"
+        CalibreText = "WeaponRocketHECalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "roquette_ap"
+        Button = "RocketAPButton"
+        AmmoText = "WeaponRocketAPAmmoText"
+        CalibreText = "WeaponRocketAPCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "ap_missile"
+        Button = "APMissileButton"
+        AmmoText = "WeaponAPMissileAmmoText"
+        CalibreText = "WeaponAPMissileCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "frag"
+        Button = "RocketFragButton"
+        AmmoText = "WeaponRocketFragAmmoText"
+        CalibreText = "WeaponRocketFragCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "bombe"
+        Button = "BombButton"
+        AmmoText = "WeaponBombAmmoText"
+        CalibreText = "WeaponBombCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "cluster_ap"
+        Button = "ClusterAPButton"
+        AmmoText = "WeaponClusterAPAmmoText"
+        CalibreText = "WeaponClusterAPCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "cluster"
+        Button = "ClusterHEButton"
+        AmmoText = "WeaponClusterHEAmmoText"
+        CalibreText = "WeaponClusterHECalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "napalm"
+        Button = "NapalmButton"
+        AmmoText = "WeaponNapalmAmmoText"
+        CalibreText = "WeaponNapalmCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "flamme"
+        Button = "FlameButton"
+        AmmoText = "WeaponFlameAmmoText"
+        CalibreText = "WeaponFlameCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "smoke"
+        Button = "SmokeButton"
+        AmmoText = "WeaponSmokeAmmoText"
+        CalibreText = "WeaponSmokeCalibreText"
+    ),
+    TDamageComponentConfiguration
+    (
+        DamageType = "missile_he"
+        Button = "MissileHEButton"
+        AmmoText = "WeaponMissileHEAmmoText"
+        CalibreText = "WeaponMissileHECalibreText"
+    ),
+]
+
+// -------------------------------------------------------------------------------------------------
+// WeaponDamageTypeButton
+// -------------------------------------------------------------------------------------------------
+
+private template WeaponDamageTypeButton
+[
+    ElementName : string,
+    Token : string,
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [78.0, 20.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Fulda2_Jaune100"
+
+    IsTogglable = true
+    CannotDeselect = true
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName> + 'Text'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            Hint = BUCKSpecificHintableArea
+            (
+                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                HintTitleToken = "HIP_WAMMOT"
+                HintBodyToken = "HIP_WAMMOB"
+                HintExtendedToken = "HIP_WAMMOE"
+            )
+
+            TextStyle = "Default"
+
+            VerticalFitStyle = ~/FitStyle/FitToContent
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+            TypefaceToken = "UIMainFont"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextToken = <Token>
+
+            TextColor = "PureBlack"
+            TextSize = "12"
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+template WeaponDamageTypeAttribute
+[
+    ElementName : string,
+    Plating : bool = false,
+    Token : string,
+    ValueToken : string,
+    HintToken : string = "",
+    MagnifiableWidth : float = 146.70,
+    AlignementToFather : float2 = [0.5, 0.0],
+    AlignementToAnchor : float2 = [0.5, 0.0],
+    MagnifiableOffset : float2 =  [0.0, -1.0],
+    HasBackground : bool = false,
+    BackgroundBlockColorToken : string = 'MarronPanel_fonce',
+    TextSize : string = '14',
+    HasBorder : bool = false,
+    BordersToDraw : int = ~/TBorderSide/Right,
+    FirstMargin : float = 8.0,
+    BackgroundComponents : bool = false,
+    LastMargin : float = 3.0,
+    Padding : float = 0.0,
+    Magnifiable_barre : float = 91,
+    FullGaugeIfNoMax : bool = false,
+    BackgroundBlockColorTokenFondJauge : string ='MarronPanel_fonce',
+    Scale : float = 1.0,
+    IsSousGroupe : bool = false,
+    HasSousGroupeText : boolean = false,
+    TokenSousGroupe : string = 'PALYIYEIFQ',
+]
+is BUCKListDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [ <MagnifiableWidth>, 0.0]
+    )
+    HasBorder = <HasBorder>
+    BorderThicknessToken = "2"
+    BorderLineColorToken = "MarronPanel_noir"
+    BordersToDraw = <BordersToDraw>
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength (Magnifiable = <FirstMargin>)
+    InterItemMargin = TRTTILength (Magnifiable = 0.0)
+    LastMargin = TRTTILength (Magnifiable = <LastMargin>)
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+    MagnifierMultiplication = <Scale>
+
+    Elements = (<IsSousGroupe> ? [] :
+    [// nom de l'attribut
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 15.0]
+                    MagnifiableOffset = [5.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                InterItemMargin = TRTTILength(Magnifiable = 4.0)
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = <ElementName> + 'Title'
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [100.0, 15.0]
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+
+                            ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                Alignment = UIText_Left
+                                VerticalAlignment = UIText_VerticalCenter
+                                InterLine = 0
+                            )
+
+                            TextStyle = "Default"
+
+                            VerticalFitStyle = ~/FitStyle/UserDefined
+                            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+
+                            TypefaceToken = "Liberator"
+                            BigLineAction = ~/BigLineAction/ResizeFont
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                            TextToken = <Token>
+
+                            TextColor = "MarronPanel_noir"
+                            TextSize = "12"
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = <ElementName> + "VeterancyText"
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [0.0, 15.0]
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+
+                            ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                Alignment = UIText_Left
+                                VerticalAlignment = UIText_VerticalCenter
+                                InterLine = 0
+                            )
+
+                            TextStyle = "Default"
+
+                            VerticalFitStyle = ~/FitStyle/UserDefined
+                            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                            TypefaceToken = "Liberator"
+                            BigLineAction = ~/BigLineAction/ResizeFont
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                            TextToken = (<Plating> ? "" : "UIPW_VET")
+
+                            TextColor = "Green2"
+                            TextSize = "12"
+                        )
+                    )
+                ]
+            )
+        ),
+    ])
+    + [
+        // barre et valeur
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 12.0]
+                )
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+
+                        FirstMargin = TRTTILength( Magnifiable = 5.0 )
+                        InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+                        LastMargin = TRTTILength( Magnifiable = 5.0 )
+
+                        Elements =
+                        [
+                            // barre
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor =  BUCKSimpleGaugeDescriptor
+                                (
+                                    ElementName = <ElementName> + "Gauge"
+
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [<Magnifiable_barre>, 12.0]
+                                        AlignementToFather     = [0.0, 0.5]
+                                        AlignementToAnchor     = [0.0, 0.5]
+                                    )
+
+                                    GridAlign = true
+                                    HasBackground = true
+                                    BackgroundBlockColorToken = <BackgroundBlockColorTokenFondJauge>
+                                    HasBorder = false
+                                    BorderThicknessToken = "1"
+                                    BorderLineColorToken = "CyanChrono"
+
+                                    DurationForGaugeFullChange = 1
+                                    FullGaugeIfNoMax = <FullGaugeIfNoMax>
+
+                                    GaugeComponentName = <ElementName> + 'Value'
+                                    AdditionalGaugeComponentNames =
+                                    [
+                                        <ElementName> + 'VeteranceValue',
+                                    ]
+
+                                    Components =
+                                    [
+                                        BUCKSimpleGaugeValueDescriptor
+                                        (
+                                            ElementName = <ElementName> + 'VeteranceValue'
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight    = [0.0, 1.0]
+                                                AlignementToFather     = [0.0, 0.5]
+                                                AlignementToAnchor     = [0.0, 0.5]
+                                            )
+
+                                            ValueContainerName = <ElementName> + 'VeteranceValueContainer'
+                                            ValueContainerComponent = BUCKContainerDescriptor
+                                            (
+                                                ElementName = <ElementName> + 'VeteranceValueContainer'
+                                                ComponentFrame = TUIFramePropertyRTTI
+                                                (
+                                                    RelativeWidthHeight = [0.0, 1.0]
+                                                )
+
+                                                HasBackground = true
+                                                BackgroundBlockColorToken = "Fulda2_Orange100"
+                                            )
+                                        ),
+
+                                        BUCKSimpleGaugeValueDescriptor
+                                        (
+                                            ElementName = <ElementName> + 'Value'
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight    = [0.0, 1.0]
+                                                AlignementToFather     = [0.0, 0.5]
+                                                AlignementToAnchor     = [0.0, 0.5]
+                                            )
+
+                                            ValueContainerName = <ElementName> + 'ValueContainer'
+                                            ValueContainerComponent = BUCKContainerDescriptor
+                                            (
+                                                ElementName = <ElementName> + 'ValueContainer'
+                                                ComponentFrame = TUIFramePropertyRTTI
+                                                (
+                                                    RelativeWidthHeight = [0.0, 1.0]
+                                                )
+
+                                                HasBackground = true
+                                                BackgroundBlockColorToken = "MarronPanel_BarreTresFonce"
+                                                HasBorder = true
+                                                BorderLineColorToken = "MarronPanel_noir"
+                                                BorderThicknessToken = "3"
+                                                BordersToDraw = ~/TBorderSide/Right
+                                            )
+                                        ),
+                                    ]
+                                +
+                                (<HasSousGroupeText> ?
+                                    [
+                                        BUCKTextDescriptor
+                                        (
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 1.0]
+                                            )
+
+                                            ParagraphStyle = paragraphStyleTextLeftAlign
+                                            TextStyle = "Default"
+                                            HorizontalFitStyle = ~/FitStyle/UserDefined
+                                            VerticalFitStyle = ~/FitStyle/UserDefined
+                                            TypefaceToken = "Eurostyle"
+                                            BigLineAction = ~/BigLineAction/CutByDots
+                                            TextPadding = TRTTILength4 ( Magnifiable = [3,0,0,0])
+                                            TextToken = <TokenSousGroupe>
+                                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                            TextColor = "MarronPanel_base"
+                                            TextSize = "8"
+                                        )
+                                    ] : [])
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                            ),
+                            // valeur
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ElementName = <ElementName> + 'Text'
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableOffset = <MagnifiableOffset>
+                                    )
+
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        Alignment = UIText_Left
+                                        VerticalAlignment = UIText_Bottom
+                                        InterLine = 0
+                                    )
+
+                                    TextStyle = "Default"
+                                    TextPadding = TRTTILength4( Magnifiable = [0.0, 0.0, <Padding>, 0.0] )
+                                    VerticalFitStyle = ~/FitStyle/FitToContent
+                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                                    TypefaceToken = "Eurostyle"
+                                    BigLineAction = ~/BigLineAction/CutByDots
+
+                                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    TextToken = <ValueToken>
+                                    TextColor = "BlancTexte"
+                                    TextSize = <TextSize>
+                                )
+                            ),
+                        ]
+                    )
+                ]
+            )
+        ),
+    ]
+
+    BackgroundComponents =
+    ( <BackgroundComponents> == true ?
+       [
+           PanelRoundedCorner
+           (
+               BorderLineColorToken = "MarronPanel_noir"
+               BackgroundBlockColorToken = "Transparent"
+               Radius = 1
+           ),
+       ] : []
+    )
+
+    ForegroundComponents =
+    (   <HintToken> != "" ?
+        [
+            BUCKSpecificHintableArea
+            (
+                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                HintBodyToken = <HintToken> + "B"
+                HintExtendedToken = <HintToken> + "E"
+            )
+        ] : []
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+template BUCKSpecificUnitInfoSingleWeaponPanelMainComponentDescriptor
+[
+    Scale : float,
+    IsFirstElement : bool,
+]
+is BUCKListDescriptor
+(
+    ElementName = 'PanelListeArmeAttribut'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [147.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    MagnifierMultiplication = <Scale>
+
+    Elements =
+    [
+        // nom de la catégorie de l'arme
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'WeaponTitle'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 28.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    ElementName = 'WeaponTitleHint'
+                    DicoToken = ~/LocalisationConstantes/dico_unites
+                )
+
+                TextStyle = "Default"
+
+                VerticalFitStyle = ~/FitStyle/UserDefined
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                TextDico = ~/LocalisationConstantes/dico_unites
+                HasBackground = true
+                BackgroundBlockColorToken = "MarronPanel_fonce"
+                TypefaceToken = "Liberator"
+                BigLineAction = ~/BigLineAction/MultiLine
+                TextColor = "MarronPanel_noir"
+                TextSize = "12"
+
+                HasBorder = true
+                BorderLineColorToken = 'MarronPanel_noir'
+                BorderThicknessToken = '2'
+                BordersToDraw = <IsFirstElement> ? ~/TBorderSide/Left | ~/TBorderSide/Right | ~/TBorderSide/Bottom : ~/TBorderSide/Right | ~/TBorderSide/Bottom
+            )
+        ),
+        //  affiche les traits de l'arme
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = WeaponTraitList(IsFirstElement = <IsFirstElement>)
+        ),
+        // affichage icone armes, nom armes et munitions
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = WeaponInformation
+            (
+                Scale = <Scale>
+                IsSelection = false
+                BordersToDraw = <IsFirstElement> ? ~/TBorderSide/Bottom | ~/TBorderSide/Left | ~/TBorderSide/Right : ~/TBorderSide/Bottom | ~/TBorderSide/Right
+            )
+        ),
+
+        //-------------------------------------------------------------------------------------:
+
+        // liste des caracts de l'arme
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "WeaponAttributes"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                InterItemMargin = TRTTILength (Magnifiable = 0)
+            )
+            // => envoie les template WeaponDamageTypeAttribute
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template WeaponTraitList
+[
+    IsFirstElement : bool,
+] is BUCKRackDescriptor
+(
+    ElementName = "WeaponTraitsList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 24.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    HasBorder = <IsFirstElement>
+    BorderLineColorToken = 'MarronPanel_noir'
+    BorderThicknessToken = '2'
+    BordersToDraw = ~/TBorderSide/Left
+
+    BladeDescriptor = BUCKContainerDescriptor
+    (
+        ElementName = "WeaponTrait"
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+            MagnifiableWidthHeight = [49.0, 0.0]
+        )
+
+        Components =
+        [
+            BUCKTextureDescriptor
+            (
+                ElementName = "WeaponTraitIconTexture"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                TextureFrame   = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            ),
+            BUCKSpecificHintableArea
+            (
+                ElementName = "WeaponTraitHint"
+
+                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            ),
+        ]
+    )
+
+    // Sepearation des elements, attention a la taille
+    ForegroundComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+
+            HasBorder = true
+            BorderLineColorToken = 'MarronPanel_noir'
+            BorderThicknessToken = '1'
+            BordersToDraw = ~/TBorderSide/Bottom
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [49.0, 0.0]
+                        )
+
+                        HasBorder = true
+                        BorderLineColorToken = 'MarronPanel_noir'
+                        BorderThicknessToken = '1'
+                        BordersToDraw = ~/TBorderSide/Right
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [49.0, 0.0]
+                        )
+
+                        HasBorder = true
+                        BorderLineColorToken = 'MarronPanel_noir'
+                        BorderThicknessToken = '1'
+                        BordersToDraw = ~/TBorderSide/Right
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [49.0, 0.0]
+                        )
+                        HasBorder = true
+                        BorderLineColorToken = 'MarronPanel_noir'
+                        BorderThicknessToken = '2'
+                        BordersToDraw = ~/TBorderSide/Right
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+WeaponDamageTypeAttributeDummy is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 15.0]
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+
+template UISpecificUnitInfoSingleWeaponPanelViewDescriptor
+[
+    Scale : float = 1.0,
+    IsFirstElement : bool,
+]
+is TUISpecificUnitInfoSingleWeaponPanelViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificUnitInfoSingleWeaponPanelMainComponentDescriptor( Scale = <Scale> IsFirstElement = <IsFirstElement>)
+    AttributeDescriptorsPool = MAP
+    [
+        // Weapon Penetration
+        (   "WeaponAP",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponAP" Token = "pi_des" ValueToken = "UIPW_MILLI" HintToken = "HIP_WAPV"
+                TextSize = '30'
+                HasBackground = true
+                BackgroundBlockColorToken = 'Gris_pi'
+                MagnifiableOffset = [0.0, -15.0]
+                HasBorder = true
+                Padding = 0
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Top  | ~/TBorderSide/Left | ~/TBorderSide/Right
+                     : ~/TBorderSide/Top | ~/TBorderSide/Right
+                Scale = <Scale>
+                FirstMargin = 18
+                LastMargin = 5
+                HasSousGroupeText = true
+                IsSousGroupe = true
+                TokenSousGroupe = 'UIPT_AP'
+            )
+        ),
+        // Weapon Range
+        ("WeaponRange",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponRange" Token = "pi_rng" ValueToken = "UIPW_METER" HintToken = "HIP_WRANG"
+                Magnifiable_barre = 70
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Top |  ~/TBorderSide/Left | ~/TBorderSide/Right
+                     : ~/TBorderSide/Top |  ~/TBorderSide/Right
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -3.0]
+                Scale = <Scale>
+                FirstMargin = 4
+                LastMargin = 5
+                HasSousGroupeText = true
+                TokenSousGroupe = 'UIPT_RANGE'
+            )
+        ),
+        // Weapon Range TBA
+        ("WeaponMaxRangeTBA",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponMaxRangeTBA" Token = "UIPT_RANGT" ValueToken = "UIPW_METER" HintToken = "HIP_WRANT"
+                Magnifiable_barre = 70
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                     ~/TBorderSide/Left | ~/TBorderSide/Right
+                     :  ~/TBorderSide/Right
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -3.0]
+                Scale = <Scale>
+                FirstMargin = 0
+                LastMargin = 5
+                HasSousGroupeText = true
+                IsSousGroupe = true
+                TokenSousGroupe = 'UIPT_RANGT'
+
+            )
+        ),
+        // Weapon Range HA
+        ("WeaponMaxRangeHA",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponMaxRangeHA" Token = "UIPT_RANGH" ValueToken = "UIPW_METER" HintToken = "HIP_WRANH"
+                Magnifiable_barre = 70
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Bottom | ~/TBorderSide/Left | ~/TBorderSide/Right
+                     : ~/TBorderSide/Bottom| ~/TBorderSide/Right
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -3.0]
+                Scale = <Scale>
+                FirstMargin = 0
+                LastMargin = 5
+                HasSousGroupeText = true
+                IsSousGroupe = true
+                TokenSousGroupe = 'UIPT_RANGH'
+            )
+        ),
+        //-------------------------------------------------------------------------------------
+        // Weapon Damage
+        ("WeaponDamage",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponDamage" Token = "TC_HE" ValueToken = "UIP_VAL" HintToken = "HIP_WDMG"
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                     ~/TBorderSide/Left | ~/TBorderSide/Right
+                     :  ~/TBorderSide/Right
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -4.0]
+                Scale = <Scale>
+                FirstMargin = 0
+                LastMargin = 5
+                HasSousGroupeText = true
+                IsSousGroupe = true
+                TokenSousGroupe = 'TC_HE'
+            )
+        ),
+
+        // Weapon Suppression
+        ("WeaponSuppress",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponSuppress" Token = "UIPT_SUPPR" ValueToken = "UIP_VAL" HintToken = "HIP_WSUPP"
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Bottom | ~/TBorderSide/Left | ~/TBorderSide/Right
+                     : ~/TBorderSide/Bottom| ~/TBorderSide/Right
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -4.0]
+                Scale = <Scale>
+                FirstMargin = 0
+                LastMargin = 5
+                HasSousGroupeText = true
+                IsSousGroupe = true
+                TokenSousGroupe = 'UIPT_SUPPR'
+            )
+        ),
+        //-------------------------------------------------------------------------------------
+        // Weapon Accuracy
+        ("WeaponAccuracy",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponAccuracy" Token = "UIPT_PREC" ValueToken = "UIPW_PCT" HintToken = "HIP_WPREC"
+                FullGaugeIfNoMax = true
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Top |  ~/TBorderSide/Left | ~/TBorderSide/Right
+                     : ~/TBorderSide/Top | ~/TBorderSide/Right
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -4.0]
+                Scale = <Scale>
+                FirstMargin = 4
+                LastMargin = 5
+                HasSousGroupeText = true
+                TokenSousGroupe = 'FBXRVZBVFG'
+            )
+        ),
+        ("WeaponAccuracyMovement",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponAccuracyMovement" Token = "UIPT_ACCMV" ValueToken = "UIPW_PCT" HintToken = "HIP_ACCMV" FullGaugeIfNoMax = true Scale = <Scale>
+
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Bottom | ~/TBorderSide/Left | ~/TBorderSide/Right
+                     : ~/TBorderSide/Bottom| ~/TBorderSide/Right
+                FirstMargin = 0
+                LastMargin = 5
+                HasSousGroupeText = true
+                IsSousGroupe = true
+            )
+        ),
+        //-------------------------------------------------------------------------------------
+        // Weapon Rate of fire
+        ("WeaponRateOfFire",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponRateOfFire" Token = "pi_vi" ValueToken = "UIPW_RPM" HintToken = "HIP_WROF"
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Top |  ~/TBorderSide/Left | ~/TBorderSide/Right
+                     : ~/TBorderSide/Top | ~/TBorderSide/Right
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -4.0]
+                Scale = <Scale>
+                FirstMargin = 4
+                LastMargin = 5
+                TokenSousGroupe = 'UIPT_ROF'
+                HasSousGroupeText = true
+                //IsSousGroupe = true
+            )
+        ),
+        ("WeaponAimingTime",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponAimingTime" Token = "UIPT_AT" ValueToken = "UIP_S" HintToken = "HIP_AT"
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Left | ~/TBorderSide/Right
+                     :  ~/TBorderSide/Right
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -4.0]
+                Scale = <Scale>
+                FirstMargin = 0
+                LastMargin = 5
+                HasSousGroupeText = true
+                TokenSousGroupe = 'UIPT_AT'
+                IsSousGroupe = true
+            )
+        ),
+        ("WeaponReloadTime",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponReloadTime" Token = "UIPT_RLDT" ValueToken = "UIP_S" HintToken = "HIP_WRLDT"
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                     ~/TBorderSide/Left | ~/TBorderSide/Right
+                     :  ~/TBorderSide/Right
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -4.0]
+                Scale = <Scale>
+                FirstMargin = 0
+                LastMargin = 5
+                HasSousGroupeText = true
+                TokenSousGroupe = 'UIPT_RLDT'
+                IsSousGroupe = true
+            )
+        ),
+        // Weapon Area Of Effect
+        ("WeaponAreaOfEffect",     WeaponDamageTypeAttribute(ElementName = "WeaponAreaOfEffect" Token = "UIPT_AOE" ValueToken = "UIP_VAL" HintToken = "HIP_WAOE" Scale = <Scale>)),
+        // Weapon Reload Time
+
+        // Weapon Traverse Speed
+        ("WeaponTraverseSpeed",    WeaponDamageTypeAttribute(ElementName = "WeaponTraverseSpeed" Token = "UIPA_TRSPD" ValueToken = "UIP_DPS" HintToken = "HIP_WTRSP" Scale = <Scale>)),
+        // Weapon Aiming Time
+
+        // Weapon Time between Two Shots
+        ("WeaponTimeBetweenTwoShots",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponTimeBetweenTwoShots" Token = "UIPT_TBTS" ValueToken = "UIP_S" HintToken = "HIP_TBTS"
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Left | ~/TBorderSide/Right
+                     :  ~/TBorderSide/Right
+                BackgroundBlockColorToken = 'Transparent'
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -4.0]
+                Scale = <Scale>
+                FirstMargin = 0
+                LastMargin = 5
+                HasSousGroupeText = true
+                TokenSousGroupe = 'UIPT_TBTS'
+                IsSousGroupe = true
+            )
+        ),
+        // Weapon Nb of shots by salvo
+        ("WeaponNbShotsBySalvo",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponNbShotsBySalvo" Token = "UIPT_NSBS" ValueToken = "UIP_VAL" HintToken = "HIP_NSBS"
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Bottom | ~/TBorderSide/Left | ~/TBorderSide/Right
+                     : ~/TBorderSide/Bottom| ~/TBorderSide/Right
+                BackgroundBlockColorToken = 'Transparent'
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -4.0]
+                Scale = <Scale>
+                FirstMargin = 0
+                LastMargin = 5
+                HasSousGroupeText = true
+                TokenSousGroupe = 'UIPT_NSBS'
+                IsSousGroupe = true
+            )
+        ),
+        // Weapon Supply Cost
+        ("WeaponSupplyCost",
+            WeaponDamageTypeAttribute
+            (
+                ElementName = "WeaponSupplyCost" Token = "UIPT_SC" ValueToken = "UIP_VAL" HintToken = "HIP_SC"
+                HasBorder = true
+                BordersToDraw = <IsFirstElement> ?
+                    ~/TBorderSide/Top  | ~/TBorderSide/Left | ~/TBorderSide/Right |~/TBorderSide/Bottom
+                     : ~/TBorderSide/Top | ~/TBorderSide/Right |~/TBorderSide/Bottom
+                TextSize = '16'
+                MagnifiableOffset = [0.0, -4.0]
+                Scale = <Scale>
+                FirstMargin = 2
+                LastMargin = 5
+            )
+        ),
+
+    ]
+
+    WeaponDamageTypeAttributeDummy = ~/WeaponDamageTypeAttributeDummy // permet de configurer les "" dans le tableau du DamageTypeConfiguration
+    NotApplicableToken = "UIP_NA"
+    NoValueToken = "UIP_NOVAL"
+    InfiniteToken = "UIP_INF"
+    WeaponNameAndAmountToken = "UIPW_NUM"
+
+    // Configuration of the panel works like this:
+    // (Damage type button name, [Attributes list])
+    // The attributes will pile up horizontally first in the grid
+    DamageTypeConfiguration = MAP
+    [
+        //("APButton",      ["WeaponAP", "WeaponDamage", "WeaponSuppress", "WeaponAreaOfEffect", "", "WeaponAccuracy", "WeaponRange", "", "WeaponRateOfFire", "WeaponTraverseSpeed"]),
+        ("APButton",        listeAffichage),
+        ("HOWZAPButton",    listeAffichage),
+        ("APHEButton",      listeAffichage),
+        ("HEButton",        listeAffichage),
+        ("APCRButton",      listeAffichage),
+        ("HEATButton",      listeAffichage),
+        ("HESAPButton",     listeAffichage),
+        ("BulletButton",    listeAffichage),
+        ("BulletAAButton",  listeAffichage),
+        ("BulletDCAButton", listeAffichage),
+        ("RocketHEButton",  listeAffichage),
+        ("RocketAPButton",  listeAffichage),
+        ("RocketFragButton",listeAffichage),
+        ("BombButton",      listeAffichage),
+        ("ClusterAPButton", listeAffichage),
+        ("ClusterHEButton", listeAffichage),
+        ("APMissileButton", listeAffichage),
+        ("FlameButton",     listeAffichage),
+        ("NapalmButton",    listeAffichage),
+        ("SmokeButton",     listeAffichage),
+        ("MissileHEButton",     listeAffichage),
+    ]
+
+    ValueTextColors = ~/InfoPanelValuesColors
+    DamageTypeComponents = ~/DamageTypeComponentConfigurations
+    MergeDamageTypes = true
+)
+
+// -------------------------------------------------------------------------------------------------
+
+listeAffichage is
+[
+    "",
+    "WeaponAP",
+    "WeaponDamage","WeaponSuppress",
+    "",
+    "WeaponRange","WeaponMaxRangeTBA", "WeaponMaxRangeHA",
+    "",
+    //"WeaponDamage","WeaponSuppress",
+    "WeaponAccuracy",
+    "WeaponAccuracyMovement",
+    "",
+    "WeaponRateOfFire",
+    "WeaponAimingTime",
+    "WeaponReloadTime",
+    "WeaponNbShotsBySalvo",
+    //"WeaponTimeBetweenTwoShots",
+
+    "",
+    "WeaponSupplyCost",
+]

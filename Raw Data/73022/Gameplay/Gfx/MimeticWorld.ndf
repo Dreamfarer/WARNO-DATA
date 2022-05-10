@@ -1,0 +1,46 @@
+MimeticWorld is TMimeticWorldDescriptor
+(
+    World = $/M3D/Scene/DefaultWorld
+    Happenings = MAP[
+        (['fumigene'], TIntroduceMobileHappening( Happening = TSequencingActionHappening( ActionDescriptor = FxFumigeneWithParams ))),
+        (['fumigene_ghost'], TIntroduceMobileHappening( Happening = TSequencingActionHappening( ActionDescriptor = FxFumigeneGhostWithParams ))),
+        (["districtCombat"], TIntroduceMobileHappening(
+            Happening = TSequencingActionHappening
+            (
+                ActionDescriptor = TActionCall
+                (
+                    Action = $/VFX_Bank/BANK_Bomb_NewSparks_Simple
+                    NamedParams = MAP[
+                        ( 'parColor', float3[0.8862746,0.3058824,0.03921569] ),
+                        ( 'parColorMultiplier', 3.6 ),
+                        ( 'parCount', 200 ),
+                        ( 'parFluidFriction', 1.8 ),
+                        ( 'parGravity', 2000 ),
+                        ( 'parLifetime', 2 ),
+                        ( 'parNarrowness', 0.1000005 ),
+                        ( 'parPositionRadius', 520 ),
+                        ( 'parSize', 12 ),
+                        ( 'parSpeedMax', 5900 ),
+                        ( 'parSpeedMin', 2600 ),
+                        ( 'parStretch', 0.7 ),
+                        ( 'parWindFactor', 0.2999996 ),
+                        ( 'parDir', float3[0,0,1] ),
+                        ( 'parPositionRelative', float3[-25.1875,-51.53125,0] ),
+                    ]
+                )
+            ))
+        ),
+        (["helicoGroundPuff"], TIntroduceMobileHappening(
+            Happening = TSequencingActionHappening
+            (
+                ActionDescriptor = TActionCall
+                (
+                    Action = $/GFX/GameFx/fx_effet_sol_helicos
+                )
+            ))
+        ),
+        (["impact"], TCompositeHappening( SubHappenings = [ AllImpactHappenings, AllImpactSoundHappenings ] )),
+    ] + InfantryDistrictHappenings
+
+    CameraMoverProxyForDebug = $/M3D/Scene/IngameCameraMoverHelperProxy
+)

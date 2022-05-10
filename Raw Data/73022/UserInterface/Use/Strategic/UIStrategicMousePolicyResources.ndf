@@ -1,0 +1,591 @@
+//RefMagnification is 4. div 3.
+
+private MouseCurseur_AssaultPossible is TMouseCursorAnimation
+(
+    HotSpotX           = 16
+    HotSpotY           = 16
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:/Assets/2D/Interface/Common/Cursors/OrderCursorGreen.png",
+        ]
+    )
+)
+
+private MouseCurseur_AssaultImpossible is TMouseCursorAnimation
+(
+    HotSpotX           = 16
+    HotSpotY           = 16
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:/Assets/2D/Interface/Common/Cursors/OrderCursorRed.png",
+        ]
+    )
+)
+
+private MouseCurseur_MultiselectionStrategic is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:/Assets/2D/Interface/Common/Cursors/CursorDefault.png",
+        ]
+    )
+)
+
+private MouseWidget_AssaultPossible is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_AssaultPossible
+)
+
+private MouseWidget_AssaultImpossible is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_AssaultImpossible
+)
+
+private MouseWidget_MultiSelectionStrategic is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_MultiselectionStrategic
+)
+
+MouseWidget_StrategicSelectNeutralLand is Template_HardwareMouseWidgetResource_WithTerrainFeedback //Template_HardwareMouseWidgetResource_WithTerrainHint
+(
+    StillTimeBeforeHintAppearance = 2
+
+    TerrainTypeToHintContent = MAP
+    [
+        (
+            ~/ETerrainType/None, // ville
+            THintContentHolder
+            (
+                TitleToken = "TERR_06T"
+                BodyToken = "TERR_06B"
+                ExtendedToken = "TERR_06E"
+            )
+        ),
+        (
+            ~/ETerrainType/Urbain, // ville
+            THintContentHolder
+            (
+                TitleToken = "TERR_06T"
+                BodyToken = "TERR_06B"
+                ExtendedToken = "TERR_06E"
+            )
+        ),
+        (
+            ~/ETerrainType/StrategicRalentisseur, // terrain dégagé
+            THintContentHolder
+            (
+                TitleToken = "terr_rout"
+                //BodyToken = "terr_roub"
+                //ExtendedToken = "terr_roue"
+            )
+        ),
+        (
+            ~/ETerrainType/StrategicAccelerateur, // autoroute
+            THintContentHolder
+            (
+                TitleToken = "terr_autt"
+                //BodyToken = "terr_autb"
+                //ExtendedToken = "terr_aute" //TERR_02E"
+            )
+        ),
+
+        (
+            ~/ETerrainType/BloqueConstruction, // route
+            THintContentHolder
+            (
+                TitleToken = "terr_rout"
+                //BodyToken = "terr_roub"
+                //ExtendedToken = "terr_roue"
+            )
+        ),
+        (
+            ~/ETerrainType/EauPeuProfonde, // impassable
+            THintContentHolder
+            (
+                TitleToken = "TERR_05T"
+                //BodyToken = "TERR_05B"
+                //ExtendedToken = "TERR_05E"
+            )
+        ),
+
+    ]
+
+    CursorMap = MAP
+    [
+        (ECoverTypeForInterface/None, ~/MouseCurseur_defaut),
+        (ECoverTypeForInterface/Light, ~/MouseCurseur_couvert_leger),
+        (ECoverTypeForInterface/Heavy, ~/MouseCurseur_couvert_lourd),
+        (ECoverTypeForInterface/BarbedWire,  ~/MouseCurseur_barbed_wire),
+        (ECoverTypeForInterface/Rocher,   ~/MouseCurseur_couvert_rocher),
+        (ECoverTypeForInterface/Batiment,   ~/MouseCurseur_couvert_lourd),
+    ]
+)
+
+private PANumberMouseCursor is BUCKTextDescriptor
+(
+    ElementName = 'ActionPoints'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    HasBackground = false
+
+    HasBorder = false
+    BorderLineColorToken = "PawnLabel/ActionPoints"
+    BorderThicknessToken = "PawnLabel/ActionPoints"
+
+    TextStyle = "Default"
+    TextPadding = TRTTILength4(Pixel = [1.0, 1.0, 1.0, 1.0] Magnifiable = [2.0, 2.0, 2.0, 2.0])
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "PawnLabel/ActionPoints"
+    TextSize = "PawnLabel/ActionPoints"
+)
+
+
+PAComponentMouseCursor is BUCKSimpleGaugeDescriptor
+(
+    ElementName = 'ActionPointsGauge'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0]
+        AlignementToAnchor = [0.5, 0]
+        MagnifiableWidthHeight = [20.0, 20.0] // Width de l'etiquette
+    )
+
+    HasBackground = true
+    HasBorder = true
+    BorderLineColorToken = "PawnLabel/ActionPoints"
+    BorderThicknessToken = "PawnLabel/ActionPoints"
+    BackgroundBlockColorToken = "GrisLabelStrat"
+
+    DurationForGaugeFullChange = 0.20
+    GaugeMax = 8
+
+    GaugeComponentName = 'ActionPointGaugeComponent'
+
+    Components =
+    [
+        BUCKSimpleGaugeValueDescriptor
+        (
+            ElementName = 'ActionPointGaugeComponent'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight    = [0.0, 1.0]
+                AlignementToFather     = [0.0, 0.5]
+                AlignementToAnchor     = [0.0, 0.5]
+            )
+
+            ValueContainerName = 'ActionPointGaugeContainer'
+
+            ValueContainerComponent = BUCKContainerDescriptor
+            (
+                ElementName = 'ActionPointGaugeContainer'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "LightGray80"
+
+                HasBorder = false
+                BorderLineColorToken = "PawnLabel/ActionPoints"
+                BorderThicknessToken = "PawnLabel/ActionPoints"
+            )
+        ),
+        PANumberMouseCursor,
+    ]
+)
+
+MouseWidget_StrategicOrderNeutralLand is Template_HardwareMouseWidgetResource_WithBUCK
+(
+    CursorMap = MAP
+    [
+        (ECoverTypeForInterface/None, ~/MouseCurseur_defaut),
+        (ECoverTypeForInterface/Light, ~/MouseCurseur_couvert_leger),
+        (ECoverTypeForInterface/Heavy, ~/MouseCurseur_couvert_lourd),
+        (ECoverTypeForInterface/BarbedWire,  ~/MouseCurseur_barbed_wire),
+        (ECoverTypeForInterface/Rocher,   ~/MouseCurseur_couvert_rocher),
+        (ECoverTypeForInterface/Batiment,   ~/MouseCurseur_couvert_lourd),
+    ]
+
+    BUCKDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [100, 75]
+        )
+
+        Components =
+        [
+            BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    AlignementToAnchor = [0.5, 1.0]
+                    AlignementToFather = [0.0, 1.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = 'Kilometers'
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 0.0]
+                            )
+
+                            ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                Alignment = UIText_Center
+                                VerticalAlignment = UIText_VerticalCenter
+                            )
+
+                            TextStyle = "Default"
+
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                            TypefaceToken = "UIMainFont"
+                            BigLineAction = ~/BigLineAction/CutByDots
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TextColor = "SD2_Noir"
+                            TextSize = "18"
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextureDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [0.0, 10.0]
+                                RelativeWidthHeight = [1.0, 0.0]
+                            )
+
+                            TextureToken = "UseStrategic_MapScaleIcon"
+                            TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ~/PAComponentMouseCursor
+                    )
+                ]
+            ),
+        ]
+    )
+
+    PointerFollowingProperties = TPointerFollowingPropertiesRTTI
+    (
+        MagnifiableOffset = [0.0, 0.0]
+        HorizontalPlacement = HorizontalPlacement/Right
+        VerticalPlacement = VerticalPlacement/Down
+        OutOfBorderHorizontalAction = OutOfBorderAction/StickToBorder
+        OutOfBorderVerticalAction = OutOfBorderAction/StickToBorder
+    )
+)
+
+//--------------------------------------------------------
+// Strategic Orders
+//--------------------------------------------------------
+private MouseCurseur_TransferOrder is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:/Assets/2D/Interface/UseStrategic/Cursors/curseur_transfer.png",
+        ]
+    )
+)
+
+private MouseCurseur_DefaultOrder is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:/Assets/2D/Interface/UseStrategic/Cursors/curseur_steelman_deny.png",
+        ]
+    )
+)
+
+private MouseCurseur_RecoOrder is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:/Assets/2D/Interface/UseStrategic/Cursors/curseur_steelman_reco.png",
+        ]
+    )
+)
+
+private MouseCurseur_InvalidOrder is TMouseCursorAnimation
+(
+    HotSpotX           = 0
+    HotSpotY           = 0
+    AnimationCycleTime = 1
+    TextureList = TResourceDescriptorTextureAnimation
+    (
+        UsefulnessMask = CivMask/Common + TypeMask/PCInterface
+        FileNameList =
+        [
+            "GameData:/Assets/2D/Interface/Common/Cursors/curseur_invalide.png",
+        ]
+    )
+)
+
+private MouseWidget_TransferOrder is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "UseStrategic_Cursor_Transfert"
+)
+private MouseWidget_DefaultOrder is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "UseStrategic_Cursor_Deny"
+)
+private MouseWidget_RecoOrder is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "UseStrategic_Cursor_Reco"
+)
+private MouseWidget_InvalidOrder is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "CommonTexture_Cursor_Invalid"
+)
+
+StrategicMouseWidgetSelector_Default is TUIStrategicMouseWidgetSelectorDefault
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , ~/DefaultMouseWidget),
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_OrderAlly        , ~/MouseWidget_StrategicOrderNeutralLand),
+        (Cursor_OrderPlayer      , ~/MouseWidget_MultiSelectionStrategic),
+        (Cursor_OrderEnemy       , ~/MouseWidget_AssaultPossible),
+        (Cursor_OrderInvalid     , ~/MouseWidget_AssaultImpossible),
+        (Cursor_OrderNeutralLand , ~/MouseWidget_StrategicOrderNeutralLand),
+        (Cursor_SelectNeutralLand, ~/MouseWidget_StrategicSelectNeutralLand),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Bonus        , "Strategic/WidgetSelector/Bonus"),
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Unseen       , "Strategic/WidgetSelector/Unseen"),
+        (TextStyle_Blocked      , "Strategic/WidgetSelector/Blocked"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    TooCloseToken   = "MP_TOOCL"
+    OutOfRangeToken = "MP_OORANGE"
+    KilometersToken = "RANGE_KM"
+)
+
+StrategicMouseWidgetSelector_DenyOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_DefaultOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_DENVAL"
+    InvalidOrderToken = "CUR_DENINV"
+
+    SignpostTitleToken = "SIG_DENTIT"
+    SignpostBodyToken = "SIG_DENBOD"
+)
+
+StrategicMouseWidgetSelector_RecoOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_RecoOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_RECVAL"
+    InvalidOrderToken = "CUR_RECINV"
+
+    SignpostTitleToken = "SIG_RECTIT"
+    SignpostBodyToken = "SIG_RECBOD"
+)
+
+StrategicMouseWidgetSelector_BoxingOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_DefaultOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_BOXVAL"
+    InvalidOrderToken = "CUR_BOXINV"
+
+    SignpostTitleToken = "SIG_BOXTIT"
+    SignpostBodyToken = "SIG_BOXBOD"
+)
+
+StrategicMouseWidgetSelector_BombOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_DefaultOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_BOMVAL"
+    InvalidOrderToken = "CUR_BOMINV"
+
+    SignpostTitleToken = "SIG_BOMTIT"
+    SignpostBodyToken = "SIG_BOMBOD"
+)
+
+StrategicMouseWidgetSelector_TransferOrder is TUIStrategicMouseWidgetSelectorOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_Default          , ~/MouseWidget_TransferOrder),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidOrder),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "Strategic/WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "Strategic/WidgetSelector/OutOfRange"),
+        (TextStyle_Invalid      , "Strategic/WidgetSelector/Invalid"),
+    ]
+
+    ValidOrderToken = "CUR_TRAVAL"
+    InvalidOrderToken = "CUR_TRAINV"
+
+    SignpostTitleToken = "SIG_TRATIT"
+    SignpostBodyToken = "SIG_TRABOD"
+)
+
+private StrategicMousePolicyManagerResources is TUIStrategicMousePolicyManagerResources
+(
+    KeyBoardPresetUpdater   = $/KeyboardPreset/KeyboardPresetUpdater
+    Camera                  = $/M3D/Camera/CameraPrincipale
+    World3D                 = $/M3D/Scene/DefaultWorld
+    Scene3D                 = $/M3D/Scene/Scene_2D_Interface
+
+    DefaultMouseWidgetSelectorName = "StrategicMouseWidgetSelector_Default"
+    MouseWidgetSelectorByName = MAP
+    [
+        (
+            "StrategicMouseWidgetSelector_Default",
+            ~/StrategicMouseWidgetSelector_Default
+        ),
+        (
+            "MouseWidgetSelector_DefaultOrder",
+            ~/MouseWidgetSelector_DefaultOrder //Nico : Ca me parait bizarre de pas utiliser celui du strategic ici mais je porte le comportement tel qu'il était
+        ),
+        (
+            "MouseWidgetSelector_DenyOrder",
+            ~/StrategicMouseWidgetSelector_DenyOrder
+        ),
+        (
+            "MouseWidgetSelector_BoxingOrder",
+            ~/StrategicMouseWidgetSelector_BoxingOrder
+        ),
+        (
+            "MouseWidgetSelector_BombOrder",
+            ~/StrategicMouseWidgetSelector_BombOrder
+        ),
+        (
+            "MouseWidgetSelector_RecoOrder",
+            ~/StrategicMouseWidgetSelector_RecoOrder
+        ),
+        (
+            "MouseWidgetSelector_TransferOrder",
+            ~/StrategicMouseWidgetSelector_TransferOrder
+        ),
+    ]
+)

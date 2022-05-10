@@ -1,0 +1,127 @@
+// PoolType
+PoolType_Deploy01         is 01
+
+PoolType_Attack01         is 11
+PoolType_Attack02         is 12
+PoolType_Attack03         is 13
+
+PoolType_Defense01        is 21
+PoolType_Defense02        is 22
+PoolType_Defense03        is 23
+
+PoolType_Commandement01   is 31
+PoolType_Commandement02   is 32
+PoolType_Commandement03   is 33
+PoolType_Commandement04   is 34
+
+PoolType_Conquest01       is 41
+
+PoolType_Harass01         is 51
+PoolType_Harass02         is 52
+
+PoolType_Supply01         is 61
+PoolType_Supply02         is 62
+PoolType_Supply03         is 63
+
+PoolType_AirStrike01      is 81
+PoolType_AirStrike02      is 82
+PoolType_AirStrike03      is 83
+
+
+//TGenerationType
+TGenerationType_FixedSize is 1
+TGenerationType_FixedSizeByAlliance is 2
+TGenerationType_Maintain is 3
+TGenerationType_MaintainOnlyLaunched is 4
+TGenerationType_NbMoreThanPreviousPhase is 5
+
+TGenerationType_BasedOnNumberOfCorridors is 50
+TGenerationType_BasedOnNumberOfObjectives is 51
+
+//CaptureType
+TCaptureType_MaximisePoint is 1
+TCaptureType_NeighborFirst is 2
+
+//Transport types (only for ndf)
+Transport_Attacker is False
+Transport_Prioritary is True
+
+//TProdProperty
+// /!\ Warning /!\ //
+// Combinaisons incompatibles:
+// TProdProperty_FixedPool & TProdProperty_MultiplePool
+// TProdProperty_Scaled & TProdProperty_Infinite
+// TProdProperty_Infinite & TProdProperty_Reinforcement
+TProdProperty_FixedPool is 1
+TProdProperty_MultiplePool is 2
+TProdProperty_Idle is 3
+TProdProperty_Scaled is 4 // assume 1 as value min
+TProdProperty_Infinite is 5
+TProdProperty_Reinforcement is 6
+TProdProperty_IterativePools is 7
+TProdProperty_LaunchAsSoonAsPossible is 8
+
+
+//FrontLineType
+FrontLineType_GrowWithCapture is 0
+FrontLineType_ForceFrontline is 1
+
+//TargetSelection
+TTargetSelectionType_InsideFrontline is 1  //A tester
+TTargetSelectionType_Anywhere is 2
+
+//TSequenceConditionValues
+TSequenceConditionValues_NbPointLeftOnMap is 1
+TSequenceConditionValues_NbZoneLeftOnMap is 2
+TSequenceConditionValues_NbPointTotalOnMap is 3
+TSequenceConditionValues_NbZoneTotalOnMap is 4
+TSequenceConditionValues_NbZoneLeftOnMapNotCapturing is 5
+TSequenceConditionValues_CombatPoolPower is 6
+TSequenceConditionValues_EnemyCombatPoolPower is 7
+TSequenceConditionValues_RessourcesPoints is 8
+TSequenceConditionValues_RessourceMaxPoints is 9
+TSequenceConditionValues_TotalRessources is 10
+TSequenceConditionValues_EnemyTotalRessources is 11
+TSequenceConditionValues_RessourcesPointsSharedInTeam is 12
+
+//GamePhase
+//DeploiementPhase is 2
+//CommandPhase is 3
+
+//TOperator
+Equal is 1
+StrictlyLess is 2
+StrictlyMore is 3
+More is 4
+Less is 5
+
+//Valeurs de test
+Test_Move               is 1
+Test_ArtilleryStrike    is 2
+Test_Attack             is 3
+Test_Choix_Cible        is 4
+Test_Flee               is 5
+Test_Hide               is 6
+Test_Load               is 7
+Test_Regroup            is 8
+Test_Split              is 9
+Test_Unload             is 10
+Test_ChooseUnitToSupply is 11
+Test_ChooseFOB          is 12
+Test_MoveSafely         is 13
+Test_DispatchSupply     is 14
+Test_District           is 15
+
+OTAN          is 0
+PACT          is 1
+TEST          is 2 //Miguel : oui ca correspond     a Length... je sais
+
+//Type de phase
+StratPhase_Opening is 0
+StratPhase_MiddleGame is 1
+
+//Numero de version
+V00 is 0
+V01 is 1
+V02 is 2
+V03 is 3

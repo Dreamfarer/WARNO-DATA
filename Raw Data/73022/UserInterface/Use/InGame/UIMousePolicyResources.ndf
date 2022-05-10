@@ -1,0 +1,1257 @@
+//--------------------------------------------------------
+// MouseWidget Selectors
+//--------------------------------------------------------
+
+private textModuleGreen is [142,229,99,255]
+private textModuleRed is [255,0,0,255]
+private textModuleWhite is [255,255,255,255]
+private textModuleMagenta is [255,0,255,255]
+private textModuleYellow is [255,255,0,255]
+private textModuleCyan is [0,255,255,255]
+private CouleurWhiteTransparent is [255,255,255,128]
+private CouleurCyan is [97, 189, 200,255]
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_DefaultOrder is TUIMouseWidgetSelector_DefaultOrder
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , ~/DefaultMouseWidget),
+        (Cursor_None             , ~/MouseWidget_Blank),
+        (Cursor_OrderAlly        , ~/MouseWidget_OrderAlly),
+        (Cursor_OrderEnemy       , ~/MouseWidget_OrderEnemy),
+        (Cursor_OrderInvalid     , ~/MouseWidget_OrderInvalid),
+        (Cursor_OrderNeutralLand , ~/MouseWidget_OrderNeutralLand),
+        (Cursor_OrderPlayer      , ~/MouseWidget_OrderPlayer),
+        (Cursor_SelectAlly       , ~/MouseWidget_SelectAlly),
+        (Cursor_SelectEnemy      , ~/MouseWidget_SelectEnemy),
+        (Cursor_SelectInvalid    , ~/MouseWidget_SelectInvalid),
+        (Cursor_SelectNeutralLand, ~/MouseWidget_SelectNeutralLand),
+        (Cursor_SelectPlayer     , ~/MouseWidget_SelectPlayer)
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Bonus        , "WidgetSelector/Bonus"),
+        (TextStyle_WithinRange  , "WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "WidgetSelector/OutOfRange"),
+        (TextStyle_Unseen       , "WidgetSelector/Unseen"),
+        (TextStyle_Blocked      , "WidgetSelector/Blocked"),
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+    ]
+
+    AirplaneMissionArrowDescriptor = AirplaneMissionArrowDescriptor
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_Attack is TUIMouseWidgetSelector_Attack
+(
+    MouseWidgetList = MAP
+    [
+        (Weapon_Cursor_AirMissile        , ~/MouseWidget_AirMissile),
+        (Weapon_Cursor_CorrectedArtillery, ~/MouseWidget_Artillery),
+        (Weapon_Cursor_Canon             , ~/MouseWidget_Canon),
+        (Weapon_Cursor_FastCanon         , ~/MouseWidget_FastCanon),
+        (Weapon_Cursor_Forbidden         , ~/MouseWidget_Inefficient),
+        (Weapon_Cursor_GroundMissile     , ~/MouseWidget_GroundMissile),
+        (Weapon_Cursor_MachineGun        , ~/MouseWidget_MachineGun),
+        (Weapon_Cursor_None              , ~/MouseWidget_None),
+        (Weapon_Cursor_Outmap            , ~/DefaultMouseWidget),
+        (Weapon_Cursor_SuppressionFire   , ~/MouseWidget_SuppressionFire),
+        (Weapon_Cursor_UnguidedMissile   , ~/MouseWidget_UnguidedMissile),
+        (Weapon_Cursor_Inefficient       , ~/MouseWidget_Inefficient)
+    ]
+
+    WeaponCursorColorList = MAP
+    [
+        (CursorColor_Default      , "Cyan"),
+        (CursorColor_Inefficient  , "Jaune"),
+        (CursorColor_OutOfRange   , "Blanc50p"),
+        (CursorColor_Unseen       , "Blanc50p"),
+        (CursorColor_Blocked      , "Blanc50p"),
+        (CursorColor_Invalid      , "Magenta"),
+    ]
+
+    WeaponCursorTextForShootingState = MAP
+    [
+        //(ETacticalShooting_Inactive                 , ""),
+        //(ETacticalShooting_Default                  , ""),
+        (ETacticalShooting_BlockedLoS               , "TC_NOLOS"),
+        (ETacticalShooting_BlockedRoE               , "TC_NOROE"),
+        (ETacticalShooting_NoWeapon                 , "TC_NOWEAP"),
+        (ETacticalShooting_MinimalRange             , "TC_MR"),
+        (ETacticalShooting_OutOfRange               , "TC_OOR"),
+        (ETacticalShooting_Unseen                   , "TC_NCS"),
+        (ETacticalShooting_OutOfTurretConstraint    , "TC_OTC"),
+        (ETacticalShooting_Inefficient              , "TC_ERRNOEF"),
+        (ETacticalShooting_InvalidPosition          , "TC_ERRPOS"),
+        (ETacticalShooting_InvalidTarget            , "TC_ERRTARG"),
+        //(ETacticalShooting_FullAttackInfos          , ""),
+    ]
+
+    TextForDamageType = MAP
+    [
+        ("ap"           , "TC_AP"),
+        ("ap_missile"   , "TC_HEAT"),
+        ("balle"        , "TC_BULLET"),
+        ("balleaa"      , "TC_BULLET"),
+        ("balledca"     , "TC_BULLET"),
+        ("bombe"        , "TC_HE"),
+        ("cluster"      , "TC_HE"),
+        ("cluster_ap"   , "TC_AP"),
+        ("flamme"       , "TC_FLAMES"),
+        ("frag"         , "TC_HE"),
+        ("he"           , "TC_HE"),
+        ("roquette"     , "TC_HE"),
+        ("roquette_ap"  , "TC_rkt"),
+        //("smoke"        , ""),
+        //("suppress"     , ""),
+        //("suppressap"   , ""),
+    ]
+
+    ArmorLocationTokens = MAP
+    [
+        // (EArmorLocation/Default , ""),
+        (EArmorLocation/Front   , "TC_LOCF"),
+        (EArmorLocation/Sides   , "TC_LOCS"),
+        (EArmorLocation/Rear    , "TC_LOCR"),
+        (EArmorLocation/Top     , "TC_LOCT"),
+    ]
+
+    RemaingReloadTimeToken = "TC_RLD"
+    RemaingAimTimeToken = "TC_AIM"
+    IsFiringToken = "TC_SHT"
+    NoWeaponToken = "TC_UNUS"
+
+    EfficientShotRuleToken = "ER_ESEF"
+    NotEfficientShotRuleToken = "ER_ESMA"
+
+    BlinkingInterval = 1.0
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Bonus        , "WidgetSelector/Bonus"),
+        (TextStyle_WithinRange  , "WidgetSelector/WithinRange"),
+        (TextStyle_OutOfRange   , "WidgetSelector/OutOfRange"),
+        (TextStyle_Unseen       , "WidgetSelector/Unseen"),
+        (TextStyle_Blocked      , "WidgetSelector/Blocked"),
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+        (TextStyle_NotEfficient , "WidgetSelector/NotEfficient"),
+    ]
+
+    WeaponShootingStateToTextStyle = MAP
+    [
+        //(ETacticalShooting_Inactive                 , ""),
+        //(ETacticalShooting_Default                  , ""),
+        (ETacticalShooting_BlockedLoS               , TextStyle_Unseen),
+        (ETacticalShooting_BlockedRoE               , TextStyle_Invalid),
+        (ETacticalShooting_NoWeapon                 , TextStyle_Invalid),
+        (ETacticalShooting_MinimalRange             , TextStyle_OutOfRange),
+        (ETacticalShooting_OutOfRange               , TextStyle_OutOfRange),
+        (ETacticalShooting_Unseen                   , TextStyle_Unseen),
+        (ETacticalShooting_OutOfTurretConstraint    , TextStyle_OutOfRange),
+        (ETacticalShooting_Inefficient              , TextStyle_NotEfficient),
+        (ETacticalShooting_InvalidPosition          , TextStyle_Invalid),
+        (ETacticalShooting_InvalidTarget            , TextStyle_Invalid),
+        (ETacticalShooting_FullAttackInfos          , TextStyle_WithinRange),
+    ]
+
+    WeaponShootingStateToCursorColor = MAP
+    [
+        //(ETacticalShooting_Inactive                 , ""),
+        //(ETacticalShooting_Default                  , ""),
+        (ETacticalShooting_BlockedLoS               , CursorColor_Blocked),
+        // (ETacticalShooting_BlockedRoE               , CursorColor_Default),
+        (ETacticalShooting_NoWeapon                 , CursorColor_Invalid),
+        (ETacticalShooting_MinimalRange             , CursorColor_OutOfRange),
+        (ETacticalShooting_OutOfRange               , CursorColor_OutOfRange),
+        (ETacticalShooting_Unseen                   , CursorColor_Unseen),
+        (ETacticalShooting_OutOfTurretConstraint    , CursorColor_OutOfRange),
+        (ETacticalShooting_Inefficient              , CursorColor_Inefficient),
+        (ETacticalShooting_InvalidPosition          , CursorColor_Invalid),
+        (ETacticalShooting_InvalidTarget            , CursorColor_Invalid),
+        (ETacticalShooting_FullAttackInfos          , CursorColor_Default),
+    ]
+
+    LoSResource = TUITacticalShootingLoSResource
+    (
+        VisionLineBlockedColor = rgba[50, 50, 50, 128] // ligne de vue bloquée
+        VisionLineInefficientColor = rgba[255, 255, 0, 250]
+        VisionLineOutOfRangeMinColor = rgba[255, 255, 255, 125]
+        VisionLineOutOfRangeMaxColor = rgba[50, 50, 50, 128]
+        VisionLineUnSeenColor = rgba[0, 0, 0, 0] // out of range visuel
+        VisionLineVisibleAndShootableColor = rgba[119,241,241,255]
+        //~~~~~~~~
+        DashedLineSize = 5000 div 1000
+        MeshMaterialLine = $/M3D/Shader/MeshMaterialLoS
+        RenderLayerLine = $/M3D/Scene/Scene3D_AfterPostProcess/debugInfo/Render/Calque_DebugInfo_Line
+    )
+
+    UnitComparatorStates =
+    [
+        TMouseWidgetUnitComparatorState
+        (
+            MaxRatioValue = 0.0
+            Token = "CMP_IMPOS"
+            TextStyle = "Default"
+            TextColor = "VividRed"
+        ),
+        TMouseWidgetUnitComparatorState
+        (
+            MaxRatioValue = 0.4
+            Token = "CMP_VHARD"
+            TextStyle = "Default"
+            TextColor = "Orange7"
+        ),
+        TMouseWidgetUnitComparatorState
+        (
+            MaxRatioValue = 0.8
+            Token = "CMP_HARD"
+            TextStyle = "Default"
+            TextColor = "Orange3"
+        ),
+        TMouseWidgetUnitComparatorState
+        (
+            MaxRatioValue = 1.2
+            Token = "CMP_BALAN"
+            TextStyle = "Default"
+            TextColor = "JauneLeger2"
+        ),
+        TMouseWidgetUnitComparatorState
+        (
+            MaxRatioValue = 1.8
+            Token = "CMP_EASY"
+            TextStyle = "Default"
+            TextColor = "Green2"
+        ),
+        TMouseWidgetUnitComparatorState
+        (
+            Token = "CMP_VEASY"
+            TextStyle = "Default"
+            TextColor = "Green3"
+        ),
+    ]
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_Ghost is TUIMouseWidgetSelector_Ghost
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_None,                   ~/MouseWidget_Blank),
+        (Cursor_Default,                ~/DefaultMouseWidget),
+        (Cursor_Ghost,                  ~/MouseWidget_Ghost),
+        (Cursor_SelectNeutralLand,      ~/MouseWidget_SelectNeutralLand),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Bonus        , "WidgetSelector/Bonus"),
+        (TextStyle_Blocked      , "WidgetSelector/Blocked"),
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+    ]
+
+    SpawnUnitArrowDescriptor = SpawnUnitArrowDescriptor
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_Capacity is TUIMouseWidgetSelector_Capacity
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , ~/DefaultMouseWidget),
+        (Cursor_None             , ~/MouseWidget_Blank),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+    ]
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_AIAttack is TUIMouseWidgetSelector_Capacity
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , ~/MouseWidget_OrderAIAttack),
+        (Cursor_None             , ~/MouseWidget_Blank),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+    ]
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_AIArtilleryFocus is TUIMouseWidgetSelector_Capacity
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , ~/MouseWidget_OrderAIArtilleryFocus),
+        (Cursor_None             , ~/MouseWidget_Blank),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+    ]
+)
+
+//--------------------------------------------------------
+
+template Template_MouseWidgetSelector_SimpleCursor
+[
+    DefaultCursorWidget  = ~/DefaultMouseWidget,
+]
+is TUIMouseWidgetSelector_SimpleCursor
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , <DefaultCursorWidget>),
+        (Cursor_None             , ~/MouseWidget_Blank),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+    ]
+)
+
+//--------------------------------------------------------
+
+template Template_MouseWidgetSelector_SimpleCursorWithTerrainFeedback
+[
+    DefaultCursorWidget  = ~/DefaultMouseWidget,
+    CursorWidgetWithTerrainFeedback = ~/DefaultMouseWidget,
+]
+is TUIMouseWidgetSelector_SimpleCursorWithTerrainFeedback
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , <DefaultCursorWidget>),
+        (Cursor_SelectNeutralLand, <CursorWidgetWithTerrainFeedback>),
+        (Cursor_None             , ~/MouseWidget_Blank),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+    ]
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_MoveFast is Template_MouseWidgetSelector_SimpleCursorWithTerrainFeedback
+(
+    DefaultCursorWidget = ~/MouseWidget_OrderMoveFast
+    CursorWidgetWithTerrainFeedback = ~/MouseWidget_OrderMoveFast_WithTerrainFeedback
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_Reverse is Template_MouseWidgetSelector_SimpleCursorWithTerrainFeedback
+(
+    DefaultCursorWidget = ~/MouseWidget_OrderReverse
+    CursorWidgetWithTerrainFeedback = ~/MouseWidget_OrderReverse_WithTerrainFeedback
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_MoveAndAttack is TUIMouseWidgetSelector_MoveAndAttack
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , ~/MouseWidget_OrderMoveAndAttack),
+        (Cursor_SelectNeutralLand, ~/MouseWidget_OrderMoveAndAttack_WithTerrainFeedback),
+        (Cursor_None             , ~/MouseWidget_Blank),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+    ]
+
+    MouseWidgetSelectorAttack = ~/MouseWidgetSelector_Attack
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_UnloadAtPosition is Template_MouseWidgetSelector_SimpleCursorWithTerrainFeedback
+(
+    DefaultCursorWidget = ~/MouseWidget_OrderUnloadAtPosition
+    CursorWidgetWithTerrainFeedback = ~/MouseWidget_OrderUnloadAtPosition_WithTerrainFeedback
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelectorDefault is Template_MouseWidgetSelector_SimpleCursorWithTerrainFeedback
+(
+    DefaultCursorWidget = ~/DefaultMouseWidget
+    CursorWidgetWithTerrainFeedback = ~/MouseWidget_SelectNeutralLand
+)
+
+//--------------------------------------------------------
+
+MouseWidget_Explode is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_MoveAndExplode"
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_Explode is Template_MouseWidgetSelector_SimpleCursor
+(
+    DefaultCursorWidget = ~/MouseWidget_Explode
+)
+
+//--------------------------------------------------------
+
+MouseWidget_MoveAndExplode is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation = ~/MouseCurseur_MoveAndExplode
+)
+
+//--------------------------------------------------------
+
+MouseWidgetSelector_MoveAndExplode is Template_MouseWidgetSelector_SimpleCursor
+(
+    DefaultCursorWidget = ~/MouseWidget_MoveAndExplode
+)
+
+//--------------------------------------------------------
+// MouseWidgets with hardware cursor
+//--------------------------------------------------------
+template Template_HardwareMouseWidgetResource
+[
+    HardwareMouseCursorAnimation = ~/MouseCursorAnimationDefault,
+    RelativeTextPlacement = [0.5, 1.5],
+    TextSize = "MouseWidget/TextModuleBig"
+]
+is TUIMouseWidgetResource
+(
+    ModuleResourceList =
+    MAP
+    [
+        (
+            "CursorSetter",
+            TUIMouseWidgetSimpleCursorSetterModuleResource
+            (
+                HardwareMouseCursorAnimation = <HardwareMouseCursorAnimation>
+            )
+        ),
+    ]
+
+    UILayer = $/UserInterface/UILayer_2DInterface_InGame
+
+    ViewDescriptors = MAP
+    [
+        (
+            "TextView",
+            UIMouseWidgetTextViewDescriptor
+            (
+                RelativeTextPlacement = <RelativeTextPlacement>
+                TextSize = <TextSize>
+            )
+        ),
+    ]
+)
+
+//--------------------------------------------------------
+
+template Template_HardwareMouseWidgetResource_WithBUCK
+[
+    HardwareMouseCursorAnimation : TMouseCursorAnimation = ~/MouseCursorAnimationDefault,
+    BUCKDescriptor : TBUCKContainerDescriptor = nil,
+    PointerFollowingProperties : TPointerFollowingPropertiesRTTI = nil,
+    CursorMap =
+    MAP
+    [
+        (ECoverTypeForInterface/None, ~/MouseCurseur_defaut),
+        (ECoverTypeForInterface/Light, ~/MouseCurseur_couvert_leger),
+        (ECoverTypeForInterface/Heavy, ~/MouseCurseur_couvert_lourd),
+        (ECoverTypeForInterface/Batiment,  ~/MouseCurseur_couvert_lourd),
+        (ECoverTypeForInterface/BarbedWire,  ~/MouseCurseur_couvert_lourd),
+    ],
+]
+is TUIMouseWidgetResource
+(
+    ModuleResourceList =
+    MAP
+    [
+        (
+
+            "CursorSetter",
+            TUIMouseWidgetTerrainCursorSetterModuleResource
+            (
+                TerrainTypeToMouseCursorAnimation = <CursorMap>
+            )
+        ),
+
+        (
+            "BUCKModule",
+            TUIMouseWidgetBUCKModuleResource
+            (
+                BUCKDescriptor = <BUCKDescriptor>
+                PointerFollowingProperties = <PointerFollowingProperties>
+                UILayer = $/UserInterface/UILayer_2DInterface_InGame
+            )
+        ),
+    ]
+    UILayer = $/UserInterface/UILayer_2DInterface_InGame
+)
+
+//--------------------------------------------------------
+
+template Template_HardwareMouseWidgetResource_WithTerrainHint
+[
+    HardwareMouseCursorAnimation : TMouseCursorAnimation = ~/MouseCursorAnimationDefault,
+    TerrainTypeToHintContent : Map<int, THintContentHolder> = MAP[],
+    HintDescriptor : TBUCKHintDescriptor = ~/HintInGameBUCKComponent,
+    StillTimeBeforeHintAppearance : float = 0.0,
+]
+is TUIMouseWidgetResource
+(
+    ModuleResourceList =
+    MAP
+    [
+        (
+            "CursorSetter",
+            TUIMouseWidgetSimpleCursorSetterModuleResource
+            (
+                HardwareMouseCursorAnimation = <HardwareMouseCursorAnimation>
+            )
+        ),
+        (
+            "HintModule",
+            TUIMouseWidgetTerrainHintModuleResource
+            (
+                TerrainTypeToHintContent = <TerrainTypeToHintContent>
+                HintDescriptor = <HintDescriptor>
+                StillTimeBeforeHintAppearance = <StillTimeBeforeHintAppearance>
+            )
+        ),
+    ]
+    UILayer = $/UserInterface/UILayer_2DInterface_InGame
+)
+
+//--------------------------------------------------------
+
+template Template_HardwareMouseWidgetResource_WithTerrainFeedback
+[
+    RelativeTextPlacement = [0.5, 1.5],
+    CursorMap =
+    MAP
+    [
+        (ECoverTypeForInterface/None, ~/MouseCurseur_defaut),
+        (ECoverTypeForInterface/Light, ~/MouseCurseur_couvert_leger),
+        (ECoverTypeForInterface/Heavy, ~/MouseCurseur_couvert_lourd),
+        (ECoverTypeForInterface/Batiment,  ~/MouseCurseur_couvert_lourd),
+        (ECoverTypeForInterface/BarbedWire,  ~/MouseCurseur_couvert_lourd),
+    ],
+    TextSize = "MouseWidget/TextModule",
+    TerrainTypeToHintContent : Map<int, THintContentHolder> = MAP[],
+    HintDescriptor : TBUCKHintDescriptor = ~/HintInGameBUCKComponent,
+    StillTimeBeforeHintAppearance : float = 0.0,
+]
+is TUIMouseWidgetResource
+(
+    ModuleResourceList =
+    MAP
+    [
+        (
+            "CursorSetter",
+            TUIMouseWidgetTerrainCursorSetterModuleResource
+            (
+                TerrainTypeToMouseCursorAnimation = <CursorMap>
+            )
+        ),
+        (
+            "HintModule",
+            TUIMouseWidgetTerrainHintModuleResource
+            (
+                TerrainTypeToHintContent = <TerrainTypeToHintContent>
+                HintDescriptor = <HintDescriptor>
+                StillTimeBeforeHintAppearance = <StillTimeBeforeHintAppearance>
+            )
+        ),
+    ]
+    UILayer = $/UserInterface/UILayer_2DInterface_InGame
+
+    ViewDescriptors = MAP
+    [
+        (
+            "TextView",
+            UIMouseWidgetTextViewDescriptor
+            (
+                RelativeTextPlacement = [0.5, 1.5]
+                TextSize = <TextSize>
+            )
+        ),
+    ]
+)
+
+template Template_HardwareMouseWidgetResourcePlayerMission
+[
+    HardwareMouseCursorAnimation = $/UI/Components/MouseCursorAnimationDefault,
+    RelativeTextPlacement = [0.5, 1.5],
+    PlayerMissionType = ~/EPlayerMissionRequestType_Unkown
+]
+is TUIMouseWidgetResource
+(
+    ModuleResourceList =
+    MAP
+    [
+        (
+            "CursorSetter",
+            TUIMouseWidgetSimpleCursorSetterModuleResource
+            (
+                HardwareMouseCursorAnimation = <HardwareMouseCursorAnimation>
+            )
+        ),
+        (
+            "PlayerMissionZoneModule",
+            TUIMouseWidgetPlayerMissionZoneResource
+            (
+                PlayerMissionType = <PlayerMissionType>
+            )
+        ),
+    ]
+
+    UILayer = $/UserInterface/UILayer_2DInterface_InGame
+
+    ViewDescriptors = MAP
+    [
+        (
+            "TextView",
+            UIMouseWidgetTextViewDescriptor()
+        ),
+    ]
+)
+
+TerrainTypeToText is MAP
+[
+    (
+        ~/ETerrainType/Default, // terrain dégagé
+        THintContentHolder
+        (
+            //TitleToken = "terr_rout"
+            //BodyToken = "terr_roub"
+            //ExtendedToken = "terr_roue"
+        )
+    ),
+    (
+        ~/ETerrainType/ForetLegere,
+        THintContentHolder
+        (
+            TitleToken = "foret"
+            BodyToken = "foretB"
+            //ExtendedToken = "terr_aute" //TERR_02E"
+        )
+    ),
+
+    (
+        ~/ETerrainType/ForetDense,
+        THintContentHolder
+        (
+            TitleToken = "foretde"
+            //BodyToken = "terr_roub"
+            //ExtendedToken = "terr_roue"
+        )
+    ),
+    (
+        ~/ETerrainType/PetitBatiment,
+        THintContentHolder
+        (
+            TitleToken = "batiment"
+            BodyToken = "batimentB"
+        )
+    ),
+    (
+        ~/ETerrainType/Batiment,
+        THintContentHolder
+        (
+            TitleToken = "batiment"
+            BodyToken = "batimentB"
+            ExtendedToken = "batimentE"
+        )
+    ),
+    (
+        ~/ETerrainType/Rocher,
+        THintContentHolder
+        (
+            TitleToken = "rocher"
+            BodyToken = "rocherB"
+            //ExtendedToken = "terr_roue"
+        )
+    ),
+    (
+            ~/ETerrainType/EauPeuProfonde,
+        THintContentHolder
+        (
+            TitleToken = "TERR_05T"
+            //BodyToken = "TERR_05B"
+            //ExtendedToken = "TERR_05E"
+        )
+    ),
+    (
+        ~/ETerrainType/Ruin,
+        THintContentHolder
+        (
+            TitleToken = "ruin"
+            BodyToken = "ruinB"
+            //ExtendedToken = "terr_roue"
+        )
+    ),
+
+]
+
+DefaultMouseWidget is Template_HardwareMouseWidgetResource
+(
+    RelativeTextPlacement = [0.9, 0.9]
+)
+
+//--------------------------------------------------------
+
+MouseWidget_Blank is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/Curseur_Blank
+    RelativeTextPlacement = [0.0, 0.0]
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderAlly is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_defaut
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderEnemy is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_defaut
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderInvalid is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_invalide
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderNeutralLand is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_defaut
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderPlayer is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_attaque
+)
+
+//--------------------------------------------------------
+
+MouseWidget_SelectAlly is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_selection_defaut
+)
+
+//--------------------------------------------------------
+
+MouseWidget_SelectEnemy is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_attaque
+)
+
+//--------------------------------------------------------
+
+MouseWidget_SelectInvalid is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_invalide
+)
+
+//--------------------------------------------------------
+
+MouseWidget_SelectNeutralLand is Template_HardwareMouseWidgetResource_WithTerrainFeedback
+(
+    CursorMap = MAP
+    [
+        (ECoverTypeForInterface/None, ~/MouseCurseur_defaut),
+        (ECoverTypeForInterface/Light, ~/MouseCurseur_couvert_leger),
+        (ECoverTypeForInterface/Heavy, ~/MouseCurseur_couvert_lourd),
+        (ECoverTypeForInterface/BarbedWire,  ~/MouseCurseur_barbed_wire),
+        (ECoverTypeForInterface/Rocher,   ~/MouseCurseur_couvert_rocher),
+        (ECoverTypeForInterface/Batiment,   ~/MouseCurseur_couvert_lourd),
+    ]
+
+    StillTimeBeforeHintAppearance = 2
+    TerrainTypeToHintContent = TerrainTypeToText
+)
+
+//--------------------------------------------------------
+
+MouseWidget_SelectPlayer is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_selection_defaut
+)
+
+//--------------------------------------------------------
+
+MouseWidget_Ghost is Template_HardwareMouseWidgetResource
+(
+    RelativeTextPlacement = [1, 1.5]
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderMoveFast is Template_HardwareMouseWidgetResource
+(
+    RelativeTextPlacement = [1, 1.5]
+    HardwareMouseCursorAnimation = ~/Mousecurseur_mouvement_rapide
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderMoveFast_WithTerrainFeedback is Template_HardwareMouseWidgetResource_WithTerrainFeedback
+(
+    CursorMap = MAP
+    [
+        (ECoverTypeForInterface/None,  ~/Mousecurseur_mouvement_rapide),
+        (ECoverTypeForInterface/Light, ~/Mousecurseur_mouvement_rapide_coverl),
+        (ECoverTypeForInterface/Heavy, ~/Mousecurseur_mouvement_rapide_coverh),
+        (ECoverTypeForInterface/Batiment,  ~/Mousecurseur_mouvement_rapide_coverh),
+        (ECoverTypeForInterface/BarbedWire,  ~/Mousecurseur_mouvement_rapide_barbed_wire),
+    ]
+
+    StillTimeBeforeHintAppearance = 2
+    TerrainTypeToHintContent = TerrainTypeToText
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderReverse is Template_HardwareMouseWidgetResource
+(
+    RelativeTextPlacement = [1, 1.5]
+    HardwareMouseCursorAnimation = ~/Mousecurseur_curseur_retour
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderReverse_WithTerrainFeedback is Template_HardwareMouseWidgetResource_WithTerrainFeedback
+(
+    CursorMap = MAP
+    [
+        (ECoverTypeForInterface/None,  ~/Mousecurseur_curseur_retour),
+        (ECoverTypeForInterface/Light, ~/Mousecurseur_curseur_retour_coverl),
+        (ECoverTypeForInterface/Heavy, ~/Mousecurseur_curseur_retour_coverh),
+        (ECoverTypeForInterface/Batiment,  ~/Mousecurseur_curseur_retour_coverh),
+        (ECoverTypeForInterface/BarbedWire,  ~/Mousecurseur_curseur_retour_barbed_wire),
+    ]
+
+    StillTimeBeforeHintAppearance = 2
+    TerrainTypeToHintContent = TerrainTypeToText
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderMoveAndAttack is Template_HardwareMouseWidgetResource
+(
+    RelativeTextPlacement = [1, 1.5]
+    HardwareMouseCursorAnimation = ~/Mousecurseur_mouvement_attaque
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderMoveAndAttack_WithTerrainFeedback is Template_HardwareMouseWidgetResource_WithTerrainFeedback
+(
+    CursorMap = MAP
+    [
+        (ECoverTypeForInterface/None,  ~/Mousecurseur_mouvement_attaque),
+        (ECoverTypeForInterface/Light, ~/Mousecurseur_mouvement_attaque_coverl),
+        (ECoverTypeForInterface/Heavy, ~/Mousecurseur_mouvement_attaque_coverh),
+        (ECoverTypeForInterface/Batiment,  ~/Mousecurseur_mouvement_attaque_coverh),
+        (ECoverTypeForInterface/BarbedWire,  ~/Mousecurseur_mouvement_attaque_barbed_wire),
+    ]
+
+    StillTimeBeforeHintAppearance = 2
+    TerrainTypeToHintContent = TerrainTypeToText
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderUnloadAtPosition is Template_HardwareMouseWidgetResource
+(
+    RelativeTextPlacement = [1, 1.5]
+    HardwareMouseCursorAnimation = ~/Mousecurseur_UnloadAtPosition
+)
+
+//--------------------------------------------------------
+
+MouseWidget_OrderUnloadAtPosition_WithTerrainFeedback is Template_HardwareMouseWidgetResource_WithTerrainFeedback
+(
+    CursorMap = MAP
+    [
+        (ECoverTypeForInterface/None,  ~/Mousecurseur_UnloadAtPosition),
+        (ECoverTypeForInterface/Light, ~/Mousecurseur_UnloadAtPosition_coverl),
+        (ECoverTypeForInterface/Heavy, ~/Mousecurseur_UnloadAtPosition_coverh),
+        (ECoverTypeForInterface/Batiment,  ~/Mousecurseur_UnloadAtPosition_coverh),
+        (ECoverTypeForInterface/BarbedWire,  ~/Mousecurseur_UnloadAtPosition_barbed_wire),
+    ]
+
+    StillTimeBeforeHintAppearance = 2
+    TerrainTypeToHintContent = TerrainTypeToText
+)
+
+//--------------------------------------------------------
+
+MouseWidget_AddDefensePoint is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_AddDefensePoint
+)
+
+//--------------------------------------------------------
+
+MouseWidget_ValidateDefense is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_ValidateDefense
+)
+
+//--------------------------------------------------------
+
+MouseWidget_InvalidDefense is Template_HardwareMouseWidgetResource
+(
+    HardwareMouseCursorAnimation    = ~/MouseCurseur_InvalidDefense
+)
+
+//--------------------------------------------------------
+MouseWidget_OrderAIAttack is Template_HardwareMouseWidgetResourcePlayerMission
+(
+    RelativeTextPlacement = [1, 1.5]
+    HardwareMouseCursorAnimation = ~/Mousecurseur_ai_attack
+    PlayerMissionType = ~/EPlayerMissionRequestType_Seize
+)
+
+MouseWidget_OrderAIArtilleryFocus is Template_HardwareMouseWidgetResourcePlayerMission
+(
+    RelativeTextPlacement = [1, 1.5]
+    HardwareMouseCursorAnimation = ~/Mousecurseur_ai_artillery_focus
+    PlayerMissionType = ~/EPlayerMissionRequestType_ManageArtillery_Focus
+)
+
+//--------------------------------------------------------
+// MouseWidgets with software cursor (weapon)
+//--------------------------------------------------------
+
+private template TextComponentForCursor
+[
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+    PaddingX = 0,
+    TextSize = "MouseWidget/TextModule",
+]
+is BUCKTextDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_Up
+        InterLine = 0.1
+    )
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TypefaceToken = "UIMainFont"
+
+    TextStyle = "MouseWidget/TextModule"
+    TextColor = "MouseWidget/TextModule"
+
+    TextSize = <TextSize>
+    TextPadding = TRTTILength4( Magnifiable = [<PaddingX>, 0.0, <PaddingX>, 0.0])
+)
+
+//--------------------------------------------------------
+
+private template TextComponentWeapon
+[
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI()
+] is TextComponentForCursor
+(
+    ComponentFrame = <ComponentFrame>
+    TextSize = "MouseWidget/TextModule"
+)
+
+//--------------------------------------------------------
+
+template Template_SoftwareMouseWidgetResource_Targeting
+[
+    RelativeTargetPointerPlacement  = [0.5, 0.5],
+    SoftwareCursorTextureName       = "",
+    HardwareMouseCursorAnimation    = $/UI/Components/MouseCursorAnimationPointerSelectionRed,
+]
+is TUIMouseWidgetResource
+(
+    ModuleResourceList = MAP
+    [
+        (
+            "CursorSetter",
+            TUIMouseWidgetSimpleCursorSetterModuleResource
+            (
+                HardwareMouseCursorAnimation = <HardwareMouseCursorAnimation>
+            )
+        ),
+        (
+            "GabaritModule",
+            TUIMouseWidgetGabaritModuleResource()
+        ),
+        (
+            "LoSModule",
+            TUIMouseWidgetLoSModuleResource()
+        ),
+    ]
+
+    UILayer = $/UserInterface/UILayer_2DInterface_InGame
+
+    ViewDescriptors = MAP
+    [
+        ("AttackCursorView", UISpecificMouseWidgetAttackViewDescriptor(SoftwareCursorTextureName = <SoftwareCursorTextureName>)),
+    ]
+)
+
+//--------------------------------------------------------
+
+MouseWidget_AirMissile is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_AirMissile"
+)
+
+//--------------------------------------------------------
+
+MouseWidget_Artillery is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_Artillery"
+)
+
+//--------------------------------------------------------
+
+MouseWidget_Canon is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_Canon"
+)
+
+//--------------------------------------------------------
+
+MouseWidget_FastCanon is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_FastCanon"
+)
+
+//--------------------------------------------------------
+
+MouseWidget_Forbidden is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_Forbidden"
+)
+
+//--------------------------------------------------------
+
+MouseWidget_GroundMissile is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_GroundMissile"
+)
+
+//--------------------------------------------------------
+
+MouseWidget_MachineGun is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_MG"
+)
+
+//--------------------------------------------------------
+
+MouseWidget_None is Template_SoftwareMouseWidgetResource_Targeting
+(
+    //TextDescriptor = nil
+)
+
+//--------------------------------------------------------
+
+MouseWidget_SuppressionFire is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_SuppressFire"
+)
+
+//--------------------------------------------------------
+
+MouseWidget_UnguidedMissile is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_UnguidedMissile"
+)
+
+//--------------------------------------------------------
+
+MouseWidget_Inefficient is Template_SoftwareMouseWidgetResource_Targeting
+(
+    SoftwareCursorTextureName       = "Texture_Tactical_Cursor_Inefficient"
+)
+
+//--------------------------------------------------------
+// Ressources pour les paths de feedback
+//--------------------------------------------------------
+
+private PathAndArrowSizeMultiplierHelper is TPathAndArrowSizeMultiplierHelper
+(
+    Camera = $/M3D/Camera/CameraPrincipale
+    LineSizeMultiplierParam = $/M3D/Shader/LineSizeMultiplierParamVector
+)
+
+//--------------------------------------------------------
+
+private TextureToutVert is TResourceTextureFromFile
+(
+    FileName = 'VirtualData:/ToutVert'
+    UsefulnessMask = CivMask/Common + TypeMask/Common
+)
+
+//--------------------------------------------------------
+
+// A maintenir synchro avec Engine\Code\Eugen\CPP\InterfaceMultiProjets\UIPathDescriptor.h
+private EndPathShapeType_Nothing     is 0
+private EndPathShapeType_NarrowArrow is 1
+private EndPathShapeType_WideArrow   is 2
+
+// Flèche pour l'envoi d'un avion en mission
+private AirplaneMissionArrowDescriptor is TUIPathDescriptor
+(
+    Color                 = [255, 255, 255, 128] // BGRA
+    PlaqueSurLeSol        = true
+    VertexCountPerSection = 3
+    RenderLayerSelector = TRenderLayerSelector(RenderLayerName='Calque_Fleche_GD')
+    Material              = $/M3D/Shader/MaterialBezierLine_Bichrome
+    Width                 = 1500
+    ArrowLength           = 2500
+    ArrowWidth            = 2500
+    Texture               = TextureToutVert
+    EndPathShapeMode      = EndPathShapeType_WideArrow
+    SizeMultiplierHelper  = PathAndArrowSizeMultiplierHelper
+    OpacityControlByFloat = $/M3D/Shader/AreaFillOpacity
+)
+
+// Flèche pour une unité de renfort
+private SpawnUnitArrowDescriptor is TUIPathDescriptor
+(
+    Color                 = [255, 255, 255, 128] // BGRA
+    PlaqueSurLeSol        = true
+    VertexCountPerSection = 3
+    RenderLayerSelector = TRenderLayerSelector(RenderLayerName='Calque_Fleche_GD')
+    Material              = $/M3D/Shader/MaterialBezierLine_Bichrome
+    Width                 = 1500
+    ArrowLength           = 2500
+    ArrowWidth            = 2500
+    Texture               = TextureToutVert
+    EndPathShapeMode      = EndPathShapeType_WideArrow
+    SizeMultiplierHelper  = PathAndArrowSizeMultiplierHelper
+    OpacityControlByFloat = $/M3D/Shader/AreaFillOpacity
+)
+
+//--------------------------------------------------------
+
+DefenseLineMouseWidgetSelector is TBuildDefenseLineMouseWidgetSelector
+(
+    MouseWidgetList = MAP
+    [
+        (Cursor_Default          , ~/MouseWidget_AddDefensePoint),
+        (Cursor_OrderPlayer      , ~/MouseWidget_ValidateDefense),
+        (Cursor_OrderInvalid     , ~/MouseWidget_InvalidDefense),
+    ]
+
+    TextStyleList = MAP
+    [
+        (TextStyle_WithinRange  , "WidgetSelector/WithinRange"),
+        (TextStyle_Invalid      , "WidgetSelector/Invalid"),
+    ]
+)
+
+//--------------------------------------------------------
+
+InGameMousePolicyManagerResources is TUISpecificMousePolicyManagerResources
+(
+    KeyBoardPresetUpdater   = $/KeyboardPreset/KeyboardPresetUpdater
+    Camera                  = $/M3D/Camera/CameraPrincipale
+    World3D                 = $/M3D/Scene/DefaultWorld
+    Scene3D                 = $/M3D/Scene/Scene_2D_Interface
+
+    MouseWidgetSelectorForGhost = "MouseWidgetSelector_Ghost"
+    DefaultMouseWidgetSelector = "MouseWidgetSelectorDefault"
+    MouseWidgetSelectorForDefenseLine = "DefenseLineMouseWidgetSelector"
+
+    MouseWidgetSelectorByName = MAP
+    [
+        (
+            "MouseWidgetSelector_DefaultOrder",
+            ~/MouseWidgetSelector_DefaultOrder
+        ),
+        (
+            "MouseWidgetSelector_Explode",
+            ~/MouseWidgetSelector_Explode
+        ),
+        (
+            "MouseWidgetSelector_MoveAndExplode",
+            ~/MouseWidgetSelector_MoveAndExplode
+        ),
+        (
+            "MouseWidgetSelector_AIAttack",
+            ~/MouseWidgetSelector_AIAttack
+        ),
+        (
+            "MouseWidgetSelector_AIArtilleryFocus",
+            ~/MouseWidgetSelector_AIArtilleryFocus
+        ),
+        (
+            "MouseWidgetSelector_Attack",
+            ~/MouseWidgetSelector_Attack
+        ),
+        (
+            "MouseWidgetSelector_UnloadAtPosition",
+            ~/MouseWidgetSelector_UnloadAtPosition
+        ),
+        (
+            "MouseWidgetSelector_Reverse",
+            ~/MouseWidgetSelector_Reverse
+        ),
+        (
+            "MouseWidgetSelector_MoveFast",
+            ~/MouseWidgetSelector_MoveFast
+        ),
+        (
+            "MouseWidgetSelector_Capacity",
+            ~/MouseWidgetSelector_Capacity
+        ),
+        (
+            "MouseWidgetSelector_Ghost",
+            ~/MouseWidgetSelector_Ghost
+        ),
+        (
+            "MouseWidgetSelectorDefault",
+            ~/MouseWidgetSelectorDefault
+        ),
+        (
+            "DefenseLineMouseWidgetSelector",
+            ~/DefenseLineMouseWidgetSelector
+        ),
+    ]
+)

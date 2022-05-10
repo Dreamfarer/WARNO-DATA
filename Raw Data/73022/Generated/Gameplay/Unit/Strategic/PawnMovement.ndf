@@ -1,0 +1,75 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export StrategicMovementDescriptor_aerial is TStrategicMovementModuleDescriptor
+(
+    MovementType = ~/PawnMovementType_aerial
+    MaxSpeed = 5000.0 * Metre
+    SpeedModifierRoad = 1.0
+    VerticalOffset = 0.0 * Metre
+    NormalTerrainAPConsumptionModifier = 1.0
+    SpeedReducerTerrainAPConsumptionModifier = 2.0
+    AcceleratorTerrainAPConsumptionModifier = 0.8
+    ConsumeAPOnMove = False
+)
+
+export StrategicMovementDescriptor_company is TStrategicMovementModuleDescriptor
+(
+    MovementType = ~/PawnMovementType_company
+    MaxSpeed = 1000.0 * Metre
+    SpeedModifierRoad = 1.0
+    VerticalOffset = 0.0 * Metre
+    NormalTerrainAPConsumptionModifier = 0.8
+    SpeedReducerTerrainAPConsumptionModifier = 2.5
+    AcceleratorTerrainAPConsumptionModifier = 0.6
+    ConsumeAPOnMove = False
+)
+
+export StrategicMovementDescriptor_default is TStrategicMovementModuleDescriptor
+(
+    MovementType = ~/PawnMovementType_default
+    MaxSpeed = 1600.0 * Metre
+    SpeedModifierRoad = 0.5
+    VerticalOffset = 0.0 * Metre
+    NormalTerrainAPConsumptionModifier = 0.8
+    SpeedReducerTerrainAPConsumptionModifier = 2.5
+    AcceleratorTerrainAPConsumptionModifier = 0.6
+    ConsumeAPOnMove = True
+)
+
+export StrategicMovementDescriptor_helico is TStrategicMovementModuleDescriptor
+(
+    MovementType = ~/PawnMovementType_helico
+    MaxSpeed = 500.0 * Metre
+    SpeedModifierRoad = 0.5
+    VerticalOffset = 0.0 * Metre
+    NormalTerrainAPConsumptionModifier = 1.0
+    SpeedReducerTerrainAPConsumptionModifier = 1.0
+    AcceleratorTerrainAPConsumptionModifier = 1.0
+    ConsumeAPOnMove = True
+)
+
+export StrategicMovementDescriptor_mecanized is TStrategicMovementModuleDescriptor
+(
+    MovementType = ~/PawnMovementType_mecanized
+    MaxSpeed = 500.0 * Metre
+    SpeedModifierRoad = 0.5
+    VerticalOffset = 0.0 * Metre
+    NormalTerrainAPConsumptionModifier = 3.0
+    SpeedReducerTerrainAPConsumptionModifier = 9.0
+    AcceleratorTerrainAPConsumptionModifier = 1.0
+    ConsumeAPOnMove = True
+)
+
+export StrategicMovementDescriptor_onFoot is TStrategicMovementModuleDescriptor
+(
+    MovementType = ~/PawnMovementType_onFoot
+    MaxSpeed = 1600.0 * Metre
+    SpeedModifierRoad = 0.5
+    VerticalOffset = 0.0 * Metre
+    NormalTerrainAPConsumptionModifier = 1.2
+    SpeedReducerTerrainAPConsumptionModifier = 1.8
+    AcceleratorTerrainAPConsumptionModifier = 1.0
+    ConsumeAPOnMove = True
+)
+

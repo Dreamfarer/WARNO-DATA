@@ -1,0 +1,166 @@
+template HUDBackgroundParallelogram
+[
+    MagnifiableWidthHeight : float2,
+    RelativeOffset : float2 = [0.0, 0.0],
+    MagnifiableOffset : float2 = [0.0, 0.0],
+    PixelOffset : float2 = [0.0, 0.0],
+    AlignementToAnchor : float2 = [0.0, 0.0],
+    AlignementToFather : float2 = [0.0, 0.0],
+    Color0 : string,
+    Color1 : string,
+]
+is BUCKPolygonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+        RelativeOffset = <RelativeOffset>
+        MagnifiableOffset = <MagnifiableOffset>
+        PixelOffset = <PixelOffset>
+        AlignementToAnchor = <AlignementToAnchor>
+        AlignementToFather = <AlignementToFather>
+    )
+
+    PolygonShape = PolygonShapeManual
+    (
+        Corners =
+        [
+            [0.0, 1.0],
+            [<MagnifiableWidthHeight>[1] div <MagnifiableWidthHeight>[0], 0.0],
+            [1.0, 0.0],
+            [1.0 - <MagnifiableWidthHeight>[1] div <MagnifiableWidthHeight>[0], 1.0],
+        ]
+    )
+
+    Color0 = <Color0>
+    Color1 = <Color1>
+)
+
+template HUDBackgroundParallelogramFreize
+[
+    FriezeMagnifiableWidthHeight : float2,
+    FriezeRelativeOffset : float2 = [0.0, 0.0],
+    FriezeMagnifiableOffset : float2 = [0.0, 0.0],
+    FriezePixelOffset : float2 = [0.0, 0.0],
+    FriezeAlignementToAnchor : float2 = [0.0, 0.0],
+    FriezeAlignementToFather : float2 = [0.0, 0.0],
+
+    ParallelogramMagnifiableWidth : float,
+    ParallelogramMagnifiableHorizontalOffset : float = 0.0,
+    Color0 : string = "Gray80",
+    Color1 : string = "DarkerGray80",
+]
+is BUCKContainerDescriptor
+(
+    SpacingBetweenTwoPatterns is <ParallelogramMagnifiableWidth> - <FriezeMagnifiableWidthHeight>[1]
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <FriezeMagnifiableWidthHeight>
+        RelativeOffset = <FriezeRelativeOffset>
+        MagnifiableOffset = <FriezeMagnifiableOffset>
+        PixelOffset = <FriezePixelOffset>
+        AlignementToAnchor = <FriezeAlignementToAnchor>
+        AlignementToFather = <FriezeAlignementToFather>
+    )
+
+    ClipContent = true
+
+    Components =
+    [
+        HUDBackgroundParallelogram
+        (
+            MagnifiableWidthHeight = [<ParallelogramMagnifiableWidth>, <FriezeMagnifiableWidthHeight>[1]]
+            MagnifiableOffset = [<ParallelogramMagnifiableHorizontalOffset>, 0.0]
+            Color0 = <Color0>
+            Color1 = <Color1>
+        ),
+    ] +
+
+    ((<FriezeMagnifiableWidthHeight>[0] - <ParallelogramMagnifiableHorizontalOffset>) div (<ParallelogramMagnifiableWidth> - <FriezeMagnifiableWidthHeight>[1]) > 1.0 ?
+    [
+        HUDBackgroundParallelogram
+        (
+            MagnifiableWidthHeight = [<ParallelogramMagnifiableWidth>, <FriezeMagnifiableWidthHeight>[1]]
+            MagnifiableOffset = [<ParallelogramMagnifiableHorizontalOffset> + 1.0*(SpacingBetweenTwoPatterns - 0.5), 0.0]
+            Color0 = <Color0>
+            Color1 = <Color1>
+        ),
+    ] : []) +
+
+    ((<FriezeMagnifiableWidthHeight>[0] - <ParallelogramMagnifiableHorizontalOffset>) div (<ParallelogramMagnifiableWidth> - <FriezeMagnifiableWidthHeight>[1]) > 2.0 ?
+    [
+        HUDBackgroundParallelogram
+        (
+            MagnifiableWidthHeight = [<ParallelogramMagnifiableWidth>, <FriezeMagnifiableWidthHeight>[1]]
+            MagnifiableOffset = [<ParallelogramMagnifiableHorizontalOffset> + 2.0*(SpacingBetweenTwoPatterns - 0.5), 0.0]
+            Color0 = <Color0>
+            Color1 = <Color1>
+        ),
+    ] : []) +
+
+    ((<FriezeMagnifiableWidthHeight>[0] - <ParallelogramMagnifiableHorizontalOffset>) div (<ParallelogramMagnifiableWidth> - <FriezeMagnifiableWidthHeight>[1]) > 3.0 ?
+    [
+        HUDBackgroundParallelogram
+        (
+            MagnifiableWidthHeight = [<ParallelogramMagnifiableWidth>, <FriezeMagnifiableWidthHeight>[1]]
+            MagnifiableOffset = [<ParallelogramMagnifiableHorizontalOffset> + 3.0*(SpacingBetweenTwoPatterns - 0.5), 0.0]
+            Color0 = <Color0>
+            Color1 = <Color1>
+        ),
+    ] : []) +
+
+    ((<FriezeMagnifiableWidthHeight>[0] - <ParallelogramMagnifiableHorizontalOffset>) div (<ParallelogramMagnifiableWidth> - <FriezeMagnifiableWidthHeight>[1]) > 4.0 ?
+    [
+        HUDBackgroundParallelogram
+        (
+            MagnifiableWidthHeight = [<ParallelogramMagnifiableWidth>, <FriezeMagnifiableWidthHeight>[1]]
+            MagnifiableOffset = [<ParallelogramMagnifiableHorizontalOffset> + 4.0*(SpacingBetweenTwoPatterns - 0.5), 0.0]
+            Color0 = <Color0>
+            Color1 = <Color1>
+        ),
+    ] : []) +
+
+    ((<FriezeMagnifiableWidthHeight>[0] - <ParallelogramMagnifiableHorizontalOffset>) div (<ParallelogramMagnifiableWidth> - <FriezeMagnifiableWidthHeight>[1]) > 5.0 ?
+    [
+        HUDBackgroundParallelogram
+        (
+            MagnifiableWidthHeight = [<ParallelogramMagnifiableWidth>, <FriezeMagnifiableWidthHeight>[1]]
+            MagnifiableOffset = [<ParallelogramMagnifiableHorizontalOffset> + 5.0*(SpacingBetweenTwoPatterns - 0.5), 0.0]
+            Color0 = <Color0>
+            Color1 = <Color1>
+        ),
+    ] : []) +
+
+    ((<FriezeMagnifiableWidthHeight>[0] - <ParallelogramMagnifiableHorizontalOffset>) div (<ParallelogramMagnifiableWidth> - <FriezeMagnifiableWidthHeight>[1]) > 6.0 ?
+    [
+        HUDBackgroundParallelogram
+        (
+            MagnifiableWidthHeight = [<ParallelogramMagnifiableWidth>, <FriezeMagnifiableWidthHeight>[1]]
+            MagnifiableOffset = [<ParallelogramMagnifiableHorizontalOffset> + 6.0*(SpacingBetweenTwoPatterns - 0.5), 0.0]
+            Color0 = <Color0>
+            Color1 = <Color1>
+        ),
+    ] : []) +
+
+    ((<FriezeMagnifiableWidthHeight>[0] - <ParallelogramMagnifiableHorizontalOffset>) div (<ParallelogramMagnifiableWidth> - <FriezeMagnifiableWidthHeight>[1]) > 7.0 ?
+    [
+        HUDBackgroundParallelogram
+        (
+            MagnifiableWidthHeight = [<ParallelogramMagnifiableWidth>, <FriezeMagnifiableWidthHeight>[1]]
+            MagnifiableOffset = [<ParallelogramMagnifiableHorizontalOffset> + 7.0*(SpacingBetweenTwoPatterns - 0.5), 0.0]
+            Color0 = <Color0>
+            Color1 = <Color1>
+        ),
+    ] : []) +
+
+    ((<FriezeMagnifiableWidthHeight>[0] - <ParallelogramMagnifiableHorizontalOffset>) div (<ParallelogramMagnifiableWidth> - <FriezeMagnifiableWidthHeight>[1]) > 8.0 ?
+    [
+        HUDBackgroundParallelogram
+        (
+            MagnifiableWidthHeight = [<ParallelogramMagnifiableWidth>, <FriezeMagnifiableWidthHeight>[1]]
+            MagnifiableOffset = [<ParallelogramMagnifiableHorizontalOffset> + 8.0*(SpacingBetweenTwoPatterns - 0.5), 0.0]
+            Color0 = <Color0>
+            Color1 = <Color1>
+        ),
+    ] : [])
+)

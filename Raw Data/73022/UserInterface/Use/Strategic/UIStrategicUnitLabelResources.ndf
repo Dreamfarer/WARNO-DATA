@@ -1,0 +1,30 @@
+SpecificStrategicUnitLabelResources is TUISpecificUnitLabelResources
+(
+    UILayer                         = $/UserInterface/UILayer_Labels
+    UI3DLayer                       = $/UserInterface/UI3DLayer_General
+    Camera                          = $/M3D/Camera/CameraPrincipale
+
+    CameraMoverHelperProxy          = $/M3D/Scene/IngameCameraMoverHelperProxy
+    FadeHeightTansitionStart        = 9000.0
+    FadeHeightTansitionEnd          = 5000.0
+
+    LabelInAggregatMagnifiableBox = [1.0, 1.0]
+    LabelMagnifiableBox = [36.0, 15.0] //Aggregate unit on X,Y
+    RatioToLabelInAggregatMagnifiableBox = [0.7, 0.9]
+    RatioToLabelMagnifiableBox = [0.7, 0.9] //Ratio unit on X,Y
+    MagnifiableOffsetCenter = [30.0, -21.0] // offset center on X,Y
+
+    NbMaxAggregatedUnits = 12
+
+    MagnificationMultiplier = 1
+    UI3DTransformation = TModernWarfareLabelTransformation
+    (
+        Camera = $/M3D/Camera/CameraPrincipale
+        ScalePerAltitudeConstReso = 1.5 // pas touche! - voir sebastien
+        Scene2D = $/M3D/Scene/Scene_2D_Interface
+        ConstnessFactor = 1
+        PreTranslate = [0, 0, 0]
+        PostTranslate = [0, 0, 0] // valeur pour régler la hauteur des étiquettes par rapport à l'unité
+        RefResolution = [ 1920, 1080 ]
+    )
+)

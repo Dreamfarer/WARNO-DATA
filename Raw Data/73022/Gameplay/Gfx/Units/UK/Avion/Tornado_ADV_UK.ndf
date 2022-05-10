@@ -1,0 +1,25 @@
+export ModelFile_Tornado_ADV_UK is 'GameData:/Assets/3D/Units/UK/Avion/Tornado_ADV/Tornado_ADV.Ase2NdfBin'
+
+Modele_Tornado_ADV_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Tornado_ADV_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Tornado_ADV_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Avion/Tornado_ADV/Tornado_ADV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Tornado_ADV_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Avion/Tornado_ADV/Tornado_ADV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Tornado_ADV_UK_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Avion/Tornado_ADV/Tornado_ADV_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

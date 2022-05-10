@@ -1,0 +1,536 @@
+//-------------------------------------------------------------------------
+//------------------------- MISSIONS DE DEFENSE ---------------------------
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_Common
+//-------------------------------------------------------------------------
+// GenerationType :
+// NumberLaunchBasedOnGenerationType :
+// ParametresDeMission : Transport, Airstrike, Support, ArtilleryStrike
+// PoolModelList : liste des unites demandees
+// DisableReinforcement : si on recoit des renforts en cours d'attaque ou pas
+// IgnoreSafePath : Le pathfind de la mission cherche ou non à esquiver la menace
+// TuerLaMissionEnFinDeVieAuLieuDeLaRelancer : (bool)
+// LaunchASAP_RatioMin : permet de lancer l'attaque sans attendre toutes les unites requises à combiner avec ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+// MissionOmnisciente : Pas utilise dans Normandie (systeme de connaissance de zone)
+//-------------------------------------------------------------------------
+// Parametres TMacroActionDescriptor_CorridorDefense_Specific
+//-------------------------------------------------------------------------
+// ForcedCorridor : (format special ex:[1]) permet de forcer l'attaque sur un couloir.
+//
+
+// PARAMETERS
+//-------------------------------------------------------------------------
+WeightDefensePointScoringFeatureMap is MAP
+[
+        (EDefensePointScoringFeature/DistanceBonus, 3.0),
+        (EDefensePointScoringFeature/DistanceMargin, 0.0 * Metre),
+        (EDefensePointScoringFeature/DistanceDecayLength, 2500.0 * Metre),
+        (EDefensePointScoringFeature/DistanceDecayCoeff, 1.0),
+        (EDefensePointScoringFeature/MalusDefaultDefensePoint, 3.0),
+]
+
+// SettingList
+//-------------------------------------------------------------------------
+GenBTDef_AvoidFillerCorridors_Defense_Settings is
+[
+    TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"]),
+]
+
+// MAINTAINS
+//-------------------------------------------------------------------------
+export GenBTDef_Maintain_CorridorDefenses is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_Maintain),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Maintain_CorridorDynamicDefenses is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_Maintain),
+    ]
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template GenBTDef_Template_Defense
+[
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/GenBTDef_Pool_AT_Defense, GenBTDef_Pool_HMG_Defense],
+    UseTaggedPool:bool = true,
+    OrderedZoneWeightList = [],
+    DefensePointScoringFeatureValue = MAP[],
+    GenerationSettingHolder = TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        <GenerationSettingHolder>,
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Renfort_AT]),
+        TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"]),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = <PoolModelList>
+            TaggedPoolModelList = (
+                <UseTaggedPool> == false ? [] :
+                [
+                    (["DefenseInfantry"], [~/GenBTDef_Pool_HMG_Defense]),
+                    (["DefenseAA"], [~/GenBTDef_Pool_AA_Defense]),
+                    (["DefenseTank"], [~/GenBTDef_Pool_AT_Defense]),
+                ])
+            LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = <OrderedZoneWeightList>),
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TDefenseBehaviorSettingHolder(DefensePointScoringFeature = TDefensePointScoringFeature(DefensePointScoringValue = <DefensePointScoringFeatureValue>)),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+private template GenBTDef_Template_Dynamic_Defense_Corridor
+[
+    NumberLaunchBasedOnGenerationType:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    PoolModelList = [~/GenBTDef_Pool_AT_Defense, GenBTDef_Pool_HMG_Defense],
+    UseTaggedPool:bool = true
+]
+is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = <NumberLaunchBasedOnGenerationType>),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Renfort_AT]),
+        TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"]),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = <PoolModelList>
+            TaggedPoolModelList = (
+                <UseTaggedPool> == false ? [] :
+                [
+                    (["DefenseInfantry"], [~/GenBTDef_Pool_HMG_Defense]),
+                    (["DefenseAA"], [~/GenBTDef_Pool_AA_Defense]),
+                    (["DefenseTank"], [~/GenBTDef_Pool_AT_Defense]),
+                ])
+            LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//-------------------------------------------------------------------------
+// Defenses couloir classiques
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_Adaptive is GenBTDef_Template_Defense
+(
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_Adaptive_FrontLane is GenBTDef_Template_Defense
+(
+    OrderedZoneWeightList = [1]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_Adaptive_BackLane is GenBTDef_Template_Defense
+(
+    OrderedZoneWeightList = [2]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_AA is GenBTDef_Template_Defense
+(
+    PoolModelList = [ ~/GenBTDef_Pool_AA_Defense ]
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_Tank_FrontLane is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Renfort_AT]),
+        TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"]),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/GenBTDef_Pool_Tank_Defense]
+            TaggedPoolModelList = ([(["MainAttack", "AttackCombined"], [~/GenBTDef_Pool_Tank_Defense]),]) PrioritizeCorridorsForTaggedPoolModels = true LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [1]),
+        TDefenseBehaviorSettingHolder(DefensePointScoringFeature = TDefensePointScoringFeature(DefensePointScoringValue = ~/WeightDefensePointScoringFeatureMap)),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_Adaptive_FrontLane_Filler is GenBTDef_Template_Defense
+(
+    OrderedZoneWeightList = [1]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+    GenerationSettingHolder = TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 1 ConsiderOnlyAssignedCorridors = true)
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_Adaptive_BackLane_Filler is GenBTDef_Template_Defense
+(
+    OrderedZoneWeightList = [2]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+    GenerationSettingHolder = TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 1 ConsiderOnlyAssignedCorridors = true)
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_AA_FrontLane is GenBTDef_Template_Defense
+(
+    PoolModelList = [ ~/GenBTDef_Pool_AA_Defense ]
+    UseTaggedPool = false
+    OrderedZoneWeightList = [1]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_AA_BackLane is GenBTDef_Template_Defense
+(
+    PoolModelList = [ ~/GenBTDef_Pool_AA_Defense ]
+    UseTaggedPool = false
+    OrderedZoneWeightList = [2]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Dynamic_Adaptive is GenBTDef_Template_Dynamic_Defense_Corridor
+(
+)
+
+export GenBTDef_Defense_Dynamic_FrontLane is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Renfort_AT]),
+        TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"]),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/GenBTDef_Pool_Tank_Defense_Budget] LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TDefenseBehaviorSettingHolder(DefensePointScoringFeature = TDefensePointScoringFeature(DefensePointScoringValue = ~/WeightDefensePointScoringFeatureMap)),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+//-------------------------------------------------------------------------
+// Defenses couloir autogen
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_Adaptive_Autogen is GenBTDef_Template_Defense
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_Adaptive_Autogen_FrontLane is GenBTDef_Template_Defense
+(
+    OrderedZoneWeightList = [1]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_AA_Autogen is GenBTDef_Template_Defense
+(
+    PoolModelList = [ ~/GenBTDef_Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    UseTaggedPool = false
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_AA_Autogen_Economic is GenBTDef_Template_Defense
+(
+    PoolModelList = [ ~/GenBTDef_Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Economic
+    UseTaggedPool = false
+    OrderedZoneWeightList = [1]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_AA_Autogen_FrontLane is GenBTDef_Template_Defense
+(
+    PoolModelList = [ ~/GenBTDef_Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    UseTaggedPool = false
+    OrderedZoneWeightList = [1]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Static_AA_Autogen_BackLane is GenBTDef_Template_Defense
+(
+    PoolModelList = [ ~/GenBTDef_Pool_AA_Defense ]
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    UseTaggedPool = false
+    OrderedZoneWeightList = [2]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Dynamic_Adaptive_Autogen is GenBTDef_Template_Dynamic_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Dynamic_Adaptive_Autogen_Economic is GenBTDef_Template_Dynamic_Defense_Corridor
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Economic
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Defense_Filler_FrontLane is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 1 ConsiderOnlyAssignedCorridors = true),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/GenBTDef_Pool_Defense_Filler] LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [1]),
+        TDefenseBehaviorSettingHolder(DefensePointScoringFeature = TDefensePointScoringFeature(DefensePointScoringValue = ~/WeightDefensePointScoringFeatureMap)),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//-------------------------------------------------------------------------
+// Budgets
+//-------------------------------------------------------------------------
+GenBTDef_Budget_Frontlane is 400
+
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+GenBTDef_ProductionFallback is [
+    "Vehicule_Appui",
+    "Infanterie_Standard",
+    "Canon_AA",
+    "Vehicule_Transport_Arme",
+    "Char"
+] // Ce fallback permet d'assurer la production d'au moins une unite pour les corridors taggués. Sinon ça bloque le couloir
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_Tank_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6ab3c4f-6a89-11e9-8d3e-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Lourd",
+                "Char_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b6ab6361-6a89-11e9-b297-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Standard",
+                "Infanterie_Spec_Defense",
+            ]
+        ),
+    ]
+)
+//------------------------------------------------------------------------
+export GenBTDef_Pool_HMG_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6ab6362-6a89-11e9-969b-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+                "Vehicule_Appui",
+            ]
+            +~/GenBTDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_AT_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6ab6363-6a89-11e9-830f-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AT_Lourd",
+                "ChasseurDeChar_Lourd",
+                "Canon_AT_Standard",
+                "ChasseurDeChar_Standard",
+            ]
+            +~/GenBTDef_ProductionFallback
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b6ab6364-6a89-11e9-9086-704d7b2c87d4}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+            ]
+            +~/GenBTDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_AA_Defense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6ab6365-6a89-11e9-b806-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            +~/GenBTDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_HMG_Defense_Budget is TPoolModel
+(
+    Budget = ~/GenBTDef_Budget_Frontlane
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6ab6366-6a89-11e9-a27b-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+                "Vehicule_Appui",
+            ]
+            +~/GenBTDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_Tank_Defense_Budget is TPoolModel
+(
+    Budget = ~/GenBTDef_Budget_Frontlane
+        ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6ab6367-6a89-11e9-ae2f-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_CMD",
+                "Vehicule_CMD",
+                "Char_Lourd",
+                "Char_Standard",
+                "Char",
+                "Vehicule_Appui"
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b6ab6368-6a89-11e9-8cdf-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Reco",
+                "Vehicule_Reco",
+                "Infanterie_Reco",
+                "Infanterie_Standard",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b6ab6369-6a89-11e9-b4d8-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Lourd",
+                "Char_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b6ab636a-6a89-11e9-bf7c-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b6ab636b-6a89-11e9-9a99-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+    + ~/Infantry_Fallback_Attack
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_AA_Defense_Budget is TPoolModel
+(
+    Budget = ~/GenBTDef_Budget_Frontlane
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6ab636c-6a89-11e9-9e0e-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Canon_AA_Standard",
+                "Canon_AA_Porte",
+            ]
+            +~/GenBTDef_ProductionFallback
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Pool_Defense_Filler is TPoolModel
+(
+    Budget = 40
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{b6ab636d-6a89-11e9-9b0a-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Standard",
+                "Infanterie_Spec_Defense",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{b6ab636e-6a89-11e9-aace-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------

@@ -1,0 +1,32 @@
+export ModelFile_TPZ_Fuchs_MILAN_RFA is 'GameData:/Assets/3D/Units/RFA/APC/TPZ_Fuchs_1/TPZ_Fuchs_1.Ase2NdfBin'
+
+Modele_TPZ_Fuchs_MILAN_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_TPZ_Fuchs_MILAN_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_TPZ_Fuchs_MILAN_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/APC/TPZ_Fuchs_1/TPZ_Fuchs_1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_TPZ_Fuchs_MILAN_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/APC/TPZ_Fuchs_1/TPZ_Fuchs_1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_TPZ_Fuchs_MILAN_RFA_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MG3_Tourelle_01
+    CivMask =  CivMask/Common
+)
+export ModelFile_MILAN_Tourelle_02 is 'GameData:/Assets/3D/Units/RFA/APC/Marder_1A2_MILAN/MILAN_t2.Ase2NdfBin'
+
+Modele_TPZ_Fuchs_MILAN_RFA_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MILAN_Tourelle_02
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,237 @@
+private ModListSize is [- 12.0, -10.0]
+
+private ModCenterPanelApplyButton is ConfirmButton
+(
+    TextToken = 'AB_MODAPPL'
+    ElementName = 'ModCenterApplyButton'
+)
+
+private ModCenterPanelDefaultButton is StandardButton
+(
+    TextToken = 'AB_MODREVE'
+    ElementName = 'ModCenterDefaultButton'
+)
+
+private ModCenterPanelBrowseButton is StandardButton
+(
+    TextToken = 'AB_MODBROW'
+    ElementName = 'ModCenterBrowseButton'
+)
+
+private ModCenterPanelRefreshButton is StandardButton
+(
+    TextToken = 'AB_MODREFR'
+    ElementName = 'ModCenterRefreshButton'
+)
+
+private ModCenterPanelBackButton is CancelButton
+(
+    TextToken = 'NV_BACK'
+    ElementName = 'ModCenterBackButton'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+
+private ModCenterHintDescriptor is BUCKSpecificHintableArea
+(
+    ElementName = "HintArea"
+)
+
+private ModCenterPanelWindowFrame is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    TitleToken = 'T_MODCENT'
+
+    AdditionalComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = 'UnderContent'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather  = [0.5, 1.0]
+                AlignementToAnchor  = [0.5, 1.0]
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+        ),
+    ]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/ModCenterPanelApplyButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/ModCenterPanelDefaultButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/ModCenterPanelBrowseButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/ModCenterPanelRefreshButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/ModCenterPanelBackButton ),
+    ]
+)
+
+private ModCenterPanelCheckBox is BUCKSpecificCheckBoxDescriptor
+(
+    ElementName = 'CheckBox'
+    ComponentFrame = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = ~/DefaultCheckBoxDims
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+)
+
+private ModCenterPanelDetailsButton is BUCKButtonDescriptor
+(
+    ElementName = "DetailsButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = DefaultImageButtonDims
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+)
+
+private ModCenterStarRatingTexture is BUCKTextureDescriptor
+(
+    ClipTextureToComponent = True
+    TextureToken = "OutgameTexture_ModCenter_Star"
+    TileTextureInComponent = True
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0, 0]
+        MagnifiableWidthHeight = [28, 25]
+    )
+    TextureFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+        MagnifiableOffset = [0, 0]
+    )
+)
+
+ModCenter_LineBackground is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/ModCenter/line_background.png")
+
+private ModCenterInactiveContainerDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+        MagnifiableOffset = [1, 0]
+    )
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+    HasBackground = true
+    BackgroundBlockColorToken = "ModCenter"
+)
+
+private ModCenterSaveCheckBoxDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+        MagnifiableOffset = [1, 0]
+    )
+
+    Components =
+    [
+        BUCKSpecificCheckBoxDescriptor
+        (
+            ElementName = 'SaveCheckBox'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = ~/DefaultCheckBoxDims
+                MagnifiableOffset = [2.5, 6.0]
+                AlignementToFather = [0, 0]
+                AlignementToAnchor = [0, 0]
+            )
+        ),
+
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-1 * (DefaultCheckBoxDims[0] + 10.0), DefaultCheckBoxDims[1] * 1.1]
+                MagnifiableOffset = [DefaultCheckBoxDims[0] + 10.0, 6.0]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+            TextStyle = "Default"
+
+            TextColor       = "Blanc"
+            TextSize        = "InfoSecondaire"
+            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+            TextToken       = "SR_SAVE"
+
+            TypefaceToken   = "Liberator"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+    ]
+)
+
+ModCenterPanelScrolling is BUCKSpecificScrollingContainerDescriptor
+(
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = 'Content'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        )
+    ]
+
+    HasVerticalScrollbar = true
+)
+
+ModCenterPanelResource is TUISpecificOutGameModCenterResource
+(
+    ModCenterPanel = ~/ModCenterPanelWindowFrame
+    ModCenterPanelScrolling = ~/ModCenterPanelScrolling
+    ModCenterListSize = ~/ModListSize
+    ModCenterCheckBox = ~/ModCenterPanelCheckBox
+    ModCenterDetailsButton = ~/ModCenterPanelDetailsButton
+    ModCenterStarRating = ~/ModCenterStarRatingTexture
+    ModCenterInactiveContainer = ~/ModCenterInactiveContainerDescriptor
+    ModCenterSaveContainer =  ~/ModCenterSaveCheckBoxDescriptor
+    ModCenterHintDescriptor = ~/ModCenterHintDescriptor
+)
+
+ModResource is TUISpecificOutGameModResource
+(
+    TagModToTexture = MAP
+    [
+        (
+            "downloading_tags",
+            "OutgameTexture_Mod_Downloading"
+        ),
+        (
+            "Gameplay",
+            "OutgameTexture_Mod_Gameplay"
+        ),
+        (
+            "Interface",
+            "OutgameTexture_Mod_Interface"
+        ),
+        (
+            "Meshes",
+            "OutgameTexture_Mod_Mesh"
+        ),
+        (
+            "Sound",
+            "OutgameTexture_Mod_Mesh"
+        ),
+        (
+            "LobbyConfig",
+            "OutgameTexture_Mod_Gameplay"
+        ),
+        (
+            "DLC",
+            "OutgameTexture_Mod_Gameplay"
+        ),
+    ]
+
+    ModNotInLocalTexture = "OutgameTexture_GameRoomList_ModNotInLocal"
+    ModInLocalTexture = "OutgameTexture_GameRoomList_ModInLocal"
+    ModActiveTexture = "OutgameTexture_GameRoomList_ModActive"
+)

@@ -1,0 +1,174 @@
+
+OutGameSearchAutoMatchGameDescriptor is BUCKContainerDescriptor
+(
+    ElementName = "SearchRankedGameContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [512.0, 150.0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        MagnifiableOffset = [0.0, 2.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Black80"
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-50.0, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.0]
+            )
+
+            ElementName = 'ChatAndRankedGameSearchContainer'
+
+            FirstMargin = TRTTILength( Magnifiable = 30.0)
+            InterItemMargin = TRTTILength( Magnifiable = 20.0)
+            LastMargin = TRTTILength( Magnifiable = 30.0)
+
+            Axis = ~/ListAxis/Vertical
+
+            AssumeChildrenAreFixedSize = false
+            AssumeChildrenAreClippable = true
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "TitleText"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 19.0]
+                        )
+
+                        TextToken = "RANKG_SEAR"
+                        TextColor = "Blanc"
+                        TextSize  = "SearchRankedGame/Title"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TypefaceToken = "UIMainFont"
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_Bottom
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+
+                        UniformDrawer = $/UserInterface/UIUniformDrawer
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 30.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        InterItemMargin = TRTTILength( Magnifiable = 5.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = AnimatedWaitingComponent
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [30.0, 30.0]
+                                    )
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ElementName = "ElapsedTimeText"
+
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                    )
+
+                                    TextToken = "RANKG_ELAP"
+                                    TextColor = "Blanc"
+                                    TextSize  = "SearchRankedGame/EllapsingTime"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                    TypefaceToken = "UIMainFont"
+
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        Alignment = UIText_Left
+                                        VerticalAlignment = UIText_VerticalCenter
+                                        InterLine = 0
+                                    )
+
+                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                                    TextStyle = "Default"
+
+                                    UniformDrawer = $/UserInterface/UIUniformDrawer
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ElementName= "NbPlayersSearchingText"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                    )
+
+                                    TextColor = "Blanc"
+                                    TextSize  = "SearchRankedGame/NbPlayersSearching"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                    TypefaceToken = "UIMainFont"
+
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        Alignment = UIText_Right
+                                        VerticalAlignment = UIText_VerticalCenter
+                                    )
+
+                                    TextStyle = "Default"
+
+                                    UniformDrawer = $/UserInterface/UIUniformDrawer
+                                )
+                            ),
+                        ]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = CancelButton
+                    (
+                        ElementName = 'CancelButton'
+
+                        ButtonMagnifiableWidthHeight = [104.0, 24.0]
+                        ButtonAlignementToAnchor = [0.5, 0.0]
+                        ButtonAlignementToFather = [0.5, 0.0]
+
+                        TextToken = "BTN_CANCEL"
+                        Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+                    )
+                ),
+            ]
+        ),
+    ]
+)

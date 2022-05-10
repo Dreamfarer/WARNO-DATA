@@ -1,0 +1,16 @@
+HintManagementProperties is TUIHintManagementProperties
+(
+    AppearAfterDuration = 1.0
+    DisapearAfterDuration = 0.4
+    ExtendAfterDuration = 1.0
+
+    PointerFollowingProperties = TPointerFollowingPropertiesRTTI
+    (
+        MagnifiableOffset = [40.0, 0.0]
+        HorizontalPlacement = HorizontalPlacement/Right
+        VerticalPlacement = VerticalPlacement/Up
+        OutOfBorderHorizontalAction = OutOfBorderAction/SwitchPlacement
+        OutOfBorderVerticalAction = OutOfBorderAction/SwitchPlacement
+    )
+)
+

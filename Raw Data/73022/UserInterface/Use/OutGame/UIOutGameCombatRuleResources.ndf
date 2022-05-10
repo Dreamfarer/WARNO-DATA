@@ -1,0 +1,90 @@
+
+
+template CombatRuleDecorationComponent
+[
+    TextureToken : string,
+    HintTitle : string,
+    HintBody : string,
+    HintExtended : string,
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = [49,49]
+        MagnifiableOffset = [7,-8]
+        )
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'Gris123'
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = 'TextureCombatRule'
+            ComponentFrame = TUIFramePropertyRTTI( MagnifiableWidthHeight = [49,49]  )
+            TextureToken        = <TextureToken>
+            TextureFrame   = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [45,45]
+                    AlignementToAnchor = [0.5, 0.5]
+                    AlignementToFather = [0.5, 0.5]
+                    MagnifiableOffset = [0,2]
+             )
+            ClipTextureToComponent = true
+        ),
+        BUCKSpecificHintableArea
+        (
+            ElementName = 'HintCombatRule'
+            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+            HintTitleToken = <HintTitle>
+            HintBodyToken = <HintBody>
+            HintExtendedToken = <HintExtended>
+        ),
+    ]
+)
+
+CombatRuleResources is TUIOutGameCombatRuleResources
+(
+    CombatRuleInfos =
+    [
+        //CombatRule/NotSpecified,
+        TUICombatRuleResource
+        (
+            Name = 'NON_APP'
+            HintBody = 'NON_APP'
+            GameRoomListIconComponent = nil
+            GameRoomListFilterName = ''
+        ),
+
+        //CombatRule/Destruction,
+        TUICombatRuleResource
+        (
+            Name = 'CMBRL_DEST'
+            HintBody = 'HCR_DEST'
+            GameRoomListIconComponent = CombatRuleDecorationComponent
+            (
+                TextureToken = "OutgameTexture_DestructionTypeTexture"
+                HintTitle = "GRL_DESTT"
+                HintBody = "GRL_DESTB"
+                HintExtended = "GRL_DESTE"
+            )
+            GameRoomListFilterName = 'GRL_DESTR'
+        ),
+
+        //CombatRule/ConquestGameMode,
+        TUICombatRuleResource
+        (
+            Name = 'CMBRL_CTF'
+            HintBody = 'HCR_CTF'
+            GameRoomListIconComponent = CombatRuleDecorationComponent
+            (
+                TextureToken = "OutgameTexture_CaptureTheFlagTypeTexture"
+                HintTitle = "GRL_CTFT"
+                HintBody = "GRL_CTFB"
+                HintExtended = "GRL_CTFE"
+            )
+            GameRoomListFilterName = 'GRL_CTF'
+        ),
+    ]
+)

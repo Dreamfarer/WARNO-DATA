@@ -1,0 +1,25 @@
+
+
+export CriticalEffectModule_Chenille_Tourelle is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,100) //Attention le debug crée un assert si on a des unités utilisant des bounds différents vaut mieux garder les mêmes partout
+    TerrainCriticalEffectTimer = 5.0
+
+    EffectsFromTerrain = []
+
+    EffectsOnFront = []
+    EffectsOnSides = []
+    EffectsOnRear = []
+    EffectsOnTop = []
+
+    PierceEffectsOnFront = PackEffetCritique_VehiculeStandard
+    PierceEffectsOnSides = PackEffetCritique_VehiculeStandard
+    PierceEffectsOnRear = PackEffetCritique_VehiculeStandard
+    PierceEffectsOnTop = []
+
+    RicochetEffectsOnFront = []
+    RicochetEffectsOnSides = []
+    RicochetEffectsOnRear = []
+    RicochetEffectsOnTop = []
+)
+

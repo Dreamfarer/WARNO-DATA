@@ -1,0 +1,14 @@
+// On a besoin du InGameManagerHandler pour faire une pause active, donc les contrôles de la manette se retrouvent dans l'UI...
+GamePadUserInputForTrailer is TIngameGamePadUserInputForTrailer
+(
+    UsePad = $/GameplayOption/UsePad
+    InputLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_GamePadForTrailer
+    InGameManagerHandler = $/UI/Managers/InGameManagerHandler
+    Scene3D = $/M3D/Scene/Scene_2D_Interface
+
+    ScreenShotDirectoryName = "LocalShotDir:/Screenshots"
+    ScreenShotBaseName = $/Clusters/ProjectFinalName
+
+    ActivePauseGameSpeed = 0.001
+    PauseLock = $/M3D/Input/DebugPauseLock
+)

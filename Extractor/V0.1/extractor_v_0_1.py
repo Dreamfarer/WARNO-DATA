@@ -7,12 +7,16 @@
 #MotherCountry = 'RFA'
 #Nationalite = ENationalite/Allied
 
+keyWordArray = [
+    ["ClassNameForDebug", ""],
+    ["Nationalite", ""],
+    ["MotherCountry", ""],
+    ["UnitConcealmentBonus", 0.0],
+]
+
 
 #DONE
-#ClassNameForDebug
-#Nationalite
-#MotherCountry
-#UnitConcealmentBonus
+
 #ArmorDescriptorFront
 #ArmorDescriptorSides
 #ArmorDescriptorRear

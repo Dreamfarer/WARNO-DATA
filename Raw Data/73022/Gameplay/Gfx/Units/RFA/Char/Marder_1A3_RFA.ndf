@@ -1,0 +1,22 @@
+export ModelFile_Marder_1A3_RFA is 'GameData:/Assets/3D/Units/RFA/APC/Marder_1A3/Marder_1A3.Ase2NdfBin'
+
+Modele_Marder_1A3_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Marder_1A3_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Marder_1A3_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/APC/Marder_1A3/Marder_1A3.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Marder_1A3_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/APC/Marder_1A3/Marder_1A3.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

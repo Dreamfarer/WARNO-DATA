@@ -1,0 +1,19 @@
+export ModelFile_MAN_Kat_6x6_trans_RFA is 'GameData:/Assets/3D/Units/RFA/Vehicule/MAN_Kat_6x6/MAN_Kat_6x6.Ase2NdfBin'
+
+Modele_MAN_Kat_6x6_trans_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MAN_Kat_6x6_trans_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_MAN_Kat_6x6_trans_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Vehicule/MAN_Kat_6x6/MAN_Kat_6x6.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MAN_Kat_6x6_trans_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Vehicule/MAN_Kat_6x6/MAN_Kat_6x6.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

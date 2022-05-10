@@ -1,0 +1,25 @@
+export ModelFile_T72B_DDR is 'GameData:/Assets/3D/Units/DDR/Char/T72B/T72B.Ase2NdfBin'
+
+Modele_T72B_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T72B_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_T72B_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Char/T72B/T72B.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_T72B_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Char/T72B/T72B.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_T72B_DDR_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_NVT_127_Tourelle_02
+    CivMask =  CivMask/Common
+)

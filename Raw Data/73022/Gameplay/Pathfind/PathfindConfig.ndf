@@ -1,0 +1,22 @@
+export PathfindTypes is EPathfindType
+(
+    Values = [
+        "Flying",
+        "AmphibiousVehicle",
+        "Infantry",
+        "Vehicle",
+        "CanonTracte",
+        "FullTracks",
+    ]
+
+    export Flying is 0
+    export AmphibiousVehicle is 1
+    export Infantry is 2
+    export Vehicle is 3
+    export CanonTracte is 4
+    export FullTracks is 5
+
+    Alias = MAP [
+        ( "Default", Flying ),
+    ]
+)

@@ -1,0 +1,271 @@
+//------------------------------------------------------------------------------
+
+template ShortcutButton
+[
+    ElementName : string = '',
+    UniqueName : string = '',
+    TextureToken : string = '',
+    HintTitleToken : string = '',
+    HintBodyToken : string = '',
+    HintExtendedToken : string = '',
+    RelativeWidthHeight : float2 = [1.0, 1.0],
+    MagnifiableWidthHeight : float2 = [0.0, 0.0],
+    MagnifiableWidthHeightTexture : = [30.0, 30.0],
+    BackgroundBlockColorToken : string = "BoutonTemps",
+    BorderLineColorToken : string = "CouleurBordure_boutonShortcuts",
+
+] is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [52.0, 32.0]
+    )
+
+    IsTogglable = true
+    DefaultToggleValue = false
+    HasBorder = false
+
+    SpotlightComponent = SpotlightDescriptor()
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-4.0, -4.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Components =
+            [
+                PanelRoundedCorner
+                (
+                    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+                    BorderLineColorToken = <BorderLineColorToken>
+                )
+            ]
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+               MagnifiableWidthHeight = <MagnifiableWidthHeightTexture>
+               AlignementToFather = [0.5, 0.5]
+               AlignementToAnchor = [0.5, 0.5]
+            )
+
+            TextureToken = <TextureToken>
+            TextureColorToken = "CouleurTexture_boutonShortcuts"
+
+            {TextureFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = <RelativeWidthHeight>
+                                        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+                                        AlignementToFather = [0.5, 0.5]
+                                        AlignementToAnchor = [0.5, 0.5]
+                                    )}
+
+            Components =
+            [
+                 BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = <HintTitleToken>
+                    HintBodyToken = <HintBodyToken>
+                    HintExtendedToken = <HintExtendedToken>
+                )
+            ]
+        ),
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+OrderPanelPanelButton is ShortcutButton
+(
+    ElementName = 'OrdersFeedBackButton'
+    TextureToken = "textureOrders"
+    HintTitleToken = "HSL_ORDERT"
+    HintBodyToken = "HSL_ORDERB"
+)
+
+//------------------------------------------------------------------------------
+
+LoSPanelButton is ShortcutButton
+(
+    ElementName = 'LoSFeedBackButton'
+    TextureToken = "icone_los"
+    HintTitleToken = "HSL_ULOSBT"
+    HintBodyToken = "HSL_ULOSBB"
+    HintExtendedToken = "HSL_ULOSBE"
+    MagnifiableWidthHeightTexture = [52.0, 32.0]
+
+)
+
+//------------------------------------------------------------------------------
+
+ChatShortcutButton is ShortcutButton
+(
+    ElementName = 'ChatButton'
+    TextureToken = "icone_chat"
+    MagnifiableWidthHeightTexture = [52.0, 32.0]
+    HintTitleToken = "HSL_chatt"
+    HintBodyToken = "HSL_chatb"
+)
+
+//------------------------------------------------------------------------------
+
+HelpButton is ShortcutButton
+(
+    TextureToken = "textureOrders "
+)
+
+//------------------------------------------------------------------------------
+
+EngagementRulesButton is ShortcutButton
+(
+    ElementName = 'EngagementRulesButton'
+    TextureToken = "icone_roe"
+    MagnifiableWidthHeightTexture = [52.0, 32.0]
+    HintTitleToken = "HSL_Roet"
+    HintBodyToken = "HSL_Roeb"
+)
+
+//------------------------------------------------------------------------------
+
+DisplayStartingInformationButton is ShortcutButton
+(
+    ElementName = 'StartingInformationButton'
+    TextureToken = "icone_starting_information"
+    HintTitleToken = "HSL_wrnt"
+    HintBodyToken = "HSL_wrnb"
+)
+
+//------------------------------------------------------------------------------
+// pour Steelman
+//------------------------------------------------------------------------------
+BoutonAffichageStrategicSituation is ShortcutButton
+(
+    MagnifiableWidthHeight = [32.0, 100 div 3]
+    RelativeWidthHeight = [0.0, 0.0]
+    ElementName = 'BtnStrategicSituation'
+    UniqueName = 'StrategicHeader_BtnStrategicSituation'
+    TextureToken = "UseStrategic_BoutonMission"
+    HintTitleToken = "SSC_TITLE"
+    HintBodyToken = "head_Osb"
+    BackgroundBlockColorToken = "SM_Feldgrau"
+    BorderLineColorToken = "SM_Grullo"
+)
+
+BoutonAffichageOrdreDeBataille is ShortcutButton
+(
+    MagnifiableWidthHeight = [32.0, 100 div 3]
+    RelativeWidthHeight = [0.0, 0.0]
+    UniqueName = 'StrategicHeader_OrganisationBtn'
+    ElementName = 'BtnOrganisation'
+    TextureToken = "UseStrategic_BoutonOrganisation"
+    HintTitleToken = "SBO_TITL"
+    HintBodyToken = "head_Obb"
+    BackgroundBlockColorToken = "SM_Feldgrau"
+    BorderLineColorToken = "SM_Grullo"
+)
+
+BoutonAffichagePertes is ShortcutButton
+(
+    MagnifiableWidthHeight = [32.0, 100 div 3]
+    RelativeWidthHeight = [0.0, 0.0]
+    UniqueName = 'StrategicHeader_BtnLossesState'
+    ElementName = 'BtnLossesState'
+    TextureToken = "UseStrategic_BoutonPertes"
+    HintTitleToken = "SH_LOSS"
+    HintBodyToken = "head_Lsb"
+    BackgroundBlockColorToken = "SM_Feldgrau"
+    BorderLineColorToken = "SM_Grullo"
+)
+
+BoutonAccelerationDuTemps is ShortcutButton
+(
+    ElementName = 'BtnGameSpeed'
+    MagnifiableWidthHeight = [32.0, 100 div 3]
+    RelativeWidthHeight = [0.0, 0.0]
+    UniqueName = ''
+    TextureToken = "vitesse03Strat"
+    HintTitleToken = "sp_t"
+    HintBodyToken = "sp_c"
+    BackgroundBlockColorToken = "SM_Feldgrau"
+    BorderLineColorToken = "SM_Grullo"
+)
+//------------------------------------------------------------------------------
+
+BUCKSpecificShortcutsForSelectionMainComponentDescriptor is PanelRoundedCorner
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 40.0]
+        MagnifiableOffset = [10.0, 5.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    HasBackground = true
+    BackgroundBlockColorToken = 'TypeA'
+    HasBorder = false
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [0.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            FirstMargin = TRTTILength(Magnifiable = 19.0)
+            InterItemMargin = TRTTILength(Magnifiable = 13.0)
+            LastMargin = TRTTILength(Magnifiable = 19.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/DisplayStartingInformationButton
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/OrderPanelPanelButton
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/LoSPanelButton
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/ChatShortcutButton
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/EngagementRulesButton
+                ),
+            ]
+        )
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+UISpecificShortcutsForSelectionViewDescriptor is TUISpecificShortcutsForSelectionViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificShortcutsForSelectionMainComponentDescriptor
+    MainComponentContainerUniqueName = "UISpecificShortcutsForSelectionViewContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)
+
+//------------------------------------------------------------------------------

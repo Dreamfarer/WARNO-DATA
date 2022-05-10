@@ -1,0 +1,465 @@
+
+TextStyleDefault is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = false
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleEcranMoniteur is TTextStyleRTTI
+(
+    ColorBottom = [200, 255, 200, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  30,   255,   80, 65]
+    Stroke = true
+    FontSize = 1
+    StrokeSize = 0.2
+    StrokeHardness = 1
+    AllowSmallFont = true
+)
+TextStyleEcranMoniteur_cyan is TTextStyleRTTI
+(
+    ColorBottom = [0, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  30,   255,   255, 65]
+    Stroke = true
+    FontSize = 1
+    StrokeSize = 0.2
+    StrokeHardness = 1
+    AllowSmallFont = true
+)
+TextStyleEcranMoniteur_solo is TTextStyleRTTI
+(
+    ColorBottom = [188, 217, 202, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [225, 227, 197, 65]
+    Stroke = true
+    FontSize = 1
+    StrokeSize = 0.2
+    StrokeHardness = 1
+    AllowSmallFont = true
+)
+
+
+TextStyleDefaultWithStroke is TTextStyleRTTI
+(
+    ColorBottom = [200, 200, 200, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    FontSize = 1
+    StrokeSize = 0.2
+    StrokeHardness = 0.05
+    AllowSmallFont = true
+)
+
+TextStyleDefaultUpperCase is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = false
+    FontSize = 1
+    UpperCase = true
+    AllowSmallFont = true
+)
+TextStyleStrokeLabelUnit is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeHardness = 1
+    StrokeSize = 0.56
+    TextThickness = 0.16
+    FontSize = 1
+    AllowSmallFont = true
+)
+TextStyleValeurPanelInfo is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]//[145,131,104, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  43,35,36, 255]
+    Stroke = true
+    StrokeHardness = 1
+    StrokeSize = 0.7
+    TextThickness = 0.39
+    FontSize = 1
+    AllowSmallFont = true
+)
+TextStyleWithStroke is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    FontSize = 1
+    AllowSmallFont = true
+)
+TextStyleWithStroke2 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 180]
+    Stroke = true
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleWithStrokeLoading is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  20,   20,   20, 255]
+    Stroke = true
+    StrokeSize = 2.0
+    StrokeHardness = 0.05
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke100803 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 1.0
+    StrokeHardness = 0.8
+    TextThickness = 0.3
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke0907 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.9
+    StrokeHardness = 0.7
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke090704 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.9
+    StrokeHardness = 0.7
+    TextThickness = 0.4
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke0806 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.8
+    StrokeHardness = 0.6
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke080604 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.8
+    StrokeHardness = 0.6
+    TextThickness = 0.4
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke080603 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.8
+    StrokeHardness = 0.6
+    TextThickness = 0.3
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke0705 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.7
+    StrokeHardness = 0.5
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke070535 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.7
+    StrokeHardness = 0.5
+    TextThickness = 0.35
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke0604 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.6
+    StrokeHardness = 0.4
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStroke0503 is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.55
+    StrokeHardness = 0.3
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStrokeBlanc is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  255,   255,   255, 255]
+    Stroke = true
+    StrokeSize = 0.8
+    StrokeHardness = 0.6
+    TextThickness = 0.3
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+///////////////////////////////////////////////////////////////////////////////
+
+TextStyleFactoryName is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.75
+    StrokeHardness = 0.7
+    TextThickness = 0.25
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleUnlockingPhase is TTextStyleRTTI
+(
+    ColorBottom = GrisClair6 //GrisClair
+    ColorUp     = BlancPur
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.55
+    StrokeHardness = 0.4
+    TextThickness = 0.3
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleFlareLabel is TTextStyleRTTI
+(
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.65
+    StrokeHardness = 0.45
+    TextThickness = 0.35
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleTerrainCover is TTextStyleRTTI
+(
+    ColorBottom = [117,255,255,255]
+    ColorUp     = [117,255,255,255]
+    ColorStroke = [  0,  0,  0,255]
+    Stroke = true
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleMouseWidgetTextModule is TTextStyleRTTI
+(
+    AllowSmallFont = true
+    FontSize = 1
+    ColorBottom = [255, 255, 255, 255]
+    ColorUp     = [255, 255, 255, 255]
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.8
+)
+
+TextStyleBonus is TTextStyleRTTI
+(
+    ColorBottom = ~/textModuleGreen
+    ColorUp     = ~/textModuleGreen
+    ColorStroke = [  0,  0,  0,255]
+    Stroke = true
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleWithinRange is TTextStyleRTTI
+(
+    ColorBottom = ~/textModuleCyan
+    ColorUp     = ~/textModuleCyan
+    ColorStroke = [  0,  0,  0,255]
+    Stroke = false
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleOutOfRange is TTextStyleRTTI
+(
+    ColorBottom = [  255,  255,  255,255]
+    ColorUp     = [  255,  255,  255,255]
+    ColorStroke = [  0,  0,  0,255]
+    Stroke = false
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleUnseen is TTextStyleRTTI
+(
+    ColorBottom = [  255,  255,  255,255]
+    ColorUp     = [  255,  255,  255,255]
+    ColorStroke = [  0,  0,  0,255]
+    Stroke = true
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleBlocked is TTextStyleRTTI
+(
+    ColorBottom = [  0,  0,  0,255]
+    ColorUp     = [  0,  0,  0,255]
+    ColorStroke = [  0,  0,  0,255]
+    Stroke = true
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleInvalid is TTextStyleRTTI
+(
+    ColorBottom = ~/textModuleMagenta
+    ColorUp     = ~/textModuleMagenta
+    ColorStroke = [  0,  0,  0,255]
+    Stroke = false
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleNotEfficient is TTextStyleRTTI
+(
+    ColorBottom = ~/textModuleYellow
+    ColorUp     = ~/textModuleYellow
+    ColorStroke = [  0,  0,  0,255]
+    Stroke = false
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStrategicPhaseLabel is TTextStyleRTTI
+(
+    ColorBottom = GrisMoyen3
+    ColorUp     = BlancPur
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.50
+    StrokeHardness = 0.42
+    TextThickness = 0.4
+    FontSize = 1
+    AllowSmallFont = true
+)
+
+TextStyleStrategicGlow is TTextStyleRTTI
+(
+    ColorBottom = BlancPur
+    ColorUp     = BlancPur
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 0.40
+    StrokeHardness = 0.30
+    FontSize = 1
+    AllowSmallFont = true
+)
+TextStyleActivationPoint is TTextStyleRTTI
+(
+    ColorBottom = [210,202,191,255]
+    ColorUp     = [243-10,235-10,220-10,255]
+    ColorStroke = [43,35,36,245]
+    Stroke = true
+    StrokeSize = 0.3
+    StrokeHardness = 0.23
+    TextThickness = 0.59
+    FontSize = 1
+    AllowSmallFont = true
+)
+TextStyleActivationPointTemp is TTextStyleRTTI
+(
+    ColorBottom = BleuSelection
+    ColorUp     = BleuSelectionQuasiBlanc
+    ColorStroke = [43,35,36,245]
+    Stroke = true
+    StrokeSize = 0.3
+    StrokeHardness = 0.23
+    TextThickness = 0.59
+    FontSize = 1
+    AllowSmallFont = true
+)
+TextStylePointAction is TTextStyleRTTI
+(
+    ColorBottom = [  125,   125,   125, 255]
+    ColorUp     = BlancPur
+    ColorStroke = [  0,   0,   0, 255]
+    Stroke = true
+    StrokeSize = 1
+    StrokeHardness = 0.96
+    TextThickness = 0.21
+    FontSize = 1
+    AllowSmallFont = true
+)
+TextStylePointActionBlanc is TTextStyleRTTI
+(
+    ColorBottom = [  200,   200,   200, 255]
+    ColorUp     = [  0,   0,   0, 255]
+    ColorStroke = [  255,   255,   255, 255]
+    Stroke = true
+    StrokeSize = 1
+    StrokeHardness = 0.96
+    TextThickness = 0.21
+    FontSize = 1
+    AllowSmallFont = true
+)

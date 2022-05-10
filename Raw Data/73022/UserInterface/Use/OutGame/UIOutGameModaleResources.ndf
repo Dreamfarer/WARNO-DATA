@@ -1,0 +1,593 @@
+MagnifiableModaleContentWidth is 848 - 2 * MagnifiableMarginForContent
+
+EmptyModaleWindow is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+    FitStyle = ~/ContainerFitStyle/FitToContent
+)
+
+ModaleWindowFrame is SpecificModaleWindowFrame
+(
+    UniqueName = 'ModaleWindowFrame'
+    TitleToken = ''
+    ButtonList = []
+
+    ContentMagnifiableWidthHeight = [848.0, 150.0]
+)
+
+ModaleWindowFrameWithTexture is SpecificModaleWindowFrame
+(
+    UniqueName = 'ModaleWindowFrameWithTexture'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight= [1335.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    TitleToken = ''
+    ButtonList = []
+
+    FirstMargin = TRTTILength( Magnifiable = 32.0 )
+    LastMargin = TRTTILength( Magnifiable = 32.0 )
+
+    ContentMagnifiableWidthHeight = [0.0, 760.0]
+    ContentComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = "ScreenTexture"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [1274,720]
+                AlignementToFather = [0.5,0]
+                AlignementToAnchor = [0.5,0]
+                MagnifiableOffset = [0.0, -40.0]
+            )
+
+            Components =
+            [
+                BUCKButtonDescriptor
+                (
+                    ElementName = "ScreenTextureButton"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+                )
+            ]
+        ),
+        BUCKTextDescriptor
+        (
+            ElementName = "ScreenBody"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [1274.0, 0.0]
+                AlignementToFather  = [0.5,0]
+                AlignementToAnchor  = [0.5,0]
+                MagnifiableOffset = [0,700]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            BigLineAction   = ~/BigLineAction/MultiLine
+            TextColor       = "Blanc"
+            TextSize        = "FenetreDLC/Corps"
+            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken   = "UIMainFont"
+        ),
+    ]
+
+)
+
+ModaleWindowText is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+    BigLineAction = ~/BigLineAction/MultiLine
+
+    TextSize = "StandardTextInModal"
+    TextColor = "Blanc"
+
+    TextToken = ""
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    TypefaceToken = "UIMainFont"
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+)
+
+ModaleWindowResourceForPrivacyPolicy is SpecificModaleWindowFrame
+(
+    TitleToken = "RGPD_TITLE"
+    ContentMagnifiableWidthHeight = [848.0, 800.0]
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ConfirmButton
+            (
+                ElementName = "ConfirmButton"
+                TextToken = 'BTN_ACCEPT'
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintExtendedToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = CancelButton
+            (
+                ElementName = "CancelButton"
+                TextToken = 'BTN_QUIT_M'
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+                HintTitleToken = ""
+                HintBodyToken = ""
+                HintExtendedToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_outgame
+            )
+        ),
+    ]
+
+    ContentComponents =
+    [
+        BUCKSpecificScrollingContainerDescriptor
+        (
+            ElementName = "ScrollingContainer"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [ 1.0, 1.0 ]
+            )
+
+            ExternalScrollbar = false
+            HasVerticalScrollbar = true
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [ 1.0, 0.0 ]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                    FirstMargin = TRTTILength(Pixel = 5)
+                    LastMargin = TRTTILength(Pixel = 5)
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+                                ElementName = "BodyPPModal"
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [ 1.0, 0.0 ]
+                                    MagnifiableOffset = [ 5.0, 0.0 ]
+                                    MagnifiableWidthHeight = [ -10.0, 0.0 ]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Left
+                                    VerticalAlignment = UIText_VerticalCenter
+                                    BigWordAction = ~/BigWordAction/BigWordNewLine
+                                    InterLine = 0
+                                )
+
+                                TextStyle = "Default"
+
+                                HorizontalFitStyle = ~/FitStyle/UserDefined
+                                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                BigLineAction = ~/BigLineAction/MultiLine
+
+                                TextSize = "StandardTextInModal"
+                                TextColor = "Blanc"
+
+                                TextToken = "RGPD_BODYE"
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                TypefaceToken = "Liberator"
+                                UniformDrawer = $/UserInterface/UIUniformDrawer
+                            )
+                        )
+                    ]
+                )
+            ]
+        )
+    ]
+)
+
+ModaleWindowResourceForOutdatedMods is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [848.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 500.0]
+    TitleToken = "WARNING"
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/OkButton ),
+    ]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-20.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [700.0 , 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        BigLineAction = ~/BigLineAction/MultiLine
+
+                        TextSize = "StandardTextInModal"
+                        TextColor = "Blanc"
+
+                        TextToken = "SR_MSGMOUT"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TypefaceToken = "Liberator"
+                        UniformDrawer = $/UserInterface/UIUniformDrawer
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = TScrollingDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        Component = BUCKListDescriptor
+                        (
+                            Axis = ~/ListAxis/Vertical
+                            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                            FirstMargin = TRTTILength( Pixel = 5.0 )
+                            LastMargin = TRTTILength( Pixel = 5.0 )
+
+                            Elements =
+                            [
+                                BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKTextDescriptor
+                                    (
+                                        ElementName = "OutdatedModsText"
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            MagnifiableWidthHeight = [700.0 , 0.0]
+                                            AlignementToAnchor = [0.5, 0.0]
+                                            AlignementToFather = [0.5, 0.0]
+                                        )
+
+                                        ParagraphStyle = TParagraphStyleRTTI
+                                        (
+                                            Alignment = UIText_Center
+                                            VerticalAlignment = UIText_VerticalCenter
+                                            InterLine = 0
+                                        )
+
+                                        TextStyle = "Default"
+
+                                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                        BigLineAction = ~/BigLineAction/MultiLine
+
+                                        TextSize = "StandardTextInModal"
+                                        TextColor = "Blanc"
+
+                                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                        TypefaceToken = "Liberator"
+                                        UniformDrawer = $/UserInterface/UIUniformDrawer
+                                    )
+                                ),
+                            ]
+                        )
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+ModaleButtonListDescriptor is BUCKListDescriptor
+(
+    InterItemMargin = TRTTILength(Magnifiable = 20.0)
+    Axis = ~/ListAxis/Horizontal
+)
+
+ModaleButton is StandardButton
+(
+    ElementName = "ModaleButton"
+    TextToken = ''
+
+    HintableAreaElementName = "ModaleButtonHintaleAreaElement"
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+OkButton is ConfirmButton
+(
+    ElementName = "OkButton"
+    OverrideTextElementName = true
+    TextToken = 'BTN_OK'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+ModaleConfirmButton is ConfirmButton
+(
+    ElementName = "ModaleConfirmButton"
+    OverrideTextElementName = true
+    TextToken = ''
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+    HintableAreaElementName = "HintaleAreaElement"
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+ModaleConfirmButtonAt14 is ConfirmButton
+(
+    ElementName = "ModaleConfirmButton"
+    OverrideTextElementName = true
+    TextToken = ''
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+    HintableAreaElementName = "HintaleAreaElement"
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    TextSizeToken = "14"
+)
+
+ModaleCancelButton is CancelButton
+(
+    ElementName = "ModaleCancelButton"
+    OverrideTextElementName = true
+    TextToken = ''
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+    HintableAreaElementName = "HintaleAreaElement"
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+private RenameEditableTextDescriptor is BUCKEditableTextInputFieldDescriptor
+(
+    ElementName = 'EditableText'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [600.0, 35.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+)
+
+private RenameModal is SpecificModaleWindowFrame
+(
+    UniqueName = 'ModaleWindowFrame'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [850.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 110.0]
+    TitleToken = ''
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ModalButtonCyan
+            (
+                ElementName = 'Confirm'
+                TextToken = 'BTN_CONFIR'
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+                IsFilled = true
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ModalButtonCyan
+            (
+                ElementName = 'Cancel'
+                TextToken = 'BTN_CANCEL'
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+                IsFilled = false
+            )
+        )
+    ]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [~/MagnifiableModaleContentWidth, 0.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/RenameEditableTextDescriptor
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/ModalErrorText
+                )
+            ]
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [-27,-150]
+            )
+            TextureToken = 'Outgame_modale_foreground'
+            TextureDrawer = 'ColorMultiply_Additive'
+        )
+    ]
+
+    AdditionalComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [-27,-250]
+            )
+            TextureToken = 'Outgame_modale_fond'
+            TextureDrawer = 'MonochromeMonitorEffect'
+        )
+    ]
+)
+
+private ModalErrorText is BUCKTextDescriptor
+(
+    ElementName = 'ErrorText'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = "UIMainFont"
+    TextColor = 'Rouge'
+    TextSize = 'RightTextInModal'
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    BigLineAction = ~/BigLineAction/MultiLine
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = ~/UIText_Left
+        VerticalAlignment = ~/UIText_VerticalCenter
+        Balanced = true
+        BigWordAction = ~/BigWordAction/BigWordNewLine
+    )
+)
+
+ModaleResource is TUISpecificOutGameModaleResource
+(
+    ErrorText = ~/ModalErrorText
+    ModaleContentWidth = ~/MagnifiableModaleContentWidth
+    EmptyModaleWindow  = ~/EmptyModaleWindow
+    ModaleWindow       = ~/ModaleWindowFrame
+    ModaleText         = ~/ModaleWindowText
+    ModaleButtonList   = ~/ModaleButtonListDescriptor
+    ModaleButton       = ~/ModaleButton
+    ModaleConfirmButton = ~/ModaleConfirmButton
+    ModaleCancelButton = ~/ModaleCancelButton
+    ModaleEditableText = ~/RenameEditableTextDescriptor
+
+    ModaleWindowResourceForPrivacyPolicy = ~/ModaleWindowResourceForPrivacyPolicy
+
+    ModaleWindowResourceForOutdatedMods = ~/ModaleWindowResourceForOutdatedMods
+    ModaleRename = ~/RenameModal
+
+    ModaleWindowResourceForMissingDLCs = ~/ModaleWindowFrameWithTexture
+    ModaleButtonResourceForMissingDLCs = ~/ModaleButton
+    ModaleConfirmButtonResourceForMissingDLCs = ~/ModaleConfirmButtonAt14
+    ModaleCancelButtonResourceForMissingDLCs = ~/ModaleCancelButton
+)

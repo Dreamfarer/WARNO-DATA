@@ -1,0 +1,25 @@
+export ModelFile_F15C_Eagle_AA_US is 'GameData:/Assets/3D/Units/US/Avion/F15C_Eagle/F15C_Eagle.Ase2NdfBin'
+
+Modele_F15C_Eagle_AA_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_F15C_Eagle_AA_US
+    CivMask =  CivMask/Common
+)
+
+Modele_F15C_Eagle_AA_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/F15C_Eagle_MID/F15C_Eagle_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F15C_Eagle_AA_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/LODS/F15C_Eagle_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F15C_Eagle_AA_US_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/F15C_Eagle/F15C_Eagle_Train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

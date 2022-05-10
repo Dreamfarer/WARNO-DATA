@@ -1,0 +1,19 @@
+export ModelFile_M35_trans_US is 'GameData:/Assets/3D/Units/US/Vehicule/M35_Cargo/M35_Cargo.Ase2NdfBin'
+
+Modele_M35_trans_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M35_trans_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M35_trans_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/M35_Cargo_MID/M35_Cargo_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M35_trans_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/LODS/M35_Cargo_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

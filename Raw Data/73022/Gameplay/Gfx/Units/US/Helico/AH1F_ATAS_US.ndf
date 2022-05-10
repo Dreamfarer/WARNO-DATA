@@ -1,0 +1,19 @@
+export ModelFile_AH1F_ATAS_US is 'GameData:/Assets/3D/Units/US/Helico/Cobra_AH_1F/Cobra_AH1F_ATAS.Ase2NdfBin'
+
+Modele_AH1F_ATAS_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AH1F_ATAS_US
+    CivMask =  CivMask/Common
+)
+
+Modele_AH1F_ATAS_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/Cobra_AH_1F_MID/Cobra_AH1F_ATAS_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AH1F_ATAS_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/LODS/Cobra_AH1F_ATAS_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

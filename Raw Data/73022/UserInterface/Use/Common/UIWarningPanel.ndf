@@ -1,0 +1,99 @@
+
+WarningPositiveComponent is WarningStandardComponent
+(
+    TextColor = "SD2_Blanc184" //WarningPanel/Positive"
+)
+
+WarningNegativeComponent is WarningStandardComponent
+(
+    TextColor = "WarningPanel/Negative"
+)
+
+template WarningStandardComponent
+[
+    TextColor : string
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = [600.0, 0.0]
+        MagnifiableOffset = [0.0, 225.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    Elements =
+    [
+        //Separateur du haut
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/WarningTopBottomBorder
+        ),
+
+        //Contenu
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'WarningTextComponent'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 0.0]
+                    MagnifiableOffset = [0.0, 0.0]
+                    AlignementToFather = [0.0, 0.0]
+                    AlignementToAnchor = [0.0, 0.0]
+                )
+
+                ParagraphStyle = ~/WarningParagraphStyleCentered
+                TextStyle = "Default"
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/MultiLine
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextColor = <TextColor>
+                TextSize = "SD2_Moyen"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            )
+        ),
+
+        //Separateur du bas
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/WarningTopBottomBorder
+        ),
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner
+        (
+            BackgroundBlockColorToken = 'H2_bleu_2'
+            BorderLineColorToken = 'H2_bleu_2'
+        )
+    ]
+)
+
+private WarningParagraphStyleCentered is TParagraphStyleRTTI
+(
+    Alignment = UIText_Center
+    VerticalAlignment = UIText_VerticalCenter
+    InterLine = 0
+)
+
+private WarningMagnifiableBorderSize is 15.0
+
+private WarningTopBottomBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1.0, WarningMagnifiableBorderSize]
+    )
+)

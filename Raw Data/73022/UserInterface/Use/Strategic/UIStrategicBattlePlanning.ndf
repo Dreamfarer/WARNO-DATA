@@ -1,0 +1,133 @@
+private StrategicBattlePlanningButtons is StrategicSecondaryCubeActionPanel
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+
+        MagnifiableOffset = [0.0, 200.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+    ContentComponents = MAP
+    [
+        ([0, 0],
+            test
+           {StrategicSecondaryCubeActionButton
+                      (
+                           MagnifiableWidth = 600
+                           MagnifiableHeight = 50
+                           ElementName = 'ValidateButton'
+
+                           HintTitleToken = "BtnValPlan"
+                           HintBodyToken = "BtnValPlaH"
+                           HintExtendedToken = ""
+                           HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                           TextToken = "BtnValPlan"
+                       )}
+        ),
+
+
+
+
+        {([0, 1],
+            StrategicSecondaryCubeActionButton
+            (
+                ElementName = 'CancelButton'
+
+                MagnifiableOffset = [
+                    CubeActionStrategicButtonDims[0] + CubeActionStrategicButtonSpacing[0],
+                    0.0
+                ]
+
+                HintTitleToken = "BtnCanPlan"
+                HintBodyToken = "BtnCanPlaH"
+                HintExtendedToken = ""
+                HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "BtnCanPlan"
+            )
+        ),}
+    ]
+)
+test is PanelRoundedCorner
+(
+    BackgroundBlockColorToken = 'SM_RifleGreen_75'
+    BorderLineColorToken = 'SM_Grullo'
+    BorderThicknessToken = '2'
+    Radius = 10
+
+    ComponentFrame = TUIFramePropertyRTTI ( MagnifiableWidthHeight = [600,100])
+    Components =
+
+    [
+        BUCKTextDescriptor
+        (
+
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0,20]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+                MagnifiableOffset = [0,10]
+            )
+
+            ParagraphStyle = paragraphStyleTextLeftAlign
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "Eurostyle_Heavy"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextToken = 'CUR_ASSAUL'
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "BlancEquipe"
+            TextSize = "24"
+        ),
+
+
+
+    BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            AlignementToFather = [0.5, 0.0]
+            AlignementToAnchor = [0.5, 0.0]
+            MagnifiableOffset = [0,45]
+        )
+        Axis = ~/ListAxis/Horizontal
+        InterItemMargin = TRTTILength ( Magnifiable = 10)
+        Elements =
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BoutonStartBattle
+                            (
+                                MagnifiableWidthHeight =  [160,40]
+                                ElementName = 'ValidateButton'
+                                TextToken = "BtnValPlan"
+                                HintBodyToken = "BtnValPlaH"
+                            )
+            ),
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BoutonStartBattle
+                            (
+                                MagnifiableWidthHeight =  [160,40]
+                                ElementName = 'CancelButton'
+                                TextToken = "BTL_SHOCAN"
+                                HintBodyToken = "BtnCanPreH"
+                            )
+            ),
+
+        ]
+    )
+    ]
+)
+StrategicBattlePlanningResources is TStrategicBattlePlanningResources
+(
+    MainComponent = ~/StrategicBattlePlanningButtons
+)

@@ -1,0 +1,594 @@
+// • StrategicBattleOrderLineScoreCell (template)
+//
+// • StrategicBattleOrderLine (template)
+//   - Line Title
+//   - Line Infantry Score
+//   - Line Artillery Score
+//   - Line Tank Score
+//   - Line Support Score
+//   - Line Air Score
+//
+// • BUCKSpecificStrategicBattleOrderPanelLineMainComponentDescriptor (template)
+// • UISpecificStrategicBattleOrderPanelLineViewDescriptor (template)
+//
+// • UISpecificStrategicBattleOrderPanelTitleLineViewDescriptor
+//   - Line Title Texture
+//   - Line Title
+//
+// • UISpecificStrategicBattleOrderPanelDefaultLineViewDescriptor
+//   - Line Title Texture
+//   - Line Title
+//   - Line Subtitle
+//
+// • UISpecificStrategicBattleOrderPanelSectionLineViewDescriptor
+//   - Line Title Texture
+//   - Line Title
+
+private template StrategicBattleOrderLineScoreCell
+[
+    ElementName : string,
+    HasBackground : bool,
+    TextColor : string,
+    CellBackgroundColor : string =  'Steelman_Background_BoutonOrdreDeBataille'
+
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableWidthHeight = [80.0, 0.0]
+    )
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <CellBackgroundColor>
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName>
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+
+            TypefaceToken = "UIMainFont"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextToken = "SBO_VAL"
+
+            TextColor = <TextColor>
+            TextSize = "15"
+        )
+    ]
+)
+
+// ----------------------------------------------------------
+
+private template BUCKSpecificStrategicBattleOrderPanelLineMainComponentDescriptor
+[
+    MagnifiableHeight : float,
+    HasBackground : bool,
+    BackgroundBlockColorToken : string = "SD2_Gris80",
+    CellBackgroundColor : string = "Steelman_Background_BoutonOrdreDeBataille",
+    TextColor : string,
+    Components : LIST<TBUCKContainerDescriptor>,
+    Grayed : bool,
+]
+is BUCKButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, <MagnifiableHeight>]
+    )
+
+    Grayed = <Grayed>
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 2.0 Pixel = 1.0)
+
+            Elements =
+            [
+                // Line Title
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        HasBackground = <HasBackground>
+                        BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+                        Components = <Components>
+                    )
+                ),
+
+                // Line Infantry Score
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicBattleOrderLineScoreCell( ElementName = "InfantryScore" HasBackground = <HasBackground> TextColor = <TextColor> CellBackgroundColor = <CellBackgroundColor> )
+                ),
+
+                // Line Tank Score
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicBattleOrderLineScoreCell( ElementName = "TankScore" HasBackground = <HasBackground> TextColor = <TextColor> CellBackgroundColor = <CellBackgroundColor> )
+                ),
+
+                // Line Artillery Score
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicBattleOrderLineScoreCell( ElementName = "ArtilleryScore" HasBackground = <HasBackground> TextColor = <TextColor> CellBackgroundColor = <CellBackgroundColor>)
+                ),
+
+                // Line Air Score
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicBattleOrderLineScoreCell( ElementName = "AirScore" HasBackground = <HasBackground> TextColor = <TextColor> CellBackgroundColor = <CellBackgroundColor> )
+                ),
+
+                // Helicos Air Score
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicBattleOrderLineScoreCell( ElementName = "HelicosScore" HasBackground = <HasBackground> TextColor = <TextColor> CellBackgroundColor = <CellBackgroundColor> )
+                ),
+
+                // Supply Air Score
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicBattleOrderLineScoreCell( ElementName = "SupplyScore" HasBackground = <HasBackground> TextColor = <TextColor> CellBackgroundColor = <CellBackgroundColor> )
+                ),
+            ]
+        )
+    ]
+)
+
+// ----------------------------------------------------------
+
+template UISpecificStrategicBattleOrderPanelLineViewDescriptor
+[
+    MagnifiableHeight : float,
+    HasBackground : bool,
+    TextColor : string,
+    BackgroundBlockColorToken : string,
+    Components : LIST<TBUCKContainerDescriptor>,
+    CellBackgroundColor : string = "Steelman_Background_BoutonOrdreDeBataille",
+    Grayed : bool,
+]
+is TUISpecificStrategicBattleOrderPanelLineViewDescriptor
+(
+    TypeTokens =
+    [
+        "SBO_NONE",
+        "SBO_HQ",
+        "SBO_AGRP",
+        "SBO_ARMY",
+        "SBO_CORPS",
+        "SBO_DIV",
+        "SBO_REG",
+        "SBO_BAT",
+        "SBO_CMPHQ",
+        "SBO_CMPNY",
+    ]
+
+    MainComponentDescriptor = BUCKSpecificStrategicBattleOrderPanelLineMainComponentDescriptor
+    (
+        MagnifiableHeight = <MagnifiableHeight>
+        HasBackground = <HasBackground>
+        BackgroundBlockColorToken = <BackgroundBlockColorToken>
+        TextColor = <TextColor>
+        Components = <Components>
+        Grayed = <Grayed>
+        CellBackgroundColor = <CellBackgroundColor>
+    )
+)
+
+// ----------------------------------------------------------
+
+template UISpecificStrategicBattleOrderPanelTitleLineViewDescriptor
+[
+    TitleTextDico : string
+]
+is UISpecificStrategicBattleOrderPanelLineViewDescriptor
+(
+    MagnifiableHeight = 34.0
+    HasBackground = true
+    BackgroundBlockColorToken = "Transparent"
+    CellBackgroundColor = 'SD2_Gris80'
+    TextColor = "SD2_BleuVariable"
+    Grayed = true
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            FirstMargin = TRTTILength( Magnifiable = 1.0 Pixel = 1.0)
+            InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+            LastMargin = TRTTILength( Magnifiable = 1.0 Pixel = 1.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        // Line Subtitle
+                        ElementName = 'SubtitleText'
+                        ComponentFrame = TUIFramePropertyRTTI()
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = "Default"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                        TypefaceToken = "UIMainFont"
+                        BigLineAction = ~/BigLineAction/CutByDots
+                        TextColor = "SD2_Transparent" //SBO_BAT
+                        TextSize = "30"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        // Line Title
+                        ElementName = 'TitleText'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = "Default"
+
+                        TypefaceToken = "UIMainFont"
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = <TitleTextDico>
+
+                        TextColor = "SD2_Transparent"
+                        TextSize = "30"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    // Line Title Texture
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+
+                            MagnifiableWidthHeight = [42, 26.0]
+                            AlignementToAnchor = [0.0, 0.5]
+                            AlignementToFather = [0.0, 0.5]
+                        )
+
+                        HasBackground = false
+                        BackgroundBlockColorToken = 'SD2_Blanc184'
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                ElementName = 'TitleTexture'
+                                ResizeMode = ~/TextureResizeMode/UserDefined
+
+                                TextureDrawer = 'ColorMultiply_NoGrayscale'
+                            )
+                        ]
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+// ----------------------------------------------------------
+
+template UISpecificStrategicBattleOrderPanelDefaultLineViewDescriptor
+[
+    TitleTextDico : string
+]
+is UISpecificStrategicBattleOrderPanelLineViewDescriptor
+(
+    MagnifiableHeight = 38.0
+    HasBackground = true
+    BackgroundBlockColorToken = "Steelman_Background_BoutonOrdreDeBataille"
+    CellBackgroundColor = 'Steelman_Background_BoutonOrdreDeBataille'
+    TextColor = "SD2_Blanc184"
+    Grayed = false
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            FirstMargin = TRTTILength( Magnifiable = 50.0 )
+            InterItemMargin = TRTTILength( Magnifiable = 15.0 )
+            LastMargin = TRTTILength( Magnifiable = 50.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        // Line Subtitle
+                        ElementName = 'SubtitleText'
+                        ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = "Default"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                        TypefaceToken = "UIMainFont"
+                        BigLineAction = ~/BigLineAction/CutByDots
+                        TextColor = "SD2_Blanc184" //SBO_BAT
+                        TextSize = "20"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.8
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        // Line Title
+                        ElementName = 'TitleText'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.0, 0.5]
+                            AlignementToFather = [0.0, 0.5]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = "Default"
+
+                        TypefaceToken = "UIMainFont"
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = <TitleTextDico>
+
+                        TextColor = "SD2_Blanc184"
+                        TextSize = "20"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+
+                            MagnifiableWidthHeight = [42, 26.0]
+                            AlignementToAnchor = [0.0, 0.5]
+                            AlignementToFather = [0.0, 0.5]
+                        )
+
+                        HasBackground = false
+                        BackgroundBlockColorToken = 'SD2_Blanc184'
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                ElementName = 'TitleTexture'
+                                ResizeMode = ~/TextureResizeMode/UserDefined
+
+                                TextureDrawer = 'ColorMultiply_NoGrayscale'
+                            )
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificButton
+                    (
+                        ElementName = "SelectPawn"
+                        ButtonMagnifiableWidthHeight = [160.0, 24.0]
+                        ButtonAlignementToAnchor = [0.0, 0.5]
+                        ButtonAlignementToFather = [0.0, 0.5]
+                        TextToken = "SBO_SHOW"
+                    )
+                ),
+
+            ]
+        )
+    ]
+)
+
+// ----------------------------------------------------------
+// spécifique à l'intérieur des compagnies
+UISpecificStrategicBattleOrderPanelSectionLineViewDescriptor is UISpecificStrategicBattleOrderPanelLineViewDescriptor
+(
+    MagnifiableHeight = 30.0
+    HasBackground = true
+    BackgroundBlockColorToken = 'SD2_Gris80'
+    TextColor = "LightestGray"
+    Grayed = true
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            FirstMargin = TRTTILength( Magnifiable = 18.0 )
+            InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+            LastMargin = TRTTILength( Magnifiable = 18.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        // Line Title Texture
+                        ElementName = "TitleTexture"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [40.0, 0.0]
+                        )
+
+                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        // Line Title
+                        ElementName = 'NumberText'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle = "Default"
+
+                        TypefaceToken = "UIMainFont"
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextToken = "SBO_NBUNI"
+
+                        TextColor = "SD2_Blanc184"
+                        TextSize = "14"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        // Line Title
+                        ElementName = 'TitleText'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+
+                        TypefaceToken = "UIMainFont"
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextDico = ~/LocalisationConstantes/dico_unites
+
+                        TextColor = "SD2_Blanc184"
+                        TextSize = "14"
+                    )
+                ),
+            ]
+        )
+    ]
+)

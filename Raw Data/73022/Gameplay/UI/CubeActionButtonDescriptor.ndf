@@ -1,0 +1,844 @@
+
+template InterfaceSound
+[
+    FileName  : string
+] is TSoundDescriptor
+(
+    SoundSettings = $/SoundSettings/HUD_SoundSettings
+    TheSoundStream = TSoundStream ( FileName = <FileName> )
+)
+
+// changer ces deux valeurs pour activer ou non les sons des boutons du cube action
+CubeActionButtonHasClickSound is true
+CubeActionButtonHasHoverSound is false
+
+CubeActionButtonClickSound is InterfaceSound( FileName = "GameData:/Assets/Sons/Hud/ClicBoutonCube.wav" )
+CubeActionButtonHoverSound is InterfaceSound( FileName = "GameData:/Assets/Sons/Hud/SurvolBoutonCube.wav" )
+
+export CubeActionButtonHoverSound_IfEnabled is TEugBPBaseClass(Value = CubeActionButtonHasHoverSound ? CubeActionButtonHoverSound : nil)
+export CubeActionButtonClickSound_IfEnabled is TEugBPBaseClass(Value = CubeActionButtonHasClickSound ? CubeActionButtonClickSound : nil)
+
+template Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+[
+    HoverSound : TSoundDescriptor = CubeActionButtonHoverSound,
+    LeftClickSound : TSoundDescriptor = CubeActionButtonClickSound,
+
+    HoverSoundFileName = nil,
+    ClickSoundFileName = nil,
+
+    CubeActionName,
+    DebugName,
+    CubeActionFunctionType,
+
+    ButtonTextToken,
+    HintTitleToken,
+    HintBodyToken,
+    HintExtendedToken,
+    HintDico,
+
+    OrderToken,
+    ActionType,
+    ValidationTargetToken = '',
+
+    Mapping,
+]
+is TCubeActionOrderButtonInformationsDescriptor
+(
+    ButtonTextToken = <ButtonTextToken>
+    HintDico = <HintDico>
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+
+    BackgroundTexture        = '' //Plus branche cote code, on peut le remettre facilement a la place des textes si necessaire
+
+    HoverSound               = (<HoverSoundFileName> == nil) ? <HoverSound> : InterfaceSound( FileName = <HoverSoundFileName> )
+    ClickSound               = (<ClickSoundFileName> == nil) ? <LeftClickSound> : InterfaceSound( FileName = <ClickSoundFileName> )
+
+    Mapping                  = <Mapping>
+
+    CubeActionName           = <CubeActionName>
+    DebugName                = <DebugName>
+    CubeActionFunctionType   = <CubeActionFunctionType>
+
+    OrderToken               = <OrderToken>
+    ActionType               = <ActionType>
+    ValidationTargetToken    = <ValidationTargetToken>
+)
+
+template Template_CubeActionFunctionalityButtonInformationsDescriptor_WithSound
+[
+    HoverSound : TSoundDescriptor = CubeActionButtonHasHoverSound ? CubeActionButtonHoverSound : nil,
+    LeftClickSound : TSoundDescriptor = CubeActionButtonHasClickSound ? CubeActionButtonClickSound : nil,
+
+    HoverSoundFileName = nil,
+    ClickSoundFileName = nil,
+
+    CubeActionName,
+    DebugName,
+    CubeActionFunctionType,
+
+    ButtonTextToken,
+    HintTitleToken,
+    HintBodyToken,
+    HintExtendedToken,
+    HintDico,
+    HintElements = [],
+
+    FunctionalityType,
+
+    Mapping,
+]
+is TCubeActionFunctionalityButtonInformationsDescriptor
+(
+    ButtonTextToken = <ButtonTextToken>
+    HintDico = <HintDico>
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+    HintElements = <HintElements>
+
+    BackgroundTexture        = '' //Plus branche cote code, on peut le remettre facilement a la place des textes si necessaire
+
+    HoverSound               = (<HoverSoundFileName> == nil) ? <HoverSound> : InterfaceSound( FileName = <HoverSoundFileName> )
+    ClickSound               = (<ClickSoundFileName> == nil) ? <LeftClickSound> : InterfaceSound( FileName = <ClickSoundFileName> )
+
+    Mapping                  = <Mapping>
+
+    CubeActionName           = <CubeActionName>
+    DebugName                = <DebugName>
+    CubeActionFunctionType   = <CubeActionFunctionType>
+
+    FunctionalityType        = <FunctionalityType>
+)
+
+template Template_CubeActionOutMapArtilleryButtonInformationsDescriptor_WithSound
+[
+    HoverSound : TSoundDescriptor = CubeActionButtonHasHoverSound ? CubeActionButtonHoverSound : nil,
+    LeftClickSound : TSoundDescriptor = CubeActionButtonHasClickSound ? CubeActionButtonClickSound : nil,
+
+    HoverSoundFileName = nil,
+    ClickSoundFileName = nil,
+
+    CubeActionName,
+    DebugName,
+    CubeActionFunctionType,
+
+    ButtonTextToken,
+    HintTitleToken,
+    HintBodyToken,
+    HintExtendedToken,
+    HintDico,
+
+    ArtilleryShootMode,
+
+    Mapping,
+]
+is TCubeActionOutMapArtilleryButtonInformationsDescriptor
+(
+    ButtonTextToken = <ButtonTextToken>
+    HintDico = <HintDico>
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+
+    BackgroundTexture        = '' //Plus branche cote code, on peut le remettre facilement a la place des textes si necessaire
+
+    HoverSound               = (<HoverSoundFileName> == nil) ? <HoverSound> : InterfaceSound( FileName = <HoverSoundFileName> )
+    ClickSound               = (<ClickSoundFileName> == nil) ? <LeftClickSound> : InterfaceSound( FileName = <ClickSoundFileName> )
+
+    Mapping                  = <Mapping>
+
+    CubeActionName           = <CubeActionName>
+    DebugName                = <DebugName>
+    CubeActionFunctionType   = <CubeActionFunctionType>
+
+    ArtilleryShootMode       = <ArtilleryShootMode>
+)
+
+export CubeAction_Order_Attack is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Attack"
+    DebugName                = "InGameCubeAction_ButtonAttack"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_ATTACK'
+    HintTitleToken           = 'ORD_ATTACK'
+    HintBodyToken            = 'HNT_ATTACK'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "MoveAndAttack"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALTAR'
+    Mapping                  = $/KeyboardOption/Mapping_Attack
+)
+
+export CubeAction_Order_FastMoveAndAttack is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_FastMoveAndAttack"
+    DebugName                = "InGameCubeAction_ButtonFastMoveAndAttack"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_FSTATK'
+    HintTitleToken           = 'ORD_FSTATK'
+    HintBodyToken            = 'HNT_FSTATK'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "FastMoveAndAttack"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALTAR'
+    Mapping                  = $/KeyboardOption/Mapping_FastMoveAndAttack
+)
+
+export CubeAction_Order_Stop is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Stop"
+    DebugName                = "InGameCubeAction_ButtonStop"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_STOP'
+    HintTitleToken           = 'ORD_STOP'
+    HintBodyToken            = 'HNT_STOP'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "Stop"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_Stop
+)
+
+export CubeAction_Order_AIDefend is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_AIDefend"
+    DebugName                = "InGameCubeAction_ButtonAIDefend"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/SmartOrders
+
+    ButtonTextToken          = 'ORD_AIDEF'
+    HintTitleToken           = 'ORD_AIDEF'
+    HintBodyToken            = 'HNT_AIDEF'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "AIDefend"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_AIDefense
+)
+
+export CubeAction_Order_AIManageArtillery_Focus is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_AIManageArtillery_Focus"
+    DebugName                = "InGameCubeAction_AIManageArtillery_Focus"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/SmartOrders
+
+    ButtonTextToken          = 'ORD_AIARF'
+    HintTitleToken           = 'ORD_AIARF'
+    HintBodyToken            = 'HNT_AIARF'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "AIManageArtillery_Focus"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_AIManageArtillery_Focus
+)
+
+export CubeAction_Order_AIManageArtillery_CounterBattery is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_AIManageArtillery_CounterBattery"
+    DebugName                = "InGameCubeAction_AIManageArtillery_CounterBattery"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/SmartOrders
+
+    ButtonTextToken          = 'ORD_AIARC'
+    HintTitleToken           = 'ORD_AIARC'
+    HintBodyToken            = 'HNT_AIARC'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "AIManageArtillery_CounterBattery"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_AIManageArtillery_CounterBattery
+)
+
+export CubeAction_Order_AIManageArtillery_Auto is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_AIManageArtillery_Auto"
+    DebugName                = "InGameCubeAction_AIManageArtillery_Auto"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/SmartOrders
+
+    ButtonTextToken          = 'ORD_AIARA'
+    HintTitleToken           = 'ORD_AIARA'
+    HintBodyToken            = 'HNT_AIARA'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "AIManageArtillery_Auto"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_AIManageArtillery_Auto
+)
+
+export CubeAction_Order_AIAiplaneAutoManage is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_AIAiplaneAutoManage"
+    DebugName                = "InGameCubeAction_AIAiplaneAutoManage"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/SmartOrders
+
+    ButtonTextToken          = 'ORD_AIAAA'
+    HintTitleToken           = 'ORD_AIAAA'
+    HintBodyToken            = 'HNT_AIAAA'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "AIAiplaneAutoManage"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_AIAiplaneAutoManage
+)
+
+export CubeAction_Order_AIStop is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_AIStop"
+    DebugName                = "InGameCubeAction_AIStop"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/SmartOrders
+
+    ButtonTextToken          = 'ORD_AISTO'
+    HintTitleToken           = 'ORD_AISTO'
+    HintBodyToken            = 'HNT_AISTO'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "AIStop"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_AIStop
+)
+
+export CubeAction_Order_AIAttack is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_AIAttack"
+    DebugName                = "InGameCubeAction_ButtonAIAttack"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/SmartOrders
+
+    ButtonTextToken          = 'ORD_AIATT'
+    HintTitleToken           = 'ORD_AIATT'
+    HintBodyToken            = 'HNT_AIATT'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "AIAttack"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALTAR'
+    Mapping                  = $/KeyboardOption/Mapping_AIAttack
+)
+export CubeAction_Order_HoldPosition is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_HoldPosition"
+    DebugName                = "InGameCubeAction_ButtonHoldPosition"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/TogglableOrders
+
+    ButtonTextToken          = 'ORD_HOLDP'
+    HintTitleToken           = 'ORD_HOLDP'
+    HintBodyToken            = 'HNT_HOLDP'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "HoldPosition"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_HoldPosition
+)
+
+export CubeAction_Order_ShootOnPosition is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Shoot"
+    DebugName                = "InGameCubeAction_ButtonShoot"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_SHOPOS'
+    HintTitleToken           = 'ORD_SHOPOS'
+    HintBodyToken            = 'HNT_SHOPOS'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "ShootOnPosition"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALPOS'
+    Mapping                  = $/KeyboardOption/Mapping_ShootOnPosition
+)
+
+export CubeAction_Order_ShootOnPositionSmoke is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Smoke"
+    DebugName                = "InGameCubeAction_ButtonSmoke"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_SMOKE'
+    HintTitleToken           = 'ORD_SMOKE'
+    HintBodyToken            = 'HNT_SMOKE'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "ShootOnPositionSmoke"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALPOS'
+    Mapping                  = $/KeyboardOption/Mapping_Smoke
+)
+
+export CubeAction_Order_Move is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Move"
+    DebugName                = "InGameCubeAction_ButtonMove"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_MOVE'
+    HintTitleToken           = 'ORD_MOVE'
+    HintBodyToken            = 'HNT_MOVE'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "Move"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALPOS'
+    Mapping                  = $/KeyboardOption/Mapping_Move
+)
+
+export CubeAction_Order_QuickMove is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_QuickMove"
+    DebugName                = "InGameCubeAction_ButtonQMove"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_QKMOVE'
+    HintTitleToken           = 'ORD_QKMOVE'
+    HintBodyToken            = 'HNT_QKMOVE'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "QuickMove"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALPOS'
+    Mapping                  = $/KeyboardOption/Mapping_QuickMove
+)
+
+export CubeAction_Order_SmartMove is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_SmartMove"
+    DebugName                = "InGameCubeAction_ButtonSmartMove"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_SMMOVE'
+    HintTitleToken           = 'ORD_SMMOVE'
+    HintBodyToken            = 'HNT_SMMOVE'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "SmartMove"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALPOS'
+    Mapping                  = $/KeyboardOption/Mapping_SmartMove
+)
+
+export CubeAction_Order_UnloadFromTransport is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_UnloadFromTransport"
+    DebugName                = "InGameCubeAction_ButtonUnloadFromTransport"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_UNLDFT'
+    HintTitleToken           = 'ORD_UNLDFT'
+    HintBodyToken            = 'HNT_UNLDFT'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "UnloadFromTransport"
+    ActionType               = OrderInstant
+    ValidationTargetToken    = 'CA_VALBOT'
+    Mapping                  = $/KeyboardOption/Mapping_UnloadFromTransport
+)
+
+export CubeAction_Order_UnloadAtPosition is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_UnloadAtPosition"
+    DebugName                = "InGameCubeAction_ButtonUnloadAtPosition"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_UNLDAT'
+    HintTitleToken           = 'ORD_UNLDAT'
+    HintBodyToken            = 'HNT_UNLDAT'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "UnloadAtPosition"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALBOT'
+    Mapping                  = $/KeyboardOption/Mapping_UnloadAtPosition
+)
+
+export CubeAction_Order_Evacuate is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Evac"
+    DebugName                = "InGameCubeAction_ButtonEvac"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_EVAC'
+    HintTitleToken           = 'ORD_EVAC'
+    HintBodyToken            = 'HNT_EVAC'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "AirplaneEvacuate"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_Evacuate
+)
+
+export CubeAction_Order_Land is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Land"
+    DebugName                = "InGameCubeAction_ButtonLand"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_LAND'
+    HintTitleToken           = 'ORD_LAND'
+    HintBodyToken            = 'HNT_LAND'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "Land"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_Land
+)
+
+export CubeAction_Order_ChangeAltitude is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_ChangeAltitude"
+    DebugName                = "InGameCubeAction_ButtonChangeAltitude"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_CHGALT'
+    HintTitleToken           = 'ORD_CHGALT'
+    HintBodyToken            = 'HNT_CHGALT'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "ChangeAltitude"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_ChangeAltitude
+)
+
+export CubeAction_Order_ChangeMaster is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_ChangeMaster"
+    DebugName                = "InGameCubeAction_ButtonChangeMaster"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_CHMAST'
+    HintTitleToken           = 'ORD_CHMAST'
+    HintBodyToken            = 'HNT_CHMAST'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "ChangeMaster"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALPOS'
+    Mapping                  = $/KeyboardOption/Mapping_ChangeMaster
+)
+
+export CubeAction_Order_ChangeClient is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_ChangeClient"
+    DebugName                = "InGameCubeAction_ButtonChangeClient"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_CHCLIE'
+    HintTitleToken           = 'ORD_CHCLIE'
+    HintBodyToken            = 'HNT_CHCLIE'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "ChangeClient"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALPOS'
+    Mapping                  = $/KeyboardOption/Mapping_ChangeClient
+)
+
+export CubeAction_Order_Sell is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Sell"
+    DebugName                = "InGameCubeAction_ButtonSell"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_SELL'
+    HintTitleToken           = 'ORD_SELL'
+    HintBodyToken            = 'HNT_SELL'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "Sell"
+    ActionType               = OrderInstant
+    Mapping                  = $/KeyboardOption/Mapping_Sell
+)
+
+export CubeAction_Order_Reverse is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Reverse"
+    DebugName                = "InGameCubeAction_ButtonReverse"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_RVRSE'
+    HintTitleToken           = 'ORD_RVRSE'
+    HintBodyToken            = 'HNT_RVRSE'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    OrderToken               = "Reverse"
+    ActionType               = OrderWithClickValidation
+    ValidationTargetToken    = 'CA_VALPOS'
+    Mapping                  = $/KeyboardOption/Mapping_Reverse
+)
+
+
+// Synchro avec enum Functionalities cf CubeActionModuleDescriptor.h
+Functionality_Back             is 1
+Functionality_MoveProduction   is 3
+Functionality_TrackCam         is 5
+Functionality_AutoAssign       is 6
+Functionality_HoldFire         is 7
+Functionality_SmartHoldFire    is 8
+Functionality_RiposteStance    is 9
+Functionality_AutoCover        is 10
+Functionality_Home             is 11
+Functionality_CallArtillery    is 12
+Functionality_DefaultOrderHunt is 13
+Functionality_DefaultOrderMove is 14
+
+// TODO : à supprimer, Template_CubeAction_Functionality_Back fait le boulot ; gardé uniquement pour faire la transition
+export CubeAction_Functionality_Back is Template_CubeActionFunctionalityButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Back"
+    DebugName                = "InGameCubeAction_ButtonBack"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_BACK'
+    HintTitleToken           = 'ORD_BACK'
+    HintBodyToken            = 'HNT_BACK'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    FunctionalityType        = Functionality_Back
+    Mapping                  = $/KeyboardOption/Mapping_Back
+)
+
+export CubeAction_Functionality_Home is Template_CubeActionFunctionalityButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_Home"
+    DebugName                = "InGameCubeAction_ButtonHome"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_HOME'
+    HintTitleToken           = 'ORD_HOME'
+    HintBodyToken            = 'HNT_HOME'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    FunctionalityType        = Functionality_Home
+    Mapping                  = $/KeyboardOption/Mapping_Home
+)
+
+export CubeAction_Functionality_CallArtillery is Template_CubeActionFunctionalityButtonInformationsDescriptor_WithSound
+(
+    CubeActionName           = "CubeAction_Order_CallArtillery"
+    DebugName                = "InGameCubeAction_ButtonCallArtillery"
+
+    CubeActionFunctionType   = TacticCubeActionFunctionType/Orders
+
+    ButtonTextToken          = 'ORD_CALART'
+    HintTitleToken           = 'ORD_CALART'
+    HintBodyToken            = 'HNT_CALART'
+    HintExtendedToken        = ''
+    HintDico                 = ~/LocalisationConstantes/dico_interface_ingame
+
+    FunctionalityType        = Functionality_CallArtillery
+    Mapping                  = $/KeyboardOption/Mapping_CallArtillery
+)
+
+
+
+export CubeAction_Functionality_TrackCam is Template_CubeActionFunctionalityButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Order_TrackCam"
+    DebugName               = "InGameCubeAction_ButtonTrackCam"
+
+    CubeActionFunctionType = ~/TacticCubeActionFunctionType/TogglableOrders
+
+    ButtonTextToken         = 'ORD_TRKCM'
+    HintTitleToken          = 'ORD_TRKCM'
+    HintBodyToken           = 'HNT_TRKCM'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+
+    FunctionalityType       = Functionality_TrackCam
+    Mapping                 = $/KeyboardOption/Mapping_TrackCam
+)
+
+export CubeAction_Functionality_AutoAssign is Template_CubeActionFunctionalityButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Order_AutoAssign"
+    DebugName               = "InGameCubeAction_ButtonAutoAssign"
+
+    CubeActionFunctionType = ~/TacticCubeActionFunctionType/TogglableOrders
+
+    ButtonTextToken         = 'ORD_AUTOAS'
+    HintTitleToken          = 'ORD_AUTOAS'
+    HintBodyToken           = 'HNT_AUTOAS'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+
+    FunctionalityType       = Functionality_AutoAssign
+    Mapping                 = $/KeyboardOption/Mapping_AutoAssign
+)
+
+export CubeAction_Functionality_HoldFire is Template_CubeActionFunctionalityButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Order_HoldFire"
+    DebugName               = "InGameCubeAction_ButtonHoldFire"
+
+    CubeActionFunctionType = ~/TacticCubeActionFunctionType/TogglableOrders
+
+    ButtonTextToken         = 'ORD_HOLDF'
+    HintTitleToken          = 'ORD_HOLDF'
+    HintBodyToken           = 'HNT_HOLDF'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+
+    FunctionalityType       = Functionality_HoldFire
+    Mapping                 = $/KeyboardOption/Mapping_HoldFire
+)
+
+export CubeAction_Functionality_SmartHoldFire is Template_CubeActionFunctionalityButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Order_SmartHoldFire"
+    DebugName               = "InGameCubeAction_ButtonSmartHoldFire"
+
+    CubeActionFunctionType = ~/TacticCubeActionFunctionType/TogglableOrders
+
+    ButtonTextToken         = 'ORD_SMHFR'
+    HintTitleToken          = 'ORD_SMHFR'
+    HintBodyToken           = 'HNT_SMHFR'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+    HintElements            = [
+                                    $/GameplayOption/SmartHoldFireMinAccuracy,
+                                    $/GameplayOption/SmartHoldFireMinPenetration
+                              ]
+
+    FunctionalityType       = Functionality_SmartHoldFire
+    Mapping                 = $/KeyboardOption/Mapping_SmartHoldFire
+)
+
+export CubeAction_Functionality_RiposteStance is Template_CubeActionFunctionalityButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Order_RiposteStance"
+    DebugName               = "InGameCubeAction_ButtonRiposteStance"
+
+    CubeActionFunctionType = ~/TacticCubeActionFunctionType/TogglableOrders
+
+    ButtonTextToken         = 'ORD_RIPOS'
+    HintTitleToken          = 'ORD_RIPOS'
+    HintBodyToken           = 'HNT_RIPOS'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+
+    FunctionalityType       = Functionality_RiposteStance
+    Mapping                  = $/KeyboardOption/Mapping_RiposteStance
+)
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+
+export CubeAction_OutMapArtillery_Barrage is Template_CubeActionOutMapArtilleryButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Order_Barrage"
+    DebugName               = "InGameCubeAction_ButtonBarrage"
+
+    CubeActionFunctionType = ~/TacticCubeActionFunctionType/TogglableOrders
+
+    ButtonTextToken         = 'ORD_BARRG'
+    HintTitleToken          = 'ORD_BARRG'
+    HintBodyToken           = 'HNT_BARRG'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+
+    ArtilleryShootMode      = EOutMapArtilleryShootMode/Barrage
+    Mapping                  = nil
+)
+export CubeAction_OutMapArtillery_Warning is Template_CubeActionOutMapArtilleryButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Order_Warning"
+    DebugName               = "InGameCubeAction_ButtonWarning"
+
+    CubeActionFunctionType = ~/TacticCubeActionFunctionType/TogglableOrders
+
+    ButtonTextToken         = 'ORD_WARN'
+    HintTitleToken          = 'ORD_WARN'
+    HintBodyToken           = 'HNT_WARN'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+
+    ArtilleryShootMode      = EOutMapArtilleryShootMode/Warning
+    Mapping                  = nil
+)
+export CubeAction_OutMapArtillery_Efficacite is Template_CubeActionOutMapArtilleryButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Order_Efficacite"
+    DebugName               = "InGameCubeAction_ButtonEfficacite"
+
+    CubeActionFunctionType = ~/TacticCubeActionFunctionType/TogglableOrders
+
+    ButtonTextToken         = 'ORD_EFFIC'
+    HintTitleToken          = 'ORD_EFFIC'
+    HintBodyToken           = 'HNT_EFFIC'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+
+    ArtilleryShootMode      = EOutMapArtilleryShootMode/FireForEffect
+    Mapping                  = nil
+)
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+
+export CubeAction_Menu_Ghost is TCubeActionMenuDescriptor
+(
+    CubeActionName    = "Menu_Ghost"
+    CubeActionContent = MAP [
+        (0, [
+            ~/CubeAction_Order_Stop,
+        ])
+    ]
+)

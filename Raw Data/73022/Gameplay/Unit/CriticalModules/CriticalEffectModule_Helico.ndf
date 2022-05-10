@@ -1,0 +1,71 @@
+
+export CriticalEffectModule_Helico is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,100)
+    TerrainCriticalEffectTimer = 5.0
+
+    EffectsFromTerrain = []
+
+    EffectsOnFront =
+    [
+
+        HelicoCriticalEffect_HUD(Roll = (1,10)),
+        HelicoCriticalEffect_CrewInjured(Roll = (11,20)),
+        HelicoCriticalEffect_MainRotorDamaged(Roll = (21,30)),
+        HelicoCriticalEffect_Turbine_Engine_Failure(Roll = (31,40)),
+        HelicoCriticalEffect_turbineOnFire(Roll = (41,50)),
+        HelicoCriticalEffect_FuelTankOnFire(Roll = (51,60)),
+        HelicoCriticalEffect_FuelTankLeaking(Roll = (61,70)),
+        HelicoCriticalEffect_WeaponsJammed(Roll = (71,80)),
+        HelicoCriticalEffect_Hydraulic_Fluid_Fire(Roll = (81,90)),
+        HelicoCriticalEffect_TailRotorDamaged(Roll = (91,100)),
+
+
+    ]
+
+    EffectsOnSides =
+    [
+
+        HelicoCriticalEffect_HUD(Roll = (1,10)),
+        HelicoCriticalEffect_CrewInjured(Roll = (11,20)),
+        HelicoCriticalEffect_MainRotorDamaged(Roll = (21,30)),
+        HelicoCriticalEffect_Turbine_Engine_Failure(Roll = (31,40)),
+        HelicoCriticalEffect_turbineOnFire(Roll = (41,50)),
+        HelicoCriticalEffect_FuelTankOnFire(Roll = (51,60)),
+        HelicoCriticalEffect_FuelTankLeaking(Roll = (61,70)),
+        HelicoCriticalEffect_WeaponsJammed(Roll = (71,80)),
+        HelicoCriticalEffect_Hydraulic_Fluid_Fire(Roll = (81,90)),
+        HelicoCriticalEffect_TailRotorDamaged(Roll = (91,100)),
+
+
+    ]
+
+    EffectsOnRear =
+    [
+
+        HelicoCriticalEffect_HUD(Roll = (1,5)),
+        HelicoCriticalEffect_CrewInjured(Roll = (6,15)),
+        HelicoCriticalEffect_MainRotorDamaged(Roll = (16,30)),
+        HelicoCriticalEffect_Turbine_Engine_Failure(Roll = (31,40)),
+        HelicoCriticalEffect_turbineOnFire(Roll = (41,50)),
+        HelicoCriticalEffect_FuelTankOnFire(Roll = (51,55)),
+        HelicoCriticalEffect_FuelTankLeaking(Roll = (56,60)),
+        HelicoCriticalEffect_WeaponsJammed(Roll = (61,70)),
+        HelicoCriticalEffect_Hydraulic_Fluid_Fire(Roll = (71,80)),
+        HelicoCriticalEffect_TailRotorDamaged(Roll = (81,100)),
+
+
+    ]
+
+    EffectsOnTop = []
+
+    PierceEffectsOnFront = []
+    PierceEffectsOnSides = []
+    PierceEffectsOnRear = []
+    PierceEffectsOnTop = []
+
+    RicochetEffectsOnFront = []
+    RicochetEffectsOnSides = []
+    RicochetEffectsOnRear = []
+    RicochetEffectsOnTop = []
+)

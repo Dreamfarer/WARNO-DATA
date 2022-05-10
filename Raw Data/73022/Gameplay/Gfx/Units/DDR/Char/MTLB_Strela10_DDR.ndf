@@ -1,0 +1,19 @@
+export ModelFile_MTLB_Strela10_DDR is 'GameData:/Assets/3D/Units/DDR/DCA/MTLB_Strela10/MTLB_Strela10.Ase2NdfBin'
+
+Modele_MTLB_Strela10_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MTLB_Strela10_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_Strela10_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/DCA/MTLB_Strela10/MTLB_Strela10.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_Strela10_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/DCA/MTLB_Strela10/MTLB_Strela10.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

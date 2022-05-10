@@ -1,0 +1,59 @@
+ConstantesDeroute is TRoutConstants
+(
+    // Calcul des chances de réussir le test de moral
+    // ----------------------------------------------
+
+    // Lors d'un test de moral, on calcule les chances de réussir de la manière suivante:
+    // On lance 'TestMoralNombreDes' dés à 'TestMoralNombreFacesDes' faces et on fait la somme.
+    // Ensuite on vérifie la formule suivante :
+    // réussi si : Somme des dés > TestMoralSeuil - Somme des modificateurs
+
+    TestMoralNombreDes = 1 // entier positif
+    TestMoralNombreFacesDes = 100 // entier positif
+    TestMoralSeuil = 10 // entier positif
+
+    // Modificateurs
+    // -------------
+
+    // /!\ D'autres modificateurs entrent en compte :
+    // * niveau de moral de l'unité (Niveau_Moral dans l'ODS)
+    // * modificateur lié au palier de suppression de l'unité (paliers_degats onglet ModulesSuppression)
+    // * modificateur lié au palier de dégâts physiques de l'unité (paliers_degats onglet ModulesDegatsPhysiques)
+
+    // Evénements provoquant un test de moral
+    // --------------------------------------
+
+    // Il est _fortement_ recommandé d'avoir un temps non nul entre deux tests de moral, pour qu'on ne puisse pas effectuer plus d'une fois le même test de moral durant le même tick IA.
+    // Les délais sont indépendants. Lancer un test de moral à cause d'une perte de PV n'aura aucune influence sur le délai d'attente pour lancer un test de moral à cause du seuil de suppression.
+    // Ces événements sont pris en compte même s'ils ne sont qu'un état de transition ; en particulier la récupération de suppress n'empêche pas de lancer un test quand on atteint la valeur de suppress maximale contrairement à ModificateurSuppression.
+
+    // Indique si un test de moral est lancé lorsqu'une unité perd un point de vie entier. (Exemple : elle passe de 2,2 HP à 2,0 HP)
+    LanceTestMoralPertePV = true // booléen
+    // Temps minimum à attendre avant de pouvoir relancer un test de moral provoqué par perte de PV
+    TempsEntreDeuxTestsMoralPertePV = 30.0 // réel, en secondes. Sera arrondi au tick supérieur dans le code.
+
+    // Indique les seuils de suppression à partir desquels un test de moral est lancé.
+    // Pour chaque seuil, si la valeur de suppression non arrondie était strictement inférieure à ce seuil et qu'elle vient de devenir supérieure ou égale à ce seuil, un test de moral est lancé.
+    // Mettre un tableau vide [] pour désactiver ce déclencheur de test de moral.
+    LanceTestMoralSeuilSuppression = [0.8, 0.9, 0.99] // tableau de flottant, pourcentage de la suppression max
+    // Temps minimum à attendre avant de pouvoir relancer un test de moral provoqué par l'atteinte du seuil de suppression
+    TempsEntreDeuxTestsMoralSeuilSuppression = 30.0 // .2 // réel, en secondes. Sera arrondi au tick supérieur dans le code.
+
+    // Conséquences d'un test de moral
+    // -------------------------------
+
+    // Si le test échoue, l'unité passe en déroute. Si le test réussit, on applique les effets décrits dans cette section.
+
+    // Effet : si suppression non arrondie de l'unité >= 'EffetConditionSuppression', suppression de l'unité passe à 'EffetAppliqueSuppression'
+    // Attention : tenir compte de la récupération continue de suppress. Cet effet est calculé après la récupération de suppress. (la valeur de suppress maximale ne sera pas atteinte)
+    EffetConditionSuppression = 0.99 // flottant, pourcentage de la suppression maximale
+    EffetAppliqueSuppression = 0.901 // flottant, pourcentage de la suppression maximale
+
+    // Sortie de déroute
+    // -------------------------------
+
+    // Une unité sort de déroute lorsque TOUTES les conditions de cette section sont vérifiées.
+
+    // condition : suppression non arrondie de l'unité <= 'SortieSeuilSuppression'
+    SortieSeuilSuppression = 0.8 // flottant, pourcentage de la suppression maximale
+)

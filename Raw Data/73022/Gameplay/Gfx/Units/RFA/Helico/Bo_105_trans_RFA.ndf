@@ -1,0 +1,19 @@
+export ModelFile_Bo_105_trans_RFA is 'GameData:/Assets/3D/Units/RFA/Helico/BO_105_M_trans/BO_105_M_trans.Ase2NdfBin'
+
+Modele_Bo_105_trans_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Bo_105_trans_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Bo_105_trans_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Helico/BO_105_M_trans/BO_105_M_trans.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Bo_105_trans_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Helico/BO_105_M_trans/BO_105_M_trans.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

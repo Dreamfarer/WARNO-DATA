@@ -1,0 +1,19 @@
+export ModelFile_Mi_8TV_DDR is 'GameData:/Assets/3D/Units/DDR/Helico/Mi_17/Mi_17.Ase2NdfBin'
+
+Modele_Mi_8TV_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_8TV_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_8TV_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Helico/Mi_17/Mi_17.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_8TV_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Helico/Mi_17/Mi_17.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

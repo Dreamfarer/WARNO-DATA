@@ -1,0 +1,78 @@
+HUDMultiSelectionHorizontalListDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 50.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    AssumeChildrenAreFixedSize = true
+    Axis = ~/ListAxis/Horizontal
+    InterItemMargin = TRTTILength(Magnifiable = 4.0)
+    HidePointerEvents = true
+)
+
+BUCKSpecificHUDMultiSelectionPanelMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ElementName = 'Background'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1200.0, 0.0]
+        MagnifiableOffset = [18.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    Components =
+    [
+        BUCKSpecificScrollingContainerDescriptor
+        (
+            ElementName = 'ScrollingContainer'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            FitToMaximumSize = TRTTILength2
+            (
+                Magnifiable = [0.0, 110.0]
+            )
+
+            FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+            ExternalScrollbar = false
+            HasVerticalScrollbar = true
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ElementName = 'VerticalList'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        AlignementToFather = [0.5, 1.0]
+                        AlignementToAnchor = [0.5, 1.0]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+                )
+            ]
+        )
+    ]
+)
+
+UISpecificHUDMultiSelectionPanelViewDescriptor is TUISpecificHUDMultiSelectionPanelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificHUDMultiSelectionPanelMainComponentDescriptor
+    MainComponentContainerUniqueName = "UISpecificHUDMultiSelectionPanelView" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    MultiSelectionHorizontalListDescriptor = ~/HUDMultiSelectionHorizontalListDescriptor
+    UnitLabelResources = ~/SpecificInGameUnitLabelResources
+
+    NbUnitsByLine = 8
+    LabelMagnifier = 0.8
+)

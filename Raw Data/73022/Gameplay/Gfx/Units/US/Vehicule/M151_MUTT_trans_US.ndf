@@ -1,0 +1,19 @@
+export ModelFile_M151_MUTT_trans_US is 'GameData:/Assets/3D/Units/US/Vehicule/M151_MUTT_CMD/M151_MUTT_CMD.Ase2NdfBin'
+
+Modele_M151_MUTT_trans_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M151_MUTT_trans_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M151_MUTT_trans_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/M151_MUTT_CMD_MID/M151_MUTT_CMD_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M151_MUTT_trans_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/LODS/M151_MUTT_CMD_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

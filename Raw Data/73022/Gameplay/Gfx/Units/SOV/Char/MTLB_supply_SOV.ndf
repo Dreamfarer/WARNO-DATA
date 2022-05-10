@@ -1,0 +1,22 @@
+export ModelFile_MTLB_supply_SOV is 'GameData:/Assets/3D/Units/URSS/Antichar/MTLB_Shturm/MTLB_Supply.Ase2NdfBin'
+
+Modele_MTLB_supply_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_MTLB_supply_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_supply_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/MTLB_Shturm_MID/MTLB_Supply_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_supply_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/LODS/MTLB_Supply_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

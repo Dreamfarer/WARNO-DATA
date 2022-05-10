@@ -1,0 +1,19 @@
+export ModelFile_Mi_2_reco_DDR is 'GameData:/Assets/3D/Units/DDR/Helico/Mi_2_reco/Mi_2_reco.Ase2NdfBin'
+
+Modele_Mi_2_reco_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_2_reco_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_2_reco_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Helico/Mi_2_reco/Mi_2_reco.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_2_reco_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Helico/Mi_2_reco/Mi_2_reco.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

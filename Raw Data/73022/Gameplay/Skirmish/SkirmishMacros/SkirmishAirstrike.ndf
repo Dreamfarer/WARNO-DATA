@@ -1,0 +1,159 @@
+//-------------------------------------------------------------------------
+//----------------------------- AIRSTRIKE ---------------------------------
+//-------------------------------------------------------------------------
+
+// Maintains
+//-------------------------------------------------------------------------
+export Maintain_AirStrike is TMacroActionDescriptor_AirStrike_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_Maintain),
+    ]
+)
+//-------------------------------------------------------------------------
+// Template
+//-------------------------------------------------------------------------
+private template Template_Airstrike
+[
+    MinimumResourceForLaunch:int = 0,
+    AnnulerSupportSiAttaqueEchoue:bool = false,
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/All,
+    PoolModel = ~/Pool_Airstrike_Defense
+]
+is TMacroActionDescriptor_AirStrike_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [<PoolModel>]),
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TAirStrikeSettingHolder(AnnulerSupportSiAttaqueEchoue = <AnnulerSupportSiAttaqueEchoue> TypesDeRequetesAcceptees = <TypesDeRequetesAcceptees>),
+    ]
+)
+//-------------------------------------------------------------------------
+// Missions
+//-------------------------------------------------------------------------
+export Airstrike_Defense is Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export Airstrike_Offense is Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export Airstrike_Assault is Template_Airstrike
+(
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/Pool_Airstrike_Assault
+)
+//-------------------------------------------------------------------------
+// Autogens
+//-------------------------------------------------------------------------
+export Airstrike_Defense_Autogen is Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+//Principalement pour la defense BKT
+export Airstrike_Defense_Autogen_Economic is Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Economic
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense // pas d'attaque du tout
+    PoolModel = ~/Pool_Airstrike_Defense
+)
+//-------------------------------------------------------------------------
+export Airstrike_Offense_Autogen is Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = false
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup
+    PoolModel = ~/Pool_Airstrike_Offense
+)
+//-------------------------------------------------------------------------
+export Airstrike_Assault_Autogen is Template_Airstrike
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    AnnulerSupportSiAttaqueEchoue = true
+    TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/OpportunisticSingleTarget
+    PoolModel = ~/Pool_Airstrike_Assault
+)
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_Airstrike_Defense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80a63040-d931-11e8-bf7b-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Chasseur",
+            "Avion_Chasseur_Bombardier",
+        ]
+        ForbiddenTags = [
+            "InfmapCommander"
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_Airstrike_Offense is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80aa9d0f-d931-11e8-89ef-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Bombardier",
+            "Avion_Chasseur_Bombardier",
+            "Avion_Assaut",
+        ]
+        ForbiddenTags = [
+            "InfmapCommander"
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_Airstrike_Assault is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80aa9d10-d931-11e8-9a73-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_AT",
+            "Avion_Assaut",
+        ]
+        ForbiddenTags = [
+            "InfmapCommander"
+        ]
+    ),
+    ]
+)
+// Requetes
+//-------------------------------------------------------------------------
+export VEasy_BasicAirstrikeSupport is
+[
+    (["Avion_Chasseur_Bombardier", "Avion_Bombardier", "Avion_Assaut", "Avion_AT"], 2),
+]
+//-------------------------------------------------------------------------
+

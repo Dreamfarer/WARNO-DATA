@@ -1,0 +1,24 @@
+
+WorldInterfaceTactical is TWorldInterfaceDescriptor
+(
+    World3D = $/M3D/Scene/DefaultWorld
+    HelperVisibility = ~/World_Constante.HelperVisibility
+    Damage = (nil, $/GFX/GameFx/FX_FeedbackSS_Degats_OffScreen_Call)
+    DeadUnit = (nil, $/GFX/GameFx/FX_FeedbackSS_Dead_OffScreen_Call)
+
+    PlayEventMessageSounds = True
+
+    VisibilityRangeZooms = TVisibilityRangeContainer
+    (
+        ItemList =
+        [
+            $/GFX/Visibility/AllRanges/Zoom1,
+            $/GFX/Visibility/AllRanges/Zoom2,
+            $/GFX/Visibility/AllRanges/Zoom3,
+            $/GFX/Visibility/AllRanges/Zoom4,
+        ]
+    )
+
+    PathDrawingManager = ~/PathDrawingManager
+    SoundAndMusicSwitchDescriptor = soundAndMusic
+)

@@ -1,0 +1,95 @@
+private BuildingDamageRatioOperator is TCosmeticDamageOperatorDesc
+(
+    OperatorId = 'DamageRatio'
+)
+
+template template_UnitLevelBuildViewDescriptor
+[
+    RangeHigh = $/GraphicOption/LevelBuild_High,
+    RangeMid = $/GraphicOption/LevelBuild_Mid,
+    RangeLow = $/GraphicOption/LevelBuild_Low,
+
+    AdditionalMode = SDMode_Sticker + SDMode_StickerDynamic,
+
+    ModeLow  = SDMode_Low,
+    ModeMid  = SDMode_Mid,
+    ModeHigh = SDMode_High,
+
+    RangeHighDisabled : TEugBBoolean = nil,
+    RangeMidDisabled  : TEugBBoolean = nil,
+    RangeLowDisabled  : TEugBBoolean = nil,
+
+    MaxRange = $/GraphicOption/LevelBuild_Low,
+
+    LevelBuildHierarchyTag : int = LevelBuildHierarchyTag/NoBaseBuilding,
+
+    UseAutoBatcher : bool,
+
+    StickersHandler = nil
+] is TUnitLevelBuildViewDescriptor
+(
+    ModeLowComplete  is <ModeLow> + <AdditionalMode>
+    ModeMidComplete  is <ModeMid> + <AdditionalMode>
+    ModeHighComplete is <ModeHigh> + <AdditionalMode>
+
+    SymbolDatabaseProxy = $/M3D/Scene/LevelBuildSymbolDatabaseProxy
+    StateDatabaseProxy  = $/M3D/Scene/LevelBuildStateGeoDatabaseProxy
+    Camera              = $/M3D/Camera/CameraPrincipale
+    World               = $/M3D/Scene/DefaultWorld
+    WorldFloorProxy     = $/M3D/Scene/WorldFloorForOnlyGround
+
+    LevelBuildHierarchyTag  = <LevelBuildHierarchyTag>
+    MaskDestroyed = SDMask_Destroy
+    Modes = [ModeHighComplete, ModeMidComplete, ModeLowComplete]
+    KeepGeometryMask = 4  // on garde que le LOW en mémoire.
+    Ranges = [0.1, 0.05, 0.003] // attention quand on fait disparaitre avant que le baking est pris le relai
+    MinRange = $/GraphicOption/LevelBuild_Low
+    MaxRange = <MaxRange>
+    LodMultiplier = $/GraphicOption/LodRangeMultiplier
+    RangesDisabled = [<RangeHighDisabled>, <RangeMidDisabled>, <RangeLowDisabled>]
+    UseAutoBatcher = <UseAutoBatcher>
+    MediumModelSize = OneMeterInGameUnits * 15
+    JobPriority = 500
+    QuantizationRange = [100000, 100000, 100000]
+    ImposteurSystemProxy = $/M3D/Shader/ImposteurSystemProxy
+    StickersHandler = <StickersHandler>
+    Operators = [ ~/BuildingDamageRatioOperator, DepictionOperator_Shader_TeamColor, TCosmeticOccupiedOperatorDesc(), DepictionOperator_Shader_Selection ]
+    DamageRatioPrecision = 0.01
+)
+
+export DefaultUnitLevelBuildViewDescriptor is template_UnitLevelBuildViewDescriptor
+(
+    LevelBuildHierarchyTag = LevelBuildHierarchyTag/BaseBuildingOnly
+    AdditionalMode = SDMode_Sticker + SDMode_StickerDynamic
+    UseAutoBatcher = false
+)
+
+export DefenseUnitLevelBuildViewDescriptor is template_UnitLevelBuildViewDescriptor
+(
+    LevelBuildHierarchyTag = LevelBuildHierarchyTag/BaseBuildingOnly
+    MaxRange = $/GraphicOption/LevelBuild_Infinite
+    StickersHandler = $/GFX/StickerProxy/DynamicStickersHandlerProxy
+    AdditionalMode = SDMode_Sticker + SDMode_StickerDynamic
+    UseAutoBatcher = false
+)
+
+export MapBuildingUnitLevelBuildViewDescriptor is template_UnitLevelBuildViewDescriptor
+(
+    MaxRange = $/GraphicOption/LevelBuild_Infinite
+    AdditionalMode = SDMode_Sticker + SDMode_StickerDynamic + SDMode_FXModel
+    UseAutoBatcher = true
+)
+
+
+//------------------------------------------------------------------------------
+UnitLevelBuildViewPolylineInstanceManager is TUnitLevelBuildViewPolylineInstanceManager
+(
+    UnitLevelBuildViewDescriptor    = ~/DefenseUnitLevelBuildViewDescriptor
+    MultiRenderTypeMaterialPack     = $/M3D/Shader/MultiRenderTypeMaterialPack_Default
+    MainCamera                      = $/M3D/Camera/CameraPrincipale
+    World                           = $/M3D/Scene/DefaultWorld
+    SceneryDescriptorNamesToIgnore =
+    [
+        "Creux_tranchee_BaseBuilding"
+    ]
+)

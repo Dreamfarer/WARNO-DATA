@@ -1,0 +1,27 @@
+//=========
+// STEELMAN
+//=========
+
+Descriptor_Deck_Defense_Axis is TDeckDescriptor
+(
+    DeckIdentifier = 'DeckDefenseAxis'
+    DeckPackList =
+    [
+        //TDeckPackDescription
+        //(
+        //    DeckPack = $/GFX/Everything/Descriptor_Deck_Pack_DeckDefense_GER
+        //),
+    ]
+)
+
+Descriptor_Deck_Defense_Allies is TDeckDescriptor
+(
+    DeckIdentifier = 'DeckDefenseAllies'
+    DeckPackList =
+    [
+        //TDeckPackDescription
+        //(
+        //    DeckPack = $/GFX/Everything/Descriptor_Deck_Pack_DeckDefense_SOV
+        //),
+    ]
+)

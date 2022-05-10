@@ -1,0 +1,540 @@
+
+// CONSTANTES POUR LE GAME DESIGN
+CommandZoneCustomWeighForIAStrat is 0xDEF
+
+export IAStratConstantes is TIAStratConstantesDescriptor_Specific
+(
+    DefaultConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+        ("DoNotCancelProduction", TEugBBoolean(Value = false)),
+    ]
+
+    // AutoDeploy
+    AutoDeployNumberOfFrameWithoutProduction = 3 // nombre de frame sans production pour considérer qu'on a fini de déployer automatiquement
+    DefaultIALevelForAutoDeploy = IADifficulty/Normal
+
+    SeedForIAStrat = 0 //Mettre a 0 pour une seed changeante
+
+    //--------------- Comportement des unités ----------------------------------------//
+    CacherLesUnitesIdle = true
+    FollowUnitIfNoTarget = false
+
+    AmplificateurDangerPonts = 20.0 //1800
+
+
+
+    //--------------- Réglage de production ----------------------------------------//
+    CanRequestTransportProduction = false
+    CanSelectTransportUnits = false
+    ForceSelectCurrentTransporter = true
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    PoucentageDeTolerancePourPoolElement = 0.2
+    RayonDOccupationDansLaGeoDbProdution_ValeurMin = 50 * Metre
+    RayonDOccupationDansLaGeoDbProdution_ValeurMax = 100 * Metre
+    ForbiddenTagsByMission = MAP
+    [
+        (EIAstratMissionType/CorridorArtillery, ['Avion']),
+        (EIAstratMissionType/CorridorAttack, ['Avion']),
+        (EIAstratMissionType/CorridorDefense, ['Avion']),
+        (EIAstratMissionType/CorridorDynamicDefense, ['Avion']),
+        (EIAstratMissionType/ObjectiveAttack, ['Avion'])
+    ]
+
+    //--------------- Connaissance des zones ----------------------------------------//
+
+    // Si on utilise le contrôle des zones par ratios de force, c'est la valeur minimale à dépasser pour contrôler la zone
+    ControlRatioMinToControl = 1.0
+
+    CountAlliesAsDefenders = true // Chaque IA considère qu'une zone n'est défendue que si elle la défend personellement
+
+    StartingZoneAlwaysKnown = false // Les zones de départ de chaque équipe ne sont pas connues
+
+    // False : Une zone est contrôlée par une équipe si elle possède au moins une unité capable de contrôler dans cette zone
+    // True : Ratio de ma puissance dans la zone sur la puissance ennemie dans la zone
+    UpdateZoneControlWithRatioOnAllUnit = true
+
+    // False : Perte du contrôle de la zone lorsque l'IA n'a plus d'unité dessus
+    // True : Le contrôle de la zone est gardé jusqu'à ce qu'il y ait une unité ennemie dessus
+    KeepEmptyZoneControl = true
+
+    // Liste des tags déclenchant le controle de zone, au moins un dans la liste
+    // "NomDuTag"
+    // A noter que si on ajoute d'autre unité il faut changer l'exporter py pour que MustUpdateZoneIndice soit à vrai pour ces unités
+    UnitTagForControllingZone = []
+
+    ZoneKnowledgeDuration = 360 // Durée pendant laquelle une zone reste connue après reco
+    TacticObjectiveZoneWeight = ~/CommandZoneCustomWeighForIAStrat // Numero donné aux zones générées automatiquement autours des zones objectif.
+
+    //--------------- Transport ----------------------------------------//
+    MinDistanceToRequireTransport = 0 * Metre
+    ForbidToLoadNewUnits = true // Ce paramètre empêche de charger une unité qu'on ne transporte pas à la base (applicable aux transports qui spawnent préchargés)
+    UnloadWhenNoTransportRequest = false
+
+    //--------------- Defense Macro ----------------------------------------//
+    //--------------- Multiplicateur appliqué à la défense de base (on essaie de défendre multiplicateur*menace). Ca permet de donner un bonus ou malus à notre réaction
+    UtiliserLeSystemeDeRequisition = false
+    BaseDefenseMultiplier = 0.0
+    DefendFirstZoneWithUnit = [] // on enregistre la première zone défendue où on a une unité avec ce tag comme zone à défendre
+
+    //--------------- Lancement de l'IA et choix de couloir ----------------------------------//
+    //Delay maximum avant le demarrage de l'IA, pour placement du flare permettent au joueur de jouer là ou il veut (secondes)
+    IAStartDelay = 7.0
+
+    MaxNbTickWithoutUpdateAcceptable = 3
+
+    //Les coeffs sont calculé pour le modificateur de menace
+    //La formule est la suivante : Coeff/Moyenne_Des_Stats_Resistances
+    //Moyenne_Des_Stats_Resistances ayant pour arguments :
+    //Si l'unité est dans un district : GetHEDamageTakenMultiplier + GetBulletDamageTakenMultiplier + GetClusterDamageTakenMultiplier
+    //                                  + GetBombDamageTakenMultiplier + GetArtilleryDamageTakenMultiplier + GetRocketDamageTakenMultiplier
+    //Si l'unité n'est pas dans un terrain et qu'elle est un vehicule : GetDamageModifierAPVehicle + GetDamageModifierHEVehicle
+    //Si l'unité n'est pas dans un terrain et qu'elle est a pied  : GetDamageModifierBulletInfantry + GetDamageModifierHEInfantry
+    //--------------- Calcul de la puissance d'unités ----------------------------------------//
+    UnitPowerInformationData = ~/UnitPowerInformation
+
+    //--------------- Calcul de la dangerosité ------------------------------------//
+    ShouldConsiderAPBounceAsDangerous = false // Détermine si on considère une unité dangereuse même si elle ne peut pas pénétrer le blindage
+    ShouldConsiderPierceAsDangerous = true // Permet d'ajouter un bonus en fonction de la probabilité de pénétration
+    APPierceDangerousness = 5.0
+
+    //--------------- Gun Threat ----------------------------------------------//
+    //Cette variable sert a definir le nombre de tick que reste la menace ajoute par les tirs d'une artillerie
+    ArtilleryStrikeThreatLifeTime = 60
+
+    //--------------- Mission de defense ! ----------------------------------------//
+    DistanceToSeekDistrictForUnitInDefense = 2000 * Metre
+    DistanceToSeekDefenseUnitForUnitInDefense = 2000 * Metre
+    DistanceToSeekForestForUnitInDefense = 2000 * Metre
+    DistanceToSeekPolygonCenterForUnitInDefense = 1000 * Metre
+    //DistanceToRetreatForFlee = 500 * Metre
+    //TimeToWaitAfterFleeToGoBackToOriginalPositionInSeconds = 15
+    //UnitTagForHQ_UsedInDefenseMissionOnly contient une liste de tags permettant de trouver une liste d'unites ennemies. On cherchera l'unite ennemie la plus proche de la zone
+    //a defendre pour trouver sur quel point de defense se placer quand on n'a pas d'ennemi a proximité
+    UseAntiStackingForVehicles = true
+    UseAntiStackingForInfantry = true
+    MaxNumberOfStackingUnits = 2
+
+    // Objectif Attack
+    ObjectiveAttackOwnershipRatio = 0.1
+
+    DefenseMacroActionFleePowerRatio = 0.3
+
+    //--------------- Points de défense -------------------------------------------//
+
+    //Defense Position
+    OrderedDefensePointTypeToUnitTag =
+    [
+        (EDefensePointType/NearCover, ["Helo", "Helo_Gunship"]),
+        (EDefensePointType/Hidden, ["InfmapCommander"]),
+        (EDefensePointType/HardCover | EDefensePointType/GunnerNest | EDefensePointType/Trench, ["Infanterie", "Canon_AT", "ChasseurDeChar", "Canon_AA", "Char"]),
+    ]
+
+    MaxDistanceForNearCoverDefensePoint = 2.0
+
+    // Bonus appliqués aux points de défense par défaut
+    // Surchargeable par tag et par mission
+    // Ordre de priorité des bonus : Tag > Mission > Défaut
+    DefaultDefensePointScoringFeature = TDefensePointScoringFeature(
+        DefensePointScoringValue = MAP
+        [
+            (EDefensePointScoringFeature/AltitudeCoeff, 0.0),                       // Bonus dépendant de l'altitude min et max sur la carte et appliqué sur toute la carte
+            (EDefensePointScoringFeature/SlopeCoeff, 1.0),                          // Bonus dépendant de l'altitude min et max sur la carte et appliqué sur les pentes
+
+            (EDefensePointScoringFeature/DistanceBonus, 1.0),                       // | Entre 0 et DistanceMargin => Bonus de DistanceBonus
+            (EDefensePointScoringFeature/DistanceMargin, 0.0 * Metre),              // | Entre DistanceMargin et DistanceDecayLength => Diminution progressive du bonus jusqu'à 0
+            (EDefensePointScoringFeature/DistanceDecayLength, 10000.0 * Metre),     // | Après DistanceDecayLength => Malus progressif
+            (EDefensePointScoringFeature/DistanceDecayCoeff, 1.0),
+
+            (EDefensePointScoringFeature/DistrictCoeff, 1.0),                       // | Bonus appliqués en fonction de la présence d'un quartier ou d'un terrain
+            (EDefensePointScoringFeature/ForetDenseCoeff, 0.75),                    // | Seul le bonus le plus prioritaire est appliqué si plusieurs bonus sont applicables
+            (EDefensePointScoringFeature/ForetLightCoeff, 0.5),                     // | Ordre de priorité : District > Foret Dense > Foret Legere
+
+            (EDefensePointScoringFeature/IsObjectifCoeff, 1.0),                     // Bonus si la case contient un objectif
+            (EDefensePointScoringFeature/MalusDefaultDefensePoint, 10.0),           // Malus si la case a été prise à défaut d'autres possibilités
+            (EDefensePointScoringFeature/IsDefenseUnit, 2.0),                       // Bonus si la case contient une tranchée ou une position de tir
+        ]
+        DefensePointPositioning = EDefensePointPositioningType/Anywhere)
+
+    // Surchage des bonus de points de défense en fonction des tags d'unité
+    TaggedDefensePointScoringFeature =
+    [
+        (['Canon_AT'],
+            TDefensePointScoringFeature(
+                DefensePointScoringValue = MAP [
+                    (EDefensePointScoringFeature/SlopeCoeff, 2.0),
+                    (EDefensePointScoringFeature/DistanceBonus, 1.0),
+                    (EDefensePointScoringFeature/DistanceMargin, 5000.0 * Metre),
+                    (EDefensePointScoringFeature/DistanceDecayLength, 5000.0 * Metre),
+                    (EDefensePointScoringFeature/DistanceDecayCoeff, 1.0),
+                    (EDefensePointScoringFeature/DistrictCoeff, 0.0),
+                    (EDefensePointScoringFeature/ForetDenseCoeff, 1.0),
+                    (EDefensePointScoringFeature/ForetLightCoeff, 0.5),
+                    (EDefensePointScoringFeature/IsObjectifCoeff, 0.0),
+                ])
+        ),
+        (['ChasseurDeChar'],
+            TDefensePointScoringFeature(
+                DefensePointScoringValue = MAP [
+                    (EDefensePointScoringFeature/SlopeCoeff, 2.0),
+                    (EDefensePointScoringFeature/DistanceBonus, 1.0),
+                    (EDefensePointScoringFeature/DistanceMargin, 7000.0 * Metre),
+                    (EDefensePointScoringFeature/DistanceDecayLength, 5000.0 * Metre),
+                    (EDefensePointScoringFeature/DistanceDecayCoeff, 1.0),
+                    (EDefensePointScoringFeature/DistrictCoeff, -1.0),
+                    (EDefensePointScoringFeature/ForetDenseCoeff, -1.0),
+                    (EDefensePointScoringFeature/ForetLightCoeff, 2.0),
+                    (EDefensePointScoringFeature/IsObjectifCoeff, 0.0),
+                ]
+                DefensePointPositioning = EDefensePointPositioningType/Offensive)
+        ),
+        (['Canon_AA'],
+            TDefensePointScoringFeature(
+                DefensePointScoringValue = MAP [
+                    (EDefensePointScoringFeature/AltitudeCoeff, 2.0),
+                    (EDefensePointScoringFeature/DistanceBonus, 1.0),
+                    (EDefensePointScoringFeature/DistanceMargin, 7000.0 * Metre),
+                    (EDefensePointScoringFeature/DistanceDecayLength, 5000.0 * Metre),
+                    (EDefensePointScoringFeature/DistanceDecayCoeff, 1.0),
+                    (EDefensePointScoringFeature/DistrictCoeff, 0.0),
+                    (EDefensePointScoringFeature/ForetDenseCoeff, -1.0),
+                    (EDefensePointScoringFeature/ForetLightCoeff, 1.0),
+                ])
+        ),
+        (['Char'],
+            TDefensePointScoringFeature(
+                DefensePointScoringValue = MAP [
+                    (EDefensePointScoringFeature/SlopeCoeff, 2.0),
+                    (EDefensePointScoringFeature/DistanceBonus, 1.0),
+                    (EDefensePointScoringFeature/DistanceMargin, 7000.0 * Metre),
+                    (EDefensePointScoringFeature/DistanceDecayLength, 5000.0 * Metre),
+                    (EDefensePointScoringFeature/DistanceDecayCoeff, 1.0),
+                    (EDefensePointScoringFeature/DistrictCoeff, -1.0),
+                    (EDefensePointScoringFeature/ForetDenseCoeff, -1.0),
+                    (EDefensePointScoringFeature/ForetLightCoeff, 2.0),
+                    (EDefensePointScoringFeature/IsObjectifCoeff, 0.0),
+                ]
+                DefensePointPositioning = EDefensePointPositioningType/Offensive)
+        ),
+    ]
+
+    /////////////////////////////
+    // Reglage des MoveGrouped //
+    /////////////////////////////
+    // Ces réglages sont disponible dans les ajustables (et overridés par les sauvegardes d'ajustables)
+    // Calcul de la validation du checkpoint en fonction de la vitesse du groupe
+    AnticipationDelay = 4 // Le temps d'anticipation du calcul
+    OffAnticipationDistanceCoef = 0.5 // L'offset ajouté au résultat (en taille de case)
+    MinAnticipationDistanceCoef = 1.0 // La distance d'anticipation minimale (en taille de case) : Une case minimum sinon on peut ne pas valider dans les cas limites
+    MaxAnticipationDistanceCoef = 2.5 // La distance d'anticipation maximale (en taille de case)
+    // Autre
+    MergeGroupDistInPolygon = 2.0 // Les groupes de move sont mergés à X cases de distance
+    AddToGroupDistInPolygon = 1.5 // On ajoute quelqu'un au groupe à X cases de distance
+    DistToValidateRegroupPointInPolygon = 1.5 // Distance à laquelle toutes les unités du groupe doivent être pour valider le regroupement
+    /////////////////////////////
+
+    //--------------- TacticalPath ----------------------------------------//
+    NumberOfDangerousIndiceAlwaysIgnoredForTacticalPathInCover = 1  // X | Dans le TacticalPathInCover, nombre de cases dangereuses à éviter :
+    SecondsToIgnoreDangerousIndiceForTacticalPathInCover = 10.0     // Y | (X + (1 toutes les Y secondes)) * (Z si on est en Blitzkireg)
+    BlitzkriegMultiplierForTacticalPathInCover = 4.0                // Z |
+
+    //--------------- Regroup Point ---------------------------------------//
+    NumberOfDangerousIndicesToIgnoreForRegroupPoint = 1
+
+    //--------------- Defenses --------------------------------------------//
+
+    DefenseBuildingBudget = 250
+    BunkerTagPerType = MAP
+    [
+        (EIAStratDefenseType/BunkerMG, "Defense_BunkerMG"),
+        (EIAStratDefenseType/BunkerAT_Leger, "Defense_BunkerAT_Leger"),
+        (EIAStratDefenseType/BunkerAT_Standard, "Defense_BunkerAT_Standard"),
+        (EIAStratDefenseType/BunkerAT_Lourd, "Defense_BunkerAT_Lourd"),
+    ]
+
+
+    //---------------------------------------------------------------------------------//
+    //---------------------------------------------------------------------------------//
+    //---------------------- Spécifiques MODERN WARFARE -------------------------------//
+    //---------------------------------------------------------------------------------//
+    //---------------------------------------------------------------------------------//
+
+    DistanceToRetreatForFlee = 2000 * Metre
+    TimeToWaitAfterFleeToGoBackToOriginalPositionInSeconds = 7.5
+    TimeSinceLastShotReceivedForFlee = 5
+    TimeSinceLastShotReceivedForCrawling = 10
+    DistanceFromCoverForCrawling = 400 * Metre
+
+    //---------------------------------------------------------------------------------//
+    //---------------------------------------------------------------------------------//
+    //---------------------- Spécifiques MODERN WARFARE -------------------------------//
+    //---------------------------------------------------------------------------------//
+    //---------------------------------------------------------------------------------//
+
+    DistanceForAlliesToBeConsideredForStall = 300 * Metre
+    RatioOfSuppressDamageForAlliesToBeConsideredForStall = 0.75
+    RatioOfSuppressDamageForEnemiesToBeConsideredForStall = 0.8
+    DistanceForEnemiesToBeConsideredForStall = 400 * Metre
+
+    TimeSinceLastShotReceivedForStall = 10
+    CapacityStall = ~/Capacite_Infanterie_Retraite
+
+    //StateMachine Retreat No Ammo
+    UpdateRetreatPointInterval = 7.0
+    NumberTicksForIdle = 5.0
+    MinSupplyStock = 100.0
+    //StateMachine ActionIA_Crawl (drop smoke)
+    ProbabilityDropSmokeOnCrawl = 1.0
+
+    //Override du safePath
+    AlwaysIgnoreSafePathTags = ["Char", "ChasseurDeChar", "Helo", "Helo_Gunship"]
+
+    //Smart Order Custom Zone Filler
+    ZoneFillerType = TCircleZoneFiller(Radius = 3)//TSquareZoneFiller(Size = 3)//
+
+    MaxCustomZoneDistanceForSimilar = 830.0 * Metre
+
+    DefaultInMapArtilleryAmount = 1
+    DefaultOutMapArtilleryAmount = 1
+
+    DefaultTransportSettings = [~/DefaultWargameTransport,]
+    DefaultTransportIsRequiredProduction = false
+
+    // Override de l'autocover
+    TagsForAutoCoverOverride = ["Char", "ChasseurDeChar", "Vehicule", "Canon_AA_Porte", "Artillerie"]
+    MinAutoCoverRange = 800 * Metre
+    MinAutoCoverRadius = 400 * Metre
+
+    // RoE Pour l'IA
+    RoEConstantes = ~/RoEConstantes
+
+    CommanderTagSet = ["InfmapCommander"]
+    // constante de l'idle des helico
+    HelicoSafeCollisionPlanesOrderByTag =
+    [
+        ("AllUnits", [ECollisionPlane/NearGround, ECollisionPlane/LowAltitude, ECollisionPlane/Ground]),
+    ]
+
+    IAStratPathCostCacheFilePath = "$/MapIA/MapInstance/IAStratZonePathCostCacheFileName"
+    IAStratDistanceFromNotDefendedCommandZone = 8000 * Metre //Un peu plus que la taille de 1 zone IAStrat
+
+    AngleMaxInDegBetweenCommandZoneToCaptureAndPlacementZoneForCommandUnit = 45.0
+
+    //first moveOutRatio / second CaptureRatio
+    CapturableCommandZoneMoveOutAndCapturePowerRatioForAIDifficulty = MAP
+    [
+        (IADifficulty/AnyDifficulty, (0.8, 1.25)),
+        (IADifficulty/TresFacile, (1.0, 1.5)),         // On ne prend pas de risque, mais on perd aussi en réactivitée
+        (IADifficulty/Facile, (1.0, 1.5)),
+        (IADifficulty/Normal, (0.8, 1.25)),
+        (IADifficulty/Difficile, (0.8, 1.25)),
+        (IADifficulty/TresDifficile, (0.65, 1.1)),     // On prend plus de rique a partir de very hard
+        (IADifficulty/PlusDifficile, (0.65, 1.1)),
+    ]
+
+    ProductionCapturableRadiusCheckMultiplier = 3.0
+    SupplyMinDistanceCheck = 1000 * Metre
+)
+
+//--------------------------------------------------------------------------------------//
+// Pour se prémunir d'assert sur la taille de la classe de constante RTTI               //
+//--------------------------------------------------------------------------------------//
+UnitPowerInformation is TUnitPowerInformationConstante
+(
+    UnitPowerAntiAirMultiplier = 1.0
+    UnitPowerDistrictCoeff = 1.5 //
+    UnitPowerTerrainCoeff = 1.0
+    UnitPowerAllyStealthMultiplier = 1.0
+    UnitPowerEnemyStealthMultiplier = 0.0
+    UnitPowerBuildingMultiplier = 0.01
+    UnitPowerUnarmedOrPinnedMultiplier = 0.1
+    DefaultDistanceToConsiderOtherUnitsPower = 2000 * Metre // Les missions d'attaque prendront en compte ce rayon pour calculer leurs ratios
+)
+
+RoEConstantes is TRoEConstantes
+(
+    UnarmedVehiculeBehavior = EUnarmedVehiculeBehaviour/FireAtWill
+    MissilesBehavior = EMissilesBehaviour/NeverLooktAtTransport
+    ActivateAutoResale = true
+    AutoResalePriceLimitMax = 100
+)
+
+//--------------------------------------------------------------------------------------//
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//--------------------------------------------------------------------------------------//
+
+AirstrikeConstantes is TIAStratAirstrikeConstantes
+(
+    UseAirstrikeDefenseSystem = true
+    DefenseAirstrikeSettings = [
+        (["Avion_Chasseur"], 3),
+        (["Avion_Chasseur_Bombardier"], 1),
+    ]
+
+    UseAirStrikeOpportunisticAttack = true
+    OpportunisticSingleTargetAirstrikeSettings = [
+        (["Avion_Assaut"], 3),
+        (["Avion_AT"], 3),
+        (["Avion_Chasseur_Bombardier"], 1),
+    ]
+    OpportunisticTargetInGroupAirstrikeSettings = [
+        (["Avion_Bombardier"], 3),
+        (["Avion_Chasseur_Bombardier"], 1),
+    ]
+    TargetPowerForOpportunisticSingleTargetAirStrike = 50
+    TargetPowerForOpportunisticTargetInGroupAirStrike = 75
+    RadiusForOpportunisticTargetInGroupAirStrike = 600 * Metre //120m in game
+    MinNbrOfTargetsForOpportunisticTargetInGroupAirStrike = 2
+
+    // Les avions avec des limitations sur leurs cibles sont renseignés ici. Ceux qui n'en ont pas non.
+    // Ex: les avions AT ne peuvent attaquer que les blindés
+    StrikeLimitations = [
+        ("Avion_AT", ["Char", "ChasseurDeChar", "Vehicule_Appui", "Artillerie_MLRS", "Artillerie_Observateur", "Artillerie_Longue_Portee"])
+    ]
+
+    // Les avions possédant le tag renseigné ci dessous ne peuvent pas choisir de cible que leur team ne voit pas.
+    TagsLimitedToVisibleTargetsOnly = ["Avion_AT"]
+
+    AirplaneWaitForDecisionTime = 5
+)
+
+//--------------------------------------------------------------------------------------//
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//--------------------------------------------------------------------------------------//
+
+ArtilleryStrikeConstantes is TIAStratArtilleryStrikeConstantes
+(
+    OutMapArtilleryStrikeSupportOffset = 2000 * Metre // Les artilleries hors map lançant un tir de barrage en soutien viseront à cette distance derrière l'ennemi
+    InMapArtilleryStrikeSupportOffset = 1000 * Metre // Les artilleries sur carte lançant un tir Smoke en soutien viseront à cette distance derrière l'ennemi
+    SupportStrikeRatioForMissionSupport = 0.3 // Ratio Tir pour tuer / Tir de soutien (Smoke ou barrage) lors du support de mission (0 : pas de Smoke, 1 : que des Smoke)
+    ArtilleryStrikeThreatBonusPerTags =  // Multiplicateur appliqué lors du calcul de la menace d'unité. On applique le premier bonus qui match les tags de notre unité (1 par défaut)
+    [
+        (["Canon_AT"], 1.5),
+        (["Canon_AA"], 1.5),
+        (["Infanterie_Standard"], 1.5),
+        (["Infanterie_Spec_Defense"], 2.0),
+        (["Artillerie"], 2.0),
+        (["Vehicule_Logistique"], 2.0),
+        (["Infanterie"], 1.0),
+        (["Vehicule"], 0.3),
+        (["Char"], 1.0),
+    ]
+
+    ArtilleryRangeRatioPosition = 0.30
+    OutMapNeededTargetValueToShootModifier = 2.0  // Modificateur des valeurs necessaire pour tirer pour l'artillerie offmap
+)
+
+//--------------------------------------------------------------------------------------//
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//--------------------------------------------------------------------------------------//
+
+VisionConstantes is TIAStratVisionConstantes
+(
+    //Triche de vision ou pas
+    InfluenceMapAlwaysKnowAllUnits = false // NB : ce parametre ne sert a rien si IgnoreInvisibleUnit = false. IgnoreInvisibleUnit a false desactive entierement le code anti triche
+
+    //--------------- Réglage de la connaissance des unités non visibles -------------//
+
+    VisionParametersByDifficulty = MAP
+    [
+        (IADifficulty/TresFacile, ~/IAStratVisionNoShootDetection),
+        (IADifficulty/Facile, ~/IAStratVisionNoShootDetection),
+        (IADifficulty/Normal, ~/IAStratVisionShootDetectionLittleMemory),
+        (IADifficulty/Difficile, ~/IAStratVisionShootDetectionLittleMemory),
+        (IADifficulty/TresDifficile, ~/IAStratVisionShootDetectionInfiniteMemory),
+        (IADifficulty/PlusDifficile, ~/IAStratVisionShootDetectionInfiniteMemory),
+        (IADifficulty/AnyDifficulty, ~/IAStratVisionShootDetectionLittleMemory)
+    ]
+
+    //--------------- Test de vision ----------------------------------------------//
+    // valeurs par défaut, les valeurs spécialisées sont dans  les config par difficulté
+    VisionTestRayNumber = 64
+    VisionTestRayLength = 10000 * Metre
+    VisionTestHeightOffset = 300
+    VisionTestTheoreticalMaxVision = 10000 * Metre
+    VisionTestDefenseRatio = 0.6    // Plusieurs tests avec un ratio dégressif (à 100%, 75% et 50%)
+    VisionTestHideUnitRatio = 0.6
+)
+
+//--------------------------------------------------------------------------------------//
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//--------------------------------------------------------------------------------------//
+
+MapSlicingConstantes is TMapSlicingConstantes
+(
+    MapSlicingType = 0 // 0 = square, 1 = hexa - Attention à changer NB_NEIGHBORS_PER_POLYGON et NB_VERTICES_PER_POLYGON, dans MapHelper.h, en conséquence
+    NbPositionsPerPolygon = 9
+    MaxNbUnitsPerPolygon = 8
+    PositionAtCenter = true
+
+    WaypointsInLightCoverTerrainTypes = [~/ETerrainType/ForetLegere, ~/ETerrainType/Urbain]
+    WaypointsInHeavyCoverTerrainTypes = [~/ETerrainType/ForetDense]
+)
+
+//--------------------------------------------------------------------------------------//
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//--------------------------------------------------------------------------------------//
+export DefaultWargameTransport is
+(
+    [
+        "AllUnits",
+    ]
+    ,
+    [
+        ("Vehicule_Transport_Arme", Transport_Attacker),
+        ("Vehicule_Transport", Transport_Prioritary),
+    ]
+)
+//--------------------------------------------------------------------------------------//
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//                                                                                      //
+//--------------------------------------------------------------------------------------//
+FakeGunThreatDescriptor is TFakeGunThreatDescriptor
+(
+    FakeThreatLifeTime = 90
+    DistanceFromStart = 2000.0 * Metre
+    StepSize = 1000.0
+    DecalageAltitude = 300.0
+    VisionRange = 10000.0 * Metre
+    OwnerRatioForFakeGunThreat = 0.9
+    GunList = [
+        TFakeGunDescriptor(
+
+            CurrentRange = 10000.0 * Metre
+            TirIndirect = false
+            TypeArme = TDamageTypeRTTI(Family="balle" Index=1)
+            ColPlan = ~/ECollisionPlane/Ground
+            ),
+        TFakeGunDescriptor(
+
+            CurrentRange = 10000.0 * Metre
+            TirIndirect = false
+            TypeArme = TDamageTypeRTTI(Family="he" Index=1)
+            ColPlan = ~/ECollisionPlane/Ground
+            ),
+        TFakeGunDescriptor(
+
+            CurrentRange = 10000.0 * Metre
+            TirIndirect = false
+            TypeArme = TDamageTypeRTTI(Family="ap" Index=10)
+            ColPlan = ~/ECollisionPlane/Ground
+            IsPiercing = true
+            ),
+    ]
+)

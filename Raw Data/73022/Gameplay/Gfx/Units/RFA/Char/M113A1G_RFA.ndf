@@ -1,0 +1,25 @@
+export ModelFile_M113A1G_RFA is 'GameData:/Assets/3D/Units/RFA/APC/M113A1G/M113A1G.Ase2NdfBin'
+
+Modele_M113A1G_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M113A1G_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_M113A1G_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/APC/M113A1G/M113A1G.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M113A1G_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/APC/M113A1G/M113A1G.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M113A1G_RFA_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MG3_Tourelle_01
+    CivMask =  CivMask/Common
+)

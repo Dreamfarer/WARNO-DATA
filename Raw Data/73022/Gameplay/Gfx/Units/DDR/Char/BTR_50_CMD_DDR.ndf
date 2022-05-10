@@ -1,0 +1,19 @@
+export ModelFile_BTR_50_CMD_DDR is 'GameData:/Assets/3D/Units/DDR/APC/BTR_50_CMD/BTR_50_CMD.Ase2NdfBin'
+
+Modele_BTR_50_CMD_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BTR_50_CMD_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_50_CMD_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/APC/BTR_50_CMD/BTR_50_CMD.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_50_CMD_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/APC/BTR_50_CMD/BTR_50_CMD.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

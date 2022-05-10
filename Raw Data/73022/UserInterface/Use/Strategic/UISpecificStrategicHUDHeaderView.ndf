@@ -1,0 +1,394 @@
+
+
+private StrategicHUDHeaderButtonManager is TBUCKRadioButtonManager()
+
+//-------------------------------------------------------------
+
+private SpecificStrategicHUDHeaderViewMainComponent is BUCKListDescriptor
+(
+    UniqueName = 'HUDTopElement'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableOffset = [5,0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    FirstMargin = TRTTILength( Magnifiable = 0.0 )
+    //HasBackground = true
+    BackgroundBlockColorToken = 'Orange'
+    Elements =
+    [
+        {BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = PanelInfoDuTour
+                ),}
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "StratHeaderList"
+
+                Axis = ~/ListAxis/Vertical
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                FirstMargin = TRTTILength( Magnifiable = 8.0 )
+                InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+
+                Elements =
+                [
+                    {BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor =  AffichageMenu
+                                        ),}
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKRackDescriptor
+                        (
+                            UniqueName = 'tuto_renfort'
+                            ElementName = "ReinforcementRack"
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [0.0, 29.0]
+                            )
+
+                            SpotlightComponent = SpotlightDescriptor()
+                            SpotlightLayer = $/UserInterface/UILayer_2DInterfaceDropDown_OutGame
+
+                            BladeDescriptor = ~/ReinforcementButton
+                            Axis = ~/ListAxis/Horizontal
+                            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = PanelRenfortsEtDate
+                    ),
+                ]
+            )
+        ),
+    ]
+)
+
+
+//-------------------------------------------------------------------------------------
+private PanelRenfortsEtDate is BUCKListDescriptor
+(
+    //ElementName = 'ListeDesRessources'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 25]
+
+    )
+    HasBackground = true
+    BackgroundBlockColorToken = 'Orange'
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                UniqueName = "StrategicProductionMenuPanelContainer"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                // envoie BUCKSpecificStrategicProductionMenuMainComponentDescriptor
+            )
+        ),
+
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner
+        (
+            BackgroundBlockColorToken = 'H2_bleu_2_40p'
+            BorderLineColorToken = 'H2_bleu_2_40p'
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private AffichageMenu is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI()
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    HasBackground = true
+    BackgroundBlockColorToken = "grisFonceDivision"
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                UniqueName = "FlareEditableTextContainer"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+            )
+        ),
+    ]
+
+    BackgroundComponents = [OmbrePanel()]
+)
+// -------------------------------------------------------------------------------------------------
+// StrategicPointsText
+// -------------------------------------------------------------------------------------------------
+
+// Strategic income points
+private StrategicProductionMenuStrategicIncomePointsText is BUCKTextDescriptor
+(
+    ElementName = 'StrategicIncomePointsText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor  = [0.0, 0.5]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Right
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextToken = "HPROD_CMDI"
+
+    TextColor = "Gold"
+    TextSize = "14"
+
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = "head_CPEt"
+        HintBodyToken = "head_CPEb"
+    )
+)
+
+// Strategic points
+private StrategicProductionMenuStrategicPointsText is BUCKTextDescriptor
+(
+    ElementName = 'StrategicPointsText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        AlignementToFather =  [0.0, 0.5]
+        AlignementToAnchor  = [0.0, 0.5]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Right
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextToken = "HPROD_CMDP"
+
+    TextColor = "Gold"
+    TextSize = "18"
+
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = "head_CPt"
+        HintBodyToken = "head_CPb"
+        HintExtendedToken = "head_CPe"
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+{private SpecificStrategicHUDHeaderOptionViewMainComponent is BUCKButtonDescriptor
+(
+    ElementName = 'BtnGameSpeed'
+    HasBorder = true
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "SD2_Blanc184"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [32.0, 20.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = 'GameSpeedTexture'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TextureToken = "vitesse03Strat"
+            TextureColorToken = "StrategicUI/Button"
+        ),
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "sp_t"
+            HintBodyToken = "sp_c"
+        )
+    ]
+)}
+
+
+
+// -------------------------------------------------------------------------------------------------
+private StrategicBoutonsMenus is PanelRoundedCorner
+(
+    ElementName = "StrategicBoutonsMenusRoundedPanel"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [25.0, 0.0]
+        AlignementToFather = [1.0, 1.0]
+        AlignementToAnchor = [1.0, 1.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    HasBackground = true
+    BackgroundBlockColorToken = 'SM_RifleGreen_75'
+    HasBorder = true
+    BorderLineColorToken = 'SM_Grullo'
+    BorderThicknessToken = '2'
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "StrategicBoutonsMenusList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 40.0]
+                MagnifiableOffset = [0.0, 5.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            FirstMargin = TRTTILength(Magnifiable = 19.0)
+            InterItemMargin = TRTTILength(Magnifiable = 13.0)
+            LastMargin = TRTTILength(Magnifiable = 30.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/BoutonAffichageStrategicSituation
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/BoutonAffichageOrdreDeBataille
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/BoutonAffichagePertes
+                ),
+
+                // boutons options labels +
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        UniqueName = "SpecificStrategicHUDHeaderOptionViewMainContainer"
+                        ComponentFrame = TUIFramePropertyRTTI ()
+
+                        FitStyle = ~/ContainerFitStyle/FitToContent
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+UISpecificStrategicHUDHeaderOptionViewDescriptor is TUISpecificStrategicHUDHeaderOptionViewDescriptor
+(
+    MainComponentDescriptor = BoutonAccelerationDuTemps
+    MainComponentContainerUniqueName = "SpecificStrategicHUDHeaderOptionViewMainContainer"
+
+    GameSpeedInformations =
+    [
+        ("vitesse03Strat", -1.0),
+        ("vitesse04Strat", -1.0),
+        ("vitesse05Strat", -1.0),
+    ]
+
+    DefaultForceShowPowerGauges = true
+    DefaultHideLabelUnitIcon = false
+)
+
+// -------------------------------------------------------------------------------------------------
+private ReinforcementButton is BUCKSpecificButton
+(
+    ElementName = 'BtnReinforcement'
+
+    RoundedCorner = true
+    BackgroundBlockColorToken  = ""
+
+    TextColorToken = "ButtonHUD/Text2"
+    ButtonRelativeWidthHeight = [0.0, 0.0]
+    ButtonMagnifiableWidthHeight = [55.0, 30.0]
+
+    TextParagraphStyle = ~/paragraphStyleTextCenter //paragraphStyleTextLeftAlign
+    HasText = true
+    TextSizeToken = "22"
+    TextToken = ""
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    HidePointerEvents = true
+
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = "head_Reb"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    IsTogglable = true
+    RadioButtonManager = StrategicHUDHeaderButtonManager
+)
+
+SpecificStrategicHUDHeaderViewResources is TUISpecificStrategicHUDHeaderViewDescriptor
+(
+    MainComponentDescriptor = ~/SpecificStrategicHUDHeaderViewMainComponent
+    MainComponentContainerUniqueName = "SpecificStrategicHUDHeaderViewMainContainer"
+
+    CancelMenuBinding = TEugBMutablePBaseClass( Value = TUserInputMapping( MouseEventID = UserInputMouse/RButton ) )
+)

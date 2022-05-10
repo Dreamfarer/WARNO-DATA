@@ -1,0 +1,120 @@
+
+private MapTerrestre            is 0
+private MapMixte                is 1
+private MapMarine               is 2
+
+export EmptyStrategy is TIAGeneralStrategy
+(
+    StrategyName = "EmptyStrat"
+    FirstGenerator = TSequenceGeneratorDescriptor(GeneratorList = [])
+)
+
+private DefaultStrategyList is
+[
+    ~/GenericStrategy,
+]
+
+private VeryEasyStrategyList is
+[
+    ~/VeryEasyStrategy,
+]
+
+private EasyStrategyList is
+[
+    ~/EasyStrategy,
+]
+
+private VeryHardStrategyList is
+[
+    ~/VeryHardStrategy,
+]
+
+private CampaignStrategyList is
+[
+]
+
+
+private DefaultBreakthroughStrategyList is
+[
+    ~/GenericBreakthroughStrategy,
+]
+
+private SkirmishList is TIASkirmishList_Specific
+(
+    // Stratégies disponibles pour l'auto-deploiement
+    IAStrategyForAutoDeploy = MAP
+    [
+        (EDeploymentMode/Breakthrough, ~/AutoDeployBreakthroughStrategy),
+        (EDeploymentMode/NotSpecified, ~/AutoDeployStrategy),
+    ]
+
+    // Stratégies disponibles pour tous les battlegroups de la campagne solo
+    // Ces stratégies doivent pouvoir se jouer avec tous les decks de battlegroups
+    IAStrategyListForSoloCampaign =
+    [
+        ~/EmptyStrategy
+    ]
+
+    //Choix de la strategie suivant le mode de jeu et le type de map en skirmish/multi
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/TresFacile, MAP
+        [
+            (EDeploymentMode/NotSpecified, ~/VeryEasyStrategyList),
+        ]),
+        (IADifficulty/Facile, MAP
+        [
+            (EDeploymentMode/NotSpecified, ~/EasyStrategyList),
+        ]),
+        (IADifficulty/Normal, MAP
+        [
+            (EDeploymentMode/NotSpecified, ~/DefaultStrategyList),
+        ]),
+        (IADifficulty/Difficile, MAP
+        [
+            (EDeploymentMode/NotSpecified, ~/DefaultStrategyList),
+        ]),
+        (IADifficulty/TresDifficile, MAP
+        [
+            (EDeploymentMode/NotSpecified, ~/VeryHardStrategyList),
+        ]),
+        (IADifficulty/PlusDifficile, MAP
+        [
+            (EDeploymentMode/NotSpecified, ~/VeryHardStrategyList),
+        ]),
+        (IADifficulty/AnyDifficulty, MAP
+        [
+            (EDeploymentMode/NotSpecified, ~/DefaultStrategyList),
+        ])
+    ]
+
+    IAStrategyOverrideByMap = MAP
+    [
+        //(GUID:{00000000-0000-0000-0000-000000000000}, MAP[(~/EDeploymentMode/NotSpecified, [~/Strategie_pour_cette_map])]), <-stratégie unique pour cette map
+    ]
+
+    //Prioritaire par rapport a l'override
+    IAStrategyOverrideForTicketsEconomy = MAP
+    [
+        (IADifficulty/AnyDifficulty, MAP
+        [
+            (EDeploymentMode/Breakthrough, ~/DefaultBreakthroughStrategyList),
+            (EDeploymentMode/NotSpecified, ~/DefaultStrategyList),
+        ]),
+    ]
+)
+
+export AutoDeploy_Strategy_Seletor is TIAGeneralStrategySelector
+(
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/AnyDifficulty, ~/AutoDeployStrategy),
+    ]
+)
+export Colonel_Tutorial_Strategy_Selector is TIAGeneralStrategySelector
+(
+    IAStrategyConfiguration = MAP
+    [
+        (IADifficulty/AnyDifficulty, ~/ColonelTutorialStrategy),
+    ]
+)

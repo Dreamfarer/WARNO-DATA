@@ -1,0 +1,54 @@
+export ModelFile_M577_US is 'GameData:/Assets/3D/Units/US/CMD/M577/M577.Ase2NdfBin'
+
+Modele_M577_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M577_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M577_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/CMD/M577_MID/M577_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M577_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/CMD/LODS/M577_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+//---------------------------------------------------------
+Gfx_Modele_M577_US is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Socle_USA ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Depiction = TDepictionTemplate
+            (
+                Scaler = CommonIdentityScaler
+                Selector = OnlyHighDepictionSelector
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_courte ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Anchor = "vehicule"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 7)
+                        Selector = CommonDepictionSelector
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_M577_US ),
+                            DepictionDescriptor_LOD_Mid ( MeshDescriptor = Modele_M577_US ),
+                            DepictionDescriptor_LOD_Low ( MeshDescriptor = Modele_M577_US DisabledOperators = ['tourelle3'] ),
+                        ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)

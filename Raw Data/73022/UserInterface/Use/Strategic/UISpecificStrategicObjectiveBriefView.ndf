@@ -1,0 +1,94 @@
+
+BUCKSpecificStrategicObjectiveBriefMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableOffset = [10,0]
+    )
+
+    FirstMargin  = TRTTILength (Magnifiable = 8.0)
+    InterItemMargin = TRTTILength(Magnifiable = 2.0)
+    LastMargin  = TRTTILength (Magnifiable = 8.0)
+
+    Axis = ~/ListAxis/Vertical
+
+    HidePointerEvents = true
+
+    //HasBackground = true
+    BackgroundBlockColorToken = 'SD2_BleuGris'
+    //HasBorder = true
+    BorderThicknessToken = '1'
+    BorderLineColorToken = "SD2_LigneBleuGris"
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                ParagraphStyle = ~/LDHintParagraphStyleLeftAlignedExact
+                HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextPadding = TRTTILength4(Magnifiable = [10.0, 0.0, 4.0, 0.0])
+
+                TextStyle = 'Default'
+                TypefaceToken = "Liberator"
+
+                TextToken = 'Obj_ti'
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = '18'
+                TextColor = 'SM_paleSilver'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'ObjectivesText'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                ParagraphStyle = ~/LDHintParagraphStyleLeftAlignedExact
+                TextPadding = TRTTILength4(Magnifiable = [10.0, 0.0, 10.0, 0.0])
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "Eurostyle"
+                BigLineAction = ~/BigLineAction/MultiLine
+                ColorMode = ~/ColorMode/Override
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextColor = "SM_paleSilver"
+                TextSize = "15"
+            )
+        ),
+    ]
+    BackgroundComponents =
+    [
+        //OmbrePanel
+        PanelRoundedCorner
+        (
+            RoundedVertexes = [true, true, false, false]
+            BackgroundBlockColorToken = 'SM_RifleGreen_75'
+            BorderLineColorToken = 'SM_Grullo'
+        )
+    ]
+)
+
+UISpecificStrategicObjectiveBriefViewDescriptor is TUISpecificStrategicObjectiveBriefViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicObjectiveBriefMainComponentDescriptor
+    MainComponentContainerUniqueName = "StrategicGlobalObjectivesContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

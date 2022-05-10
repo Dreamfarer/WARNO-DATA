@@ -1,0 +1,160 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+// Le but de cette strategy est d'être complètement passive pour laisser le joueur apprendre a jouer et expériementer
+// Elle ne va donc jamais essayer de prendre plus que la moitié des zones, elle a le strict minimum d'attaques
+//-------------------------------------------------------------------------
+export VeryEasyStrategy is TIAGeneralStrategy
+(
+    StrategyName = "VeryEasyAI"
+    FirstGenerator = VEasy_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        VEasy_Transition_StartToPhaseCommand,
+        VEasy_Transition_StartToGeneric,
+        VEasy_Transition_DeployToCommandPhase,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export VEasy_Condition_GotoGeneric is TSequenceCondition_Not
+(
+    Condition = ~/VEasy_Condition_CommandPhase
+)
+//-------------------------------------------------------------------------
+export VEasy_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export VEasy_Transition_StartToPhaseCommand is TIAGeneralStrategyTransition
+(
+    Origine = VEasy_Choose_Strategy
+    Condition = VEasy_Condition_CommandPhase
+    Destination = VEasy_Phase_Command
+)
+export VEasy_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = VEasy_Choose_Strategy
+    Condition = VEasy_Condition_GotoGeneric
+    Destination = VEasy_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export VEasy_Transition_DeployToCommandPhase is TIAGeneralStrategyTransition
+(
+    Origine = VEasy_Phase_Deploiement
+    Condition = VEasy_Condition_CommandPhase
+    Destination = VEasy_Phase_Command
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export VEasy_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export VEasy_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        // On garde quand même une attaque objective pour allez prendre les zones de commandement
+        ~/Attack_Objectives,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+        ~/CaptureHalfZoneObjectif_Floor,
+        ~/Defense_Objectif,
+
+        ~/Artillery_Support,        // Artillerie pas chère                 //  80
+
+        ~/Defense_Static_Adaptive,          // ~100
+        ~/Defense_Filler,            // budget 40
+        ~/Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+    ] + ~/Defenses_Airstrike_Arti_Shuffle_Deploy
+
+    //------------------------------
+    // Pas de Scaling pour la VEasy
+    //------------------------------
+)
+//-------------------------------------------------------------------------
+export VEasy_Phase_Command is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        ~/Attack_Objectives,
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/Defense_Static_Adaptive, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/Defense_Static_AA,
+
+        ~/CaptureHalfZoneObjectif_Floor,
+        ~/Defense_Objectif,
+
+        //------------------------------
+        // VEasy encore des defenses
+        //------------------------------
+        ~/Artillery_Support,        // Artillerie pas chère                 //  80
+
+        ~/Defense_Static_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Defense_Static_Adaptive,
+
+        ~/Defense_Static_Adaptive,
+
+        ~/Airstrike_Offense,
+        ~/Airstrike_Defense,
+
+        ~/SuperCommander,
+
+        ~/Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+    ] + ~/Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+    //------------------------------
+    // Pas de Scaling pour la VEasy
+    //------------------------------
+)
+

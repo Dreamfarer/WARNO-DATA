@@ -1,0 +1,25 @@
+export ModelFile_A10_Thunderbolt_II_US is 'GameData:/Assets/3D/Units/US/Avion/A10_Thunderbolt_II/A10_Thunderbolt_II.Ase2NdfBin'
+
+Modele_A10_Thunderbolt_II_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_A10_Thunderbolt_II_US
+    CivMask =  CivMask/Common
+)
+
+Modele_A10_Thunderbolt_II_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/A10_Thunderbolt_II_MID/A10_Thunderbolt_II_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_A10_Thunderbolt_II_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/LODS/A10_Thunderbolt_II_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_A10_Thunderbolt_II_US_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/A10_Thunderbolt_II/A10_Thunderbolt_II_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

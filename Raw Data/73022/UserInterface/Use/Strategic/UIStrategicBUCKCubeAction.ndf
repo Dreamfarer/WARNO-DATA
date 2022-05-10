@@ -1,0 +1,246 @@
+private CubeActionStrategicButtonWidth is 90.0
+private CubeActionStrategicButtonHeight is 26.0
+private CubeActionStrategicButtonDims is [90.0, 26.0]
+private CubeActionStrategicButtonSpacing is [8.0, 5.0]
+private CubeActionStrategicButtonTotalSize is [
+    CubeActionStrategicButtonDims[0] + CubeActionStrategicButtonSpacing[0],
+    CubeActionStrategicButtonDims[1] + CubeActionStrategicButtonSpacing[1],
+]
+private CubeActionStrategicContentHeight is CubeActionStrategicButtonTotalSize[1] - CubeActionStrategicButtonSpacing[1]
+private CubeActionStrategicWidth is CubeActionStrategicButtonTotalSize[0] * 4 - CubeActionStrategicButtonSpacing[0]
+
+template StrategicCubeActionButtonContainer
+[
+    UniqueName : string = '',
+    Coords : int2,
+]
+is BUCKContainerDescriptor
+(
+    Coords is <Coords>
+    UniqueName = <UniqueName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = CubeActionStrategicButtonDims
+        MagnifiableOffset = [
+            (CubeActionStrategicButtonDims[0] + CubeActionStrategicButtonSpacing[0]) * Coords[1],
+            (CubeActionStrategicButtonDims[1] + CubeActionStrategicButtonSpacing[1]) * Coords[0]
+        ]
+    )
+
+    SpotlightComponent = SpotlightDescriptor()
+)
+
+StrategicCubeAction is GenericPanelHUD
+(
+    UniqueName = BUCKIdentifiers/IngameCubeActionContainer
+    ContentUniqueName = BUCKIdentifiers/IngameCubeActionContainer + "_Content"
+    PanelMagnifiableWidth = 400
+
+    TitleVisible = false
+
+    MagnifiableOffset = [0.0, -5.0]
+
+    ContentVisible = true
+    ContentHeight = CubeActionStrategicContentHeight + (CubeActionStrategicButtonSpacing[1] * 2)
+    ContentMagnifiableLeftRightMargins = CubeActionStrategicButtonSpacing[0]
+    ContentMagnifiableTopBottomMargins = CubeActionStrategicButtonSpacing[1]
+    ContentBackgroundBlockColorToken =  "SD2_Gris80" //"SD2_Gris39"
+    HasBackground = false
+    ContentHasGradient = false
+    ContentComponents =
+    [
+        StrategicCubeActionButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer1 Coords=[0,0] ),
+        StrategicCubeActionButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer2 Coords=[0,1] ),
+        StrategicCubeActionButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer3 Coords=[0,2] ),
+        StrategicCubeActionButtonContainer( UniqueName=BUCKIdentifiers/IngameCubeActionButtonContainer4 Coords=[0,3] ),
+        OmbrePanel()
+    ]
+
+    SpotlightComponent = SpotlightDescriptor()
+
+)
+
+// Elements utilises pour les fake boutons de cube action
+
+template StrategicSecondaryCubeActionButton
+[
+    ElementName : string = '',
+    MagnifiableOffset = [0, 0],
+    MagnifiableWidth : float = CubeActionStrategicButtonWidth,
+    MagnifiableHeight : float = CubeActionStrategicButtonHeight,
+    HintTitleToken : string = "HUD_UNKN",
+    HintBodyToken : string = "HUD_UNKN",
+    HintExtendedToken : string = "HUD_UNKN",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+    TextToken : string,
+]
+is TCommonInGameCubeActionButtonDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [<MagnifiableWidth>, <MagnifiableHeight>]
+        MagnifiableOffset = <MagnifiableOffset>
+    )
+
+    IsClippable = true
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = false
+    BackgroundBlockColorToken = "SD2_BleuGris"
+
+    HasBorder = true
+    BordersToDraw = ~/TBorderSide/All
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "SD2_LigneBleuGris"
+
+    MaskEvents = true
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [<MagnifiableWidth> , <MagnifiableHeight> ]
+                //MagnifiableWidthHeight = [140.0, 20.0]
+                AlignementToFather = [1.0, 0.5]
+                AlignementToAnchor = [1.0, 0.5]
+               //MagnifiableOffset = [-3.0, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "SD2_BleuGris"
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            BigLineAction   = ~/BigLineAction/BalancedMultiline
+            TextToken = <TextToken>
+            TextColor       = "ButtonSimple/TextBleuGris"
+            TextSize        = "SD2_Moyen"
+            TextDico        = <HintDico>
+
+            TypefaceToken   = "UIMainFont"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            DicoToken = <HintDico>
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        ),
+        SmallOmbrePanel()
+    ]
+)
+
+template StrategicEmptySecondaryCubeActionButton
+[
+    MagnifiableOffset
+] is TCommonInGameCubeActionButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = CubeActionStrategicButtonDims
+        MagnifiableOffset = <MagnifiableOffset>
+    )
+
+    IsClippable = true
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = true
+    BackgroundBlockColorToken = "ButtonHUD/Second"
+
+    HasBorder = true
+    BordersToDraw = ~/TBorderSide/All
+    BorderThicknessToken = "Normal"
+    BorderLineColorToken = "ButtonHUD"
+
+    MaskEvents = true
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [140.0, 20.0]
+                AlignementToFather = [1.0, 0.5]
+                AlignementToAnchor = [1.0, 0.5]
+                MagnifiableOffset = [-3.0, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "Fulda2_Noir"
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            BigLineAction   = ~/BigLineAction/BalancedMultiline
+            TextColor       = "Fulda2_Orange100"
+            TextSize        = "14"
+            TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+            TypefaceToken   = "UIMainFont"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HUD_UNKN"
+            HintBodyToken = "HUD_UNKN"
+            HintExtendedToken = "HUD_UNKN"
+        )
+    ]
+)
+
+template StrategicSecondaryCubeActionPanel
+[
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( AlignementToFather = [0.5, 1.0] AlignementToAnchor = [0.5, 1.0] ),
+    ContentComponents : MAP<int2, TBUCKContainerDescriptor> = MAP[],
+] is BUCKGridDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+
+    MaxElementsPerDimension = [3, 1]
+
+    InterElementMargin = TRTTILength2( Magnifiable = [10.0, 5.0] )
+
+    GridElements = MAP
+    [
+        {([0, 0], StrategicEmptySecondaryCubeActionButton(
+                    MagnifiableOffset = [
+                        0.0,
+                        0.0
+                    ]
+                )),
+                ([0, 1], StrategicEmptySecondaryCubeActionButton(
+                    MagnifiableOffset = [
+                        0.0,
+                        0.0
+                    ]
+                )),}
+    ] + <ContentComponents>
+)

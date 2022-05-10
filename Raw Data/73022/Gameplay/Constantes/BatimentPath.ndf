@@ -1,0 +1,33 @@
+FOBLongueur is 73*OneMeterInGameUnits
+FOBLargeur is 73*OneMeterInGameUnits
+FOBCenterDelta is 2.5*OneMeterInGameUnits
+
+export BatimentPaths_Wargame is TBatimentPaths
+(
+    Height = 10 * OneMeterInGameUnits
+
+    FactoryEntry = [
+        TNdfVectorList
+        (
+            VectorList = [
+                VECTOR[0, 0, -1],
+                VECTOR[0, 0, -1],
+            ]
+        ),
+        ]
+
+    Radius = FOBLongueur * 0.5
+
+    ByPass = [
+        TNdfVectorList
+        (
+            VectorList = [
+                VECTOR[ - FOBLongueur*0.5 + FOBCenterDelta,  - FOBLargeur*0.5, 0],
+                VECTOR[   FOBLongueur*0.5 + FOBCenterDelta,  - FOBLargeur*0.5, 0],
+                VECTOR[   FOBLongueur*0.5 + FOBCenterDelta,    FOBLargeur*0.5, 0],
+                VECTOR[ - FOBLongueur*0.5 + FOBCenterDelta,    FOBLargeur*0.5, 0]
+            ]
+        ),
+        ]
+
+)

@@ -1,0 +1,31 @@
+SelectionResources is TSelectionHandlerInGameResources
+(
+    RenderToolbox               = ~/SelectionRenderToolBox
+    DrawingParameters           = $/M3D/Input/SelectionHandlerDrawingParameters
+
+    UserInputLayer                            = $/M3D/Input/UserInputLayerHandler/InputLayer_SelectionInGame
+    UserInputLayer_SquareSelection            = $/M3D/Input/UserInputLayerHandler/InputLayer_SquareSelection
+
+    Camera                                    = $/M3D/Camera/CameraPrincipale
+    World                                     = $/M3D/Scene/DefaultWorld
+    MessageDrawer                             = $/M3D/Scene/SelectionHandlerMessageOnScreenDrawer
+
+    DebugSelection                            = false // Debug de sélection (affichage des BBox des unites)
+
+    SceneReferenceForSelection                = $/M3D/Scene/Scene_2D_Interface
+
+    UpdateDynamicValuesCommandName            = CommandName/OptionsProfileSelection
+    UseStickySelection                        = MAP
+    [
+        (
+            'Tactic',
+            $/GameplayOption/StickySelectionValue
+        ),
+        (
+            'Strategic',
+            $/GameplayOption/StickySelectionStrategicValue
+        ),
+    ]
+    KeyboardPresetUpdater = $/KeyboardPreset/KeyboardPresetUpdater
+    SquareSelectionActive = true
+)

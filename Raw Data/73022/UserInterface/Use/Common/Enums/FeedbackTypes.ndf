@@ -1,0 +1,180 @@
+//----------------------------------------------------------------------------------
+// Enum
+//----------------------------------------------------------------------------------
+FeedbackMessage_OnUnitDestroyed                 is 0
+FeedbackMessage_OnEnemyUnitContact              is 1
+FeedbackMessage_OnEnemyBuildingContact          is 2
+FeedbackMessage_OnUnitLost                      is 3
+FeedbackMessage_OnBuildingLost                  is 4
+FeedbackMessage_OnTargetUnitDestroyed_ShowScoreOnDeadUnit is 5
+FeedbackMessage_OnDamageReceived                is 6
+FeedbackMessage_OnGainXpLevel                   is 7
+FeedbackMessage_OnUnitSelected                  is 8
+FeedbackMessage_OnPositionForbidden             is 9
+FeedbackMessage_OnMoveOrder                     is 10
+FeedbackMessage_OnAttackOrder                   is 11
+FeedbackMessage_OnLoadIntoTransportOrder        is 12
+FeedbackMessage_OnLoadUnitOrder                 is 13
+FeedbackMessage_OnNewPhaseStarted               is 14
+FeedbackMessage_OnPhaseResourcesGained          is 15
+FeedbackMessage_OnAirplaneOutOfFuel             is 16
+FeedbackMessage_OnAirplaneOutOfAmmo             is 17
+FeedbackMessage_OnAssaultOrder                  is 18
+FeedbackMessage_OnStopOrder                     is 19
+FeedbackMessage_OnCapturedEnemyUnit             is 20
+FeedbackMessage_OnUnitCapturedByEnemy           is 21
+FeedbackMessage_OnBuildingCapturedByEnemy       is 22
+FeedbackMessage_OnEnemyBuildingCaptured         is 23
+FeedbackMessage_OnCaptureOrder                  is 24
+FeedbackMessage_OnUnitFiring                    is 25
+FeedbackMessage_OnFlareAttackPlaced             is 26
+FeedbackMessage_OnFlareDefendPlaced             is 27
+FeedbackMessage_OnFlareHelpPlaced               is 28
+FeedbackMessage_OnFlareCustomPlaced             is 29
+FeedbackMessage_OnUnitUnderAttack               is 30
+FeedbackMessage_OnUnloadOrder                   is 31
+FeedbackMessage_OnUnloadAtPositionOrder         is 32
+FeedbackMessage_OnEvacuateOrder                 is 33
+FeedbackMessage_OnEvacFromDistrictOrder         is 34
+FeedbackMessage_OnResourcesGained               is 35
+FeedbackMessage_OnEnemyUnitDestroyed            is 36
+FeedbackMessage_OnEnemyAirplaneContact          is 37
+FeedbackMessage_OnNotEnoughResources            is 38
+FeedbackMessage_OnReverseOrder                  is 39
+FeedbackMessage_OnQuickMoveOrder                is 40
+FeedbackMessage_OnShootOnPositionOrder          is 41
+FeedbackMessage_OnUnitSurrender                 is 42
+FeedbackMessage_OnUnitPanicking                 is 43
+FeedbackMessage_OnOutOfAmmo                     is 44
+FeedbackMessage_OnMoveAndAttackOrder            is 45
+FeedbackMessage_OnTargetUnitDestroyed           is 46
+FeedbackMessage_OnWithdrawOrder                 is 47
+FeedbackMessage_OnNewPhaseStartedForCampaign    is 48
+FeedbackMessage_OnTargetDistrictDestroyed       is 49
+FeedbackMessage_OnTargetBuildingDestroyed       is 50
+FeedbackMessage_OnObjectiveCaptured             is 51
+FeedbackMessage_OnObjectiveLost                 is 52
+FeedbackMessage_OnBuildingUnderAttack           is 53
+FeedbackMessage_OnShootOnPositionSmokeOrder     is 54
+FeedbackMessage_OnCriticEvacuate                is 55
+FeedbackMessage_OnUnitSold                      is 56
+FeedbackMessage_OnAutomaticBehavior             is 57
+FeedbackMessage_Strategic_APLost                is 58
+FeedbackMessage_Strategic_APGained              is 59
+FeedbackMessage_Strategic_PawnDeath             is 60
+FeedbackMessage_Strategic_PawnDeathNoFleeCourse is 61
+FeedbackMessage_Strategic_PawnDeathOutOfCombat  is 62
+FeedbackMessage_Strategic_PawnDeathNoMoreUnits  is 63
+FeedbackMessage_Strategic_PawnDeathNoMoreAirports is 64
+FeedbackMessage_Strategic_PawnDeathEnemyCapturedAirport is 65
+FeedbackMessage_Strategic_PawnIntercepted       is 66
+FeedbackMessage_Strategic_AttackLoss            is 67
+FeedbackMessage_Strategic_DefenseLoss           is 68
+FeedbackMessage_Strategic_OrderCancelled        is 69
+FeedbackMessage_OnEnterDistrictOrder            is 70
+FeedbackMessage_OnAIAttackOrder                 is 71
+FeedbackMessage_OnFastMoveAndAttackOrder        is 72
+FeedbackMessage_OnAIManageArtillery_FocusOrder  is 73
+FeedbackMessage_OnAirplaneAttackOrder           is 74
+FeedbackMessage_OnFlareFireSupportPlaced        is 75
+FeedbackMessage_OnFlareEnemySpottedPlaced       is 76
+FeedbackMessage_OnCommandZoneSecuredByPlayer    is 77
+FeedbackMessage_OnCommandZoneLost               is 78
+FeedbackMessage_OnCommandZoneSecuredByEnemy     is 79
+FeedbackMessage_OnAerialCorridorSecuredByPlayer is 80
+FeedbackMessage_OnAerialCorridorLost            is 81
+FeedbackMessage_OnBombarderOrder                is 82
+FeedbackMessage_OnSmartMoveOrder                is 83
+FeedbackMessage_OnSmartMoveAndAttackOrder       is 84
+
+
+export Generated_DispatchedMessageType_Enum is TDispatchedMessageType
+(
+    Values = [
+        "FeedbackMessage_OnUnitDestroyed",
+        "FeedbackMessage_OnEnemyUnitContact",
+        "FeedbackMessage_OnEnemyBuildingContact",
+        "FeedbackMessage_OnUnitLost",
+        "FeedbackMessage_OnBuildingLost",
+        "FeedbackMessage_OnTargetUnitDestroyed_ShowScoreOnDeadUnit",
+        "FeedbackMessage_OnDamageReceived",
+        "FeedbackMessage_OnGainXpLevel",
+        "FeedbackMessage_OnUnitSelected",
+        "FeedbackMessage_OnPositionForbidden",
+        "FeedbackMessage_OnMoveOrder",
+        "FeedbackMessage_OnAttackOrder",
+        "FeedbackMessage_OnLoadIntoTransportOrder",
+        "FeedbackMessage_OnLoadUnitOrder",
+        "FeedbackMessage_OnNewPhaseStarted",
+        "FeedbackMessage_OnPhaseResourcesGained",
+        "FeedbackMessage_OnAirplaneOutOfFuel",
+        "FeedbackMessage_OnAirplaneOutOfAmmo",
+        "FeedbackMessage_OnAssaultOrder",
+        "FeedbackMessage_OnStopOrder",
+        "FeedbackMessage_OnCapturedEnemyUnit",
+        "FeedbackMessage_OnUnitCapturedByEnemy",
+        "FeedbackMessage_OnBuildingCapturedByEnemy",
+        "FeedbackMessage_OnEnemyBuildingCaptured",
+        "FeedbackMessage_OnCaptureOrder",
+        "FeedbackMessage_OnUnitFiring",
+        "FeedbackMessage_OnFlareAttackPlaced",
+        "FeedbackMessage_OnFlareDefendPlaced",
+        "FeedbackMessage_OnFlareHelpPlaced",
+        "FeedbackMessage_OnFlareCustomPlaced",
+        "FeedbackMessage_OnUnitUnderAttack",
+        "FeedbackMessage_OnUnloadOrder",
+        "FeedbackMessage_OnUnloadAtPositionOrder",
+        "FeedbackMessage_OnEvacuateOrder",
+        "FeedbackMessage_OnEvacFromDistrictOrder",
+        "FeedbackMessage_OnResourcesGained",
+        "FeedbackMessage_OnEnemyUnitDestroyed",
+        "FeedbackMessage_OnEnemyAirplaneContact",
+        "FeedbackMessage_OnNotEnoughResources",
+        "FeedbackMessage_OnReverseOrder",
+        "FeedbackMessage_OnQuickMoveOrder",
+        "FeedbackMessage_OnShootOnPositionOrder",
+        "FeedbackMessage_OnUnitSurrender",
+        "FeedbackMessage_OnUnitPanicking",
+        "FeedbackMessage_OnOutOfAmmo",
+        "FeedbackMessage_OnMoveAndAttackOrder",
+        "FeedbackMessage_OnTargetUnitDestroyed",
+        "FeedbackMessage_OnWithdrawOrder",
+        "FeedbackMessage_OnNewPhaseStartedForCampaign",
+        "FeedbackMessage_OnTargetDistrictDestroyed",
+        "FeedbackMessage_OnTargetBuildingDestroyed",
+        "FeedbackMessage_OnObjectiveCaptured",
+        "FeedbackMessage_OnObjectiveLost",
+        "FeedbackMessage_OnBuildingUnderAttack",
+        "FeedbackMessage_OnShootOnPositionSmokeOrder",
+        "FeedbackMessage_OnCriticEvacuate",
+        "FeedbackMessage_OnUnitSold",
+        "FeedbackMessage_OnAutomaticBehavior",
+        "FeedbackMessage_Strategic_APLost",
+        "FeedbackMessage_Strategic_APGained",
+        "FeedbackMessage_Strategic_PawnDeath",
+        "FeedbackMessage_Strategic_PawnDeathNoFleeCourse",
+        "FeedbackMessage_Strategic_PawnDeathOutOfCombat",
+        "FeedbackMessage_Strategic_PawnDeathNoMoreUnits",
+        "FeedbackMessage_Strategic_PawnDeathNoMoreAirports",
+        "FeedbackMessage_Strategic_PawnDeathEnemyCapturedAirport",
+        "FeedbackMessage_Strategic_PawnIntercepted",
+        "FeedbackMessage_Strategic_AttackLoss",
+        "FeedbackMessage_Strategic_DefenseLoss",
+        "FeedbackMessage_Strategic_OrderCancelled",
+        "FeedbackMessage_OnEnterDistrictOrder",
+        "FeedbackMessage_OnAIAttackOrder",
+        "FeedbackMessage_OnFastMoveAndAttackOrder",
+        "FeedbackMessage_OnAIManageArtillery_FocusOrder",
+        "FeedbackMessage_OnAirplaneAttackOrder",
+        "FeedbackMessage_OnFlareFireSupportPlaced",
+        "FeedbackMessage_OnFlareEnemySpottedPlaced",
+        "FeedbackMessage_OnCommandZoneSecuredByPlayer",
+        "FeedbackMessage_OnCommandZoneLost",
+        "FeedbackMessage_OnCommandZoneSecuredByEnemy",
+        "FeedbackMessage_OnAerialCorridorSecuredByPlayer",
+        "FeedbackMessage_OnAerialCorridorLost",
+        "FeedbackMessage_OnBombarderOrder",
+        "FeedbackMessage_OnSmartMoveOrder",
+        "FeedbackMessage_OnSmartMoveAndAttackOrder"
+    ]
+)

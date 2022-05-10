@@ -1,0 +1,62 @@
+
+
+Playlist_Outgame is
+[
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Canyon.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Dark_City_Beats.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Divine-Inspiration.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Into-The-Unknown.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Mysteries.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Quiet-Discovery.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Raging_Burn.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Sheer-Drop.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Brooding-Thoughts.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Crime-Scene-Investigation.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Global-Lockdown.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Resolution.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Synchronicity.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Through-The-Night.wav" ),
+]
+
+
+Playlist_Ingame is
+[
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Canyon.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Dark_City_Beats.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Divine-Inspiration.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Get-Together-2.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Into-The-Unknown.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Lap_Time.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Lets_Go.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Mysteries.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Quiet-Discovery.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Raging_Burn.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Sheer-Drop.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Silicon_Tribes.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/TRIPTIDON_Sinful.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Third-Degree.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Synchronicity.wav" ),
+    TSoundStream( FileName = "GameData:/Assets/Sons/PerpetualMusic/Global-Lockdown.wav" ),
+]
+
+Perpetual_Music is TPerpetualMusic
+(
+    DefaultPlaylistsGroup = "Outgame"
+    PlaylistsGroups =
+    MAP[
+        (
+            "Outgame",
+            [
+                ~/Playlist_Outgame,
+            ]
+        ),
+        (
+            "Ingame",
+            [
+                ~/Playlist_Ingame,
+            ]
+        ),
+
+    ]
+)
+

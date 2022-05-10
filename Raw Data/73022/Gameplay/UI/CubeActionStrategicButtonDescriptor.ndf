@@ -1,0 +1,113 @@
+export CubeAction_Strategic_GroundDeny is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Strategic_GroundDeny"
+    DebugName               = "InGameCubeAction_Strategic_GroundDeny"
+
+    OrderToken = 'Shoot'
+    ValidationTargetToken = 'HNT_WARN'
+
+    ButtonTextToken         = 'ORD_GRDENY'
+    HintTitleToken          = 'HNT_GRDENY'
+    HintBodyToken           = 'HNB_GRDENY'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+    ActionType              = OrderWithClickValidation
+    CubeActionFunctionType  = StrategicCubeActionFunctionType/Orders
+    Mapping                 = $/KeyboardOption/Mapping_ShootOnPosition
+)
+
+export CubeAction_Strategic_AirplaineAirDeny is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Strategic_AirplaineAirDeny"
+    DebugName               = "InGameCubeAction_Strategic_AirplaineAirDeny"
+
+    OrderToken = 'AirplaneMoveAndEngage'
+    ValidationTargetToken = 'HNT_WARN'
+
+    ButtonTextToken         = 'ORD_ARDENY'
+    HintTitleToken          = 'HNT_ARDENY'
+    HintBodyToken           = 'HNB_ARDENY'
+    HintExtendedToken       = 'HNE_ARDENY'
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+    ActionType              = OrderWithClickValidation
+    CubeActionFunctionType  = StrategicCubeActionFunctionType/Orders
+    Mapping                 = $/KeyboardOption/Mapping_Attack
+)
+
+export CubeAction_Strategic_Bombardment is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Strategic_Bombardment"
+    DebugName               = "InGameCubeAction_Strategic_Bombardment"
+
+    OrderToken = 'Bombarder'
+    ValidationTargetToken = 'HNT_WARN'
+
+    //LeftClickSound = InterfaceSound( FileName = "GameData:/Assets/Sons/Hud/AirRaid.wav")
+
+    ButtonTextToken         = 'ORD_BOMBER'
+    HintTitleToken          = 'HNT_BOMBER'
+    HintBodyToken           = 'HNB_BOMBER'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+    ActionType              = OrderWithClickValidation
+    CubeActionFunctionType  = StrategicCubeActionFunctionType/Orders
+    Mapping                 = $/KeyboardOption/Mapping_Attack
+)
+
+export CubeAction_Strategic_Fortify is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Strategic_Fortify"
+    DebugName               = "InGameCubeAction_Strategic_Fortify"
+
+    OrderToken = 'Fortify'
+    ValidationTargetToken = 'HNT_WARN'
+
+    LeftClickSound = InterfaceSound( FileName = "GameData:/Assets/Sons/Hud/digin.wav")
+
+    ButtonTextToken         = 'ORD_FORTI'
+    HintTitleToken          = 'HNT_FORTI'
+    HintBodyToken           = 'HNB_FORTI'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+    ActionType              = OrderInstant
+    CubeActionFunctionType  = StrategicCubeActionFunctionType/Orders
+    Mapping                 = $/KeyboardOption/Mapping_QuickMove
+)
+
+export CubeAction_Strategic_FortifyAntiAir is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Strategic_FortifyAntiAir"
+    DebugName               = "InGameCubeAction_Strategic_FortifyAntiAir"
+
+    OrderToken = 'FortifyAntiAir'
+    ValidationTargetToken = 'HNT_WARN'
+
+    LeftClickSound = InterfaceSound( FileName = "GameData:/Assets/Sons/SFX/Env/Leipzig_flak_01.wav")
+
+    ButtonTextToken         = 'ORD_FORAA'
+    HintTitleToken          = 'HNT_FORAA'
+    HintBodyToken           = 'HNB_FORAA'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+    ActionType              = OrderInstant
+    CubeActionFunctionType  = StrategicCubeActionFunctionType/Orders
+    Mapping                 = $/KeyboardOption/Mapping_CallArtillery
+)
+
+export CubeAction_Strategic_AirplaineReco is Template_CubeActionOrderButtonInformationsDescriptor_WithSound
+(
+    CubeActionName          = "CubeAction_Strategic_AirplaineReco"
+    DebugName               = "InGameCubeAction_Strategic_AirplaineReco"
+
+    OrderToken = 'AirplanePatrol'
+    ValidationTargetToken = 'HNT_WARN'
+
+    ButtonTextToken         = 'ORD_AIRREC'
+    HintTitleToken          = 'HNT_AIRREC'
+    HintBodyToken           = 'HNB_AIRREC'
+    HintExtendedToken       = ''
+    HintDico                = ~/LocalisationConstantes/dico_interface_ingame
+    ActionType = OrderWithClickValidation
+    CubeActionFunctionType  = StrategicCubeActionFunctionType/Orders
+    Mapping                 = $/KeyboardOption/Mapping_Retreat
+)

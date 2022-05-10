@@ -1,0 +1,2053 @@
+DeckListButtonsDims is [ 118.0, 27.0 ]
+DeckListButtonsDims2 is [ 106.0, 45.0 ]
+
+template DeckListButton
+[
+    ElementName : string = '',
+    TextToken : string = '',
+    HintableAreaElementName : string = "",
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    BigLineAction : int = ~/BigLineAction/ResizeFont,
+    LeftClickSound : TSoundDescriptor = nil,
+] is ConfirmButton
+(
+    ElementName = <ElementName>
+    TextToken = <TextToken>
+
+    HintableAreaElementName = <HintableAreaElementName>
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+    HintDico = <HintDico>
+    BigLineAction = <BigLineAction>
+
+    ButtonMagnifiableWidthHeight = ~/DeckListButtonsDims
+    BackgroundBlockColorToken = 'Vert_bouton'
+    BorderLineColorToken = 'blanc_contour'
+    HasBackground = true
+    BorderThicknessToken = '2'
+    TextColorToken = 'blanc_contour'
+    TextSizeToken = '18'
+    TextTypefaceToken = "Liberator"
+    TextPadding = TRTTILength4( Magnifiable = [2.0, 0.0, 2.0, 0.0] )
+
+    LeftClickSound = <LeftClickSound>
+)
+
+private DeckListPanelEditButton is DeckListButton
+(
+    ElementName = 'EditButton'
+    TextToken = 'AB_DCKEDIT'
+
+    HintableAreaElementName = 'HintableAreaEditButton'
+    HintTitleToken = "ODL_EDITBT"
+    HintBodyToken = "ODL_EDITBB"
+    HintExtendedToken = "ODL_EDITBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    LeftClickSound = SoundEvent_EditDeck
+)
+
+private DeckListPanelViewButton is DeckListButton
+(
+    ElementName = 'ViewButton'
+    TextToken = 'AB_DCKVIEW'
+
+    HintableAreaElementName = 'HintableAreaViewButton'
+    HintTitleToken = "ODL_VIEWBT"
+    HintBodyToken = "ODL_VIEWBB"
+    HintExtendedToken = "ODL_VIEWBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    LeftClickSound = SoundEvent_ViewDeck
+)
+
+private DeckListPanelRenameButton is DeckListButton
+(
+    ElementName = 'RenameButton'
+    TextToken = 'AB_DCKRENA'
+
+    HintTitleToken = "ODL_RENABT"
+    HintBodyToken = "ODL_RENABB"
+    HintExtendedToken = "ODL_RENABE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    LeftClickSound = SoundEvent_RenameDeck
+)
+
+private DeckListPanelRemoveButton is DeckListButton
+(
+    ElementName = 'RemoveButton'
+    TextToken = 'AB_DCKREMO'
+
+    HintableAreaElementName = 'HintableAreaRemoveButton'
+    HintTitleToken = "ODL_RMVBT"
+    HintBodyToken = "ODL_RMVBB"
+    HintExtendedToken = "ODL_RMVBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    LeftClickSound = SoundEvent_RemoveDeck
+)
+
+private DeckListPanelCopyButton is DeckListButton
+(
+    ElementName = 'CopyButton'
+    TextToken = 'AB_DCKCOPY'
+
+    HintTitleToken = "ODL_COPYBT"
+    HintBodyToken = "ODL_COPYBB"
+    HintExtendedToken = "ODL_COPYBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    LeftClickSound = SoundEvent_CopyDeck
+)
+
+private DeckListPanelExportButton is DeckListButton
+(
+    ElementName = 'ExportButton'
+    TextToken = 'AB_DCKEXPO'
+
+    HintTitleToken = "ODL_EXPOBT"
+    HintBodyToken = "ODL_EXPOBB"
+    HintExtendedToken = "ODL_EXPOBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    LeftClickSound = SoundEvent_ExportDeck
+)
+
+//-------------------------------------------------------------------------------------
+
+template ModalButtonGris
+[
+    ElementName : string = '',
+    TextToken : string = '',
+    HintableAreaElementName : string = "",
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    LeftClickSound : TSoundDescriptor = nil,
+
+] is ConfirmButton
+(
+    ElementName = <ElementName>
+    TextToken = <TextToken>
+
+    HintableAreaElementName = <HintableAreaElementName>
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+    HintDico = <HintDico>
+
+    ButtonMagnifiableWidthHeight = ~/DeckListButtonsDims2
+    TextColorToken = 'Gris_boutonAction'
+    TextSizeToken = '18'
+    TextTypefaceToken = "Liberator"
+    HasBorder = false
+    LeftClickSound = <LeftClickSound>
+)
+
+private DeckListPanelImportButton is ModalButtonGris
+(
+    ElementName = "ImportButton"
+    TextToken = "AB_DCKIMPO"
+
+    HintTitleToken = "ODL_IMPOBT"
+    HintBodyToken = "ODL_IMPOBB"
+    HintExtendedToken = "ODL_IMPOBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    LeftClickSound = SoundEvent_OpenImportDeckModal
+)
+
+private DeckListPanelCreateButton is ModalButtonGris
+(
+    ElementName = "CreateButton"
+    TextToken = "NV_CREATE"
+
+    HintTitleToken = "ODL_CREABT"
+    HintBodyToken = "ODL_CREABB"
+    HintExtendedToken = "ODL_CREABE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    LeftClickSound = SoundEvent_OpenCreateDeckModal
+)
+
+private DeckListPanelSelectButton is ModalButtonGris
+(
+    ElementName = "SelectButton"
+    TextToken = "NV_SELECT"
+
+    HintTitleToken = "ODL_SELEBT"
+    HintBodyToken = "ODL_SELEBB"
+    HintExtendedToken = "ODL_SELEBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    LeftClickSound = SoundEvent_SelectDeck
+)
+
+private DeckListBackButton is ConfirmButton
+(
+    ElementName = 'BackButton'
+    TextToken = 'BTN_CLOSE'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+    ButtonMagnifiableWidthHeight = ~/DeckListButtonsDims2
+    TextColorToken = 'Gris_boutonAction'
+    TextSizeToken = '18'
+    TextTypefaceToken = "Liberator"
+    HasBorder = false
+
+    IsTogglable = true
+    CannotDeselect = true
+    LeftClickSound = SoundEvent_CloseDeckList
+)
+
+//-------------------------------------------------------------------------------------
+
+template ModalButtonCyan
+[
+    ElementName : string = '',
+    TextToken : string = '',
+    Mapping : TEugBMutablePBaseClass = nil,
+
+    IsFilled : bool
+] is ConfirmButton
+(
+    ElementName = <ElementName>
+    TextToken = <TextToken>
+    Mapping = <Mapping>
+
+    ButtonMagnifiableWidthHeight = [175.0, 35.0]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur_cyan'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = <IsFilled> ? 'Cyan' : 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = <IsFilled> ? 'loginBoutonBackground_cyan' : 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+
+//Modale import deck
+private DeckListModalImportButton is ModalButtonCyan
+(
+    ElementName = 'ImportButton'
+    TextToken = 'AB_DCKIMPO'
+    IsFilled = true
+)
+
+//Modale export deck
+private DeckListModalOkButton is ModalButtonCyan
+(
+    ElementName = 'OkButton'
+    TextToken = 'BTN_OK'
+    IsFilled = true
+)
+
+//Modale creation deck
+private DeckListModalCancelButton is ModalButtonCyan
+(
+    ElementName = 'CancelButton'
+    TextToken = 'BTN_CANMAJ'
+    IsFilled = false
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+
+//-------------------------------------------------------------------------------------
+
+BattlegroupsBriefRadioManager is TBUCKRadioButtonManager()
+
+BattlegroupBriefDescriptorForSelection is BUCKSpecificDivisionBriefMainComponentDescriptor
+(
+    AlignementToAnchor = [0.0, 0.0]
+    AlignementToFather = [0.0, 0.0]
+    IsTogglable = true
+    CannotDeselect = true
+    RadioButtonManager = ~/BattlegroupsBriefRadioManager
+    HasBattlegroup = true
+)
+
+private DeckErrorText is BUCKTextDescriptor
+(
+    ElementName = "DeckErrorText"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 20.0]
+    )
+
+    TextStyle = "TextStyleEcranMoniteur"
+    TypefaceToken = "IBM"
+    TextColor = 'Blanc'
+    TextSize = '24'
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    BigLineAction = ~/BigLineAction/MultiLine
+    VerticalFitStyle = ~/FitStyle/UserDefined
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = ~/UIText_Center
+        VerticalAlignment = ~/UIText_VerticalCenter
+        Balanced = true
+        BigWordAction = ~/BigWordAction/BigWordNewLine
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+BattlegroupBriefsScrollingContainer is BUCKSpecificScrollingContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 520.0]
+        AlignementToAnchor = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+    )
+
+    HasVerticalScrollbar = true
+    ScrollStepSize = [0.0, 50.0]
+
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [10.0, 0.0]
+        MagnifiableOffset = [-6.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKRackDescriptor
+        (
+            ElementName = "BattlegroupsBriefRack"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+            FirstMargin = TRTTILength(Magnifiable = 2.0)
+            InterItemMargin = TRTTILength(Magnifiable = 0.0)
+
+            BladeDescriptor = ~/BattlegroupBriefDescriptorForSelection
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private DeckNameEditableText is BUCKEditableTextInputFieldDescriptor
+(
+    ElementName = "DeckNameEditableText"
+    ComponentFrame = TUIFramePropertyRTTI( MagnifiableWidthHeight = [350.0, 35.0] )
+)
+
+//-------------------------------------------------------------------------------------
+
+private DeckCodeEditableText is BUCKEditableTextInputFieldDescriptor
+(
+    ElementName = "DeckCodeEditableText"
+    TextStyle = 'TextStyleEcranMoniteur'
+    ComponentFrame = TUIFramePropertyRTTI( MagnifiableWidthHeight = [350.0, 35.0] )
+    MaxChars = 255
+)
+
+//-------------------------------------------------------------------------------------
+
+template TextListe
+[
+    TextToken : string,
+]
+is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        VerticalAlignment = ~/UIText_VerticalCenter
+        Alignment = UIText_Center
+    )
+
+    TextStyle = 'Default'
+    TypefaceToken = "Eurostyle"
+    TextSize = '12'
+    TextColor = 'gris_load'
+    TextToken = <TextToken>
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+//-------------------------------------------------------------------------------------
+
+WDeckColonne_alliance is 68.0
+WDeckColonne_name is 130.0
+WDeckColonne_Flag is 60.0
+WDeckColonne_case is 55.0
+WDeckColonne_valeur is 100.0
+
+BattlegroupsBriefMultiListTitle is BUCKListDescriptor
+(
+    ElementName = "bandeauMultiliste"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 50.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    FirstMargin = TRTTILength (Magnifiable = 0.0)
+    InterItemMargin = TRTTILength (Magnifiable = 0.0)
+    Elements =
+    [
+        //embleme
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'DivisionEmblemMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [WDeckColonne_case, 0.0]
+                )
+                ShowCheckbox = true
+                CheckBoxBorderLineColorToken = 'gris_load'
+                SortingType = ~/MultiListSorting/Integer
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    TextListe( TextToken = '' ),
+                    BUCKSpecificHintableArea
+                    (
+                        DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                        HintBodyToken = "div_nameB"
+                    )
+                ]
+            )
+        ),
+        // Country Flag
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'DivisionFlagMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [50.0, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = true
+                CheckBoxBorderLineColorToken = 'gris_load'
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKSpecificHintableArea
+                    (
+                        DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                        HintBodyToken = "div_counB"
+                    )
+                ]
+            )
+        ),
+        // AllianceText
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'AllianceTextMultiList'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [50.0, 0.0]
+                )
+                ShowCheckbox = true
+
+                CheckBoxBorderLineColorToken = 'gris_load'
+                SortingType = ~/MultiListSorting/Integer
+
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKSpecificHintableArea
+                    (
+                        DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                        HintBodyToken = "div_alliB"
+                        HintExtendedToken = "div_alliE"
+                    )
+                ]
+            )
+        ),
+        // BattlegroupName
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'BattlegroupNameMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [WDeckColonne_name+180.0, 0.0]
+                )
+                ShowCheckbox = false
+                CheckBoxBorderLineColorToken = 'gris_load'
+                SortingType = ~/MultiListSorting/String
+                HidePointerEvents = true
+                Components =
+                [
+                    TextListe ( TextToken = 'DB_NAME' ),
+                    BUCKSpecificHintableArea
+                    (
+                        DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                        HintBodyToken = "div_BGB"
+                    )
+                ]
+            )
+        ),
+
+        // Power rating
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'DivisionPowerTextMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [55.0, 0.0]
+                )
+                ShowCheckbox = true
+                CheckBoxBorderLineColorToken = 'gris_load'
+                SortingType = ~/MultiListSorting/String
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    TextListe( TextToken = '' ),
+
+                    BUCKSpecificHintableArea
+                    (
+                        DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                        HintBodyToken = "div_rateB"
+                        HintExtendedToken = "div_rateE"
+                    )
+                ]
+            )
+        ),
+        // Unit Type
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'DivisionUnitTypeMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [50.0, 0.0]
+                )
+                ShowCheckbox = true
+                CheckBoxBorderLineColorToken = 'gris_load'
+                SortingType = ~/MultiListSorting/Integer
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    TextListe( TextToken = '' ),
+
+                    BUCKSpecificHintableArea
+                    (
+                        DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                        HintBodyToken = "div_typeB"
+                        HintExtendedToken = "div_typeE"
+                    )
+                ]
+            )
+        ),
+        //-------------------------------------------------------------------------------------
+        // infos DEPREC
+        // BattlegroupName
+
+        // IncomeText
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'IncomeTextMultiList'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [WDeckColonne_case, 0.0]
+                )
+                ShowCheckbox = false
+                SortingType = ~/MultiListSorting/String
+                HidePointerEvents = true
+                Components =
+                [
+                    TextListe( TextToken = '' ),
+                    BUCKSpecificHintableArea
+                    (
+                        DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                        HintBodyToken = "div_commB"
+                    )
+                ]
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+BattlegroupsBriefMultiList is BUCKMultiListDescriptor
+(
+    ElementName = "BattlegroupsBriefMultiList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [617.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+        MagnifiableOffset = [0.0, 60.0]
+    )
+
+    FirstMargin  = TRTTILength (Magnifiable = 30.0)
+
+    ColumnNames =
+    [
+        "IncomeTextMultiList",
+    ]
+
+    SortableColumnNames =
+    [
+
+        "AllianceTextMultiList",
+        "BattlegroupNameMultiList",
+
+        "DivisionFlagMultiList",
+        "DivisionEmblemMultiList",
+        "DivisionUnitTypeMultiList",
+        "DivisionPowerTextMultiList"
+    ]
+
+    RackName = "BattlegroupsBriefRack"
+
+    TitleDescriptor = ~/BattlegroupsBriefMultiListTitle
+    ContentDescriptor = ~/BattlegroupBriefsScrollingContainer
+)
+
+//-------------------------------------------------------------------------------------
+
+private template DeckSimpleText
+[
+    ComponentFrame,
+    TextToken : string,
+] is BUCKTextDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+
+    TextStyle = "TextStyleEcranMoniteur"
+    TypefaceToken = "IBM"
+    TextColor = 'Blanc'
+    TextSize = '24'
+
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextToken = <TextToken>
+
+    BigLineAction = ~/BigLineAction/MultiLine
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = ~/UIText_Left
+        VerticalAlignment = ~/UIText_VerticalCenter
+        Balanced = true
+        BigWordAction = ~/BigWordAction/BigWordNewLine
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+private DeckListModalImportDeckWindowFrame is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [850.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 110.0]
+    TitleToken = 'DI_DCKIMPO'
+
+    ButtonList = []
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            InterItemMargin = TRTTILength(Magnifiable = 10.0)
+
+            Elements =
+            [
+                // ligne ****
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 20.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = paragraphStyleTextCenter
+                        TextStyle = "TextStyleEcranMoniteur"
+
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+                        TypefaceToken = "IBM"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                        TextToken = 'HINT_EX_SP'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Blanc"
+                        TextSize = "24"
+                    )
+
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI (MagnifiableWidthHeight = [0.0, 20.0])
+                    )
+                ),
+                // text 1
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = DeckSimpleText
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [225.0, 20.0]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                        AlignementToFather = [0.0, 0.5]
+                                    )
+
+                                    TextToken = "ODL_DckCod"
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/DeckCodeEditableText
+                            ),
+                        ]
+                    )
+                ),
+                // texte 2
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = DeckSimpleText
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [225.0, 20.0]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                        AlignementToFather = [0.0, 0.5]
+                                    )
+
+                                    TextToken = "DC_DCKNAM"
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/DeckNameEditableText
+                            ),
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/DeckErrorText
+                ),
+                // ligne ****
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 20.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = paragraphStyleTextCenter
+                        TextStyle = "TextStyleEcranMoniteur"
+
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+                        TypefaceToken = "IBM"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                        TextToken = 'HINT_EX_SP'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Blanc"
+                        TextSize = "24"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 20.0]
+                        )
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 20.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        InterItemMargin = TRTTILength( Magnifiable = 20.0 )
+                        LastMargin = TRTTILength( Magnifiable = 0.0 )
+                        Axis = ~/ListAxis/Horizontal
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListModalImportButton ),
+                            BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListModalCancelButton ),
+                        ]
+                    )
+                )
+            ]
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [0.0, -150.0]
+            )
+            TextureToken = 'Outgame_modale_foreground'
+            TextureDrawer = 'ColorMultiply_Additive'
+        )
+    ]
+
+    AdditionalComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [0.0, -150.0]
+            )
+            TextureToken = 'Outgame_modale_fond'
+            TextureDrawer = 'MonochromeMonitorEffect'
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private DeckListModalExportDeckWindowFrame is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [850.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 110.0]
+    TitleToken = 'DI_DCKEXPO'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListModalOkButton ),
+    ]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength(Magnifiable = 16.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/DeckErrorText
+                ),
+            ]
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [0.0, -150.0]
+            )
+            TextureToken = 'Outgame_modale_foreground'
+            TextureDrawer = 'ColorMultiply_Additive'
+        )
+    ]
+
+    AdditionalComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [0.0, -150.0]
+            )
+
+            TextureToken = 'Outgame_modale_fond'
+            TextureDrawer = 'MonochromeMonitorEffect'
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private BoutonsAction is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 45.0]
+        MagnifiableOffset = [0.0, 714.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    InterItemMargin = TRTTILength (Magnifiable = 2.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListPanelSelectButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListPanelCreateButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListPanelImportButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListBackButton ),
+    ]
+)
+
+//--------------------------------------------------------
+
+private BoutonsDeck is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 27.0]
+        MagnifiableOffset = [0.0, 667.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    InterItemMargin = TRTTILength (Magnifiable = 4.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListPanelEditButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListPanelViewButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListPanelRenameButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListPanelRemoveButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListPanelCopyButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/DeckListPanelExportButton ),
+    ]
+)
+
+//--------------------------------------------------------
+
+DeckListHorizontalOffset is 200.0
+DeckListTextureWidth is 712.0
+DeckListTextureHeight is 820.0
+
+EcranDeckAnimated is WindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableOffset = [0.0, -64.0]
+    )
+
+    ContentExtendWeight = 1.0
+    ContentMagnifiableWidthHeight = [DeckListTextureWidth + 2*DeckListHorizontalOffset, 750.0]
+    ContentAlignementToFather = [0.0, 1.0]
+    ContentAlignementToAnchor = [0.0, 1.0]
+    HasBackground = false
+    UniqueName = 'DeckListHUB'
+    HasTitle = false
+    TitleToken = 'DLS_TITLE'
+    ButtonList = []
+
+    ContentComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableOffset = [0.0, 48.0]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.0]
+            )
+
+            Components =
+            [
+                BUCKTextureDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [712.0, 820.0]
+                        MagnifiableOffset = [0.0, 20.0]
+                        AlignementToAnchor = [0.5, 1.0]
+                        AlignementToFather = [0.5, 1.0]
+                    )
+                    TextureToken = 'deck_fond'
+                    HidePointerEvents = true
+                ),
+                BUCKTextDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+
+                        RelativeWidthHeight = [1.0, 0.0]
+                        AlignementToFather = [0.5, 0.0]
+                        AlignementToAnchor = [0.5, 0.0]
+                        MagnifiableOffset = [0.0, 15.0]
+                    )
+                    ParagraphStyle = paragraphStyleTextCenter
+                    TextStyle = "Default"
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+                    TypefaceToken = "Liberator"
+                    BigLineAction = ~/BigLineAction/MultiLine
+                    TextToken = 'BATGR_BTN'
+                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                    TextColor = "gris_load"
+                    TextSize = "32"
+                ),
+
+                BUCKCheckBoxListDescriptor
+                (
+                    ElementName = "FiltersList"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableOffset = [DeckListHorizontalOffset + 60, 19.0]
+                    )
+                    BoxMagnifiableWidthHeight = [25.0, 25.0]
+                    MagnifiableOffsetRack = [-210.0, 0.0]
+                    TextureColorToken = 'Blanc_multi'
+                    TextureToken = 'Outgame_deck_filter'
+                    CheckboxHasBackground = false
+                    CheckboxHasBorder = false
+                    ListData = ~/BattlegroupFilterList
+                    UseExcelStyle = true
+                    ArrowTextureColorToken = 'Blanc_multi'
+                    ArrowTextureToken = 'Outgame_deck_arrow'
+                    ArrowBoxMagnifiableWidthHeight = [20.0, 25.0]
+
+                    ItemListBackgroundBlockColorToken = 'H2_bleu_2_hint'
+                ),
+                BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+
+                    Components =
+                    [
+                        ~/BattlegroupsBriefMultiList,
+                    ]
+                ),
+
+                ~/BoutonsDeck,
+                ~/BoutonsAction,
+                ~/EffetStylePochettePlastique,
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+testHauteur is 52.0
+testlargeur is 610.0
+EffetStylePochettePlastique is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [617.0, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        MagnifiableOffset = [5.0, 140.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [testlargeur, testHauteur]
+                )
+                TextureDrawer  = 'ColorMultiply_Additive'
+                TextureToken =  'Outgame_deck_pochette'
+            )
+        )
+    ]
+)
+
+//--------------------------------------------------------
+
+DeckOverviewWidth is 1050.0
+DeckOverviewHeight is 1000.0
+
+DeckOverview is BUCKTranslationAnimatedContainerDescriptor
+(
+    ElementName = "DeckOverview"
+    FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [DeckOverviewWidth, DeckOverviewHeight]
+        AlignementToAnchor = [1.0, 0.0]
+        AlignementToFather = [1.0, 1.0]
+        MagnifiableOffset = [-50.0, 0.0]
+    )
+
+    FramePropertyAfterAnimation = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [DeckOverviewWidth, DeckOverviewHeight]
+        AlignementToAnchor = [1.0, 1.0]
+        AlignementToFather = [1.0, 1.0]
+        MagnifiableOffset = [-50.0, 0.0]
+    )
+
+    AnimationTotalDuration = 0.15
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Blanc220"
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        OmbrePanel(),
+        DeckOverviewContent,
+
+        // This BUCKContainer acts like a screen to block mouse events to units
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            HidePointerEvents = true
+        )
+    ]
+)
+
+DeckOverviewContent is BUCKContainerDescriptor
+(
+    ElementName = "DeckOverviewContent"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-180.0, -30.0]
+        AlignementToAnchor = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        MagnifiableOffset = [130.0, 30.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "DeckOverviewContentList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+            Axis = ~/ListAxis/Vertical
+
+            InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = DeckOverviewInformationsHeadersFrame
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = DeckOverviewInformationsContentFrame
+                ),
+                BUCKListElementVerticalSpacer( Magnifiable = 10.0 ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = DeckOverviewActivationPointsFrame
+                ),
+                BUCKListElementVerticalSpacer( Magnifiable = 5.0 ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = DeckOverviewUnitsFrame
+                ),
+            ]
+        )
+    ]
+)
+
+DeckOverviewInfosColumnWidth is 130
+
+DeckOverviewInformationsHeadersFrame is BUCKContainerDescriptor
+(
+    ElementName = "DeckOverviewInformationsHeadersFrame"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 45.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                MagnifiableOffset = [0.0, 5.0]
+            )
+            Axis = ~/ListAxis/Horizontal
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "DeckOverviewNameHeader"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_Bottom
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        TextToken = "DLS_DNAME"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "gris_load"
+                        TextSize = "24"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "DeckOverviewDivisionHeader"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [DeckOverviewInfosColumnWidth, 0.0]
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_Bottom
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        TextToken = "DLS_DIVIS"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "gris_load"
+                        TextSize = "24"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "DeckOverviewNationHeader"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [DeckOverviewInfosColumnWidth, 0.0]
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_Bottom
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        TextToken = "DB_FLAG"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "gris_load"
+                        TextSize = "24"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "DeckOverviewAllianceHeader"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [DeckOverviewInfosColumnWidth, 0.0]
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_Bottom
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        TextToken = "DB_ALLIA"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "gris_load"
+                        TextSize = "24"
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+DeckOverviewInformationsContentFrame is BUCKContainerDescriptor
+(
+    ElementName = "DeckOverviewInformationsContentFrame"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 30.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+            Axis = ~/ListAxis/Horizontal
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "DeckOverviewName"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        ParagraphStyle = paragraphStyleTextLeftAlign
+
+                        TextStyle = "Default"
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "gris_load"
+                        TextSize = "28"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = "DeckOverviewDivision"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [DeckOverviewInfosColumnWidth, 0.0]
+                        )
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = "DeckOverviewNation"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [DeckOverviewInfosColumnWidth, 0.0]
+                        )
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = "DeckOverviewAlliance"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [DeckOverviewInfosColumnWidth, 0.0]
+                        )
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+DeckOverviewActivationPointsFrame is BUCKContainerDescriptor
+(
+    ElementName = "DeckOverviewActivationPointsFrame"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 30.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+            Axis = ~/ListAxis/Horizontal
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        ParagraphStyle = paragraphStyleTextLeftAlign
+
+                        TextStyle = "Default"
+                        TextToken = "DCKO_ACTIV"
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "gris_load"
+                        TextSize = "18"
+                    )
+                ),
+                BUCKListElementHorizontalSpacer(Magnifiable = 20.0),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "DeckOverviewActivationPoints"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        ParagraphStyle = paragraphStyleTextLeftAlign
+
+                        TextStyle = "Default"
+                        TextToken = "DCKO_FMT"
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "gris_load"
+                        TextSize = "18"
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+DeckOverviewUnitsFrame is BUCKContainerDescriptor
+(
+    ElementName = "DeckOverviewUnitsFrame"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [20.0, 0.0]
+        MagnifiableOffset = [-20.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "DeckOverviewUnitsList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+            Axis = ~/ListAxis/Vertical
+
+            // List filled with DeckOverviewCategoryLine
+        )
+    ]
+)
+
+DeckOverviewCategoryLine is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 75.0]
+    )
+    Axis = ~/ListAxis/Horizontal
+
+    InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "CategoryName"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [60.0, 0.0]
+                )
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                ParagraphStyle = paragraphStyleTextLeftAlign
+
+                TextStyle = "Default"
+                TypefaceToken = "Liberator"
+                BigLineAction = ~/BigLineAction/ResizeFont
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextColor = "gris_load"
+                TextSize = "28"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKRackDescriptor
+            (
+                ElementName = "CategoryUnitRack"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+                Axis = ~/ListAxis/Horizontal
+
+                InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+                BladeDescriptor = BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [0.0, 1.0]
+                        MagnifiableWidthHeight = [113.0, 0.0]
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+                    HasBackground = true
+                    BackgroundBlockColorToken = "Blanc220"
+
+                    // Each container of this type is filled with one UnitPackComponentDescriptor
+                )
+            )
+        )
+    ]
+)
+
+//--------------------------------------------------------
+
+template BUCKSpecificBattlegroupsListMainComponentDescriptor
+[
+    MagnifiableOffsetBefore : float2,
+    MagnifiableOffsetAfter : float2,
+]
+is BUCKTranslationAnimatedContainerDescriptor
+(
+    ElementName = "BattlegroupsListAnimation"
+
+    FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 1.0]
+        MagnifiableOffset = <MagnifiableOffsetBefore>
+    )
+
+    TriggerWhenSetVisible = true
+    AnimationTotalDuration = 0.10
+
+    FramePropertyAfterAnimation = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        AlignementToFather = [0.5, 1.0]
+        MagnifiableOffset = <MagnifiableOffsetAfter>
+    )
+
+    Components =
+    [
+        BUCKSensibleAreaDescriptor
+        (
+            ElementName = 'SensibleArea'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            HidePointerEvents = true
+        ),
+        ~/DeckOverview,
+        ~/EcranDeckAnimated,
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+// rester synchro avec TagsVector dans le descripteur de la vue
+BattlegroupFilterList is
+[
+    (
+        // Synchro la position de cette categorie avec CustomPremadeDeckCategoryIndex dans le descripteur de la vue
+        "ReadOnly",
+        [
+            (
+                "FLTDK_CUST",
+                0 // Synchro avec CustomDeckFilterIndex dans le descripteur de la vue
+            ),
+            (
+                "FLTDK_PREM",
+                1 // Synchro avec PremadeDeckFilterIndex dans le descripteur de la vue
+            ),
+        ]
+    ),
+    (
+        "Countries",
+        [
+            (
+                "FLTDK_ALLY",
+                2
+            ),
+            (
+                "FLTDK_AXE",
+                3
+            ),
+        ]
+    ),
+    (
+        "Types",
+        [
+            (
+                "FLTDK_ARM",
+                4
+            ),
+            (
+                "FLTDK_SOL",
+                5
+            ),
+            (
+                "FLTDK_MEC",
+                6
+            ),
+        ]
+    ),
+    (
+        "Ratings",
+        [
+            (
+                "FLTDK_RK1",
+                7
+            ),
+            (
+                "FLTDK_RK2",
+                8
+            ),
+            (
+                "FLTDK_RK3",
+                9
+            ),
+        ]
+    ),
+]
+
+BattlegroupHiddenTags is
+[
+    "DEFAULT",
+]
+
+BattlegroupTagsVector is
+[
+    "", // Custom Deck - ne fait rien
+    "", // Premade Deck - ne fait rien
+    "Allied",
+    "Axis",
+    "armored",
+    "infantryReg",
+    "armoredRecon",
+    "DC_PWR1",
+    "DC_PWR2",
+    "DC_PWR3",
+]
+
+//--------------------------------------------------------
+
+template UISpecificBattlegroupsListViewDescriptor
+[
+    ContainerUniqueName : string,
+    MagnifiableOffsetBefore : float2,
+    MagnifiableOffsetAfter : float2,
+]
+is TUISpecificBattlegroupsListViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificBattlegroupsListMainComponentDescriptor
+    (
+        MagnifiableOffsetBefore = <MagnifiableOffsetBefore>
+        MagnifiableOffsetAfter = <MagnifiableOffsetAfter>
+    )
+    MainComponentContainerUniqueName = <ContainerUniqueName> // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    HiddenTags = ~/BattlegroupHiddenTags
+    TagsVector = ~/BattlegroupTagsVector
+    CustomPremadeDeckCategoryIndex = 0
+    CustomDeckFilterIndex = 0
+    PremadeDeckFilterIndex = 1
+
+    FactoryDisplayOrder =
+    [
+        EDefaultFactories/Logistic,
+        EDefaultFactories/Infantry,
+        EDefaultFactories/Support,
+        EDefaultFactories/Tanks,
+        EDefaultFactories/Recons,
+        EDefaultFactories/AT,
+        EDefaultFactories/Helis,
+        EDefaultFactories/Planes,
+    ]
+
+    ColorForAlliance = MAP
+    [
+        (
+            ENationalite/OTAN,
+            "GameDebrief/TeamStats/PlayerLine/Nato"
+        ),
+        (
+            ENationalite/PACT,
+            "GameDebrief/TeamStats/PlayerLine/Pact"
+        ),
+    ]
+
+    AllianceFlagTexture = MAP
+    [
+        (
+            ENationalite/OTAN,
+            "CommonTexture_MotherCountryFlag_NATO"
+        ),
+        (
+            ENationalite/PACT,
+            "CommonTexture_MotherCountryFlag_WP"
+        ),
+    ]
+
+    BattlegroupBriefDescriptor = UISpecificDivisionBriefViewDescriptor
+    (
+        HasBattlegroup = true
+        MainComponentDescriptor = ~/BattlegroupBriefDescriptorForSelection
+    )
+
+    ModaleImportDeck = ~/DeckListModalImportDeckWindowFrame
+    ModaleExportDeck = ~/DeckListModalExportDeckWindowFrame
+
+    ShowOverviewSound = ~/SoundEvent_ShowDeckOverview
+    HideOverviewSound = ~/SoundEvent_HideDeckOverview
+    ChangeOverviewSound = ~/SoundEvent_ChangeDeckOverview
+
+    OverviewEmptyFieldPlaceholder = "CL_DEFVAL"
+    OverviewUnitsPerLine = 7
+    UnitPackComponentDescriptor = UISpecificUnitButtonViewDescriptor
+    (
+        TextureDrawerWhenUnitNotAvailable = "ColorMultiply_Grayscale"
+        UnitNameColorWhenUnitNotAvailable = "Fulda2_Orange30"
+        UnitCostColorWhenUnitNotAvailable = "Fulda2_Orange30"
+        UnitCostColorWhenUnitCannotBeBought = "Fulda2_Orange30"
+        UnitCostGlowColorIndexWhenUnitNotAvailable = "Fulda2_Orange100"
+        UnitNameBackgroundColorWhenUnitNotAvailable = "Gris123"
+
+        AceUnitNameColor = "Fulda2_Orange100"
+        AceUnitBorderColorBySide =
+        [
+            (~/TBorderSide/Top | ~/TBorderSide/Left, "Fulda2_Orange100"),
+            (~/TBorderSide/Bottom | ~/TBorderSide/Right, "Fulda2_Orange100"),
+        ]
+        AceUnitBorderThickness = "1"
+
+        OpacityPercentWhenUnitNotAvailable = 1.0
+        TimeInSecondBeforeAdditionalUnitSpecificContainerShowUp = 0.2
+        MagnifierMultiplication = 0.85
+        AcceptEvents = false
+    )
+
+    OverviewUnitLineDescriptor = DeckOverviewCategoryLine
+    OverviewInterlineFillerDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+            MagnifiableWidthHeight = [0.0, 15.0]
+        )
+    )
+)
+
+UISpecificBattlegroupsListViewDescriptorForArmory is UISpecificBattlegroupsListViewDescriptor
+(
+    ContainerUniqueName = "BattlegroupsListForArmory"
+    MagnifiableOffsetBefore = [0.0, -70.0]
+    MagnifiableOffsetAfter = [0.0, 0.0]
+)
+
+UISpecificBattlegroupsListViewDescriptorForLobby is UISpecificBattlegroupsListViewDescriptor
+(
+    ContainerUniqueName = "BattlegroupsListForLobby"
+    MagnifiableOffsetBefore = [0.0, 0.0]
+    MagnifiableOffsetAfter = [0.0, 0.0]
+)

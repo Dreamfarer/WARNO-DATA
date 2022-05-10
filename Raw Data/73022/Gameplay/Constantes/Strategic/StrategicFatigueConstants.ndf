@@ -1,0 +1,36 @@
+StrategicMaxFatiguePerUnit is 5
+
+StrategicFatigueGainOnMove is 1
+StrategicFatigueLossOnNextTurn is 1
+StrategicFatigueGainOnBombard is 1
+StrategicFatigueGainOnFlee is 1
+
+StrategicRoutOnMaxFatigue is true
+StrategicAllowRepairsOnMaxFatigueRout is false
+StrategicEmptyActionPointsOnMaxFatigueRout is true
+StrategicKillOnMaxFatigueReached is false
+
+StrategicBattleAttackerFatigueGainAfterBattle is MAP
+[
+    (EVictoryType/TotalDefeat, 3),
+    (EVictoryType/MajorDefeat, 2),
+    (EVictoryType/MinorDefeat, 2),
+    (EVictoryType/Draw, 2),
+    (EVictoryType/MinorVictory, 1),
+    (EVictoryType/MajorVictory, 0),
+    (EVictoryType/TotalVictory, 0),
+    (EVictoryType/NotSpecified, 5),
+]
+
+StrategicBattleDefenderFatigueGainAfterBattle is MAP
+[
+    (EVictoryType/TotalDefeat, 5),
+    (EVictoryType/MajorDefeat, 3),
+    (EVictoryType/MinorDefeat, 2),
+    (EVictoryType/Draw, 1),
+    (EVictoryType/MinorVictory, 0),
+    (EVictoryType/MajorVictory, 0),
+    (EVictoryType/TotalVictory, 0),
+    (EVictoryType/NotSpecified, 5),
+]
+
