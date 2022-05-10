@@ -124,6 +124,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>str</kbd> Factory (Category)</summary><p> Can either be <b>Logistic</b> (LOG), <b>Infantry</b> (INF), <b>Support</b> (ART), <b>Tanks</b> (TNK), <b>Recons</b> (REC), <b>AT</b> (AA), <b>Helis</b> (HEL), <b>Planes</b> (AIR)</p></details>
 <details><summary><kbd>arr</kbd> SpecialtiesList (Role)</summary><p>Can either be <b>hq</b> (Command unit), <b>supply</b>, <b>infantry</b> (Infantry Squad), <b>infantry_half</b> (Infantry Group), <b>engineer</b> (Assault Squad), <b>assault_half</b> (Assault Group), <b>mortar</b>, <b>howitzer</b>, <b>mlrs</b>, <b>ifv</b> (Infantry Fightung Vehicle), <b>armor</b> (Main Battle Tank), <b>reco</b>, <b>hel_recp</b> (Helicopter Reconnaissance), <b>appui</b> (Support), <b>AT</b> (Anti-Tank), <b>transport</b>, <b>AA</b> (Air Defence) or <b>sead</b></p></details>
 <details><summary><kbd>int</kbd> ProductionYear</summary><p></p></details>
+<details><summary><kbd>int</kbd> ProductionTime</summary><p> <b>5</b> for every unit except <b>-1</b> for planes. I think it's the time between placing units and them spawning in.</p></details>
 <details><summary><kbd>int</kbd> Resource_CommandPoints</summary><p></p></details>
 <details><summary><kbd>str</kbd> UpgradeFromUnit</summary><p> Predecessor</p></details>
 
@@ -144,11 +145,14 @@ All useful values to be found in `UniteDescriptor.ndf`
 ### Visibility & Targetability
 <details><summary><kbd>int</kbd> OpticalStrength</summary><p> Optics for ground units. Presumably used to determine whether a unit can see enemy units in cover: can either be <b>40</b> (Bad), <b>60</b> (Mediocre), <b>80</b> (Normal), <b>120</b> (Good), <b>170</b> (Very Good) or <b>220</b> (Exceptional)</p></details>
 <details><summary><kbd>int</kbd> OpticalStrengthAltitude</summary><p> Optics for air targets. This value is not represented on the in-game UI and does not count towards <b>OpticalStrength</b>.</p></details>
-<details><summary><kbd>int</kbd> PorteeVision</summary><p> Maximum range at which a unit can see an unidentified ground unit. This variable is set to <b>10000</b> except for SEAD planes it is higher.</p></details>
 <details><summary><kbd>flt</kbd> IdentifyBaseProbability</summary><p> <b>Guess</b>: I think <b>OpticalStrength</b> defines how well units can be seen, <b>IdentifyBaseProbability</b> is the probability that these units can be uniquely identified.</p></details>
 <details><summary><kbd>flt</kbd> TimeBetweenEachIdentifyRoll</summary><p><b>Guess</b>: Time in-between trying to uniquely identify units.</p></details>
 <details><summary><kbd>flt</kbd> UnitConcealmentBonus (Stealth)</summary><p> In-game called <b>stealth</b>. Can either be <b>1.0</b> (Bad), <b>1.5</b> (Mediocre), <b>2.0</b> (Good) or <b>2.5</b> (Exceptional)</p></details>
 <details><summary><kbd>flt</kbd> HitRollECM</summary><p> Multiplier for hit probability. 0 means no Electronic countermeasures (ECM)</p></details>
+<details><summary><kbd>int</kbd> PorteeVision</summary><p> Maximum range at which a unit can see an unidentified ground unit. This variable is set to <b>10000</b> except for SEAD planes it is higher.</p></details>
+<details><summary><kbd>flt</kbd> PorteeVisionTBA</summary><p> Set to <b>0</b> for every unit except <b>14000</b> for planes.</p></details>
+<details><summary><kbd>flt</kbd> PorteeVisionFOW</summary><p> Set to <b>0</b> for every unit except <b>1600</b> for helicopters.</p></details>
+<details><summary><kbd>flt</kbd> DetectionTBA</summary><p> Maximum range at which a unit can see an unidentified helicopter. Set to <b>14000</b> for every unit.</p></details>
 
 ### Strategic
 <details><summary><kbd>int</kbd> UnitAttackValue</summary><p> Might be used for AI.</p></details>
@@ -180,17 +184,14 @@ All useful values to be found in `UniteDescriptor.ndf`
 #### Probably Not Important
 <details><summary><kbd>flt</kbd> HitRollSize</summary><p> Size does no longer effect hit chance-to-hit.</p></details>
 <details><summary><kbd>int</kbd> MoralLevel</summary><p> Reason not included is described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
-<details><summary><kbd>int</kbd> ProductionTime</summary><p> <b>5</b> for every unit except <b>-1</b> for planes. I think it's the time between placing units and them spawning in.</p></details>
 <details><summary><kbd>des</kbd> TInfluenceScoutModuleDescriptor (Reveal Influenece)</summary><p> Empty for every unit but if present it triggers <b>Reveal Influenece</b> to be <b>yes</b> in-game.</p></details>
 <details><summary><kbd>bol</kbd> IsParachutist</summary><p> Currently set to <b>False</b> for every unit.</p></details>
 <details><summary><kbd>int</kbd> Resource_Tickets</summary><p> Could be used as prices for future campaigns.</p></details>
 <details><summary><kbd>int</kbd> CommanderLevel</summary><p> Only present on command units. However, it is set to <b>1</b> for every unit that has it.</p></details>
 <details><summary><kbd>bol</kbd> UnitIsStealth</summary><p> <b>False</b> for every unit. Stealth is defined by <b>UnitConcealmentBonus</b>.</p></details>
 <details><summary><kbd>tkn</kbd> UnitName</summary><p> Unfortunately we can't decode tokens yet.</p></details>
-<details><summary><kbd>flt</kbd> PorteeVisionTBA</summary><p> Set to <b>0</b> for every unit except <b>14000</b> for planes.</p></details>
-<details><summary><kbd>flt</kbd> PorteeVisionFOW</summary><p> Set to <b>0</b> for every unit except <b>1600</b> for helicopters.</p></details>
-<details><summary><kbd>flt</kbd> DetectionTBA</summary><p> Maximum range at which a unit can see an unidentified helicopter. Set to <b>14000</b> for every unit.</p></details>
 <details><summary><kbd>int</kbd> SupplyPriority</summary><p> Used in WGRD to state how many other supply units this unit could itself draw supplies from. Set to <b>-1</b> for every unit.</p></details>
+<details><summary><kbd>int</kbd> UnitBonusXpPerLevelValue</summary><p> Set to <b>1</b> for every unit except aircraft.</p></details>
 
 ## Weapon Descriptor
 All useful values to be found in `WeaponDescriptor.ndf`. A weapon system (*TWeaponManagerModuleDescriptor*) consist of multiple turret descriptors (*TTurretInfanterieDescriptor* or *TTurretTwoAxisDescriptor*). These turrets have one or multiple weapons attached to it (*TMountedWeaponDescriptor*), each having its own ammunition defined in `Ammunition.ndf`.

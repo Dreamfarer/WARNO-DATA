@@ -12,36 +12,34 @@ keyWordArray = [
     ["Nationalite", ""],
     ["MotherCountry", ""],
     ["UnitConcealmentBonus", 0.0],
+    ["ArmorDescriptorFront", ""],
+    ["ArmorDescriptorSides", ""],
+    ["ArmorDescriptorRear", ""],
+    ["ArmorDescriptorTop", ""],
+    ["MaxDamages", 0.0],
+    ["HitRollECM", 0.0],
+    ["Dangerousness", 0.0],
+    ["MaxSpeed", 0],
+    ["SpeedBonusOnRoad", 0.0],
+    ["MaxAcceleration", 0.0],
+    ["MaxDeceleration", 0.0],
+    ["TempsDemiTour", 0.0],
+    ["FuelCapacity", 0],
+    ["FuelMoveDuration", 0],
+    ["Autonomy", 0.0],
+    ["OpticalStrength", 0],
+    ["OpticalStrengthAltitude", 0],
+    ["IdentifyBaseProbability", 0.0],
+    ["TimeBetweenEachIdentifyRoll", 0.0],
+    ["ProductionYear", 0],
+    ["IsTransporter", False],
+    ["IsPlane", False],
+    ["UnitAttackValue", 0],
+    ["UnitDefenseValue", 0],
 ]
 
 
 #DONE
-
-#ArmorDescriptorFront
-#ArmorDescriptorSides
-#ArmorDescriptorRear
-#ArmorDescriptorTop
-#MaxDamages
-#HitRollECM
-#Dangerousness
-#MaxSpeed
-#SpeedBonusOnRoad
-#MaxAcceleration
-#MaxDeceleration
-#TempsDemiTour
-#FuelCapacity
-#FuelMoveDuration
-#PorteeVision
-#OpticalStrength
-#OpticalStrengthAltitude
-#IdentifyBaseProbability
-#TimeBetweenEachIdentifyRoll
-#ProductionYear
-#ProductionTime
-#IsTransporter
-#IsPlane
-#UnitAttackValue
-#UnitDefenseValue
 
 def analzye(text, keyword):
     index = text.find(keyword)
