@@ -135,6 +135,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>ref</kbd> SuppressDamagesRegenRatioOutOfRange</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
 <details><summary><kbd>ref</kbd> MaxSuppressionDamages</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
 <details><summary><kbd>flt</kbd> MaxDamages</summary><p>In-game called <b>strength</b> for infantry units</p></details>
+<details><summary><kbd>ref</kbd> WeaponManager</summary><p>Reference to <b>WeaponDescriptor.ndf</b></p></details>
 
 ### Armor
 <details><summary><kbd>str</kbd> ArmorDescriptorFront</summary><p> Armor Front</p></details>
@@ -159,8 +160,12 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>int</kbd> UnitDefenseValue</summary><p> Might be used for AI.</p></details>
 <details><summary><kbd>flt</kbd> Dangerousness</summary><p> Might be used by AI to determine which unit to engage first.</p></details>
 
+### Orders
+<details><summary><kbd>ref</kbd> UnlockableOrders</summary><p> Reference to <b>OrderAvailability_Tactic.ndf</b>. Contains a list of orders that can be given to this particular unit.</p></details>
+
 #### Label
 <details><summary><kbd>bol</kbd> IsTransporter</summary><p> </p></details>
+<details><summary><kbd>bol</kbd> IsPlane</summary><p> </p></details>
 
 ### Fuel
 <details><summary><kbd>int</kbd> FuelCapacity</summary><p> How many liters of fuel a unit can hold.</p></details>
@@ -177,6 +182,25 @@ All useful values to be found in `UniteDescriptor.ndf`
 #### Special to Planes
 <details><summary><kbd>int</kbd> EvacuationTime</summary><p> </p></details>
 <details><summary><kbd>int</kbd> TravelDuration</summary><p> </p></details>
+<details><summary><kbd>int</kbd> Altitude</summary><p> Preferred flying altitude</p></details>
+<details><summary><kbd>ref</kbd> AltitudeMax</summary><p> Reference to <b>AirplaneConstantes.ndf</b>; always set to <b>10000 * Metre</b></p></details>
+<details><summary><kbd>int</kbd> AltitudeMin</summary><p> Minimum flying altitude; will break off from certain attacks if they involve going deeper.</p></details>
+<details><summary><kbd>ref</kbd> AltitudeMinForRoll</summary><p> Reference to <b>AirplaneConstantes.ndf</b>; always set to <b>2000 * Metre</b></p></details>
+<details><summary><kbd>ref</kbd> MinRollSpeedForRoll</summary><p> Reference to <b>AirplaneConstantes.ndf</b>; always set to <b>65°/s</b></p></details>
+<details><summary><kbd>int</kbd> AgilityRadius</summary><p> I believe it to be the equivalent of <b>TempsDemiTour</b> for planes; states the turn radius. Certainly determines the agility of the plane in question.</p></details>
+<details><summary><kbd>int</kbd> PitchAngle</summary><p> </p></details>
+<details><summary><kbd>ref</kbd> PitchSpeed</summary><p> </p></details>
+<details><summary><kbd>int</kbd> RollAngle</summary><p> </p></details>
+<details><summary><kbd>int</kbd> RollSpeed</summary><p> </p></details>
+
+#### Special to Helicopters
+<details><summary><kbd>int</kbd> UpwardSpeed</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
+<details><summary><kbd>int</kbd> TorqueManoeuvrability</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
+<details><summary><kbd>int</kbd> CyclicManoeuvrability</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
+<details><summary><kbd>int</kbd> MaxInclination</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
+<details><summary><kbd>flt</kbd> GFactorLimit</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
+<details><summary><kbd>int</kbd> RotorArea</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
+<details><summary><kbd>int</kbd> Mass</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
 
 #### Supply Units
 <details><summary><kbd>flt</kbd> SupplyCapacity</summary><p> How many supplies this unit is carrying.</p></details>

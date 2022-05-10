@@ -36,10 +36,38 @@ keyWordArray = [
     ["IsPlane", False],
     ["UnitAttackValue", 0],
     ["UnitDefenseValue", 0],
+    ["EvacuationTime", 0],
+    ["TravelDuration", 0],
 ]
 
 
-#DONE
+#DONE with planes, heli, supply, ground, transport. Others need to be done
+#Role List
+#Factory
+#SpecialtiesList
+#Resource_CommandPoints
+#UpgradeFromUnit
+#SupplyCapacity
+#UnlockableOrders
+#WeaponManager
+#Altitude
+#AltitudeMax
+#AltitudeMin
+#AltitudeMinForRoll
+#MinRollSpeedForRoll
+#AgilityRadius
+#PitchAngle
+#PitchSpeed
+#RollAngle
+#RollSpeed
+#UpwardSpeed
+#TorqueManoeuvrability
+#CyclicManoeuvrability
+#MaxInclination
+#GFactorLimit
+#RotorArea
+#Mass
+
 
 def analzye(text, keyword):
     index = text.find(keyword)
