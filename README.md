@@ -163,7 +163,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 ### Orders
 <details><summary><kbd>ref</kbd> UnlockableOrders</summary><p> Reference to <b>OrderAvailability_Tactic.ndf</b>. Contains a list of orders that can be given to this particular unit.</p></details>
 
-#### Label
+### Label
 <details><summary><kbd>bol</kbd> IsTransporter</summary><p> </p></details>
 <details><summary><kbd>bol</kbd> IsPlane</summary><p> </p></details>
 
@@ -171,7 +171,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>int</kbd> FuelCapacity</summary><p> How many liters of fuel a unit can hold.</p></details>
 <details><summary><kbd>flt</kbd> FuelMoveDuration</summary><p>  How many seconds a unit can move before running out of fuel. Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#calculate-autonomy"> Calculate Autonomy</a> </p></details>
 
-#### Special to Ground Units
+### Special to Ground Units
 <details><summary><kbd>int</kbd> MaxSpeed</summary><p> </p></details>
 <details><summary><kbd>flt</kbd> SpeedBonusOnRoad</summary><p> </p></details>
 <details><summary><kbd>flt</kbd> MaxAcceleration</summary><p> </p></details>
@@ -179,7 +179,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>flt</kbd> TempsDemiTour</summary><p> The amount of seconds it takes for a unit to make a half-turn.</p></details>
 <details><summary><kbd>str</kbd> VehicleSubType</summary><p> </p></details>
 
-#### Special to Planes
+### Special to Planes
 <details><summary><kbd>int</kbd> EvacuationTime</summary><p> </p></details>
 <details><summary><kbd>int</kbd> TravelDuration</summary><p> </p></details>
 <details><summary><kbd>int</kbd> Altitude</summary><p> Preferred flying altitude</p></details>
@@ -202,10 +202,10 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>int</kbd> RotorArea</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
 <details><summary><kbd>int</kbd> Mass</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
 
-#### Supply Units
+### Supply Units
 <details><summary><kbd>flt</kbd> SupplyCapacity</summary><p> How many supplies this unit is carrying.</p></details>
 
-#### Probably Not Important
+### Probably Not Important
 <details><summary><kbd>flt</kbd> HitRollSize</summary><p> Size does no longer effect hit chance-to-hit.</p></details>
 <details><summary><kbd>int</kbd> MoralLevel</summary><p> Reason not included is described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
 <details><summary><kbd>des</kbd> TInfluenceScoutModuleDescriptor (Reveal Influenece)</summary><p> Empty for every unit but if present it triggers <b>Reveal Influenece</b> to be <b>yes</b> in-game.</p></details>
