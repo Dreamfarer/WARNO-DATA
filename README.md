@@ -48,6 +48,20 @@ If you look closely into the `HitRollConstants.ndf`, you will notice three types
 
 Currently, the only way units differ from one another is through *EBaseHitValueModifier/Idling* and *EBaseHitValueModifier/Moving* of *BaseHitValueModifiers* in `Ammunition.ndf`. These values are the ones which represent the unit's *Accuracy* reading in the armory. However, be aware that the accuracy is displayed **per salvo**. You would need to multiply these values with *NbTirParSalves* in `Ammunition.ndf` to get the in-game displayed results.
 
+### Armor
+For every unit armor is individually defined in `UniteDescriptor.ndf` by the variables **ArmorDescriptorFront**, **ArmorDescriptorSides**, **ArmorDescriptorRear** and **ArmorDescriptorTop**. They can hold many more strings but these are the ones used in vanilla WARNO:
+
+* *ArmorDescriptor_Batiment_1*: Used for buildings
+* *ArmorDescriptor_Infanterie_1*: Used for Infantry; Can't receive armor-piercing (AP) damage, therefore in-game armory shows zero armor. However, there are multiple damage reductions present against various non-AP ammunition types.
+* *ArmorDescriptor_Vehicule_1*: Used for vehicles; equivalent to *ArmorDescriptor_Blindage_1*.
+* *ArmorDescriptor_Vehicule_leger*: Used for vehicles; Receives damage from **every** ammunition. Usually more than double the amount of damage received than *ArmorDescriptor_Vehicule_1*.
+* *ArmorDescriptor_Blindage_1* to *ArmorDescriptor_Blindage_20*: Used for vehicles;  Having blindage over 2 is utterly important: Going from *ArmorDescriptor_Blindage_1* to *ArmorDescriptor_Blindage_2* **halves** the AP damage received (exception to this rule follow shortly). After that, it is only decreasing by small amounts.
+* *ArmorDescriptor_Helico_1* to *ArmorDescriptor_Helico_3*:
+
+These strings are referencing `ArmorDescriptor.ndf`, which itself references another file called `DamageResistance.ndf`. In there a giant table can be found listing every damage outcome of every weapon versus every armor. Some voices doubt the reliability of this table, others think it to be an export of WARNO's damage calculation.
+
+This infamous list is no where near of following a strict pattern. For example, like before, stating that *ArmorDescriptor_Blindage_1* to *ArmorDescriptor_Blindage_2* halves the AP damage is technically wrong when facing an AP missile or, according to the list, when facing tank cannons with more than 30 AP. In-game armory will always state the armor against a 1 AP threat.
+
 ### Armor-Piercing (AP) Damage
 We need to distinguish between HE(AT) and Kinetic (KE). HE(AT) damage does **not** decrease with range, however, Kinetic (KE) does.\
 Every ammunition type is defined in `Ammunition.ndf`. If \[Kinetic\] is listed in the *TraitsToken*-array, it means that this ammunition type is kinetic. If there is no such tag, the ammunition type is HE(AT).
