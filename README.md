@@ -221,6 +221,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 All useful values to be found in `WeaponDescriptor.ndf`. A weapon system (*TWeaponManagerModuleDescriptor*) consist of multiple turret descriptors (*TTurretInfanterieDescriptor* or *TTurretTwoAxisDescriptor*). These turrets have one or multiple weapons attached to it (*TMountedWeaponDescriptor*), each having its own ammunition defined in `Ammunition.ndf`.
 
 <details><summary><kbd>arr</kbd> Salves</summary><p> Array holding multiple ammunition pools. An ammunition pool defines the total number of salvos a weapon (which pulls salvos from this pool) can fire before running out of ammunition.</p></details>
+<details><summary><kbd>int</kbd> NbWeapons</summary><p> The unit's quantity of this specific weapons. Primarily used on infantry units.</p></details>
 <details><summary><kbd>int</kbd> SalvoStockIndex</summary><p> Defines which ammunition pool (<b>Savles</b>) is being used by this specific weapon. E.g. tank cannons have separate weapon descriptors for HE and AP but will pull from the <b>same</b> ammunition pool.</p></details>
 <details><summary><kbd>bol</kbd> HasMainSalvo</summary><p> Only set to <b>True</b> for planes. It signifies that this plane has a ammunition pool (<b>Salves</b>) that, if empty, makes the plane evac winchester.</p></details>
 <details><summary><kbd>arr</kbd> SalvoIsMainSalvo</summary><p> Only has a <b>True</b> in it for planes. States which ammunition pool (<b>Salves</b>) makes the plane evac winchester when empty.</p></details>
