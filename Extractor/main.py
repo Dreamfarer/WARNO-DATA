@@ -1,64 +1,5 @@
-unitDescriptor = [
-    ["UniteDescriptor", "export",""], 
-    ["ClassNameForDebug", "ClassNameForDebug",""],
-    ["Nationalite", "Nationalite",""],
-    ["MotherCountry", "MotherCountry", ""],
-    ["UnitConcealmentBonus", "UnitConcealmentBonus", 0.0],
-    ["ArmorDescriptorFront", "ArmorDescriptorFront",""],
-    ["ArmorDescriptorSides", "ArmorDescriptorSides",""],
-    ["ArmorDescriptorRear", "ArmorDescriptorRear", ""],
-    ["ArmorDescriptorTop", "ArmorDescriptorTop", ""],
-    ["MaxDamages", "MaxDamages",0.0],
-    ["HitRollECM", "HitRollECM",0.0],
-    ["Dangerousness", "Dangerousness  =",0.0],
-    ["MaxSpeed","MaxSpeed", 0], #Metre
-    ["RoadSpeed"," RoadSpeed", 0],
-    ["SpeedBonusOnRoad","SpeedBonusOnRoad", 0.0],
-    ["MaxAcceleration","MaxAcceleration", 0.0], #Metre
-    ["MaxDeceleration","MaxDeceleration", 0.0], #Metre
-    ["TempsDemiTour","TempsDemiTour", 0.0],
-    ["FuelCapacity","FuelCapacity", 0],
-    ["FuelMoveDuration","FuelMoveDuration", 0],
-    ["Autonomy","Autonomy", 0.0],
-    ["OpticalStrength","OpticalStrength", 0],
-    ["OpticalStrengthAltitude","OpticalStrengthAltitude", 0],
-    ["IdentifyBaseProbability","IdentifyBaseProbability", 0.0],
-    ["TimeBetweenEachIdentifyRoll","TimeBetweenEachIdentifyRoll", 0.0],
-    ["ProductionYear","ProductionYear", 0],
-    ["IsTransporter","IsTransporter", False],
-    ["IsPlane","IsPlane", False],
-    ["UnitAttackValue","UnitAttackValue", 0],
-    ["UnitDefenseValue","UnitDefenseValue", 0],
-    ["EvacuationTime","EvacuationTime", 0],
-    ["TravelDuration","TravelDuration", 0],
-    ["RoleList", "RoleList", ""], #Built like array
-    ["SpecialtiesList", "SpecialtiesList", []],
-    ["Factory", "Factory", ""],
-    ["Resource_CommandPoints", "Resource_CommandPoints", 0],
-    ["UpgradeFromUnit", "UpgradeFromUnit", ""],
-    ["SupplyCapacity", "SupplyCapacity", 0],
-    ["UnlockableOrders", "UnlockableOrders", ""], #Reference to other file
-    ["WeaponDescriptor", "WeaponDescriptor", ""],
-    ["SupplyCapacity", "SupplyCapacity", 0.0],
-    ["AltitudeMin", "AltitudeMin", 0.0], #Metre
-    ["Altitude", " Altitude =", 0.0], #Metre
-    ["AgilityRadius", "AgilityRadius", 0.0], #Metre
-    ["PitchAngle", "PitchAngle", 0.0],
-    ["RollAngle", "RollAngle", 0.0],
-    ["RollSpeed", "RollSpeed =", 0.0],
-    ["UpwardSpeed", "UpwardSpeed", 0.0], #Metre
-    ["TorqueManoeuvrability", "TorqueManoeuvrability", 0.0],
-    ["CyclicManoeuvrability", "CyclicManoeuvrability", 0.0],
-    ["MaxInclination", "MaxInclination", 0.0],
-    ["GFactorLimit", "GFactorLimit", 0.0],
-    ["RotorArea", "RotorArea", 0.0],
-    ["AltitudeMax", "AltitudeMax", 0.0],
-    ["PitchSpeed", "PitchSpeed", 0.0],
-    ["AltitudeMinForRoll", "AltitudeMinForRoll", 0.0],
-    ["MinRollSpeedForRoll", "MinRollSpeedForRoll", 0.0],
-]
-
-
+import descriptor
+import helper
 
 ####################################################################
 # RETRIEVE A VARIABLE FROM A FILE
@@ -94,6 +35,7 @@ def getVariableFromNDFFile(filename, varName):
 
     return var
 
+
 ####################################################################
 # CONSTANTS
 ####################################################################
@@ -115,7 +57,7 @@ def analzye(text, keyword):
         return None
     
     #If keyword itself is present in the value 
-    if keyword[0] == "WeaponDescriptor":
+    if keyword[0] == "WeaponDescriptor" and keyword[1] == "WeaponDescriptor":
         keywordlength = len(keyword[1])
         captured = text[index:text.find("\n", index)]
         return captured
@@ -143,14 +85,14 @@ def analzye(text, keyword):
 
         #If array always has one element
         if keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo":
-            return captured.translate({ord(','):None})
+            return helper.stringToType(captured.translate({ord(','):None}))
 
         #Seperate the elements by looking at ","
         captureArrayString = ""
         captureArray = []
         for i in range(len(captured)):
-            if captured[i] == ",":
-                captureArray.append(captureArrayString)
+            if captured[i] == ",": #We need a dedicated return type function which gives either integer, float, string or boolean back
+                captureArray.append(helper.stringToType(captureArrayString))
                 captureArrayString = ""
             else:
                 captureArrayString += captured[i]
@@ -167,12 +109,6 @@ def analzye(text, keyword):
     if keyword[0] == "MinRollSpeedForRoll":
         return constant_MinRollSpeedForRoll
 
-    #If value is a Boolean, convert it to "1" and "0"
-    if captured == "False":
-        return 0
-    if captured == "True":
-        return 1
-
     #SPEED: For every value that has "* Metre" in it, chop it away and multiply it by the corresponding constant.
     if keyword[0] in ["MaxSpeed","MaxAcceleration","MaxDeceleration", "UpwardSpeed"]:
         return float(captured[:-8]) * constant_Speed
@@ -183,6 +119,8 @@ def analzye(text, keyword):
 
     #Special cases
     match keyword[0]:
+        case "WeaponDescriptor":
+            return captured[:-34]
         case "UniteDescriptor":
             return captured[:-21]
         case "Factory":
@@ -190,58 +128,13 @@ def analzye(text, keyword):
         case "Nationalite":
             return captured[12:]
 
-    #If keyword is a number
-    if keyword[2] == 0.0:
-        return float(captured)
-    
-    return captured
+    #Return value in it's correct type
+    return helper.stringToType(captured)
 
-WeaponDescriptor = [
-    ["Salves", "Salves", []], #Built like array
-    ["HasMainSalvo", "HasMainSalvo", False],
-    ["SalvoIsMainSalvo", "SalvoIsMainSalvo", []], #Built like array
-    ["Turret_1_AngleRotationMax", "AngleRotationMax", None],
-    ["Turret_1_AngleRotationMaxPitch", "AngleRotationMaxPitch", None],
-    ["Turret_1_AngleRotationMinPitch", "AngleRotationMinPitch", None],
-    ["Turret_1_VitesseRotation", "VitesseRotation", None],
-    ["Turret_1_Weapon_1_Ammunition", "Ammunition", None],
-    ["Turret_1_Weapon_1_NbWeapons", "NbWeapons", None],
-    ["Turret_1_Weapon_1_SalvoStockIndex", "SalvoStockIndex", None],
-    ["Turret_1_Weapon_2_Ammunition", "Ammunition", None],
-    ["Turret_1_Weapon_2_NbWeapons", "NbWeapons", None],
-    ["Turret_1_Weapon_2_SalvoStockIndex", "SalvoStockIndex", None],
-    ["Turret_1_Weapon_3_Ammunition", "Ammunition", None],
-    ["Turret_1_Weapon_3_NbWeapons", "NbWeapons", None],
-    ["Turret_1_Weapon_3_SalvoStockIndex", "SalvoStockIndex", None],
-    ["Turret_2_AngleRotationMax", "AngleRotationMax", None],
-    ["Turret_2_AngleRotationMaxPitch", "AngleRotationMaxPitch", None],
-    ["Turret_2_AngleRotationMinPitch", "AngleRotationMinPitch", None],
-    ["Turret_2_VitesseRotation", "VitesseRotation", None],
-    ["Turret_2_Weapon_1_Ammunition", "Ammunition", None],
-    ["Turret_2_Weapon_1_NbWeapons", "NbWeapons", None],
-    ["Turret_2_Weapon_1_SalvoStockIndex", "SalvoStockIndex", None],
-    ["Turret_3_AngleRotationMax", "AngleRotationMax", None],
-    ["Turret_3_AngleRotationMaxPitch", "AngleRotationMaxPitch", None],
-    ["Turret_3_AngleRotationMinPitch", "AngleRotationMinPitch", None],
-    ["Turret_3_VitesseRotation", "VitesseRotation", None],
-    ["Turret_3_Weapon_1_Ammunition", "Ammunition", None],
-    ["Turret_3_Weapon_1_NbWeapons", "NbWeapons", None],
-    ["Turret_3_Weapon_1_SalvoStockIndex", "SalvoStockIndex", None],
-    ["Turret_4_AngleRotationMax", "AngleRotationMax", None],
-    ["Turret_4_AngleRotationMaxPitch", "AngleRotationMaxPitch", None],
-    ["Turret_4_AngleRotationMinPitch", "AngleRotationMinPitch", None],
-    ["Turret_4_VitesseRotation", "VitesseRotation", None],
-    ["Turret_4_Weapon_1_Ammunition", "Ammunition", None],
-    ["Turret_4_Weapon_1_NbWeapons", "NbWeapons", None],
-    ["Turret_4_Weapon_1_SalvoStockIndex", "SalvoStockIndex", None],
-    ["Turret_5_AngleRotationMax", "AngleRotationMax", None],
-    ["Turret_5_AngleRotationMaxPitch", "AngleRotationMaxPitch", None],
-    ["Turret_5_AngleRotationMinPitch", "AngleRotationMinPitch", None],
-    ["Turret_5_VitesseRotation", "VitesseRotation", None],
-    ["Turret_5_Weapon_1_Ammunition", "Ammunition", None],
-    ["Turret_5_Weapon_1_NbWeapons", "NbWeapons", None],
-    ["Turret_5_Weapon_1_SalvoStockIndex", "SalvoStockIndex", None]
-]
+#How to go recursive!
+#Every loop has: counter, string and unitCounter
+#If target string has been found, increase unitCounter and reset string, but only if unitNumber is higher than zerno
+#Hand over string to deeper level
 
 def captureWeaponDescriptor():
     file = open("WeaponDescriptor.ndf","r").read()
@@ -254,9 +147,10 @@ def captureWeaponDescriptor():
     while weaponSystemCounter < len(file):
         if file[weaponSystemCounter:weaponSystemCounter+23] == "export WeaponDescriptor" or weaponSystemCounter == len(file)-1:
             if weaponSystemNumber > 0:
-                print(WeaponDescriptor[0][0] + ": " + str(analzye(weaponSystemString, WeaponDescriptor[0])))
-                print(WeaponDescriptor[1][0] + ": " + str(analzye(weaponSystemString, WeaponDescriptor[1])))
-                print(WeaponDescriptor[2][0] + ": " + str(analzye(weaponSystemString, WeaponDescriptor[2])))
+                print(descriptor.weapon[0][0] + ": " + str(analzye(weaponSystemString, descriptor.weapon[0])))
+                print(descriptor.weapon[1][0] + ": " + str(analzye(weaponSystemString, descriptor.weapon[1])))
+                print(descriptor.weapon[2][0] + ": " + str(analzye(weaponSystemString, descriptor.weapon[2])))
+                print(descriptor.weapon[3][0] + ": " + str(analzye(weaponSystemString, descriptor.weapon[3])))
 
                 turretCounter = 0
                 turretString = ""
@@ -265,19 +159,19 @@ def captureWeaponDescriptor():
                 #Loop over every turret
                 while turretCounter < len(weaponSystemString):
                     if weaponSystemString[turretCounter:turretCounter+24] == "TTurretTwoAxisDescriptor" or weaponSystemString[turretCounter:turretCounter+21] == "TTurretUnitDescriptor" or weaponSystemString[turretCounter:turretCounter+27] == "TTurretInfanterieDescriptor" or turretCounter == len(weaponSystemString)-1:
-                        print("WHYNOW?")
+                        
                         if turretNumber > 0:
 
                             add = 0
                             if turretNumber == 1:
-                                add = 3
+                                add = 4
                             elif turretNumber >= 2:
-                                add = 16 + 7 *(turretNumber -2)
+                                add = 17 + 7 *(turretNumber -2)
 
-                            print(WeaponDescriptor[0+add][0] + ": " + str(analzye(turretString, WeaponDescriptor[0+add])))
-                            print(WeaponDescriptor[1+add][0] + ": " + str(analzye(turretString, WeaponDescriptor[1+add])))
-                            print(WeaponDescriptor[2+add][0] + ": " + str(analzye(turretString, WeaponDescriptor[2+add])))
-                            print(WeaponDescriptor[2+add][0] + ": " + str(analzye(turretString, WeaponDescriptor[2+add])))
+                            print(descriptor.weapon[0+add][0] + ": " + str(analzye(turretString, descriptor.weapon[0+add])))
+                            print(descriptor.weapon[1+add][0] + ": " + str(analzye(turretString, descriptor.weapon[1+add])))
+                            print(descriptor.weapon[2+add][0] + ": " + str(analzye(turretString, descriptor.weapon[2+add])))
+                            print(descriptor.weapon[3+add][0] + ": " + str(analzye(turretString, descriptor.weapon[3+add])))
                             
                             weaponCounter = 0
                             weaponString = ""
@@ -285,23 +179,23 @@ def captureWeaponDescriptor():
 
                             #Loop over every weapon
                             while weaponCounter < len(turretString):
-                                if weaponSystemString[turretCounter:turretCounter+24] == "TMountedWeaponDescriptor" or weaponCounter == len(turretString)-1:
+                                if turretString[weaponCounter:weaponCounter+24] == "TMountedWeaponDescriptor" or weaponCounter == len(turretString)-1:
                                     if weaponNumber > 0:
                                         
                                         add = 0
                                         if turretNumber == 1:
-                                            add = 3
+                                            add = 4
                                         elif turretNumber >= 2:
-                                            add = 16 + 7 *(turretNumber -2)
+                                            add = 17 + 7 *(turretNumber -2)
 
-                                        add = add + 4
+                                        add = add + 3
 
                                         add = add + 3 * (weaponNumber-1)
 
                                         
-                                        print(WeaponDescriptor[1+add][0] + ": " + str(analzye(weaponString, WeaponDescriptor[1+add])))
-                                        print(WeaponDescriptor[2+add][0] + ": " + str(analzye(weaponString, WeaponDescriptor[2+add])))
-                                        print(WeaponDescriptor[2+add][0] + ": " + str(analzye(weaponString, WeaponDescriptor[2+add])))
+                                        print(descriptor.weapon[1+add][0] + ": " + str(analzye(weaponString, descriptor.weapon[1+add])))
+                                        print(descriptor.weapon[2+add][0] + ": " + str(analzye(weaponString, descriptor.weapon[2+add])))
+                                        print(descriptor.weapon[3+add][0] + ": " + str(analzye(weaponString, descriptor.weapon[3+add])))
 
                                     weaponNumber += 1
                                     weaponString = "" #Reset for next loop
@@ -335,7 +229,7 @@ def captureUnitDescriptor():
         if file[counter:counter+17] == "export Descriptor": #We need to include the last entry!!!! Change this
             if unitCounter > 0:
 
-                for x in unitDescriptor:
+                for x in descriptor.unit:
                     print(x[0] + ": " + str(analzye(stringVehicle, x)))
                     
                 print("")
