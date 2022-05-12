@@ -1,5 +1,6 @@
 import descriptor
 import helper
+import copy
 
 ####################################################################
 # RETRIEVE A VARIABLE FROM A FILE
@@ -131,90 +132,63 @@ def analzye(text, keyword):
     #Return value in it's correct type
     return helper.stringToType(captured)
 
-#How to go recursive!
-#Every loop has: counter, string and unitCounter
-#If target string has been found, increase unitCounter and reset string, but only if unitNumber is higher than zerno
-#Hand over string to deeper level
+def gogoRecursion(subStr, level, index):
 
-def captureWeaponDescriptor():
-    file = open("WeaponDescriptor.ndf","r").read()
+    counterChar = 0
+    counterUnit = 0
+    temporaryStr = ""
 
-    weaponSystemCounter = 0
-    weaponSystemString = ""
-    weaponSystemNumber = 0
+    while counterChar < len(subStr):
+        match level:
+            case 0: 
+                if subStr[counterChar:counterChar+23] == "export WeaponDescriptor" or counterChar == len(subStr)-1:
+                    if counterUnit > 0:
 
-    #Loop over every vehicle
-    while weaponSystemCounter < len(file):
-        if file[weaponSystemCounter:weaponSystemCounter+23] == "export WeaponDescriptor" or weaponSystemCounter == len(file)-1:
-            if weaponSystemNumber > 0:
-                print(descriptor.weapon[0][0] + ": " + str(analzye(weaponSystemString, descriptor.weapon[0])))
-                print(descriptor.weapon[1][0] + ": " + str(analzye(weaponSystemString, descriptor.weapon[1])))
-                print(descriptor.weapon[2][0] + ": " + str(analzye(weaponSystemString, descriptor.weapon[2])))
-                print(descriptor.weapon[3][0] + ": " + str(analzye(weaponSystemString, descriptor.weapon[3])))
-
-                turretCounter = 0
-                turretString = ""
-                turretNumber = 0
-
-                #Loop over every turret
-                while turretCounter < len(weaponSystemString):
-                    if weaponSystemString[turretCounter:turretCounter+24] == "TTurretTwoAxisDescriptor" or weaponSystemString[turretCounter:turretCounter+21] == "TTurretUnitDescriptor" or weaponSystemString[turretCounter:turretCounter+27] == "TTurretInfanterieDescriptor" or turretCounter == len(weaponSystemString)-1:
+                        UnitDescriptor.append(copy.deepcopy(descriptor.weapon))
                         
-                        if turretNumber > 0:
+                        UnitDescriptor[index[0]][0][2] = analzye(temporaryStr, UnitDescriptor[index[0]][0])
+                        print(UnitDescriptor[index[0]-1][1][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][1])))
+                        print(UnitDescriptor[index[0]-1][2][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][2])))
+                        print(UnitDescriptor[index[0]-1][3][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][3])))
+                        gogoRecursion(temporaryStr, level + 1, index)
+                        index[1] = 1
+                        index[0] += 1
 
-                            add = 0
-                            if turretNumber == 1:
-                                add = 4
-                            elif turretNumber >= 2:
-                                add = 17 + 7 *(turretNumber -2)
+                    temporaryStr = ""
+                    counterUnit += 1
+            case 1:
+                if subStr[counterChar:counterChar+24] == "TTurretTwoAxisDescriptor" or subStr[counterChar:counterChar+21] == "TTurretUnitDescriptor" or subStr[counterChar:counterChar+27] == "TTurretInfanterieDescriptor" or counterChar == len(subStr)-1:
+                    if counterUnit > 0:
+                        addToIndex = 4 if index[1] == 1 else 17 + 7 *(index[1] -2)
+                        print(UnitDescriptor[index[0]-1][0+addToIndex][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][0+addToIndex])))
+                        print(UnitDescriptor[index[0]-1][1+addToIndex][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][1+addToIndex])))
+                        print(UnitDescriptor[index[0]-1][2+addToIndex][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][2+addToIndex])))
+                        print(UnitDescriptor[index[0]-1][3+addToIndex][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][3+addToIndex])))
+                        index[1] = index[1] + 1
+                        gogoRecursion(temporaryStr, level + 1, index)
+                        index[2] = 1
 
-                            print(descriptor.weapon[0+add][0] + ": " + str(analzye(turretString, descriptor.weapon[0+add])))
-                            print(descriptor.weapon[1+add][0] + ": " + str(analzye(turretString, descriptor.weapon[1+add])))
-                            print(descriptor.weapon[2+add][0] + ": " + str(analzye(turretString, descriptor.weapon[2+add])))
-                            print(descriptor.weapon[3+add][0] + ": " + str(analzye(turretString, descriptor.weapon[3+add])))
-                            
-                            weaponCounter = 0
-                            weaponString = ""
-                            weaponNumber = 0
+                    temporaryStr = ""
+                    counterUnit += 1
+            case 2:
+                if subStr[counterChar:counterChar+24] == "TMountedWeaponDescriptor" or counterChar == len(subStr)-1:
+                    if counterUnit > 0:
+                        addToIndex = 4 if index[1] == 2 else 17 + 7 *(index[1] -3)
+                        addToIndex = addToIndex + 3 * (index[2])
+                        print(UnitDescriptor[index[0]-1][1+addToIndex][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][1+addToIndex])))
+                        print(UnitDescriptor[index[0]-1][2+addToIndex][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][2+addToIndex])))
+                        print(UnitDescriptor[index[0]-1][3+addToIndex][0] + ": " + str(analzye(temporaryStr, UnitDescriptor[index[0]-1][3+addToIndex])))
+                        index[2] = index[2] + 1
 
-                            #Loop over every weapon
-                            while weaponCounter < len(turretString):
-                                if turretString[weaponCounter:weaponCounter+24] == "TMountedWeaponDescriptor" or weaponCounter == len(turretString)-1:
-                                    if weaponNumber > 0:
-                                        
-                                        add = 0
-                                        if turretNumber == 1:
-                                            add = 4
-                                        elif turretNumber >= 2:
-                                            add = 17 + 7 *(turretNumber -2)
+                    temporaryStr = ""
+                    counterUnit += 1
 
-                                        add = add + 3
+        temporaryStr += subStr[counterChar]
+        counterChar += 1
 
-                                        add = add + 3 * (weaponNumber-1)
-
-                                        
-                                        print(descriptor.weapon[1+add][0] + ": " + str(analzye(weaponString, descriptor.weapon[1+add])))
-                                        print(descriptor.weapon[2+add][0] + ": " + str(analzye(weaponString, descriptor.weapon[2+add])))
-                                        print(descriptor.weapon[3+add][0] + ": " + str(analzye(weaponString, descriptor.weapon[3+add])))
-
-                                    weaponNumber += 1
-                                    weaponString = "" #Reset for next loop
-                                
-                                weaponString += turretString[weaponCounter]
-                                weaponCounter += 1
-
-                        turretNumber += 1
-                        turretString = ""#Reset for next loop
-
-                    turretString += weaponSystemString[turretCounter]
-                    turretCounter += 1
-
-            weaponSystemNumber += 1
-            weaponSystemString = "" #Reset for next loop
-
-        weaponSystemString += file[weaponSystemCounter]
-        weaponSystemCounter += 1
-        
+UnitDescriptor= []
+gogoRecursion(open("WeaponDescriptor.ndf","r").read(), 0, [0, 1, 1])
+print(UnitDescriptor)
 
 def captureUnitDescriptor():
     file = open("UniteDescriptor.ndf","r").read()
@@ -245,6 +219,6 @@ def captureUnitDescriptor():
         if counter == len(file):
             break
 
-captureWeaponDescriptor()
+#captureWeaponDescriptor()
 #captureUnitDescriptor()
 input("Press enter to continue...")
