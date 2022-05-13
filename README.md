@@ -134,7 +134,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>ref</kbd> SuppressDamagesRegenRatio</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
 <details><summary><kbd>ref</kbd> SuppressDamagesRegenRatioOutOfRange</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
 <details><summary><kbd>ref</kbd> MaxSuppressionDamages</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
-<details><summary><kbd>flt</kbd> MaxDamages</summary><p>In-game called <b>strength</b> for infantry units</p></details>
+<details><summary><kbd>flt</kbd> MaxDamages (Strength)</summary><p>The unit's health. In-game called <b>strength</b> for infantry units</p>. Note that increasing strength does not automatically increase the squad's size. You would need to adjust <b>NbSoldatInGroupeCombat</b> and <b>Depiction</b> aswell. </details>
 <details><summary><kbd>ref</kbd> WeaponManager</summary><p>Reference to <b>WeaponDescriptor.ndf</b></p></details>
 
 ### Armor
@@ -202,7 +202,10 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>int</kbd> RotorArea</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
 <details><summary><kbd>int</kbd> Mass</summary><p> Controls movement in some way, though in what way is uncertain.</p></details>
 
-### Supply Units
+### Special to Infantry Units
+<details><summary><kbd>int</kbd> NbSoldatInGroupeCombat</summary><p> The squad's size in number of soldiers.</p></details>
+
+### Special to Supply Units
 <details><summary><kbd>flt</kbd> SupplyCapacity</summary><p> How many supplies this unit is carrying.</p></details>
 
 ### Probably Not Important
