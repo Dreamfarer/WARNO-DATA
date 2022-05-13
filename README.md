@@ -134,7 +134,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>ref</kbd> SuppressDamagesRegenRatio</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
 <details><summary><kbd>ref</kbd> SuppressDamagesRegenRatioOutOfRange</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
 <details><summary><kbd>ref</kbd> MaxSuppressionDamages</summary><p>Described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
-<details><summary><kbd>flt</kbd> MaxDamages (Strength)</summary><p>The unit's health. In-game called <b>strength</b> for infantry units</p>. Note that increasing strength does not automatically increase the squad's size. You would need to adjust <b>NbSoldatInGroupeCombat</b> and <b>Depiction</b> aswell. </details>
+<details><summary><kbd>flt</kbd> MaxDamages (Strength)</summary><p>The unit's health. In-game called <b>strength</b> for infantry units. Note that increasing strength does not automatically increase the squad's size. You would need to adjust <b>NbSoldatInGroupeCombat</b> and <b>Depiction</b> aswell.</p></details>
 <details><summary><kbd>ref</kbd> WeaponManager</summary><p>Reference to <b>WeaponDescriptor.ndf</b></p></details>
 
 ### Armor
