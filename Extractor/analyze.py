@@ -109,7 +109,7 @@ def variable(text, keyword):
         return constant_MinRollSpeedForRoll
 
     #SPEED: For every value that has "* Metre" in it, chop it away and multiply it by the corresponding constant.
-    if keyword[0] in ["MaxSpeed","MaxAcceleration","MaxDeceleration", "UpwardSpeed"]:
+    if keyword[0] in ["MaxSpeed","MaxAcceleration","MaxDeceleration", "UpwardSpeed", "Speed"]:
         return float(captured[:-8]) * constant_Speed
 
     #Distance: For every value that has "* Metre" in it, chop it away and multiply it by the corresponding constant.
