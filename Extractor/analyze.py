@@ -50,11 +50,18 @@ constant_MinRollSpeedForRoll = file("data/AirplaneConstantes.ndf", "MinRollSpeed
 ####################################################################
 def variable(text, keyword):
     index = text.find(keyword[1])
+
+    #If descriptor itself is the variable
+    if keyword[0] == "RevealInfluence":
+        if index != -1:
+            return 1
+        else:
+            return 0
     
     #If the given keyword does not exist
     if index == -1:
         return None
-    
+
     #If keyword itself is present in the value 
     if keyword[0] == "WeaponDescriptor" and keyword[1] == "WeaponDescriptor":
         keywordlength = len(keyword[1])

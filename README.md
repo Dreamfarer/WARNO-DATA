@@ -127,6 +127,7 @@ All useful values to be found in `UniteDescriptor.ndf`
 <details><summary><kbd>int</kbd> ProductionTime</summary><p> <b>5</b> for every unit except <b>-1</b> for planes. I think it's the time between placing units and them spawning in.</p></details>
 <details><summary><kbd>int</kbd> Resource_CommandPoints</summary><p></p></details>
 <details><summary><kbd>str</kbd> UpgradeFromUnit</summary><p> Predecessor</p></details>
+<details><summary><kbd>des</kbd> TInfluenceScoutModuleDescriptor (Reveal Influenece)</summary><p> Descriptor is empty for every unit, however, if its header is present it triggers <b>Reveal Influenece</b> to be set to <b>yes</b> in the in-game armory. Furthermore, it will show you the blue/red dividing lines when a zone is contested, helping you to guess the enemy command vehicle's (CVs) location.</p></details>
 
 ### Damage
 <details><summary><kbd>ref</kbd> StunDamagesRegen</summary><p> </p></details>
@@ -211,7 +212,6 @@ All useful values to be found in `UniteDescriptor.ndf`
 ### Probably Not Important
 <details><summary><kbd>flt</kbd> HitRollSize</summary><p> Size does no longer effect hit chance-to-hit.</p></details>
 <details><summary><kbd>int</kbd> MoralLevel</summary><p> Reason not included is described in chapter<a href="https://github.com/BE3dARt/WARNO-DATA#stress-suppression-cohesion-and-morale"> Stress, Suppression, Cohesion and Morale</a></p></details>
-<details><summary><kbd>des</kbd> TInfluenceScoutModuleDescriptor (Reveal Influenece)</summary><p> Empty for every unit but if present it triggers <b>Reveal Influenece</b> to be <b>yes</b> in-game.</p></details>
 <details><summary><kbd>bol</kbd> IsParachutist</summary><p> Currently set to <b>False</b> for every unit.</p></details>
 <details><summary><kbd>int</kbd> Resource_Tickets</summary><p> Could be used as prices for future campaigns.</p></details>
 <details><summary><kbd>int</kbd> CommanderLevel</summary><p> Only present on command units. However, it is set to <b>1</b> for every unit that has it.</p></details>

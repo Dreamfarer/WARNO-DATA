@@ -36,6 +36,7 @@ unit = [
     ["SpecialtiesList", "SpecialtiesList", list],
     ["Factory", "Factory", str],
     ["Resource_CommandPoints", "Resource_CommandPoints", int],
+    ["RevealInfluence", "TInfluenceScoutModuleDescriptor", bool],
     ["UpgradeFromUnit", "UpgradeFromUnit", str],
     ["SupplyCapacity", "SupplyCapacity", float],
     ["UnlockableOrders", "UnlockableOrders", str],
