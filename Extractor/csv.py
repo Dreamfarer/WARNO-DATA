@@ -1,15 +1,3 @@
-#ADD PRIMARY KEY
-#CREATE TABLE `bedartch_foxhole`.`WeaponDescriptor` (
-#  `id` INT NOT NULL AUTO_INCREMENT,
-#  `name` VARCHAR(255) NULL,
-#  `weapondescriptor` VARCHAR(255) NOT NULL,
-#  `WeaponDescriptorcol` TINYINT NULL,
-#  `WeaponDescriptorcol1` JSON NULL,
-#  PRIMARY KEY (`id`))
-#ENGINE = InnoDB
-#DEFAULT CHARACTER SET = utf8
-#COLLATE = utf8_bin;
-
 import descriptor
 
 def table(database, tableName, inputArray):
@@ -35,7 +23,7 @@ def table(database, tableName, inputArray):
         elif referenceArray[index][2] == list:
             createTableString += "  `" + referenceArray[index][0] + "` JSON NULL,\n"
 
-    return createTableString[:-2] + ")\nENGINE = InnoDB\nDEFAULT CHARACTER SET = utf8\nCOLLATE = utf8_bin;"
+    return createTableString + "  PRIMARY KEY (`id`))\nENGINE = InnoDB\nDEFAULT CHARACTER SET = utf8\nCOLLATE = utf8_bin;"
     
 def export(inputArray):
 
