@@ -84,7 +84,7 @@ We will be looking at the reference ***Arme*** in `Ammunition.ndf`. This variabl
 * *row*: Holds the armor type.
 
 ### Armor
-As you see we need to figure out against which type of armor we are going up against. For every unit armor is individually defined in `UniteDescriptor.ndf` by the variables **ArmorDescriptorFront**, **ArmorDescriptorSides**, **ArmorDescriptorRear** and **ArmorDescriptorTop**. These strings are referencing `ArmorDescriptor.ndf`, which translates them to the *row* names of the giant table in `DamageResistance.ndf`.
+As you see we need to figure out against which type of armor we are going up against before we are able to read out the table. For every unit armor is individually defined in `UniteDescriptor.ndf` by the variables **ArmorDescriptorFront**, **ArmorDescriptorSides**, **ArmorDescriptorRear** and **ArmorDescriptorTop**. These strings are referencing `ArmorDescriptor.ndf`, which translates them to the *row* names of the giant table in `DamageResistance.ndf`.
 
 The following armor types are actively being used by WARNO.
 
@@ -305,11 +305,11 @@ All useful values to be found in `Ammunition.ndf`.
 
 ## Special Thanks
 I wanted to thank the following people. Whithout them, this project would have gone nowhere:
-* **eMeM** over on Discord for the *calculation of the road speed*, a guess on *recource tickets*, definition of *CanShootOnPosition*, help with *experience & veterancy* and the discussion over *stress, suppression, cohesion and morale*.
+* **eMeM** over on Discord for the *calculation of the road speed*, a guess on *recource tickets*, help with *experience & veterancy* and the discussion over *stress, suppression, cohesion and morale* and *damage calculation*.
 * **unipus** over on Discord for pointing me in the right direction to understand *AP damage for kinetic weapons*.
 * **gagarin** over on Discord for helping me finding the *filter by category*.
 * **Iris** over on Discord for helping me getting in-game displayed *accuracy* right.
-* **Terminus Est** over on Discord for defining *Salves*, *SalvoStockIndex*, *YulBoneOrdinal*, *NbFx*, *HasMainSalvo* and *OutOfRangeTrackingDuration* in `WeaponDescriptor.ndf` and having a discussion with me about the accuracy calculation.
+* **Terminus Est** over on Discord for defining *Salves*, *SalvoStockIndex*, *YulBoneOrdinal*, *NbFx*, *HasMainSalvo* and *OutOfRangeTrackingDuration* in `WeaponDescriptor.ndf` and having a discussion with me about the accuracy and damage calculation.
 
 ## Copyright Notice
 Each and every bit of this data belongs to [Eugen Systems](https://eugensystems.com/). I soley dig through it to create a database for an WARNO API that will be accessible to the public for free.
