@@ -77,12 +77,12 @@ Suppression damage decreases over time. The following variables describe this be
 ## Damage Calculation
 The unit's health pool is defined by **MaxDamages** in `UniteDescriptor.ndf`. It does not matter if *HE* or *Penetration* damage is dealt, ultimately ever damage type is converted into damage and subtracted from one and the same health pool (*MaxDamages*).
 
-We will be looking at the reference **Arme** in `Ammunition.ndf`. This variables has two parts: *Family* and *Index*. They both together define which damage scheme is being used by referencing another file called `DamageResistance.ndf`. In there a giant, overwhelming, but *very* important table can be found: It lists every damage outcome of every weapon versus every armor:
+**1.** We will be looking at the reference ***Arme*** in `Ammunition.ndf`. This variables has two parts: *Family* and *Index*. They both together define which damage scheme is being used by referencing another file called `DamageResistance.ndf`. In there a giant, overwhelming, but *very* important table can be found: It lists every damage outcome of every weapon versus every armor:
 
-* *Column*: The column of this giant table holds the damage type referenced by the variable **Arme**. Usually you can read it out directly, but if your ammunition type is *kinetic* AP, you absolutely need to adjust the *Index* of **Arme** first because kinetic shells lose power over distance. Consult [this](#damage-reduction-for-kinetic-armor-piercing-(ap)) chapter to find out whether you are using *kinetic* AP and how you would go about adjusting the *Index*.
+* *Column*: The column of this giant table holds the damage type referenced by the variable ***Arme***. Usually you can read it out directly, but if your ammunition type is *kinetic* AP, you absolutely need to adjust the *Index* of ***Arme*** first because kinetic shells lose power over distance. Consult [this](#damage-reduction-for-kinetic-armor-piercing-ap) chapter to find out whether you are using *kinetic* AP and how you would go about adjusting the *Index*.
 * *row*: Holds the armor type.
 
-As you see we need to figure out against which type of armor we are going up against. For every unit armor is individually defined in `UniteDescriptor.ndf` by the variables **ArmorDescriptorFront**, **ArmorDescriptorSides**, **ArmorDescriptorRear** and **ArmorDescriptorTop**. These strings are referencing `ArmorDescriptor.ndf`, which translates them to the *row* names of the giant table.
+**2.** As you see we need to figure out against which type of armor we are going up against. For every unit armor is individually defined in `UniteDescriptor.ndf` by the variables **ArmorDescriptorFront**, **ArmorDescriptorSides**, **ArmorDescriptorRear** and **ArmorDescriptorTop**. These strings are referencing `ArmorDescriptor.ndf`, which translates them to the *row* names of the giant table in `DamageResistance.ndf`.
 
 The following armor types are actively being used by WARNO.
 
@@ -93,17 +93,17 @@ The following armor types are actively being used by WARNO.
 * **ArmorDescriptor_Blindage_1** to **ArmorDescriptor_Blindage_20**: Used for vehicles;  Having blindage over 2 is utterly important: Going from *ArmorDescriptor_Blindage_1* to *ArmorDescriptor_Blindage_2* mostly **halves** the AP damage received. After that, it is only decreasing by small amounts.
 * **ArmorDescriptor_Helico_1** to **ArmorDescriptor_Helico_3**: Used on helicopters and planes; *ArmorDescriptor_Helico_1* is equivalent to *ArmorDescriptor_Blindage_1*. Using *ArmorDescriptor_Helico_2* at least **halves** the damage received. After that, it is also only decreasing by small amounts.
 
-We have the **row**, defined by *Arme* in `DamageResistance.ndf`, and we have the **column**, defined in `UniteDescriptor.ndf` and translated in `ArmorDescriptor.ndf`. This enables us to pin-point one cell of this giant table.
+We have the **row**, defined by ***Arme*** in `DamageResistance.ndf`, and the newly acquired **column**, defined in `UniteDescriptor.ndf` and translated in `ArmorDescriptor.ndf`. This enables us to pin-point one cell of this giant table.
 
-To conclude the damage calculation, retrieve the cell's value and multiply it with **PhysicalDamages** in `Ammunition.ndf` to get the actual damage dealt which will be subtract form the opponent's health pool.
+**3.** To conclude the damage calculation, retrieve the cell's value and multiply it with **PhysicalDamages** in `Ammunition.ndf` to get the actual damage dealt which will be subtract from the opponent's health pool.
 
 ### Damage Reduction for Kinetic Armor-Piercing (AP)
-We need to consult `Ammunition.ndf` to check whether we are dealing with *kinetic* AP. For this to be true, the *Family* in the variable **Arme** needs to be set to *ap* and **PiercingWeapon** must be set to *True*. If we are, we need to take its damage loss over range into consideration. In the in-game armory, the AP damage value is given at the weapon's maximum range. However, in `Ammunition.ndf` the AP damage value is given at point-blank range.
+We need to consult `Ammunition.ndf` to check whether we are dealing with *kinetic* AP. For this to be true, the *Family* in the variable ***Arme*** needs to be set to *ap* and **PiercingWeapon** must be set to *True*. If we are, we need to take its damage loss over range into consideration. In the in-game armory, the AP damage value is given at the weapon's maximum range. However, in `Ammunition.ndf` the AP damage value is given at point-blank range.
 
 *AP_damage = AP_damage_point_blank - (range / factor)*
 
 * *AP_damage*: Resulting AP damage
-* *AP_damage_point_blank*: AP damage at point-blank equivalent to the index defined in varibale **Arme**
+* *AP_damage_point_blank*: AP damage at point-blank equivalent to the index defined in varibale ***Arme***
 * *range*: Range to the enemy
 * *factor*: Defined as the amount of AP damage decrease over a given range. To find this value we need to look at to what **DamageTypeEvolutionOverRangeDescriptor** is pointing to in `DamageStairTypeEvolutionOverRangeDescriptor.ndf`. For now, however, it is set to 1 AP damage reduction every 175m or 700m.
 
