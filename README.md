@@ -78,10 +78,12 @@ Suppression damage decreases over time. The following variables describe this be
 The unit's health pool is defined by **MaxDamages** in `UniteDescriptor.ndf`. It does not matter if *HE* or *Penetration* damage is dealt, ultimately ever damage type is converted into damage and subtracted from one and the same health pool (*MaxDamages*).
 
 ### Ammunition
-We will be looking at the reference ***Arme*** in `Ammunition.ndf`. This variables has two parts: *Family* and *Index*. They both together define which damage scheme is being used by referencing another file called `DamageResistance.ndf`. In there a giant, overwhelming, but *very* important table can be found: It lists every damage outcome of every weapon versus every armor:
+We will be looking at ***Arme*** in `Ammunition.ndf`. This variables has two parts: *Family* and *Index*. The *Family* defines which damage type is being dealt. *Index* on the other hand describes the weapon's 'power'. Please notice that *Index* does not exactly mean the damage output, hence I used 'power', it is more of a variable used in the damage calculation. Usually you can read ***Arme*** out directly, but if your ammunition type is *kinetic* AP, you absolutely need to adjust the *Index* first because kinetic shells lose power over distance. Consult [this](#damage-reduction-for-kinetic-armor-piercing-ap) chapter to find out whether you are using *kinetic* AP and how you would go about adjusting the *Index*.
 
-* *Column*: The column of this giant table holds the damage type referenced by the variable ***Arme***. Usually you can read it out directly, but if your ammunition type is *kinetic* AP, you absolutely need to adjust the *Index* of ***Arme*** first because kinetic shells lose power over distance. Consult [this](#damage-reduction-for-kinetic-armor-piercing-ap) chapter to find out whether you are using *kinetic* AP and how you would go about adjusting the *Index*.
-* *row*: Holds the armor type.
+Ultimately, ***Arme*** in `Ammunition.ndf` defines which damage scheme is being used by referencing another file called `DamageResistance.ndf`. In there a giant, overwhelming, but *very* important table can be found: It lists every damage outcome of every weapon versus every armor:
+
+* *Column*: Holds all damage types (Referenced by the before seen variable ***Arme***)
+* *row*: Holds the armor type
 
 ### Armor
 As you see we need to figure out against which type of armor we are going up against before we are able to read out the table. For every unit armor is individually defined in `UniteDescriptor.ndf` by the variables **ArmorDescriptorFront**, **ArmorDescriptorSides**, **ArmorDescriptorRear** and **ArmorDescriptorTop**. These strings are referencing `ArmorDescriptor.ndf`, which translates them to the *row* names of the giant table in `DamageResistance.ndf`.
@@ -310,6 +312,7 @@ I wanted to thank the following people. Whithout them, this project would have g
 * **gagarin** over on Discord for helping me finding the *filter by category*.
 * **Iris** over on Discord for helping me getting in-game displayed *accuracy* right.
 * **Terminus Est** over on Discord for defining *Salves*, *SalvoStockIndex*, *YulBoneOrdinal*, *NbFx*, *HasMainSalvo* and *OutOfRangeTrackingDuration* in `WeaponDescriptor.ndf` and having a discussion with me about the accuracy and damage calculation.
+* **swizzlewizzle** over on Discord for having a discussion with me about the damage calculation
 
 ## Copyright Notice
 Each and every bit of this data belongs to [Eugen Systems](https://eugensystems.com/). I soley dig through it to create a database for an WARNO API that will be accessible to the public for free.
