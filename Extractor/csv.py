@@ -1,6 +1,21 @@
 import descriptor
+import os
 
-def table(database, tableName, inputArray):
+def writeToFile(content, folder, name, version):
+
+    folderPath = os.path.dirname(__file__) + "\\" + folder + "\\" + str(version)
+
+    try:
+        os.mkdir(folderPath) 
+    except:
+        folderPath += "\\" + name
+    else:
+        folderPath += "\\" + name
+    
+    file = open(folderPath, "w")
+    file.write(content)
+
+def table(database, tableName, inputArray, version):
     
     createTableString = "CREATE TABLE `" + database + "`.`" + tableName + "` (\n  `id` INT NOT NULL AUTO_INCREMENT,\n"
 
@@ -23,9 +38,11 @@ def table(database, tableName, inputArray):
         elif referenceArray[index][2] == list:
             createTableString += "  `" + referenceArray[index][0] + "` JSON NULL,\n"
 
-    return createTableString + "  PRIMARY KEY (`id`))\nENGINE = InnoDB\nDEFAULT CHARACTER SET = utf8\nCOLLATE = utf8_bin;"
+    createTableString += "  PRIMARY KEY (`id`))\nENGINE = InnoDB\nDEFAULT CHARACTER SET = utf8\nCOLLATE = utf8_bin;"
+
+    writeToFile(createTableString, "mysql", "createTable_" + inputArray[0][0][0] + ".txt", version)
     
-def export(inputArray):
+def export(inputArray, version):
 
     outputRow = ""
     
@@ -57,4 +74,4 @@ def export(inputArray):
 
         outputRow = outputRow[:-1] + "\n"
 
-    return outputRow
+    writeToFile(outputRow, "csv", inputArray[0][0][0] + ".csv", version)

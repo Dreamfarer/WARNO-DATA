@@ -2,12 +2,12 @@ import UnitDescriptor
 import WeaponDescriptor
 import csv
 
+version = 73022
+
 #Export Array to CSV
-print(csv.export(UnitDescriptor.extract("data/UniteDescriptor.ndf")))
-print(csv.export(WeaponDescriptor.extract("data/WeaponDescriptor.ndf")))
+csv.export(UnitDescriptor.extract("data/UniteDescriptor.ndf"), version)
+csv.export(WeaponDescriptor.extract("data/WeaponDescriptor.ndf"), version)
 
 #Create table command for MySQL Workbench
-print(csv.table("bedartch_foxhole", "UniteDescriptor", UnitDescriptor.extract("data/UniteDescriptor.ndf")))
-print(csv.table("bedartch_foxhole", "WeaponDescriptor", WeaponDescriptor.extract("data/WeaponDescriptor.ndf")))
-
-input ("Press Enter to close...")
+csv.table("bedartch_foxhole", "UniteDescriptor", UnitDescriptor.extract("data/UniteDescriptor.ndf"), version)
+csv.table("bedartch_foxhole", "WeaponDescriptor", WeaponDescriptor.extract("data/WeaponDescriptor.ndf"), version)

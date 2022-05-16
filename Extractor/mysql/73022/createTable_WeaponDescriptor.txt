@@ -44,7 +44,8 @@ CREATE TABLE `bedartch_foxhole`.`WeaponDescriptor` (
   `Turret_5_VitesseRotation` FLOAT(15) NULL,
   `Turret_5_Weapon_1_Ammunition` VARCHAR(255) NULL,
   `Turret_5_Weapon_1_NbWeapons` INT(10) NULL,
-  `Turret_5_Weapon_1_SalvoStockIndex` INT(10) NULL)
+  `Turret_5_Weapon_1_SalvoStockIndex` INT(10) NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
