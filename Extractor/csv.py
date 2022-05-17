@@ -9,7 +9,6 @@ def getReference(keyword):
     elif keyword == "Ammunition":
         return descriptor.ammo
     
-
 def writeToFile(content, folder, name, version):
 
     folderPath = os.path.dirname(__file__) + "\\" + folder + "\\" + str(version)
