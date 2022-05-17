@@ -24,6 +24,8 @@ def table(database, tableName, inputArray, version):
         referenceArray = descriptor.unit
     elif inputArray[0][0][0] == "WeaponDescriptor":
         referenceArray = descriptor.weapon
+    elif inputArray[0][0][0] == "Ammunition":
+        referenceArray = descriptor.ammo
 
     for index in range(len(referenceArray)):
         
@@ -56,11 +58,15 @@ def export(inputArray, version):
         referenceArray = descriptor.unit
     elif inputArray[0][0][0] == "WeaponDescriptor":
         referenceArray = descriptor.weapon
+    elif inputArray[0][0][0] == "Ammunition":
+        referenceArray = descriptor.ammo
 
     #Add data into it
     for index in range(len(inputArray)):
         for columns in range(len(inputArray[index])):
 
+            #If anything contains ' " ', replace it with ' ' ' TO BE DONE!
+            
             if inputArray[index][columns][1] in [int, str, float, list, bool, None]:
                 outputRow += ";"
             elif referenceArray[columns][2] == str:

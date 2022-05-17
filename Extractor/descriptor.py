@@ -107,3 +107,62 @@ weapon = [
     ["Turret_5_Weapon_1_NbWeapons", "NbWeapons", int],
     ["Turret_5_Weapon_1_SalvoStockIndex", "SalvoStockIndex", int]
 ]
+
+ammo = [
+    ["Ammunition", "export", str],
+    ["Name", " Name ", str], #Enclosed in '
+    ["TypeCategoryName", "TypeCategoryName", str], #Enclosed in '
+    ["Caliber", "Caliber", str], #Enclosed in '
+    ["TraitsToken", "TraitsToken", str], #Array enclosed in '
+    ["Level", "Level", int],
+    ["Arme", "Arme", str], #Special case, don't remove "" #NOT WORKING CORRECTLY
+    ["Puissance", "Puissance", float],
+    ["ShotsBeforeMaxNoise", "ShotsBeforeMaxNoise", int],
+    ["NbTirParSalves", "NbTirParSalves", int],
+    ["TempsEntreDeuxTirs", "TempsEntreDeuxTirs ", float],
+    ["TempsEntreDeuxSalves", "TempsEntreDeuxSalves ", float],
+    ["PorteeMaximale", " PorteeMaximale ", float], #Metre
+    ["PorteeMinimale", " PorteeMinimale ", float], #Metre
+    ["PorteeMaximaleTBA", "PorteeMaximaleTBA", float], #Metre
+    ["PorteeMinimaleTBA", "PorteeMinimaleTBA", float], #Metre
+    ["PorteeMaximaleHA", "PorteeMaximaleHA", float], #Metre
+    ["PorteeMinimaleHA", "PorteeMinimaleHA", float], #Metre
+    ["AltitudeAPorteeMaximale", "AltitudeAPorteeMaximale", float], #Metre
+    ["AltitudeAPorteeMinimale", "AltitudeAPorteeMinimale", float], #Metre
+    ["AffecteParNombre", "AffecteParNombre", bool],
+    ["AngleDispersion", "AngleDispersion", float],
+    ["DispersionAtMaxRange", "DispersionAtMaxRange", float], #Metre
+    ["DispersionAtMinRange", "DispersionAtMinRange", float], #Metre
+    ["RadiusSplashPhysicalDamages", "RadiusSplashPhysicalDamages", float], #Metre
+    ["PhysicalDamages", " PhysicalDamages", float],
+    ["RadiusSplashSuppressDamages", "RadiusSplashSuppressDamages", float], #Metre
+    ["SuppressDamages", " SuppressDamages", float],
+    ["RayonPinned", "RayonPinned", float], #Metre
+    ["AllowSuppressDamageWhenNoImpact", "AllowSuppressDamageWhenNoImpact", bool],
+    ["TirIndirect", "TirIndirect", bool],
+    ["TirReflexe", "TirReflexe", bool],
+    ["InterdireTirReflexe", "InterdireTirReflexe", bool],
+    ["NoiseDissimulationMalus", "NoiseDissimulationMalus", float],
+    ["BaseCriticModifier", "BaseCriticModifier", int],
+    ["EBaseHitValueModifier_Idling", "EBaseHitValueModifier/Idling", int], #after ,
+    ["EBaseHitValueModifier_Moving", "EBaseHitValueModifier/Moving", int], #after ,
+    ["MaxSuccessiveHitCount", "MaxSuccessiveHitCount", int],
+    ["TempsDeVisee", "TempsDeVisee", float],
+    ["SupplyCost", "SupplyCost", int],
+    ["CanShootOnPosition", "CanShootOnPosition", bool],
+    ["CanShootWhileMoving", "CanShootWhileMoving", bool],
+    ["NbrProjectilesSimultanes", "NbrProjectilesSimultanes", int],
+    ["MissileDescriptor", "MissileDescriptor", str], #'Nil' if no descriptor
+    ["SmokeDescriptor", "SmokeDescriptor", str], #'Nil' if no descriptor
+    ["FireDescriptor", "FireDescriptor", str],
+    ["CanHarmInfantry", "CanHarmInfantry", bool],
+    ["CanHarmVehicles", "CanHarmVehicles", bool],
+    ["CanHarmHelicopters", "CanHarmHelicopters", bool],
+    ["CanHarmAirplanes", "CanHarmAirplanes", bool],
+    ["CanHarmGuidedMissiles", "CanHarmGuidedMissiles", bool],
+    ["IsHarmlessForAllies", "IsHarmlessForAllies", bool],
+    ["PiercingWeapon", "PiercingWeapon", bool],
+    ["DamageTypeEvolutionOverRangeDescriptor", "DamageTypeEvolutionOverRangeDescriptor", str], #'Nil' if no descriptor
+    ["FlightTimeForSpeed", "FlightTimeForSpeed", float],
+    ["DistanceForSpeed", "DistanceForSpeed", float] #Metre 
+]

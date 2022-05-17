@@ -32,7 +32,7 @@ def file(filename, varName):
         var2 = float(var[var.find("div")+3:])
         var = var1 / var2
 
-    return var
+    return float(var)
 
 
 ####################################################################
@@ -67,9 +67,16 @@ def variable(text, keyword):
         keywordlength = len(keyword[1])
         captured = text[index:text.find("\n", index)]
         return captured
-
+    
+    if keyword[0] == "Arme":
+        keywordlength = len(keyword[1])
+        captured = text[index+keywordlength:text.find("\n", index+keywordlength)]
+        captured = captured.translate({ord('"'):ord('\'')})
+        captured = captured.strip()
+        return captured[1:]
+        
     #If value of keyword is NOT an array
-    if keyword[0] != "RoleList" and keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo":
+    if keyword[0] != "RoleList" and keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken":
         keywordlength = len(keyword[1])
         captured = text[index+keywordlength:text.find("\n", index+keywordlength)]
         captured = captured.translate({ord('\''):None})
@@ -90,7 +97,7 @@ def variable(text, keyword):
         captured = captured.translate({ord('\n'):None})
 
         #If array always has one element
-        if keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo":
+        if keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo"and keyword[0] != "TraitsToken":
             return helper.stringToType(captured.translate({ord(','):None}))
 
         #Seperate the elements by looking at ","
@@ -105,6 +112,10 @@ def variable(text, keyword):
                 
         return captureArray #Returns array. Maybe it needs quotation marks to be a JSON array.
 
+    #If content is specific
+    if captured == "nil":
+        return None
+    
     #If keyword is a constant and always the same
     if keyword[0] == "AltitudeMax":
         return constant_AltitudeMax * constant_Distance
@@ -120,11 +131,13 @@ def variable(text, keyword):
         return float(captured[:-8]) * constant_Speed
 
     #Distance: For every value that has "* Metre" in it, chop it away and multiply it by the corresponding constant.
-    if keyword[0] in ["AltitudeMin","Altitude","AgilityRadius"]:
+    if keyword[0] in ["AltitudeMin","Altitude","AgilityRadius", "PorteeMaximale", "PorteeMinimale", "PorteeMaximaleTBA", "PorteeMinimaleTBA", "PorteeMaximaleHA", "PorteeMinimaleHA", "AltitudeAPorteeMaximale", "AltitudeAPorteeMinimale", "DispersionAtMaxRange", "DispersionAtMinRange", "RadiusSplashPhysicalDamages", "RadiusSplashSuppressDamages", "RayonPinned", "DistanceForSpeed"]:
         return float(captured[:-8]) * constant_Distance
 
     #Special cases
     match keyword[0]:
+        case "Ammunition":
+            return captured[:-25]
         case "WeaponDescriptor":
             return captured[:-34]
         case "UniteDescriptor":
