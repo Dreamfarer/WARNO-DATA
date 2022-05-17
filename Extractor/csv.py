@@ -1,6 +1,15 @@
 import descriptor
 import os
 
+def getReference(keyword):
+    if keyword == "UniteDescriptor":
+        return descriptor.unit
+    elif keyword == "WeaponDescriptor":
+        return descriptor.weapon
+    elif keyword == "Ammunition":
+        return descriptor.ammo
+    
+
 def writeToFile(content, folder, name, version):
 
     folderPath = os.path.dirname(__file__) + "\\" + folder + "\\" + str(version)
@@ -19,13 +28,7 @@ def table(database, tableName, inputArray, version):
     
     createTableString = "CREATE TABLE `" + database + "`.`" + tableName + "` (\n  `id` INT NOT NULL AUTO_INCREMENT,\n"
 
-    referenceArray = []
-    if inputArray[0][0][0] == "UniteDescriptor":
-        referenceArray = descriptor.unit
-    elif inputArray[0][0][0] == "WeaponDescriptor":
-        referenceArray = descriptor.weapon
-    elif inputArray[0][0][0] == "Ammunition":
-        referenceArray = descriptor.ammo
+    referenceArray = getReference(inputArray[0][0][0])
 
     for index in range(len(referenceArray)):
         
@@ -53,13 +56,7 @@ def export(inputArray, version):
         outputRow += inputArray[0][index][0] + ";"
     outputRow = outputRow[:-1] + "\n" # Cut the last "," away and add a line break
 
-    referenceArray = []
-    if inputArray[0][0][0] == "UniteDescriptor":
-        referenceArray = descriptor.unit
-    elif inputArray[0][0][0] == "WeaponDescriptor":
-        referenceArray = descriptor.weapon
-    elif inputArray[0][0][0] == "Ammunition":
-        referenceArray = descriptor.ammo
+    referenceArray = getReference(inputArray[0][0][0])
 
     #Add data into it
     for index in range(len(inputArray)):
