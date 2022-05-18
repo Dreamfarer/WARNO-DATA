@@ -1,0 +1,19 @@
+export ModelFile_BM27_Uragan_SOV is 'GameData:/Assets/3D/Units/URSS/Artillerie/BM27/BM27.Ase2NdfBin'
+
+Modele_BM27_Uragan_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BM27_Uragan_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BM27_Uragan_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/BM27/BM27.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BM27_Uragan_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/BM27/BM27.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

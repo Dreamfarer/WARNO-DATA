@@ -1,0 +1,60 @@
+export TestAuto_Artillery is TIAGeneralStrategy
+(
+    StrategyName = "Strat_Art"
+    FirstGenerator = TestAuto_ArtilleryGen
+    TransitionList = []
+    AuthorizedCorridorList = [0, 1]
+)
+
+export TestAuto_ArtilleryGen is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+
+    GeneratorList =
+    [
+        ~/test_auto_mission_artillerie,
+    ]
+)
+
+
+export test_auto_mission_artillerie is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TArtilleryPositionningSettingHolder(SupportPointSafetyMargin = 1), // La marge, en nombre de cases IA Strat, utilisée pour définir si une position est sûre comme point d'appui. Une valeur de 1, par exemple, vérifiera la case visée et les 8 cases adjacentes.
+        TArtilleryThreatPerSplashSettingHolder(MinimumThreatPerSplashForKill = 1 { //  La valeur de menace minimum à une position pour lancer un ordre pour tuer. }MinimumThreatPerSplashForSupport = 1 { //  La valeur de menace minimum à une position pour soutenir une mission d'attaque. }),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModelTestAutoArtillery]),
+        TForcedPlacementSettingHolder(ForcedCorridor = [0])
+    ]
+)
+
+export poolModelTestAutoArtillery is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{dc91e7c0-3a25-11e7-8f06-00b0c202714c}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "TestUnitIAStratArtillerie",
+                "Artillerie",
+            ]
+        ),
+    ]
+)
+
+export test_auto_mission_attaque_artillerie is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ParametresDeMission =
+    [
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModelTestAutoArtillery] LaunchASAP_RatioMin = 0.0),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 1.1 CompterLesUnitesEnZoneExtendedDansLaMenace = true UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true),
+        TForcedPlacementSettingHolder(ForcedCorridor = [0]),
+        TCorridorPlacementSettingHolder(StayInCorridorIfp = true),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)

@@ -1,0 +1,148 @@
+private interstice is 4
+public UnitLabelAggregationWidth is ~/LabelUnitIconWidthHeight[0] + interstice
+public UnitLabelAggregationHeight is ~/LabelUnitIconWidthHeight[1] + interstice
+
+//----------------------------------------------------------------------
+
+private UnitLabelAggregationViewDescriptor is BUCKSensibleAreaDescriptor
+(
+    ElementName = "LabelUnitSensibleArea"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [UnitLabelAggregationWidth, UnitLabelAggregationHeight]
+        MagnifiableOffset = [0.0, ~/LabelUnitIconWidthHeight[1] * -1.0]
+    )
+
+    HasBorder = false
+    BackgroundBlockColorToken = 'Fulda2_blanc15'
+
+    Components =
+    [
+        BUCKLocalLayerContainerDescriptor
+        (
+            ElementName = "LocalLayerContainer"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-interstice, -interstice]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            NbLayersToLock = 6
+
+            Components =
+            [
+                ~/LabelDuHaut,
+                UnitLabelParachutistIcon(LocalRenderLayer = 1),
+                UnitLabelBackground
+                (
+                    LocalRenderLayer = 2
+                ),
+                UnitLabelUnitIcon
+                (
+                    LocalRenderLayer = 3
+                    HasBorder = false
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                    IsForAggregationView = true
+                ),
+                UnitGroupCount(LocalRenderLayer = 5),
+                UnitLabelCoverIcon
+                (
+                    LocalRenderLayer = 4
+                ),
+                UnitLabelSmartHoldFireIcon(LocalRenderLayer = 4),
+            ]
+        )
+    ]
+)
+
+//----------------------------------------------------------------------
+
+private LabelDuHaut is BUCKListDescriptor
+(
+    ElementName = 'UpperLabel'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [250.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 1.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+        BUCKListElementDescriptor(ComponentDescriptor = ~/UnitLabelUnitEvacIconBUCKComponent),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/UnitLabelUnitPlayerNameBUCKComponent),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame =TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+
+                )
+
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                Axis = ~/ListAxis/Horizontal
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = UnitLabelUnitCountIconBUCKComponent
+                        (
+                            LocalRenderLayer = 4
+                            IsForCarriedUnit = true
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = UnitLabelUnitNameBUCKComponent
+                        (
+                            Alignement = [0.0, 0.5]
+                            IsForCarriedUnit = true
+                        )
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame =TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                Elements =
+                [
+                    BUCKListElementDescriptor(ComponentDescriptor = UnitLabelUnitCountIconBUCKComponent(LocalRenderLayer = 4)),
+                    BUCKListElementDescriptor(ComponentDescriptor = UnitLabelUnitNameBUCKComponent(Alignement = [0.0, 0.5])),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor(ComponentDescriptor = UnitLabelUnitReloadIconBUCKComponent(MagnifiableOffset = [112.0 ,0.0])),
+    ]
+)
+
+//----------------------------------------------------------------------
+
+// L'etiquette
+UISpecificUnitLabelAggregationViewDescriptor is UISpecificInGameUnitLabelViewDescriptor
+(
+    MainComponentDescriptor = ~/UnitLabelAggregationViewDescriptor
+)

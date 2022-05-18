@@ -1,0 +1,1404 @@
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+//                  Boutons HUD (SD2)                   //
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+
+DefaultButtonHUDDims is [170.0, 24.0]
+
+template BoutonFulda
+[
+    BigLineAction : int = ~/BigLineAction/BalancedMultiline,
+    BackgroundColor : string = "ButtonHUD/Background2",
+    LineBorderColor : string = "ButtonHUD/Border",
+    BorderColor : string = "ButtonHUD/BigBorder",
+    TextColor : string = "ButtonHUD/Text2",
+    TextSize : string = "11",
+    TextToken : string = "HUD_UNKN",
+    HintTitleToken : string = "HUD_UNKN",
+    HintBodyToken : string = "HUD_UNKN",
+    HintExtendedToken : string = "HUD_UNKN",
+    ElementName : string = "",
+    Mapping = nil,
+    RadioButtonManager = nil,
+    IsTogglable = false,
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [75.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+] is BUCKButtonDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+
+    RadioButtonManager = <RadioButtonManager>
+
+    ElementName = <ElementName>
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = false
+    BackgroundBlockColorToken = <BackgroundColor>
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = <LineBorderColor>
+
+    IsTogglable = <IsTogglable>
+    CannotDeselect = <IsTogglable>
+
+    MaskEvents = true
+    Mapping = <Mapping>
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-4.0, -4.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Components =
+            [
+                PanelRoundedCorner
+                (
+                    Radius = 3
+                    BackgroundBlockColorToken = "BoutonTemps"
+                    BorderLineColorToken = "BoutonTemps"
+                )
+            ]
+        ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName> + "TextDescriptor"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-6.0, -6.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            HasBackground = false
+            BackgroundBlockColorToken = <BackgroundColor>
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            BigLineAction   = <BigLineAction>
+            TextColor       = <TextColor>
+            TextSize        = <TextSize>
+            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+            TextToken       = <TextToken>
+
+            TypefaceToken   = "UIMainFont"
+            UniformDrawer   = $/UserInterface/UIUniformDrawer
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        ),
+    ]
+)
+template BoutonFulda_AvecIcone
+[
+
+    BackgroundColor : string = "ButtonHUD/Background2",
+    LineBorderColor : string = "ButtonHUD/Border",
+    BorderColor : string = "ButtonHUD/BigBorder",
+    TextureToken : string,
+    TextureColorToken : string = "ButtonHUD/Text2",
+
+    HintTitleToken : string = "HUD_UNKN",
+    HintBodyToken : string = "HUD_UNKN",
+    HintExtendedToken : string = "HUD_UNKN",
+    ElementName : string = "",
+    Mapping = nil,
+    RadioButtonManager = nil,
+    IsTogglable = false,
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+] is BUCKButtonDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+
+    RadioButtonManager = <RadioButtonManager>
+
+    ElementName = <ElementName>
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = false
+    BackgroundBlockColorToken = <BackgroundColor>
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = <LineBorderColor>
+
+    IsTogglable = <IsTogglable>
+    CannotDeselect = <IsTogglable>
+
+    MaskEvents = true
+    Mapping = <Mapping>
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                //MagnifiableWidthHeight = [-4.0, -4.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Components =
+            [
+                PanelRoundedCorner
+                (
+                    Radius = 3
+                    NbOfPoints = 3
+                    BackgroundBlockColorToken = "BoutonFlares"
+                    BorderLineColorToken = "BoutonTemps"
+                )
+            ]
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [24.0, 24.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+                )
+            TextureToken = <TextureToken>
+            TextureColorToken = <TextureColorToken>
+            )
+         ,
+
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        ),
+    ]
+)
+
+template BUCKSpecificButton
+[
+    ElementName : string = '',
+    UniqueName : string = '',
+    HasBorder : bool = false,
+    HasBackground : bool = false,
+    Ombre : bool = false,
+    ButtonRelativeWidthHeight : float2 = [0.0, 0.0],
+    ButtonMagnifiableWidthHeight : float2 = DefaultButtonHUDDims,
+    ButtonMagnifiableOffset : float2 = [0.0, 0.0],
+    ButtonAlignementToAnchor : float2 = [0.0, 0.0],
+    ButtonAlignementToFather : float2 = [0.0, 0.0],
+
+    RoundedCorner : bool = false,
+    RoundedVertexes : LIST< bool > = [true, true, true, true],
+
+    BigBorderBackgroundColorToken : string = "ButtonHUD/BigBorder",
+    BorderLineColorToken : string = "ButtonHUD/Border",
+    BackgroundBlockColorToken : string = "ButtonHUD/Background",
+    ExternalBorderLineColorToken : string = "ButtonHUD/ExternalBorder",
+    BorderThicknessToken : string = '1',
+    FitStyle : int = ~/ContainerFitStyle/None,
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+
+    AllowMultipleInputsPerFrame : bool = false,
+
+    Grayed : bool = false,
+    IsFocusable : bool = false,
+    IsTogglable : bool = false,
+    DefaultToggleValue : bool = false,
+    CannotDeselect : bool = false,
+    HidePointerEvents : bool = false,
+    MaskEvents : bool = true,
+    IgnoreMask : bool = false,
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+
+    HasText : bool = false,
+    TextColorToken : string = "ButtonHUD/Text2",
+    TextComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    ),
+    TextParagraphStyle : TParagraphStyleRTTI = ~/paragraphStyleTextCenter,
+    TextPadding : TRTTILength4 = TRTTILength4(),
+    TextSizeToken : string = "12",
+    TextStyle : string = "Default",
+    TextToken : string = '',
+    TextTypefaceToken : string = "UIMainFont",
+    TextDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+    TextElementName : string = "TextElement",
+    OverrideTextElementName : bool = false,
+    BigLineAction : int = ~/BigLineAction/CutByDots,
+
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+    HintableAreaElementName : string = "",
+    UseInGameHintStyle : bool = true,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HoverSound : TSoundDescriptor = nil,
+    LeftClickSound : TSoundDescriptor = nil,
+
+    Mapping : TEugBMutablePBaseClass = nil,
+    RequiredTags : LIST<string> = [],
+    ForbiddenTags : LIST<string> = [],
+
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    ForegroundTexture : string = "",
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    BackgroundTextureLocalRenderLayer : int = 0,
+    TextLocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+    ForegroundLocalRenderLayer : int = 0,
+
+    SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+
+    HasBackgroundTexture : bool = false,
+    BackgroundTexture : string = "",
+    BackgroundTextureFrameProperty : TUIFramePropertyRTTI = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0]),
+
+    HasAutoHint : bool = false,
+    AutoHintElementName : string = "AutoHint",
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = <ButtonRelativeWidthHeight>
+        MagnifiableWidthHeight = <ButtonMagnifiableWidthHeight>
+        MagnifiableOffset = <ButtonMagnifiableOffset>
+        AlignementToAnchor = <ButtonAlignementToAnchor>
+        AlignementToFather = <ButtonAlignementToFather>
+    )
+
+    // Hint
+    hintComponent is <UseInGameHintStyle> ?
+    BUCKSpecificHintableArea
+    (
+        ElementName = <HintableAreaElementName>
+        DicoToken = <HintDico>
+        HintTitleToken = <HintTitleToken>
+        HintBodyToken = <HintBodyToken>
+        HintExtendedToken = <HintExtendedToken>
+    ) : BUCKSpecificHintableArea
+    (
+        ElementName = <HintableAreaElementName>
+        DicoToken = <HintDico>
+        HintTitleToken = <HintTitleToken>
+        HintBodyToken = <HintBodyToken>
+        HintExtendedToken = <HintExtendedToken>
+    )
+
+    FitStyle = <FitStyle>
+
+    RequiredTags = <RequiredTags>
+    ForbiddenTags = <ForbiddenTags>
+    IsFocusable = <IsFocusable>
+
+    AllowMultipleInputsPerFrame = <AllowMultipleInputsPerFrame>
+    Grayed = <Grayed>
+    IsTogglable = <IsTogglable>
+    DefaultToggleValue = <DefaultToggleValue>
+    CannotDeselect = <CannotDeselect>
+    HidePointerEvents = <HidePointerEvents>
+    MaskEvents = <MaskEvents>
+    IgnoreMask = <IgnoreMask>
+    PointerEventsToAllow = <PointerEventsToAllow>
+
+    RadioButtonManager = <RadioButtonManager>
+
+    Mapping = <Mapping>
+
+    UniformDrawer = <UniformDrawer>
+
+    HoverSound = <HoverSound>
+    LeftClickSound = <LeftClickSound>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderThicknessToken = <BorderThicknessToken>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    Components =
+    [
+        // ExternalBorder
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            HasBorder = false
+            BorderLineColorToken = <ExternalBorderLineColorToken>
+            BorderThicknessToken = "1"
+        ),
+    ] +
+    (<RoundedCorner> == true ?
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Components =
+            [
+                PanelRoundedCorner
+                (
+                    Radius = 3
+                    BackgroundBlockColorToken = "BoutonTemps"
+                    BorderLineColorToken = "BoutonTemps"
+                    RoundedVertexes = <RoundedVertexes>
+                )
+            ]
+        ),
+    ] : []) +
+    (<HasBackgroundTexture> | <BackgroundTexture> != "" ?
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = <BackgroundTextureFrameProperty>
+
+            UseLocalRenderLayer = <UseLocalRenderLayer>
+            LocalRenderLayer = <BackgroundTextureLocalRenderLayer>
+
+            TextureToken = <BackgroundTexture>
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        ),
+    ] : []) +
+
+    (<HasText> | <TextToken> != "" ?
+    [
+        BUCKSpecificTextWithHint
+        (
+            ElementName = (<OverrideTextElementName> ? <TextElementName> : <ElementName> + <TextElementName>)
+
+            ComponentFrame = <TextComponentFrame>
+
+            ParagraphStyle = <TextParagraphStyle>
+            TextStyle = <TextStyle>
+            TextPadding = <TextPadding>
+            TypefaceToken = <TextTypefaceToken>
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            UseLocalRenderLayer = <UseLocalRenderLayer>
+            LocalRenderLayer = <TextLocalRenderLayer>
+
+            TextToken = <TextToken>
+            TextDico = <TextDico>
+
+            TextColor = <TextColorToken>
+            TextSize = <TextSizeToken>
+            BigLineAction = <BigLineAction>
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+
+            HasAutoHint = <HasAutoHint>
+            AutoHintElementName = <AutoHintElementName>
+        )
+    ] : []) + <Components> +
+
+    (<ForegroundTexture> != "" ?
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+               RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            UseLocalRenderLayer = <UseLocalRenderLayer>
+            LocalRenderLayer = <ForegroundLocalRenderLayer>
+
+            TextureToken = <ForegroundTexture>
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        )
+    ] : []) +
+
+    (<Ombre> == true ?
+    [
+        SmallOmbrePanel()
+    ] : []) +
+
+    [
+        // Big Border
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                PixelOffset = [1.0, 0.0]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            HasBackground = <HasBackground>
+            BackgroundBlockColorToken = <BigBorderBackgroundColorToken>
+
+            UseLocalRenderLayer = <UseLocalRenderLayer>
+            BackgroundLocalRenderLayer = <BorderLocalRenderLayer>
+        ),
+    ] +
+
+    (<HintTitleToken> != "" | <HintBodyToken> != "" | <HintExtendedToken> != "" | <HintableAreaElementName> != "" ?
+    [
+        hintComponent,
+    ] : [])
+)
+
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+//                   Boutons d'Action                   //
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+
+DefaultButtonHeight is 24.0
+DefaultButtonDims is [ 170.0, DefaultButtonHeight ]
+DefaultImageButtonDims is [ 24.0, DefaultButtonHeight ]
+
+template StandardButton
+[
+    ElementName : string = '',
+    UniqueName : string = '',
+
+    ButtonMagnifiableWidthHeight : float2 = DefaultButtonDims,
+    ButtonMagnifiableOffset : float2 = [0,0],
+    ButtonAlignementToAnchor : float2 = [0,0],
+    ButtonAlignementToFather : float2 = [0,0],
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+
+    AllowMultipleInputsPerFrame : bool = false,
+
+    Grayed : bool = false,
+    IsFocusable : bool = false,
+    IsTogglable : bool = false,
+    HidePointerEvents : bool = false,
+    MaskEvents : bool = true,
+
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+
+    HasText : bool = true,
+    // TextColorToken : string = "ButtonHUD",
+    TextComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] AlignementToFather = [0.5, 0.5] AlignementToAnchor = [0.5, 0.5] ),
+    TextParagraphStyle : TParagraphStyleRTTI = ~/paragraphStyleTextLeftAlign,
+    TextSizeToken : string = "12",
+    TextStyle : string = "Default",
+    TextToken : string = '',
+    TextTypefaceToken : string = "UIMainFont",
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+    UseInGameHintStyle : bool = true,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HoverSound : TSoundDescriptor = nil,
+    LeftClickSound : TSoundDescriptor = nil,
+
+    Mapping : TEugBMutablePBaseClass = nil,
+    RequiredTags : LIST<string> = [],
+    ForbiddenTags : LIST<string> = [],
+
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    ForegroundTexture : string = "",
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    BackgroundTextureLocalRenderLayer : int = 0,
+    TextLocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+    ForegroundLocalRenderLayer: int = 0,
+
+    //SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+]
+is BUCKSpecificButton
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ButtonMagnifiableWidthHeight = <ButtonMagnifiableWidthHeight>
+    ButtonMagnifiableOffset = <ButtonMagnifiableOffset>
+    ButtonAlignementToAnchor = <ButtonAlignementToAnchor>
+    ButtonAlignementToFather = <ButtonAlignementToFather>
+
+    Components = <Components>
+
+    Grayed = <Grayed>
+    IsFocusable = <IsFocusable>
+    IsTogglable = <IsTogglable>
+    HidePointerEvents = <HidePointerEvents>
+    MaskEvents = <MaskEvents>
+
+    RadioButtonManager = <RadioButtonManager>
+
+    HasText = <HasText>
+    // TextColorToken = <TextColorToken>
+    TextComponentFrame = <TextComponentFrame>
+    TextParagraphStyle = <TextParagraphStyle>
+    TextSizeToken = <TextSizeToken>
+    TextStyle = <TextStyle>
+    TextToken = <TextToken>
+    TextTypefaceToken = <TextTypefaceToken>
+    TextDico = <TextDico>
+
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+    HintDico = <HintDico>
+    HintableAreaElementName = <HintableAreaElementName>
+    UseInGameHintStyle = <UseInGameHintStyle>
+
+    HoverSound = <HoverSound>
+    LeftClickSound = <LeftClickSound>
+
+    Mapping = <Mapping>
+    RequiredTags = <RequiredTags>
+    ForbiddenTags = <ForbiddenTags>
+
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    ForegroundTexture = <ForegroundTexture>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    BackgroundTextureLocalRenderLayer = <BackgroundTextureLocalRenderLayer>
+    TextLocalRenderLayer = <TextLocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+    ForegroundLocalRenderLayer = <ForegroundLocalRenderLayer>
+)
+
+//---------------------------------------------------
+// Confirm Button
+//---------------------------------------------------
+
+template ConfirmButton
+[
+    ElementName : string = '',
+    UniqueName : string = '',
+
+    ButtonMagnifiableWidthHeight : float2 = DefaultButtonDims,
+    ButtonRelativeWidthHeight : float2 = [0.0, 0.0],
+    ButtonMagnifiableOffset : float2 = [0,0],
+    ButtonAlignementToAnchor : float2 = [0,0],
+    ButtonAlignementToFather : float2 = [0,0],
+
+    BigBorderBackgroundColorToken : string = "ConfirmButton/BigBorder",
+    BorderLineColorToken : string = "ConfirmButton/Border",
+    BackgroundBlockColorToken : string = "ConfirmButton/Background",
+    BigLineAction : int = ~/BigLineAction/CutByDots,
+
+    ExternalBorderLineColorToken : string = "ConfirmButton/ExternalBorder",
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+
+    AllowMultipleInputsPerFrame : bool = false,
+
+    Grayed : bool = false,
+    IsFocusable : bool = false,
+    IsTogglable : bool = false,
+    CannotDeselect : bool = false,
+    HidePointerEvents : bool = false,
+    MaskEvents : bool = true,
+    IgnoreMask : bool = false,
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+
+    HasText : bool = true,
+    TextColorToken : string = "ConfirmButton/BigBorder",
+    TextComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] AlignementToFather = [0.5, 0.5] AlignementToAnchor = [0.5, 0.5] ),
+    TextParagraphStyle : TParagraphStyleRTTI = ~/paragraphStyleTextCenter,
+    TextSizeToken : string = "12",
+    TextStyle : string = "Default",
+    TextToken : string = '',
+    TextTypefaceToken : string = "UIMainFont",
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    OverrideTextElementName : bool = false,
+    TextElementName : string = "TextElement",
+    TextPadding : TRTTILength4 = TRTTILength4(),
+
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+    UseInGameHintStyle : bool = true,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HoverSound : TSoundDescriptor = nil,
+    LeftClickSound : TSoundDescriptor = nil,
+
+    Mapping : TEugBMutablePBaseClass = nil,
+    RequiredTags : LIST<string> = [],
+    ForbiddenTags : LIST<string> = [],
+
+    BorderThicknessToken : string = "1",
+
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    ForegroundTexture : string = "",
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    BackgroundTextureLocalRenderLayer : int = 0,
+    TextLocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+    ForegroundLocalRenderLayer : int = 0,
+    HasBorder : bool = true,
+    HasBackground : bool = false,
+
+    HasAutoHint : bool = false,
+    AutoHintElementName : string = "AutoHint",
+]
+is BUCKSpecificButton
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ButtonMagnifiableWidthHeight = <ButtonMagnifiableWidthHeight>
+    ButtonRelativeWidthHeight = <ButtonRelativeWidthHeight>
+    ButtonMagnifiableOffset = <ButtonMagnifiableOffset>
+    ButtonAlignementToAnchor = <ButtonAlignementToAnchor>
+    ButtonAlignementToFather = <ButtonAlignementToFather>
+
+    HasBorder = <HasBorder>
+    BorderThicknessToken = <BorderThicknessToken>
+    BigBorderBackgroundColorToken = <BigBorderBackgroundColorToken>
+    BorderLineColorToken = <BorderLineColorToken>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+    HasBackground = <HasBackground>
+    ExternalBorderLineColorToken = <ExternalBorderLineColorToken>
+
+    Components = <Components>
+
+    Grayed = <Grayed>
+    IsFocusable = <IsFocusable>
+    IsTogglable = <IsTogglable>
+    CannotDeselect = <CannotDeselect>
+    HidePointerEvents = <HidePointerEvents>
+    MaskEvents = <MaskEvents>
+    IgnoreMask = <IgnoreMask>
+    PointerEventsToAllow = <PointerEventsToAllow>
+
+    HasText = <HasText>
+    TextColorToken = <TextColorToken>
+    TextComponentFrame = <TextComponentFrame>
+    TextParagraphStyle = <TextParagraphStyle>
+    TextSizeToken = <TextSizeToken>
+    TextStyle = <TextStyle>
+    TextToken = <TextToken>
+    TextTypefaceToken = <TextTypefaceToken>
+    TextDico = <TextDico>
+    OverrideTextElementName = <OverrideTextElementName>
+    TextElementName = <TextElementName>
+    HasAutoHint = <HasAutoHint>
+    AutoHintElementName = <AutoHintElementName>
+    BigLineAction = <BigLineAction>
+    TextPadding = <TextPadding>
+
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+    HintDico = <HintDico>
+    HintableAreaElementName = <HintableAreaElementName>
+    UseInGameHintStyle = <UseInGameHintStyle>
+
+    HoverSound = <HoverSound>
+    LeftClickSound = <LeftClickSound>
+
+    Mapping = <Mapping>
+    RequiredTags = <RequiredTags>
+    ForbiddenTags = <ForbiddenTags>
+
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    ForegroundTexture = <ForegroundTexture>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    BackgroundTextureLocalRenderLayer = <BackgroundTextureLocalRenderLayer>
+    TextLocalRenderLayer = <TextLocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+    ForegroundLocalRenderLayer = <ForegroundLocalRenderLayer>
+)
+
+//---------------------------------------------------
+// Cancel Button
+//---------------------------------------------------
+
+template CancelButton
+[
+    ElementName : string = '',
+    UniqueName : string = '',
+
+    ButtonMagnifiableWidthHeight : float2 = DefaultButtonDims,
+    ButtonMagnifiableOffset : float2 = [0,0],
+    ButtonAlignementToAnchor : float2 = [0,0],
+    ButtonAlignementToFather : float2 = [0,0],
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+
+    AllowMultipleInputsPerFrame : bool = false,
+
+    Grayed : bool = false,
+    IsFocusable : bool = false,
+    IsTogglable : bool = false,
+    HidePointerEvents : bool = false,
+    MaskEvents : bool = true,
+
+    HasText : bool = true,
+    TextComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] AlignementToFather = [0.5, 0.5] AlignementToAnchor = [0.5, 0.5] ),
+    TextParagraphStyle : TParagraphStyleRTTI = ~/paragraphStyleTextCenter,
+    TextSizeToken : string = "12",
+    TextStyle : string = "Default",
+    TextToken : string = '',
+    TextTypefaceToken : string = "UIMainFont",
+    TextColorToken : string = "ButtonHUD/Text2",
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    OverrideTextElementName : bool = false,
+    TextElementName : string = "TextElement",
+
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+    UseInGameHintStyle : bool = true,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HoverSound : TSoundDescriptor = nil,
+    LeftClickSound : TSoundDescriptor = nil,
+
+    Mapping : TEugBMutablePBaseClass = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) ),
+    RequiredTags : LIST<string> = [],
+    ForbiddenTags : LIST<string> = [],
+
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    ForegroundTexture : string = "",
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    BackgroundTextureLocalRenderLayer : int = 0,
+    TextLocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+    ForegroundLocalRenderLayer : int = 0,
+]
+is BUCKSpecificButton
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ButtonMagnifiableWidthHeight = <ButtonMagnifiableWidthHeight>
+    ButtonMagnifiableOffset = <ButtonMagnifiableOffset>
+    ButtonAlignementToAnchor = <ButtonAlignementToAnchor>
+    ButtonAlignementToFather = <ButtonAlignementToFather>
+
+    Components = <Components>
+
+    Grayed = <Grayed>
+    IsFocusable = <IsFocusable>
+    IsTogglable = <IsTogglable>
+    HidePointerEvents = <HidePointerEvents>
+    MaskEvents = <MaskEvents>
+
+    HasText = <HasText>
+    TextComponentFrame = <TextComponentFrame>
+    TextParagraphStyle = <TextParagraphStyle>
+    TextSizeToken = <TextSizeToken>
+    TextStyle = <TextStyle>
+    TextToken = <TextToken>
+    TextTypefaceToken = <TextTypefaceToken>
+    TextColorToken = <TextColorToken>
+    TextDico = <TextDico>
+    OverrideTextElementName = <OverrideTextElementName>
+    TextElementName = <TextElementName>
+
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+    HintDico = <HintDico>
+    HintableAreaElementName = <HintableAreaElementName>
+    UseInGameHintStyle = <UseInGameHintStyle>
+
+    HoverSound = <HoverSound>
+    LeftClickSound = <LeftClickSound>
+
+    Mapping = <Mapping>
+    RequiredTags = <RequiredTags>
+    ForbiddenTags = <ForbiddenTags>
+
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    ForegroundTexture = <ForegroundTexture>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    BackgroundTextureLocalRenderLayer = <BackgroundTextureLocalRenderLayer>
+    TextLocalRenderLayer = <TextLocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+    ForegroundLocalRenderLayer = <ForegroundLocalRenderLayer>
+)
+
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+//                     Boutons HUD                      //
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+
+// Don't use this template, use BUCKButtonDescriptor or BUCKSpecificButton instead
+
+template HUDButton
+[
+    ElementName : string = '',
+    UniqueName : string = '',
+
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( MagnifiableWidthHeight = DefaultButtonDims ),
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+
+    AllowMultipleInputsPerFrame : bool = false,
+
+    Grayed : bool = false,
+    IsTogglable : bool = false,
+    CannotDeselect : bool = false,
+    ForceEvents : bool = false,
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+    HidePointerEvents : bool = false,
+    MaskEvents : bool = true,
+
+    HasText : bool = false,
+    TextColorToken : string = "Fulda2_Orange100",
+    TextComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] AlignementToFather = [0.5, 0.5] AlignementToAnchor = [0.5, 0.5] ),
+    TextParagraphStyle : TParagraphStyleRTTI = ~/paragraphStyleTextCenter,
+    TextSizeToken : string = "14",
+    TextStyle : string = "Default",
+    TextToken : string = '',
+    TextTypefaceToken : string = "UIMainFont",
+    TextDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+
+    HintTitleToken : string = "HUD_UNKN",
+    HintBodyToken : string = "HUD_UNKN",
+    HintExtendedToken : string = "HUD_UNKN",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+    HintableAreaElementName : string = "",
+    UseInGameHintStyle : bool = true,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HoverSound : TSoundDescriptor = nil,
+    LeftClickSound : TSoundDescriptor = nil,
+
+    Mapping : TEugBMutablePBaseClass = nil,
+
+    HasBorder : bool = true,
+    BorderLineColorToken : string = "Fulda2_Orange100",
+    BorderThickness : string = "1",
+
+    HasBackground : bool = true,
+    BackgroundColorToken : string = "Fulda2_Orange100",
+
+    OverBlockComponentStateLocked : bool = false,
+    OverBlockColorToken : string = "",
+    OverBlockTexture : string = "",
+
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    ForegroundTexture : string = "StyleCockpitTexture_HUDButton_Light",
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    LocalRenderLayer : int = 0,
+    OverBlockLocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+    ForegroundLocalRenderLayer : int = 0,
+
+    BackgroundTexture : string = "StyleCockpitTexture_HUDButton",
+    TextureColorToken : string = "",
+    BackgroundTextureFrameProperty : TUIFramePropertyRTTI = TUIFramePropertyRTTI( RelativeWidthHeight = [1, 1] ),
+
+    SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    ComponentFrame = <ComponentFrame>
+
+    // Hint
+    hintComponent is <UseInGameHintStyle> ?
+    BUCKSpecificHintableArea
+    (
+        ElementName = <HintableAreaElementName>
+        DicoToken = <HintDico>
+        HintTitleToken = <HintTitleToken>
+        HintBodyToken = <HintBodyToken>
+        HintExtendedToken = <HintExtendedToken>
+    ) : BUCKSpecificHintableArea
+    (
+        ElementName = <HintableAreaElementName>
+        DicoToken = <HintDico>
+        HintTitleToken = <HintTitleToken>
+        HintBodyToken = <HintBodyToken>
+        HintExtendedToken = <HintExtendedToken>
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = <BackgroundTextureFrameProperty>
+
+            UseLocalRenderLayer = <UseLocalRenderLayer>
+            LocalRenderLayer = <LocalRenderLayer>
+            TextureColorToken = <TextureColorToken>
+            TextureToken = <BackgroundTexture>
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+            )
+        ),
+    ] + <Components> +
+
+    (<HasText> | <TextToken> != "" ?
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName> + "TextElement"
+
+            ComponentFrame = <TextComponentFrame>
+
+            ParagraphStyle = <TextParagraphStyle>
+            TextStyle = <TextStyle>
+            TypefaceToken = <TextTypefaceToken>
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            UseLocalRenderLayer = <UseLocalRenderLayer>
+            LocalRenderLayer = <BorderLocalRenderLayer>
+
+            TextToken = <TextToken>
+            TextDico = <TextDico>
+
+            TextColor = <TextColorToken>
+            TextSize = <TextSizeToken>
+        )
+    ] : []) +
+
+    (<OverBlockTexture> != "" | <OverBlockColorToken> != "" ?
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = <ElementName> + "OverBlock"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+               RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            ComponentStateLocked = <OverBlockComponentStateLocked>
+            UseLocalRenderLayer = <UseLocalRenderLayer>
+            BackgroundLocalRenderLayer = <OverBlockLocalRenderLayer>
+            LocalRenderLayer = <OverBlockLocalRenderLayer>
+
+            HasBackground = <OverBlockColorToken> != "" ? true : false
+            UniformDrawer = <UniformDrawer>
+            BackgroundBlockColorToken = <OverBlockColorToken>
+
+            TextureToken = <OverBlockTexture>
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+            )
+        )
+    ] : []) +
+
+    (<ForegroundTexture> != "" ?
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+               RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            UseLocalRenderLayer = <UseLocalRenderLayer>
+            LocalRenderLayer = <ForegroundLocalRenderLayer>
+
+            TextureToken = <ForegroundTexture>
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+            )
+        )
+    ] : []) +
+
+    (<HintTitleToken> != "" | <HintBodyToken> != "" | <HintExtendedToken> != "" | <HintableAreaElementName> != "" ?
+    [
+        hintComponent,
+    ] : [])
+
+    AllowMultipleInputsPerFrame = <AllowMultipleInputsPerFrame>
+    Grayed = <Grayed>
+    IsTogglable = <IsTogglable>
+    CannotDeselect = <CannotDeselect>
+    ForceEvents = <ForceEvents>
+    RadioButtonManager = <RadioButtonManager>
+    HidePointerEvents = <HidePointerEvents>
+    MaskEvents = <MaskEvents>
+
+    Mapping = <Mapping>
+
+    UniformDrawer = <UniformDrawer>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundColorToken>
+
+    HoverSound = <HoverSound>
+    LeftClickSound = <LeftClickSound>
+
+    HasBorder = <HasBorder>
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderThicknessToken = <BorderThickness>
+
+    // BorderColorGrayedTokenBySide = <BorderColorGrayedTokenBySide>
+    // BorderColorHighlightedTokenBySide = <BorderColorHighlightedTokenBySide>
+    // BorderColorClickedTokenBySide = <BorderColorClickedTokenBySide>
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+
+    SpotlightComponent = <SpotlightComponent>
+)
+
+/// A DEPRECIER
+
+template HUDDarkButton
+[
+    ElementName : string = '',
+    UniqueName : string = '',
+
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( MagnifiableWidthHeight = DefaultButtonDims ),
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+
+    AllowMultipleInputsPerFrame : bool = false,
+
+    Grayed : bool = false,
+    IsTogglable : bool = false,
+    HidePointerEvents : bool = false,
+
+    HasText : bool = false,
+    TextDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+    TextParagraphStyle : TParagraphStyleRTTI = ~/paragraphStyleTextCenter,
+    TextSizeToken : string = "SD2_Petit",
+    TextStyle : string = "Default",
+    TextToken : string = '',
+    TextTypefaceToken : string = "UIMainFont",
+
+    HintTitleToken : string = "HUD_UNKN",
+    HintBodyToken : string = "HUD_UNKN",
+    HintExtendedToken : string = "HUD_UNKN",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+    HintableAreaElementName : string = "",
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HoverSound : TSoundDescriptor = nil,
+    LeftClickSound : TSoundDescriptor = nil,
+
+    Mapping : TEugBMutablePBaseClass = nil,
+
+
+    TextColorToken : string = "ButtonHUD/Text",
+    HasBackground : bool = true,
+    BackgroundColorToken : string = "ButtonHUD/Background",
+
+    OverBlockComponentStateLocked : bool = false,
+    OverBlockColorToken : string = "",
+    OverBlockTexture : string = "",
+
+    // Bordure Externe
+    HasBorder : bool = true,
+    BorderThickness : string = "1",
+    BorderLineColorToken : string = "ButtonHUD/Border",
+
+    ForegroundTexture : string = "",
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    LocalRenderLayer : int = 0,
+    OverBlockLocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+    ForegroundLocalRenderLayer : int = 0,
+
+    BackgroundTexture : string = "",
+    BackgroundTextureFrameProperty : TUIFramePropertyRTTI = TUIFramePropertyRTTI( RelativeWidthHeight = [1, 1] ),
+
+    SpotlightComponent : TBUCKContainerDescriptor = SpotlightDescriptor(),
+]
+is HUDButton
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    ComponentFrame = <ComponentFrame>
+
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+    HintDico = <HintDico>
+
+    Components = <Components>
+
+    AllowMultipleInputsPerFrame = <AllowMultipleInputsPerFrame>
+    Grayed = <Grayed>
+    IsTogglable = <IsTogglable>
+    HidePointerEvents = <HidePointerEvents>
+
+    HasText = <HasText>
+    TextParagraphStyle = <TextParagraphStyle>
+    TextTypefaceToken = <TextTypefaceToken>
+    TextSizeToken = <TextSizeToken>
+    TextStyle = <TextStyle>
+    TextToken = <TextToken>
+    TextDico = <TextDico>
+
+    UniformDrawer = <UniformDrawer>
+
+    HoverSound = <HoverSound>
+    LeftClickSound = <LeftClickSound>
+
+    Mapping = <Mapping>
+
+    TextColorToken = <TextColorToken>
+
+    HasBackground = <HasBackground>
+    BackgroundColorToken = <BackgroundColorToken>
+
+    OverBlockComponentStateLocked = <OverBlockComponentStateLocked>
+    OverBlockColorToken = <OverBlockColorToken>
+    OverBlockTexture = <OverBlockTexture>
+
+    HasBorder = <HasBorder>
+    BorderThickness = <BorderThickness>
+    BorderLineColorToken = <BorderLineColorToken>
+
+    ForegroundTexture = <ForegroundTexture>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    LocalRenderLayer = <LocalRenderLayer>
+    OverBlockLocalRenderLayer = <OverBlockLocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+    ForegroundLocalRenderLayer = <ForegroundLocalRenderLayer>
+
+    BackgroundTexture = <BackgroundTexture>
+    BackgroundTextureFrameProperty = <BackgroundTextureFrameProperty>
+
+    SpotlightComponent = <SpotlightComponent>
+)
+//-------------------------------------------------------------------------------------
+// Bouton carré / rectangulaire simple
+//-------------------------------------------------------------------------------------
+template TemplateBoutonSimple
+[
+ElementName : string ,
+UniqueName : string = '',
+Width : float ,
+Height : float ,
+TextToken : string,
+BackgroundBlockColorToken : string,
+BorderLineColorToken : string,
+HintTitleToken :string = '',
+HintBodyToken : string = '',
+HintExtendedToken : string = '',
+IsTogglable : boolean = false,
+RadioButtonManager : TBUCKRadioButtonManager = nil,
+TextSize : string = "SD2_Moyen",
+TextColor : string = "ButtonHUD/Text2",
+CannotDeselect : bool = false
+
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    SpotlightComponent = SpotlightDescriptor()
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [<Width>,<Height>]
+        //AlignementToFather = [ 0.0, 0.5 ]
+        //AlignementToAnchor = [ 0.0, 0.5 ]
+    )
+
+    HasBorder = true
+    BorderThicknessToken = '1'
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+    BorderLineColorToken = <BorderLineColorToken>
+    IsTogglable = <IsTogglable>
+    RadioButtonManager = <RadioButtonManager>
+    HidePointerEvents = true
+    CannotDeselect = <CannotDeselect>
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            BigLineAction = ~/BigLineAction/MultiLine
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = <TextColor>
+            TextSize = <TextSize>
+        ),
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        )
+    ]
+)
+template TemplateBoutonSimple_Relative
+[
+ElementName : string ,
+UniqueName : string = '',
+TextToken : string,
+BackgroundBlockColorToken : string,
+BorderLineColorToken : string,
+HintTitleToken :string = '',
+HintBodyToken : string = '',
+HintExtendedToken : string = '',
+IsTogglable : boolean = false,
+RadioButtonManager : TBUCKRadioButtonManager = nil,
+TextSize : string = "SD2_Moyen",
+TextColor : string = "ButtonHUD/Text2",
+CannotDeselect : bool = false
+
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    SpotlightComponent = SpotlightDescriptor()
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,1]
+    )
+
+    HasBorder = true
+    BorderThicknessToken = '1'
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+    BorderLineColorToken = <BorderLineColorToken>
+    IsTogglable = <IsTogglable>
+    RadioButtonManager = <RadioButtonManager>
+    HidePointerEvents = true
+    CannotDeselect = <CannotDeselect>
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            BigLineAction = ~/BigLineAction/MultiLine
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = <TextColor>
+            TextSize = <TextSize>
+        ),
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        )
+    ]
+)

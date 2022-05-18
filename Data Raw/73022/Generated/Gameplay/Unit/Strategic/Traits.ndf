@@ -1,0 +1,157 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Trait_Aerial_AutoResolve is TEntityDescriptor
+(
+    DescriptorId       = GUID:{7b984706-c8e0-4f50-845e-d2ea0d8b4a99}
+    ClassNameForDebug  = 'Trait_Aerial_AutoResolve'
+    ModulesDescriptors = [
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Defense_Allied is TEntityDescriptor
+(
+    DescriptorId       = GUID:{608c6623-6415-489e-a5bf-13bbc02c73c9}
+    ClassNameForDebug  = 'Trait_Defense_Allied'
+    ModulesDescriptors = [
+        // TraitBattleAdditionalUnits
+        TTraitBattleAdditionalUnitsModuleDescriptor
+        (
+            TacticalAdditionalUnits = 'DeckDefenseAllies'
+        ),
+
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 0
+            TicketPointsBonusAddingType = AddingType/Max
+            TicketPointsBonusAddingTag = 'Defense'
+            IncomeBonus = 0
+            IncomeBonusAddingType = AddingType/None
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Defense_Axis is TEntityDescriptor
+(
+    DescriptorId       = GUID:{07661fd6-d553-4abd-a30c-2f7e60e748a0}
+    ClassNameForDebug  = 'Trait_Defense_Axis'
+    ModulesDescriptors = [
+        // TraitBattleAdditionalUnits
+        TTraitBattleAdditionalUnitsModuleDescriptor
+        (
+            TacticalAdditionalUnits = 'DeckDefenseAxis'
+        ),
+
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 0
+            TicketPointsBonusAddingType = AddingType/Max
+            TicketPointsBonusAddingTag = 'Defense'
+            IncomeBonus = 0
+            IncomeBonusAddingType = AddingType/None
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Deployed is TEntityDescriptor
+(
+    DescriptorId       = GUID:{c4b9c133-6ddc-4c78-826b-6874d79fec90}
+    ClassNameForDebug  = 'Trait_Deployed'
+    ModulesDescriptors = [
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_Ground_AutoResolve is TEntityDescriptor
+(
+    DescriptorId       = GUID:{28f7fc14-05a8-4b50-8307-46b2454a6741}
+    ClassNameForDebug  = 'Trait_Ground_AutoResolve'
+    ModulesDescriptors = [
+        // TraitLimitAerialCasualties
+        TTraitLimitAerialCasualtiesDescriptor
+        (
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_HQ_AdditionalPawn is TEntityDescriptor
+(
+    DescriptorId       = GUID:{e2415392-e418-468f-bf9c-60d0e1eb9f86}
+    ClassNameForDebug  = 'Trait_HQ_AdditionalPawn'
+    ModulesDescriptors = [
+        // TraitBattlePawnNumberModifier
+        TTraitBattlePawnNumberModifierModuleDescriptor
+        (
+            TacticalAdditionalPawn = 2
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)
+export Descriptor_Trait_HQ_Resource is TEntityDescriptor
+(
+    DescriptorId       = GUID:{3f4489ff-df23-4670-ae15-35e16f250e05}
+    ClassNameForDebug  = 'Trait_HQ_Resource'
+    ModulesDescriptors = [
+        // TraitResourceModifier
+        TTraitBattleResourceModifierModuleDescriptor
+        (
+            TicketPointsBonus = 30
+            TicketPointsBonusAddingType = AddingType/Add
+            TicketPointsBonusAddingTag = ''
+            IncomeBonus = 6
+            IncomeBonusAddingType = AddingType/Add
+            IncomeBonusAddingTag = ''
+        ),
+
+        // TraitUI
+        TTraitUIModuleDescriptor
+        (
+            TokenName = ''
+            TokenDescription = ''
+        ),
+
+    ]
+)

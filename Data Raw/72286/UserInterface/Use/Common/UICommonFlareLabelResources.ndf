@@ -1,0 +1,206 @@
+private iconeDim is [ 25.0, 25.0 ]
+
+CommonFlareLabelResources is TUISpecificFlareLabelResources
+(
+    Layer = $/UserInterface/UILayer_Labels
+
+    FlareLabelMagnificationMultiplier = 1.0
+
+    FlareAttackLabelDescriptor = FlareLabelDescriptor
+    (
+        TextToken = "HFL_ATTACT"
+        IconTextureToken = "textureFlareAttack"
+        IconSize = iconeDim
+    )
+    FlareDefendLabelDescriptor = FlareLabelDescriptor
+    (
+        TextToken = "HFL_DEFENT"
+        IconTextureToken = "textureFlareDefense"
+        IconSize = iconeDim
+    )
+    FlareHelpLabelDescriptor = FlareLabelDescriptor
+    (
+        TextToken = "HFL_HELPT"
+        IconTextureToken = "textureFlareHelp"
+        IconSize = iconeDim
+    )
+    FlareCustomLabelDescriptor = FlareLabelDescriptor
+    (
+        IconTextureToken = "textureFlareCustom"
+        IconSize = iconeDim
+        Largeur = 200.0
+    )
+    FlareFireSupportLabelDescriptor = FlareLabelDescriptor
+    (
+        TextToken = "HFL_SuppT"
+        IconTextureToken = "textureFlareFireSupport"
+        IconSize = iconeDim
+    )
+    FlareEnemySpottedLabelDescriptor = FlareLabelDescriptor
+    (
+        TextToken = "HFL_recoT"
+        IconTextureToken = "textureFlareEnemySpotted"
+        IconSize = iconeDim
+    )
+
+    FlareLabelTransformation = TLabelTransformationComposition
+    (
+        Transformations = [
+            TLabelTransformPreTranslate
+            (
+                Translation = [0,0,5000]
+            ),
+            TLabelTransformFaceCam
+            (
+                Camera = $/M3D/Camera/CameraPrincipale
+            ),
+            TLabelTransformFakePerspective
+            (
+                ScalePerAltitudeConstReso = 1.5
+                Camera = $/M3D/Camera/CameraPrincipale
+                Scene2D = $/M3D/Scene/Scene_2D_Interface
+                ConstnessFactor = 0.6
+            )
+        ]
+    )
+)
+
+private template FlareLabelDescriptor
+[
+    TextToken : string = "",
+    IconTextureToken : string = "",
+    IconSize : float2,
+    Margin : float = 3.0,
+    Largeur : float = 70.0,
+]
+is BUCKListDescriptor
+(
+    Axis = ~/ListAxis/Horizontal
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0, 30]
+        MagnifiableOffset = [0, 0]
+    )
+
+    FirstMargin = TRTTILength(Pixel = DistanceBetweenExternalAndInternalBorder + 1.0)
+    LastMargin = TRTTILength(Pixel = DistanceBetweenExternalAndInternalBorder + 1.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                TextureToken = <IconTextureToken>
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = <IconSize>
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                TextureColorToken = 'BlancEquipe'
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = FlareLabelText
+            (
+                ElementName = "Text"
+                TextToken = <TextToken>
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [<Largeur>, 0.0]
+
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+                )
+
+                TextPadding = TRTTILength4( Magnifiable = [3.0, 0.0, 3.0, 0.0] )
+                TextSize = "11"
+                TextColor = "BlancEquipe"
+
+                Alignment = UIText_Left
+                HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+                VerticalFitStyle = ~/FitStyle/UserDefined
+            )
+        ),
+    ]
+
+    ForegroundComponents =
+    [
+        FlareLabelText
+        (
+            ElementName = "HeadingText"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-6.0, 15.0]
+                MagnifiableOffset = [3.0, -3.0]
+                AlignementToAnchor = [0.0, 1.0]
+            )
+
+            TextSize = "12"
+
+            Alignment = UIText_Left
+            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+            VerticalFitStyle = ~/FitStyle/UserDefined
+            BigLineAction = ~/BigLineAction/CutByDots
+            BigWordAction = ~/BigWordAction/BigWordCut
+        )
+    ]
+    BackgroundComponents =
+    [
+        PanelRoundedCorner()
+    ]
+)
+
+private template FlareLabelText
+[
+    ElementName : string,
+    TextToken : string = "",
+    ComponentFrame : TUIFramePropertyRTTI,
+    TypefaceToken : string = "IBM",
+    TextSize : string,
+    TextColor : string = "ObjectiveEtiquetteManager/Text",
+    Alignment = UIText_Left,
+    HorizontalFitStyle = ~/FitStyle/FitToContent,
+    VerticalFitStyle = ~/FitStyle/FitToContent,
+    BigLineAction = ~/BigLineAction/MultiLine,
+    BigWordAction = ~/BigWordAction/BigWordNewLine,
+    TextPadding = TRTTILength4()
+]
+is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+
+    TextToken = <TextToken>
+
+    ComponentFrame = <ComponentFrame>
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = <Alignment>
+        VerticalAlignment = UIText_VerticalCenter
+        Balanced          = true
+        BigWordAction     = <BigWordAction>
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = <TypefaceToken>
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextPadding = <TextPadding>
+    TextSize = <TextSize>
+    TextColor = <TextColor>
+
+    HorizontalFitStyle = <HorizontalFitStyle>
+    VerticalFitStyle = <VerticalFitStyle>
+
+    BigLineAction = <BigLineAction>
+)

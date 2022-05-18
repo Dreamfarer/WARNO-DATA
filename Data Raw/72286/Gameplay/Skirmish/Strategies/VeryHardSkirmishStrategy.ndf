@@ -1,0 +1,238 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export VeryHardStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenericAI"
+    FirstGenerator = VHard_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        VHard_Transition_StartToPhaseCommand,
+        VHard_Transition_StartToGeneric,
+        VHard_Transition_DeployToCommandPhase,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export VHard_Condition_GotoLowCost is TSequenceCondition_Compare
+(
+    Value1 = [TSequenceConditionValues_RessourcesPointsSharedInTeam]
+    Operator = Less
+    AddToValue2 = 501
+    ResourceType = ~/Resource_CommandPoints
+)
+//-------------------------------------------------------------------------
+export VHard_Condition_GotoGeneric is TSequenceCondition_Not
+(
+    Condition = ~/VHard_Condition_GotoLowCost
+)
+//-------------------------------------------------------------------------
+export VHard_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export VHard_Transition_StartToPhaseCommand is TIAGeneralStrategyTransition
+(
+    Origine = VHard_Choose_Strategy
+    Condition = VHard_Condition_CommandPhase
+    Destination = VHard_Phase_Command
+)
+export VHard_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = VHard_Choose_Strategy
+    Condition = VHard_Condition_GotoGeneric
+    Destination = VHard_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export VHard_Transition_DeployToCommandPhase is TIAGeneralStrategyTransition
+(
+    Origine = VHard_Phase_Deploiement
+    Condition = VHard_Condition_CommandPhase
+    Destination = VHard_Phase_Command
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export VHard_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export VHard_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        ~/Attack_Objectives,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+        ~/CaptureAllZoneObjectif,
+        ~/Defense_Objectif,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Grosse attaque
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200 => un cmd pas cher, une reco pas cher, et le reste de tanks pour fill le budget en random.
+        ~/Artillery_Support,        // Artillerie pas chère                 //  80
+
+        // Reste du front
+        ~/Attack_Adaptive,          // ~100
+        ~/Attack_Adaptive,          // ~100
+
+
+        ~/Attack_Adaptive,          // ~100
+        ~/Attack_Filler,            // budget 40
+        ~/Reco,            // 40 par reco
+
+        //------------------------------
+        // Supply
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Airstrike_Assault,
+        ~/Defense_Static_AA,
+        ~/Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Defense_Static_Adaptive,
+        ~/Defense_Static_Adaptive,
+
+        ~/AirReco,
+        ~/Airstrike_Offense,
+        ~/Airstrike_Defense,
+
+        ~/Artillery_Sniper,
+        ~/Artillery_Expensive,
+
+    ] + ~/Defenses_Airstrike_Arti_Shuffle_Deploy
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    ScalingGeneratorList = ~/VeryHardScaling
+)
+//-------------------------------------------------------------------------
+export VHard_Phase_Command is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        // Capture de zones
+        ~/Attack_Objectives,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Support_AntiTank,
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+        ~/Attack_Filler,
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/Defense_Static_Adaptive, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/Defense_Static_AA,
+
+        //Cet mission lance les objectifs restant
+        ~/CaptureAllZoneObjectif,
+        ~/Defense_Objectif,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/Artillery_Support,        // Artillerie pas chère                 //  80
+
+        ~/Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Attack_Adaptive,
+
+        ~/Attack_Adaptive,
+
+        ~/Airstrike_Offense,
+        ~/Airstrike_Defense,
+
+        ~/SuperCommander,
+
+        ~/Reco,
+
+        //Low prio mais peut servir si on n'a pas de zone dans nos couloirs
+        ~/CaptureOneObjectifForAlliance,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Airstrike_Assault,
+        ~/Defense_Static_AA,
+        ~/Artillery_TriggerHappy_1for2Corridors,
+
+        ~/Defense_Static_Adaptive,
+        ~/Defense_Static_Adaptive,
+
+        ~/AirReco,
+        ~/Airstrike_Offense,
+        ~/Airstrike_Defense,
+
+        ~/Artillery_Sniper,
+        ~/Artillery_Expensive,
+
+        ~/Supply_Skirmish_Allied,
+
+    ] + ~/Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    ScalingGeneratorList = ~/VeryHardScaling
+)
+
+VeryHardScaling is
+[
+    ~/Attack_Objectives,
+
+    ~/Attack_Main_Autogen,
+    ~/Attack_Adaptive_Autogen,
+    ~/Attack_Adaptive_Autogen,
+    ~/Attack_Adaptive_Autogen,
+
+    ~/Defense_Dynamic_Adaptive_Autogen,
+    ~/Defense_Dynamic_Adaptive_Autogen,
+    ~/Defense_Dynamic_Adaptive_Autogen,
+
+    ~/Airstrike_Assault_Autogen,
+    ~/Airstrike_Offense_Autogen,
+    ~/Airstrike_Defense_Autogen,
+
+    ~/Artillery_TriggerHappy_Autogen,
+]

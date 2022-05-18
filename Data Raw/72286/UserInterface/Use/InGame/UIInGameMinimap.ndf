@@ -1,0 +1,127 @@
+UIMinimapTypeFree is 0
+UIMinimapTypeBox is 1
+UIMinimapTypeRound is 2
+
+//----------------------------------------------------------------------------------
+// Enum des pings de minimap
+// NOTA : laisser la valeur "None" sur le 0
+//----------------------------------------------------------------------------------
+export MinimapPing_None                 is 0
+export MinimapPing_Beep                 is 1
+export MinimapPing_Cross                is 2
+export MinimapPing_Alarm                is 3
+export MinimapFlareAttack               is 4
+export MinimapFlareDefend               is 5
+export MinimapFlareHelp                 is 6
+export MinimapFlareCustom               is 7
+export MinimapPing_Spotted              is 8
+export MinimapFlareFireSupport          is 9
+export MinimapFlareEnemySpotted         is 10
+
+MinimapPingType_Enum is TMinimapPingType
+(
+    Values = [
+        "MinimapPing_None",
+        "MinimapPing_Beep",
+        "MinimapPing_Cross",
+        "MinimapPing_Alarm",
+        "MinimapFlareAttack",
+        "MinimapFlareDefend",
+        "MinimapFlareHelp",
+        "MinimapFlareCustom",
+        "MinimapPing_Spotted",
+        "MinimapFlareFireSupport",
+        "MinimapFlareEnemySpotted",
+    ]
+)
+
+//----------------------------------------------------------------------------------
+// Enum des types d'animation pour les pings de minimap
+// NOTA : laisser la valeur "None" sur le 0
+//----------------------------------------------------------------------------------
+export MinimapPingAnim_None            is 0
+export MinimapPingAnim_Fade            is 1
+export MinimapPingAnim_Scale           is 2
+
+MinimapPingAnimType_Enum is TMinimapPingAnimType
+(
+    Values = [
+        "MinimapPingAnim_None",
+        "MinimapPingAnim_Fade",
+        "MinimapPingAnim_Scale",
+    ]
+)
+
+MinimapPanelDescriptor is TUISpecificBUCKMinimapDescriptor
+(
+    ElementName = 'MinimapPanel'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+    IsClippable = true
+)
+
+InGameMinimap is TUISpecificInGameMinimapResources
+(
+    WorldFloorProxy                     = $/M3D/Scene/WorldFloorForIAProxy
+    CameraMoverTargetClient             = $/Camera/CameraMoverTargetClient
+    CameraMoverHelperProxy              = $/M3D/Scene/IngameCameraMoverHelperProxy
+
+   // NorthTexture                      = ~/Texture_Minimap_North
+    CameraAngleTexture                  = ~/Texture_Minimap_CameraAngle
+
+    Flare_Texture                       = ~/Texture_Minimap_Flare
+    ObjectiveTexture                    = ~/Texture_Minimap_Objective
+
+    BackgroundDrawer = "ColorMultiply_Additive"
+
+    TextureForPingType = MAP[
+        ( MinimapPing_Beep, ~/Texture_Minimap_Alert ),
+        ( MinimapPing_Cross, ~/Texture_Minimap_Death ),
+        ( MinimapPing_Alarm, ~/Texture_Minimap_Alarm ),
+        ( MinimapFlareAttack, ~/Texture_MinimapFlareAttack ),
+        ( MinimapFlareDefend, ~/Texture_MinimapFlareDefend ),
+        ( MinimapFlareHelp, ~/Texture_MinimapFlareHelp ),
+        ( MinimapFlareCustom, ~/Texture_MinimapFlareCustom ),
+        ( MinimapPing_Spotted, ~/Texture_MinimapPing_Spotted ),
+        ( MinimapFlareFireSupport, ~/Texture_MinimapFlareFireSupport ),
+        ( MinimapFlareEnemySpotted, ~/Texture_MinimapFlareEnemySpotted ),
+    ]
+
+    UnitAppearingColor                  = RGBA[255, 255, 255, 255]
+    UnitSelectedColor                   = RGBA[255, 255, 255, 255]
+    UnitTakingDamageColor               = RGBA[255, 0, 0, 255]
+
+    ScaleUnitInsideMinimap              = 1.0
+    ScaleObjectiveInsideMinimap         = 0.8
+
+    // specifier Layer pour Unit,Fob,Command,Supply,Alert,Mort,Flare
+    // 0 en dessous N au dessus et 6 valeurs OBLIGATOIREMENT
+    SortOrderList                       = [0,1,1,1,3,4,2]
+    // specifier Ordre a l'interieur d'un layer pour Player,Allied,Enemy
+    // valeur de 0 a 3, et 4 valeurs OBLIGATOIREMENT
+    SortOrderInsideLayer                = [3,1,2,0]
+
+    VisibilityRange                     = ~/AllRanges/ZoomMinimap
+    FadeDuration                        = 0.40
+    EventDuration                       = 0.80
+    Camera                              = $/M3D/Camera/CameraPrincipale
+
+    CanGiveOrder                        = True
+    CanGiveMoveCamera                   = True
+
+    RotateWithCamera                    = True
+    RotateCameraSnap90                  = True
+    SeuilRotateCameraInDegree           = 20
+
+    DistrictColor                       = RGBA[255, 252,  58, 255]
+    PlayerColorIsOverriden              = False
+    PlayerOverrideColor                 = RGBA[255, 255, 255, 255]
+
+    MinimapPanelDescriptor = ~/MinimapPanelDescriptor
+)

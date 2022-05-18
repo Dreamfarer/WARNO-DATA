@@ -1,0 +1,25 @@
+export ModelFile_F4F_Phantom_II_AT_RFA is 'GameData:/Assets/3D/Units/RFA/Avion/F4E_Phantom_II/F4E_Phantom_II_AT.Ase2NdfBin'
+
+Modele_F4F_Phantom_II_AT_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_F4F_Phantom_II_AT_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_F4F_Phantom_II_AT_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/F4E_Phantom_II_MID/F4E_Phantom_II_AT_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F4F_Phantom_II_AT_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/LODS/F4E_Phantom_II_AT_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F4F_Phantom_II_AT_RFA_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/F4E_Phantom_II/F4E_Phantom_II_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

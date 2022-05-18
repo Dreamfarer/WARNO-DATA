@@ -1,0 +1,19 @@
+export ModelFile_T80BV_CMD_SOV is 'GameData:/Assets/3D/Units/URSS/Char/T80BV_CMD/T80BV_CMD.Ase2NdfBin'
+
+Modele_T80BV_CMD_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T80BV_CMD_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_T80BV_CMD_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Char/T80BV_CMD_MID/T80BV_CMD_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_T80BV_CMD_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Char/LODS/T80BV_CMD_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

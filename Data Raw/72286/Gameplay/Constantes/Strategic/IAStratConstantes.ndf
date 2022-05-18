@@ -1,0 +1,246 @@
+
+// CONSTANTES POUR LE GAME DESIGN
+private scaleAffichage is 0.02
+StrategicIAStratConstantes is TIAStratStrategicConstantesDescriptor
+(
+    RadiusToSearchTargetToBombardAroundRealTarget = 10 * 400 * Metre
+    NbAirplanesToKeepBeforeUsingAirDeny = 1
+    NbAirplanesToKeepBeforeUsingBombard = 1
+    NbMaxPawnAllowedToFortifyPerObjective = 0
+    NbMaxPawnAllowedToFortifyAntiAirPerObjective = 2
+
+    DistanceMaxForPawnToBeAvailableForCurrentObjective = 1500.0 * Metre
+    DistanceMaxToReassignPawnIFP = 3000.0 * Metre
+
+    MinimumRankForSupportUnitDefensePoint = 1 //Attention, ça commence à 0
+    AttackPointMaxCaseFromFrontLine = 2
+
+    MinPowerValueForPowerfullPawn = 2000
+
+    NumberMaxOfProductionPerTurn = 3
+
+    //(ZoneStatus, APRemaining, Distance) s'il existe au moins une unitÃ©e ennemi dans un rayon de Distance garder au moins AP
+    //Distance à chaque point du pathfind à l'origine du point
+    //A ordonner du plus proche au plus loin
+    NbApToKeepAfterMoveByZoneStatus =
+    [
+        //NotActive
+        [
+            //Exemple : (3, 100 * Metre), (2, 200 * Metre), (1, 300 * Metre)
+            //On garde 3 points si une unité ennemi est à 100 Metre de distance, sinon 2 points si 200 Metre, sinon 1 points à 300 Metre, sinon on utilise tout
+            (3, 2000 * Metre),
+        ],
+        //ToDefend
+        [
+            (3, 2000 * Metre),
+        ],
+        //ToCapture
+        [
+            (3, 2000 * Metre),
+        ],
+        //CapturedNotActive
+        [
+            (3, 2000 * Metre),
+        ],
+    ]
+
+    DefaultStartBattleDescriptor = TIAStartBattleDescriptor
+    (
+        MinVictoryNeededToAttackForObjectiveStatus =
+        [
+            EVictoryType/Draw,  //NotActive
+            EVictoryType/MinorVictory,  //ToDefend
+            EVictoryType/MinorDefeat,  //ToCapture
+            EVictoryType/Draw,  //CapturedNotActive
+        ]
+
+        MinBalanceOfPowerForAllPhaseNeededToAttackForObjectiveStatus =
+        [
+            -5,  //NotActive
+            -5,  //ToDefend
+            -5,  //ToCapture
+            -5,  //CapturedNotActive
+        ]
+    )
+
+    StartBattleDescriptorByName = MAP
+    [
+        (
+            'SuicideAttack',
+            TIAStartBattleDescriptor
+            (
+                MinVictoryNeededToAttackForObjectiveStatus =
+                [
+                    EVictoryType/TotalDefeat,   //NotActive
+                    EVictoryType/TotalDefeat,   //ToDefend
+                    EVictoryType/TotalDefeat,   //ToCapture
+                    EVictoryType/TotalDefeat,   //CapturedNotActive
+                ]
+
+                MinBalanceOfPowerForAllPhaseNeededToAttackForObjectiveStatus =
+                [
+                    -18,  //NotActive
+                    -18,  //ToDefend
+                    -18,  //ToCapture
+                    -18,  //CapturedNotActive
+                ]
+            )
+        ),
+        (
+            'MajorDefeat',
+            TIAStartBattleDescriptor
+            (
+                MinVictoryNeededToAttackForObjectiveStatus =
+                [
+                    EVictoryType/MajorDefeat,   //NotActive
+                    EVictoryType/MajorDefeat,   //ToDefend
+                    EVictoryType/MajorDefeat,   //ToCapture
+                    EVictoryType/MajorDefeat,   //CapturedNotActive
+                ]
+
+                MinBalanceOfPowerForAllPhaseNeededToAttackForObjectiveStatus =
+                [
+                    -15,  //NotActive
+                    -15,  //ToDefend
+                    -15,  //ToCapture
+                    -15,  //CapturedNotActive
+                ]
+            )
+        ),
+        (
+            'MinorDefeat',
+            TIAStartBattleDescriptor
+            (
+                MinVictoryNeededToAttackForObjectiveStatus =
+                [
+                    EVictoryType/MinorDefeat,   //NotActive
+                    EVictoryType/MinorDefeat,   //ToDefend
+                    EVictoryType/MinorDefeat,   //ToCapture
+                    EVictoryType/MinorDefeat,   //CapturedNotActive
+                ]
+
+                MinBalanceOfPowerForAllPhaseNeededToAttackForObjectiveStatus =
+                [
+                    -8,  //NotActive
+                    -8,  //ToDefend
+                    -8,  //ToCapture
+                    -8,  //CapturedNotActive
+                ]
+            )
+        ),
+        (
+            'Agressif',
+            TIAStartBattleDescriptor
+            (
+                MinVictoryNeededToAttackForObjectiveStatus =
+                [
+                    EVictoryType/Draw,   //NotActive
+                    EVictoryType/Draw,   //ToDefend
+                    EVictoryType/Draw,   //ToCapture
+                    EVictoryType/Draw,   //CapturedNotActive
+                ]
+
+                MinBalanceOfPowerForAllPhaseNeededToAttackForObjectiveStatus =
+                [
+                    -5,  //NotActive
+                    -5,  //ToDefend
+                    -5,  //ToCapture
+                    -5,  //CapturedNotActive
+                ]
+            )
+        ),
+        (
+            'Defensif', // utilise pour les pions en défense et fortifiés
+            TIAStartBattleDescriptor
+            (
+                MinVictoryNeededToAttackForObjectiveStatus =
+                [
+                    EVictoryType/Draw,   //NotActive
+                    EVictoryType/Draw,   //ToDefend
+                    EVictoryType/Draw,   //ToCapture
+                    EVictoryType/Draw,   //CapturedNotActive
+                ]
+
+                MinBalanceOfPowerForAllPhaseNeededToAttackForObjectiveStatus =
+                [
+                    3,  //NotActive
+                    3,  //ToDefend
+                    0,  //ToCapture
+                    3,  //CapturedNotActive
+                ]
+            )
+        ),
+        (
+            'Draw',
+            TIAStartBattleDescriptor
+            (
+                MinVictoryNeededToAttackForObjectiveStatus =
+                [
+                    EVictoryType/Draw,   //NotActive
+                    EVictoryType/Draw,   //ToDefend
+                    EVictoryType/Draw,   //ToCapture
+                    EVictoryType/Draw,   //CapturedNotActive
+                ]
+
+                MinBalanceOfPowerForAllPhaseNeededToAttackForObjectiveStatus =
+                [
+                    -6,  //NotActive
+                    -6,  //ToDefend
+                    -6,  //ToCapture
+                    -6,  //CapturedNotActive
+                ]
+            )
+        ),
+        (
+            'MinorVictor',
+            TIAStartBattleDescriptor
+            (
+                MinVictoryNeededToAttackForObjectiveStatus =
+                [
+                    EVictoryType/MinorVictory,   //NotActive
+                    EVictoryType/MinorVictory,   //ToDefend
+                    EVictoryType/MinorVictory,   //ToCapture
+                    EVictoryType/MinorVictory,   //CapturedNotActive
+                ]
+
+                MinBalanceOfPowerForAllPhaseNeededToAttackForObjectiveStatus =
+                [
+                    -4,  //NotActive
+                    -4,  //ToDefend
+                    -4,  //ToCapture
+                    -4,  //CapturedNotActive
+                ]
+            )
+        ),
+        (
+            'MajorVictor',
+            TIAStartBattleDescriptor
+            (
+                MinVictoryNeededToAttackForObjectiveStatus =
+                [
+                    EVictoryType/MajorVictory,   //NotActive
+                    EVictoryType/MajorVictory,   //ToDefend
+                    EVictoryType/MajorVictory,   //ToCapture
+                    EVictoryType/MajorVictory,   //CapturedNotActive
+                ]
+
+                MinBalanceOfPowerForAllPhaseNeededToAttackForObjectiveStatus =
+                [
+                    3,  //NotActive
+                    3,  //ToDefend
+                    3,  //ToCapture
+                    3,  //CapturedNotActive
+                ]
+            )
+        ),
+    ]
+
+    BombardTargetMinimumPowerValue = 50.0
+
+    MinUnitWeightToReserveCorridor = 15.0
+    UnitTagAndWeightToReserveCorridor = MAP
+    [
+        ( "Infanterie", 1.0 ),
+        ( "Char", 0.5 ),
+    ]
+)

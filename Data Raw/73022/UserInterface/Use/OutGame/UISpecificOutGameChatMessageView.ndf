@@ -1,0 +1,66 @@
+
+BUCKSpecificOutGameChatMessageMainComponentDescriptor is BUCKTextDescriptor
+(
+    ElementName = "Text"
+
+    ComponentFrame = TUIFramePropertyRTTI()
+
+    HasBackground = true
+
+    TextSize  = "14"
+    TypefaceToken = "UISecondFont"
+    TextStyle = "Default"
+
+    BigLineAction = ~/BigLineAction/MultiLine
+    ColorMode = ~/ColorMode/Override
+
+    HorizontalFitStyle = ~/FitStyle/FitToParent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Left
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+        BigWordAction = ~/BigWordAction/BigWordNewLine
+    )
+
+    Components =
+    [
+        BUCKSensibleAreaDescriptor
+        (
+            ElementName = "NameSensibleArea"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+            )
+        ),
+        BUCKSensibleAreaDescriptor
+        (
+            ElementName = "MessageSensibleArea"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        ),
+    ]
+)
+
+UISpecificOutGameChatMessageViewDescriptor is TUISpecificOutGameChatMessageViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameChatMessageMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    BackgroundTextColorByMessageType =
+    [
+        "Gris", //System
+        "Transparent", //Public
+        "Transparent", //Private
+    ]
+
+    TextColorByMessageType =
+    [
+        "Cyan", //System
+        "Blanc", //Public
+        "Rouge", //Private
+    ]
+)

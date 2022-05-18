@@ -1,0 +1,22 @@
+export ModelFile_Wiesel_RFA is 'GameData:/Assets/3D/Units/US/APC/M113_ACAV/M113_ACAV.Ase2NdfBin'
+
+Modele_Wiesel_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Wiesel_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Wiesel_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/M113_ACAV_MID/M113_ACAV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Wiesel_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/LODS/M113_ACAV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

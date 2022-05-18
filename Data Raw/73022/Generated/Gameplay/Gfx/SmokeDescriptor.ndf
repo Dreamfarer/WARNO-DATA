@@ -1,0 +1,830 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Smoke_Fumi105mm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{e5616293-0f25-4b4d-b1f8-29953bd95a92}
+    ClassNameForDebug  = 'Smoke_Fumi105mm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((250) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 250 * Metre
+                     Height               = 250 * Metre
+                     Density              = 0.5
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((250) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((250) * Metre)
+                Terrain        = ~/SmokeMedium
+            ),
+
+    ]
+)
+export Descriptor_Smoke_Fumi107mm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{e3fa43dc-c510-4dd5-98df-281ad8e495a3}
+    ClassNameForDebug  = 'Smoke_Fumi107mm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((250) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 250 * Metre
+                     Height               = 250 * Metre
+                     Density              = 0.5
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((250) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((250) * Metre)
+                Terrain        = ~/SmokeMedium
+            ),
+
+    ]
+)
+export Descriptor_Smoke_Fumi120mm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{7ba8c9e2-c632-408d-ba0a-f9f457893844}
+    ClassNameForDebug  = 'Smoke_Fumi120mm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((300) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 300 * Metre
+                     Height               = 300 * Metre
+                     Density              = 0.5
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((300) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((300) * Metre)
+                Terrain        = ~/SmokeMedium
+            ),
+
+    ]
+)
+export Descriptor_Smoke_Fumi122mm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{01182f52-f8eb-4b45-822e-6b83f3ce0822}
+    ClassNameForDebug  = 'Smoke_Fumi122mm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((300) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 300 * Metre
+                     Height               = 300 * Metre
+                     Density              = 0.5
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((300) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((300) * Metre)
+                Terrain        = ~/SmokeMedium
+            ),
+
+    ]
+)
+export Descriptor_Smoke_Fumi152mm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{96d317ae-5de8-46ca-a6e0-53fd6c521f60}
+    ClassNameForDebug  = 'Smoke_Fumi152mm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((350) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 350 * Metre
+                     Height               = 350 * Metre
+                     Density              = 1.0
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((350) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((350) * Metre)
+                Terrain        = ~/SmokeHeavy
+            ),
+
+    ]
+)
+export Descriptor_Smoke_Fumi155mm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{37da1e51-375c-44c7-b95e-ea0b6b3720c2}
+    ClassNameForDebug  = 'Smoke_Fumi155mm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((350) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 350 * Metre
+                     Height               = 350 * Metre
+                     Density              = 1.0
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((350) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((350) * Metre)
+                Terrain        = ~/SmokeHeavy
+            ),
+
+    ]
+)
+export Descriptor_Smoke_Fumi203mm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{b39be779-537c-48d2-a09c-3a8e0bca6bc3}
+    ClassNameForDebug  = 'Smoke_Fumi203mm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((500) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 500 * Metre
+                     Height               = 350 * Metre
+                     Density              = 1.0
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((350) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((500) * Metre)
+                Terrain        = ~/SmokeHeavy
+            ),
+
+    ]
+)
+export Descriptor_Smoke_Fumi60mm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{9e5cbce4-64d7-47a6-a968-004e3cf94faf}
+    ClassNameForDebug  = 'Smoke_Fumi60mm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((150) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 150 * Metre
+                     Height               = 150 * Metre
+                     Density              = 0.1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((150) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((150) * Metre)
+                Terrain        = ~/SmokeLight
+            ),
+
+    ]
+)
+export Descriptor_Smoke_Fumi81mm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{af22ca6f-2562-479a-bcdf-eedab4359bdb}
+    ClassNameForDebug  = 'Smoke_Fumi81mm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((200) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 200 * Metre
+                     Height               = 200 * Metre
+                     Density              = 0.1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((200) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((200) * Metre)
+                Terrain        = ~/SmokeLight
+            ),
+
+    ]
+)
+export Descriptor_Smoke_FumiBombe is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{cded78bb-996a-4c8b-b66b-0881a23cba25}
+    ClassNameForDebug  = 'Smoke_FumiBombe'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((400) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 400 * Metre
+                     Height               = 350 * Metre
+                     Density              = 1.0
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((350) * Metre)
+                TimeToLive     = ((100) * Seconde)
+                Radius         = ((400) * Metre)
+                Terrain        = ~/SmokeHeavy
+            ),
+
+    ]
+)
+export Descriptor_Smoke_FumiIncendie is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{56dbd528-b47c-41c8-a36b-9c5ad964b8b3}
+    ClassNameForDebug  = 'Smoke_FumiIncendie'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+    ]
+)
+export Descriptor_Smoke_FumiNapalm is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{949b283b-2bc7-424c-a115-49417f578420}
+    ClassNameForDebug  = 'Smoke_FumiNapalm'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((200) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+    ]
+)
+export Descriptor_Smoke_FumiNapalmleger is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{94a281ba-453b-46e0-bde6-950db557e0d4}
+    ClassNameForDebug  = 'Smoke_FumiNapalmleger'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((100) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+    ]
+)
+export Descriptor_Smoke_FumiNapalmlourd is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{b4ffe021-e8ed-4749-b7c3-3e2a8d38d623}
+    ClassNameForDebug  = 'Smoke_FumiNapalmlourd'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((400) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+    ]
+)
+export Descriptor_Smoke_FumiTest1 is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId       = GUID:{6dfb17cb-132c-4216-b53f-e56d9a564c5d}
+    ClassNameForDebug  = 'Smoke_FumiTest1'
+    ModulesDescriptors = [
+        // TypeUnit
+            TTypeUnitModuleDescriptor
+            (
+                TypeUnitValue                    = ETypeUnit/Smoke
+            ),
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Position
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = False
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                HasNearlyNullBBox          = False
+                GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                Radius                     = ((10) * Metre)
+                RelativeScanningPosition   = [0,0,0]
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                Depiction  = Template_DescriptorSmoke_Depiction
+                (
+                     Radius               = 10 * Metre
+                     Height               = 350 * Metre
+                     Density              = 0.1
+                )
+                DefaultVisibility  = True
+            ),
+
+        // Smoke
+            TSmokeModuleDescriptor
+            (
+                Altitude       = ((350) * Metre)
+                TimeToLive     = ((70) * Seconde)
+                Radius         = ((10) * Metre)
+                Terrain        = ~/SmokeLight
+            ),
+
+    ]
+)

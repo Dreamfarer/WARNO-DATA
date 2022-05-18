@@ -1,0 +1,359 @@
+EscapeMenuSpaceBetweenButtons is 12
+EscapeMenuButtonWidth is 225
+
+private EscapePanelContinueButton is ConfirmButton
+(
+    ElementName = "ContinueButton"
+    TextToken = 'AB_CONTINU'
+
+    HintTitleToken = "OES_CNTINT"
+    HintBodyToken = "OES_CNTINB"
+    HintExtendedToken = "OES_CNTINE"
+
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_F10 ) )
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelRestartButton is ConfirmButton
+(
+    ElementName = "RestartButton"
+    TextToken = 'AB_RESTART'
+
+    HintTitleToken = "OES_RSTRTT"
+    HintBodyToken = "OES_RSTRTB"
+    HintExtendedToken = "OES_RSTRTE"
+
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelHelpButton is ConfirmButton
+(
+    ElementName = "HelpButton"
+    TextToken = 'AB_HELP'
+
+    HintTitleToken = "OES_HELPT"
+    HintBodyToken = "OES_HELPB"
+    HintExtendedToken = "OES_HELPE"
+
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelSaveButton is ConfirmButton
+(
+    ElementName = "SaveButton"
+    TextToken = 'AB_SAVEGAM'
+
+    HintTitleToken = "OES_SAVET"
+    HintBodyToken = "OES_SAVEB"
+    HintExtendedToken = "OES_SAVEE"
+
+
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+
+
+    Components = [
+        BUCKTextDescriptor
+        (
+            ElementName = "SaveDisabledText"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                AlignementToFather = [1.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+                MagnifiableOffset = [10.0, 0.0]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "Liberator"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+            TextToken = "AB_SAVEDIS"
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = "Noir"
+            TextSize = "BoutonURL"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelLoadButton is ConfirmButton
+(
+    ElementName = "LoadButton"
+    TextToken = 'AB_LOADGAM'
+
+    HintTitleToken = "OES_LOADT"
+    HintBodyToken = "OES_LOADB"
+    HintExtendedToken = "OES_LOADE"
+
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelOptionsButton is ConfirmButton
+(
+    ElementName = "OptionsButton"
+    TextToken = 'AB_OPTIONS'
+
+    HintTitleToken = "OES_OPTNST"
+    HintBodyToken = "OES_OPTNSB"
+    HintExtendedToken = "OES_OPTNSE"
+
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelTutorialGuideButton is ConfirmButton
+(
+    ElementName = "TutorialGuideButton"
+    TextToken = 'AB_GUIDE'
+
+    HintableAreaElementName = "TutorialGuideButtonHintableAreaElement"
+    HintTitleToken = "OES_GUIDT"
+    HintBodyToken = "OES_GUIDB"
+    HintExtendedToken = "OES_GUIDE"
+
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+private BoutonLancementManual is ConfirmButton
+(
+    ElementName = "lancementManual"
+    TextToken = 'AB_GUIDE'
+
+    HintableAreaElementName = "TutorialGuideButtonHintableAreaElement"
+    HintTitleToken = "OES_GUIDT"
+    HintBodyToken = "OES_GUIDB"
+    HintExtendedToken = "OES_GUIDE"
+
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+private EscapePanelSurrenderOrQuitButton is ConfirmButton
+(
+    ElementName = "SurrenderOrQuitButton"
+    TextToken = 'AB_QUITGAM'
+
+    HintableAreaElementName = "SurrenderOrQuitButtonHintableAreaElement"
+    HintTitleToken = "OES_EXITT"
+    HintBodyToken = "OES_EXITB"
+    HintExtendedToken = "OES_EXITE"
+    //HintDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur_cyan'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'Cyan'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_cyan'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+
+
+
+// -------------------------------------------------------------------------------------------------
+
+private MagnifiableEscapeMenuWidth is 400.0
+
+fullEscapeMenu is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,1]
+        )
+    //HasBackground = true
+    BackgroundBlockColorToken = 'Vert'
+    Components =
+    [
+    EscapeMenuDescriptor,
+    AnimatedLancementTutorial
+    ]
+)
+
+private EscapeMenuDescriptor is BUCKListDescriptor
+(
+    ElementName = "EscapeMenuMainList"
+
+    ComponentFrame = TUIFramePropertyRTTI(
+        AlignementToFather = [ 0.5, 0.5 ]
+        AlignementToAnchor = [ 0.5, 0.5 ]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    InterItemMargin = TRTTILength( Magnifiable = ~/EscapeMenuSpaceBetweenButtons )
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    GridAlign = false
+    AssumeChildrenAreFixedSize = true
+    AssumeChildrenAreClippable = false
+
+    Elements =
+    [
+    BUCKListElementDescriptor
+        (
+                ComponentDescriptor = BoutonLancementManual
+                ),
+    ]
+
+    BackgroundComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+                )
+            TextureToken = 'Outgame_modale_fond'
+            TextureDrawer = 'MonochromeMonitorEffect'
+        )
+    ]
+
+    ForegroundComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+                )
+            TextureToken = 'Outgame_modale_foreground'
+            TextureDrawer = 'ColorMultiply_Additive'
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+AnimatedLancementTutorial is BUCKTranslationAnimatedContainerDescriptor
+(
+    ButtonNameForTrigger = 'lancementManual'
+    FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1,1]
+        AlignementToAnchor = [0.0, 1.0]
+        AlignementToFather = [0.0, 0.0]
+        MagnifiableOffset = [-2000,0]
+        )
+    AnimationTotalDuration = 0.20
+    FramePropertyAfterAnimation = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,1]
+        AlignementToAnchor = [0.0, 1.0]
+        AlignementToFather = [0.0, 1.0]
+        MagnifiableOffset = [0.0, 0.0]
+        )
+    Components =
+    [
+    ~/AllManuelContainer
+
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+EscapePanelResource is TUISpecificOutGameEscapePanelResources
+(
+    EscapePanelMenu = ~/fullEscapeMenu
+
+    EscapePanelContinueButton = ~/EscapePanelContinueButton
+    EscapePanelRestartButton = ~/EscapePanelRestartButton
+    EscapePanelHelpButton = ~/EscapePanelHelpButton
+    EscapePanelSaveButton = ~/EscapePanelSaveButton
+    EscapePanelLoadButton = ~/EscapePanelLoadButton
+    EscapePanelOptionsButton = ~/EscapePanelOptionsButton
+    EscapePanelTutorialGuideButton = ~/EscapePanelTutorialGuideButton
+    EscapePanelSurrenderOrQuitButton = ~/EscapePanelSurrenderOrQuitButton
+)

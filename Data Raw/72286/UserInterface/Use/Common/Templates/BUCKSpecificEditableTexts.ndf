@@ -1,0 +1,257 @@
+
+private DefaultEditableTextHeight is 35.0
+private DefaultEditableTextWidth is 350.0
+private DefaultEditableTextDims is [ DefaultEditableTextWidth, DefaultEditableTextHeight ]
+
+private DefaultEditableTextMaxChar is 255
+
+template BUCKSpecificEditableTextDescriptor
+[
+    // ++ BUCKContainerDescriptor
+    ElementName : string = "",
+    UniqueName : string = "",
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( MagnifiableWidthHeight = DefaultEditableTextDims ),
+
+    MagnifierMultiplication : float = 0.0,
+
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+    HidePointerEvents : bool = false,
+
+    GridAlign : bool = false,
+
+    IsDroppable : bool = false,
+    ForegroundForDropBlockColor : string = "",
+    BorderForDropLineColor : string = "",
+    BorderForDropLineThicknessToken : string = "",
+
+    FitStyle : int = ~/ContainerFitStyle/None,
+    ChildFitToContent : bool = false,
+
+    ClipContent : bool = false,
+
+    SpotlightComponent : TBUCKContainerDescriptor = nil,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HasBackground : bool = false,
+    BackgroundBlockColorToken : string = "InputField/Background",
+
+    HasBorder : bool = true,
+    BordersToDraw : int = ~/TBorderSide/Default,
+    BorderThicknessToken : string = "1",
+    BorderLineColorToken : string = "InputField/Line",
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    LocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+
+    ComponentStateLocked : bool = false,
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    // -- BUCKContainerDescriptor
+
+    // ++ BUCKEditableTextDescriptor
+    ClippingContainerName : string = "",
+    ClippingContainerFrameProperty : TUIFramePropertyRTTI = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] ),
+
+    HintComponentName : string = "",
+    HintComponentDescriptor : TBUCKContainerDescriptor = nil,
+
+    SelectionColorToken : string = "InputField/Selection",
+
+    TypefaceToken : string = "UIMainFont",
+    TextColorToken : string = "Blanc",
+    TextSizeToken : string = "17",
+
+    MaxChars : int = DefaultEditableTextMaxChar,
+
+    TextStyle : string = "",
+
+    Flags : int = 0,
+    DontMaskEventOnValidate : bool = false,
+    SelectTextOnFocus : bool = false,
+]
+is BUCKEditableTextDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    ComponentFrame = <ComponentFrame>
+
+    MagnifierMultiplication = <MagnifierMultiplication>
+
+    PointerEventsToAllow = <PointerEventsToAllow>
+    HidePointerEvents = <HidePointerEvents>
+
+    GridAlign = <GridAlign>
+
+    IsDroppable = <IsDroppable>
+    ForegroundForDropBlockColor = <ForegroundForDropBlockColor>
+    BorderForDropLineColor = <BorderForDropLineColor>
+    BorderForDropLineThicknessToken = <BorderForDropLineThicknessToken>
+
+    FitStyle = <FitStyle>
+    ChildFitToContent = <ChildFitToContent>
+
+    ClipContent = <ClipContent>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    UniformDrawer = <UniformDrawer>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BordersToDraw = <BordersToDraw>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    LocalRenderLayer = <LocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+
+    ComponentStateLocked = <ComponentStateLocked>
+
+    Components = <Components>
+
+    ClippingContainerName = <ClippingContainerName>
+    ClippingContainerFrameProperty = <ClippingContainerFrameProperty>
+
+    HintComponentName = <HintComponentName>
+    HintComponentDescriptor = <HintComponentDescriptor>
+
+    SelectionColorToken = <SelectionColorToken>
+
+    TypefaceToken = <TypefaceToken>
+    TextColorToken = <TextColorToken>
+    TextSizeToken = <TextSizeToken>
+
+    MaxChars = <MaxChars>
+
+    TextStyle = <TextStyle>
+
+    Flags = <Flags>
+    DontMaskEventOnValidate = <DontMaskEventOnValidate>
+    SelectTextOnFocus = <SelectTextOnFocus>
+)
+
+private DefaultChampSaisieHeight is 33.0
+private DefaultChampSaisieWidth is 385.0
+private DefaultChampSaisieDims is [ DefaultChampSaisieWidth, DefaultChampSaisieHeight ]
+
+private DefaultChampSaisieMaxChar is 36
+
+template BUCKEditableTextInputFieldDescriptor
+[
+    UniqueName : string = "",
+    ElementName : string = "",
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI( MagnifiableWidthHeight = DefaultChampSaisieDims ),
+
+    Flags : int = EditableTextFlag/ONE_LINE,
+    MaxChars : int = DefaultChampSaisieMaxChar,
+
+    HintComponentName : string = "",
+    HintComponentDescriptor : TBUCKContainerDescriptor = nil,
+
+    SelectTextOnFocus : bool = true,
+    TextSizeToken : string = "SD2_Moyen",
+    TextStyle : string = "",
+
+    DontMaskEventOnValidate : bool = false,
+    ClippingContainerFrameProperty : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-20.0, -6.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    ),
+
+    HasBorder : bool = true,
+    BorderThicknessToken : string = "1",
+    BorderLineColorToken : string = "InputField/Line",
+
+
+]
+is BUCKSpecificEditableTextDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+
+    HasBackground = true
+    BackgroundBlockColorToken = "VertLogin"
+
+    HasBorder = <HasBorder>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+
+    HintComponentName = <HintComponentName>
+    HintComponentDescriptor = <HintComponentDescriptor>
+
+    // A MODIFIER
+    BorderForDropLineThicknessToken = "1"
+    BorderForDropLineColor = "InputField/Line"
+
+    MaxChars = <MaxChars>
+    TextColorToken = "Noir"
+
+    SelectionColorToken = "InputField/Selection"
+
+    TextSizeToken = <TextSizeToken>
+
+    TextStyle = <TextStyle>
+    TypefaceToken = "IBM"
+    ClippingContainerFrameProperty = <ClippingContainerFrameProperty>
+
+    Flags = <Flags>
+    SelectTextOnFocus = <SelectTextOnFocus>
+    DontMaskEventOnValidate = <DontMaskEventOnValidate>
+)
+
+
+
+
+// Editable text used for login panel and game room list panel
+template BUCKSpecificEditableTextInputFieldDescriptor
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [700.0, 30.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    ),
+
+    // (OlivierB, 29/11/18) A toi qui repasse par ici, si tu constates comme je le pense qu'il n'y a plus que des borders à 0 partout - un style à peu près unifié quoi - met false par défaut
+    HasBorder : bool = true,
+    BorderThicknessToken : string = "1",
+    BorderLineColorToken : string = "InputField/Line",
+
+    MaxChars : int = 140,
+    Flags : int = 0,
+    DontMaskEventOnValidate : bool = false,
+]
+is BUCKEditableTextInputFieldDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+
+    ComponentFrame = <ComponentFrame>
+
+    HasBorder = <HasBorder>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+
+    MaxChars = <MaxChars>
+    Flags = <Flags>
+
+    DontMaskEventOnValidate = <DontMaskEventOnValidate>
+
+    TextStyle = "Default"
+)

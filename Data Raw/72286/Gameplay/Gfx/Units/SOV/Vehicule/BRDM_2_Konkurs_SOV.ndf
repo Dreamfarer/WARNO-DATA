@@ -1,0 +1,22 @@
+export ModelFile_BRDM_2_Konkurs_SOV is 'GameData:/Assets/3D/Units/URSS/Antichar/BRDM2_Konkurs/BRDM2_Konkurs.Ase2NdfBin'
+
+Modele_BRDM_2_Konkurs_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BRDM_2_Konkurs_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_2_Konkurs_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/BRDM2_Konkurs_MID/BRDM2_Konkurs_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_2_Konkurs_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/LODS/BRDM2_Konkurs_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

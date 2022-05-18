@@ -1,0 +1,19 @@
+export ModelFile_HEMTT is 'GameData:/Assets/3D/Units/US/Vehicule/M978_HEMTT/M978_HEMTT.Ase2NdfBin'
+
+Modele_HEMTT is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_HEMTT
+    CivMask =  CivMask/Common
+)
+
+Modele_HEMTT_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/M978_HEMTT_MID/M978_HEMTT_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_HEMTT_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/LODS/M978_HEMTT_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

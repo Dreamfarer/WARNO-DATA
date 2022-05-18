@@ -1,0 +1,46 @@
+
+export CriticalEffectModule_TestUnits is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,100)
+    TerrainCriticalEffectTimer = 5.0
+
+    PierceEffectsOnFront =
+    [
+        CriticalEffect_AmmoExplosion(Roll = (1,50)),
+    ]
+
+    PierceEffectsOnSides =
+    [
+        CriticalEffect_AmmoExplosion(Roll = (1,50)),
+    ]
+
+    PierceEffectsOnRear =
+    [
+        CriticalEffect_AmmoExplosion(Roll = (1,50)),
+    ]
+
+    PierceEffectsOnTop =
+    [
+        CriticalEffect_AmmoExplosion(Roll = (1,50)),
+    ]
+
+    RicochetEffectsOnFront =
+    [
+        CriticalEffect_Bounce(Roll = (1,100)),
+    ]
+
+    RicochetEffectsOnSides =
+    [
+        CriticalEffect_Bounce(Roll = (1,100)),
+    ]
+
+    RicochetEffectsOnRear =
+    [
+        CriticalEffect_Bounce(Roll = (1,100)),
+    ]
+
+    RicochetEffectsOnTop =
+    [
+        CriticalEffect_Bounce(Roll = (1,100)),
+    ]
+)

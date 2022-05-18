@@ -1,0 +1,720 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export ExperienceLevelsPackDescriptor_Exemple_XP is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{77b67d38-2c5c-44a5-867a-08452739bcf7}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_Exemple_XP_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{b3855bf3-9b50-440e-a706-03cf34223a16}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Exemple_XP_niveau_0"
+        ),
+        ExperienceLevelDescriptor_Exemple_XP_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{4704b662-4c37-4fc6-9c2c-4050f14e0e19}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Exemple_XP_niveau_1"
+        ),
+        ExperienceLevelDescriptor_Exemple_XP_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{95d80997-b38d-4066-bd58-035b61dbd5f8}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Exemple_XP_niveau_2"
+        ),
+        ExperienceLevelDescriptor_Exemple_XP_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{d17817e7-f7d4-4dba-8174-9b953dcd2cc0}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Exemple_XP_niveau_3"
+        ),
+    ]
+    NameForDebug = "Exemple_XP"
+)
+export ExperienceLevelsPackDescriptor_Experience_Avion is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{09d2b759-e29e-4cae-b126-264c621c9378}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_Experience_Avion_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{4c51c4ae-c67f-4e03-bfdd-c73963c214d0}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Experience_Avion_niveau_0"
+        ),
+        ExperienceLevelDescriptor_Experience_Avion_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{ccea8f50-fab7-4a34-911f-250ef6c86021}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_15,
+                ~/UnitEffect_Effet_Suppress_Recu_85pourcent,
+                ~/UnitEffect_Esquive_plus_15,
+            ]
+            NameForDebug = "Experience_Avion_niveau_1"
+        ),
+        ExperienceLevelDescriptor_Experience_Avion_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{91f83bd8-c189-41a0-81f7-53dd3b0d76bf}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+                ~/UnitEffect_Esquive_plus_25,
+            ]
+            NameForDebug = "Experience_Avion_niveau_2"
+        ),
+        ExperienceLevelDescriptor_Experience_Avion_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{c626d385-efa8-480e-a4ba-1d316386b5f5}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_33,
+                ~/UnitEffect_Effet_Suppress_Recu_66pourcent,
+                ~/UnitEffect_Esquive_plus_33,
+            ]
+            NameForDebug = "Experience_Avion_niveau_3"
+        ),
+    ]
+    NameForDebug = "Experience_Avion"
+)
+export ExperienceLevelsPackDescriptor_Experience_Infanterie is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{8ce42705-7da3-4c4b-b1a1-559d43e352f7}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_Experience_Infanterie_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{14796c59-489b-47bc-87a0-5a74c66df48d}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Experience_Infanterie_niveau_0"
+        ),
+        ExperienceLevelDescriptor_Experience_Infanterie_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{508a0ce7-67bb-485f-affb-539dfa79d21f}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_15,
+                ~/UnitEffect_Effet_Suppress_Recu_85pourcent,
+                ~/UnitEffect_RoF_plus_15pourcent,
+                ~/UnitEffect_Resistance_plus_15pourcent,
+                ~/UnitEffect_Mobilite_plus_15pourcent,
+            ]
+            NameForDebug = "Experience_Infanterie_niveau_1"
+        ),
+        ExperienceLevelDescriptor_Experience_Infanterie_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{f4adae7b-3ec4-4df2-ad67-e19bb2b3241f}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+                ~/UnitEffect_RoF_plus_25pourcent,
+                ~/UnitEffect_Resistance_plus_25pourcent,
+                ~/UnitEffect_Mobilite_plus_25pourcent,
+            ]
+            NameForDebug = "Experience_Infanterie_niveau_2"
+        ),
+        ExperienceLevelDescriptor_Experience_Infanterie_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{032c7a4e-5679-4c34-a519-ae615bd9b733}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_33,
+                ~/UnitEffect_Effet_Suppress_Recu_66pourcent,
+                ~/UnitEffect_RoF_plus_33pourcent,
+                ~/UnitEffect_Resistance_plus_33pourcent,
+                ~/UnitEffect_Mobilite_plus_33pourcent,
+            ]
+            NameForDebug = "Experience_Infanterie_niveau_3"
+        ),
+    ]
+    NameForDebug = "Experience_Infanterie"
+)
+export ExperienceLevelsPackDescriptor_Experience_Infanterie_comm is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{27aaeab6-b1f7-45a9-a726-1b760b03806a}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_Experience_Infanterie_comm_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{b77aa790-6ef5-40a8-ba8b-0faa831175a6}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_donne_capacite_commandement_1,
+                ~/UnitEffect_donne_capacite_allieproche_comm_1,
+            ]
+            NameForDebug = "Experience_Infanterie_comm_niveau_0"
+        ),
+        ExperienceLevelDescriptor_Experience_Infanterie_comm_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{a9c8a065-6f8b-4e68-a304-039d08979124}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_15,
+                ~/UnitEffect_Effet_Suppress_Recu_85pourcent,
+                ~/UnitEffect_RoF_plus_15pourcent,
+                ~/UnitEffect_Resistance_plus_15pourcent,
+                ~/UnitEffect_Mobilite_plus_15pourcent,
+                ~/UnitEffect_donne_capacite_commandement_2,
+                ~/UnitEffect_donne_capacite_allieproche_comm_2,
+            ]
+            NameForDebug = "Experience_Infanterie_comm_niveau_1"
+        ),
+        ExperienceLevelDescriptor_Experience_Infanterie_comm_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{bb6c3205-b05c-4ae9-b842-a8c6e914025a}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+                ~/UnitEffect_RoF_plus_25pourcent,
+                ~/UnitEffect_Resistance_plus_25pourcent,
+                ~/UnitEffect_Mobilite_plus_25pourcent,
+                ~/UnitEffect_donne_capacite_commandement_3,
+                ~/UnitEffect_donne_capacite_allieproche_comm_3,
+            ]
+            NameForDebug = "Experience_Infanterie_comm_niveau_2"
+        ),
+        ExperienceLevelDescriptor_Experience_Infanterie_comm_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{14c78b2a-4942-437f-87d5-8c0875ac35c2}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_33,
+                ~/UnitEffect_Effet_Suppress_Recu_66pourcent,
+                ~/UnitEffect_RoF_plus_33pourcent,
+                ~/UnitEffect_Resistance_plus_33pourcent,
+                ~/UnitEffect_Mobilite_plus_33pourcent,
+                ~/UnitEffect_donne_capacite_commandement_3,
+                ~/UnitEffect_donne_capacite_allieproche_comm_3,
+            ]
+            NameForDebug = "Experience_Infanterie_comm_niveau_3"
+        ),
+    ]
+    NameForDebug = "Experience_Infanterie_comm"
+)
+export ExperienceLevelsPackDescriptor_Experience_Reco is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{66b6a2bb-fafc-4a3d-8c58-10f074b6cbb9}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_Experience_Reco_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{4d885657-311b-4b26-83f7-b0b3d1de3b6c}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Experience_Reco_niveau_0"
+        ),
+        ExperienceLevelDescriptor_Experience_Reco_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{f9e4cd1b-15c2-4a12-ba7e-4902199ebd7f}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_15,
+                ~/UnitEffect_Effet_Suppress_Recu_85pourcent,
+                ~/UnitEffect_RoF_plus_15pourcent,
+                ~/UnitEffect_Resistance_plus_15pourcent,
+                ~/UnitEffect_Mobilite_plus_15pourcent,
+                ~/UnitEffect_Optiques_plus_15pourcent,
+            ]
+            NameForDebug = "Experience_Reco_niveau_1"
+        ),
+        ExperienceLevelDescriptor_Experience_Reco_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{196e3397-b2a4-4d79-9fd5-f7828d50e10c}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+                ~/UnitEffect_RoF_plus_25pourcent,
+                ~/UnitEffect_Resistance_plus_25pourcent,
+                ~/UnitEffect_Mobilite_plus_25pourcent,
+                ~/UnitEffect_Optiques_plus_25pourcent,
+            ]
+            NameForDebug = "Experience_Reco_niveau_2"
+        ),
+        ExperienceLevelDescriptor_Experience_Reco_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{6e9589b4-3f37-4e0a-9011-e4ab8aa52b54}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_33,
+                ~/UnitEffect_Effet_Suppress_Recu_66pourcent,
+                ~/UnitEffect_RoF_plus_33pourcent,
+                ~/UnitEffect_Resistance_plus_33pourcent,
+                ~/UnitEffect_Mobilite_plus_33pourcent,
+                ~/UnitEffect_Optiques_plus_33pourcent,
+            ]
+            NameForDebug = "Experience_Reco_niveau_3"
+        ),
+    ]
+    NameForDebug = "Experience_Reco"
+)
+export ExperienceLevelsPackDescriptor_Experience_Reco_Vehicule is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{482bda0d-5e12-4c3c-986a-4be2e13bcaf8}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_Experience_Reco_Vehicule_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{924f00db-480a-42be-9422-752ad936e73b}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Experience_Reco_Vehicule_niveau_0"
+        ),
+        ExperienceLevelDescriptor_Experience_Reco_Vehicule_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{4ef4d049-f3db-450c-b2d1-09f64e8f7353}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_15,
+                ~/UnitEffect_Effet_Suppress_Recu_85pourcent,
+                ~/UnitEffect_Tps_entre_salve_85pourcent,
+                ~/UnitEffect_Optiques_plus_15pourcent,
+            ]
+            NameForDebug = "Experience_Reco_Vehicule_niveau_1"
+        ),
+        ExperienceLevelDescriptor_Experience_Reco_Vehicule_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{1eb8957a-5785-4682-af11-079f32560732}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+                ~/UnitEffect_Tps_entre_salve_75pourcent,
+                ~/UnitEffect_Optiques_plus_25pourcent,
+            ]
+            NameForDebug = "Experience_Reco_Vehicule_niveau_2"
+        ),
+        ExperienceLevelDescriptor_Experience_Reco_Vehicule_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{2f557833-570b-48da-90c6-5167c3378bb8}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_33,
+                ~/UnitEffect_Effet_Suppress_Recu_66pourcent,
+                ~/UnitEffect_Tps_entre_salve_66pourcent,
+                ~/UnitEffect_Optiques_plus_33pourcent,
+            ]
+            NameForDebug = "Experience_Reco_Vehicule_niveau_3"
+        ),
+    ]
+    NameForDebug = "Experience_Reco_Vehicule"
+)
+export ExperienceLevelsPackDescriptor_Experience_Tir_Rafale is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{65559138-8d0a-45b6-94af-fe3cf8fe8f07}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_Experience_Tir_Rafale_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{89979293-eba6-4342-bfe2-8835a10a9eda}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Experience_Arme_Lourde_niveau_0"
+        ),
+        ExperienceLevelDescriptor_Experience_Tir_Rafale_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{85670571-8a4b-4ac3-a55e-0d376f74b4dd}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_15,
+                ~/UnitEffect_Effet_Suppress_Recu_85pourcent,
+                ~/UnitEffect_Tps_entre_salve_85pourcent,
+                ~/UnitEffect_Resistance_plus_15pourcent,
+                ~/UnitEffect_Mobilite_plus_15pourcent,
+            ]
+            NameForDebug = "Experience_Arme_Lourde_niveau_1"
+        ),
+        ExperienceLevelDescriptor_Experience_Tir_Rafale_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{810ce2e5-8943-4a92-8c63-6893dde417bb}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+                ~/UnitEffect_Tps_entre_salve_75pourcent,
+                ~/UnitEffect_Resistance_plus_25pourcent,
+                ~/UnitEffect_Mobilite_plus_25pourcent,
+            ]
+            NameForDebug = "Experience_Arme_Lourde_niveau_2"
+        ),
+        ExperienceLevelDescriptor_Experience_Tir_Rafale_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{f9042c3a-a2d6-4a77-b755-ac592ec9c6ad}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_33,
+                ~/UnitEffect_Effet_Suppress_Recu_66pourcent,
+                ~/UnitEffect_Tps_entre_salve_66pourcent,
+                ~/UnitEffect_Resistance_plus_33pourcent,
+                ~/UnitEffect_Mobilite_plus_33pourcent,
+            ]
+            NameForDebug = "Experience_Arme_Lourde_niveau_3"
+        ),
+    ]
+    NameForDebug = "Experience_Tir_Rafale"
+)
+export ExperienceLevelsPackDescriptor_Experience_Vehicule is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{e0b44323-616d-4de8-a662-927a7edc08aa}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_Experience_Vehicule_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{424db17c-1811-4566-966b-1adb68027429}
+            LocalizationToken = "EXP_poor"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 1.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Experience_Vehicule_niveau_0"
+        ),
+        ExperienceLevelDescriptor_Experience_Vehicule_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{48cf8647-b418-4e33-829e-063abd063753}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_15,
+                ~/UnitEffect_Effet_Suppress_Recu_85pourcent,
+                ~/UnitEffect_Tps_entre_salve_85pourcent,
+            ]
+            NameForDebug = "Experience_Vehicule_niveau_1"
+        ),
+        ExperienceLevelDescriptor_Experience_Vehicule_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{23360c19-0f97-4267-a610-07dded49a3bd}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+                ~/UnitEffect_Tps_entre_salve_75pourcent,
+            ]
+            NameForDebug = "Experience_Vehicule_niveau_2"
+        ),
+        ExperienceLevelDescriptor_Experience_Vehicule_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{68e5f006-ab19-4d82-b83f-3500026bcd2f}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_33,
+                ~/UnitEffect_Effet_Suppress_Recu_66pourcent,
+                ~/UnitEffect_Tps_entre_salve_66pourcent,
+            ]
+            NameForDebug = "Experience_Vehicule_niveau_3"
+        ),
+    ]
+    NameForDebug = "Experience_Vehicule"
+)
+export ExperienceLevelsPackDescriptor_Experience_Vehicule_comm is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{240b5495-5c70-4757-9045-387ebd9d0bb3}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_Experience_Vehicule_comm_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{01263532-feff-4857-8a29-9eec820d7b0b}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_donne_capacite_commandement_1,
+                ~/UnitEffect_donne_capacite_allieproche_comm_1,
+            ]
+            NameForDebug = "Experience_Vehicule_comm_niveau_0"
+        ),
+        ExperienceLevelDescriptor_Experience_Vehicule_comm_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{7b5b319b-8300-45ff-891c-ff26e0fa7f54}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_15,
+                ~/UnitEffect_Effet_Suppress_Recu_85pourcent,
+                ~/UnitEffect_Tps_entre_salve_85pourcent,
+                ~/UnitEffect_donne_capacite_commandement_2,
+                ~/UnitEffect_donne_capacite_allieproche_comm_2,
+            ]
+            NameForDebug = "Experience_Vehicule_comm_niveau_1"
+        ),
+        ExperienceLevelDescriptor_Experience_Vehicule_comm_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{1b7396d6-6aa0-4168-bc7e-36e7419ed70a}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+                ~/UnitEffect_Tps_entre_salve_75pourcent,
+                ~/UnitEffect_donne_capacite_commandement_3,
+                ~/UnitEffect_donne_capacite_allieproche_comm_3,
+            ]
+            NameForDebug = "Experience_Vehicule_comm_niveau_2"
+        ),
+        ExperienceLevelDescriptor_Experience_Vehicule_comm_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{c077beee-c1be-4d90-98e2-93c317bb8311}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Precision_plus_33,
+                ~/UnitEffect_Effet_Suppress_Recu_66pourcent,
+                ~/UnitEffect_Tps_entre_salve_66pourcent,
+                ~/UnitEffect_donne_capacite_commandement_3,
+                ~/UnitEffect_donne_capacite_allieproche_comm_3,
+            ]
+            NameForDebug = "Experience_Vehicule_comm_niveau_3"
+        ),
+    ]
+    NameForDebug = "Experience_Vehicule_comm"
+)
+export ExperienceLevelsPackDescriptor_XP_pack_simple is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{f6d29370-ecf8-4600-9f53-a65273cddff6}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_XP_pack_simple_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{15aa937b-94da-4f3c-85ff-daa3dddb1e85}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Tps_entre_salve_115pourcent,
+                ~/UnitEffect_Precision_moins_25,
+                ~/UnitEffect_Effet_Suppress_Recu_125pourcent,
+            ]
+            NameForDebug = "Exemple_XP_niveau_0"
+        ),
+        ExperienceLevelDescriptor_XP_pack_simple_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{aff88178-c66e-4b13-a3dd-d7a393768353}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Exemple_XP_niveau_1"
+        ),
+        ExperienceLevelDescriptor_XP_pack_simple_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{521d83b6-96fe-49e5-ae0e-a2992d5ca2bf}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Tps_entre_salve_85pourcent,
+                ~/UnitEffect_Precision_plus_15,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+            ]
+            NameForDebug = "Exemple_XP_niveau_2"
+        ),
+        ExperienceLevelDescriptor_XP_pack_simple_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{75658644-0d71-4ee6-b54c-1f14e03ffbaa}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_Tps_entre_salve_66pourcent,
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_50pourcent,
+            ]
+            NameForDebug = "Exemple_XP_niveau_3"
+        ),
+    ]
+    NameForDebug = "XP_pack_simple"
+)
+export ExperienceLevelsPackDescriptor_XP_pack_simple_infanterie is TExperienceLevelsPackDescriptor
+(
+    DescriptorId = GUID:{eb38870b-6bd8-417c-825c-70199e234338}
+    ExperienceLevelsDescriptors = [
+        ExperienceLevelDescriptor_XP_pack_simple_infanterie_0 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{34583227-210f-4519-a089-c9aa8aea251e}
+            LocalizationToken = "EXPLEVEL0"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 0.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_RoF_moins_15pourcent,
+                ~/UnitEffect_Precision_moins_25,
+                ~/UnitEffect_Effet_Suppress_Recu_25pourcent,
+            ]
+            NameForDebug = "Exemple_XP_niveau_0"
+        ),
+        ExperienceLevelDescriptor_XP_pack_simple_infanterie_1 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{f566903a-15a3-48df-b543-284891dfce02}
+            LocalizationToken = "EXPLEVEL1"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 2.0
+            IconsByNationality = [
+            ]
+            NameForDebug = "Exemple_XP_niveau_1"
+        ),
+        ExperienceLevelDescriptor_XP_pack_simple_infanterie_2 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{29899302-a950-4cdd-8226-e088931945f1}
+            LocalizationToken = "EXPLEVEL2"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 4.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_RoF_plus_15pourcent,
+                ~/UnitEffect_Precision_plus_25,
+                ~/UnitEffect_Effet_Suppress_Recu_75pourcent,
+            ]
+            NameForDebug = "Exemple_XP_niveau_2"
+        ),
+        ExperienceLevelDescriptor_XP_pack_simple_infanterie_3 is TExperienceLevelDescriptor
+        (
+            DescriptorId = GUID:{6e6d115b-20fa-4e1e-99e8-ca5061674eb3}
+            LocalizationToken = "EXPLEVEL3"
+            ThresholdAdditionalValue = 0.0
+            ThresholdPriceMultiplier = 6.0
+            IconsByNationality = [
+            ]
+            LevelEffectsPacks = [
+                ~/UnitEffect_RoF_plus_33pourcent,
+                ~/UnitEffect_Precision_plus_50,
+                ~/UnitEffect_Effet_Suppress_Recu_50pourcent,
+            ]
+            NameForDebug = "Exemple_XP_niveau_3"
+        ),
+    ]
+    NameForDebug = "XP_pack_simple_infanterie"
+)

@@ -1,0 +1,22 @@
+export ModelFile_2K12_KUB_SOV is 'GameData:/Assets/3D/Units/URSS/DCA/2K12_KUB/2K12_KUB.Ase2NdfBin'
+
+Modele_2K12_KUB_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_2K12_KUB_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_2K12_KUB_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/2K12_KUB_MID/2K12_KUB_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_2K12_KUB_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/LODS/2K12_KUB_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

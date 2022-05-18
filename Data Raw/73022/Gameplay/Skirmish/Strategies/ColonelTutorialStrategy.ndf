@@ -1,0 +1,187 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export ColonelTutorialStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenericAI"
+    FirstGenerator = Gen_StartStrategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = false
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+    ]
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Gen_StartStrategy is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+
+        ZoneAttack_Adaptive,
+        ZoneDefense_Adaptive,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ Attack -----------------------------------
+//-------------------------------------------------------------------------
+private template Template_ZoneAttack
+[
+    MinimumResourceForLaunch:int = 0,
+    RatioMinimumPourAttaquer:float = 1.0,
+    RatioPourAttaquerPerduAChaqueTick:float = 0.0005,
+    OrderedZoneWeightList = [99],
+]
+is TMacroActionDescriptor_Attack_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [Pool_Default_ZoneAttack] LaunchASAP_RatioMin = 0.01),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = <RatioMinimumPourAttaquer> RatioPourAttaquerPerduAChaqueTick = <RatioPourAttaquerPerduAChaqueTick> CompterLesUnitesEnZoneExtendedDansLaMenace = true UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true),
+        TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = <OrderedZoneWeightList>),
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TAntiStackingSettingHolder(),
+        TCorridorPlacementSettingHolder(MargeDeRegroupementDepuisLaLigneDeFront = 1)
+    ]
+)
+
+//-------------------------------------------------------------------------
+export ZoneAttack_Adaptive is Template_ZoneAttack
+(
+    RatioMinimumPourAttaquer = 1.0
+    RatioPourAttaquerPerduAChaqueTick = 0.00083
+)
+
+//-------------------------------------------------------------------------
+export Pool_Default_ZoneAttack is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{5ba31e80-e9b5-11e9-8fa9-704d7b2c87d4}
+            Required = true
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie",
+                "Vehicule_Transport_Arme",
+                "Vehicule_Transport",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{5ba4cc30-e9b5-11e9-b731-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char",
+                "Infanterie",
+                "Vehicule_Transport_Arme",
+                "Vehicule_Transport",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{9d20f2e1-e9b7-11e9-a823-704d7b2c87d4}
+            Required = false
+            IndexPriorityOverPrice = true
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Vehicule_Transport_Arme",
+                "Vehicule_Transport",
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ Defense -----------------------------------
+//-------------------------------------------------------------------------
+
+private template Template_Defense
+[
+    NumberLaunchBasedOnGenerationType:int = 1,
+    MinimumResourceForLaunch:int = 0,
+    OrderedZoneWeightList = [1],
+]
+is TMacroActionDescriptor_Defense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = <NumberLaunchBasedOnGenerationType>),
+        TDefensePositionSettingHolder(IgnoreDefensePositionSafety = true),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [Tuto_Pool_HMG_Defense] LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = <OrderedZoneWeightList>),
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//-------------------------------------------------------------------------
+export ZoneDefense_Adaptive is Template_Defense
+(
+)
+
+//-------------------------------------------------------------------------
+export Tuto_Pool_HMG_Defense is TPoolModel
+(
+    // Pas de budget, il faut quelqu'un
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{9d227980-e9b7-11e9-83d9-704d7b2c87d4}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie_Spec_Defense",
+                "Infanterie",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{9d227981-e9b7-11e9-876a-704d7b2c87d4}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Infanterie",
+            ]
+        ),
+    ]
+)

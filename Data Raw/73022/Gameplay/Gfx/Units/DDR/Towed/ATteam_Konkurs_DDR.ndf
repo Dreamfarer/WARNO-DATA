@@ -1,0 +1,22 @@
+export ModelFile_ATteam_Konkurs_DDR is 'GameData:/Assets/3D/Units/URSS/Antichar/Konkurs/Konkurs.Ase2NdfBin'
+
+Modele_ATteam_Konkurs_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_ATteam_Konkurs_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_Konkurs_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/Konkurs/Konkurs.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_Konkurs_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/Konkurs/Konkurs.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

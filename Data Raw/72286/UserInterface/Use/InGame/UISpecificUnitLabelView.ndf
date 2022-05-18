@@ -1,0 +1,1783 @@
+// Icône d'évacuation
+UnitLabelUnitEvacIconBUCKComponent is BUCKTextureDescriptor
+(
+    ElementName = 'EvacuationIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [23.0, 23.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+    TextureToken = "icone_evacuation"
+)
+
+//----------------------------------------------------------------------
+// Nom du joueur
+UnitLabelUnitPlayerNameBUCKComponent is BUCKTextDescriptor
+(
+    ElementName = 'PlayerName'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "PlayerName"
+    HasBackground = false
+    TextPadding = TRTTILength4(Magnifiable = [1.0, 1.0, 1.0, 1.0])
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "Fulda_Turquoise"
+    TextSize = "20"
+)
+
+//----------------------------------------------------------------------
+// Nom de l'unité
+template UnitLabelUnitNameBUCKComponent
+[
+    Alignement : float2 = [0.0, 0.0],
+    IsForMultiSelection : bool = false,
+    IsForCarriedUnit : bool = false,
+]
+is BUCKTextDescriptor
+(
+    ElementName = <IsForCarriedUnit> ? 'CarriedUnitName' : 'UnitName'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = <Alignement>
+        AlignementToAnchor = <Alignement>
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Left
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    HasBackground = <IsForMultiSelection> ? false : true
+    TextPadding = <IsForMultiSelection> ? TRTTILength4(Magnifiable = [3.0, 0.0, 3.0, 0.0]) : TRTTILength4(Magnifiable = [3.0, 1.0, 3.0, 1.0])
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextStyle = "Default"
+    TypefaceToken = "UISecondFont"
+    TextColor = "Blanc"
+    TextSize = (<IsForMultiSelection> ? "19" : "14")
+)
+
+//----------------------------------------------------------------------
+// Icône d'unité
+
+LabelUnitIconWidthHeight is [46.0, 46.0]
+
+template UnitLabelUnitIcon
+[
+    LocalRenderLayer : int,
+    HasBorder : bool = false,
+    MagnifiableOffset : float2 = [0.0, 0.0],
+    MagnifiableWidthHeight : float2 = ~/LabelUnitIconWidthHeight,
+    AlignementToFather : float2 = [0.0, 0.5],
+    AlignementToAnchor : float2 = [0.0, 0.5],
+    IsForAggregationView : bool = false
+]
+is BUCKTextureDescriptor
+(
+    ElementName = 'UnitIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+        MagnifiableOffset = <MagnifiableOffset>
+        AlignementToFather = <AlignementToFather>
+        AlignementToAnchor = <AlignementToAnchor>
+    )
+
+    HasBorder = <HasBorder>
+    BorderThicknessToken = '2'
+    BorderLineColorToken = 'Blanc'
+    HasBackground = true
+    UseLocalRenderLayer = true
+    LocalRenderLayer = <LocalRenderLayer>
+
+    TextureFrame   = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    TextureDrawer = 'ColorMultiply_Additive'
+    ClipTextureToComponent = true
+
+    Components =
+    [
+        UnitLabelCarriedUnitIcon(LocalRenderLayer = <LocalRenderLayer>),
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                AlignementToFather = [0.0, 1.0]
+                AlignementToAnchor = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            InterItemMargin = TRTTILength(Magnifiable = 0.1)
+
+            Elements = (<IsForAggregationView> ?
+            [
+                BUCKListElementDescriptor(ComponentDescriptor = OverlayIconContainer()),
+                BUCKListElementDescriptor(ComponentDescriptor = UnitLabelUnitMoraleGaugeBUCKComponent(LocalRenderLayer = <LocalRenderLayer>+1))
+            ]:
+            [
+                BUCKListElementDescriptor(ComponentDescriptor = UnitLabelUnitMoraleGaugeBUCKComponent(LocalRenderLayer = <LocalRenderLayer>+1))
+            ])
+        ),
+        UnitLabelUnitExperienceIconsBUCKComponent(LocalRenderLayer = <LocalRenderLayer>+1),
+        UnitLabelSpecialtyIcon(LocalRenderLayer = <LocalRenderLayer>+1),
+        RadarActivityIcon(LocalRenderLayer = <LocalRenderLayer>+1),
+        SmartChipList(LocalRenderLayer = <LocalRenderLayer>+1),
+    ]
+)
+
+//----------------------------------------------------------------------
+// Fond de l'étiquette
+// les couleurs (background et lignes) sont spécifiées directement dans PlayerUIHelper.ndf
+template UnitLabelBackground
+[
+    LocalRenderLayer : int,
+    MagnifiableWidthHeight : float2 = [47.0, 47.0],
+    FrameMagnifiableWidthHeight : float2 = [62.0, 62.0],
+]
+is BUCKTextureDescriptor
+(
+    ElementName = 'Background'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+    )
+
+    UseLocalRenderLayer = true
+    HasBackground = false
+    BackgroundLocalRenderLayer = <LocalRenderLayer> - 1
+    LocalRenderLayer = <LocalRenderLayer>
+    HasBorder = false
+    BorderThicknessToken = '2'
+    BorderLineColorToken = 'Blanc'
+
+    TextureFrame   = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <FrameMagnifiableWidthHeight>
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    ClipTextureToComponent = false
+)
+
+//----------------------------------------------------------------------
+// Nombre de groupes d'unités
+template UnitGroupCount
+[
+    LocalRenderLayer : int
+]
+is BUCKTextDescriptor
+(
+    ElementName = 'UnitGroupCount'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+    )
+
+    UseLocalRenderLayer = true
+    LocalRenderLayer = <LocalRenderLayer> + 1
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "Default"
+    TextPadding = TRTTILength4(Magnifiable = [2.0, 1.0, 3.0, 1.0])
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+    HasBackground = false
+    BackgroundBlockColorToken = "Fulda_Turquoise"
+    TypefaceToken = "UISecondFont"
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextColor = "Blanc"
+    TextSize = "14"
+
+    Components =
+    [
+        PanelRoundedCorner
+        (
+            BackgroundBlockColorToken = 'Noir'
+            BorderLineColorToken = 'Gris_pi'
+            Radius = 3
+            UseLocalRenderLayer = true
+            LocalRenderLayer = <LocalRenderLayer>
+        )
+    ]
+)
+
+//----------------------------------------------------------------------
+// Icône de parachutiste
+template UnitLabelParachutistIcon
+[
+    LocalRenderLayer : int
+]
+is BUCKContainerDescriptor
+(
+    ElementName = 'ParachutistIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [95.0, 31.0]
+        MagnifiableOffset = [0.0, -21.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = 'ParachutistIconL'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [45.0, 27.0]
+                AlignementToFather = [0.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+            )
+
+            UseLocalRenderLayer = true
+            LocalRenderLayer = <LocalRenderLayer>
+
+            TextureToken = "CommonTexture_Parachutiste_Left"
+            TextureFrame   = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ElementName = 'ParachutistIconR'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [45.0, 27.0]
+                AlignementToFather = [1.0, 0.5]
+                AlignementToAnchor = [1.0, 0.5]
+            )
+
+            UseLocalRenderLayer = true
+            LocalRenderLayer = <LocalRenderLayer>
+
+            TextureToken = "CommonTexture_Parachutiste_Right"
+            TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+        ),
+    ]
+)
+//----------------------------------------------------------------------
+// Icône d'AP
+template UnitLabelApIcon
+[
+    LocalRenderLayer : int
+]
+is BUCKContainerDescriptor
+(
+    ElementName = 'APIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [22.0, 16.0]
+        MagnifiableOffset = [-1.0, 44.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = 'APIconText'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableOffset = [1.0, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+
+            UseLocalRenderLayer = true
+            LocalRenderLayer = <LocalRenderLayer> + 1
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "UIMainFont"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "SD2_NoirPur"
+            TextSize = "10"
+        ),
+    ]
+)
+
+//----------------------------------------------------------------------
+// Icône de transport
+template UnitLabelCarriedUnitIcon
+[
+    LocalRenderLayer : int,
+    MagnifiableOffset : float2 = [-3.0, 0.0]
+]
+is BUCKTextureDescriptor
+(
+    ElementName = 'CarriedUnitIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 20.0]
+    )
+
+    UseLocalRenderLayer = true
+    LocalRenderLayer = <LocalRenderLayer>
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+)
+
+//----------------------------------------------------------------------
+// Icône de spécialité
+template UnitLabelSpecialtyIcon
+[
+    LocalRenderLayer : int,
+]
+is BUCKTextureDescriptor
+(
+    ElementName = 'SpecialtyIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [10.0, 10.0]
+        AlignementToFather = [1.0, 1.0]
+        AlignementToAnchor = [1.0, 1.0]
+    )
+
+    HasBorder = false
+    BorderThicknessToken = '2'
+    BorderLineColorToken = 'Blanc'
+    UseLocalRenderLayer = false
+    LocalRenderLayer = <LocalRenderLayer>
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+)
+
+// -------------------------------------------------------------------------------------------------
+// Icone pour les armes a Radar
+template RadarActivityIcon
+[
+    LocalRenderLayer : int,
+] is BUCKTextureDescriptor
+(
+    ElementName = "RadarIcon"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [16.0, 16.0]
+        AlignementToFather     = [0.05, 0.95]
+        AlignementToAnchor     = [0.0, 1.0]
+    )
+
+    TextureFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight    = [1.0, 1.0]
+        AlignementToFather     = [0.5, 0.5]
+        AlignementToAnchor     = [0.5, 0.5]
+    )
+
+    //HasBackground = true
+    BackgroundBlockColorToken = "AppleGreen"
+    TextureToken = 'icone_PourPanelSelectionRdr'
+    TextureColorToken = 'Blanc220'
+    UseLocalRenderLayer = false
+    LocalRenderLayer = <LocalRenderLayer>
+)
+
+//----------------------------------------------------------------------
+// Text de Smart Order actif
+template SmartOrderText
+[
+    LocalRenderLayer : int
+]
+is BUCKTextDescriptor
+(
+    ElementName = 'SmartOrderText'
+    ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [10.0, 10.0])
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    BigLineAction = ~/BigLineAction/ResizeFont
+
+    UseLocalRenderLayer = true
+    BackgroundLocalRenderLayer = <LocalRenderLayer>
+    LocalRenderLayer = <LocalRenderLayer>+1
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'VividRed'
+
+    TextStyle = "Default"
+
+    TypefaceToken = "UIMainFont"
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "SD2_BlancPur"
+    TextSize = "10"
+)
+
+//----------------------------------------------------------------------
+// Numéro de smart group
+template SmartGroupText
+[
+    LocalRenderLayer : int
+]
+is BUCKTextDescriptor
+(
+    ElementName = 'SmartGroupText'
+
+    ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [10.0, 10.0])
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    UseLocalRenderLayer = true
+    BackgroundLocalRenderLayer = <LocalRenderLayer>
+    LocalRenderLayer = <LocalRenderLayer>+1
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'Cyan'
+
+    TextStyle = "Default"
+
+    TypefaceToken = "UIMainFont"
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "SD2_NoirPur"
+    TextSize = "10"
+)
+
+//----------------------------------------------------------------------
+
+template SmartChipList
+[
+    LocalRenderLayer : int
+] is BUCKListDescriptor
+(
+    ElementName = 'SmartChipList'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 10.0]
+        AlignementToAnchor = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = SmartGroupText(LocalRenderLayer = <LocalRenderLayer>)
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = SmartOrderText(LocalRenderLayer = <LocalRenderLayer>)
+        ),
+    ]
+)
+
+//----------------------------------------------------------------------
+// Icône de couverture
+template UnitLabelCoverIcon
+[
+    LocalRenderLayer : int,
+    IsForMultiSelection : bool = false,
+]
+is BUCKTextureDescriptor
+(
+    ElementName = 'CoverIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [58.0, 58.0]
+        MagnifiableOffset = (<IsForMultiSelection> ? [25.0, 0.0] : [-6.0, 0.0])
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    UseLocalRenderLayer = true
+    LocalRenderLayer = <LocalRenderLayer>
+
+    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+    TextureColorToken = "playerHelper/Otan_line"
+)
+
+//----------------------------------------------------------------------
+// Icône de blindage
+template UnitLabelPlatingIcon
+[
+    LocalRenderLayer : int
+]
+is BUCKContainerDescriptor
+(
+    ElementName = 'PlatingIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [22.0, 16.0]
+        MagnifiableOffset = [-1.0, -43.0]
+        AlignementToFather = [1.0, 1.0]
+        AlignementToAnchor = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = 'PlatingIconBackground'
+            ComponentFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+            UseLocalRenderLayer = true
+            LocalRenderLayer = <LocalRenderLayer>
+
+            TextureToken = "CommonTexture_Fond_Blindage"
+            TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+            ClipTextureToComponent = true
+        ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = 'PlatingIconText'
+            ComponentFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+
+            UseLocalRenderLayer = true
+            LocalRenderLayer = <LocalRenderLayer> + 1
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "UIMainFont"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "SD2_NoirPur"
+            TextSize = "10"
+        ),
+    ]
+)
+
+//----------------------------------------------------------------------
+// Icône de rechargement
+template UnitLabelUnitReloadIconBUCKComponent
+[
+    MagnifiableOffset : float2 = [-70.0, 0.0]
+]
+is BUCKChronoAnimatedTextureDescriptor
+(
+    ElementName = 'ReloadIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [22.0, 22.0]
+        MagnifiableOffset = <MagnifiableOffset>
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    ChronoDrawer = $/UserInterface/ChronoDrawerCommon
+
+    ChronoTexture = "icone_reticule"
+    TextureToken = "icone_reticule_vide"
+
+    ChronoTextureColor0 = "Transparent"
+    // A configurer via AimingDefaultColor
+    ChronoTextureColor1 = "Cyan"
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+)
+
+//----------------------------------------------------------------------
+// Chronographe de sortie de district
+template UnitLabelUnitLeavingDistrictChronoBUCKComponent
+[
+    MagnifiableOffset : float2 = [-70.0, 0.0],
+    AlignementToFather : float2 = [0.0, 0.0],
+    AlignementToAnchor : float2 = [0.0, 0.0],
+]
+is BUCKChronoAnimatedTextureDescriptor
+(
+    ElementName = 'LeavingDistrictChrono'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [15.0, 15.0]
+        MagnifiableOffset = <MagnifiableOffset>
+        AlignementToFather = <AlignementToFather>
+        AlignementToAnchor = <AlignementToAnchor>
+    )
+
+    ChronoDrawer = $/UserInterface/ChronoDrawerCommon
+
+    ChronoTexture = "icone_chrono_district"
+    TextureToken = "icone_chrono_district"
+
+    ChronoTextureColor0 = "Noir"
+    ChronoTextureColor1 = "Cyan"
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+)
+
+//----------------------------------------------------------------------
+// Jauge de supply
+UnitLabelUnitSupplyGaugeBUCKComponent is TBUCKSpecificLabelGaugeDescriptor
+(
+    ElementName = 'SupplyGauge'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [10.0, 32.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+    IsClippable = true
+
+    UniformAntiAliasedDrawer = $/UserInterface/UIUniformAntiAliasedDrawer
+    Vertical = true
+    BackgroundColorToken = "UnitLabel/GaugeBackground"
+    GaugeColorToken = "UnitLabel/SupplyGauge"
+    GaugeFillerSize = [6.0, 30.0]
+
+    TextureDrawer = 'ColorMultiply'
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = 'SupplyGaugeEmpty'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [20.0, 18.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            TextureToken = "UseInGame_Empty_Supply"
+            TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// Liste des icones additionnels
+
+template OverlayIconContainer
+[
+    MagnifiableIconSize : float = 32.0,
+] is BUCKContainerDescriptor
+(
+    ElementName = "OverlayIconList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [<MagnifiableIconSize>, <MagnifiableIconSize>]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    Components =
+    [
+        OverlayIconWithChrono
+        (
+            ElementName = "LeavingDistrictIcon"
+            TextureToken = 'icone_leave'
+            TextureColorToken = 'Blanc220'
+            MagnifiableWidthHeight = [<MagnifiableIconSize>, <MagnifiableIconSize>]
+            ChronoIconElement = UnitLabelUnitLeavingDistrictChronoBUCKComponent(MagnifiableOffset = [0.0, 0.0])
+        ),
+        OverlayIcon
+        (
+            ElementName = "StunIcon"
+            TextureToken = 'icone_stun'
+            TextureColorToken = 'Blanc220'
+            MagnifiableWidthHeight = [<MagnifiableIconSize>, <MagnifiableIconSize>]
+        ),
+        OverlayIcon
+        (
+            ElementName = "PinnedIcon"
+            TextureToken = 'icone_pinned'
+            MagnifiableWidthHeight = [<MagnifiableIconSize>, <MagnifiableIconSize>]
+        ),
+        OverlayIcon
+        (
+            ElementName = "RoutIcon"
+            TextureToken = 'icone_rout'
+            MagnifiableWidthHeight = [<MagnifiableIconSize>, <MagnifiableIconSize>]
+        )
+    ]
+)
+
+
+// -------------------------------------------------------------------------------------------------
+// Icone additionel
+template OverlayIcon
+[
+    ElementName : string,
+    TextureToken : string,
+    MagnifiableWidthHeight : float2,
+    TextureColorToken : string = 'Rouge'
+] is BUCKTextureDescriptor
+(
+    ElementName = <ElementName>
+    TextureToken = <TextureToken>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+        AlignementToFather  = [0, 1.0]
+        AlignementToAnchor  = [0, 1.0]
+    )
+    TextureFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToFather  = [0, 1.0]
+        AlignementToAnchor  = [0, 1.0]
+    )
+    TextureColorToken = <TextureColorToken>
+)
+
+template OverlayIconWithChrono
+[
+    ElementName : string,
+    TextureToken : string,
+    MagnifiableWidthHeight : float2,
+    TextureColorToken : string = 'Rouge',
+    ChronoIconElement : TBUCKContainerDescriptor
+] is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [32,16]
+        AlignementToFather  = [0, 1.0]
+        AlignementToAnchor  = [0, 1.0]
+    )
+
+    Components =
+    [
+        OverlayIcon
+        (
+            ElementName = <ElementName> + "_Texture"
+            TextureToken = <TextureToken>
+            MagnifiableWidthHeight = <MagnifiableWidthHeight>
+            TextureColorToken = <TextureColorToken>
+        ),
+        <ChronoIconElement>,
+    ]
+)
+
+//----------------------------------------------------------------------
+// Jauge de moral
+template UnitLabelUnitMoraleGaugeBUCKComponent
+[
+    ElementName = "MoraleGauge",
+    AlignementToFather : float2 = [0.0, 0.0],
+    AlignementToAnchor : float2 = [0.0, 0.0],
+    LocalRenderLayer : int = 0,
+]
+is TBUCKSpecificLabelGaugeDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [42.0, 8.0]
+        AlignementToFather = <AlignementToFather>
+        AlignementToAnchor = <AlignementToAnchor>
+    )
+    IsClippable = true
+    UniformAntiAliasedDrawer = $/UserInterface/UIUniformAntiAliasedDrawer
+    LocalRenderLayer = <LocalRenderLayer>
+
+    BackgroundColorToken = "Noir"
+    GaugeColorToken = "Blanc"
+    GaugeFillerSize = [38.0, 6.0]
+
+    TextureDrawer = 'ColorMultiply'
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+)
+
+//----------------------------------------------------------------------
+// Nombre d'unités
+template UnitLabelUnitCountIconBUCKComponent
+[
+    Alignement : float2 = [0.0, 0.0],
+    LocalRenderLayer : int,
+    IsForCarriedUnit : bool = false,
+]
+is BUCKTextDescriptor
+(
+    ElementName = <IsForCarriedUnit> ? 'NbCarriedUnits' : 'NbUnits'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToAnchor = <Alignement>
+        AlignementToFather = <Alignement>
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    UseLocalRenderLayer = true
+    BackgroundLocalRenderLayer = <LocalRenderLayer> - 1
+    LocalRenderLayer = <LocalRenderLayer>
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    BigLineAction = ~/BigLineAction/ResizeFont
+    TextPadding = TRTTILength4(Magnifiable = [1.0, 1.0, 2.0, 1.0])
+    HasBackground = true
+    BackgroundBlockColorToken = "SD2_Gris80"
+
+    TextStyle = "LabelUnitNameStroke"
+    TypefaceToken = "UISecondFont"
+    TextColor = "Blanc"
+    TextSize = "14"
+)
+
+//----------------------------------------------------------------------
+// Icône d'experience
+template UnitLabelUnitExperienceIconsBUCKComponent
+[
+    LocalRenderLayer : int,
+    MagnifiableWidthHeight : float2 = [10.0, 10.0],
+]
+is BUCKTextureDescriptor
+(
+    ElementName = 'LevelIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+        MagnifiableOffset = [-2.0, 2.0]
+    )
+
+    TextureFrame   = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    UseLocalRenderLayer = true
+    LocalRenderLayer = <LocalRenderLayer>
+    ClipTextureToComponent = false
+)
+
+//----------------------------------------------------------------------
+// Icône de SmartHoldFire
+template UnitLabelSmartHoldFireIcon
+[
+    LocalRenderLayer : int,
+    MagnifiableOffset : float2 = [-1.0, 8.0]
+]
+is BUCKTextureDescriptor
+(
+    ElementName = 'SmartHoldFireIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [17.0, 17.0]
+        MagnifiableOffset = <MagnifiableOffset>
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    UseLocalRenderLayer = true
+    LocalRenderLayer = <LocalRenderLayer>
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+    TextureToken = "UseInGame_EfficientShot"
+)
+
+//----------------------------------------------------------------------
+// Icône de surrender
+SurrenderIcon is BUCKTextureDescriptor
+(
+    ElementName = 'SurrenderIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [64.0, 32.0]
+        MagnifiableOffset = [0.0, -31.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    UseLocalRenderLayer = true
+    LocalRenderLayer = 5
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+    TextureToken = "UseInGame_Surrend"
+)
+
+//----------------------------------------------------------------------
+// Animation de surrender
+SurrenderAnimation is BUCKTextureAnimationDescriptor
+(
+    ElementName = 'SurrenderAnimation'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [64.0, 32.0]
+        MagnifiableOffset = [0.0, -31.0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+    )
+
+    AnimDuration = 1.0
+    IsCyclic = true
+    TextureList =
+    [
+        "UseInGame_SurrenderAnimation_0",
+        "UseInGame_SurrenderAnimation_1",
+        "UseInGame_SurrenderAnimation_2",
+        "UseInGame_SurrenderAnimation_3",
+        "UseInGame_SurrenderAnimation_4",
+        "UseInGame_SurrenderAnimation_5",
+        "UseInGame_SurrenderAnimation_6",
+        "UseInGame_SurrenderAnimation_7",
+        "UseInGame_SurrenderAnimation_8",
+        "UseInGame_SurrenderAnimation_9",
+        "UseInGame_SurrenderAnimation_10",
+        "UseInGame_SurrenderAnimation_11",
+        "UseInGame_SurrenderAnimation_12",
+        "UseInGame_SurrenderAnimation_13",
+        "UseInGame_SurrenderAnimation_14",
+        "UseInGame_SurrenderAnimation_15",
+        "UseInGame_SurrenderAnimation_16",
+        "UseInGame_SurrenderAnimation_17",
+        "UseInGame_SurrenderAnimation_18",
+        "UseInGame_SurrenderAnimation_19",
+        "UseInGame_SurrenderAnimation_20",
+        "UseInGame_SurrenderAnimation_21",
+        "UseInGame_SurrenderAnimation_22",
+        "UseInGame_SurrenderAnimation_23",
+        "UseInGame_SurrenderAnimation_24",
+        "UseInGame_SurrenderAnimation_25",
+        "UseInGame_SurrenderAnimation_26",
+        "UseInGame_SurrenderAnimation_27",
+        "UseInGame_SurrenderAnimation_28",
+        "UseInGame_SurrenderAnimation_29",
+        "UseInGame_SurrenderAnimation_30",
+        "UseInGame_SurrenderAnimation_31",
+        "UseInGame_SurrenderAnimation_32",
+        "UseInGame_SurrenderAnimation_33",
+        "UseInGame_SurrenderAnimation_34",
+        "UseInGame_SurrenderAnimation_35",
+        "UseInGame_SurrenderAnimation_36",
+        "UseInGame_SurrenderAnimation_37",
+        "UseInGame_SurrenderAnimation_38",
+        "UseInGame_SurrenderAnimation_39",
+        "UseInGame_SurrenderAnimation_40",
+        "UseInGame_SurrenderAnimation_41",
+        "UseInGame_SurrenderAnimation_42",
+        "UseInGame_SurrenderAnimation_43",
+        "UseInGame_SurrenderAnimation_44",
+    ]
+)
+
+//----------------------------------------------------------------------
+// Block invisible dessous
+UnitLabelUnitInvisibleLowerBlockBUCKComponent is BUCKContainerDescriptor
+(
+    ElementName = 'InvisibleLowerBlock'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [32.0, 24.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+)
+
+//----------------------------------------------------------------------
+// Message de critiques
+UnitLabelUnitLeavingDistrictBUCKComponent is BUCKContainerDescriptor
+(
+    ElementName = 'LeavingDistrictComponent'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [100.0, 15.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKGradientDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, 15.0]
+                AlignementToFather = [0.5, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+            )
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            Transition0 = 0.0
+            Transition1 = 0.5
+            Transition2 = 0.5
+            Transition3 = 1.0
+
+            TransitionColor0 = "Label/Gradient05"
+            TransitionColor1 = "Label/Gradient1"
+            IsRelative = true
+            IsVertical = false
+        ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = 'LeavingDistrictComponentText'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, 15.0]
+                AlignementToFather = [0.5, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "IBM"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "Cyan"
+            TextSize = "UnitLabel/TextElement"
+
+            TextToken = "DIST_LEAVE"
+        ),
+
+        UnitLabelUnitLeavingDistrictChronoBUCKComponent
+        (
+            MagnifiableOffset = [22.0, 0.0]
+            AlignementToFather = [1.0, 1.0]
+            AlignementToAnchor = [1.0, 1.0]
+        ),
+    ]
+)
+
+//----------------------------------------------------------------------
+// Message de critiques
+UnitLabelUnitCriticalMessageBUCKComponent is BUCKContainerDescriptor
+(
+    ElementName = 'CriticTitle'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [120.0, 15.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKGradientDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, 15.0]
+                AlignementToFather = [0.5, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+            )
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            Transition0 = 0.0
+            Transition1 = 0.5
+            Transition2 = 0.5
+            Transition3 = 1.0
+
+            TransitionColor0 = "Label/Gradient0"
+            TransitionColor1 = "Label/Gradient1"
+            IsRelative = true
+            IsVertical = false
+        ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = 'CriticTitleText'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, 15.0]
+                AlignementToFather = [0.5, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "IBM"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "UnitLabel/CriticTitle"
+            TextSize = "UnitLabel/TextElement"
+        )
+    ]
+)
+
+//----------------------------------------------------------------------
+
+private SelectionLabelList is
+[
+    BUCKListElementDescriptor(ComponentDescriptor = UpperLabel(IsForMultiSelection = false)),
+
+    BUCKListElementDescriptor
+    (
+        ComponentDescriptor = BUCKSensibleAreaDescriptor
+        (
+            ElementName = "LabelUnitSensibleArea"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 0.0]
+            )
+
+            FitStyle = ~/ContainerFitStyle/FitToContent
+            IsClippable = false
+
+            LocalRenderLayer = 1
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ElementName = "CenterLabel"
+
+                    Axis = ~/ListAxis/Horizontal
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                    InterItemMargin = TRTTILength(Magnifiable = 1.0)
+
+                    ForegroundComponents =
+                    [
+                        // Icône de couverture
+                        UnitLabelCoverIcon
+                        (
+                            IsForMultiSelection = false
+                            LocalRenderLayer = 4
+                        ),
+                    ]
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = UnitLabelBackground
+                            (
+                                LocalRenderLayer = 2
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = RightLabel(IsForMultiSelection = false)
+                        ),
+                    ]
+                )
+            ]
+        )
+    ),
+
+    BUCKListElementDescriptor(ComponentDescriptor = LowerLabel(IsForMultiSelection = false)),
+]
+
+//----------------------------------------------------------------------
+
+private MultiSelectionLabelList is
+[
+    BUCKListElementDescriptor
+    (
+        ComponentDescriptor = BUCKSensibleAreaDescriptor
+        (
+            ElementName = "LabelUnitSensibleArea"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [UnitLabelUnitBUCKComponentDescriptorWidth, UnitLabelUnitBUCKComponentDescriptorHeight]
+            )
+
+            IsClippable = false
+            LocalRenderLayer = 1
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ElementName = "CenterLabel"
+
+                    Axis = ~/ListAxis/Horizontal
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+
+                    ForegroundComponents =
+                    [
+                        UnitLabelCoverIcon
+                        (
+                            IsForMultiSelection = false
+                            LocalRenderLayer = 4
+                        ),
+                    ]
+
+                    BackgroundComponents =
+                    [
+                        PanelRoundedCorner
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 1.0]
+                            )
+
+                            LocalRenderLayer = 2
+                            BackgroundBlockColorToken = 'LightGrayBlue'
+                            BorderLineColorToken = 'H2_bleu_2_40p'
+                        ),
+                    ]
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = RightLabel(IsForMultiSelection = true)
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ExtendWeight = 1.0
+                            ComponentDescriptor = UpperLabel(IsForMultiSelection = true)
+                        ),
+                    ]
+                )
+            ]
+        )
+    ),
+
+    BUCKListElementDescriptor(ComponentDescriptor = LowerLabel(IsForMultiSelection = true)),
+]
+
+//----------------------------------------------------------------------
+// Composant principal
+public UnitLabelUnitBUCKComponentDescriptorWidth is 180.0
+public UnitLabelUnitBUCKComponentDescriptorHeight is 50.0
+
+private template UnitLabelUnitBUCKComponentDescriptor
+[
+    IsForMultiSelection : bool = false,
+] is BUCKLocalLayerContainerDescriptor
+(
+    ElementName = "LocalLayerContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset  = (<IsForMultiSelection> ? [0.0, 0.0] : [-25.0, 25.0])
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    NbLayersToLock = 6
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            ForegroundComponents =
+            [
+                UnitLabelParachutistIcon(LocalRenderLayer = 1),
+                UnitLabelSmartHoldFireIcon(LocalRenderLayer = 4),
+                ~/SurrenderIcon,
+                ~/SurrenderAnimation,
+            ]
+
+            Elements = (<IsForMultiSelection> ? ~/MultiSelectionLabelList : ~/SelectionLabelList)
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template RightLabel
+[
+    IsForMultiSelection : bool = false,
+] is BUCKListDescriptor
+(
+    ElementName = "RightLabel"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    InterItemMargin = TRTTILength(Magnifiable = 2.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitLabelUnitIcon
+            (
+                AlignementToFather = [0.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+                HasBorder = false
+                LocalRenderLayer = 3
+            )
+        ),
+       BUCKListElementDescriptor(ComponentDescriptor = ~/UnitLabelUnitSupplyGaugeBUCKComponent),
+       BUCKListElementDescriptor(ComponentDescriptor = ~/SupplyFeedbackIcons)
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private SupplyFeedbackIcons is TBUCKSpecificLabelFeedbackIconsDescriptor
+(
+    ElementName = "FeedbackIcons"
+
+    Axis = ~/ListAxis/Horizontal
+    InterItemMargin = TRTTILength(Magnifiable = 4.0)
+    FirstMargin = TRTTILength()
+    LastMargin = TRTTILength()
+
+    IsClippable = true
+
+    AnimDuration = 1.0
+    AnimMinAlpha = 50
+
+    FuelIcon = TBUCKSpecificLabelFeedbackIconDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [32.0, 32.0])
+
+        IsClippable = true
+        TextureDrawer = 'ColorMultiply'
+        TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+        FeedbackTexture = "icone_fuel"
+        FeedbackRefillTexture = "icone_fuel_refill"
+    )
+
+    BulletsIcon = TBUCKSpecificLabelFeedbackIconDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [32.0, 32.0])
+
+        IsClippable = true
+        TextureDrawer = 'ColorMultiply'
+        TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+        FeedbackTexture = "icone_bullets"
+        FeedbackRefillTexture = "icone_bullets_refill"
+    )
+
+    ShellIcon = TBUCKSpecificLabelFeedbackIconDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [32.0, 32.0])
+
+        IsClippable = true
+        TextureDrawer = 'ColorMultiply'
+        TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+        FeedbackTexture = "icone_shell"
+        FeedbackRefillTexture = "icone_shell_refill"
+    )
+
+    MissileIcon = TBUCKSpecificLabelFeedbackIconDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [32.0, 32.0])
+
+        IsClippable = true
+        TextureDrawer = 'ColorMultiply'
+        TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+        FeedbackTexture = "icone_missile"
+        FeedbackRefillTexture = "icone_missile_refill"
+    )
+
+    SmokeIcon = TBUCKSpecificLabelFeedbackIconDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [32.0, 32.0])
+
+        IsClippable = true
+        TextureDrawer = 'ColorMultiply'
+        TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+        FeedbackTexture = "icone_shell"
+        FeedbackRefillTexture = "icone_shell_refill"
+    )
+
+    FlamethrowerIcon = TBUCKSpecificLabelFeedbackIconDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [32.0, 32.0])
+
+        IsClippable = true
+        TextureDrawer = 'ColorMultiply'
+        TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+        FeedbackTexture = "icone_shell"
+        FeedbackRefillTexture = "icone_shell_refill"
+    )
+
+    GrenadeIcon = TBUCKSpecificLabelFeedbackIconDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [32.0, 32.0])
+
+        IsClippable = true
+        TextureDrawer = 'ColorMultiply'
+        TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+        FeedbackTexture = "icone_shell"
+        FeedbackRefillTexture = "icone_shell_refill"
+    )
+
+    ArtilleryIcon = TBUCKSpecificLabelFeedbackIconDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [32.0, 32.0])
+
+        IsClippable = true
+        TextureDrawer = 'ColorMultiply'
+        TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+        FeedbackTexture = "icone_shell"
+        FeedbackRefillTexture = "icone_shell"
+    )
+
+    RepairIcon = TBUCKSpecificLabelFeedbackIconDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [32.0, 32.0])
+
+        IsClippable = true
+        TextureDrawer = 'ColorMultiply'
+        TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+        FeedbackTexture = "icone_life"
+        FeedbackRefillTexture = "icone_life"
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+// nom & nb unités d'infanterie
+private template UnitNameList
+[
+    IsForMultiSelection : bool = false,
+    IsForCarriedUnit : bool = false,
+]
+is BUCKSensibleAreaDescriptor
+(
+    ElementName = <IsForCarriedUnit> ? "CarriedUnitNameListSensibleArea" : "UnitNameListSensibleArea"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    IsClippable = false
+
+    LocalRenderLayer = 1
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = <IsForCarriedUnit> ? "CarriedUnitNameList" : "UnitNameList"
+            ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [0.0, 17.0])
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength(Magnifiable = 0.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = UnitLabelUnitCountIconBUCKComponent
+                    (
+                        Alignement = [0.0, 0.5]
+                        LocalRenderLayer = 4
+                        IsForCarriedUnit = <IsForCarriedUnit>
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = UnitLabelUnitNameBUCKComponent
+                    (
+                        Alignement = [0.0, 0.5]
+                        IsForMultiSelection = <IsForMultiSelection>
+                        IsForCarriedUnit = <IsForCarriedUnit>
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template LowerLabel
+[
+    IsForMultiSelection : bool
+]
+is BUCKListDescriptor
+(
+    ElementName = 'LowerLabel'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [120.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+        BUCKListElementDescriptor(ComponentDescriptor = ~/UnitLabelUnitLeavingDistrictBUCKComponent),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/UnitLabelUnitCriticalMessageBUCKComponent),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private template UpperLabel
+[
+    IsForMultiSelection : bool = false,
+]
+is BUCKListDescriptor
+(
+    ElementName = 'UpperLabel'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = (<IsForMultiSelection> ? [1.0, 0.0] : [0.0, 0.0])
+        MagnifiableWidthHeight = (<IsForMultiSelection> ? [-52.0, 0.0] : [60.0, 0.0])
+        AlignementToFather = (<IsForMultiSelection> ? [0.0, 1.0] : [0.0, 0.0])
+        AlignementToAnchor = (<IsForMultiSelection> ? [0.0, 1.0] : [0.0, 0.0])
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength (Magnifiable = 0.0)
+    InterItemMargin = TRTTILength( Magnifiable = 1.0)
+    LastMargin = TRTTILength (Magnifiable = 3.0)
+
+    // Penser a modifier la taille en Pixel du LabelUnitBUCKComponent si on aggrandit ce composant !
+    Elements =
+    [
+        BUCKListElementDescriptor(ComponentDescriptor = ~/UnitLabelUnitEvacIconBUCKComponent),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/UnitLabelUnitPlayerNameBUCKComponent),
+        BUCKListElementDescriptor(ComponentDescriptor = UnitLabelUnitReloadIconBUCKComponent(MagnifiableOffset = [11.0, 0.0])),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitNameList
+            (
+                IsForMultiSelection = <IsForMultiSelection>
+                IsForCarriedUnit = true
+            )
+        ),
+        BUCKListElementDescriptor(ComponentDescriptor = UnitNameList( IsForMultiSelection = <IsForMultiSelection> )),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitLabelUnitMoraleGaugeBUCKComponent
+            (
+                ElementName = "MoraleGaugeNameOnly"
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+// L'etiquette
+template UISpecificInGameUnitLabelViewDescriptor
+[
+    MainComponentDescriptor : TBUCKContainerDescriptor
+]
+is TUISpecificInGameUnitLabelViewDescriptor
+(
+    MainComponentDescriptor = <MainComponentDescriptor>
+
+    // Animation Stealthed
+    // Temps de durée d'un blink
+    AnimStealthedBlinkDuration = 2.0
+    // Animation Panicked
+    // Temps de durée d'un blink
+    AnimPanickedBlinkDuration = 1.5
+    // Animation Surrender
+    // Temps de durée du fade
+    AnimSurrenderBlinkDuration = 0.5
+    // Temps de durée de l'animation
+    AnimSurrenderAnimationDuration = 10.0
+    // Animation Shaken
+    // Temps de pause entre les séries de blink (0 => pas de pause)
+    AnimShakenPauseTime = 3.0
+    // Temps de durée d'un blink
+    AnimShakenBlinkDuration = 1.5
+    // Nombre de blinks par série (-1 => infini)
+    AnimShakenNbBlinks = 3
+    // Alpha Minimum atteint pour les animation de "suppress"
+    SuppressAnimAlphaMinimum = 20
+    // Alpha Minimum atteint pour l'animation "cachée"
+    StealthedAnimAlphaMinimum = 20
+
+    CommonAggregateHeight = ~/UnitLabelAggregationHeight
+    NameOnlyAggregateHeight = 18.0
+
+    // Valeur de transparence de la version de l'étiquette pour les ghost
+    GhostLabelVersionTransparency = 0.5
+    GhostLabelDeploymentVersionTransparency = 0.9
+
+    // Taille relative de l'icône NATO
+    UnitIconTextureNATOSize = 0.7
+
+    // Textures
+    CoverTypeToTexture = MAP
+    [
+        (ECoverTypeForInterface/Light, "CommonTexture_Couvert_Moyen"),
+        (ECoverTypeForInterface/Batiment, "CommonTexture_Couvert_Lourd"),
+    ]
+    DefaultCarriedUnitIcon          = ""
+    DefaultSpecialtyIcon            = "Spec_bombes_1"
+    AceBackgroundTexture            = "CommonTexture_Etiquette_Background_Ace"
+    NormalBackgroundTexture         = "CommonTexture_Label_Background"
+
+    // Couleurs du reticule de visee
+    AimingDefaultColor = "Cyan"
+    AimingWhileMovingColor = "Cyan50p"
+
+    // Smart Orders
+    SmartOrderLabelTokens = MAP
+    [
+        // Faire le lien avec PlayerMissionConstantes.ndf
+        (
+            1,
+            "ORD_AIATTS"
+        ),
+        (
+            2,
+            "ORD_AIDEFS"
+        ),
+        (
+            4,
+            "ORD_AIARFS"
+        ),
+        (
+            5,
+            "ORD_AIARCS"
+        ),
+        (
+            6,
+            "ORD_AIARAS"
+        ),
+        (
+            7,
+            "ORD_AIAAAS"
+        ),
+        (
+            9,
+            "ORD_INVLS"
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template UISpecificUnitLabelViewDescriptor
+[
+    IsForMultiSelection : bool = false,
+] is UISpecificInGameUnitLabelViewDescriptor
+(
+    MainComponentDescriptor = UnitLabelUnitBUCKComponentDescriptor(IsForMultiSelection = <IsForMultiSelection>)
+)

@@ -1,0 +1,25 @@
+export ModelFile_Su_22_SEAD_DDR is 'GameData:/Assets/3D/Units/DDR/Avion/Su_22/Su_22.Ase2NdfBin'
+
+Modele_Su_22_SEAD_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Su_22_SEAD_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_22_SEAD_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/Su_22/Su_22.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_22_SEAD_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/Su_22/Su_22.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_22_SEAD_DDR_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/Su_22/Su_22_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

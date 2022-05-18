@@ -1,0 +1,14 @@
+export MineFieldStyle is TMineFieldStyle
+(
+    FriendlyBackgroundColor = [0, 255, 0, 50]
+    FriendlyBackgroundBorderColor = [0, 255, 0, 255]
+    EnemyBackgroundColor = [255, 0, 0, 100]
+    EnemyBackgroundBorderColor = [255, 0, 0, 100]
+    BackgroundThickness = 50.0
+
+    LandMineColor = [255, 0, 0, 100]
+    LandMineBorderColor = [255, 0, 0, 100]
+    DefusedLandMineColor = [80, 80, 80, 255]
+    DefusedLandMineBorderColor = [80, 80, 80, 255]
+    LandMineThickness = 5.0
+)

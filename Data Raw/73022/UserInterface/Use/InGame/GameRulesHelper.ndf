@@ -1,0 +1,127 @@
+GameRulesHelper is TUITacticalGameRulesHelper
+(
+    TimeStepMessage = "REM_TIME"
+    TimeInMinutesStepList = [10,5,4,3,2,1]
+
+    StandardStepMessages = TUITacticalGameRulesHelperStepMessages
+    (
+        // Message on self score update
+        LocalPlayerAllianceScoreByGameMode = MAP
+        [
+            (
+                EDeploymentMode/ConquestGameMode,
+                [
+                    (50.0, "win50"),
+                    (75.0, "win75"),
+                    (90.0, "win90")
+                ]
+            ),
+            (
+                EDeploymentMode/CloseQuarter,
+                [
+                    (50.0, "win50"),
+                    (75.0, "win75"),
+                    (90.0, "win90")
+                ]
+            ),
+        ]
+
+        // Message about other alliance score update
+        OtherAllianceScoreByGameMode = MAP
+        [
+            (
+                EDeploymentMode/ConquestGameMode,
+                [
+                    (50.0, "Ewin50"),
+                    (75.0, "Ewin75"),
+                    (90.0, "Ewin90")
+                ]
+            ),
+            (
+                EDeploymentMode/CloseQuarter,
+                [
+                    (50.0, "Ewin50"),
+                    (75.0, "Ewin75"),
+                    (90.0, "Ewin90")
+                ]
+            ),
+        ]
+    )
+
+    //Attacking alliance
+    AttackingAllianceStepMessages = TUITacticalGameRulesHelperStepMessages
+    (
+        // Message on self score update
+        LocalPlayerAllianceScoreByGameMode = MAP
+        [
+            (
+                EDeploymentMode/Breakthrough,
+                [
+                    (20.0, "BKLOC20"),
+                    (50.0, "BKLOC50"),
+                    (75.0, "BKLOC75")
+                ]
+            ),
+        ]
+
+        // Message about other alliance score update
+        OtherAllianceScoreByGameMode = MAP
+        [
+            (
+                EDeploymentMode/Breakthrough,
+                [
+                    //(80.0, "BKOTH80"),
+                    //(50.0, "BKOTH50"),
+                    //(25.0, "BKOTH25")
+                ]
+            ),
+        ]
+    )
+
+    // Defending alliance
+    DefendingAllianceStepMessages = TUITacticalGameRulesHelperStepMessages
+    (
+        // Message on self score update
+        LocalPlayerAllianceScoreByGameMode = MAP
+        [
+            (
+                EDeploymentMode/Breakthrough,
+                [
+                    (80.0, "BKOTH80"),
+                    (50.0, "BKOTH50"),
+                    (25.0, "BKOTH25")
+                ]
+            ),
+        ]
+
+        // Message about other alliance score update
+        OtherAllianceScoreByGameMode = MAP
+        [
+            (
+                EDeploymentMode/Breakthrough,
+                [
+                    //(80.0, "BKOTH80"),
+                    //(50.0, "BKOTH50"),
+                    //(25.0, "BKOTH25")
+                ]
+            ),
+        ]
+
+        AreDecreasingSteps = true
+    )
+
+    TimeToShowStepMessageInSecond = 5
+
+    ComponentToUseForRemainingTimeMessage = "RemainingTimeAlertComponent"
+    ComponentToUseForLocalPlayerAllianceMessage = "ConquestLocalPlayerHasAdvantageComponent"
+    ComponentToUseForOtherAllianceMessage = "ConquestOpponentHasAdvantageComponent"
+
+    LDHintMoralDico = "INGAME"
+    LDHintMoralTokenLocalPlayerAlliance = "MOLO_HTS"
+    LDHintMoralTokenEnemyAlliance = "MOLO_HTE"
+    LDHintMoralDuration = 5.0
+    LDHintMoralThreshold = [ 0.8, 0.5, 0.2 ]
+
+    LDHintComponentForLocalPlayerAlliance = "LocalPlayerAllianceMoralComponent"
+    LDHintComponentForEnemyAlliance = "EnemyAllianceMoralComponent"
+)

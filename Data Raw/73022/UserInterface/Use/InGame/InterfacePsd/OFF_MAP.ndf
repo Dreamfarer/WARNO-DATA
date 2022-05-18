@@ -1,0 +1,62 @@
+OFF_MAP is TBaseClass
+(
+    public TopElementHeight is 25
+    public MiddleElementHeight is 20
+    public DownElementHeight is 13
+
+    public top is BUCKTextureDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [458.0, 36.0]
+            RelativeWidthHeight = [0.0, 0.0]
+        )
+
+        UseLocalRenderLayer = true
+        LocalRenderLayer = 12
+
+        TextureToken = "Texture_OFF_MAP_top"
+        TextureFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 1.0]
+        )
+    )
+
+    public middle is BUCKTextureDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [457.0, 0.0]
+            RelativeWidthHeight = [0.0, 1.0]
+        )
+
+        UseLocalRenderLayer = true
+        LocalRenderLayer = 11
+
+        TextureToken = "Texture_OFF_MAP_middle"
+        TileTextureInComponent = True
+        TextureFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 1.0]
+        )
+    )
+
+    public down is BUCKTextureDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [457, DownElementHeight]
+            AlignementToFather = [0.0, 1.0]
+            AlignementToAnchor = [0.0, 1.0]
+        )
+
+        UseLocalRenderLayer = true
+        LocalRenderLayer = 12
+
+        TextureToken = "Texture_OFF_MAP_down"
+        TextureFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 1.0]
+        )
+    )
+)

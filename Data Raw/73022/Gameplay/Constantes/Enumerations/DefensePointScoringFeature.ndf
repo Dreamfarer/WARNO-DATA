@@ -1,0 +1,25 @@
+// EDefensePointPositioningType // A maintenir synchro avec EugIAStrat_Common\EnumDefensePointScoringFeature.h
+EDefensePointPositioningType is TBaseClass
+(
+    KeepDefault is 0
+    Offensive   is 1
+    Defensive   is 2
+    Anywhere    is 3
+)
+
+// EDefensePointScoringFeature // A maintenir synchro avec EugIAStrat_Common\EnumDefensePointScoringFeature.h
+EDefensePointScoringFeature is TBaseClass
+(
+    AltitudeCoeff            is 0
+    SlopeCoeff               is 1
+    DistanceBonus            is 2
+    DistanceMargin           is 3
+    DistanceDecayLength      is 4
+    DistanceDecayCoeff       is 5
+    DistrictCoeff            is 6
+    ForetDenseCoeff          is 7
+    ForetLightCoeff          is 8
+    IsObjectifCoeff          is 9
+    MalusDefaultDefensePoint is 10
+    IsDefenseUnit            is 11
+)

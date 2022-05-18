@@ -1,0 +1,22 @@
+export ModelFile_FV102_Striker_UK is 'GameData:/Assets/3D/Units/UK/Antichar/FV102_Striker/FV102_Striker.Ase2NdfBin'
+
+Modele_FV102_Striker_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_FV102_Striker_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_FV102_Striker_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Antichar/FV102_Striker/FV102_Striker.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV102_Striker_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Antichar/FV102_Striker/FV102_Striker.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

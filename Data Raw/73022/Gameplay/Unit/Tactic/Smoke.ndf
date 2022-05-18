@@ -1,0 +1,41 @@
+export ModernWarfareModularUnitSmokeDescriptorForTestIA is TEntityDescriptor
+(
+    World        = WorldIndices_Smokes
+    DescriptorId      = GUID:{00000000-0000-0000-0000-000015000000}
+    ClassNameForDebug = 'WargameSmokeForTestIA'
+
+    ModulesDescriptors =
+    [
+        TTypeUnitModuleDescriptor
+        (
+            TypeUnitValue     =  ETypeUnit/Smoke
+        ),
+        TPositionModuleDescriptor
+        (
+            InGeoDb              = false
+            Radius               = ((100) * Metre)
+            PorteurMustBeVisible = False
+            GfxDescriptorPorteur = ~/GfxPorteurUnite
+        ),
+        TApparenceModelModuleDescriptor
+        (
+            Depiction  = Template_DescriptorSmoke_Depiction
+            (
+                Radius = 200 * Metre
+                Height = 512 * Metre
+                Density = 0.1
+            )
+            DefaultVisibility = True
+        ),
+        TSmokeModuleDescriptor
+        (
+            Altitude       = 5000.0
+            TimeToLive     = ((40) * Seconde)
+            Radius         = ((100) * Metre)
+            Terrain        = ~/SmokeHeavy
+        ),
+        TLinkTeamModuleDescriptor
+        (
+        ),
+    ]
+)

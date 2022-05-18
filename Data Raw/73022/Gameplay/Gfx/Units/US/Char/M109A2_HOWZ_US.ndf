@@ -1,0 +1,68 @@
+export ModelFile_M109A2_HOWZ_US is 'GameData:/Assets/3D/Units/US/Artillerie/M109_A2/M109_A2.Ase2NdfBin'
+
+Modele_M109A2_HOWZ_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M109A2_HOWZ_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M109A2_HOWZ_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Artillerie/M109_A2_MID/M109_A2_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M109A2_HOWZ_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Artillerie/LODS/M109_A2_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+export ModelFile_M109A2_HOWZ_US_Tourelle_02 is 'GameData:/Assets/3D/Units/US/Artillerie/M106_A2/cal50_t2.Ase2NdfBin'
+
+Modele_M109A2_HOWZ_US_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M109A2_HOWZ_US_Tourelle_02
+    CivMask =  CivMask/Common
+)
+
+// Modele_M109A2_HOWZ_US_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+// (
+//     FileName = 'GameData:/Assets/3D/Units/US/Artillerie/M106_A2/cal50_t2.Ase2NdfBin'
+//     CivMask =  CivMask/Common
+// )
+//-------------------------------------------------------------------------------------
+Gfx_Modele_M109A2_HOWZ_US is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Socle_USA ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Depiction = TDepictionTemplate
+            (
+                Scaler = CommonIdentityScaler
+                Selector = OnlyHighDepictionSelector
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_courte ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Anchor = "vehicule"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 7)
+                        Selector = CommonDepictionSelector
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_M109A2_HOWZ_US ),
+                            DepictionDescriptor_LOD_Mid ( MeshDescriptor = Modele_M109A2_HOWZ_US ),
+                            DepictionDescriptor_LOD_Low ( MeshDescriptor = Modele_M109A2_HOWZ_US DisabledOperators = ['tourelle3'] ),
+                        ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)

@@ -1,0 +1,127 @@
+BUCKSpecificAutoDeployMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, 65.0]
+        MagnifiableWidthHeight = [440.0, 210.0-50]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Components =
+    [
+        // affiche bouton autodeploy
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [0.0, 56]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+                MagnifiableWidthHeight = [0,31]
+            )
+
+            InterItemMargin = TRTTILength( Magnifiable = 0.0)
+
+            Axis = ~/ListAxis/Horizontal
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificButton
+                    (
+                        ElementName = 'AutoDeployButton'
+
+                        RoundedCorner = true
+                        RoundedVertexes = [true, true, false, false]
+
+                        ButtonMagnifiableWidthHeight = [190.0, 31.0]
+                        ButtonMagnifiableOffset = [0.0, 0.0]
+
+                        TextStyle = "Default"
+                        TextSizeToken = "SD2_Moyen"
+                        TextToken = "DSI_ADBtn"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                        HintTitleToken = "DSI_ADHT"
+                        HintBodyToken = "DSI_ADHB"
+                        HintExtendedToken = "DSI_ADHE"
+                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'AutoDeployText'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [190.0, 29.0]
+                            MagnifiableOffset = [0.0, 1.0]
+                        )
+
+                        TextStyle = "Default"
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        TextSize = "14"
+                        TextColor = "SD2_Noir"
+                        TextToken = "AD_OnG"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TypefaceToken = "Liberator"
+
+                        BigLineAction = ~/BigLineAction/BalancedMultiline
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        HasBorder = true
+
+                        HasBackground = false
+                        BackgroundBlockColorToken = "SD2_Blanc184"
+
+                        Components =
+                        [
+                            PanelRoundedCorner
+                            (
+                                RoundedVertexes = [false, false, true, true]
+                                BackgroundBlockColorToken = 'SD2_Blanc184'
+                                BorderLineColorToken = 'H2_bleu_2_40p'
+                            )
+                        ]
+                    )
+                ),
+            ]
+        ),
+
+        // fake
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [0.0, 100]
+                MagnifiableWidthHeight = [380.0, 31.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            Components =
+            [
+                PanelRoundedCorner
+                (
+                    BackgroundBlockColorToken = 'Transparent'
+                    BorderLineColorToken = 'H2_bleu_2_40p'
+                )
+            ]
+        )
+    ]
+)
+
+UISpecificAutoDeployViewDescriptor is TUISpecificAutoDeployViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificAutoDeployMainComponentDescriptor
+    MainComponentContainerUniqueName = "SpecificAutoDeployMainComponentDescriptor"
+)

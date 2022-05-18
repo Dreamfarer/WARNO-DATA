@@ -1,0 +1,189 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+// Le but de cette strategy est d'être majoritairement passive avec juste une seul attaque sur un seul front
+// Elle doit apprendre au joueur à jouer de manière simple sur un front, on part donc de la veasy en rajoutant une main attaque
+// On garde le scaling de la medium pour le moment, a modifier si trop fort
+//-------------------------------------------------------------------------
+export EasyStrategy is TIAGeneralStrategy
+(
+    StrategyName = "VeryEasyAI"
+    FirstGenerator = Easy_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        Easy_Transition_StartToPhaseCommand,
+        Easy_Transition_StartToGeneric,
+        Easy_Transition_DeployToCommandPhase,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Easy_Condition_GotoGeneric is TSequenceCondition_Not
+(
+    Condition = ~/Easy_Condition_CommandPhase
+)
+//-------------------------------------------------------------------------
+export Easy_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export Easy_Transition_StartToPhaseCommand is TIAGeneralStrategyTransition
+(
+    Origine = Easy_Choose_Strategy
+    Condition = Easy_Condition_CommandPhase
+    Destination = Easy_Phase_Command
+)
+export Easy_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = Easy_Choose_Strategy
+    Condition = Easy_Condition_GotoGeneric
+    Destination = Easy_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export Easy_Transition_DeployToCommandPhase is TIAGeneralStrategyTransition
+(
+    Origine = Easy_Phase_Deploiement
+    Condition = Easy_Condition_CommandPhase
+    Destination = Easy_Phase_Command
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export Easy_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export Easy_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        // On garde quand même une attaque objective pour allez prendre les zones de commandement
+        ~/Attack_Objectives,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+        ~/CaptureHalfZoneObjectif_Floor,
+        ~/Defense_Objectif,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/Artillery_Support,        // Artillerie pas chère                 //  80
+
+        // Reste du front
+        ~/Defense_Static_Adaptive,          // ~100
+
+
+        ~/Defense_Static_Adaptive,          // ~100
+        ~/Defense_Filler,            // budget 40
+        ~/Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+    ] + ~/Defenses_Airstrike_Arti_Shuffle_Deploy
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    ScalingGeneratorList = ~/Medium_Scaling
+)
+//-------------------------------------------------------------------------
+export Easy_Phase_Command is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        ~/Attack_Objectives,
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Support_AntiTank,
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/Defense_Static_Adaptive, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/Defense_Static_AA,
+
+        ~/CaptureHalfZoneObjectif_Floor,
+        ~/Defense_Objectif,
+
+        // On garde les fillers
+        ~/Defense_Filler,
+
+
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/Artillery_Support,        // Artillerie pas chère                 //  80
+
+        ~/Defense_Static_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Defense_Static_Adaptive,
+
+        ~/Defense_Static_Adaptive,
+
+        ~/Airstrike_Offense,
+        ~/Airstrike_Defense,
+
+        ~/SuperCommander,
+
+        ~/Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+    ] + ~/Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    ScalingGeneratorList = ~/Easy_Scaling
+)
+
+//Proche du scaling medium mais en plus gentil
+Easy_Scaling is
+[
+    ~/Attack_Adaptive_Autogen,
+    ~/Defense_Dynamic_Adaptive_Autogen,
+    ~/Defense_Dynamic_Adaptive_Autogen,
+    ~/Airstrike_Defense_Autogen,
+    ~/Defense_Dynamic_Adaptive_Autogen,
+    ~/Defense_Static_AA_Autogen,
+    ~/Airstrike_Offense_Autogen,
+    ~/Attack_Objectives_Autogen,
+    ~/Artillery_Expensive_Autogen,
+    ~/Airstrike_Assault_Autogen,
+]

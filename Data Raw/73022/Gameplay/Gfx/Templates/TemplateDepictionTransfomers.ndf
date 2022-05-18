@@ -1,0 +1,46 @@
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+private StrategicInfantryAnimationFileName is 'Fusilier_Steelman.Ase2NdfBin'
+private StrategicInfantryRunAnimationFileName is 'Fusilier_Run.Ase2NdfBin'
+
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//--------------------Socle différent pour chaque camp--------------------------
+//------------------------------------------------------------------------------
+private MeshModele_Socle_USA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/Common/Strategic/Socle_USA.fbx'
+    CivMask =  CivMask/Common
+)
+
+private MeshModele_Socle_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/Common/Strategic/Socle_SOV.fbx'
+    CivMask =  CivMask/Common
+)
+//------------------------------------------------------------------------------
+//--------------------3 tailles différentes pour la tige------------------------
+//------------------------------------------------------------------------------
+private MeshModele_Tige_longue is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/Common/Strategic/Tige_longue.fbx'
+    CivMask =  CivMask/Common
+)
+
+private MeshModele_Tige_courte is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/Common/Strategic/Tige_courte.fbx'
+    CivMask =  CivMask/Common
+)
+
+private MeshModele_Tige_moyenne is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/Common/Strategic/Tige_moyenne.fbx'
+    CivMask =  CivMask/Common
+)
+//------------------------------------------------------------------------------
+//******************************************************************************
+//------------------------------------------------------------------------------

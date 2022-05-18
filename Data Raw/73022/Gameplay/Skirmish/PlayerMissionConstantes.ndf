@@ -1,0 +1,296 @@
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+ETargetFilter_None     is 0
+ETargetFilter_HasShot  is 1
+ETargetFilter_UnitSeen is 2
+///////////////////////////////////////////////////////////////////////////////////////////
+private player_mission_Renfort_AT is TSupportSetting
+(
+    TagDeContre = "Anti_Char_Mobile"
+    TagAContrer = "Char"
+    VerifierEnnemiesDansLesZonesVoisines = true
+    Ratio = 0.01 // Un seul AT du coup
+    NecessaireAuLancement = false // La mission ne lancera son attaque que si le ratio est respecté au point de regroupement
+)
+private player_mission_BasicAirstrikeSupport is
+[
+    (["Avion_Chasseur_Bombardier", "Avion_Bombardier", "Avion_Assaut", "Avion_AT"], 2),
+]
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// MACRO ACTIONS
+///////////////////////////////////////////////////////////////////////////////////////////
+export colonelAttackDescriptor is TMacroActionDescriptor_Attack_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TSupportSettingHolder(SettingList = [Renfort_AT, Renfort_TransportsAbandonnes]),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 2 OutMapArtilleryAmount = 0),
+        TBlitzkriegSettingHolder(RatioFactorToDisableSelfPreservation = 2.0   MinimumCostForSelfPreservation = 100),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 0.01 CompterLesUnitesEnZoneExtendedDansLaMenace = true UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true),
+        TMacroActionProductionSettingHolder(DisableReinforcement = true),
+        TMacroActionLifetimeSettingHolder(MaintainForever = true), //IMPORTANT
+    ]
+)
+///////////////////////////////////////////////////////////////////////////////////////////
+export colonelDefenseDescriptor is TMacroActionDescriptor_Defense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [player_mission_Renfort_AT]),
+        TMacroActionProductionSettingHolder(DisableReinforcement = true),
+        TMacroActionLifetimeSettingHolder(MaintainForever = true), //IMPORTANT
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+///////////////////////////////////////////////////////////////////////////////////////////
+export colonelArtilleryCounterBatteryDescriptor is TMacroActionDescriptor_Artillery_PlayerMission
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TArtilleryPositionningSettingHolder(ArtilleryPositionOffset = 10000 * Metre {2000m ingame} OutMapArtilleryPositionOffset = 7000 * Metre),
+        TMacroActionProductionSettingHolder(PoolModelList = [] DistanceToOptimumStartDuringDeployment = 3000*Metre),
+        TMacroActionLifetimeSettingHolder(MaintainForever = true), //IMPORTANT
+        TArtilleryPlayerMissionSettingHolder(
+            AuthorizedTargetTags = ["Artillerie_CMD", "Artillerie_MLRS", "Artillerie_Observateur", "Artillerie_Hors_Carte", "Artillerie_Longue_Portee"] TargetFilter = ETargetFilter_HasShot MaxDurationForTargetValidity = 60 MinDurationForTargetValidity = 10),
+        TArtilleryStrikeSettingHolder(DelaytBetweenTargetDeathAndNewStrike = 3),
+    ]
+)
+///////////////////////////////////////////////////////////////////////////////////////////
+export colonelArtilleryDescriptor is TMacroActionDescriptor_Artillery_PlayerMission
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TArtilleryPositionningSettingHolder(ArtilleryPositionOffset = 10000 * Metre {2000m ingame} OutMapArtilleryPositionOffset = 7000 * Metre),
+        TMacroActionProductionSettingHolder(PoolModelList = [] DistanceToOptimumStartDuringDeployment = 3000*Metre),
+        TMacroActionLifetimeSettingHolder(MaintainForever = true), //IMPORTANT
+        TArtilleryPlayerMissionSettingHolder(AuthorizedTargetTags = ["AllUnits"] TargetFilter = ETargetFilter_UnitSeen MinDurationForTargetValidity = 10),
+        TArtilleryStrikeSettingHolder(DelaytBetweenTargetDeathAndNewStrike = 3),
+    ]
+)
+///////////////////////////////////////////////////////////////////////////////////////////
+export colonelAirstrikeDescriptor is TMacroActionDescriptor_AirStrike_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = []),
+        TMacroActionLifetimeSettingHolder(MaintainForever = true), //IMPORTANT
+        TAirStrikeSettingHolder(AnnulerSupportSiAttaqueEchoue = true TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/All),
+    ]
+)
+///////////////////////////////////////////////////////////////////////////////////////////
+export colonelAirRecoDescriptor is TMacroActionDescriptor_AirReco_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionLifetimeSettingHolder(MaintainForever = true), //IMPORTANT
+        AirRecoMissionLaunchSettingHolderTemplate(MaxAirplaneCountOnBattlefield = 1000 TicksBetweenTwoLaunch = 0 TicksBetweenTwoMissions = 0),
+    ]
+)
+///////////////////////////////////////////////////////////////////////////////////////////
+// MISSION DESCRIPTORS
+///////////////////////////////////////////////////////////////////////////////////////////
+export PlayerMissionDescriptorAttack is TPlayerMissionDescriptor(
+    MacroActionDescriptor = colonelAttackDescriptor
+    AuthorizedTags = ~/Attack_AuthorizedTags
+    ExclusionTags = ~/Attack_ExcludedTags
+    Mergeable = true
+    UsePosition = true
+)
+
+export PlayerMissionDescriptor_ManageArtillery_Focus is TPlayerMissionDescriptor(
+    MacroActionDescriptor = colonelArtilleryDescriptor
+    AuthorizedTags = ~/ManageArtillery_Focus_AuthorizedTags
+    ExclusionTags = ~/ManageArtillery_Focus_ExcludedTags
+    Mergeable = false
+    UsePosition = true
+)
+
+export PlayerMissionDescriptor_Hold is TPlayerMissionDescriptor(
+    MacroActionDescriptor = colonelDefenseDescriptor
+    AuthorizedTags = ~/Hold_AuthorizedTags
+    ExclusionTags = ~/Hold_ExcludedTags
+    Mergeable = true
+    UsePosition = true
+)
+
+export PlayerMissionDescriptor_ManageArtillery_CounterBattery is TPlayerMissionDescriptor(
+    MacroActionDescriptor = colonelArtilleryCounterBatteryDescriptor
+    AuthorizedTags = ~/ManageArtillery_CounterBattery_AuthorizedTags
+    ExclusionTags = ~/ManageArtillery_CounterBattery_ExcludedTags
+    Mergeable = false
+    UsePosition = false
+)
+
+export PlayerMissionDescriptor_ManageArtillery_Auto is TPlayerMissionDescriptor(
+    MacroActionDescriptor = colonelArtilleryDescriptor
+    AuthorizedTags = ~/ManageArtillery_Auto_AuthorizedTags
+    ExclusionTags = ~/ManageArtillery_Auto_ExcludedTags
+    Mergeable = false
+    UsePosition = false
+)
+
+export PlayerMissionDescriptor_ManageAirplanes is TPlayerMissionDescriptor(
+    MacroActionDescriptor = colonelAirstrikeDescriptor
+    AuthorizedTags = ~/ManageAirplanes_AuthorizedTags
+    ExclusionTags = ~/ManageAirplanes_ExcludedTags
+    Mergeable = false
+    UsePosition = true
+)
+
+export PlayerMissionDescriptor_ManageAirReco is TPlayerMissionDescriptor(
+    MacroActionDescriptor = colonelAirRecoDescriptor
+    AuthorizedTags = ~/ManageAirReco_AuthorizedTags
+    ExclusionTags = ~/ManageAirReco_ExcludedTags
+    Mergeable = true
+    UsePosition = true
+)
+
+export PlayerMissionDescriptor_Stop is TPlayerMissionDescriptor(
+    MacroActionDescriptor = nil
+    AuthorizedTags = ~/Stop_AuthorizedTags
+    ExclusionTags = ~/Stop_ExcludedTags
+    Mergeable = false
+    UsePosition = false
+)
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// CONSTANTES
+///////////////////////////////////////////////////////////////////////////////////////////
+export PlayerMissionDescriptorList is TPlayerMissionConstantesDescriptor
+(
+    StartFadeAlphaAfterTimeInSeconds = 0.5 // secondes
+    AlphaFadeDurationInSeconds = 2.0 // secondes
+
+    PlayerMissionDescriptorByType = MAP[
+        (
+            EPlayerMissionRequestType_Seize,
+            TPlayerMissionOrderDescriptor(
+                DescriptorPriority = [
+                    PlayerMissionDescriptorAttack,
+                ]
+                DebugName = "Seize"
+                UseMousePolicy = true
+            )
+        ),
+        (
+            EPlayerMissionRequestType_ManageArtillery_Focus,
+            TPlayerMissionOrderDescriptor(
+                DescriptorPriority = [
+                    PlayerMissionDescriptor_ManageArtillery_Focus,
+                ]
+                DebugName = "ManageArtillery_Focus"
+                UseMousePolicy = true
+            )
+        ),
+        (
+            EPlayerMissionRequestType_Hold,
+            TPlayerMissionOrderDescriptor(
+                DescriptorPriority = [
+                    PlayerMissionDescriptor_Hold,
+                ]
+                DebugName = "Hold"
+                UseMousePolicy = false
+            )
+        ),
+        (
+            EPlayerMissionRequestType_ManageArtillery_CounterBattery,
+            TPlayerMissionOrderDescriptor(
+                DescriptorPriority = [
+                    PlayerMissionDescriptor_ManageArtillery_CounterBattery,
+                ]
+                DebugName = "ManageArtillery_CounterBattery"
+                UseMousePolicy = false
+            )
+        ),
+        (
+            EPlayerMissionRequestType_ManageArtillery_Auto,
+            TPlayerMissionOrderDescriptor(
+                DescriptorPriority = [
+                    PlayerMissionDescriptor_ManageArtillery_Auto,
+                ]
+                DebugName = "ManageArtillery_Auto"
+                UseMousePolicy = false
+            )
+        ),
+        (
+            EPlayerMissionRequestType_ManageAirplanes,
+            TPlayerMissionOrderDescriptor(
+                DescriptorPriority = [
+                    PlayerMissionDescriptor_ManageAirReco,
+                    PlayerMissionDescriptor_ManageAirplanes,
+                ]
+                DebugName = "Manage Airplanes"
+                UseMousePolicy = false
+            )
+        ),
+        (
+            EPlayerMissionRequestType_Stop,
+            TPlayerMissionOrderDescriptor(
+                DescriptorPriority = [
+                    PlayerMissionDescriptor_Stop,
+                ]
+                DebugName = "Stop Managing"
+                UseMousePolicy = false
+            )
+        ),
+    ]
+)
+///////////////////////////////////////////////////////////////////////////////////////////
+// FEEDBACK
+///////////////////////////////////////////////////////////////////////////////////////////
+PlayerMissionFeedbackDescriptor is TUIPlayerMissionConstantesDescriptor
+(
+
+    PlayerMissionFeedbackDescriptorByType = MAP[
+        (
+            EPlayerMissionRequestType_Seize,
+            TZoneFeedbackDescriptor(
+                Style = TFeedbackStyleDescriptor(
+                             Thickness = 4000.0
+                             Border = [221, 30, 30, 180]
+                             Fill = [221, 30, 30, 180]
+                         )
+                GeometryMode = ~/FeedbackGeometryMode/AdaptToWorldFloor_Border_AlwaysOnTop
+                EffectMode = ~/FeedbackEffectMode/Dotted
+                EffectScale = 1.0
+            )
+        ),
+        (
+            EPlayerMissionRequestType_ManageArtillery_Focus,
+            TZoneFeedbackDescriptor(
+                Style = TFeedbackStyleDescriptor(
+                             Thickness = 4000.0
+                             Border = [221, 30, 30, 180]
+                             Fill = [221, 30, 30, 180]
+                         )
+                GeometryMode = ~/FeedbackGeometryMode/AdaptToWorldFloor_Border_AlwaysOnTop
+                EffectMode = ~/FeedbackEffectMode/Dotted
+                EffectScale = 1.0
+            )
+        ),
+        (
+            EPlayerMissionRequestType_Hold,
+            TZoneFeedbackDescriptor(
+                Style = TFeedbackStyleDescriptor(
+                             Thickness = 4000.0
+                             Border = [30, 30, 222, 180]
+                             Fill = [221, 30, 222, 180]
+                         )
+                GeometryMode = ~/FeedbackGeometryMode/AdaptToWorldFloor_Border_AlwaysOnTop
+                EffectMode = ~/FeedbackEffectMode/Dotted
+                EffectScale = 1.0
+            )
+        ),
+    ]
+)

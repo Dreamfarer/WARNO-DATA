@@ -1,0 +1,19 @@
+
+export Tactic_AllianceUnitDescriptor is TEntityDescriptor
+(
+    World          = WorldIndices_Alliance
+    DescriptorId        = GUID:{00000000-0000-0000-0000-000034000000}
+
+    ModulesDescriptors =
+    [
+        TAllianceDescriptionModuleDescriptor
+        (
+        ),
+        TAllianceGameRulesModuleDescriptor
+        (
+        ),
+        TAllianceRelationsModuleDescriptor
+        (
+        ),
+    ]
+)

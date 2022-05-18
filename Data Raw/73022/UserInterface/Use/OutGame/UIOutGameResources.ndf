@@ -1,0 +1,142 @@
+RefMagnification is 1.0
+
+MagnifiableMarginForContent is 15.0
+MagnifiableMainPanelWidth is 1323.0 div ~/RefMagnification
+MagnifiableMainPanelContentWidth is 1720.0//MagnifiableMainPanelWidth - 2 * MagnifiableMarginForContent
+
+private OutGameWarningPanelResources is TUICommonWarningPanelResource
+(
+    ComponentByName = MAP[
+        ( "WarningPositive", ~/WarningPositiveComponent ),
+    ]
+
+    LifeAnimDurationForTemporary = 8.0
+    FadeInDuration = 0.4
+    FadeOutDuration = 0.8
+)
+
+export OutGameResourceSpecific is TUISpecificOutGameResources
+(
+    Handler                     = $/UI/ResourcesHandler/OutGameResourcesHandler
+    UILayer                     = $/UserInterface/UILayer_2DInterface_OutGame
+    DragAndDropUILayer          = $/UserInterface/UILayer_DragAndDrop
+    WarningUILayer              = $/UserInterface/UILayer_2DInterface_OutGame_Warning
+    CommonResources             = ~/UICommonResource
+    OptionManager               = $/GameOptionsInterface/GameOptionsInterfaceWrapper
+
+    MainStyleGuides             = [
+        ~/DefaultStyleGuide,
+    ]
+
+    HUBContainerResource       = ~/outGameHUBContainerResource
+    ActionScreensContainerResource = ~/outGameActionScreensContainerResource
+
+    UserInputBinder             = $/GameOptionsInterface/UserInputBinder
+    UIOffscreenSceneFactory     = $/M3D/Scene/SceneFactory_UIOffscreen
+    LevelUpAnimResource         = ~/LevelUpAnimResourceWg2
+    WaitAnimResource            = ~/waitAnimResource
+    LoadingResource             = ~/SpecificOutGameLoadingPanelResource
+    LoginResource               = ~/LoginResource
+    EscapePanelResources        = ~/EscapePanelResource
+
+    MainPanelWidth              = ~/MagnifiableMainPanelWidth
+    MainPanelContentWidth       = ~/MagnifiableMainPanelContentWidth
+
+    UISpecificDivisionSelectionViewDescriptor = ~/UISpecificDivisionSelectionViewDescriptor
+    CreditsResource             = ~/SpecificCreditsResource
+    PlayerPropertyResource      = ~/specificPlayerPropertyResource
+
+    NicknameChangeResource      = ~/NicknameChangeResource
+    ModaleResource              = ~/ModaleResource
+    NotificationPanelResource   = ~/NotificationPanelResource
+    WarningPanelResources       = ~/OutGameWarningPanelResources
+    ModCenterResources          = ~/ModCenterPanelResource
+    ModResources                = ~/ModResource
+    PingDisplayResources        = ~/UICommonHUDPingDisplayViewDescriptor
+
+    TutorialGuideDescriptor     = ~/TutorialGuideViewDescriptor
+
+    SceneResource               = ~/specificSceneResource
+
+    HostPanelResources          = ~/HostPanelResources
+
+    AutoMatchGameSearchContent  = ~/OutGameSearchAutoMatchGameDescriptor
+
+    VersionTextContent          = ~/OutGameVersionTextDescriptor
+
+    CampaignSoloResource        = ~/CampaignSoloResources
+
+    LevelUpContent              = ~/LevelUpPanelDescriptor
+
+    GameModeResources           = ~/GameModeResources
+    CombatRuleResources         = ~/CombatRuleResources
+
+    CutSceneResources           = ~/outGameCutSceneResources
+
+    //Sounds
+    CountDownSound              = ~/OutgameSound_WG2_CountDownSound
+    GameFoundSound              = ~/OutgameSound_WG2_GameFound
+    ProfileClickSound           = ~/OutgameSound_WG2_ProfileClick
+
+    NewContentTagsAndDisplayCount = MAP
+    [
+        ("ChallengeUpdate",     5),
+    ]
+
+    ViewDescriptors = MAP
+    [
+        ("UIOutGameChatViewDescriptor", ~/UISpecificOutGameChatViewDescriptor),
+        ("UIOutGameShowRoomChatViewDescriptor", ~/UISpecificOutGameShowRoomChatViewDescriptor),
+        ("UIOutGameMotdViewDescriptor", ~/UISpecificOutGameMotdViewDescriptor),
+        ("UIOutGameChatOneChannelViewDescriptor", ~/UISpecificOutGameChatOneChannelViewDescriptor),
+        ("UIOutGameChatChannelListViewDescriptor", ~/UISpecificOutGameChatChannelListViewDescriptor),
+        ("UIOutGameChatMessageListViewDescriptor", ~/UISpecificOutGameChatMessageListViewDescriptor),
+        ("UIOutGameChatMessageViewDescriptor", ~/UISpecificOutGameChatMessageViewDescriptor),
+
+        ("UISpecificOutGameAutoMatchViewDescriptor", ~/UISpecificOutGameAutoMatchViewDescriptor),
+        ("UISpecificOutGameStrategicLobbyViewDescriptor", ~/UISpecificOutGameStrategicLobbyViewDescriptor),
+        ("UISpecificOutGameWelcomeViewDescriptor", ~/UISpecificOutGameWelcomeViewDescriptor),
+        ("UISpecificOutGameSoloViewDescriptor", ~/UISpecificOutGameSoloViewDescriptor),
+        ("UISpecificOutGameModPanelViewDescriptor", ~/UISpecificOutGameModPanelViewDescriptor),
+
+        ("UISpecificOutGameLobbyViewDescriptor", ~/UISpecificOutGameLobbyViewDescriptor),
+
+        ("UISpecificOutGameFriendListViewDescriptor", UISpecificOutGameFriendListViewDescriptor(ComponentContainerUniqueName="" IsSubView=false)),
+        ("UISpecificOutGameFriendListSubViewDescriptor", UISpecificOutGameFriendListViewDescriptor(ComponentContainerUniqueName="MultiFriendSubViewDescriptor" IsSubView=true)),
+        ("UIOutgameFriendLineViewDescriptor", ~/UIOutgameFriendLineViewDescriptor),
+        ("UISpecificOutGameFriendModaleViewDescriptor", ~/UISpecificOutGameFriendModaleViewDescriptor),
+        ("ScorePanelDescriptor", UISpecificStrategicScorePanelViewDescriptor(isEndgame = true)),
+        ("TacticalEndGameDescriptor", ~/UISpecificTacticalEndGameViewDescriptor),
+
+        ("UISpecificStrategicCampaignViewDescriptor",     UISpecificStrategicCampaignViewDescriptor(IsTuto = false )),
+        ("UISpecificStrategicCampaignSubViewDescriptor",  UISpecificStrategicCampaignViewDescriptor(IsTuto = false IsSubView=true ComponentContainerUniqueName="SoloPanelViewDescriptor")),
+        ("UISpecificHistoricalBattleViewDescriptor",      UISpecificHistoricalBattleViewDescriptor(IsTuto = false)),
+        ("UISpecificHistoricalBattleSubViewDescriptor",   UISpecificHistoricalBattleViewDescriptor(IsTuto = false IsSubView=true ComponentContainerUniqueName="SoloPanelViewDescriptor")),
+        ("UISpecificTacticalTutoViewDescriptor",          UISpecificHistoricalBattleViewDescriptor(IsTuto = true)),
+        ("UISpecificTacticalTutoSubViewDescriptor",       UISpecificHistoricalBattleViewDescriptor(IsTuto = true IsSubView=true ComponentContainerUniqueName="SoloPanelViewDescriptor")),
+        ("UISpecificSaveLoadPanelSubViewDescriptor",      UISpecificSaveLoadPanelViewDescriptor(IsSubView=true ComponentContainerUniqueName="SoloPanelViewDescriptor")),
+        ("UISpecificSaveLoadPanelViewDescriptor",         UISpecificSaveLoadPanelViewDescriptor(IsSubView=false)),
+        ("UISpecificOutGameMultiViewDescriptor", ~/UISpecificOutGameMultiViewDescriptor),
+        ("UISpecificLeaderboardViewDescriptor", UISpecificLeaderboardViewDescriptor(ComponentContainerUniqueName="MultiLeaderboardSubViewDescriptor")),
+
+        ("UISpecificOutGameGameRoomListViewDescriptor", ~/UISpecificOutGameGameRoomListViewDescriptor),
+        ("UISpecificLobbyShortcutsViewDescriptor", ~/UISpecificMultiLobbyShortcutsViewDescriptor),
+        ("UISpecificOutGameOptionViewDescriptor", ~/UISpecificOutGameOptionViewDescriptor),
+
+        ("UISpecificBattlegroupsListViewDescriptorForArmory", ~/UISpecificBattlegroupsListViewDescriptorForArmory),
+        ("UISpecificBattlegroupsListViewDescriptorForLobby", ~/UISpecificBattlegroupsListViewDescriptorForLobby),
+        ("UISpecificProfileStatsViewDescriptor", ~/UISpecificProfileStatsViewDescriptor),
+
+        ("UISpecificLoginViewDescriptor", ~/UISpecificLoginViewDescriptor),
+        ("UISpecificConnectingPanelViewDescriptor", ~/UISpecificConnectingPanelViewDescriptor),
+        ("UISpecificOutGameCreateAutologinAccountViewDescriptor", UISpecificOutGameCreateAccountViewDescriptor(IsAutologinAccount = true)),
+        ("UISpecificOutGameCreateNoAutologinAccountViewDescriptor", UISpecificOutGameCreateAccountViewDescriptor(IsAutologinAccount = false)),
+        ("UISpecificLinkAccountViewDescriptor", ~/UISpecificLinkAccountViewDescriptor),
+        ("UISpecificOutGameRecoverLoginViewDescriptor", ~/UISpecificOutGameRecoverLoginViewDescriptor),
+        ("UISpecificOutGameRecoverPasswordViewDescriptor", ~/UISpecificOutGameRecoverPasswordViewDescriptor),
+        ("UISpecificConnectionStateViewDescriptor", ~/UISpecificConnectionStateViewDescriptor),
+
+        ("JoinByInviteCodeModaleViewDescriptor", ~/UISpecificOutGameJoinByInviteCodeModaleViewDescriptor),
+        ("ShowInviteCodeModaleViewDescriptor", ~/UISpecificOutGameShowInviteCodeModaleViewDescriptor),
+    ]
+)

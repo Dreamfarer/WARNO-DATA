@@ -1,0 +1,21 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+
+
+
+
+
+
+export Texture_Portrait_default is TUIResourceTexture_Common
+(
+    FileName = "Assets/2D/Interface/UseInGame/LabelIcons/Portraits/default.png"
+)
+
+UnitPortraitAdditionalTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+        ("Texture_Portrait_default", MAP [(~/ComponentState/Normal, ~/Texture_Portrait_default)]),
+    ]
+)

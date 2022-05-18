@@ -1,0 +1,809 @@
+// Tutorial Skirmish : GER
+
+//----------------------------------------------------------------------------------
+
+export Tutorial_Skirmish_GER is TIAGeneralStrategy
+(
+    StrategyName = "Skirmish"
+    FirstGenerator = Missions_Phase_A_GER
+    TransitionList = [ ]
+)
+
+//-------------------------------------------------------------------------
+//------------------------------- PHASES ----------------------------------
+//-------------------------------------------------------------------------
+
+export Missions_Phase_A_GER is TSequenceGeneratorDescriptor //Price: 0
+(
+    NbMacroActionAllowedToProduceSimultaneous = 50
+
+    GeneratorList =
+    [
+        ~/C6_Defense_Mix_GER,                   //Price: 0      (x1)
+        ~/C2_Attack_Mix_GER,                    //Price: 0      (x1)
+//        ~/C9_Defense_Mix_GER,                   //Price: 0      (x1)
+        ~/C3_Attack_Mix_GER,                    //Price: 0      (x1)
+
+//        ~/C1_Attack_Mix_GER,                    //Price: 0      (x1)
+        ~/C8_Defense_Mix_GER,                   //Price: 0      (x1)
+        ~/C7_Defense_Mix_GER,                   //Price: 0      (x1)
+        ~/C4_Attack_Mix_GER,                    //Price: 0      (x1)
+
+        ~/Land_Reco_GER,                        //Price: 0      (x?)
+        ~/Air_Reco_GER,                         //Price: 0      (x?)
+
+        ~/Airstrike_Defense_DiveBomber_GER,     //Price: 0      (x?)
+
+        ~/Artillery_ShortRange_GER,             //Price: 0      (x?)
+
+        ~/Supply_Reco_GER,                      //Price: 0      (x?)
+        ~/Supply_Allied_GER,                    //Price: 0      (x?)
+
+        ~/Mission_Backup_EmptyTransports_GER,   //Price: 0      (x?)
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Missions_Phase_B_GER is TSequenceGeneratorDescriptor //Price: 0
+(
+    NbMacroActionAllowedToProduceSimultaneous = 50
+
+    GeneratorList =
+    [
+        ~/Maintain_CorridorDefenses_GER,        //Price: 0      (x1)
+        ~/Maintain_CorridorAttacks_GER,         //Price: 0      (x1)
+
+        ~/Land_Reco_GER,                        //Price: 0      (x?)
+        ~/Air_Reco_GER,                         //Price: 0      (x?)
+
+        ~/Airstrike_Defense_DiveBomber_GER,     //Price: 0      (x?)
+        ~/Airstrike_Defense_Fighter_GER,        //Price: 0      (x?)
+
+        ~/Artillery_ShortRange_GER,             //Price: 0      (x?)
+        ~/Artillery_LongRange_GER,              //Price: 0      (x?)
+
+        ~/Supply_Reco_GER,                      //Price: 0      (x?)
+        ~/Supply_Allied_GER,                    //Price: 0      (x?)
+
+        ~/Mission_Backup_AT_GER,                //Price: 0      (x?)
+        ~/Mission_Backup_AntiInfantry_GER,      //Price: 0      (x?)
+        ~/Mission_Backup_EmptyTransports_GER,   //Price: 0      (x?)
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Missions_Phase_C_GER is TSequenceGeneratorDescriptor //Price: 0
+(
+    NbMacroActionAllowedToProduceSimultaneous = 50
+
+    GeneratorList =
+    [
+        ~/Maintain_CorridorDefenses_GER,        //Price: 0      (x1)
+        ~/Maintain_CorridorAttacks_GER,         //Price: 0      (x1)
+
+        ~/Land_Reco_GER,                        //Price: 0      (x?)
+        ~/Air_Reco_GER,                         //Price: 0      (x?)
+
+        ~/Airstrike_Defense_DiveBomber_GER,     //Price: 0      (x?)
+        ~/Airstrike_Defense_Fighter_GER,        //Price: 0      (x?)
+        ~/Airstrike_Offense_Bomber_GER,         //Price: 0      (x?)
+
+        ~/Artillery_ShortRange_GER,             //Price: 0      (x?)
+        ~/Artillery_LongRange_GER,              //Price: 0      (x?)
+
+        ~/Supply_Reco_GER,                      //Price: 0      (x?)
+        ~/Supply_Allied_GER,                    //Price: 0      (x?)
+
+        ~/Mission_Backup_AT_GER,                //Price: 0      (x?)
+        ~/Mission_Backup_AntiInfantry_GER,      //Price: 0      (x?)
+        ~/Mission_Backup_EmptyTransports_GER,   //Price: 0      (x?)
+    ]
+)
+
+//-------------------------------------------------------------------------
+//-------------------------- MISSIONS DEFENSES ----------------------------
+//-------------------------------------------------------------------------
+
+//CORRIDOR 6 DEFENSE
+
+export C6_Defense_Mix_GER is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/Airstrike_DiveBomber_Support_GER),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Support_AT_GER, Support_AntiInfantry_GER, Support_EmptyTransports_GER]),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModel_CDefense_Mix_GER]),
+        TForcedPlacementSettingHolder(ForcedCorridor = [6]),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//CORRIDOR 7 DEFENSE
+
+export C7_Defense_Mix_GER is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/Airstrike_DiveBomber_Support_GER),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Support_AT_GER, Support_AntiInfantry_GER, Support_EmptyTransports_GER]),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModel_CDefense_Mix_GER]),
+        TForcedPlacementSettingHolder(ForcedCorridor = [7]),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//CORRIDOR 8 DEFENSE
+
+export C8_Defense_Mix_GER is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/Airstrike_DiveBomber_Support_GER),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Support_AT_GER, Support_AntiInfantry_GER, Support_EmptyTransports_GER]),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModel_CDefense_Mix_GER]),
+        TForcedPlacementSettingHolder(ForcedCorridor = [8]),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//CORRIDOR 9 DEFENSE
+
+export C9_Defense_Mix_GER is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/Airstrike_DiveBomber_Support_GER),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Support_AT_GER, Support_AntiInfantry_GER, Support_EmptyTransports_GER]),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModel_CDefense_Mix_GER]),
+        TForcedPlacementSettingHolder(ForcedCorridor = [9]),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//POOL CORRIDOR DEFENSE MIX
+
+export poolModel_CDefense_Mix_GER is TPoolModel
+(
+    ModelList = [
+        //Infantry
+        TPoolElement(
+            DescriptorId = GUID:{585c9e51-efb6-11e6-95fd-448a5b24d3f9}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            AllowUnitMixing = true
+            TagsPriority =
+            [
+                "Escouade_Infanterie",
+                "Infanterie_Standard",
+                "Escouade_CMD",
+            ]
+        ),
+        //Support
+        TPoolElement(
+            DescriptorId = GUID:{24363670-f210-11e6-9482-448a5b24d3f9}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            AllowUnitMixing = true
+            TagsPriority =
+            [
+                "Escouade_HMG",
+                "Escouade_MMG",
+                "Escouade_Sniper",
+                "Escouade_Flamer",
+                "Appui_Feu",
+            ]
+        ),
+        //AA
+        TPoolElement(
+            DescriptorId = GUID:{2b501721-f1e6-11e6-b5de-448a5b24d3f9}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            AllowUnitMixing = true
+            TagsPriority =
+            [
+                "Canon_AA_Leger",
+                "Canon_AA_Porte",
+            ]
+        ),
+        //AT
+        TPoolElement(
+            DescriptorId = GUID:{2437bd0f-f210-11e6-8d74-448a5b24d3f9}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            AllowUnitMixing = true
+            TagsPriority =
+            [
+                "Canon_AT_Moyen",
+                "Canon_AT_Lourd",
+                "Canon_AT_Leger",
+                "Canon_AT",
+                "ChasseurDeChar_Lourd",
+                "ChasseurDeChar_Moyen",
+                "ChasseurDeChar_Leger",
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- MISSIONS ATTACKS ----------------------------
+//-------------------------------------------------------------------------
+
+//CORRIDOR 1 ATTACK
+
+export C1_Attack_Mix_GER is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/Airstrike_DiveBomber_Support_GER),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0), //No off-map support
+        TBlitzkriegSettingHolder(RatioFactorToDisableSelfPreservation = 2.0   MinimumCostForSelfPreservation = 80),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModel_CAttack_Mix_GER] ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] LaunchASAP_RatioMin = 0.1),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 0.0 CompterLesUnitesEnZoneExtendedDansLaMenace = true UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true), //(bool) if not in corridor, which zone to attack?
+        TForcedPlacementSettingHolder(ForcedCorridor = [0]),
+        TAntiStackingSettingHolder(),
+        TCorridorPlacementSettingHolder(StayInCorridorIfp = true),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//CORRIDOR 2 ATTACK
+
+export C2_Attack_Mix_GER is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/Airstrike_DiveBomber_Support_GER),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0), //No off-map support
+        TBlitzkriegSettingHolder(RatioFactorToDisableSelfPreservation = 2.0   MinimumCostForSelfPreservation = 80),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModel_CAttack_Mix_GER] LaunchASAP_RatioMin = 0.1 ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 0.0 CompterLesUnitesEnZoneExtendedDansLaMenace = true UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true), //(bool) if not in corridor, which zone to attack?
+        TForcedPlacementSettingHolder(ForcedCorridor = [2]),
+        TAntiStackingSettingHolder(),
+        TCorridorPlacementSettingHolder(StayInCorridorIfp = true),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//CORRIDOR 3 ATTACK
+
+export C3_Attack_Mix_GER is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/Airstrike_DiveBomber_Support_GER),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0), //No off-map support
+        TBlitzkriegSettingHolder(RatioFactorToDisableSelfPreservation = 2.0   MinimumCostForSelfPreservation = 80),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/poolModel_CAttack_Mix_GER] LaunchASAP_RatioMin = 0.1),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 0.0 CompterLesUnitesEnZoneExtendedDansLaMenace = true UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true), //(bool) if not in corridor, which zone to attack?
+        TForcedPlacementSettingHolder(ForcedCorridor = [3]),
+        TAntiStackingSettingHolder(),
+        TCorridorPlacementSettingHolder(StayInCorridorIfp = true),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//CORRIDOR 4 ATTACK
+
+export C4_Attack_Mix_GER is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/Airstrike_DiveBomber_Support_GER),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0), //No off-map support
+        TBlitzkriegSettingHolder(RatioFactorToDisableSelfPreservation = 2.0   MinimumCostForSelfPreservation = 80),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModel_CAttack_Mix_GER] ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] LaunchASAP_RatioMin = 0.1),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 0.0 CompterLesUnitesEnZoneExtendedDansLaMenace = true UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true), //(bool) if not in corridor, which zone to attack?
+        TForcedPlacementSettingHolder(ForcedCorridor = [4]),
+        TAntiStackingSettingHolder(),
+        TCorridorPlacementSettingHolder(StayInCorridorIfp = true),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//POOL CORRIDOR ATTACK MIX
+
+export poolModel_CAttack_Mix_GER is TPoolModel
+(
+    ModelList = [
+        //Infantry
+        TPoolElement(
+            DescriptorId = GUID:{2437bd10-f210-11e6-9bdf-448a5b24d3f9}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            AllowUnitMixing = true
+            TagsPriority =
+            [
+                "Escouade_Infanterie",
+                "Infanterie_Standard",
+            ]
+        ),
+        //Commandant
+        TPoolElement(
+            DescriptorId = GUID:{2437bd11-f210-11e6-aec3-448a5b24d3f9}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            AllowUnitMixing = true
+            TagsPriority =
+            [
+                "Escouade_CMD",
+            ]
+        ),
+        //Support
+        TPoolElement(
+            DescriptorId = GUID:{2437e421-f210-11e6-9256-448a5b24d3f9}
+            Required = false
+            Nb = 1
+            IndexPriorityOverPrice = true
+            AllowUnitMixing = true
+            TagsPriority =
+            [
+                "Appui_Feu",
+                "Char_Leger",
+                "Vehicule_CMD",
+                "Char_Moyen",
+                "Char_Lourd",
+                "Char_CMD",
+                "Vehicule_Flamer",
+                "Char_Amphibie"
+            ]
+        ),
+    ]
+)
+
+//------------------------------- MISC ------------------------------------
+
+//-------------------------------------------------------------------------
+//----------------------------- MAINTAIN ----------------------------------
+//-------------------------------------------------------------------------
+
+export Maintain_CorridorDefenses_GER is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_Maintain),
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Maintain_CorridorAttacks_GER is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_Maintain),
+    ]
+)
+
+//-------------------------------------------------------------------------
+//------------------------------- RECO ------------------------------------
+//-------------------------------------------------------------------------
+
+export Land_Reco_GER is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 4 AlsoConsiderTheseDescriptorsForMaintain = []),
+        TDefensePositionSettingHolder(IgnoreEnemyDirectionForDefensePosition = true),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/PoolModel_Land_Reco_GER]),
+    ]
+)
+
+// POOL LAND RECO
+
+export PoolModel_Land_Reco_GER is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{28779833-affa-11e6-9ca4-305a3ae065c1}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false // We want the cheapest
+        TagsPriority = [
+            "Escouade_Scout",
+            "Vehicule_Reco",
+            "Reco"
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Air_Reco_GER is TMacroActionDescriptor_AirReco_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSizeByAlliance NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/PoolModel_Air_Reco_GER]),
+        AirRecoMissionLaunchSettingHolderTemplate(MaxAirplaneCountOnBattlefield = 1 TicksBetweenTwoLaunch = 60 TicksBetweenTwoMissions = 60),
+    ]
+)
+
+// POOL AIR RECO
+
+export PoolModel_Air_Reco_GER is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{993be7e1-baf6-11e6-8c06-305a3ae065c1}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Avion_Reco",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+//----------------------------- SUPPLY ---------------------------------
+//-------------------------------------------------------------------------
+
+export Supply_Reco_GER is TMacroActionDescriptor_Supply_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 4 AlsoConsiderTheseDescriptorsForMaintain = []),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/PoolModel_Supply_GER]),
+        TSupplySettingHolder(MinimumAmmoRatio = 0.65)
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Supply_Allied_GER is TMacroActionDescriptor_Supply_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/PoolModel_Supply_GER]),
+        TSupplySettingHolder(MinimumAmmoRatio = 0.4),
+        TCanTargetAlliedSettingHolder(),
+    ]
+)
+
+// POOL SUPPLY
+
+export PoolModel_Supply_GER is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{28779832-affa-11e6-b9a9-305a3ae065c1}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Vehicule_Logistique",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+//----------------------------- ARTILLERY ---------------------------------
+//-------------------------------------------------------------------------
+
+export Artillery_ShortRange_GER is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 2 AlsoConsiderTheseDescriptorsForMaintain = []),
+        TArtilleryPositionningSettingHolder(SupportPointSafetyMargin = 1),
+        TArtilleryThreatPerSplashSettingHolder(MinimumThreatPerSplashForKill = 80 MinimumThreatPerSplashForSupport = 60),
+        TArtilleryStrikeSettingHolder(SupportStrikeRatio = [0.4]
+            ArtilleryStrikeThreatBonusPerTags =
+            [
+                (["Canon_AT"], 0.4),
+                (["Escouade_HMG", "Escouade_MMG"], 0.6),
+                (["Infanterie"], 1.2),
+                (["VehiculeLeger"], 0.3),
+                (["Char"], 0.4),
+            ]
+        ),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/PoolModel_Artillery_ShortRange_GER]),
+    ]
+)
+
+// POOL DEFENSE SHORT RANGE
+
+export PoolModel_Artillery_ShortRange_GER is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{28779830-affa-11e6-aa1b-305a3ae065c1}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Arti_Portee_Courte",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Artillery_LongRange_GER is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 2 AlsoConsiderTheseDescriptorsForMaintain = []),
+        TArtilleryPositionningSettingHolder(SupportPointSafetyMargin = 3),
+        TArtilleryThreatPerSplashSettingHolder(MinimumThreatPerSplashForKill = 80 MinimumThreatPerSplashForSupport = 60),
+        TArtilleryStrikeSettingHolder(SupportStrikeRatio = [0.4]
+            ArtilleryStrikeThreatBonusPerTags =
+            [
+                (["Canon_AT"], 0.4),
+                (["Escouade_HMG", "Escouade_MMG"], 0.6),
+                (["Infanterie"], 1.2),
+                (["VehiculeLeger"], 0.3),
+                (["Char"], 0.4),
+            ]
+        ),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/PoolModel_Artillery_LongRange_GER]),
+    ]
+)
+
+// POOL DEFENSE LONG RANGE
+
+export PoolModel_Artillery_LongRange_GER is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{d6182580-f1ff-11e6-b331-448a5b24d3f9}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Arti_Portee_Moyenne",
+            "Arti_Portee_Longue",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+//----------------------------- AIRSTRIKES --------------------------------
+//-------------------------------------------------------------------------
+
+export Airstrike_Defense_DiveBomber_GER is TMacroActionDescriptor_AirStrike_Common
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/PoolModel_Defense_DiveBomber_GER]),
+        TAirStrikeSettingHolder(AnnulerSupportSiAttaqueEchoue = true TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack),
+    ]
+)
+
+// POOL DEFENSE DIVE BOMBER
+
+export PoolModel_Defense_DiveBomber_GER is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{2877982e-affa-11e6-92c9-305a3ae065c1}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Avion_Assaut",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Airstrike_Defense_Fighter_GER is TMacroActionDescriptor_AirStrike_Common
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/PoolModel_Defense_Fighter_GER]),
+        TAirStrikeSettingHolder(AnnulerSupportSiAttaqueEchoue = false TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Defense),
+    ]
+)
+
+// POOL DEFENSE FIGHTER
+
+export PoolModel_Defense_Fighter_GER is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{d620ff21-f1ff-11e6-b82c-448a5b24d3f9}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Chasseur",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Airstrike_Offense_Bomber_GER is TMacroActionDescriptor_AirStrike_Common
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/PoolModel_Offense_Bomber_GER]),
+        TAirStrikeSettingHolder(AnnulerSupportSiAttaqueEchoue = false TypesDeRequetesAcceptees = ~/EAirStrikeRequestType/Attack | ~/EAirStrikeRequestType/OpportunisticTargetInGroup),
+    ]
+)
+
+// POOL OFFENSE BOMBER
+
+export PoolModel_Offense_Bomber_GER is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{d620ff22-f1ff-11e6-aa3f-448a5b24d3f9}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "UIMainFont",
+        ]
+    ),
+    ]
+)
+
+// REQUEST
+
+export Airstrike_DiveBomber_Support_GER is
+[
+    (["Avion_Assaut"], 1),
+]
+
+//-------------------------------------------------------------------------
+//------------------------------ SUPPORT ----------------------------------
+//-------------------------------------------------------------------------
+
+export Mission_Backup_AT_GER is TMacroActionDescriptor_Support_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/PoolModel_Backup_AT_GER]),
+        TCounterTagSettingHolder(TagDeContre = "Anti_Char_Mobile"),
+    ]
+)
+
+// POOL BACKUP AT
+
+export PoolModel_Backup_AT_GER is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{28785b80-affa-11e6-ad2f-305a3ae065c1}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Canon_AT_Leger",
+                "Canon_AT_Moyen",
+                "Canon_AT_Lourd",
+                "ChasseurDeChar_Leger",
+                "ChasseurDeChar_Moyen",
+                "ChasseurDeChar_Lourd",
+                "Anti_Char_Mobile" //Something please...
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Mission_Backup_AntiInfantry_GER is TMacroActionDescriptor_Support_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/PoolModel_Backup_AntiInfantry_GER,]),
+        TCounterTagSettingHolder(TagDeContre = "Anti_Infanterie_Mobile"), // Pas de tags corrects pour permettre d'autoriser ça, tant pis c'est pas hyper important
+    ]
+)
+
+// POOL BACKUP ANTI-INFANTRY
+
+export PoolModel_Backup_AntiInfantry_GER is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{28785b81-affa-11e6-8cef-305a3ae065c1}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Appui_Feu",
+                "Canon_AA_Porte",
+                "Vehicule_Flamer",
+                "Vehicule_Mortier",
+                "Anti_Infanterie_Mobile"
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+export Mission_Backup_EmptyTransports_GER is TMacroActionDescriptor_Support_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/PoolModel_Backup_EmptyTransports_GER]),
+        TCounterTagSettingHolder(TagDeContre = "AllUnits"),
+    ]
+)
+
+// POOL BACKUP EMPTY TRANSPORT
+
+export PoolModel_Backup_EmptyTransports_GER is TPoolModel
+(
+    Budget = 1
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{2878828f-affa-11e6-9111-305a3ae065c1}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Vehicule_Transport_Arme"
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+
+// SUPPORT
+
+export Support_AT_GER is TSupportSetting
+(
+    TagDeContre = "Anti_Char_Mobile"
+    TagAContrer = "Char"
+    VerifierEnnemiesDansLesZonesVoisines = true
+    Ratio = 0.01 //Only one AT
+    NecessaireAuLancement = false //Mission launched only if ratio is respected at regroupment point
+)
+
+//-------------------------------------------------------------------------
+
+export Support_AntiInfantry_GER is TSupportSetting
+(
+    TagDeContre = "Anti_Infanterie_Mobile"
+    TagAContrer = "Infanterie_Standard"
+    Ratio = 0.2
+    NecessaireAuLancement = false //Mission launched only if ratio is respected at regroupment point
+)
+
+//-------------------------------------------------------------------------
+
+export Support_EmptyTransports_GER is TSupportSetting
+(
+    TagDeContre = "AllUnits"
+    TagAContrer = "AllUnits"
+    Ratio = 0.8 // on veut utiliser le plus de transports possible
+    NecessaireAuLancement = false //Mission launched only if ratio is respected at regroupment point
+)

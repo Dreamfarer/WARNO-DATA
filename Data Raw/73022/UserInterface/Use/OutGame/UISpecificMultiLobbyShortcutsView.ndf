@@ -1,0 +1,396 @@
+//---------------------------------------------------------------------
+
+LobbyShortcutButton is PanelRoundedCorner
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [214.0, 92.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Transparent"
+    BorderLineColorToken  = "Gris_QuickServeur"
+    Components =
+    [
+        BUCKButtonDescriptor
+        (
+            ElementName = "LobbyShortcutButton"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI()
+
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                    Axis = ~/ListAxis/Vertical
+
+                    FirstMargin = TRTTILength(Magnifiable = 5.0)
+                    //InterItemMargin = TRTTILength(Magnifiable = 25.0)
+                    //LastMargin  = TRTTILength(Magnifiable = 5.0)
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ServeurType
+                        ),
+
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ServeurNombreDeJoueurs
+                        ),
+                    ]
+                )
+            ]
+        ),
+    ]
+)
+//
+ServeurType is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI( MagnifiableWidthHeight = [0,42])
+
+    //BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength(Magnifiable = 5.0)
+    InterItemMargin = TRTTILength(Magnifiable = 15.0)
+    LastMargin  =   TRTTILength(Magnifiable = 5.0)
+
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                //HasBackground = true
+                BackgroundBlockColorToken = 'Orange'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [80,0]
+                    MagnifiableOffset = [0,8]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                BigLineAction = ~/BigLineAction/MultiLine
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "UIMainFont"
+                TextToken = 'QCK_type'
+                TextStyle = "Default"
+                TextColor = "Gris_QuickServeur"
+
+                TextSize = "14"
+
+                TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 0.0, 0.0])
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "LobbyName"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [120,0]
+                    RelativeWidthHeight = [0,1]
+                    //MagnifiableOffset = [0,10]
+                )
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+                BigLineAction = ~/BigLineAction/MultiLine
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                VerticalFitStyle = ~/FitStyle/UserDefined
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "Liberator"
+
+                TextStyle = "Default"
+                TextColor = "Gris_QuickServeur"
+
+                TextSize = "20"
+
+                //TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 0.0, 0.0])
+            )
+        ),
+    ]
+
+)
+ServeurNombreDeJoueurs is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI( MagnifiableWidthHeight = [0,45] )
+
+    //BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength(Magnifiable = 5.0)
+    InterItemMargin = TRTTILength(Magnifiable = 15.0)
+    LastMargin  = TRTTILength(Magnifiable = 5.0)
+    //HasBackground = true
+                BackgroundBlockColorToken = 'Orange'
+    Elements =
+    [
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [60,0]
+                    MagnifiableOffset = [0,8+5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                BigLineAction = ~/BigLineAction/MultiLine
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "UIMainFont"
+                TextToken = 'CL_GAMPLNB'
+                TextStyle = "Default"
+                TextColor = "Gris_QuickServeur"
+
+                TextSize = "14"
+
+                TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 0.0, 0.0])
+            )
+
+        ),
+
+        // nb joueur actuel
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "PlayerNumber"
+                ComponentFrame = TUIFramePropertyRTTI (MagnifiableWidthHeight = [40,0])
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "UIMainFont"
+
+                TextToken = "QCK_PLAYN"
+
+                TextStyle = "MouseWidget/TextModule"
+                TextColor = "Gris_QuickServeur"
+
+                TextSize = "40"
+
+                //TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 0.0, 0.0])
+            )
+        ),
+        // separateur
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [10,0]
+                    MagnifiableOffset = [0,8+5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                BigLineAction = ~/BigLineAction/MultiLine
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "UIMainFont"
+                TextToken = 'QCK_Sep'
+                TextStyle = "Default"
+                TextColor = "Gris_QuickServeur"
+
+                TextSize = "14"
+
+                TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 0.0, 0.0])
+            )
+
+        ),
+        // nb joueurs max
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                //ElementName = "PlayerNumber"
+                ComponentFrame = TUIFramePropertyRTTI (MagnifiableWidthHeight = [40,0])
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "UIMainFont"
+
+                TextToken = "QCK_nbMax"
+
+                TextStyle = "MouseWidget/TextModule"
+                TextColor = "Gris_QuickServeur"
+
+                TextSize = "40"
+
+                //TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 0.0, 0.0])
+            )
+        ),
+    ]
+
+)
+//---------------------------------------------------------------------
+
+BUCKSpecificMultiLobbyShortcutsMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ElementName = "LobbyQuickShortcutInterface"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [700,138+5]
+        MagnifiableOffset = [0,-5]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    //HasBackground = true
+    BackgroundBlockColorToken = "Orange"
+
+
+    Components =
+
+    [
+    // titre
+    BUCKTextDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            //MagnifiableWidthHeight = [96,0]
+            MagnifiableOffset = [0,14]
+            AlignementToFather = [0.5, 0]
+            AlignementToAnchor = [0.5, 0]
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment = UIText_Left
+            VerticalAlignment = UIText_VerticalCenter
+        )
+
+        TextStyle = "Default"
+
+        HorizontalFitStyle = ~/FitStyle/FitToContent
+        VerticalFitStyle = ~/FitStyle/FitToContent
+
+        TypefaceToken = "Liberator"
+        BigLineAction = ~/BigLineAction/MultiLine
+
+        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+        TextToken = 'QCK_Tlt'
+        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+        TextColor = "Gris_QuickServeur"
+        TextSize = "14"
+    ),
+    // serveur proprement dit
+    BUCKRackDescriptor
+    (
+        ElementName = "LobbyShortcutButtonRack"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = [24,32]
+            AlignementToFather = [0.0, 0.0]
+            AlignementToAnchor = [0.0, 0.0]
+        )
+
+        Axis = ~/ListAxis/Horizontal
+        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+        //FirstMargin = TRTTILength(Magnifiable = 13)
+        InterItemMargin = TRTTILength(Magnifiable = 7.0)
+        LastMargin  = TRTTILength(Magnifiable = 50)
+
+        BladeDescriptor = ~/LobbyShortcutButton
+    )
+    ]
+)
+
+//
+//
+//---------------------------------------------------------------------
+
+UISpecificMultiLobbyShortcutsViewDescriptor is TUISpecificMultiLobbyShortcutsViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificMultiLobbyShortcutsMainComponentDescriptor
+    MainComponentContainerUniqueName = "LobbyQuickShortcutViewContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    LobbysToDisplay =
+    [
+        TLobbyNDFDescriptor
+        (
+            NameToDisplay   = "QCK_10V10"
+            NumberOfPlayers = 20
+            InitMoney       = 500
+            UseAutofill     = false
+            CombatRule      = ~/CombatRule/CaptureTheFlag
+        ),
+        TLobbyNDFDescriptor
+        (
+            NameToDisplay = "QCK_10V10T"
+            NumberOfPlayers = 20
+            InitMoney       = 250
+            UseAutofill = false
+            CombatRule      = ~/CombatRule/CaptureTheFlag
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------

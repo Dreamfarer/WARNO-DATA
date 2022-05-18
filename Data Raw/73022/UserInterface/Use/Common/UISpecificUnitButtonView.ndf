@@ -1,0 +1,1707 @@
+
+private UnitButtonUnitButtonAndAloneUnitButtonContainerInterItemMargin is 2.0
+
+// Container for Unit Button and Alone Unit Button (+ additional unit name and icon)
+private template BUCKSpecificUnitButtonMainComponentDescriptor
+[
+    ComponentFrameAlignment : float2 = [0.0, 0.5],
+
+    MagnifierMultiplication : float = 0.0,
+
+    IsTogglable : bool = true,
+    IsFocusable : bool = false,
+    CannotDeselect : bool = false,
+    ForceEvents : bool = false,
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+
+    OffsetForSpecialtyIcon : float2,
+    BackgroundComponents : LIST<TBUCKContainerDescriptor> = [],
+    ShowXPButtons : bool = false,
+    ShowAddUnitButton : bool = false,
+    ShowRemoveUnitButton : bool = false,
+]
+is BUCKListDescriptor
+(
+    ElementName = "BUCKSpecificUnitButtonMainComponent"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = <ComponentFrameAlignment>
+        AlignementToAnchor = <ComponentFrameAlignment>
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    MagnifierMultiplication = <MagnifierMultiplication>
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                Axis = ~/ListAxis/Horizontal
+                ChildFitToContent = true
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = MainUnitButton
+                        (
+                            IsTogglable = <IsTogglable>
+                            IsFocusable = <IsFocusable>
+                            CannotDeselect = <CannotDeselect>
+                            ForceEvents = <ForceEvents>
+                            RadioButtonManager = <RadioButtonManager>
+
+                            OffsetForSpecialtyIcon = <OffsetForSpecialtyIcon>
+                            ShowXPButtons = <ShowXPButtons>
+                            ShowAddUnitButton = <ShowAddUnitButton>
+                            ShowRemoveUnitButton = <ShowRemoveUnitButton>
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKRackDescriptor
+                        (
+                            ElementName = "UnitSkinButtonRack"
+
+                            Axis = ~/ListAxis/Horizontal
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 1.0]
+                            )
+
+                            BladeDescriptor = ~/UnitSkinButton
+                        )
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                InterItemMargin = TRTTILength( Magnifiable = UnitButtonUnitButtonAndAloneUnitButtonContainerInterItemMargin )
+
+                Elements =
+                [
+                    // Alone Unit Button
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = UnitButtonUnitAloneButton
+                        (
+                            IsTogglable = <IsTogglable>
+                            CannotDeselect = <CannotDeselect>
+                            ForceEvents = <ForceEvents>
+                            RadioButtonManager = <RadioButtonManager>
+                        )
+                    ),
+                ]
+            )
+        ),
+    ]
+
+    ForegroundComponents =
+    [
+        // Sensible area used to manage the additional unit's container's display
+        ~/UnitButtonUnitContainerGlobalSensibleArea,
+
+        BUCKContainerDescriptor
+        (
+            ElementName = "DLCForeground"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "Black40"
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        AlignementToFather = [0.0, 0.5]
+                        AlignementToAnchor = [0.0, 0.5]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextureDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [40.0, 40.0]
+                                    AlignementToFather = [0.5, 0.0]
+                                    AlignementToAnchor = [0.5, 0.0]
+                                )
+
+                                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                                TextureToken = "UseOutGame_Cadenas"
+                            )
+                        ),
+
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI()
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Center
+                                    VerticalAlignment = UIText_VerticalCenter
+                                    InterLine = 0
+                                )
+
+                                TextStyle = "Default"
+
+                                HorizontalFitStyle = ~/FitStyle/FitToParent
+                                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                TypefaceToken = "UIMainFont"
+                                BigLineAction = ~/BigLineAction/CutByDots
+
+                                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                TextToken = "DLC"
+                                TextColor = "SD2_Blanc184"
+                                TextSize = "SD2_Petit"
+                            )
+                        ),
+
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+                                ElementName = 'MissingDLC'
+                                ComponentFrame = TUIFramePropertyRTTI()
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Center
+                                    VerticalAlignment = UIText_VerticalCenter
+                                    InterLine = 0
+                                )
+
+                                TextStyle = "Default"
+
+                                HorizontalFitStyle = ~/FitStyle/FitToParent
+                                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                TypefaceToken = "UIMainFont"
+                                BigLineAction = ~/BigLineAction/CutByDots
+
+                                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                TextColor = "SD2_Blanc184"
+                                TextSize = "SD2_Petit"
+                            )
+                        ),
+                    ]
+                )
+            ]
+        ),
+    ]
+
+     BackgroundComponents = <BackgroundComponents>
+)
+
+// -------------------------------------------------------------------------------------------------
+// MainUnitButton
+// -------------------------------------------------------------------------------------------------
+
+private UnitButtonMagnifiableWidth is 133.0
+private UnitButtonMagnifiableHeight is 83.0
+
+private UnitButtonXPHeight is 16.75 // This should be equal to (UnitButtonMagnifiableHeight - UnitNameContainerMagnifiableHeight) / 4.0 (4 is the total number of XP buttons)
+private UnitButtonXPAreaWidth is 29.0 // This should respect the XP button ratio and the button height (just above)
+
+private UnitTextureMagnifiableWitdh is -4.0
+private UnitTextureMagnifiableHeight is -6.0
+
+private UnitTexturePixelWitdh is -2.0
+
+private UnitNameContainerMagnifiableHeight is 16.0
+private AddRemoveButtonSize is 30.0
+
+UnitButtonPixelBorderSize is 4
+UnitButtonPixelBorderSizeAsString is "4"
+
+// Main Unit Button
+private template MainUnitButton
+[
+    IsTogglable : bool = true,
+    IsFocusable : bool = false,
+    CannotDeselect : bool = false,
+    ForceEvents : bool = false,
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+
+    OffsetForSpecialtyIcon : float2,
+    ShowXPButtons : bool = false,
+    ShowAddUnitButton : bool = false,
+    ShowRemoveUnitButton : bool = false,
+]
+is BUCKButtonDescriptor
+(
+    ElementName = "UnitButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [UnitButtonMagnifiableWidth + (<ShowXPButtons> ? UnitButtonXPAreaWidth : 0.0), UnitButtonMagnifiableHeight]
+        PixelWidthHeight = [2*UnitButtonPixelBorderSize, 2*UnitButtonPixelBorderSize]
+    )
+
+    IsTogglable = <IsTogglable>
+    CannotDeselect = <CannotDeselect>
+    ForceEvents = <ForceEvents>
+    RadioButtonManager = <RadioButtonManager>
+    HidePointerEvents = true
+    IsFocusable = <IsFocusable>
+
+    HasBackground = false
+    BackgroundBlockColorToken = "Vert"
+
+    HasBorder = true
+    BorderLineColorToken = "BoutonVignetteAchatArmory"
+    BorderThicknessToken = UnitButtonPixelBorderSizeAsString
+
+    Components =
+    [
+        MainButtonContent
+        (
+            ShowXPButtons = <ShowXPButtons>
+            ShowAddUnitButton = <ShowAddUnitButton>
+            ShowRemoveUnitButton = <ShowRemoveUnitButton>
+        )
+    ]
+)
+
+private template MainButtonContent
+[
+    ShowXPButtons : bool = false,
+    ShowAddUnitButton : bool = false,
+    ShowRemoveUnitButton : bool = false,
+] is BUCKContainerDescriptor
+(
+    ElementName = "UnitButtonContent"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [UnitButtonMagnifiableWidth + (<ShowXPButtons> ? UnitButtonXPAreaWidth : 0.0), UnitButtonMagnifiableHeight]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    Components =
+    [
+        SmallOmbrePanel( ElementName = "UnitButtonShadow" ),
+
+        // Left aligned components
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [UnitButtonMagnifiableWidth, UnitButtonMagnifiableHeight]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            Components =
+            [
+                ~/UnitButtonUnitTexture,
+
+                // OverBlock
+                ~/OverBlockMainUnitButton,
+                // List Parachutist Wings and XP Stars
+                ~/UnitButtonParachutistAndXPList,
+
+                // Feedback for when the player took charge or placed all units of this type
+                ~/UnitButtonUnitAvailabilityFeedback,
+                AffichageInfosUnit,
+            ]
+        ),
+
+        UnitButtonUnitNameAndAdditonnalUnitIconContainer, // => nom de l'unité ici
+
+        // Right aligned components
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [UnitButtonXPAreaWidth, UnitButtonMagnifiableHeight]
+                AlignementToAnchor = [1.0, 0.5]
+                AlignementToFather = [1.0, 0.5]
+            )
+
+            Components = (<ShowXPButtons> ? [DeckEditorPackXPSelector] : [] )
+        ),
+
+        // Left aligned components again
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [UnitButtonMagnifiableWidth, UnitButtonMagnifiableHeight]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            Components =
+            [
+                // 'add' and 'remove' buttons
+                ] + (<ShowAddUnitButton> ? [ ~/AddUnitButton ] : [] ) + [
+                ] + (<ShowRemoveUnitButton> ? [ ~/RemoveUnitButton ] : [] ) + [
+            ]
+        ),
+
+        ~/ManualGrayMask
+    ]
+)
+
+template UnitCornerButton
+[
+    ElementName : string,
+    HasBackground : bool = true,
+    BackgroundBlockColorToken : string = "",
+    TextToken : string,
+    TextSizeToken : string,
+    TextTypefaceToken : string,
+] is ConfirmButton
+(
+    ElementName = <ElementName>
+    ButtonMagnifiableWidthHeight = [AddRemoveButtonSize, AddRemoveButtonSize]
+    ButtonAlignementToAnchor = [0.0, 0.0]
+    ButtonAlignementToFather = [0.0, 0.0]
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "BoutonUnitPatternFixe"
+
+    TextColorToken = "BoutonUnitPatternClair"
+    TextToken = <TextToken>
+    TextSizeToken = <TextSizeToken>
+    TextTypefaceToken = <TextTypefaceToken>
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+    TextPadding = TRTTILength4(Magnifiable =  [2.0, 0.0, 2.0, 0.0])
+    BigLineAction = ~/BigLineAction/ResizeFont
+
+    MaskEvents = false
+    HidePointerEvents = true
+    PointerEventsToAllow = ~/EAllowablePointerEventType/Move
+)
+
+////-------------------------------------------------------------------------------------
+
+AddUnitButton is UnitCornerButton
+(
+    ElementName = "AddUnitButton"
+    BackgroundBlockColorToken = "DeckCreator/AddUnitToDeck"
+    TextToken = "ARADDU"
+    TextSizeToken = "30"
+    TextTypefaceToken = "Liberator"
+)
+
+////-------------------------------------------------------------------------------------
+
+RemoveUnitButton is UnitCornerButton
+(
+    ElementName = "RemoveUnitButton"
+    BackgroundBlockColorToken = "DeckCreator/RemoveUnitFromDeck"
+    TextToken = "ARRMVU"
+    TextSizeToken = "40"
+    TextTypefaceToken = "UIMainFont"
+)
+
+////-------------------------------------------------------------------------------------
+
+ManualGrayMask is BUCKContainerDescriptor
+(
+    ElementName = "ManualGrayMask"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "Black80"
+)
+
+////-------------------------------------------------------------------------------------
+
+AffichageInfosUnit is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [0.0, -UnitNameContainerMagnifiableHeight]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+            Axis = ~/ListAxis/Vertical
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        Components =
+                        [
+                            IconeSpecialite,
+                            NbUnitInThePack,
+                            XPUnit,
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 0.0]
+                        )
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKTextureDescriptor
+                                (
+                                    ElementName = "AdditionalUnitNameIcon"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [UnitNameContainerMagnifiableHeight, UnitNameContainerMagnifiableHeight]
+                                        AlignementToFather = [0.0, 0.5]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                    )
+
+                                    TextureFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [UnitNameContainerMagnifiableHeight, UnitNameContainerMagnifiableHeight]
+                                    )
+
+                                    HasBackground = true
+                                    BackgroundBlockColorToken = "ArmoryUnitButtonName"
+
+                                    ClipTextureToComponent = true
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = ~/UnitButtonAdditionalUnitNameText
+                            )
+                        ]
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitNameAndAdditonnalUnitIconContainer
+// -------------------------------------------------------------------------------------------------
+
+// Container for unit name, separator and additional unit icon
+private UnitButtonUnitNameAndAdditonnalUnitIconContainer is BUCKContainerDescriptor
+(
+    ElementName = 'UnitNameAndAdditonnalUnitIconListContainer'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToAnchor = [0.0, 1.0]
+        AlignementToFather = [0.0, 1.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = 'UnitNameAndAdditonnalUnitIconList'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            Elements =
+            [
+                // ¤18 - Unit name
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/PackAndUnitNameList // le nb pack est dans le component du nom
+                )
+            ]
+
+            // Hint
+            ForegroundComponents =
+            [
+                BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = "HPD_UNAMT"
+                    HintBodyToken = "HPD_UNAMB"
+                    HintExtendedToken = "HPD_UNAME"
+                )
+            ]
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// Unit name
+private UnitButtonUnitNameText is BUCKTextDescriptor
+(
+    ElementName = 'UnitNameText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 16.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    TypefaceToken = "Liberator"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "White"
+    TextSize = "11"
+
+    ClipContent = true
+
+
+)
+
+PackAndUnitNameList is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,0]
+        MagnifiableWidthHeight = [0, UnitNameContainerMagnifiableHeight]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'ArmoryUnitButtonName'
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = NombreDePack
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor ( ComponentFrame = TUIFramePropertyRTTI ())
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = UnitButtonUnitNameText
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor ( ComponentFrame = TUIFramePropertyRTTI ())
+                ),
+            ]
+        )
+    ]
+)
+
+
+
+
+
+// -------------------------------------------------------------------------------------------------
+// ListSpecialityIcons
+// ------------------inte-------------------------------------------------------------------------------
+
+private UnitButtonComponentListSpecialityIconsInterItemMargin is 0.3
+
+// List for Speciality Icons
+template UnitButtonListSpecialityIcons
+[
+    IconOffset : float2,
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [SpecialityIconMagnifiableWitdhHeight, 0.0]
+        MagnifiableOffset = <IconOffset>
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    InterItemMargin = TRTTILength( Magnifiable = UnitButtonComponentListSpecialityIconsInterItemMargin )
+
+    Elements =
+    [
+        // 1st Speciality Icon
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitButtonSpecialityIcon
+            (
+                ElementName = "FirstSpecialityIcon"
+            )
+        ),
+
+        // 2nd Speciality Icon
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitButtonSpecialityIcon
+            (
+                ElementName = "SecondSpecialityIcon"
+            )
+        ),
+
+        // 3rd Specialty Icon
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitButtonSpecialityIcon
+            (
+                ElementName = "ThirdSpecialityIcon"
+            )
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// SpecialityIcon
+// -------------------------------------------------------------------------------------------------
+
+// Speciality Icon
+private SpecialityIconMagnifiableWitdhHeight is 20.0
+private SpecialityIconMagnifiableOffset is [11.0, -13.0]
+
+private template UnitButtonSpecialityIcon
+[
+    ElementName : string = '',
+    MagnifiableWidthHeight : float2 = [24.0, 24.0],
+]
+is BUCKTextureDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+
+    )
+
+    TextureFrame   = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    ClipTextureToComponent = true
+
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            ElementName = <ElementName> + "HintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_unites
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// ParachutistAndXPList
+// -------------------------------------------------------------------------------------------------
+
+private ParachutistAndXPListMagnifiableInterItemMargin is 1.0
+private ParachutistAndXPListMagnifiableOffsetY is -10.0
+
+// List for parachutist wings and XP stars
+private UnitButtonParachutistAndXPList is BUCKListDescriptor
+(
+    ElementName = 'ParachutistAndXPList'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, ParachutistWingMagnifiableHeight]
+        MagnifiableOffset = [0.0, ParachutistAndXPListMagnifiableOffsetY]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    InterItemMargin = TRTTILength( Magnifiable = ParachutistAndXPListMagnifiableInterItemMargin )
+
+    Elements =
+    [
+        // Left parachutist wing icon
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ParachutistWing
+            (
+                ElementName = 'ParachutistIconL'
+                TextureToken = "CommonTexture_Parachutiste_Left"
+            )
+        ),
+
+        // Right parachutist wing icon
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ParachutistWing
+            (
+                ElementName = 'ParachutistIconR'
+                TextureToken = "CommonTexture_Parachutiste_Right"
+            )
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// ParachutistWing
+// -------------------------------------------------------------------------------------------------
+
+private ParachutistWingMagnifiableWidth is 28.8
+private ParachutistWingMagnifiableHeight is 19.8
+
+// Parachutist Wing
+private template ParachutistWing
+[
+    ElementName : string = '',
+    TextureToken : string = "",
+]
+is BUCKTextureDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [ParachutistWingMagnifiableWidth, ParachutistWingMagnifiableHeight]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    TextureToken = <TextureToken>
+    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+    // Hint
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HPD_UPARAT"
+            HintBodyToken = "HPD_UPARAB"
+            HintExtendedToken = "HPD_UPARAE"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// XPStar
+// -------------------------------------------------------------------------------------------------
+
+private XPStarMagnifiableWitdhHeight is [15.0, 15.0]
+
+// XP Star
+private template XPRank
+[
+    ElementName : string = '',
+    TextureToken,
+]
+is BUCKTextureDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = XPStarMagnifiableWitdhHeight
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    TextureToken       = <TextureToken>
+    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+    // Hint
+    Components =
+    [
+         BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HPD_UEXPT"
+            HintBodyToken = "HPD_UEXPB"
+            HintExtendedToken = "HPD_UEXPE"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// Additional Unit Name / affichage du transport
+private UnitButtonAdditionalUnitNameText is BUCKTextDescriptor
+(
+    ElementName = 'AdditionalUnitNameText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+    HasBackground = true
+    BackgroundBlockColorToken = 'ArmoryUnitButtonName'
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "SD2_Blanc184"
+    TextSize = "SD2_Petit"
+
+    ClipContent = true
+
+    Components =
+    [
+        BUCKSensibleAreaDescriptor
+        (
+            ElementName = 'UnitAdditionnalUnitSensibleArea'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            MaskEvents = false
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitAloneButton
+// -------------------------------------------------------------------------------------------------
+
+private UnitAloneButtonMagnifiableWidth is -12.0
+private UnitAloneButtonMagnifiableHeight is 35.0
+private UnitAloneIconAndNameListMagnifiableInterItemMargin is 10.0
+
+// Button for Alone Unit Icon, Name and Cost
+private template UnitButtonUnitAloneButton
+[
+    IsTogglable : bool = true,
+    CannotDeselect : bool = false,
+    ForceEvents : bool = false,
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+]
+is BUCKButtonDescriptor
+(
+    ElementName = 'UnitAloneButton'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [UnitButtonMagnifiableWidth, UnitAloneButtonMagnifiableHeight]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    IsTogglable = <IsTogglable>
+    CannotDeselect = <CannotDeselect>
+    ForceEvents = <ForceEvents>
+    RadioButtonManager = <RadioButtonManager>
+    HidePointerEvents = false
+
+    HasBorder = true
+    BorderLineColorToken = "BorderButtonHUD"
+    BorderThicknessToken = "1"
+
+    HasBackground = true
+    BackgroundBlockColorToken = "DarkGray2"
+
+    Components =
+    [
+        BUCKSensibleAreaDescriptor
+        (
+            ElementName = 'UnitAloneButtonSensibleArea'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            MaskEvents = false
+        ),
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.8, 1.0]
+                AlignementToFather = [0.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+            )
+            TextToken = 'UnitAlo'
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+
+            TextStyle = "Default"
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+            TextPadding = TRTTILength4( Magnifiable = [5.0, 5.0, 5.0, 5.0] )
+            TypefaceToken = "UIMainFont"
+            BigLineAction = ~/BigLineAction/BalancedMultiline
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextColor = "SD2_Blanc184"
+            TextSize = "10"
+        ),
+        ~/UnitButtonUnitAloneCostText,
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitAloneIcon
+// -------------------------------------------------------------------------------------------------
+
+private UnitAloneIconMagnifiableWidth is 30.0
+private UnitAloneIconMagnifiableHeight is 30.0
+
+// Alone Unit Icon
+private UnitButtonUnitAloneIcon is BUCKTextureDescriptor
+(
+    ElementName = 'UnitAloneIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [UnitAloneIconMagnifiableWidth, UnitAloneIconMagnifiableHeight]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitAloneNameText
+// -------------------------------------------------------------------------------------------------
+
+private UnitAloneNameTextMagnifiableHeight is 20.0
+// Alone Unit Name
+private UnitButtonUnitAloneNameText is BUCKTextDescriptor
+(
+    ElementName = 'UnitAloneNameText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        // la largeur sera renseignée dans le code pour pouvoir faire le placement correct des composants
+        MagnifiableWidthHeight = [UnitButtonMagnifiableWidth + UnitAloneButtonMagnifiableWidth - UnitAloneIconMagnifiableWidth - UnitAloneCostTextApproximativeWidth, UnitAloneNameTextMagnifiableHeight]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "SD2_Blanc184"
+    TextSize = "14"
+
+    ClipContent = true
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitAloneCostText
+// -------------------------------------------------------------------------------------------------
+
+private UnitAloneCostTextApproximativeWidth is 34.0
+
+// Alone Unit Cost
+private UnitButtonUnitAloneCostText is BUCKTextDescriptor
+(
+    ElementName = 'UnitAloneCostText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, UnitAloneNameTextMagnifiableHeight]
+        MagnifiableOffset = [-10.0, 0.0]
+        AlignementToFather = [1.0, 0.5]
+        AlignementToAnchor = [1.0, 0.5]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Right
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextToken = "HPROD_ACST"
+
+    TextColor = "Orange"
+    TextSize = "14"
+
+    // Hint
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = "HPD_UACSTT"
+        HintBodyToken = "HPD_UACSTB"
+        HintExtendedToken = "HPD_UACSTE"
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private UnitButtonUnitTexture is BUCKTextureDescriptor
+(
+    ElementName = 'UnitTexture'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 67.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+    Components =
+    [
+        IconePays,
+        PrixUnit,
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+IconeSpecialite is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [14.0, 14.0]
+        AlignementToFather = [1.0, 1.0]
+        AlignementToAnchor = [1.0, 1.0]
+        MagnifiableOffset = [-3.0, -3.0]
+    )
+
+    Components =
+    [
+        UnitButtonSpecialityIcon
+        (
+            ElementName = "FirstSpecialityIcon"
+            MagnifiableWidthHeight = [14.0, 14.0]
+        )
+    ]
+
+)
+
+//-------------------------------------------------------------------------------------
+
+IconePays is BUCKTextureDescriptor
+(
+    ElementName = 'CountryTexture'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, 16.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+        MagnifiableOffset = [3.0, 3.0]
+    )
+
+    TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+)
+
+//-------------------------------------------------------------------------------------
+
+XPUnit is BUCKContainerDescriptor
+(
+    ElementName = "RankBackground"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [14.0, 14.0]
+        MagnifiableOffset = [-3.0 , 0.0]
+        AlignementToFather = [1.0, 0.5]
+        AlignementToAnchor = [1.0, 0.5]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "H2_bleu_2"
+
+    Components =
+    [
+        // 1st XP Star
+        XPRank
+        (
+            ElementName = 'FirstRank'
+            TextureToken = "CommonTexture_Chevron_1"
+        ),
+
+        // 2nd XP Star
+        XPRank
+        (
+            ElementName = 'SecondRank'
+            TextureToken = "CommonTexture_Chevron_2"
+        ),
+
+        // 3rd XP Star
+        XPRank
+        (
+            ElementName = 'ThirdRank'
+            TextureToken = "CommonTexture_Chevron_3"
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+PrixUnit is BUCKTextDescriptor
+(
+    ElementName = "UnitCostText"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [-3.0, 3.0]
+        AlignementToAnchor = [1.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Right
+        VerticalAlignment = UIText_Bottom
+        InterLine = 0
+    )
+
+    TextStyle = "NbUnitsInPackText"
+
+    VerticalFitStyle = ~/FitStyle/FitToContent
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "Liberator"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextToken = "HPROD_NBU"
+
+    TextColor = "Orange"
+    TextSize = "16"
+
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = "HIP_UCOSTT"
+        HintBodyToken = "HPD_UCOSTB"
+        HintExtendedToken = "HPD_UCOSTE"
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+NbUnitInThePack is BUCKContainerDescriptor
+(
+    ElementName = "NbUnitsInPackContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, 16.0]
+        MagnifiableOffset = [3.0, -3.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0,1]
+            )
+            FirstMargin = TRTTILength( Magnifiable = 3.0 )
+            InterItemMargin = TRTTILength( Magnifiable = 3.0 )
+            LastMargin = TRTTILength( Magnifiable = 3.0 )
+            Axis = ~/ListAxis/Horizontal
+            Elements =
+            [
+            BUCKListElementDescriptor
+            (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "LabelUnitNameStroke"
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextToken = "HPROD_NBUX"
+
+                        TextColor = "VertSecteur"
+                        TextSize = "10"
+
+                         Hint = BUCKSpecificHintableArea
+                        (
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintTitleToken = "HIP_UNUMT"
+                            HintBodyToken = "HIP_UNUMB"
+                        )
+                    )
+
+            ),
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = "NbUnitsInPackText"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [0.0, 1.0]
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Center
+                        VerticalAlignment = UIText_VerticalCenter
+                        InterLine = 0
+                    )
+
+                    TextStyle = "LabelUnitNameStroke"
+
+                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                    VerticalFitStyle = ~/FitStyle/UserDefined
+
+                    TypefaceToken = "Liberator"
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                    TextToken = "HPROD_NBU"
+
+                    TextColor = "VertSecteur"
+                    TextSize = "14"
+
+                     Hint = BUCKSpecificHintableArea
+                    (
+                        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                        HintTitleToken = "HIP_UNUMT"
+                        HintBodyToken = "HIP_UNUMB"
+                    )
+                )
+            ),
+
+            ]
+
+
+            BackgroundComponents =
+            [
+                PanelRoundedCorner
+                        (
+                            Radius = 2
+                            BackgroundBlockColorToken = "BoutonTemps"
+                            BorderLineColorToken = "BoutonTemps"
+                        )
+            ]
+        )
+
+
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+NombreDePack is BUCKTextDescriptor
+(
+    ElementName = "CopyNumber"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0,1]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "LabelUnitNameStroke"
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextToken = "HPROD_NBUB"
+
+    TextColor = "Cyan"
+    TextSize = "14"
+
+    TextPadding = TRTTILength4( Magnifiable = [5.0, 0.0, 0.0, 0.0] )
+
+    Hint = BUCKSpecificHintableArea
+   (
+       DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+       HintTitleToken = "ProdPacT"
+       HintBodyToken = "ProdPacB"
+       HintExtendedToken = "ProdPacE"
+   )
+)
+
+// -------------------------------------------------------------------------------------------------
+// OverBlockMainUnitButton
+// -------------------------------------------------------------------------------------------------
+
+private OverBlockMainUnitButton is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        // Use these to apply the overblock on the whole button
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "AppleGreen"
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitNumberText
+// -------------------------------------------------------------------------------------------------
+
+// Number of units in pack
+private UnitButtonUnitNumberText is BUCKListDescriptor
+(
+    ElementName = "NbUntsInPackCiontainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [-5.0, 3.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToAnchor = [0.0, 1.0]
+                    AlignementToFather = [0.0, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Right
+                    VerticalAlignment = UIText_Bottom
+                    InterLine = 0
+                )
+
+                TextStyle = "NbUnitsInPackList"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "HPROD_NBUX"
+
+                TextColor = "AppleGreen"
+                TextSize = "24"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "NbUnitsInPackText"
+                ComponentFrame = TUIFramePropertyRTTI()
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Right
+                    VerticalAlignment = UIText_Bottom
+                    InterLine = 0
+                )
+
+                TextStyle = "NbUnitsInPackText"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "HPROD_NBU"
+
+                TextColor = "AppleGreen"
+                TextSize = "24"
+            )
+        ),
+    ]
+
+    ForegroundComponents =
+    [
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HPD_UNBT"
+            HintBodyToken = "HPD_UNBB"
+            HintExtendedToken = "HPD_UNBE"
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitButtonUnitAvailabilityFeedback
+// -------------------------------------------------------------------------------------------------
+
+// Feedback for when the player took charge or placed all units of this type
+private UnitButtonUnitAvailabilityFeedback is BUCKContainerDescriptor
+(
+    ElementName = 'UnitAvailabilityFeedback'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "UnitButton/Availability"
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitContainerGlobalSensibleArea
+// -------------------------------------------------------------------------------------------------
+
+// Sensible area used to manage the additional unit's container's display
+private UnitButtonUnitContainerGlobalSensibleArea is BUCKSensibleAreaDescriptor
+(
+    ElementName = 'UnitContainerGlobalSensibleArea'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    MaskEvents = false
+    IgnoreMask = true
+)
+
+// -------------------------------------------------------------------------------------------------
+// UISpecificUnitButtonViewDescriptor
+// -------------------------------------------------------------------------------------------------
+
+template UISpecificUnitButtonViewDescriptor
+[
+    // Temps en secondes avant que le conteneur de l'unité additionnelle apparaisse lorsqu'on survole le bouton de l'unité
+    TimeInSecondBeforeAdditionalUnitSpecificContainerShowUp : float = 0.2,
+
+    // Transparence (en pourcentage entre 0 et 1) ajouté au conteneur d'une unité lorsque cette unité n'est pas disponible
+    OpacityPercentWhenUnitNotAvailable : float = 1.0,
+
+    // Couleur et drawer pour les textures et les textes quand l'unité n'est pas disponible
+    TextureDrawerWhenUnitNotAvailable : string = "",
+    UnitNameBackgroundColorWhenUnitNotAvailable : string = "",
+    UnitNameColorWhenUnitNotAvailable : string = "",
+    UnitCostColorWhenUnitNotAvailable : string = "",
+    UnitCostGlowColorIndexWhenUnitNotAvailable : string = "",
+    UnitCostColorWhenUnitCannotBeBought : string = "",
+
+    AceUnitNameColor : string = "",
+    AceUnitBorderColorBySide : LIST<PAIR<int, string>> = [],
+    AceUnitBorderThickness : string = "",
+
+    ComponentFrameAlignment : float2 = [0.0, 0.5],
+
+    OffsetForSpecialtyIcon = ~/SpecialityIconMagnifiableOffset,
+
+    IsTogglable : bool = true,
+    IsFocusable : bool = false,
+    CannotDeselect : bool = false,
+    ForceEvents : bool = false,
+    AcceptEvents : bool = true,
+
+    MagnifierMultiplication : float = 0.0,
+
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+    BackgroundComponents : LIST<TBUCKContainerDescriptor> = [],
+
+    ShowXPButtons : bool = false,
+    ShowAddUnitButton : bool = false,
+    ShowRemoveUnitButton : bool = false,
+]
+is TUISpecificUnitButtonViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificUnitButtonMainComponentDescriptor
+    (
+        ComponentFrameAlignment = <ComponentFrameAlignment>
+
+        OffsetForSpecialtyIcon = <OffsetForSpecialtyIcon>
+
+        IsTogglable = <IsTogglable>
+        IsFocusable = <IsFocusable>
+        CannotDeselect = <CannotDeselect>
+        ForceEvents = <ForceEvents>
+
+        MagnifierMultiplication = <MagnifierMultiplication>
+
+        RadioButtonManager = <RadioButtonManager>
+        BackgroundComponents = <BackgroundComponents>
+        ShowXPButtons = <ShowXPButtons>
+        ShowAddUnitButton = <ShowAddUnitButton>
+        ShowRemoveUnitButton = <ShowRemoveUnitButton>
+    )
+
+    NoMoreUnitFeedbackOpacity = 0.3
+    AcceptEvents = <AcceptEvents>
+
+    // Temps en secondes avant que le conteneur de l'unité additionnelle apparaisse lorsqu'on survole le bouton de l'unité
+    TimeInSecondBeforeAdditionalUnitSpecificContainerShowUp = <TimeInSecondBeforeAdditionalUnitSpecificContainerShowUp>
+
+    // Transparence (en pourcentage entre 0 et 1) ajouté au conteneur d'une unité lorsque cette unité n'est pas disponible
+    OpacityPercentWhenUnitNotAvailable = <OpacityPercentWhenUnitNotAvailable>
+
+    // Couleur et drawer pour les textures et les textes quand l'unité n'est pas disponible
+    TextureDrawerWhenUnitNotAvailable = <TextureDrawerWhenUnitNotAvailable>
+    UnitNameColorWhenUnitNotAvailable = <UnitNameColorWhenUnitNotAvailable>
+    UnitNameBackgroundColorWhenUnitNotAvailable = <UnitNameBackgroundColorWhenUnitNotAvailable>
+    UnitCostColorWhenUnitNotAvailable = <UnitCostColorWhenUnitNotAvailable>
+    UnitCostGlowColorIndexWhenUnitNotAvailable = <UnitCostGlowColorIndexWhenUnitNotAvailable>
+    UnitCostColorWhenUnitCannotBeBought = <UnitCostColorWhenUnitCannotBeBought>
+
+    AceUnitNameColor = <AceUnitNameColor>
+    AceUnitBorderColorBySide = <AceUnitBorderColorBySide>
+    AceUnitBorderThickness = <AceUnitBorderThickness>
+)

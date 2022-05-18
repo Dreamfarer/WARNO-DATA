@@ -1,0 +1,92 @@
+liveEditCoatingPantry is TCoatingPantry
+(
+    Entries =
+    MAP[
+        ('F117_Nighthawk_trapdoor', TCoatingIngredientOperator
+        (
+            Descriptor = TCosmeticTrapdoorOperatorDesc
+            (
+                TrapdoorList =
+                [
+                    TTrapdoor
+                    (
+                        TrapdoorBoneName = 'trappe_g'
+                        LimitAngleInDegree = 70
+                    ),
+                    TTrapdoor
+                    (
+                        TrapdoorBoneName = 'trappe_d'
+                        LimitAngleInDegree = -70
+                    )
+                ]
+                LoadSupportBoneName = 'support_missiles'
+                LimitTranslationInMeter = 0.7
+                TranslationDurationInSec = 5
+                TrapdoorOpeningDurationInSec = 5
+            )
+        )),
+        ('Mi_24V_SOV_landing_gears', TCoatingIngredientOperator
+        (
+            Descriptor = TCosmeticLandingGearOperatorDesc
+            (
+                AnimationList =
+                [
+                    TBoneProceduralAnimation
+                    (
+                        BoneName = 'roue_avant'
+                        Axis = 1
+                        LimitValue = 75
+                        Delay = 4
+                        Duration = 1
+                    ),
+                    TBoneProceduralAnimation
+                    (
+                        BoneName = 'trappe_droite'
+                        LimitValue = -80
+                        Delay = 5
+                        Duration = 0.5
+                    ),
+                    TBoneProceduralAnimation
+                    (
+                        BoneName = 'trappe_gauche'
+                        LimitValue = 80
+                        Delay = 5
+                        Duration = 0.5
+                    ),
+                    TBoneProceduralAnimation
+                    (
+                        BoneName = 'roue_gauche'
+                        Axis = 1
+                        LimitValue = 1.5
+                        Delay = 4
+                        Duration = 2
+                        IsTranslation = true
+                    ),
+                    TBoneProceduralAnimation
+                    (
+                        BoneName = 'roue_gauche'
+                        LimitValue = 25
+                        Delay = 4
+                        Duration = 2
+                    ),
+                    TBoneProceduralAnimation
+                    (
+                        BoneName = 'roue_droite'
+                        Axis = 1
+                        LimitValue = -1.5
+                        Delay = 4
+                        Duration = 2
+                        IsTranslation = true
+                    ),
+                    TBoneProceduralAnimation
+                    (
+                        BoneName = 'roue_droite'
+                        LimitValue = -25
+                        Delay = 4
+                        Duration = 2
+                    )
+                ]
+            )
+        ))
+    ]
+)

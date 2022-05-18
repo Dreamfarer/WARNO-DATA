@@ -1,0 +1,86 @@
+Gfx_ATteam_Milan_1_FR_Servant_G is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_G_RFA
+    MeshDescriptorLow  = MeshDescriptor_Servant_G_RFA
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = DepictionOperator_AnimationServant_ATGM_Left
+)
+
+Gfx_ATteam_Milan_1_FR_Servant_D is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_D_RFA
+    MeshDescriptorLow  = MeshDescriptor_Servant_D_RFA
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = DepictionOperator_AnimationServant_ATGM_Right
+)
+
+ATteam_Milan_1_FR_Alternatives is [
+    DepictionDescriptor_LOD_High( MeshDescriptor = Modele_ATteam_Milan_1_FR ),
+    DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_ATteam_Milan_1_FR_MID ),
+    DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_ATteam_Milan_1_FR_LOW DisabledOperators = ['tourelle4'] ),
+]
+
+Gfx_ATteam_Milan_1_FR is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = CommonVehicleScaler
+        Selector = SpecificVehicleDepictionSelector
+        DepictionAlternatives = ATteam_Milan_1_FR_Alternatives
+
+        Operators = [
+            DepictionOperator_Reset_Generic,
+            DepictionOperator_DamageRatio_Generic,
+            DepictionOperator_Carriable_ATGM,
+            DepictionOperator_ShadowPointCloudProvider,
+        ]
+
+        Actions = MAP []
+                + Weapons_ATteam_Milan_1_FR
+                + DepictionAction_Stress_And_Wrecked
+
+        SubDepictions = [
+            TSubDepiction( Anchor = 'servant_g' Depiction = Gfx_ATteam_Milan_1_FR_Servant_G ),
+            TSubDepiction( Anchor = 'servant_d' Depiction = Gfx_ATteam_Milan_1_FR_Servant_D ),
+        ]
+    )
+)
+
+// stub showroom le temps qu'on dÃƒÂ©cide ce qu'on veux afficher
+Gfx_ATteam_Milan_1_FR_Servant_G_Showroom is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_G_US
+    MeshDescriptorLow  = MeshDescriptor_Servant_G_US
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = ServantATGMLeftIdle)
+)
+
+// stub showroom le temps qu'on dÃƒÂ©cide ce qu'on veux afficher
+Gfx_ATteam_Milan_1_FR_Servant_D_Showroom is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_D_US
+    MeshDescriptorLow  = MeshDescriptor_Servant_D_US
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = ServantATGMRightIdle)
+)
+
+// stub showroom le temps qu'on dÃƒÂ©cide ce qu'on veux afficher
+Gfx_ATteam_Milan_1_FR_Showroom is ShowroomDepictionTemplate
+(
+    MeshDescriptor = Modele_ATteam_Milan_1_FR
+    Operators =
+    [
+        DepictionOperator_Reset_Generic,
+    ]
+    SubDepictions =
+    [
+        TSubDepiction( Anchor = 'servant_g' Depiction = Gfx_ATteam_Milan_1_FR_Servant_G_Showroom ),
+        TSubDepiction( Anchor = 'servant_d' Depiction = Gfx_ATteam_Milan_1_FR_Servant_D_Showroom ),
+    ]
+)
+
+GhostDepiction_ATteam_Milan_1_FR is GhostVehicleDepictionTemplate
+(
+    Selector = SpecificVehicleDepictionSelector
+    Alternatives = ATteam_Milan_1_FR_Alternatives
+)

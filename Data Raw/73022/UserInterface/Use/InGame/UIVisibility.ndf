@@ -1,0 +1,27 @@
+
+
+AllInGameRanges is TVisibilityRangeContainer
+(
+    AltitudeMax is 15000000
+
+    ItemList =
+    [
+        ZoomRenfortArrow is TVisibilityRange //Doit matcher Zoom12bis dans Gameplay/Constantes/Visibility.ndf (utilisé par le Gfx pour la flèche)
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = 350000
+        ),
+        ZoomCommandArea is TVisibilityRange
+        (
+            AltitudeMax = AltitudeMax
+            AltitudeMin = 350000
+        ),
+    ]
+)
+
+InGameVisibilityHelper is TSimpleHelperVisibility
+(
+    RangeList = ~/AllInGameRanges
+    Camera = $/M3D/Camera/CameraPrincipale
+    World = $/M3D/Scene/DefaultWorld
+)

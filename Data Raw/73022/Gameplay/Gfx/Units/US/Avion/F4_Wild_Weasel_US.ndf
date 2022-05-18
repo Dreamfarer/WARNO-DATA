@@ -1,0 +1,25 @@
+export ModelFile_F4_Wild_Weasel_US is 'GameData:/Assets/3D/Units/US/Avion/F4G_Phantom_II/F4G_Phantom_II.Ase2NdfBin'
+
+Modele_F4_Wild_Weasel_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_F4_Wild_Weasel_US
+    CivMask =  CivMask/Common
+)
+
+Modele_F4_Wild_Weasel_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/F4G_Phantom_II_MID/F4G_Phantom_II_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F4_Wild_Weasel_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/LODS/F4G_Phantom_II_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F4_Wild_Weasel_US_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/F4G_Phantom_II/F4G_Phantom_II_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,21 @@
+export AirplaneConstantesWargame is TAirplaneConstantesModernWarfareDescriptor
+(
+    // Valeurs en metres
+    EvacuationAngle     = (10 * Degre) //2
+    EvacuationAltitude  = (10000 * Metre) //15000
+
+    TargetLostTimeInSeconds = (-1.0 * Seconde) // PAUL(10/09/2012 14:56:24) Quand on perd la cible de vu soit: -1.0f on ne sort jamais de l'ordre d'attaque, sinon entre 0 et x secondes pour arreter l'ordre d'attaque.
+
+    TempsEntreDeuxDecollagesEnSecondes = (0.6 * Seconde)  //0.2
+
+    // La variable pour determiner quand est-ce que les Avions partent en evac Winchester
+    // true : Quand toutes les armes principales sont vides
+    // false : Quand au moins une arme principale est vide
+    //  -> si aucune arme principale, ce sera quand toutes les armes sont vides
+    EvacWinchesterToutesLesArmesPrincipales = true
+    UtiliserArmesPendantEvac = true
+
+    LandingGearSubDepictionAnchor = "landing gear"
+    FrontLandingGearMeshNodeName = "train_avant"
+    BackLandingGearMeshNodeName = "train_arriere"
+)

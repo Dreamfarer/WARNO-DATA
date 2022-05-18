@@ -1,0 +1,25 @@
+export ModelFile_FV103_Spartan_BEL is 'GameData:/Assets/3D/Units/BEL/APC/FV103_Spartan/FV103_Spartan.Ase2NdfBin'
+
+Modele_FV103_Spartan_BEL is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FV103_Spartan_BEL
+    CivMask =  CivMask/Common
+)
+
+Modele_FV103_Spartan_BEL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/BEL/APC/FV103_Spartan/FV103_Spartan.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV103_Spartan_BEL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/BEL/APC/FV103_Spartan/FV103_Spartan.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV103_Spartan_BEL_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FV103_Spartan_UK_Tourelle_01
+    CivMask =  CivMask/Common
+)

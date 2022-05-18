@@ -1,0 +1,175 @@
+//-------------------------------------------------------------------------
+//------------------------- PHASES LOW COST -------------------------------
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+export GenBTAtk_PhaseDeploiement_LowCost is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        // Capture de zones
+        ~/CaptureAllZoneObjectif,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/GenBTAtk_Support_AntiTank,
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        // Front coherent
+        ~/Attack_Adaptive,          // ~100
+        ~/Attack_Adaptive,          // ~100
+        ~/Attack_Adaptive,          // ~100
+        ~/Attack_Filler,            // budget 40
+
+        // Grosse attaque - moins prio car moins de sous
+        ~/Attack_Objectives,
+        ~/GenBTAtk_Artillery_Support,
+        ~/Reco,            // 40 par reco
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+    ] + ~/GenBTAtk_Defenses_Airstrike_Arti_Shuffle_Deploy
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/Medium_Scaling
+    +   ~/Medium_Scaling
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Phase_A_LowCost is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+
+        // Capture de zones
+        ~/CaptureAllZoneObjectif,
+
+        // Même chose que la phase de déploiement mais avec les Défenses
+        // prioritaires sur les attaques. L'idée est de lancer ses attaques dès
+        // le début, mais de renforcer les backlines avant de récupérer de nos pertes
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/GenBTAtk_Support_AntiTank,
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+        ~/Attack_Filler,
+
+        //------------------------------
+        // Défenses prioritaires
+        //------------------------------
+        // Statiques pour tenir le terrain
+        ~/Defense_Static_Adaptive, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/Defense_Static_AA,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/GenBTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        ~/Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Attack_Adaptive,
+        ~/Attack_Adaptive,
+
+        // On insère ici une attaque qui va chercher les objectifs.
+        ~/Attack_Objectives,
+
+        ~/SuperCommander,
+
+        ~/Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Maintain_CorridorDefenses,
+        ~/Supply_Skirmish_Allied,
+
+    ] + ~/Airstrike_Arti_Shuffle // On sort les défenses d'ici pour les mettre plus haut dans la prio
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/GenBTAtk_Scaling
+    +   ~/GenBTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+private template GenBTAtk_Phase_B_and_C_LowCost_template
+[
+]
+is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 2
+    GeneratorList =
+    [
+        ~/Maintain_CorridorAttacks,
+        ~/Maintain_ObjectiveAttacks,
+        ~/Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/GenBTAtk_Support_AntiTank,
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+        ~/Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Attack_Objectives,
+
+        ~/Attack_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/Attack_Adaptive,
+        ~/Attack_Adaptive,
+
+        ~/SuperCommander,
+
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/GenBTAtk_Artillery_Support,        // Artillerie pas chère                 //  80
+
+        // Maintien
+        ~/Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+
+    ] + ~/Defenses_Airstrike_Arti_Shuffle
+
+        //------------------------------
+        // Scaling
+        //------------------------------
+        // Dans les difficultés supérieures il faudra surement maintenir
+        // ça avec des maintain à la phase d'après pour être sur qu'on
+        // produise de nouvelles unités
+    +   ~/GenBTAtk_Scaling
+    +   ~/GenBTAtk_Scaling
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Phase_B_LowCost is GenBTAtk_Phase_B_and_C_LowCost_template()
+//-------------------------------------------------------------------------
+export GenBTAtk_Phase_C_LowCost is GenBTAtk_Phase_B_and_C_LowCost_template()
+//-------------------------------------------------------------------------

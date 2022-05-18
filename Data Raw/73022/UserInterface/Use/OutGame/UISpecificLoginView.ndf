@@ -1,0 +1,441 @@
+// Ecran de connection pour acceder aux fonctions de jeu en-ligne
+
+// -------------------------------------------------------------------------------------------------
+
+template LoginTvContainer
+[
+    ElementName : string,
+    Components : LIST<TBUCKContainerDescriptor> = [],
+] is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [453.0, 369.0]
+        MagnifiableOffset = [75.0, 556.0]
+    )
+
+    Components = <Components>
+    HidePointerEvents = true
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private template LoginScreenMainButton
+[
+    ElementName : string,
+    TextToken : string,
+    Mapping : TEugBMutablePBaseClass = nil,
+    ButtonMagnifiableWidthHeight : float2 = DefaultButtonDims,
+    ButtonAlignementToAnchor : float2 = [0.0, 0.0],
+    ButtonAlignementToFather : float2 = [0.0, 0.0],
+    ButtonMagnifiableOffset : float2 = [0.0, 0.0],
+    BackgroundBlockColorToken : string = "loginBoutonBackground_highlightedCyan"
+] is ConfirmButton
+(
+    ElementName = <ElementName>
+
+    TextToken = <TextToken>
+    TextTypefaceToken = "UISecondFont"
+    ButtonMagnifiableWidthHeight = <ButtonMagnifiableWidthHeight>
+
+    ButtonAlignementToAnchor = <ButtonAlignementToAnchor>
+    ButtonAlignementToFather = <ButtonAlignementToFather>
+
+    TextStyle = "TextStyleEcranMoniteur_cyan"
+    TextColorToken = "loginBlanc"
+    BorderLineColorToken = "Cyan"
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+    Mapping = <Mapping>
+    LeftClickSound = SoundEvent_LoginMenuStandardButton
+)
+
+
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalConnectButtonDescriptor is LoginScreenMainButton
+(
+    ElementName = "ConnectButton"
+    ButtonMagnifiableWidthHeight = [80.0, 25.0]
+    TextToken = 'BTN_CONNEC'
+    Mapping = TEugBMutablePBaseClass(Value = TUserInputMapping(KeyboardEventID = UserInputKeyboard/KEY_ENTER))
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private AutoLoginModalConnectButtonDescriptor is LoginScreenMainButton
+(
+    ElementName = "AutoLoginConnectButton"
+    ButtonMagnifiableWidthHeight = [80.0, 25.0]
+    TextToken = 'BTN_CONNEC'
+    Mapping = TEugBMutablePBaseClass(Value = TUserInputMapping(KeyboardEventID = UserInputKeyboard/KEY_ENTER))
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private LoginModalLinkButtonDescriptor is LoginScreenMainButton
+(
+    ElementName = "LinkButton"
+    ButtonMagnifiableWidthHeight = [80.0, 25.0]
+    TextToken = 'BTN_LINK'
+)
+
+//-------------------------------------------------------------------------------------
+
+private LoginModalFirstConnexionButtonDescriptor is LoginScreenMainButton
+(
+    ElementName = "CreateButton"
+    ButtonMagnifiableWidthHeight = [80.0, 25.0]
+    TextToken = 'CP_FIRSTCO'
+
+)
+
+//-------------------------------------------------------------------------------------
+
+private LoginModalCancelButtonDescriptor is LoginScreenMainButton
+(
+    ElementName = "CancelButton"
+    ButtonMagnifiableWidthHeight = [80.0, 25.0]
+    TextToken = 'BTN_CANCEL'
+
+)
+
+//-------------------------------------------------------------------------------------
+
+LoginPanelMonitorBackground is BUCKTextureDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [455.0, 374.0]
+        MagnifiableOffset = [0,0]
+    )
+    TextureToken = 'Outgame_accueil_foreground_ecranHome'
+    TextureDrawer = 'MonochromeMonitorEffect'
+)
+
+//-------------------------------------------------------------------------------------
+
+LoginPanelMonitorForeground is BUCKTextureDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [455.0, 374.0]
+        MagnifiableOffset = [0,0]
+    )
+    TextureToken = 'Outgame_accueil_foreground_ecranHome3'
+    TextureDrawer = 'ColorMultiply_Additive'
+)
+
+//-------------------------------------------------------------------------------------
+
+template LoginPanelLine
+[
+    TokenTitle : string = "",
+    TokenButton : string = "",
+    ElementName : string,
+    IsPassword : bool = false,
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 20.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength(Magnifiable = 5.0)
+    InterItemMargin = TRTTILength( Magnifiable = 5.0)
+    LastMargin = TRTTILength(Magnifiable = 5.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKSpecificTextWithHint
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [70.0, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    Alignment = UIText_Right
+                )
+
+                TextStyle       = "TextStyleEcranMoniteur"
+                TypefaceToken   = "UISecondFont"
+
+                TextColor       = "Blanc"
+                TextSize        = "14"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextToken = <TokenTitle>
+                HasAutoHint = true
+                AutoHintElementName = <ElementName> + "TextHint"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    BUCKEditableTextDescriptor
+                    (
+                        ElementName = <ElementName> + "EditableText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableWidthHeight = [-10.0, 0.0]
+                            AlignementToFather = [0.5, 0.5]
+                            AlignementToAnchor = [0.5, 0.5]
+                        )
+
+                        ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableWidthHeight = [-6.0, -6.0]
+                            AlignementToFather = [0.5, 0.5]
+                            AlignementToAnchor = [0.5, 0.5]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = "VertLogin"
+
+                        Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE | (<IsPassword> ? ~/EditableTextFlag/PASSWORD : 0x0000)
+
+                        TextSizeToken = "14"
+                        TypefaceToken = "UISecondFont"
+                        TextColorToken = "Noir"
+                        SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                        MaxChars = 50
+
+                        SelectTextOnFocus = true
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [150.0, 0.0]
+                )
+
+                Components =
+                [
+                    BUCKSpecificButton
+                    (
+                        ElementName = <ElementName> + "Button"
+                        ButtonRelativeWidthHeight = [0.0, 1.0]
+                        ButtonMagnifiableWidthHeight = [125.0, 0.0]
+                        TextToken = <TokenButton>
+                        TextTypefaceToken = "UISecondFont"
+                        TextColorToken = 'loginBlanc'
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        HasBorder = true
+                        BorderLineColorToken = 'VertLogin'
+                        HasBackground = true
+                        BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+                        HasAutoHint = true
+                        AutoHintElementName = <ElementName> + "ButtonHint"
+                        LeftClickSound = SoundEvent_LoginMenuSecondaryButton
+                    )
+                ]
+            )
+        ),
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+BUCKSpecificLoginMainComponentDescriptor is LoginTvContainer
+(
+    ElementName = "LoginComponent"
+
+    Components =
+    [
+        LoginPanelMonitorBackground,
+
+        BUCKListDescriptor
+        (
+            ElementName = "LoginContentList"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [450.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength( Magnifiable = 10.0)
+            InterItemMargin = TRTTILength( Magnifiable = 10.0)
+            LastMargin = TRTTILength( Magnifiable = 10.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTypingTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.9, 0.0]
+                            MagnifiableWidthHeight = [0.0, 150.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TextStyle = "TextStyleEcranMoniteur"
+                        TypefaceToken = "UISecondFont"
+
+                        TextColor       = "Blanc"
+                        TextSize        = "14"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "LP_Intro"
+
+                        AnimDuration = 10000000
+                        AnimTextInSec = 0.1
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Vertical
+
+                        InterItemMargin = TRTTILength( Magnifiable = 5.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = LoginPanelLine
+                                (
+                                    ElementName = "Login"
+                                    TokenTitle = "login"
+                                    TokenButton = "CP_LOGFRGT"
+                                )
+
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = LoginPanelLine
+                                (
+                                    ElementName = "Password"
+                                    TokenTitle = "password"
+                                    TokenButton = "CP_FORGOT"
+                                    IsPassword = true
+                                )
+                            ),
+                        ]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "ErrorText"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextStyle       = "Default"
+                        TypefaceToken   = "UIMainFont"
+
+                        TextColor       = "Rouge"
+                        TextSize        = "16"
+                    )
+                ),
+            ]
+        ),
+        BUCKListDescriptor
+        (
+            ElementName = "LoginButtonList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 50.0]
+                MagnifiableOffset = [0.0, -50.0]
+                AlignementToFather  = [0.5, 1.0]
+                AlignementToAnchor  = [0.5, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor(ComponentDescriptor = ~/LoginModalConnectButtonDescriptor),
+                BUCKListElementDescriptor(ComponentDescriptor = ~/LoginModalLinkButtonDescriptor),
+                BUCKListElementDescriptor(ComponentDescriptor = ~/LoginModalFirstConnexionButtonDescriptor),
+            ]
+        ),
+        BUCKContainerDescriptor
+        (
+            ElementName = "AutoLoginButtonList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather  = [0.5, 0.5]
+                AlignementToAnchor  = [0.5, 0.5]
+            )
+
+            FitStyle = ~/ContainerFitStyle/FitToContent
+
+            Components = [ ~/AutoLoginModalConnectButtonDescriptor ]
+        ),
+        LoginPanelMonitorForeground
+
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+UISpecificLoginViewDescriptor is TUISpecificLoginViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificLoginMainComponentDescriptor
+    MainComponentContainerUniqueName = "LoginPanel" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

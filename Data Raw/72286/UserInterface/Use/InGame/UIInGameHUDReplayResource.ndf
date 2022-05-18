@@ -1,0 +1,599 @@
+HUDReplayResource is TUISpecificInGameReplayResource
+(
+    HideUIKeyInterceptor = $/M3D/Input/UserInputLayerHandler/InputLayer_ShowUIForGameReplay
+    HideRenderLayers = ~/InterfaceNonArrayLayersFinal
+    HideRenderLayersArray = ~/InterfaceArrayLayersFinal
+
+    VideoModeValue = $/M3D/Scene/ShootVideoMode
+    DontSaveNodesOption = $/GameplayOption/DontSaveReplayNodes
+
+    Component = ~/ReplayPanel
+    ComponentWaitingForModeObs = ~/ReplayWaitingModeObsPanel
+)
+
+private ReplayPanelWidth is 595.0
+private ReplayPanelHeight is ReplayPanelTitleHeight + ReplayPanelTopPartHeight + ReplayPanelBottomPartHeight + ReplayPanelSeparatorBetweenBottomPartAndHideHUDButton + DefaultButtonDims[1]
+private ReplayPanelTopPartHeight is 40.0
+private ReplayPanelTitleHeight is 30.0
+private ReplayPanelBottomPartHeight is 40.0
+private ReplayPanelSeparatorBetweenBottomPartAndHideHUDButton is 30
+private ReplayPanelOffsetHideHUDButton is ReplayPanelTitleHeight + ReplayPanelTopPartHeight + ReplayPanelBottomPartHeight + ReplayPanelSeparatorBetweenBottomPartAndHideHUDButton
+private ReplayPanelCurrentSpeedWidth is 140.0
+private ReplayPanelButtonWidth is 57
+private ReplayPanelDropDownPOVWidth is ReplayPanelWidth - ReplayPanelCurrentSpeedWidth - 3*ReplayPanelButtonWidth
+private ReplayPanelSliderHorizontalSeparator is 10
+private ReplayPanelSliderContainerWidth is 400
+private ReplayPanelSliderWidth is ReplayPanelSliderContainerWidth - ReplayPanelSliderHorizontalSeparator
+
+
+private ReplayPanel is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0, 0]
+        MagnifiableWidthHeight = [ReplayPanelWidth, ReplayPanelHeight]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.85]
+        AlignementToAnchor = [0.5, 0.85]
+    )
+
+    HidePointerEvents = true
+
+    Components = [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, ReplayPanelTitleHeight]
+                MagnifiableOffset = [0.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            HasBackground = false
+            BackgroundBlockColorToken = "PureBlack"
+        ),
+
+        //Partie superieure (slider)
+        BUCKContainerDescriptor
+        (
+            ElementName = "ReplayTopPartContainer"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, ReplayPanelTopPartHeight]
+                MagnifiableOffset = [0.0, ReplayPanelTitleHeight]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+            HasBackground = true
+            BackgroundBlockColorToken = "TimePanel/Background"
+            Components = [
+                BUCKContainerDescriptor
+                (
+                    ElementName = "ReplaySliderContainer"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [0.0, 0.8]
+                        MagnifiableWidthHeight = [ReplayPanelSliderWidth, 0.0]
+                        MagnifiableOffset = [ReplayPanelSliderHorizontalSeparator, 0.0]
+                        AlignementToFather = [0.0, 0.5]
+                        AlignementToAnchor = [0.0, 0.5]
+                    )
+
+                    Components =
+                    [
+                        BUCKSimpleGaugeDescriptor
+                        (
+                            ElementName = 'ReplaySlider'
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 1.0]
+                            )
+
+                            GaugeMax = 100
+                            GaugeComponentName = 'GaugeProgression'
+
+                            HasBorder = true
+                            BorderThicknessToken = "1"
+                            BorderLineColorToken = "Fulda2_Orange100"
+
+                            Components =
+                            [
+                                BUCKSimpleGaugeValueDescriptor
+                                (
+                                    ElementName = 'GaugeProgression'
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                        AlignementToFather = [0.0, 0.5]
+                                    )
+
+                                    ValueContainerName = 'GaugeValue'
+                                    ValueContainerComponent = BUCKContainerDescriptor
+                                    (
+                                        ElementName = 'GaugeValue'
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [0.0, 1.0]
+                                        )
+
+                                        HasBackground = true
+                                        BackgroundBlockColorToken = "SliderBasic/SliderBar"
+                                    )
+
+                                    ValueSeparatorName = 'GaugeSeparator'
+                                    ValueSeparatorComponent = BUCKContainerDescriptor
+                                    (
+                                        ElementName = 'GaugeSeparator'
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [0.0, 1.0]
+                                            MagnifiableWidthHeight = [8.0, 0.0]
+                                            AlignementToAnchor = [0.0, 0.5]
+                                            AlignementToFather = [0.0, 0.5]
+                                        )
+
+                                        HasBackground = true
+                                        BackgroundBlockColorToken = 'SliderBasic/ThumbColor'
+                                    )
+                                )
+                            ]
+                        )
+                    ]
+                ),
+
+                BUCKTextDescriptor
+                (
+                    ElementName = "ReplayTotalTimeText"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        MagnifiableWidthHeight = [-1 * ReplayPanelSliderContainerWidth, 0.0]
+                        MagnifiableOffset = [0.0, 0.0]
+                        AlignementToFather = [1.0, 0.0]
+                        AlignementToAnchor = [1.0, 0.0]
+                    )
+
+                    TextSize = "SD2_Moyen"
+                    TextColor = "SD2_Blanc184"
+
+                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                    TypefaceToken = "UIMainFont"
+
+                    BigLineAction = ~/BigLineAction/CutByDots
+                    TextStyle = "Default"
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Center
+                        VerticalAlignment = UIText_VerticalCenter
+                    )
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/UserDefined
+                )
+            ]
+        ),
+
+        //Partie inferieure (texte, boutons, dropdown)
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, ReplayPanelBottomPartHeight]
+                MagnifiableOffset = [0.0, ReplayPanelTopPartHeight + ReplayPanelTitleHeight]
+                AlignementToFather = [0.0, 0.0]
+                AlignementToAnchor = [0.0, 0.0]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "Black80"
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            FirstMargin = TRTTILength(Magnifiable = 10.0)
+            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+            LastMargin = TRTTILength(Pixel = 10.0)
+
+            Elements =
+            [
+                //Texte affichant la vitesse courante
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [ReplayPanelCurrentSpeedWidth, 0.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                            AlignementToFather = [0.0, 0.0]
+                            AlignementToAnchor = [0.0, 0.0]
+                        )
+
+                        HasBackground = false
+                        BackgroundBlockColorToken = "SD2_Gris80"
+
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = "ReplayCurrentSpeedText"
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    MagnifiableWidthHeight = [0.0, 0.0]
+                                    MagnifiableOffset = [0.0, 0.0]
+                                    AlignementToFather = [0.0, 0.0]
+                                    AlignementToAnchor = [0.0, 0.0]
+                                )
+
+                                TextSize = "SD2_Moyen"
+                                TextColor = "SD2_BleuVariable"
+                                TextToken = ""
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                TypefaceToken = "UIMainFont"
+
+                                BigLineAction = ~/BigLineAction/CutByDots
+                                TextStyle = "Default"
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Center
+                                    VerticalAlignment = UIText_VerticalCenter
+                                )
+                                HorizontalFitStyle = ~/FitStyle/UserDefined
+                                VerticalFitStyle = ~/FitStyle/UserDefined
+                            )
+                        ]
+                    )
+                ),
+
+                //Bouton décélérer
+                {BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKSpecificButton
+                                    (
+                                        ElementName = "SpeedDownButton"
+
+                                        ButtonMagnifiableWidthHeight = [ReplayPanelButtonWidth, 0.0]
+                                        ButtonRelativeWidthHeight = [0.0, 1.0]
+
+                                        HidePointerEvents = true
+
+                                        HasBackgroundTexture = true
+                                        BackgroundTexture = "UseInGame_Texture_Replay_Decelerate"
+                                        BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [0.8, 0.8]
+                                            MagnifiableWidthHeight = [0.0, 0.0]
+                                            MagnifiableOffset = [0.0, 0.0]
+                                            AlignementToFather = [0.5, 0.5]
+                                            AlignementToAnchor = [0.5, 0.5]
+                                        )
+
+                                        HintTitleToken = "HRP_DSPDBT"
+                                        HintBodyToken = "HRP_DSPDBB"
+                                        HintExtendedToken = "HRP_DSPDBE"
+                                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    )
+                                ),}
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/BoutonLent
+                ),
+                //Bouton play/pause
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/BoutonPause
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/BoutonRapide
+                ),
+                {BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKSpecificButton
+                                    (
+                                        ElementName = "PlayButton"
+
+                                        ButtonMagnifiableWidthHeight = [ReplayPanelButtonWidth, 0.0]
+                                        ButtonRelativeWidthHeight = [0.0, 1.0]
+
+                                        IsTogglable = true
+                                        HidePointerEvents = true
+                                        HasBackgroundTexture = true
+                                        BackgroundTexture = "UseInGame_Texture_Replay_Play"
+
+                                         BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+                                         (
+                                             RelativeWidthHeight = [0.8, 0.8]
+                                             MagnifiableWidthHeight = [0.0, 0.0]
+                                             MagnifiableOffset = [0.0, 0.0]
+                                             AlignementToFather = [0.5, 0.5]
+                                             AlignementToAnchor = [0.5, 0.5]
+                                         )
+                                        HintTitleToken = "HRP_PLAYBT"
+                                        HintBodyToken = "HRP_PLAYBB"
+                                        HintExtendedToken = "HRP_PLAYBE"
+                                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    )
+                                ),}
+
+                //Bouton accélérer
+
+                {BUCKListElementDescriptor
+                                (
+                                    ComponentDescriptor = BUCKSpecificButton
+                                    (
+                                        ElementName = "SpeedUpButton"
+
+                                        ButtonMagnifiableWidthHeight = [ReplayPanelButtonWidth, 0.0]
+                                        ButtonRelativeWidthHeight = [0.0, 1.0]
+
+                                        HidePointerEvents = true
+                                        HasBackgroundTexture = true
+                                        BackgroundTexture = "UseInGame_Texture_Replay_Accelerate"
+
+                                         BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+                                         (
+                                            RelativeWidthHeight = [0.8, 0.8]
+                                             MagnifiableWidthHeight = [0.0, 0.0]
+                                             MagnifiableOffset = [0.0, 0.0]
+                                             AlignementToFather = [0.5, 0.5]
+                                             AlignementToAnchor = [0.5, 0.5]
+                                         )
+                                        HintTitleToken = "HRP_ISPDBT"
+                                        HintBodyToken = "HRP_ISPDBB"
+                                        HintExtendedToken = "HRP_ISPDBE"
+                                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    )
+                                ),}
+
+                //Dropdown choix du point de vue
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificDropdownDescriptor
+                    (
+                        ElementName = "DropDownPOV"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [ReplayPanelDropDownPOVWidth, 25]
+                            AlignementToFather = [0, 0.5]
+                            AlignementToAnchor = [0, 0.5]
+                        )
+                        FloatingListMagnifiableHeight = 150.0
+                        MainTextHorizontalAlignment = UIText_Center
+                    )
+                ),
+                // Dummy
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.1
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        )
+                    )
+                )
+            ]
+        ),
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 0.0]
+                MagnifiableOffset = [0.0, ReplayPanelOffsetHideHUDButton]
+                AlignementToAnchor  = [0.5, 0.0]
+                AlignementToFather  = [0.5, 0.0]
+
+            )
+
+            InterItemMargin = TRTTILength(Magnifiable = 10.0)
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificButton
+                    (
+                        ElementName = "HidePanelButton"
+
+                        TextToken = "BTN_HIDEPa"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextStyle = "Default"
+
+                        TextParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        HintTitleToken = "HRP_HDHUDT"
+                        HintBodyToken = "HRP_HDHUDB"
+                        HintExtendedToken = "HRP_HDHUDE"
+                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificButton
+                    (
+                        ElementName = "HideHUDButton"
+
+                        TextToken = "BTN_HIDEUI"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextStyle = "Default"
+
+                        TextParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        HintTitleToken = "HRP_HDHUDT"
+                        HintBodyToken = "HRP_HDHUDB"
+                        HintExtendedToken = "HRP_HDHUDE"
+                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------//
+// boutons
+
+BoutonPause is HUDButton
+(
+    ElementName = "PlayButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25, 25.0]
+        AlignementToFather = [0, 0.5]
+        AlignementToAnchor = [0, 0.5]
+    )
+
+    IsTogglable = true
+    HidePointerEvents = true
+    HasBackground = false
+    HasBorder = false
+    BorderLineColorToken = 'TimePanel/ButtonBorder'
+    BorderThickness = "1"
+
+    BackgroundTexture = "vitesse02"
+    BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+        MagnifiableWidthHeight = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    HintTitleToken = "HRP_PLAYBT"
+    HintBodyToken = "HRP_PLAYBB"
+    HintExtendedToken = "HRP_PLAYBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+BoutonLent is HUDButton
+(
+    ElementName = "SpeedDownButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25, 25.0]
+        AlignementToFather = [0, 0.5]
+        AlignementToAnchor = [0, 0.5]
+    )
+
+    IsTogglable = true
+    HidePointerEvents = true
+    HasBackground = false
+    HasBorder = false
+    BorderLineColorToken = 'TimePanel/ButtonBorder'
+    BorderThickness = "1"
+
+    BackgroundTexture = "ShrinkSectionTexture"
+    BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+        MagnifiableWidthHeight = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    HintTitleToken = "HRP_DSPDBT"
+    HintBodyToken = "HRP_DSPDBB"
+    HintExtendedToken = "HRP_DSPDBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+BoutonRapide is HUDButton
+(
+    ElementName = "SpeedUpButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25, 25.0]
+        AlignementToFather = [0, 0.5]
+        AlignementToAnchor = [0, 0.5]
+    )
+
+    IsTogglable = true
+    HidePointerEvents = true
+    HasBackground = false
+    HasBorder = false
+    BorderLineColorToken = 'TimePanel/ButtonBorder'
+    BorderThickness = "1"
+
+    BackgroundTexture = "ExpandSectionTexture"
+    BackgroundTextureFrameProperty = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+        MagnifiableWidthHeight = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    HintTitleToken = "HRP_ISPDBT"
+    HintBodyToken = "HRP_ISPDBB"
+    HintExtendedToken = "HRP_ISPDBE"
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+//-------------------------------------------------------------------------------------//
+
+private ReplayWaitingPanelHeight is 50.0
+private ReplayWaitingPanelWidth is 600.0
+
+private ReplayWaitingModeObsPanel is TContainerDarkStyle
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableWidthHeight = [ReplayWaitingPanelWidth, ReplayWaitingPanelHeight]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.3]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Components = [
+        BUCKTextDescriptor
+        (
+            ElementName = "ReplayWaitingTimeText"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TextSize = "ReplayPanel/WaitingTimeObs"
+            TextColor = "ReplayPanel/WaitingTimeObs"
+            TextToken = ""
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TypefaceToken = "UIMainFont"
+
+            BigLineAction = ~/BigLineAction/CutByDots
+            TextStyle = "Default"
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+        )
+    ]
+)

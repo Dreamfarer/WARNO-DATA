@@ -1,0 +1,691 @@
+//-------------------------------------------------------------------------------------
+
+template DisplayStartingInformationOneTextLine
+[
+    ElementName: string,
+    TextDico: string = ~/LocalisationConstantes/dico_interface_ingame,
+    TextToken: string = '',
+]
+is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [10.0 ,0.0]
+    )
+
+    ParagraphStyle = ~/paragraphStyleTextCenter
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "Courrier"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    TextDico = <TextDico>
+    TextToken  = <TextToken>
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+    HasBackground = false
+
+    TextColor = "MarronPanel_noir"
+    TextSize = "14"
+)
+
+//-------------------------------------------------------------------------------------
+
+BUCKSpecificDisplayStartingInformationMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ElementName = "BUCKSpecificDisplayStartingInformationMainComponent"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [500.0, 820.0]
+    )
+
+    Components =
+    [
+        PanelRoundedCorner
+        (
+            ElementName = "SpecificDisplayStartingInformationRoundedPanel"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Radius = 30
+            NbOfPoints = 7
+
+            BackgroundBlockColorToken = "Transparent"
+            BorderLineColorToken = 'MarronPanel_noir'
+            BorderThicknessToken = '2'
+            RoundedVertexes = [false,false,true,true]
+        ),
+
+        // texture fond
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [530.0, 849.0]
+                MagnifiableOffset = [-15.0, -5.0]
+            )
+            TextureToken = 'UseInGame_UnitInfoPanel_fond_panel2'
+        ),
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [440.0, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.0]
+                MagnifiableOffset = [15.0, 0.0]
+            )
+
+            HidePointerEvents = true
+            Axis = ~/ListAxis/Vertical
+            BackgroundBlockColorToken = 'Orange'
+
+            FirstMargin = TRTTILength( Magnifiable = 10.0 )
+            LastMargin = TRTTILength( Magnifiable = 20.0 )
+
+            Elements =
+            [
+                //-------------------------------------------------------------------------------------
+                // Close button
+                //-------------------------------------------------------------------------------------
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 40.0]
+                        )
+                    )
+                ),
+                //-------------------------------------------------------------------------------------
+                // Titre
+                //-------------------------------------------------------------------------------------
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 75.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = 'MarronPanel_fonce'
+                        HasBorder = true
+                        BorderLineColorToken = 'MarronPanel_noir'
+                        BorderThicknessToken = '2'
+                        BordersToDraw = ~/TBorderSide/Top | ~/TBorderSide/Left | ~/TBorderSide/Right | ~/TBorderSide/Bottom
+
+                        Components =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                    )
+                                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                                    VerticalFitStyle = ~/FitStyle/UserDefined
+                                    TextStyle = 'Default'
+                                    TextToken = 'DSI_warno'
+                                    TypefaceToken = "Liberator"
+                                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                    TextColor = "MarronPanel_noir"
+                                    TextSize = "24"
+
+                                    ParagraphStyle = ~/paragraphStyleTextCenter
+                                    HasBorder = true
+                                )
+                            )
+                        ]
+                    )
+                ),
+                //-------------------------------------------------------------------------------------
+                // situation
+                //-------------------------------------------------------------------------------------
+                titreWarno ( TextToken = 'DSI_sit'),
+                //-------------------------------------------------------------------------------------
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Vertical
+
+                        FirstMargin = TRTTILength ( Magnifiable = 6.0 )
+
+                        HasBorder = true
+                        BorderThicknessToken = '2'
+                        BorderLineColorToken = 'MarronPanel_noir'
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/AffichageGround
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKListDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 0.0]
+                                    )
+
+                                    Axis = ~/ListAxis/Horizontal
+                                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                                    FirstMargin = TRTTILength ( Magnifiable = 6.0 )
+                                    InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+                                    LastMargin = TRTTILength ( Magnifiable = 6.0 )
+
+                                    Elements =
+                                    [
+                                        // affichage des forces
+                                        BUCKListElementDescriptor
+                                        (
+                                            ExtendWeight = 0.5
+                                            ComponentDescriptor = StrengthList
+                                            (
+                                                ElementName = 'AlliedList'
+                                                TextToken = "DSI_sitf"
+                                            )
+                                        ),
+                                        BUCKListElementDescriptor // Manual vertical line
+                                        (
+                                            ComponentDescriptor = BUCKContainerDescriptor
+                                            (
+                                                ComponentFrame = TUIFramePropertyRTTI
+                                                (
+                                                    RelativeWidthHeight = [0.0, 1.0]
+                                                    PixelWidthHeight = [2.0, 0.0]
+                                                )
+                                                HasBackground = true
+                                                BackgroundBlockColorToken = "MarronPanel_noir"
+                                            )
+                                        ),
+                                        BUCKListElementDescriptor
+                                        (
+                                            ExtendWeight = 0.5
+                                            ComponentDescriptor = StrengthList
+                                            (
+                                                ElementName = 'EnemyList'
+                                                TextToken = "DSI_sitE"
+                                            )
+                                        )
+                                    ]
+                                )
+                            )
+                        ]
+                    )
+                ),
+
+                //-------------------------------------------------------------------------------------
+                // mission
+                //-------------------------------------------------------------------------------------
+                titreWarno ( TextToken = 'DSI_mis'),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKRackDescriptor
+                    (
+                        ElementName = "CombatRulesRack"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Vertical
+
+                        FirstMargin = TRTTILength ( Magnifiable = 12.0)
+                        InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+                        LastMargin = TRTTILength( Magnifiable = 15.0 )
+
+                        HasBorder = true
+                        BorderThicknessToken = '2'
+                        BorderLineColorToken = 'MarronPanel_noir'
+
+                        BladeDescriptor = DisplayStartingInformationOneTextLine
+                        (
+                            ElementName = "CombatRuleText"
+                        )
+                    )
+                ),
+
+                //-------------------------------------------------------------------------------------
+                // execution
+                //-------------------------------------------------------------------------------------
+                titreWarno
+                (
+                    TextToken = "DSI_exe"
+                    ElementName = "ExecutionSectionTitle"
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ElementName  = "ExecutionSectionContent"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Vertical
+
+                        FirstMargin = TRTTILength ( Magnifiable = 18.0)
+                        InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+                        LastMargin = TRTTILength( Magnifiable = 15.0 )
+
+                        HasBorder = true
+                        BorderThicknessToken = '2'
+                        BorderLineColorToken = 'MarronPanel_noir'
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = DisplayStartingInformationOneTextLine
+                                (
+                                    ElementName = 'InitialMoneyText'
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = DisplayStartingInformationOneTextLine
+                                (
+                                    ElementName = 'InitialIncomeRateText'
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = DisplayStartingInformationOneTextLine
+                                (
+                                    ElementName = 'ScoreLimitText'
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = DisplayStartingInformationOneTextLine
+                                (
+                                    ElementName = 'TimeLimitText'
+                                )
+                            ),
+                        ]
+                    )
+                ),
+
+                //-------------------------------------------------------------------------------------
+                // boutons
+                //-------------------------------------------------------------------------------------
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI()
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/DisplayStartingInformationButtons
+                ),
+
+            ]
+        ),
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [500.0, 820.0]
+                MagnifiableOffset = [0.0, 0.0]
+            )
+            TextureToken = 'UseInGame_UnitInfoPanel_foreground_panel'
+            TextureDrawer = 'ColorMultiply_Additive'
+        )
+    ]
+)
+//-------------------------------------------------------------------------------------
+AffichageGround is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    HasBorder = true
+    BorderLineColorToken = 'MarronPanel_noir'
+    BorderThicknessToken = '2'
+    BordersToDraw = ~/TBorderSide/Bottom
+    Axis = ~/ListAxis/Vertical
+
+    LastMargin = TRTTILength (Magnifiable = 15)
+    InterItemMargin = TRTTILength (Magnifiable = 10)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableOffset = [10.0, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+                HasBackground = false
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken  = "DSI_loc"
+
+                TypefaceToken = "Eurostyle"
+                TextColor = "MarronPanel_noir"
+                TextSize = "10"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DisplayStartingInformationOneTextLine
+            (
+                ElementName = 'MapNameText'
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken  = "DSI_STitle"
+            )
+        )
+
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template StrengthList
+[
+    TextToken : string,
+    ElementName : string,
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength(Magnifiable = 6.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI()
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+                HasBackground = false
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken  = <TextToken>
+                TextPadding = TRTTILength4( Magnifiable = [10.0, 0.0, 0.0, 0.0] )
+
+                TypefaceToken = "Eurostyle"
+                TextColor = "MarronPanel_noir"
+                TextSize = "10"
+            )
+        ),
+        BUCKListElementVerticalSpacer( Magnifiable = 10.0),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = <ElementName>
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+
+                InterItemMargin = TRTTILength(Magnifiable = 2.0)
+                LastMargin = TRTTILength(Magnifiable = 6.0)
+
+                // => DisplayStartingInformationTeamContainer
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template titreWarno
+[
+    TextToken : string,
+    ElementName : string = "",
+]
+ is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKTextDescriptor
+    (
+        ElementName = <ElementName>
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment = UIText_Left
+            VerticalAlignment = UIText_VerticalCenter
+            InterLine = 0
+        )
+
+        TextStyle = "Default"
+        HorizontalFitStyle = ~/FitStyle/UserDefined
+        VerticalFitStyle = ~/FitStyle/FitToContent
+        TextPadding = TRTTILength4( Magnifiable = [10.0, 30.0, 0.0, 0.0] )
+
+        BigLineAction = ~/BigLineAction/CutByDots
+
+        UniformDrawer = $/UserInterface/UIUniformDrawer
+        HasBackground = false
+
+        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        TextToken  = <TextToken>
+
+        TypefaceToken = "Liberator"
+        TextColor = "MarronPanel_noir"
+        TextSize = "12"
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+private DisplayStartingInformationButtons is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength( Magnifiable = 10.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 20.0 )
+    LastMargin = TRTTILength( Magnifiable = 10.0 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKSpecificButton
+            (
+                ElementName = 'ReduceButton'
+
+                ButtonAlignementToFather = [0.0, 0.0]
+                ButtonAlignementToAnchor = [0.0, 0.0]
+                ButtonMagnifiableWidthHeight = [190.0, 20.0]
+                ButtonMagnifiableOffset = [0.0, 0.0]
+
+                TextStyle = "Default"
+                TextTypefaceToken = "Courrier"
+                TextSizeToken = "14"
+                TextColorToken = 'MarronPanel_noir2'
+                TextToken = "DSI_CLOSE"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            )
+        ),
+    ]
+)
+
+//--------------------------------------------------
+
+private template DisplayStartingInformationTeamContainer
+[
+    BackgroundBlockColorToken : string = "SD2_Gris80",
+    HasBackground : bool = true
+] is  BUCKListDescriptor
+(
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    InterItemMargin = TRTTILength( Magnifiable = 5.0)
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor =  BUCKTextureDescriptor
+            (
+                ElementName = "DivisionIcon"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [25.0, 25.0]
+                )
+
+                TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0])
+                TileTextureInComponent = false
+                ClipTextureToComponent = true
+
+                // Hint
+                Components =
+                [
+                    BUCKSpecificHintableArea
+                    (
+                        ElementName = "DivisionIconHint"
+                        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                        HintTitleToken = "HUD_UNKN"
+                    )
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKSpecificTextWithHint
+            (
+                ElementName = "PlayerName"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 25.0]
+                )
+
+                TextStyle = "Default"
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    BigWordAction = ~/BigWordAction/BigWordCut
+                )
+
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/UserDefined
+                TextSize = "14"
+                TextColor = "BlancEquipe"
+                TextToken = ""
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TypefaceToken = "Courrier"
+
+                TextPadding = TRTTILength4( Magnifiable = [0.0, 0.0, 5.0, 0.0] )
+
+                HasAutoHint = true
+                AutoHintElementName = "PlayerNameHint"
+            )
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+UISpecificDisplayStartingInformationViewDescriptor is TUISpecificDisplayStartingInformationViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificDisplayStartingInformationMainComponentDescriptor
+    MainComponentContainerUniqueName = "SpecificDisplayStartingInformationMainComponentDescriptor"
+
+    TeamComponentDescriptorAssociation = MAP
+    [
+        (EAllegiance/Otan, DisplayStartingInformationTeamContainer(BackgroundBlockColorToken = "playerHelper/Otan_background")),
+        (EAllegiance/Pacte, DisplayStartingInformationTeamContainer(BackgroundBlockColorToken = "playerHelper/Pact_background")),
+    ]
+    DummyDescriptor = DisplayStartingInformationTeamContainer(HasBackground = false)
+)

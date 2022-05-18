@@ -1,0 +1,67 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export AutoDeployBreakthroughStrategy is TIAGeneralStrategy
+(
+    StrategyName = "AuDepBKAI"
+    FirstGenerator = GenBT_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+        ("DoNotCancelProduction", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        AutoDeployBKT_Transition_DoNothingToDeployATK,
+        AutoDeployBKT_Transition_DoNothingToDeployDEF,
+        AutoDeployBKT_Transition_DeployATKToDoNothing,
+        AutoDeployBKT_Transition_DeployDEFToDoNothing,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+export AutoDeploy_BKT_Condition_ToDeployATK is TSequenceCondition_And
+(
+    Condition1 = AutoDeploy_Condition_ToDeploy
+    Condition2 = GenBT_Condition_GotoAtkMod
+)
+//-------------------------------------------------------------------------
+export AutoDeploy_BKT_Condition_ToDeployDef is TSequenceCondition_And
+(
+    Condition1 = AutoDeploy_Condition_ToDeploy
+    Condition2 = GenBT_Condition_GotoDefMod
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export AutoDeployBKT_Transition_DoNothingToDeployATK is TIAGeneralStrategyTransition
+(
+    Origine = GenBT_Choose_Strategy
+    Condition = AutoDeploy_BKT_Condition_ToDeployATK
+    Destination = GenBTAtk_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export AutoDeployBKT_Transition_DoNothingToDeployDEF is TIAGeneralStrategyTransition
+(
+    Origine = GenBT_Choose_Strategy
+    Condition = AutoDeploy_BKT_Condition_ToDeployDef
+    Destination = GenBTDef_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export AutoDeployBKT_Transition_DeployATKToDoNothing is TIAGeneralStrategyTransition
+(
+    Origine = GenBTAtk_PhaseDeploiement
+    Condition = AutoDeploy_Condition_ToDoNothing
+    Destination = GenBT_Choose_Strategy
+)
+//-------------------------------------------------------------------------
+export AutoDeployBKT_Transition_DeployDEFToDoNothing is TIAGeneralStrategyTransition
+(
+    Origine = GenBTDef_PhaseDeploiement
+    Condition = AutoDeploy_Condition_ToDoNothing
+    Destination = GenBT_Choose_Strategy
+)

@@ -1,0 +1,64 @@
+//-----------------------------------------------------------------------------
+// Transition visuelle entre le ghost de production
+// en fonction de la progression de la construction [0 = début ; 1 = fin]
+// nb : dès 0, côté IA, le bâtiment n'est plus considéré comme un ghost de production
+GhostToBuildTransitionInFuncOfBuildProgression is 0.3
+
+//-----------------------------------------------------------------------------
+// terrains
+// ATTENTION : si on veut supprimer/modifier des masques de terrain, gérer la rétrocompatibilité dans
+// ZonesLoader.cpp & mettre à jour le numéro de version du Zones.mesh dans ZonesLoader.cpp & LoadSaveZones.cpp
+
+NAMask_Terrain is TBaseClass
+(
+    None                    is 0
+    Default                 is 2    // 00000010 // WARGAME
+    PetitBatiment           is 22   // 00010110 // WARGAME
+    StrategicRalentisseur   is 26   // 00011010 // WARGAME
+    Urbain                  is 34   // 00100010 // WARGAME
+    EauProfonde             is 38   // 00100110 // WARGAME
+    ForetDense              is 42   // 00101010 // WARGAME
+    Batiment                is 46   // 00101110 // WARGAME
+    Barbeles                is 50   // 00110010 // WARGAME
+    EauPeuProfonde          is 54   // 00110110 // WARGAME
+    Rocher                  is 58   // 00111010 // WARGAME
+    Tranchee                is 74   // 01001010 // WARGAME
+    StrategicAccelerateur   is 82   // 01010010 // WARGAME
+    Bloqueur                is 90   // 01011010
+    ForetLegere             is 102  // 01100110
+    NidMitrailleuse         is 106  // 01101010
+    BloqueConstruction      is 114  // 01110010
+    Ruin                    is 122  // 01111010
+    LightSmoke              is 132  // 10000100
+    MediumSmoke             is 140  // 10001100
+    HeavySmoke              is 148  // 10010100
+)
+
+//-----------------------------------------------------------------------------
+// Mouvement
+SpecificCommandName is TBaseClass
+(
+    UpdateGUIFromLabelStyles                    is "GUI::UpdateGUIFromLabelStyles"
+    UpdateGUIFromLabelMerging                   is "GUI::UpdateGUIFromLabelMerging"
+    UpdateGUIFromIconType                       is "GUI::UpdateGUIFromIconType"
+    UpdateGUIFromStrategicIconType              is "GUI::UpdateGUIFromStrategicIconType"
+    UpdateGUIFromStrategicPawnName              is "GUI::UpdateGUIFromStrategicPawnName"
+    UpdateGUIFromIconTypeForUnitInfos           is "GUI::UpdateGUIFromIconTypeForUnitInfos"
+    UpdateGUIFromUnitsPerCompany                is "GUI::UpdateGUIFromUnitsPerCompany"
+    UpdateGUIFromMultipleSelection              is "GUI::UpdateGUIFromMultipleSelection"
+    UpdateGUIFromHUDSize                        is "InGameMainContainer::UpdateGUIFromHUDSize"
+    UpdateGUIFromMinimalistTargetCursorDisplay  is "GUI::UpdateGUIFromMinimalistTargetCursorDisplay"
+    UpdateGUIFromMinimapDisplay                 is "GUI::UpdateGUIFromMinimapDisplay"
+    UpdateGUIFromProdMenuBehavior               is "GUI::UpdateGUIFromProdMenuBehavior"
+    UpdateGUIFromUnitViewBehavior               is "GUI::UpdateGUIFromUnitViewBehavior"
+    UpdateGUIFromLowViolence                    is "GUI::UpdateGUIFromLowViolence"
+    UpdateGUIFromShowTutorial                   is "GUI::UpdateGUIFromShowTutorial"
+    UpdateGUIFromShowNonAcquiredDLC             is "GUI::UpdateGUIFromShowNonAcquiredDLC"
+    UpdateGUIFromShowAutoDeploy                 is "GUI::UpdateGUIFromShowAutoDeploy"
+    UpdateGUIFromComparisonDisplay              is "GUI::UpdateGUIFromComparisonDisplay"
+)
+
+//-----------------------------------------------------------------------------
+// Terrains a ignorer (utiles pour les bateaux)
+// A garder a jour avec MouvementHandlerEnums.h
+TerrainToIgnoreMask_Beach        is 16 // 1 << 4 pour les plages.

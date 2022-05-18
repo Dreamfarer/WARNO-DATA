@@ -1,0 +1,67 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Texture_Division_Emblem_4_MSD_DDR is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/4_MSD_DDR.png"
+)
+export Texture_Division_Emblem_7_Panzerdivision_DDR is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/7_Panzerdivision_DDR.png"
+)
+export Texture_Division_Emblem_2_PzGrenDivision_RFA is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/2_PzGrenDivision_RFA.png"
+)
+export Texture_Division_Emblem_5_Panzerdivision_RFA is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/5_Panzerdivision_RFA.png"
+)
+export Texture_Division_Emblem_39th_gmsd is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/39th_gmsd.png"
+)
+export Texture_Division_Emblem_79th_gtd is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/79th_gtd.png"
+)
+export Texture_Division_Emblem_3rd_Armored_Division is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/3rd_Armored_Division.png"
+)
+export Texture_Division_Emblem_8th_infantry_division is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Emblem/8th_infantry_division.png"
+)
+
+export Texture_Division_Portrait_default is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Portrait/default.png"
+)
+
+export Texture_Division_Type_infantryReg is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Type/infantryReg.png"
+)
+export Texture_Division_Type_armored is TUIResourceTexture_Common
+(
+    FileName = "GameData:/Assets/2D/Interface/UseOutGame/Division/Type/armored.png"
+)
+
+DivisionAdditionalTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+        ("Texture_Division_Emblem_4_MSD_DDR", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_4_MSD_DDR)]),
+        ("Texture_Division_Emblem_7_Panzerdivision_DDR", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_7_Panzerdivision_DDR)]),
+        ("Texture_Division_Emblem_2_PzGrenDivision_RFA", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_2_PzGrenDivision_RFA)]),
+        ("Texture_Division_Emblem_5_Panzerdivision_RFA", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_5_Panzerdivision_RFA)]),
+        ("Texture_Division_Emblem_39th_gmsd", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_39th_gmsd)]),
+        ("Texture_Division_Emblem_79th_gtd", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_79th_gtd)]),
+        ("Texture_Division_Emblem_3rd_Armored_Division", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_3rd_Armored_Division)]),
+        ("Texture_Division_Emblem_8th_infantry_division", MAP [(~/ComponentState/Normal, ~/Texture_Division_Emblem_8th_infantry_division)]),
+        ("Texture_Division_Portrait_default", MAP [(~/ComponentState/Normal, ~/Texture_Division_Portrait_default)]),
+        ("Texture_Division_Type_infantryReg", MAP [(~/ComponentState/Normal, ~/Texture_Division_Type_infantryReg)]),
+        ("Texture_Division_Type_armored", MAP [(~/ComponentState/Normal, ~/Texture_Division_Type_armored)]),
+    ]
+)

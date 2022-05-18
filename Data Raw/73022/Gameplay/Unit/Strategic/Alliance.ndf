@@ -1,0 +1,23 @@
+
+export Strategic_AllianceUnitDescriptor is TEntityDescriptor
+(
+    World          = WorldIndices_Alliance
+    DescriptorId        = GUID:{00000000-0000-0000-0000-000134000000}
+
+    ModulesDescriptors =
+    [
+        TAllianceDescriptionModuleDescriptor
+        (
+        ),
+        TAllianceGameRulesModuleDescriptor
+        (
+        ),
+        TAllianceRelationsModuleDescriptor
+        (
+        ),
+        TIAAllianceAirManagerModuleDescriptor
+        (
+            MemoryTurnLength = 2
+        ),
+    ]
+)

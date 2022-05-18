@@ -1,0 +1,1152 @@
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+
+private SavedGamesCopyPanelButton is boutonAvecSeparateur
+(
+    ElementName = "CopyButton"
+    TextToken = 'SGP_COPY'
+)
+
+private SavedGamesDeletePanelButton is boutonAvecSeparateur
+(
+    ElementName = "DeleteButton"
+    TextToken = 'SGP_DELETE'
+)
+
+private SavedGamesRenamePanelButton is boutonAvecSeparateur
+(
+    ElementName = "RenameButton"
+    TextToken = 'SGP_RENAME'
+)
+
+private SavedGamesLaunchPanelButton is boutonAvecSeparateur
+(
+    HasSeparateur = false
+    ElementName = "LaunchButton"
+    TextToken = 'SGP_LAUNCH'
+)
+
+private SavedGamesNewSavePanelButton is boutonAvecSeparateur
+(
+    ElementName = "NewSaveButton"
+    TextToken = 'AB_NSAVE'
+)
+
+private SavedGamesOverwriteSavePanelButton is boutonAvecSeparateur
+(
+    ElementName = "OverwriteSaveButton"
+    TextToken = 'AB_SAVE'
+)
+
+private SavedGamesPanelCloseButton is boutonAvecSeparateur
+(
+    ElementName = "BackButton"
+    TextToken = 'BTN_CLOSE'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+
+//-------------------------------------------------------------------------------------
+template CelluleSaveAndLoad
+[
+    ElementName : string,
+    Category : string,
+    TextElementName : string,
+    TailleColonne : int,
+    BackgroundBlockColorToken : string = 'Vert'
+]
+is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKMultiListContentElementDescriptor
+    (
+        ElementName = <ElementName> + <Category>
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+        )
+
+        FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+        HasBackground = false
+        BackgroundBlockColorToken = <BackgroundBlockColorToken>
+        Components =
+        [
+            BUCKTextDescriptor
+            (
+                ElementName = <TextElementName>
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [<TailleColonne>, 0.0]
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    BigWordAction = ~/BigWordAction/BigWordNewLine
+                )
+
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextStyle = "Default"
+                TypefaceToken = "Courrier"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                TextColor = "loadTexte"
+                TextSize = "11"
+
+                //TextPadding = TRTTILength4(Magnifiable = [20.0, 0.0, 0.0, 0.0])
+            )
+        ]
+    )
+)
+
+template TitreCelluleSaveAndLoad
+[
+    ElementName : string,
+    Category : string,
+    TextToken : string,
+    TailleColonne : int,
+    BackgroundBlockColorToken : string = 'Vert',
+    SortingType : int = ~/MultiListSorting/String,
+    ShowCheckbox : bool = false
+
+] is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+    (
+        ElementName = <ElementName> + <Category>
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0.0, 1.0]
+            MagnifiableWidthHeight = [<TailleColonne>, 0.0]
+        )
+        HasBackground = false
+        BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+        ShowCheckbox = <ShowCheckbox>
+        SortingType = <SortingType>
+        HidePointerEvents = true
+        Components =
+        [
+            // Title Text
+            BUCKSpecificTextWithHint
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                    MagnifiableOffset = [12,0]
+
+                )
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    BigWordAction = ~/BigWordAction/BigWordNewLine
+                )
+                BigLineAction = ~/BigLineAction/CutByDots
+                TextStyle = 'DefaultWithStroke'
+                TypefaceToken = "Liberator"
+                TextSize = '20'
+                TextColor = 'blanc_load'
+                TextToken = <TextToken>
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                HasAutoHint = true
+                AutoHintElementName = <ElementName> + <Category> + "AutoHint"
+            ),
+        ]
+    )
+)
+
+//-------------------------------------------------------------------------------------
+colonneName is 150
+colonneMode is 70
+colonneMap  is 100
+colonneDate is 70
+colonneResult is 70
+colonnePlayer is 100
+colonneDuration is 70
+colonneMods is 80
+colonneCloud is 100
+colonneDownload is 50
+private template SaveLoadMultiListContent
+[
+    Category : string,
+    IsReplay : bool = false
+] is BUCKListDescriptor
+(
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 45]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    HasBackground = false
+    BackgroundBlockColorToken = 'Orange' //"Menu/SaveLoadLine"
+
+    Elements =
+    [
+        // Filler
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+        // Name
+        CelluleSaveAndLoad
+        (
+            ElementName = "SaveLoadNameMultiList"
+            Category = <Category>
+            TextElementName = "SaveLoadName"
+            TailleColonne = colonneName
+        ),
+
+        // Mode
+        CelluleSaveAndLoad
+        (
+            ElementName = "SaveLoadModeMultiList"
+            Category = <Category>
+            TextElementName = "SaveLoadMode"
+            TailleColonne = colonneMode
+        ),
+
+        // Map
+        CelluleSaveAndLoad
+        (
+            ElementName = "SaveLoadMapMultiList"
+            Category = <Category>
+            TextElementName = "SaveLoadMap"
+            TailleColonne = colonneMap
+        ),
+
+        // Date
+        CelluleSaveAndLoad
+        (
+            ElementName = "SaveLoadDateMultiList"
+            Category = <Category>
+            TextElementName = "SaveLoadDate"
+            TailleColonne = colonneDate
+        ),
+    ]
+    +
+    (<IsReplay> ?
+    [
+        // Result
+        CelluleSaveAndLoad
+        (
+            ElementName = "SaveLoadResultMultiList"
+            Category = <Category>
+            TextElementName = "ReplayResult"
+            TailleColonne = colonneResult
+        ),
+        // Players
+        CelluleSaveAndLoad
+        (
+            ElementName = "SaveLoadPlayerMultiList"
+            Category = <Category>
+            TextElementName = "ReplayPlayer"
+            TailleColonne = colonnePlayer
+        ),
+        // Duration
+        CelluleSaveAndLoad
+        (
+            ElementName = "SaveLoadDurationMultiList"
+            Category = <Category>
+            TextElementName = "ReplayDuration"
+            TailleColonne = colonneDuration
+        ),
+
+    ] : [])
+
+    +
+    [
+
+        // Cloud
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "SaveLoadCloudMultiList" + <Category>
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [colonneCloud,0]
+                )
+                HasBackground = false
+                BackgroundBlockColorToken = 'Orange'
+                Components =
+                [
+                    BUCKSpecificCheckBoxDescriptor
+                    (
+                        ElementName = 'SaveLoadCloud'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [20,20] //~/DefaultCheckBoxDims
+                            AlignementToFather = [0.5, 0.5]
+                            AlignementToAnchor = [0.5, 0.5]
+                        )
+                    ),
+                ]
+            )
+        ),
+        // Mods
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "SaveLoadModMultiList" + <Category>
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+                HasBackground = false
+                BackgroundBlockColorToken = 'Orange'
+                Components =
+                [
+                    BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [colonneMods, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKRackDescriptor
+                            (
+                                ElementName = "SaveLoadMod"
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [0.0, 1.0]
+                                    AlignementToAnchor = [0.0, 0.5]
+                                    AlignementToFather = [0.0, 0.5]
+                                )
+
+                                Axis = ~/ListAxis/Horizontal
+
+                                BladeDescriptor = BUCKTextureDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [26.0, 0.0]
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                    )
+
+                                    TextureColorToken = "SD2_Blanc184"
+
+                                    ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                                    TextureFrame = TUIFramePropertyRTTI
+                                    (
+                                        AlignementToAnchor = [0.5, 0.5]
+                                        AlignementToFather = [0.5, 0.5]
+                                    )
+                                )
+                            ),
+                            BUCKSpecificHintableArea
+                            (
+                                ElementName = "SaveLoadModHint"
+                            ),
+                        ]
+                    )
+                ]
+            )
+        ),
+        // Downloads
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "SaveLoadDlMultiList" + <Category>
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        ElementName = "SaveLoadDl"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [colonneDownload, 0.0]
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                    )
+                ]
+            )
+        ),
+        // Filler
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template SaveLoadButton
+[
+    Category : string,
+    IsReplay : bool = false
+] is BUCKButtonDescriptor
+(
+    ElementName = "SaveLoadButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    IsTogglable = true
+
+    HasBackground = true
+    BackgroundBlockColorToken = "overlayPourSaveLoad"
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        SaveLoadMultiListContent
+        (
+            Category = <Category>
+            IsReplay = <IsReplay>
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template SaveLoadScrollingContainer
+[
+    Category : string,
+    IsReplay : bool = false
+] is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = "SaveLoadScrollingContainer" + <Category>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+    )
+
+    HasVerticalScrollbar = true
+    VerticalScrollbarComponentFrame  = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [7.0, 0.0]
+        MagnifiableOffset = [7.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+    ScrollStepSize  = [0.0, 30.0]
+
+    Components = [
+        BUCKRackDescriptor
+        (
+            ElementName = "SaveLoadRack" + <Category>
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            FirstMargin = TRTTILength(Magnifiable = 0.0)
+            InterItemMargin = TRTTILength(Magnifiable = 0.0)
+            //LastMargin = TRTTILength(Magnifiable = 2.5)
+
+            BladeDescriptor = SaveLoadButton
+            (
+                Category = <Category>
+                IsReplay = <IsReplay>
+            )
+        ),
+    ]
+)
+
+
+//-------------------------------------------------------------------------------------
+private template SaveLoadMultiListTitle
+[
+    Category : string,
+    IsReplay : bool = false
+] is BUCKListDescriptor
+(
+    ElementName = "SaveLoadMultiListTitle" + <Category>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 40.0]
+    )
+
+    //HasBackground = true
+    BackgroundBlockColorToken = "Vert"
+
+    Axis = ~/ListAxis/Horizontal
+    InterItemMargin = TRTTILength (Magnifiable = 1.0)
+    Elements =
+    [
+        // Filler
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+        // Name
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadNameMultiList'
+            Category = <Category>
+            TextToken = 'SGP_NAME'
+            TailleColonne = colonneName
+        ),
+
+        // Mode
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadModeMultiList'
+            Category = <Category>
+            TextToken = 'SGP_MODE'
+            TailleColonne = colonneMode
+        ),
+
+        // Map
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadMapMultiList'
+            Category = <Category>
+            TextToken = 'SGP_MAP'
+            TailleColonne = colonneMap
+        ),
+
+        // Date
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadDateMultiList'
+            Category = <Category>
+            TextToken = 'SGP_DATE'
+            TailleColonne = colonneDate
+            SortingType = ~/MultiListSorting/Integer
+        ),
+    ]
+    +
+    (<IsReplay> ?
+    [
+        // Result
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadResultMultiList'
+            Category = <Category>
+            TextToken = 'LS_Result'
+            TailleColonne = colonneResult
+        ),
+
+    ] : [])
+    +
+    (<IsReplay> ?
+    [
+        // Players
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadPlayerMultiList'
+            Category = <Category>
+            TextToken = 'LS_Players'
+            TailleColonne = colonnePlayer
+        ),
+
+    ] : [])
+    +
+    (<IsReplay> ?
+    [
+        // Duration
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadDurationMultiList'
+            Category = <Category>
+            TextToken = 'LS_Dur'
+            TailleColonne = colonneDuration
+            SortingType = ~/MultiListSorting/Float
+        ),
+
+    ] : [])
+    +
+    [
+
+        // Cloud
+        // Duration
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadCloudMultiList'
+            Category = <Category>
+            TextToken = 'SGP_CLOUD'
+            TailleColonne = colonneCloud
+            ShowCheckbox = false
+            //SortingType = ~/MultiListSorting/Float
+        ),
+
+        // Mods
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadModMultiList'
+            Category = <Category>
+            TextToken = 'CL_MOD'
+            TailleColonne = colonneMods
+            //ShowCheckbox = false
+            //SortingType = ~/MultiListSorting/Float
+        ),
+
+        // Download
+        TitreCelluleSaveAndLoad
+        (
+            ElementName = 'SaveLoadDlMultiList'
+            Category = <Category>
+            TextToken = 'CL_DOWNLO'
+            TailleColonne = colonneDownload
+            //ShowCheckbox = false
+            //SortingType = ~/MultiListSorting/Float
+        ),
+        // Filler
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+
+    ]
+
+    ForegroundComponents =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [887,45]
+                            MagnifiableOffset = [0,-4]
+                        )
+                        TextureToken = 'Outgame_foreground_panelPawn'
+                        TextureDrawer = 'ColorMultiply_Additive'
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [887,45]
+                            MagnifiableOffset = [0,-4]
+                        )
+                        TextureToken = 'Outgame_foreground_panelPawn'
+                        TextureDrawer = 'ColorMultiply_Additive'
+                    )
+                ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template SaveLoadMultiList
+[
+    Category : string,
+    IsReplay : bool = false
+] is BUCKMultiListDescriptor
+(
+    ElementName = "SaveLoadMultiList_" + <Category>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [0,-16]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    ColumnNames =
+    [
+        'SaveLoadCloudMultiList' + <Category>,
+        'SaveLoadModMultiList' + <Category>,
+        'SaveLoadDlMultiList' + <Category>,
+    ]
+    + (<IsReplay> ?
+    [
+        'SaveLoadPlayerMultiList' + <Category>,
+    ] : [] )
+
+    SortableColumnNames =
+    [
+        'SaveLoadNameMultiList' + <Category>,
+        'SaveLoadModeMultiList' + <Category>,
+        'SaveLoadMapMultiList' + <Category>,
+        'SaveLoadDateMultiList' + <Category>,
+    ]
+    + (<IsReplay> ?
+    [
+        'SaveLoadResultMultiList' + <Category>,
+        'SaveLoadDurationMultiList' + <Category>,
+    ] : [] )
+
+    RackName = "SaveLoadRack" + <Category>
+
+    TitleDescriptor = SaveLoadMultiListTitle
+    (
+        Category = <Category>
+        IsReplay = <IsReplay>
+    )
+    ContentDescriptor = SaveLoadScrollingContainer
+    (
+        Category = <Category>
+        IsReplay = <IsReplay>
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+private SaveLoadPanelHeader is BUCKContainerDescriptor
+(
+    ElementName = "SaveLoadPanelHeader"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [886.0, 45.0]
+    )
+    //HasBackground = true
+    BackgroundBlockColorToken = 'Orange'
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "ReplayInstructions"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [0.0, 75.0]
+                AlignementToFather = [0.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = ~/UIText_Center
+                VerticalAlignment = ~/UIText_VerticalCenter
+                BigWordAction = ~/BigWordAction/BigWordNewLine
+            )
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TextStyle = 'Default'
+            TypefaceToken = "Liberator"
+            TextSize = '12'
+            TextColor = 'ListeExcel/Lignes/Defaut'
+            TextToken = 'SGP_INST'
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 0.0, 0.0])
+        ),
+        BUCKTextDescriptor
+        (
+            ElementName = "SavesNumber"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = ~/UIText_Center
+                VerticalAlignment = ~/UIText_VerticalCenter
+                BigWordAction = ~/BigWordAction/BigWordNewLine
+            )
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TextStyle = 'Default'
+            TypefaceToken = "Liberator"
+            TextSize = '20'
+            TextColor = 'gris_load'
+            TextToken = 'SGP_NBSAV'
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 5.0, 0.0])
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private SaveLoadTabsComponent is BUCKSpecific_Fulda_WithTabsComponentDescriptor
+(
+    ElementName = "SaveLoadTabsComponent"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 612.0]
+    )
+
+    TabsAndContent =
+    [
+        // skirmish
+        (
+            OngletSpecificLoad
+            (
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                TextToken = "SGP_SKIR"
+            ),
+            BUCKContainerDescriptor
+            (
+                ElementName = 'SavedGamesPanelSkirmishTab'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    SaveLoadMultiList(Category = "Skirmish")
+                ]
+            )
+        ),
+        // historical battle
+        (
+            OngletSpecificLoad
+            (
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                TextToken = "new_HB"
+            ),
+            BUCKContainerDescriptor
+            (
+                ElementName = 'SavedGamesPanelChallengeTab'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    SaveLoadMultiList(Category = "Challenge")
+                ]
+            )
+        ),
+        // army general
+        (
+            OngletSpecificLoad
+            (
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                TextToken = "new_AG"
+            ),
+            BUCKContainerDescriptor
+            (
+                ElementName = 'SavedGamesPanelStrategicTab'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    SaveLoadMultiList(Category = "Strategic")
+                ]
+            )
+        ),
+        // tuto
+        (
+            OngletSpecificLoad
+            (
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                TextToken = "SGP_TUTO"
+            ),
+            BUCKContainerDescriptor
+            (
+                ElementName = 'SavedGamesPanelCampaignTab'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    SaveLoadMultiList(Category = "Campaign")
+                ]
+            )
+        ),
+        (
+            OngletSpecificLoad
+            (
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                TextToken = "T_REPLAY"
+            ),
+            BUCKContainerDescriptor
+            (
+                ElementName = 'SavedGamesPanelReplayTab'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                Components =
+                [
+                    SaveLoadMultiList
+                    (
+                        Category = "Replay"
+                        IsReplay = true
+                    )
+                ]
+            )
+        )
+    ]
+)
+//-------------------------------------------------------------------------------------
+template OngletSpecificLoad
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+
+    BigLineAction : int = ~/BigLineAction/ResizeFont,
+    TextToken : string,
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+
+    HorizontalFitStyle : int = ~/FitStyle/FitToContent,
+    TextureToken : string = 'onglets_solo',
+    TextureMagnifiableWidthHeight : float2 = [180.0, 33.0],
+]
+is BUCKOneTabDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [175.0, 33.0]
+    )
+
+    FitStyle = (<HorizontalFitStyle> == ~/FitStyle/UserDefined ? ~/ContainerFitStyle/None : ~/ContainerFitStyle/FitToContentHorizontally)
+    LeftClickSound = SoundEvent_SaveLoadSwitchTab
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = <TextureMagnifiableWidthHeight>
+                AlignementToFather  = [0.5, 0.5]
+                AlignementToAnchor  = [0.5, 0.5]
+                MagnifiableOffset = [0.0, -1.0]
+            )
+            TextureToken = <TextureToken>
+        ),
+        BUCKTextDescriptor
+        (
+            ElementName = (<ElementName> != '' ? <ElementName> + "Text" : '')
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [150.0, 33.0]
+                AlignementToFather  = [0.5, 0.5]
+                AlignementToAnchor  = [0.5, 0.5]
+                MagnifiableOffset = [0.0, -3.0]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+            BigLineAction = <BigLineAction>
+            TextToken = <TextToken>
+            TextDico = <TextDico>
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TextColor = "Vert_loadOnglet"
+            TextSize = "18"
+
+            ChildFitToContent = true
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+private SaveLoadListFillButtonList is BUCKListElementDescriptor
+(
+    ExtendWeight = 1.0
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [1.0, 0.0])
+    )
+)
+//-------------------------------------------------------------------------------------
+private template BUCKSpecificSaveLoadPanelMainComponentDescriptor
+[
+    IsSubView : bool = false,
+] is BUCKTranslationAnimatedContainerDescriptor
+(
+    ElementName = "SaveLoadPanelMainComponent"
+
+    FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 1.0]
+    )
+
+    TriggerWhenSetVisible = true
+    AnimationTotalDuration = 0.25
+    HidePointerEvents = true
+
+    FramePropertyAfterAnimation = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [971.0, 749.0]
+        AlignementToAnchor = [0.5, 1.0]
+        AlignementToFather = [0.5, 1.0]
+        MagnifiableOffset = [0.0, 10.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            TextureToken = 'load_solo'
+        ),
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [886.0, 0.0]
+                RelativeWidthHeight = [0.0, 1.0]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.0]
+            )
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [0.0, 44.0]
+                        MagnifiableOffset = [0.0, 629.0]
+                    )
+                    Axis = ~/ListAxis/Horizontal
+                    InterItemMargin = TRTTILength(Magnifiable = 10.0)
+
+                    Elements =
+                    [
+                        ~/SaveLoadListFillButtonList,
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/SavedGamesLaunchPanelButton ),
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/SavedGamesCopyPanelButton ),
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/SavedGamesDeletePanelButton ),
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/SavedGamesRenamePanelButton ),
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/SavedGamesNewSavePanelButton ),
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/SavedGamesOverwriteSavePanelButton ),
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/SavedGamesPanelCloseButton ),
+                        ~/SaveLoadListFillButtonList,
+                    ]
+                    ForegroundComponents =
+                    [
+                        BUCKTextureDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 1.0]
+                            )
+                            TextureToken = 'Outgame_foreground_panelPawn'
+                            TextureDrawer = 'ColorMultiply_Additive'
+                        )
+                    ]
+                ),
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        MagnifiableOffset = [0.0, 54.0]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+                    InterItemMargin = TRTTILength ( Magnifiable = 49.0)
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/SaveLoadPanelHeader
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ExtendWeight = 1.0
+                            ComponentDescriptor = ~/SaveLoadTabsComponent
+                        )
+                    ]
+                ),
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template UISpecificSaveLoadPanelViewDescriptor
+[
+    ComponentContainerUniqueName : string = "",
+    IsSubView : bool = false,
+] is TUISpecificSaveLoadPanelViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificSaveLoadPanelMainComponentDescriptor(IsSubView = <IsSubView>)
+    MainComponentContainerUniqueName = <ComponentContainerUniqueName> // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

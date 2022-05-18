@@ -1,0 +1,19 @@
+export ModelFile_TO_55_DDR is 'GameData:/Assets/3D/Units/DDR/Char/TO55/TO55.Ase2NdfBin'
+
+Modele_TO_55_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_TO_55_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_TO_55_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Char/TO55/TO55.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_TO_55_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Char/TO55/TO55.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

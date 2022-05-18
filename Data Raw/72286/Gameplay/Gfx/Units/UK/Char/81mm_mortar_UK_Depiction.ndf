@@ -1,0 +1,100 @@
+// Test avec le seul mesh d'infanterie qui soit compatible avec le nouveau squelette.
+private MeshDescriptor_81mm_mortar_Servant_G is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/Test_Soldier/Fulda_Soldier.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+private MeshDescriptor_81mm_mortar_Servant_D is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/Test_Soldier/Fulda_Soldier.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+
+Gfx_81mm_mortar_UK_Servant_G is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_81mm_mortar_Servant_G
+    MeshDescriptorLow  = MeshDescriptor_81mm_mortar_Servant_G
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = DepictionOperator_AnimationServant_Cannon_Left
+)
+
+Gfx_81mm_mortar_UK_Servant_D is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_81mm_mortar_Servant_D
+    MeshDescriptorLow  = MeshDescriptor_81mm_mortar_Servant_D
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = DepictionOperator_AnimationServant_Cannon_Right
+)
+
+Alternatives_81mm_mortar is [
+    DepictionDescriptor_LOD_High( MeshDescriptor = Modele_81mm_mortar_UK ),
+    DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_81mm_mortar_UK_MID ),
+    DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_81mm_mortar_UK_LOW DisabledOperators = ['tourelle4'] ),
+]
+
+Gfx_81mm_mortar_UK is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = CommonVehicleScaler
+        Selector = SpecificVehicleDepictionSelector
+        DepictionAlternatives = Alternatives_81mm_mortar
+
+        Operators = [
+            DepictionOperator_Reset_Generic,
+            DepictionOperator_Carriable_Mortar,
+            DepictionOperator_DamageRatio_Generic,
+            DepictionOperator_ShadowPointCloudProvider,
+        ]
+
+        Actions = MAP []
+                + Weapons_81mm_mortar_UK
+
+        SubDepictions = [
+            TSubDepiction( Anchor = 'servant_g' Depiction = Gfx_81mm_mortar_UK_Servant_G ),
+            TSubDepiction( Anchor = 'servant_d' Depiction = Gfx_81mm_mortar_UK_Servant_D ),
+        ]
+    )
+)
+
+// stub showroom le temps qu'on décide ce qu'on veux afficher
+Gfx_81mm_mortar_UK_Servant_G_Showroom is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_81mm_mortar_Servant_G
+    MeshDescriptorLow  = MeshDescriptor_81mm_mortar_Servant_G
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = ServantLeftIdle)
+)
+
+// stub showroom le temps qu'on décide ce qu'on veux afficher
+Gfx_81mm_mortar_UK_Servant_D_Showroom is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_81mm_mortar_Servant_D
+    MeshDescriptorLow  = MeshDescriptor_81mm_mortar_Servant_D
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = ServantRightIdle)
+)
+
+// stub showroom le temps qu'on décide ce qu'on veux afficher
+Gfx_81mm_mortar_UK_Showroom is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = CommonVehicleScaler
+        Selector = SpecificVehicleDepictionSelector
+        DepictionAlternatives = Alternatives_81mm_mortar
+
+        SubDepictions = [
+            TSubDepiction( Anchor = 'servant_g' Depiction = Gfx_81mm_mortar_UK_Servant_G_Showroom ),
+            TSubDepiction( Anchor = 'servant_d' Depiction = Gfx_81mm_mortar_UK_Servant_D_Showroom ),
+        ]
+    )
+)
+
+GhostDepiction_81mm_mortar_UK is GhostVehicleDepictionTemplate
+(
+    Selector = SpecificVehicleDepictionSelector
+    Alternatives = Alternatives_81mm_mortar
+)

@@ -1,0 +1,19 @@
+export ModelFile_MTLB_supply_DDR is 'GameData:/Assets/3D/Units/DDR/Antichar/MTLB_Shturm/MTLB_Supply.Ase2NdfBin'
+
+Modele_MTLB_supply_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MTLB_supply_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_supply_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Antichar/MTLB_Shturm/MTLB_Supply.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_supply_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Antichar/MTLB_Shturm/MTLB_Supply.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,543 @@
+
+private DisabledOperatorMid is [
+    'weapon_effet_tag1_physic_fire_effect',
+    'weapon_effet_tag2_physic_fire_effect',
+    'weapon_effet_tag3_physic_fire_effect',
+    'weapon_effet_tag4_physic_fire_effect',
+    'airplane_parts',
+    'ikchain1',
+    'WaterRotors',
+]
+
+private DisabledOperatorLow is DisabledOperatorMid + [
+    'chassis',
+    'cannon_hydraulic_recoil',
+    'cannon_rocking_recoil',
+    'GroundPuff',
+    'rotary_cannon',
+    'Tracks',
+    'Wheels',
+]
+
+// ****************************************************************************************************************************************
+// *** Véhicules **************************************************************************************************************************
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_High
+[
+    MeshDescriptor,
+    MaterialTags = nil,
+    SelectorId = 'high'
+]
+is TDepictionDescriptor
+(
+    SelectorId = [<SelectorId>]
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Mid
+[
+    MeshDescriptor,
+    MaterialTags = nil,
+    SelectorId = 'mid'
+]
+is TDepictionDescriptor
+(
+    SelectorId = [<SelectorId>]
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorMid
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_Low
+[
+    MeshDescriptor,
+    MaterialTags = nil,
+    SelectorId = 'low',
+    DisabledOperators = []
+]
+is TDepictionDescriptor
+(
+    SelectorId = [<SelectorId>]
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = DisabledOperatorLow + <DisabledOperators>
+    AdditionalMaterialTags = <MaterialTags>
+)
+// ****************************************************************************************************************************************
+// *** Avions *****************************************************************************************************************************
+// ****************************************************************************************************************************************
+AirplaneAdditionalMaterialTags is TAdditionalMaterialTags(Tags=['Airplane'])
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_AirplaneHigh
+[
+    MeshDescriptor,
+]
+is TDepictionDescriptor
+(
+    SelectorId = ['high']
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = ~/AirplaneAdditionalMaterialTags
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_AirplaneMid
+[
+    MeshDescriptor,
+]
+is TDepictionDescriptor
+(
+    SelectorId = ['mid']
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = ~/AirplaneAdditionalMaterialTags
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_AirplaneLow
+[
+    MeshDescriptor,
+]
+is TDepictionDescriptor
+(
+    SelectorId = ['low']
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = ~/AirplaneAdditionalMaterialTags
+)
+
+// ****************************************************************************************************************************************
+// *** Hélicos ****************************************************************************************************************************
+// ****************************************************************************************************************************************
+HelicoAdditionalMaterialTags is TAdditionalMaterialTags(Tags=['Helico'])
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_HelicoHigh
+[
+    MeshDescriptor,
+]
+is TDepictionDescriptor
+(
+    SelectorId = ['high']
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = ~/HelicoAdditionalMaterialTags
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_HelicoMid
+[
+    MeshDescriptor,
+]
+is TDepictionDescriptor
+(
+    SelectorId = ['mid']
+    MeshDescriptor = <MeshDescriptor>
+    AdditionalMaterialTags = ~/HelicoAdditionalMaterialTags
+)
+// ****************************************************************************************************************************************
+template DepictionDescriptor_LOD_HelicoLow
+[
+    MeshDescriptor,
+]
+is TDepictionDescriptor
+(
+    SelectorId = ['low']
+    MeshDescriptor = <MeshDescriptor>
+    DisabledOperators = ['tourelle1'] // On désactive l'éventuelle gatling des hélicoptères
+    AdditionalMaterialTags = ~/HelicoAdditionalMaterialTags
+)
+
+// ****************************************************************************************************************************************
+// *** infantrie **************************************************************************************************************************
+// ****************************************************************************************************************************************
+template AlternativeWithId
+[
+    SelectorId,
+    ModelFile,
+]
+is TDepictionDescriptor
+(
+    SelectorId = <SelectorId>
+    MeshDescriptor = TemplateMeshDescriptor( ModelFile = <ModelFile> )
+)
+
+AlternativeNone is TDepictionDescriptor
+(
+    SelectorId = ['none']
+    RequireOthersSkeleton = true
+)
+
+AlternativeNoneNoSkeleton is TDepictionDescriptor
+(
+    SelectorId = ['none']
+)
+
+template DepictionDescriptor_LOD_InfantryHigh
+[
+    MeshDescriptor
+]
+is TDepictionDescriptor
+(
+    SelectorId = ['high']
+    MeshDescriptor = <MeshDescriptor>
+)
+
+template DepictionDescriptor_LOD_InfantryLow
+[
+    MeshDescriptor
+]
+is TDepictionDescriptor
+(
+    SelectorId = ['low']
+    MeshDescriptor = <MeshDescriptor>
+)
+
+DepictionDescriptor_LOD_InfantryNone is TDepictionDescriptor
+(
+    SelectorId = ['none']
+    RequireOthersSkeleton = true
+)
+
+template TemplateAllSubWeaponDepiction
+[
+    Alternatives,
+    Operators,
+] is TSubDepiction
+(
+    Anchor = 'arme_1'
+    Depiction = TDepictionTemplate
+    (
+        Scaler = CommonInfantryScaler
+        Selector = $/GFX/Everything/SoldierDynamicWeaponSubDepictionSelector
+        DepictionAlternatives = <Alternatives>
+        Operators = <Operators>
+    )
+)
+
+template TemplateAllSubBackpackWeaponDepiction
+[
+    Alternatives,
+] is TSubDepiction
+(
+    Anchor = 'arme_2'
+    Depiction = TDepictionTemplate
+    (
+        Scaler = CommonInfantryScaler
+        Selector = $/GFX/Everything/SoldierDynamicBackpackWeaponSubDepictionSelector
+        DepictionAlternatives = <Alternatives>
+    )
+)
+
+template TemplateWeaponAccessorySubDepiction
+[
+    ModelFile,
+    EnabledValue,
+] is TSubDepiction
+(
+    Anchor = 'bip01 spine1'
+    Depiction = TDepictionTemplate
+    (
+        Scaler = CommonInfantryScaler
+        Selector = TInfantryWeaponAccessorySelector
+        (
+            NoneLimitInMeter = LodHighNoneLimit_SoldierWeapon
+            CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+            MeshAlternativeKeys = ['mesh_alternative','mesh_alternative_backpack']
+            PrincipalDepiction = ['high']
+            EnabledValue = <EnabledValue>
+        )
+        DepictionAlternatives = [
+          AlternativeWithId( SelectorId = ['high'] ModelFile = <ModelFile> ),
+          AlternativeNone
+        ]
+    )
+)
+
+template TemplateInfantryDepictionFactory
+[
+    Alternatives,
+    SubDepictions = [],
+    ResidentMaterialTags = [],
+    Operators,
+    Surrogates = [['high', '01']]
+] is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        ResidentMaterialTags = <ResidentMaterialTags>
+        Scaler = CommonInfantryScaler
+        Selector = TInfantryLodSelector
+        (
+            HighSurrogates = <Surrogates>
+            HighLowLimitInMeter = LodHighLowLimit_Infantry
+            LowNoneLimitInMeter = LodLowNoneLimit_Infantry
+            CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+            OptionalLimit = $/GraphicOption/ModelQuality
+        )
+
+        DepictionAlternatives = <Alternatives> + [DepictionDescriptor_LOD_InfantryNone]
+        SubDepictions = <SubDepictions>
+        Operators = <Operators>
+    )
+)
+
+template TemplateInfantryDepictionFactoryGhost
+[
+    Alternatives,
+    Surrogates = [['high', '01']]
+] is TemplateInfantryDepictionFactory
+(
+    ResidentMaterialTags = [ MaterialTagGhost ]
+    Alternatives = <Alternatives>
+    Operators = [ DepictionOperator_FreezeAnimation_Ghost, DepictionOperator_Shader_Ghost ]
+)
+
+template TemplateInfantryDepictionFactoryTactic
+[
+    Alternatives,
+    SubDepictions = [],
+    Operators,
+    Surrogates = [['high', '01']]
+] is TemplateInfantryDepictionFactory
+(
+    Alternatives = <Alternatives>
+    SubDepictions = <SubDepictions>
+    Surrogates = <Surrogates>
+    Operators = [ DepictionOperator_Shader_Selection, DepictionOperator_Shader_TeamColor ] + <Operators>
+)
+
+template TemplateInfantryDepictionSquad
+[
+    SoundOperator
+] is TTimelyReceiverFactoryCarrier
+(
+  DepictionTemplate = TDepictionTemplate
+  (
+    Scaler = CommonIdentityScaler
+    Selector = OnlyHighDepictionSelector
+    DepictionAlternatives = [
+      DepictionDescriptor_LOD_High(MeshDescriptor = ~/Modele_Rien),
+    ]
+    Operators = [ <SoundOperator> ]
+  )
+)
+
+// mesh d'infanterie compatible avec le nouveau squelette.
+private FuldaSoldier is TResourceMultiMaterialMesh
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/Test_Soldier/Fulda_Soldier.Ase2NdfBin'
+    UsefulnessMask = CivMask/Common + TypeMask/Common
+)
+
+template TransportedInfantryDepiction
+[ Index, Alternatives, Counts ]
+ is TDepictionTemplate
+(
+    Scaler = CommonInfantryScaler
+    Selector = TTransportedInfantrySelector
+    (
+        Index = <Index>
+        Counts = <Counts>
+        HighNoneLimitInMeter = LodHighLowLimit_Infantry
+        CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+        OptionalLimit = $/GraphicOption/ModelQuality
+    )
+
+    Operators = [ TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = FusilierTransport) ]
+
+    DepictionAlternatives = <Alternatives>
+        + [ AlternativeNoneNoSkeleton,
+        DepictionDescriptor_LOD_High( MeshDescriptor = FuldaSoldier ),
+        AlternativeWithId(SelectorId = ["servant"] ModelFile = 'GameData:/Assets/3D/Units/US/Infanterie/Test_Soldier/Fulda_Soldier.Ase2NdfBin')
+         ] //pour avoir un 'high' pour le skeleton
+)
+
+
+template GhostVehicleDepictionTemplate
+[ Selector, Alternatives ]
+is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        ResidentMaterialTags = [ MaterialTagGhost ]
+        Scaler = CommonVehicleScaler
+        Selector = <Selector>
+        DepictionAlternatives = <Alternatives>
+        Operators = [ DepictionOperator_Shader_Ghost,  DepictionOperator_Shader_Selection ]
+    )
+)
+
+template TacticVehicleDepictionTemplate
+[
+    CoatingName,
+    Selector,
+    Alternatives,
+    Operators,
+    Actions,
+    SubDepictions = [],
+    SubDepictionGenerators = []
+]
+is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        CoatingName = <CoatingName>
+        Scaler = CommonVehicleScaler
+        Selector = <Selector>
+        DepictionAlternatives = <Alternatives>
+        Operators = CommonOperators + <Operators>
+        Actions = <Actions>
+        SubDepictions = <SubDepictions>
+        SubDepictionGenerators = <SubDepictionGenerators>
+    )
+)
+
+template ShowroomVehicleDepictionTemplate
+[
+    Alternatives,
+    Selector,
+    SubDepictions = [],
+    SubDepictionGenerators = []
+]
+is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = CommonIdentityScaler
+        Selector = <Selector>
+        DepictionAlternatives = <Alternatives>
+        SubDepictions = <SubDepictions>
+        SubDepictionGenerators = <SubDepictionGenerators>
+    )
+)
+
+template ShowroomDepictionTemplateInternal
+[
+    MeshDescriptor,
+    Operators = [],
+    SubDepictions = [],
+    SubDepictionGenerators = []
+]
+is TDepictionTemplate
+(
+    Scaler = CommonIdentityScaler
+    Selector = OnlyHighDepictionSelector
+    DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = <MeshDescriptor> ) ]
+
+    Operators = <Operators>
+    SubDepictions = <SubDepictions>
+    SubDepictionGenerators = <SubDepictionGenerators>
+)
+
+template ShowroomDepictionTemplate
+[
+    MeshDescriptor,
+    Operators = [],
+    SubDepictions = [],
+    SubDepictionGenerators = []
+]
+is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = ShowroomDepictionTemplateInternal
+    (
+        MeshDescriptor = <MeshDescriptor>
+        Operators = <Operators>
+        SubDepictions = <SubDepictions>
+        SubDepictionGenerators = <SubDepictionGenerators>
+    )
+)
+
+template ShowroomLandingGear
+[
+    MeshDescriptor,
+]
+is TSubDepiction
+(
+    Anchor = "Landing Gear"
+    Depiction = TDepictionTemplate
+    (
+        Scaler = CommonIdentityScaler
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [
+            TDepictionDescriptor( SelectorId = ['high'] MeshDescriptor = <MeshDescriptor> )
+        ]
+    )
+)
+
+template DefenseDepictionTemplateInternal
+[
+    Alternatives,
+    Operators,
+    Actions,
+]
+is TDepictionTemplate
+(
+    Scaler = CommonVehicleScaler
+    Selector = SpecificVehicleDepictionSelector
+    DepictionAlternatives = <Alternatives>
+
+    Operators = CommonOperators + <Operators>
+    Actions = <Actions>
+)
+
+template DefenseDepictionTemplateInternalShowroom
+[
+    Alternatives,
+]
+is TDepictionTemplate
+(
+    Scaler = CommonVehicleScaler
+    Selector = SpecificVehicleDepictionSelector
+    DepictionAlternatives = <Alternatives>
+)
+
+
+template DefenseDepictionTemplate
+[
+    ScenaryDescriptorName,
+    DepictionTemplate = nil,
+]
+is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = <DepictionTemplate>
+    ModifyLB                         = TemplateTimelyDescriptorBatimentWithLevelDesignPattern_OnlyLevelBuild
+    (
+        SceneryDescriptorName      = <ScenaryDescriptorName>
+        LevelBuildDescriptor       = ~/DefenseUnitLevelBuildViewDescriptor
+    )
+)
+
+template TacticTowedUnitDepictionTemplate
+[
+    Alternatives,
+    Operators,
+    Actions,
+    SubDepictions = []
+]
+is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = CommonVehicleScaler
+        Selector = SpecificVehicleDepictionSelector
+        DepictionAlternatives = <Alternatives>
+
+        Operators = CommonOperators + CommonTowedUnitsOperators + <Operators>
+        Actions = <Actions>
+        SubDepictions = <SubDepictions>
+    )
+)
+
+template TacticTowedSubDepictionTemplate
+[ Alternatives ]
+is TSubDepiction
+(
+    Anchor = "remorque_1"
+    Depiction = TDepictionTemplate
+    (
+        Scaler = CommonIdentityScaler
+        Selector = ~/TowedUnitSubDepictionSelector
+        DepictionAlternatives = <Alternatives> + [
+            TDepictionDescriptor(SelectorId = ['none']        RequireOthersSkeleton = true),
+        ]
+
+        Operators = [
+            DepictionOperator_Reset_Generic,
+            DepictionOperator_TowedUnitOperator,
+            DepictionOperator_Propulsion_Wheels_TowedCanon,
+        ]
+    )
+)

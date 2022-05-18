@@ -1,0 +1,19 @@
+export ModelFile_Iltis_RFA is 'GameData:/Assets/3D/Units/RFA/Vehicule/Iltis/Iltis.Ase2NdfBin'
+
+Modele_Iltis_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Iltis_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Iltis_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Vehicule/Iltis/Iltis.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Iltis_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Vehicule/Iltis/Iltis.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

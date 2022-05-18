@@ -1,0 +1,22 @@
+export ModelFile_2K12_KUB_DDR is 'GameData:/Assets/3D/Units/DDR/DCA/2K12_KUB/2K12_KUB.Ase2NdfBin'
+
+Modele_2K12_KUB_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_2K12_KUB_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_2K12_KUB_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/2K12_KUB/2K12_KUB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_2K12_KUB_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/2K12_KUB/2K12_KUB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

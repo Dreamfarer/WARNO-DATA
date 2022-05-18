@@ -1,0 +1,480 @@
+//Drivers VEHICULES
+
+MeshDescriptor_Driver_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets/3D/Units/US/Infanterie/GI/GI_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Driver_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets/3D/Units/US/Infanterie/GI/GI_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Driver_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets/3D/Units/US/Infanterie/GI/GI_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Driver_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets/3D/Units/US/Infanterie/GI/GI_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Driver_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets/3D/Units/URSS/Infanterie/MotoStrelki/MotoStrelki_1_Driver.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Driver_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:Assets/3D/Units/URSS/Infanterie/MotoStrelki/MotoStrelki_1_Driver.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+//Pilotes AVIONS
+
+MeshDescriptor_Pilote_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/USAF_Pilot/USAF_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/USAF_Pilot/USAF_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Infanterie/VVS_Pilot/VVS_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Infanterie/VVS_Pilot/VVS_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Infanterie/LSK_Pilot/LSK_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Infanterie/LSK_Pilot/LSK_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Infanterie/RAF_Pilot/RAF_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Infanterie/RAF_Pilot/RAF_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+//Fin Pilote AVIONS
+
+//Pilote HELICOS
+
+MeshDescriptor_Pilote_Helico_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/US_Helo_Pilot/US_Helo_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_Helico_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/US_Helo_Pilot/US_Helo_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_Helico_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Infanterie/SOV_Helo_Pilot/SOV_Helo_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_Helico_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Infanterie/SOV_Helo_Pilot/SOV_Helo_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_Helico_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Infanterie/DDR_Helo_Pilot/DDR_Helo_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_Helico_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Infanterie/DDR_Helo_Pilot/DDR_Helo_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_Helico_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Infanterie/Brit_Helo_Pilot/Brit_Helo_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_Pilote_Helico_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Infanterie/Brit_Helo_Pilot/Brit_Helo_Pilot.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+//Fin Pilote HELICOS
+
+//-------------------------------------------------------------------------------------
+// Servants de canon
+
+MeshDescriptor_Servant_G_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Infanterie/MotoStrelki/MotoStrelki_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_D_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Infanterie/MotoStrelki/MotoStrelki_2.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_G_SOV_LOW is MeshDescriptor_Servant_G_SOV
+MeshDescriptor_Servant_D_SOV_LOW is MeshDescriptor_Servant_D_SOV
+
+MeshDescriptor_Servant_G_VDV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Infanterie/VDV/VDV_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_D_VDV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Infanterie/VDV/VDV_spe.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_G_VDV_LOW is MeshDescriptor_Servant_G_VDV
+MeshDescriptor_Servant_D_VDV_LOW is MeshDescriptor_Servant_D_VDV
+
+MeshDescriptor_Servant_G_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Infanterie/MotSchutzen/MotSchutzen_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_D_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Infanterie/MotSchutzen/MotSchutzen_2.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_G_DDR_LOW is MeshDescriptor_Servant_G_DDR
+MeshDescriptor_Servant_D_DDR_LOW is MeshDescriptor_Servant_D_DDR
+
+MeshDescriptor_Servant_G_FJ_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Infanterie/FJB/FJB_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_D_FJ_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Infanterie/FJB/FJB_2.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_G_FJ_DDR_LOW is MeshDescriptor_Servant_G_FJ_DDR
+MeshDescriptor_Servant_D_FJ_DDR_LOW is MeshDescriptor_Servant_D_FJ_DDR
+
+MeshDescriptor_Servant_G_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/GI/GI_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_D_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/GI/GI_2.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_G_US_LOW is MeshDescriptor_Servant_G_US
+MeshDescriptor_Servant_D_US_LOW is MeshDescriptor_Servant_D_US
+
+MeshDescriptor_Servant_G_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Infanterie/PzGrenadier/PzGrenadier_1.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_D_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Infanterie/PzGrenadier/PzGrenadier_2.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_Servant_G_RFA_LOW is MeshDescriptor_Servant_G_RFA
+MeshDescriptor_Servant_D_RFA_LOW is MeshDescriptor_Servant_D_RFA
+
+MeshDescriptor_81mm_mortar_Servant_G is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/Test_Soldier/Fulda_Soldier.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+
+MeshDescriptor_81mm_mortar_Servant_D is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Infanterie/Test_Soldier/Fulda_Soldier.Ase2NdfBin'
+    CivMask = CivMask/Common
+)
+MeshDescriptor_81mm_mortar_Servant_G_LOW is MeshDescriptor_81mm_mortar_Servant_G
+MeshDescriptor_81mm_mortar_Servant_D_LOW is MeshDescriptor_81mm_mortar_Servant_D
+//-------------------------------------------------------------------------------------
+
+
+template TemplateDepictionDriver
+[
+    MeshDescriptorHigh,
+    MeshDescriptorLow,
+]
+is TemplateDepictionPose
+(
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow = <MeshDescriptorLow>
+    Selector = CommonPilotDepictionSelector
+    Animation = DriverStand
+)
+
+template DriverPoseTemplate
+[
+    FileName,
+] is TResourceMatrixArrayAnimation
+(
+    FileName   = 'GameData:/Assets/3D/Units/Common/Driver/' + <FileName>
+    UsefulnessMask = CivMask/Common + TypeMask/Common
+    PlayInLoop     = false
+)
+
+PilotStand is DriverPoseTemplate(FileName = 'Pilot_Stand.Ase2NdfBin')
+DriverStand is DriverPoseTemplate(FileName = 'Driver_Stand.Ase2NdfBin')
+
+GunnerSittingDown is TResourceMatrixArrayAnimation
+(
+    FileName       = 'GameData:/Assets/3D/Units/Common/sources/Anims_Gunner_FULDA/Gunner_Sitting_Down.Ase2NdfBin'
+    UsefulnessMask = CivMask/Common + TypeMask/Common
+    PlayInLoop     = false
+)
+
+template TemplateDepictionPose
+[
+    MeshDescriptorHigh,
+    MeshDescriptorLow,
+    Selector,
+    Animation,
+]
+is TDepictionTemplate
+(
+    ShadowLessInitialValue = true
+    Scaler = CommonIdentityScaler
+    Selector = <Selector>
+    DepictionAlternatives = [
+        TDepictionDescriptor( SelectorId = ['high'] MeshDescriptor = <MeshDescriptorHigh> ),
+        TDepictionDescriptor( SelectorId = ['low']  MeshDescriptor = <MeshDescriptorLow> ),
+        TDepictionDescriptor( SelectorId = ['none'] RequireOthersSkeleton = true),
+    ]
+
+    Operators = [
+        DepictionOperator_Shader_Selection,
+        DepictionOperator_Shader_TeamColor,
+        TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = <Animation>)
+    ]
+)
+
+template TemplateDepictionPilote
+[
+    MeshDescriptorHigh,
+    MeshDescriptorLow,
+]
+is TemplateDepictionPose
+(
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow = <MeshDescriptorLow>
+    Selector = CommonPilotDepictionSelector
+    Animation = PilotStand
+)
+
+template TemplateDepictionServant
+[
+    MeshDescriptorHigh,
+    MeshDescriptorLow,
+    Selector,
+    AnimationOperator,
+]
+is TDepictionTemplate
+(
+    Scaler = CommonIdentityScaler
+    Selector = <Selector>
+    DepictionAlternatives = [
+        TDepictionDescriptor( SelectorId = ['high'] MeshDescriptor = <MeshDescriptorHigh> ),
+        TDepictionDescriptor( SelectorId = ['low']  MeshDescriptor = <MeshDescriptorLow> ),
+        TDepictionDescriptor( SelectorId = ['none'] RequireOthersSkeleton = true),
+    ]
+
+    Operators = [ <AnimationOperator> ]
+)
+
+
+
+// Ci-dessus les anciennes versions des sous-dépictions pour gérer les sous-dépictions des véhicules et avions, du temps où les dépictions étaient configurées à la main.
+// Ci-dessous les nouvelles versions destinées à être utilisée par le générateur de NDF de dépictions.
+// À terme, l'énorme liste de possibilitées ci-dessus est vouée à disparaitre. On préserve les deux uniquement le temps d'effectuer la transition.
+
+// ----------------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------- VÉHICULES ---------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------
+
+// IMPORTANT : si vous rajoutez de nouveaux templates de sous-dépictions d'humains dans des véhicules,
+// Pensez à le rajouter aussi dans la liste __anchorToSubDepictionTemplate du script DepictionVehiclesFileWriter.py.
+
+Towed_Bofors is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Canon/Bofors_40mm/Bofors_40mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Towed_Bofors_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Canon/Bofors_40mm_MID/Bofors_40mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Towed_Bofors_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Canon/LODS/Bofors_40mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+// ----------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------- AVIONS/HÉLICOS -------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------
+
+// IMPORTANT : si vous rajoutez de nouveaux templates de sous-dépictions d'humains dans des avions/helicos,
+// Pensez à le rajouter aussi dans la liste __anchorToSubDepictionTemplate du script DepictionAerialUnitsFileWriter.py.
+
+template SubDepiction_Pilote1 [ MeshDescriptorHigh, MeshDescriptorLow ]
+is TSubDepiction ( Anchor = 'pilot' Depiction = TemplateDepictionPilote(MeshDescriptorHigh = <MeshDescriptorHigh> MeshDescriptorLow = <MeshDescriptorLow>) )
+template SubDepiction_Pilote2 [ MeshDescriptorHigh, MeshDescriptorLow ]
+is TSubDepiction ( Anchor = 'pilot2' Depiction = TemplateDepictionPilote(MeshDescriptorHigh = <MeshDescriptorHigh> MeshDescriptorLow = <MeshDescriptorLow>) )
+template SubDepiction_Pilote3 [ MeshDescriptorHigh, MeshDescriptorLow ]
+is TSubDepiction ( Anchor = 'pilot3' Depiction = TemplateDepictionPilote(MeshDescriptorHigh = <MeshDescriptorHigh> MeshDescriptorLow = <MeshDescriptorLow>) )
+template SubDepiction_Pilote4 [ MeshDescriptorHigh, MeshDescriptorLow ]
+is TSubDepiction ( Anchor = 'pilot4' Depiction = TemplateDepictionPilote(MeshDescriptorHigh = <MeshDescriptorHigh> MeshDescriptorLow = <MeshDescriptorLow>) )
+
+template SubDepiction_Driver [ MeshDescriptorHigh, MeshDescriptorLow ]
+is TSubDepiction ( Anchor = 'driver' Depiction = TemplateDepictionDriver(MeshDescriptorHigh = <MeshDescriptorHigh> MeshDescriptorLow = <MeshDescriptorLow>) )
+
+template SubDepiction_ServantTemplate
+[
+    Anchor,
+    Selector,
+    Animation,
+    MeshDescriptorHigh,
+    MeshDescriptorLow,
+] is TSubDepiction
+(
+    Anchor = <Anchor>
+    Depiction = TemplateDepictionServant
+    (
+        MeshDescriptorHigh = <MeshDescriptorHigh>
+        MeshDescriptorLow  = <MeshDescriptorLow>
+        Selector = <Selector>
+        AnimationOperator = <Animation>
+    )
+)
+
+template SubDepiction_ServantLeft [ MeshDescriptorHigh, MeshDescriptorLow ] is SubDepiction_ServantTemplate
+(
+    Anchor = 'servant_g'
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow  = <MeshDescriptorLow>
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    Animation = DepictionOperator_AnimationServant_Cannon_Left
+)
+template SubDepiction_ServantRight [ MeshDescriptorHigh, MeshDescriptorLow ] is SubDepiction_ServantTemplate
+(
+    Anchor = 'servant_d'
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow  = <MeshDescriptorLow>
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    Animation = DepictionOperator_AnimationServant_Cannon_Right
+)
+template SubDepiction_ATGMServantLeft [ MeshDescriptorHigh, MeshDescriptorLow ] is SubDepiction_ServantTemplate
+(
+    Anchor = 'servant_g'
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow  = <MeshDescriptorLow>
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    Animation = DepictionOperator_AnimationServant_ATGM_Left
+)
+template SubDepiction_ATGMServantRight [ MeshDescriptorHigh, MeshDescriptorLow ] is SubDepiction_ServantTemplate
+(
+    Anchor = 'servant_d'
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow  = <MeshDescriptorLow>
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    Animation = DepictionOperator_AnimationServant_ATGM_Right
+)
+template SubDepiction_ServantWalkOnlyLeft [ MeshDescriptorHigh, MeshDescriptorLow ] is SubDepiction_ServantTemplate
+(
+    Anchor = 'servant_g'
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow  = <MeshDescriptorLow>
+    Selector = SpecificOnFootWhenMovingServantDepictionSelector
+    Animation = DepictionOperator_AnimationServant_Cannon_Left
+)
+template SubDepiction_ServantWalkOnlyRight [ MeshDescriptorHigh, MeshDescriptorLow ] is SubDepiction_ServantTemplate
+(
+    Anchor = 'servant_d'
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow  = <MeshDescriptorLow>
+    Selector = SpecificOnFootWhenMovingServantDepictionSelector
+    Animation = DepictionOperator_AnimationServant_Cannon_Right
+)
+
+
+template SubDepiction_GunnerTemplate
+[
+    Anchor,
+    Selector,
+    Animation,
+    MeshDescriptorHigh,
+    MeshDescriptorLow,
+] is TSubDepiction
+(
+    Anchor = <Anchor>
+    Depiction = TemplateDepictionPose
+    (
+        MeshDescriptorHigh = <MeshDescriptorHigh>
+        MeshDescriptorLow  = <MeshDescriptorLow>
+        Selector = <Selector>
+        Animation = <Animation>
+    )
+)
+template SubDepiction_GunnerIdleOnlyLeft [ MeshDescriptorHigh, MeshDescriptorLow ] is SubDepiction_GunnerTemplate
+(
+    Anchor = 'tireur_g'
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow  = <MeshDescriptorLow>
+    Selector = SpecificSittingServantDepictionSelector
+    Animation = GunnerSittingDown
+)
+template SubDepiction_GunnerIdleOnlyRight [ MeshDescriptorHigh, MeshDescriptorLow ] is SubDepiction_GunnerTemplate
+(
+    Anchor = 'tireur_d'
+    MeshDescriptorHigh = <MeshDescriptorHigh>
+    MeshDescriptorLow  = <MeshDescriptorLow>
+    Selector = SpecificSittingServantDepictionSelector
+    Animation = GunnerSittingDown
+)

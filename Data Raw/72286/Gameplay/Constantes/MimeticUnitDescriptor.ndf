@@ -1,0 +1,62 @@
+export Descriptor_Unit_MimeticUnit is TEntityDescriptor
+(
+    DescriptorId      = GUID:{8D1DF89C-771C-43F7-820C-465D5A3B5286}
+    ClassNameForDebug = 'Unit_MimeticUnit'
+    World = WorldIndices_Mimetic_Units
+    ModulesDescriptors = [
+        // Position
+            TMimeticTransformModuleDescriptor
+            (
+                GfxPorteur       = ~/GfxPorteurUnite
+            ),
+
+            // MimeticSteering
+            TMimeticSteeringModuleDescriptor
+            (
+            ),
+
+            // LinkTeam
+            TLinkTeamModuleDescriptor
+            (
+            ),
+
+            // LinkToOwner
+            TLinkToOwnerModuleDescriptor
+            (
+            ),
+
+            // ApparenceModel
+            TApparenceModelModuleDescriptor
+            (
+                PickableObject                     = True
+            ),
+
+            // SoldierAnimation
+            TSoldierAnimationModuleDescriptor
+            (
+                SoldierAnimationDataDescriptor = ~/SoldierAnimationDataDescriptor
+            ),
+
+            //TSoldierStatusModule
+            TSoldierStatusModuleDescriptor
+            (
+            ),
+
+            //TMimeticFXManagerModule
+            TMimeticFXManagerModuleDescriptor
+            (
+            ),
+
+            // GhostModule
+            TModuleSelector
+            (
+                Default        = nil
+                Selection      = [
+                    TModuleSelectorFilterIfGhost
+                    (
+                        Descriptor = TGhostModuleDescriptor()
+                    )
+                ]
+            ),
+    ]
+)

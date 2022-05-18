@@ -1,0 +1,28 @@
+
+private MenuButtonViewMainComponent is BUCKSpecificButton
+(
+    ElementName = 'BtnMission'
+
+    ButtonMagnifiableWidthHeight = [170.0, 25.0]
+    ButtonAlignementToFather = [1.0, 0.5]
+    ButtonAlignementToAnchor = [1.0, 0.5]
+    ButtonMagnifiableOffset = [-10.0, 0.0]
+
+    TextSizeToken = "Header/Button"
+    TextToken = "H_MENUB"
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    HidePointerEvents = true
+
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_F10 ) )
+)
+
+UISpecificMenuButtonViewDescriptor is TUISpecificHUDMenuButtonViewDescriptor
+(
+    MainComponentDescriptor = ~/MenuButtonViewMainComponent
+    MainComponentContainerUniqueName = "HUDTopElement"
+)

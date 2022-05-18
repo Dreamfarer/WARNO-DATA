@@ -1,0 +1,760 @@
+ZonePointElementName is "Score"
+UnitLossElementName is "Morale"
+
+private template AllianceScoreLine
+[
+    ElementName : string,
+    IconTexture : string = "",
+    GaugeHint : string = "",
+    IconHint : string = "",
+    GaugeMagnifiableHeight : int,
+    GaugeIconMagnifiableHeight : int,
+    GaugeTextSize : string = "20",
+    GaugeColorToken : string = "",
+] is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [225.0, 24.0]
+    )
+    ElementName = <ElementName> + "Container"
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+
+            Axis = ~/ListAxis/Horizontal
+            FirstMargin = TRTTILength( Magnifiable = 6.0 )
+            InterItemMargin = TRTTILength( Magnifiable = 4.0 )
+            LastMargin = TRTTILength( Magnifiable = 6.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = <ElementName> + "PreGaugeContainer"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [30.0, <GaugeMagnifiableHeight>]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = "PanelScore/ScoreBackground"
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ElementName = "IconeCurrent" + <ElementName>
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [<GaugeIconMagnifiableHeight>, <GaugeIconMagnifiableHeight>]
+
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                TextureToken = <IconTexture>
+                                TextureColorToken = "BlancEquipe"
+
+                                Components =
+                                [
+                                    BUCKSpecificHintableArea
+                                    (
+                                        HintBodyToken = <IconHint>
+                                        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableWidthHeight = [0.0, 0.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        Components =
+                        [
+                            BUCKSimpleGaugeDescriptor
+                            (
+                                ElementName = <ElementName> + "Gauge"
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, <GaugeMagnifiableHeight>]
+                                    AlignementToFather = [0.0, 0.5]
+                                    AlignementToAnchor = [0.0, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "PanelScore/ScoreBackground"
+
+                                GaugeValueMinSize = TRTTILength( Pixel = 1.0 )
+                                DurationForGaugeFullChange = 1.0
+
+                                GaugeComponentName = <ElementName> + "GaugeValue"
+
+                                Components =
+                                [
+                                    BUCKSimpleGaugeValueDescriptor
+                                    (
+                                        ElementName = <ElementName> + "GaugeValue"
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [0.0, 1.0]
+                                        )
+
+                                        ValueContainerName = <ElementName> + "GaugeValueContainer"
+                                        ValueContainerComponent = BUCKContainerDescriptor
+                                        (
+                                            ElementName = <ElementName> + "GaugeValueContainer"
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [0.0, 1.0]
+                                            )
+
+                                            HasBackground = true
+                                            BackgroundBlockColorToken = <GaugeColorToken>
+                                        )
+                                    ),
+                                ]
+                            ),
+
+                            BUCKListDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [0.0, 1.0]
+                                )
+
+                                Axis = ~/ListAxis/Horizontal
+                                InterItemMargin = TRTTILength( Magnifiable = 4.0 )
+                                LastMargin = TRTTILength( Magnifiable = 4.0 )
+
+                                Elements =
+                                [
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKTextDescriptor
+                                        (
+                                            ElementName = <ElementName> + "Text"
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [0.0, 1.0]
+                                                MagnifiableWidthHeight = [300.0, -4.0]
+                                                MagnifiableOffset = [0.0, 0.0]
+                                                AlignementToFather = [0.0, 0.5]
+                                                AlignementToAnchor = [0.0, 0.5]
+                                            )
+
+                                            TextStyle = "Default"
+
+                                            ParagraphStyle = TParagraphStyleRTTI
+                                            (
+                                                Alignment = UIText_Right
+                                                VerticalAlignment = UIText_VerticalCenter
+                                            )
+
+                                            TextSize = <GaugeTextSize>
+                                            TextColor = "BlancEquipe"
+                                            TextToken = "DES_VALUE"
+                                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                            TypefaceToken = "UIMainFont"
+
+                                            BigLineAction = ~/BigLineAction/CutByDots
+
+                                            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+                                            VerticalFitStyle = ~/FitStyle/UserDefined
+                                        )
+                                    ),
+                                    BUCKListElementDescriptor
+                                    (
+                                        ExtendWeight = 1.0
+                                        ComponentDescriptor = BUCKTextDescriptor
+                                        (
+                                            ElementName = <ElementName> + "IncomeText"
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 1.0]
+                                                AlignementToFather = [0.0, 0.5]
+                                                AlignementToAnchor = [0.0, 0.5]
+                                            )
+
+                                            TextStyle = "Default"
+
+                                            ParagraphStyle = TParagraphStyleRTTI
+                                            (
+                                                Alignment = UIText_Right
+                                                VerticalAlignment = UIText_VerticalCenter
+                                            )
+
+                                            TextSize = "20"
+                                            TextColor = "BlancEquipe"
+                                            TextToken = "FRM_PLUS"
+                                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                            TypefaceToken = "UIMainFont"
+
+                                            BigLineAction = ~/BigLineAction/CutByDots
+
+                                            HorizontalFitStyle = ~/FitStyle/UserDefined
+                                            VerticalFitStyle = ~/FitStyle/UserDefined
+                                        )
+                                    )
+                                ]
+                            ),
+                            BUCKSpecificHintableArea
+                            (
+                                HintBodyToken = <GaugeHint>
+                                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            )
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = <ElementName> + "ControlIndicator"
+                        RequiredTags = [ "ScenarioBreakthrough" ]
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [20.0, 20.0]
+
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        TextureToken = "UseInGame_ScenarioBreakthrough_Control"
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                        TileTextureInComponent = false
+                        ClipTextureToComponent = true
+
+                        Components =
+                        [
+                            BUCKSpecificHintableArea
+                            (
+                                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                                HintTitleToken = "HSC_CONTRT"
+                                HintBodyToken = "HSC_CONTRB"
+                                HintExtendedToken = "HSC_CONTRE"
+                            ),
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = <ElementName> + "DestructionIndicator"
+                        RequiredTags = [ "ScenarioBreakthrough" ]
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        TextureToken = "UseInGame_ScenarioBreakthrough_Destruction"
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                        TileTextureInComponent = false
+                        ClipTextureToComponent = true
+
+                        Components =
+                        [
+                            BUCKSpecificHintableArea
+                            (
+                                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                                HintTitleToken = "HSC_DESTRT"
+                                HintBodyToken = "HSC_DESTRB"
+                                HintExtendedToken = "HSC_DESTRE"
+                            ),
+                        ]
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+//--------------------------------------------------
+BUCKSpecificHUDScorePlayerMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [215.0, 20.0]
+    )
+
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "PlayerScoreLine"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0,1]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+
+            FirstMargin = TRTTILength( Magnifiable = 0.0)
+            InterItemMargin = TRTTILength( Magnifiable = 5.0)
+            LastMargin = TRTTILength( Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = "DivisionIcon"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [20.0, 0.0]
+                            //PixelWidthHeight = [-2.0, -2.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0])
+                        TileTextureInComponent = false
+                        ClipTextureToComponent = true
+                        TextureToken = "UseInGame_division_icone"
+
+                        Components =
+                        [
+                            BUCKSpecificHintableArea
+                            (
+                                ElementName = "DivisionIconHint"
+                                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+
+                                HintTitleToken = "HUD_UNKN"
+                            ),
+                        ]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKSpecificTextWithHint
+                    (
+                        ElementName = "Name"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        TextStyle = "Default"
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordCut
+                        )
+
+                        TextSize = "16"
+                        TextColor = "Cyan"
+                        TextToken = ""
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TypefaceToken = "IBM"
+
+                        BigLineAction = ~/BigLineAction/CutByDots
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            ElementName = "HintName"
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                        )
+
+
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = "PingArea"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [30.0, 0.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+
+
+
+//--------------------------------------------------
+ScorePanelPlayerList is BUCKListDescriptor
+(
+    ElementName = "ScorePanelPlayerList"
+    ComponentFrame = TUIFramePropertyRTTI()
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength( Magnifiable = 7.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+    LastMargin = TRTTILength( Magnifiable = 7.0 )
+    // Filled with BUCKSpecificHUDScorePlayerMainComponentDescriptor
+)
+
+//--------------------------------------------------
+
+BUCKSpecificHUDScoreAllianceMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [225.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI()
+            Axis = ~/ListAxis/Vertical
+
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            FirstMargin = TRTTILength(Magnifiable = 5.0)
+            LastMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = AllianceScoreLine
+                    (
+                        ElementName = ZonePointElementName
+                        IconTexture = "icone_scorePoints"
+                        IconHint = "LR_score"
+                        GaugeHint = "LR_team"
+                        GaugeMagnifiableHeight = 18
+                        GaugeIconMagnifiableHeight = 26
+                        GaugeTextSize = "20"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = AllianceScoreLine
+                    (
+                        ElementName = UnitLossElementName
+                        IconTexture = "icone_moralePoints"
+                        IconHint = "LR_morale"
+                        GaugeHint = "LR_teamM"
+                        GaugeMagnifiableHeight = 8
+                        GaugeIconMagnifiableHeight = 20
+                        GaugeTextSize = "16"
+                        GaugeColorToken = "MoraleGauge"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ElementName = "DropDownList"
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ScorePanelPlayerList
+                            )
+                        ]
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+//--------------------------------------------------
+
+private PanelDeScoreParEquipe is BUCKListDescriptor
+(
+    ElementName = "AllianceList"
+    ComponentFrame = TUIFramePropertyRTTI()
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Axis = ~/ListAxis/Vertical
+    // rempli avec deux BUCKSpecificHUDScoreAllianceMainComponentDescriptor, une à gauche et une à droite
+)
+
+//------------------------------------------------------------------------------
+private PlayerScorePanelButton is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI ( MagnifiableWidthHeight = [22,22+26])
+
+    Components =
+    [
+        BUCKButtonDescriptor
+        (
+            ElementName = "PlayerScorePanelButton"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [22.0, 22.0]
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+
+            )
+
+            IsTogglable = true
+            DefaultToggleValue = false
+            HasBorder = false
+            Mapping = $/KeyboardOption/Mapping_ToggleScorePanel
+
+            Components =
+            [
+                BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        AlignementToFather = [0.5, 0.5]
+                        AlignementToAnchor = [0.5, 0.5]
+                    )
+
+                    Components =
+                    [
+                        PanelRoundedCorner
+                        (
+                            BackgroundBlockColorToken = "BoutonTemps"
+                            BorderLineColorToken = "CouleurBordure_boutonShortcuts"
+                        )
+                    ]
+                ),
+
+                BUCKTextureDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                       RelativeWidthHeight = [1.0, 1.0]
+                       AlignementToFather = [0.5, 0.5]
+                       AlignementToAnchor = [0.5, 0.5]
+                    )
+
+                    TextureToken = "icone_score"
+                    TextureColorToken = "CouleurTexture_boutonShortcuts"
+
+                    TextureFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        MagnifiableWidthHeight = [0.0, 0.0]
+                        AlignementToFather = [0.5, 0.5]
+                        AlignementToAnchor = [0.5, 0.5]
+                    )
+                ),
+
+                BUCKSpecificHintableArea
+                (
+                    HintBodyToken = 'LR_player'
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                )
+            ]
+        )
+    ]
+)
+
+
+
+//------------------------------------------------------------------------------
+
+private PanelScoreMax is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [50.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength( Magnifiable = 5.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+    LastMargin = TRTTILength( Magnifiable = 10.0 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = 'IconeScoreMax'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [28.0, 21.0]
+
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                TextureToken = "icone_scoreVictoire"
+                TextureColorToken = 'BlancEquipe'
+
+                Components =
+                [
+                    BUCKSpecificHintableArea
+                    (
+                        HintBodyToken = 'LR_score'
+                        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    )
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'ScoreToReachText'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "WIP_8"
+
+                TextColor = "BlancEquipe"
+                TextSize = "16"
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    ForbiddenTags = ['ScenarioBreakthrough']
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+
+                    HintBodyToken = "LR_score"
+                )
+            )
+        ),
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+private MainScorePanelComponent is BUCKListDescriptor
+(
+
+    ElementName = "MainScorePanelComponent"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        //MagnifiableWidthHeight = [0.0, 50.0]
+        MagnifiableOffset = [-10,0]
+    )
+    FirstMargin = TRTTILength ( Magnifiable = 5)
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/PlayerScorePanelButton
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/PanelDeScoreParEquipe
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/PanelScoreMax
+        ),
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner()
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+UISpecificHUDScorePlayerViewDescriptor is TUISpecificHUDScorePlayerViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificHUDScorePlayerMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)
+
+//------------------------------------------------------------------------------
+
+template UISpecificHUDScoreAllianceViewDescriptor
+[
+    IsLeftSide : bool
+]is TUISpecificHUDScoreAllianceViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificHUDScoreAllianceMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    ScorePointTypeToElementName = MAP
+    [
+        (~/EScorePointType/ZonePoint, ZonePointElementName),
+        (~/EScorePointType/UnitLoss, UnitLossElementName)
+    ]
+
+    ScoreTypeToDisplayFromMaxToMin = [ ~/EScorePointType/UnitLoss ]
+)
+
+//------------------------------------------------------------------------------
+
+UISpecificHUDScoreViewDescriptor is TUISpecificHUDScoreViewDescriptor
+(
+    MainComponentDescriptor = ~/MainScorePanelComponent
+    MainComponentContainerUniqueName = "SpecificInGameHUDScoreViewMainContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

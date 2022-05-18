@@ -1,0 +1,90 @@
+// • BUCKSpecificStrategicBattleOrderSubPanelMainComponentDescriptor (template)
+// • UISpecificStrategicBattleOrderSubPanelViewDescriptor (template)
+
+// ----------------------------------------------------------
+
+private template BUCKSpecificStrategicBattleOrderSubPanelMainComponentDescriptor
+[
+    Interspacing : float
+]
+is BUCKListDescriptor
+(
+    ElementName = 'fullpanel'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [-36.0, 0.0]
+        MagnifiableOffset = [0,23]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength( Magnifiable = 7.0 )
+    LastMargin = TRTTILength( Magnifiable = 9.0 )
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = "TitleLineContainer"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKSpecificScrollingContainerDescriptor
+            (
+                HasVerticalScrollbar = true
+                VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [10.0, 0.0]
+                    AlignementToFather = [1.0, 0.0]
+                    AlignementToAnchor = [1.0, 0.0]
+                )
+
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ElementName = "LinesContainer"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Vertical
+                        FirstMargin = TRTTILength( Magnifiable = 3.0 )
+                        InterItemMargin = TRTTILength( Magnifiable = <Interspacing> )
+                        LastMargin = TRTTILength( Magnifiable = <Interspacing> )
+                    )
+                ]
+            )
+        ),
+    ]
+)
+
+// ----------------------------------------------------------
+
+template UISpecificStrategicBattleOrderSubPanelViewDescriptor
+[
+    Interspacing : float
+]
+is TUISpecificStrategicBattleOrderSubPanelViewDescriptor
+(
+    TitleLineViewDescriptor =           UISpecificStrategicBattleOrderPanelTitleLineViewDescriptor( TitleTextDico = ~/LocalisationConstantes/dico_unites )
+    CompanyTitleLineViewDescriptor =    UISpecificStrategicBattleOrderPanelTitleLineViewDescriptor( TitleTextDico = ~/LocalisationConstantes/dico_packs )
+    DefaultLineViewDescriptor =         UISpecificStrategicBattleOrderPanelDefaultLineViewDescriptor( TitleTextDico = ~/LocalisationConstantes/dico_unites )
+    CompanyLineViewDescriptor =         UISpecificStrategicBattleOrderPanelDefaultLineViewDescriptor( TitleTextDico = ~/LocalisationConstantes/dico_packs )
+    SectionLineViewDescriptor =         ~/UISpecificStrategicBattleOrderPanelSectionLineViewDescriptor
+
+    MainComponentDescriptor = BUCKSpecificStrategicBattleOrderSubPanelMainComponentDescriptor( Interspacing = <Interspacing> )
+)

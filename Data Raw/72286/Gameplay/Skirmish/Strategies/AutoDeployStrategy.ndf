@@ -1,0 +1,87 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export AutoDeployStrategy is TIAGeneralStrategy
+(
+    StrategyName = "AutoDepAI"
+    FirstGenerator = AutoDeploy_DoNothing
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+        ("DoNotCancelProduction", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        AutoDeploy_Transition_DoNothingToDeploy,
+        AutoDeploy_Transition_DeployToDoNothing,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+export AutoDeploy_Condition_ToDeploy is TSequenceCondition_AutoDeployFlagValue
+(
+    Value = true
+)
+//-------------------------------------------------------------------------
+export AutoDeploy_Condition_ToDoNothing is TSequenceCondition_AutoDeployFlagValue
+(
+    Value = false
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export AutoDeploy_Transition_DoNothingToDeploy is TIAGeneralStrategyTransition
+(
+    Origine = AutoDeploy_DoNothing
+    Condition = AutoDeploy_Condition_ToDeploy
+    Destination = Gen_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export AutoDeploy_Transition_DeployToDoNothing is TIAGeneralStrategyTransition
+(
+    Origine = Gen_Phase_Deploiement
+    Condition = AutoDeploy_Condition_ToDoNothing
+    Destination = AutoDeploy_DoNothing
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export AutoDeploy_DoNothing is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/AutoDeploy_DoNothing_FakeSupport,
+    ]
+)
+
+//-------------------------------------------------------------------------
+export AutoDeploy_DoNothing_FakeSupport is TMacroActionDescriptor_Support_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/AutoDeploy_DoNothing_FakePool]),
+        TCounterTagSettingHolder(TagDeContre = "ThisUnitDoesNotExist"),
+    ]
+)
+//-------------------------------------------------------------------------
+export AutoDeploy_DoNothing_FakePool is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{1f93ab9d-5096-4fef-beae-9841ff9c5ae7}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "ThisUnitDoesNotExist",
+            ]
+        ),
+    ]
+)

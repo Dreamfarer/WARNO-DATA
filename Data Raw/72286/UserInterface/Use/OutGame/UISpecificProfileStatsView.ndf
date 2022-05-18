@@ -1,0 +1,1354 @@
+// -------------------------------------------------------------------------------------------------
+
+template StatsPanelMultiListTitleLine
+[
+    ElementName : string,
+    TitleToken : string = 'T_STATS',
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 45+22.5]
+        RelativeWidthHeight = [0.0, 0.0]
+
+    )
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        // Stats Name Title
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "StatsName" + <ElementName>
+                SortingType = ~/MultiListSorting/None
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [379.0, 22.0]
+                    AlignementToAnchor = [0.0, 0.5]
+                    AlignementToFather = [0.0, 0.5]
+
+                )
+                HasBackground = false
+                BackgroundBlockColorToken = 'noir_stats'
+                HidePointerEvents = true
+                Components =
+                [
+                    // Title Text
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [350,22]
+                            AlignementToFather = [0.0, 1.0]
+                            AlignementToAnchor = [0.0, 1.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Left
+                            VerticalAlignment = ~/UIText_Bottom
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                        )
+                        TextStyle = 'Default'
+                        TypefaceToken = "Courrier"
+                        TextSize = '14'
+                        TextColor = 'noir_param'
+                        TextToken = <TitleToken>
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+                        TextPadding = TRTTILength4( Magnifiable = [10.0, 5.0, 5.0, 5.0] )
+                        HasBorder = true
+                        BorderThicknessToken = "1"
+                        BorderLineColorToken = "noir_param"
+                        //BordersToDraw =   ~/TBorderSide/Bottom
+                    )
+                ]
+            )
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+RackLineManager is TBUCKRadioButtonManager()
+
+template StatsPanelMultiListLine
+[
+    ElementName : string,
+    TextToken : string
+]
+is BUCKButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 22.8]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "MultiList/Background"
+
+    IsTogglable = true
+    CannotDeselect = true
+    RadioButtonManager = ~/RackLineManager
+    IsFocusable = true
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            FirstMargin = TRTTILength(Magnifiable = 20.0)
+
+            Elements =
+            [
+                // Stat name (e.g. Player level, victories...)
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'StatsName' + <ElementName>
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = 'TextName' + <ElementName>
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                    AlignementToFather = [0.5, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Left
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+                                TextToken = <TextToken>
+                                TextStyle = 'Default'
+                                TypefaceToken = "Courrier"
+                                TextColor = "noir_param"
+                                TextSize = "14"
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                            )
+                        ]
+                    )
+                ),
+                // Stat value
+                BUCKListElementDescriptor
+                (
+                    //ExtendWeight = 0.8
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'StatsValue' + <ElementName>
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = 'TextValue' + <ElementName>
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                    AlignementToFather = [0.5, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Right
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+                                TextStyle = 'Default'
+                                TypefaceToken = "Courrier"
+                                TextSize = '14'
+                                TextColor = 'gris_stats'
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                            )
+                        ]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.2
+                    ComponentDescriptor = BUCKContainerDescriptor ( ComponentFrame = TUIFramePropertyRTTI ())
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+OngletStatsBox is [33.0, 110.0]
+
+template OngletStats
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+
+    BigLineAction : int = ~/BigLineAction/CutByDots,
+    TextToken : string,
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+
+    HorizontalFitStyle : int = ~/FitStyle/FitToContent,
+]
+is BUCKOneTabDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 130.0]
+    )
+
+    FitStyle = (<HorizontalFitStyle> == ~/FitStyle/UserDefined ? ~/ContainerFitStyle/None : ~/ContainerFitStyle/FitToContentHorizontally)
+    LeftClickSound = SoundEvent_ProfileSwitchTab
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [33.0, 150.0]
+            )
+
+            Components =
+            [
+                BUCKTextureDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = OngletStatsBox
+                        MagnifiableOffset = [0.0, -1.0]
+                    )
+                    TextureFrame = TUIFramePropertyRTTI(MagnifiableWidthHeight = [59.0, 155.0])
+                    TextureToken = 'Outgame_stats_onglet'
+                ),
+                BUCKSpecificTextWithHint
+                (
+                    ElementName = (<ElementName> != '' ? <ElementName> + "Text" : '')
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = OngletStatsBox
+                        AlignementToFather  = [0.5, 0.5]
+                        AlignementToAnchor  = [0.5, 0.5]
+                    )
+
+                    ParagraphStyle = ~/paragraphStyleTextCenter
+                    TextStyle = "Default"
+                    TypefaceToken = "UIMainFont"
+                    BigLineAction = <BigLineAction>
+                    TextToken = <TextToken>
+                    TextDico = <TextDico>
+
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/UserDefined
+
+                    TextColor = "noir_onlget_stats"
+                    TextSize = "18"
+                    Rotation = -90
+
+                    HasAutoHint = true
+                    AutoHintElementName = <ElementName> + "AutoHint"
+                ),
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+template StatsPanelMultiListPlayerName
+[
+    Category : string,
+] is BUCKTextDescriptor
+(
+    ElementName = <Category> + 'PlayerName'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 23.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = ~/UIText_Center
+        VerticalAlignment = ~/UIText_VerticalCenter
+    )
+    TextStyle = 'Default'
+    TypefaceToken = "Courrier"
+    TextColor = "noir_param"
+    TextSize = "18"
+    TextToken = ""
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+)
+
+// -------------------------------------------------------------------------------------------------
+// LEVEL
+// -------------------------------------------------------------------------------------------------
+private DecalageFeuille is 22
+
+StatsPanelLevelList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength (Magnifiable = DecalageFeuille)
+    Elements =
+    [
+        // Player name
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListPlayerName ( Category = "Level" )
+        ),
+
+        /// Level
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleLevel"
+                TitleToken = "SP_LEVELT"
+            )
+        ),
+
+        // Player Level
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "PlayerLevel"
+                TextToken = "SP_PLYLVL"
+            )
+        ),
+
+        // Total XP
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "TotalXP"
+                TextToken = "SP_TOTALXP"
+            )
+        ),
+
+        // Next Level XP
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "NextLevelXP"
+                TextToken = "SP_NEXTLVL"
+            )
+        ),
+
+        /// Details
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleXPDetails"
+                TitleToken = "SP_DETAILT"
+            )
+        ),
+
+        // XP in Campaign
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "XPinCampaign"
+                TextToken = "SP_CAMPXP"
+            )
+        ),
+
+        // XP in Skirmish
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "XPinSkirmish"
+                TextToken = "SP_SKIRXP"
+            )
+        ),
+
+        // XP in Normal
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "XPinNormal"
+                TextToken = "SP_NORMXP"
+            )
+        ),
+
+        // XP in Ranked
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "XPinRanked"
+                TextToken = "SP_RANKXP"
+            )
+        ),
+
+        /// Playing time
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleTimes"
+                TitleToken = "SP_TIMET"
+            )
+        ),
+
+        // Total playing time
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "TotalPlayingTime"
+                TextToken = "SP_PLY_T"
+            )
+        ),
+
+        // Playing time in campaign
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "PlayingTimeInCampaign"
+                TextToken = "SP_PLYCAMP"
+            )
+        ),
+
+        // Playing time in skirmish
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "PlayingTimeInSkirmish"
+                TextToken = "SP_PLYSKIR"
+            )
+        ),
+
+        // Playing time in multiplayer
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "PlayingTimeInMultiplayer"
+                TextToken = "SP_PLYMULT"
+            )
+        ),
+
+        // Playing time in ranked
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "PlayingTimeInRanked"
+                TextToken = "SP_PLYRANK"
+            )
+        ),
+
+        // Total Time in menu
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "TotalTimeInMenu"
+                TextToken = "SP_PLYMENU"
+            )
+        ),
+
+        // Total Time in armory
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "TotalTimeInArmory"
+                TextToken = "SP_PLYARMO"
+            )
+        ),
+    ]
+)
+
+
+// -------------------------------------------------------------------------------------------------
+// RANK
+// -------------------------------------------------------------------------------------------------
+StatsPanelRankMultiList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength (Magnifiable = DecalageFeuille)
+    Elements =
+    [
+        // Player name
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListPlayerName( Category = "RankMulti" )
+        ),
+
+        /// Rank
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleRank"
+                TitleToken = "SP_RANKT"
+            )
+        ),
+
+        // Grade
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "Grade"
+                TextToken = "SP_PLYGRA"
+            )
+        ),
+
+        // ELO
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "ELO"
+                TextToken = "SP_RATING"
+            )
+        ),
+
+        // Rating Range
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "RatingRange"
+                // /!\ TOKEN DE TEXTE A MODIFIER SELON LOGIQUE CPP
+                TextToken = "SP_RATDIF"
+            )
+        ),
+
+        // Trend
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "Trend"
+                // /!\ TOKEN DE TEXTE A MODIFIER SELON LOGIQUE CPP
+                TextToken = "SP_TREND"
+            )
+        ),
+
+        // Overall Rank
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "OverallRank"
+                TextToken = "SP_OVERANK"
+            )
+        ),
+
+
+        /// Battles
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleBattles"
+                TitleToken = "SP_BATTLET"
+            )
+        ),
+
+        // Ranked Victories
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "RankedVictories"
+                TextToken = "SP_RNKVIC"
+            )
+        ),
+
+        // Ranked Defeats
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "RankedDefeats"
+                TextToken = "SP_RNKDEF"
+            )
+        ),
+
+        // Ranked Draws
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "RankedDraws"
+                TextToken = "SP_RNKDRA"
+            )
+        ),
+
+        // Ranked ratio
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "RankedRatio"
+                TextToken = "SP_RNKRAT"
+            )
+        ),
+
+
+        /// Usage
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleUsage"
+                TitleToken = "SP_USAGET"
+            )
+        ),
+
+
+        // Ranked Game as NATO
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "RankedGameAsNATO"
+                TextToken = "SP_RNKNATO"
+            )
+        ),
+
+        // Ranked Game as PACT
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "RankedGameAsPACT"
+                TextToken = "SP_RNKPACT"
+            )
+        ),
+
+        // Most played division
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "MostPlayedDivision"
+                TextToken = "SP_MSTPDIV"
+            )
+        ),
+
+        // Division with best winning ratio
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "BestWinningRatioDivision"
+                TextToken = "SP_BESTDIV"
+            )
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// MULTIPLAYER
+// -------------------------------------------------------------------------------------------------
+StatsPanelMultiplayerMultiList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength (Magnifiable = DecalageFeuille)
+    Elements =
+    [
+        // Player name
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListPlayerName( Category = "MultiplayerMulti" )
+        ),
+
+        /// Multiplayer
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleMultiplayer"
+                //TitleToken = "SP_MULTIT"
+            )
+        ),
+
+        // Multiplayer Matches
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "MultiplayerMatches"
+                TextToken = "SP_MLTGAM"
+            )
+        ),
+
+        // Multiplayer Victories
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "MultiplayerVictories"
+                TextToken = "SP_MLTVIC"
+            )
+        ),
+
+        // Multiplayer Defeats
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "MultiplayerDefeats"
+                TextToken = "SP_MLTDEF"
+            )
+        ),
+
+        // Multiplayer Draws
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "MultiplayerDraws"
+                TextToken = "SP_MLTDRA"
+            )
+        ),
+
+        // Multiplayer Ratio
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "MultiplayerRatio"
+                TextToken = "SP_MLTRAT"
+            )
+        ),
+
+        // Multiplayer Game With NATO
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "MultiplayerGameWithNATO"
+                TextToken = "SP_MLTNATO"
+            )
+        ),
+
+        // Multiplayer Game With PACT
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "MultiplayerGameWithPACT"
+                TextToken = "SP_MLTPACT"
+            )
+        ),
+
+        // Last Multi Game Played
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "LastMultiGamePlayed"
+                TextToken = "SP_LSTPLY"
+            )
+        ),
+        /// Division played in multiplayer games
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleSortedDiv"
+                TitleToken = "SP_SRTDIVT"
+            )
+        ),
+
+        // Sorted divisions
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKRackDescriptor
+            (
+                ElementName = "DivisionRack"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+
+                BladeDescriptor = StatsPanelMultiListLine
+                (
+                    ElementName = 'DivisionLine'
+                    TextToken = ''
+                )
+            )
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// SKIRMISH
+// -------------------------------------------------------------------------------------------------
+StatsPanelSkirmishMultiList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength (Magnifiable = DecalageFeuille)
+    Elements =
+    [
+        // Player name
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListPlayerName( Category = "SkirmishMulti" )
+        ),
+
+        /// Skirmish
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleSkirmish"
+            )
+        ),
+
+        // Skirmish Matches
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishMatches"
+                TextToken = "SP_SKTGAM"
+            )
+        ),
+
+        // Skirmish Victories
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishVictories"
+                TextToken = "SP_SKTVIC"
+            )
+        ),
+
+        // Skirmish Defeats
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishDefeats"
+                TextToken = "SP_SKTDEF"
+            )
+        ),
+
+        // Skirmish Draws
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishDraws"
+                TextToken = "SP_SKTDRA"
+            )
+        ),
+
+        // Skirmish Ratio
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishRatio"
+                TextToken = "SP_SKTRAT"
+            )
+        ),
+
+        // Skirmish Game With NATO
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishGameWithNATO"
+                TextToken = "SP_SKTNATO"
+            )
+        ),
+
+        // Skirmish Game With PACT
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishGameWithPACT"
+                TextToken = "SP_SKTPACT"
+            )
+        ),
+
+        // Last Multi Game Played
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "LastSkirmishGamePlayed"
+                TextToken = "SP_LSTPLY"
+            )
+        ),
+
+        // IA repartition
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleIA"
+                TitleToken = "SP_SKTIAS"
+            )
+        ),
+
+        // Skirmish Victories againt Very Easy AI
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishVictoriesVeryEasyAI"
+                TextToken = "SP_SKTVAI1"
+            )
+        ),
+
+        // Skirmish Victories againt Easy AI
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishVictoriesEasyAI"
+                TextToken = "SP_SKTVAI2"
+            )
+        ),
+
+        // Skirmish Victories againt Medium AI
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishVictoriesMediumAI"
+                TextToken = "SP_SKTVAI3"
+            )
+        ),
+
+        // Skirmish Victories againt Hard AI
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishVictoriesHardAI"
+                TextToken = "SP_SKTVAI4"
+            )
+        ),
+
+        // Skirmish Victories againt Very Hard AI
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishVictoriesVeryHardAI"
+                TextToken = "SP_SKTVAI5"
+            )
+        ),
+
+        // Skirmish Victories againt Hardest AI
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "SkirmishVictoriesHardestAI"
+                TextToken = "SP_SKTVAI6"
+            )
+        ),
+
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// CAMPAIGN
+// -------------------------------------------------------------------------------------------------
+StatsPanelCampaignMultiList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength (Magnifiable = DecalageFeuille)
+    Elements =
+    [
+        // Player name
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListPlayerName( Category = "Campaign" )
+        ),
+
+        /// Campaign
+
+        // Title
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListTitleLine
+            (
+                ElementName = "SubtitleCampaign"
+            )
+        ),
+
+        // Campaign Played
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "CampaignPlayed"
+                TextToken = "SP_CMPGAM"
+            )
+        ),
+
+        // Campaign Played as NATO
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "CampaignPlayedAsNATO"
+                TextToken = "SP_CMPNATO"
+            )
+        ),
+
+        // Campaign Played as PACT
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "CampaignPlayedAsPACT"
+                TextToken = "SP_CMPPACT"
+            )
+        ),
+
+        // Campaign Victories
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "CampaignVictories"
+                TextToken = "SP_CMPVIC"
+            )
+        ),
+
+        // Last Campaign Game Played
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StatsPanelMultiListLine
+            (
+                ElementName = "LastCampaignGamePlayed"
+                // /!\ TOKEN DE TEXTE A MODIFIER SELON LOGIQUE CPP
+                TextToken = "SP_LSTPLY"
+            )
+        ),
+    ]
+)
+
+//--------------------------------------------------------
+
+private StatsTabComponent is BUCKSpecificWithTabsComponentDescriptor
+(
+    ElementName = "StatsTabs"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableWidthHeight = [458.0, 0.0]
+        MagnifiableOffset = [24.0, 44.0]
+        RelativeOffset = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis  = ~/ListAxis/Vertical
+    TabsListBackgroundColorToken = 'Transparent'
+    TabsAndContent =
+    [
+        (
+            OngletStats
+            (
+                ElementName = "LevelTabTitle"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                TextToken = "SP_LVL"
+            ),
+            ~/StatsPanelLevelList
+        ),
+        (
+            OngletStats
+            (
+                ElementName = "RankTabTitle"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                TextToken = "SP_PLYRNK"
+            ),
+            ~/StatsPanelRankMultiList
+        ),
+        (
+            OngletStats
+            (
+                ElementName = "MultiplayerTabTitle"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                TextToken = "SP_PLYMLT"
+            ),
+            ~/StatsPanelMultiplayerMultiList
+        ),
+        (
+            OngletStats
+            (
+                ElementName = "SkirmishTabTitle"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                TextToken = "SP_PLYSKR"
+            ),
+            ~/StatsPanelSkirmishMultiList
+        ),
+        (
+            OngletStats
+            (
+                ElementName = "CampaignTabTitle"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                TextToken = "SP_PLYCMP"
+            ),
+            ~/StatsPanelCampaignMultiList
+        ),
+    ]
+)
+
+BUCKSpecificProfileStatsMainComponentDescriptor is BUCKTranslationAnimatedContainerDescriptor
+(
+    ElementName = "AnimatedProfilPanel"
+
+    FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 1.0]
+    )
+
+    TriggerWhenSetVisible = true
+    AnimationTotalDuration = 0.15
+
+    FramePropertyAfterAnimation = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        AlignementToFather = [0.5, 1.0]
+    )
+
+    Components =
+    [
+        ProfilStatsAnimated
+        (
+            ContentAlignementToAnchor = [0.5, 1.0]
+            ContentAlignementToFather = [0.45, 1.0]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private ProfileStatsViewTextureSize is [528.0, 754.0] // taille de "fond_stats"
+
+private template ProfilStatsAnimated
+[
+    ContentAlignementToAnchor : float2 = [0.5, 1.0],
+    ContentAlignementToFather : float2 = [0.45, 1.0]
+]
+is WindowFrame
+(
+    ContentExtendWeight = 1.0
+    ContentMagnifiableWidthHeight = ProfileStatsViewTextureSize
+    ContentAlignementToAnchor = <ContentAlignementToAnchor>
+    ContentAlignementToFather = <ContentAlignementToFather>
+    HasBackground = false
+    HasTitle = false
+    TitleToken = 'SP_STATS'
+
+    ContentComponents =
+    [
+        ~/StatsTabComponent,
+        ~/StatsButtons
+    ]
+
+    AdditionalComponents =
+    [
+        BUCKSensibleAreaDescriptor
+        (
+            ElementName = 'SensibleArea'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            HidePointerEvents = true
+        ),
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Components =
+            [
+                // fond d'image
+                BUCKTextureDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = ProfileStatsViewTextureSize
+                        AlignementToAnchor = <ContentAlignementToAnchor>
+                        AlignementToFather = <ContentAlignementToFather>
+                    )
+
+                    TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+                    TextureToken = "fond_stats"
+
+                    HidePointerEvents = true
+                ),
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private StatsButtons is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 50.0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        MagnifiableOffset = [-32, -30.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    InterItemMargin = TRTTILength (Magnifiable = 10.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = MenuActionButton
+            (
+                ElementName = "StatsChangeNameButton"
+                TextToken = "AB_CHGN"
+            )
+        ),
+        BUCKListElementDescriptor( ComponentDescriptor = MenuActionButtonSeparator(ElementName = "StatsSeparatorBetweenButtons") ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = MenuActionButton
+            (
+                ElementName = "StatsBackButton"
+                TextToken = "BTN_CLOSE"
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+                LeftClickSound = SoundEvent_CloseProfile
+            )
+        ),
+    ]
+    BackgroundComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [370,50]
+                AlignementToFather = [0.5, 1]
+                AlignementToAnchor = [0.5, 1]
+                MagnifiableOffset = [0,0]
+            )
+            TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+            TextureColorToken = 'bleu_navigation'
+            TextureToken =  'OutgameTexture_NavigationOption'
+
+            Components = [SmallOmbrePanel()]
+        )
+    ]
+
+)
+
+
+//--------------------------------------------------------
+
+UISpecificProfileStatsViewDescriptor is TUISpecificProfileStatsViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificProfileStatsMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    DeactivatedTabsForExternalProfile =
+    [
+        "SkirmishTabTitle",
+    ]
+)

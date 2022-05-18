@@ -1,0 +1,170 @@
+//A maintenir synchro avec UISpecificOutGameLobbyPlayerListController.h
+LobbyType is TBaseClass
+(
+    Squirmish is 0
+    Length is 1
+)
+
+//-------------------------------------------------------------------------------------
+
+BUCKSpecificOutGameLobbyPlayerListMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 600.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    InterItemMargin = TRTTILength(Magnifiable = 7.0)
+    Elements =
+    [
+        // affichage du camp
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/SideInformation
+        ),
+        // affichage de la liste des joueurs
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKSpecificScrollingContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [383.0, 570.0]
+                )
+
+                ExternalScrollbar = true
+                HasVerticalScrollbar = true
+
+                VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [10.0, 0.0]
+                    MagnifiableOffset = [4.0, 0.0]
+                    AlignementToFather = [1.0, 0.0]
+                    AlignementToAnchor = [0.0, 0.0]
+                )
+
+                ScrollStepSize = [0.0, 26.0]
+
+                Components =
+                [
+                    BUCKRackDescriptor
+                    (
+                        ElementName = 'Rack'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Vertical
+                        FirstMargin = TRTTILength( Magnifiable = 5.0 )
+                        InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+                        BladeDescriptor = ~/BUCKSpecificOutGameLobbyPlayerMainComponentDescriptor
+                    )
+                ]
+            )
+        ),
+    ]
+)
+
+//---------------------------------------------------------------------------------
+
+private SideInformation is BUCKContainerDescriptor
+(
+    ElementName = "SideInformation"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [51.0, 283.0]
+        MagnifiableOffset = [0.0, 300.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength(Magnifiable = 27.0)
+            InterItemMargin = TRTTILength(Magnifiable = 6.0)
+            LastMargin = TRTTILength(Magnifiable = 21.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'NameAlliance'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 70.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        Rotation = 90
+                        ParagraphStyle =  ~/paragraphStyleTextLeftAlign
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TextColor       = "Blanc"
+                        TextSize        = "19"
+                        TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TypefaceToken   = "Liberator"
+                        UniformDrawer   = $/UserInterface/UIUniformDrawer
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'PlayerRatio'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 15.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        TextPadding = TRTTILength4(Magnifiable = [6.0, 0.0, 6.0, 0.0])
+
+                        ParagraphStyle = ~/paragraphStyleTextCenter
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TextColor       = "Blanc"
+                        TextSize        = "12"
+                        TextToken       = "LOBPLAYCO"
+                        TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                        TypefaceToken   = "Liberator"
+                        UniformDrawer   = $/UserInterface/UIUniformDrawer
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+//---------------------------------------------------------------------------------
+
+UISpecificOutGameLobbyPlayerListViewDescriptor is TUISpecificOutGameLobbyPlayerListViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameLobbyPlayerListMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    AlliesToken = "NATO"
+    AxisToken = "PACT"
+)

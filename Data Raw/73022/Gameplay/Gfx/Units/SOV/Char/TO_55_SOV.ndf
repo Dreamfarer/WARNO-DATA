@@ -1,0 +1,19 @@
+export ModelFile_TO_55_SOV is 'GameData:/Assets/3D/Units/URSS/Char/TO55/TO55.Ase2NdfBin'
+
+Modele_TO_55_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_TO_55_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_TO_55_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Char/TO55_MID/TO55_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_TO_55_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Char/LODS/TO55_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

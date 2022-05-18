@@ -1,0 +1,20 @@
+export ModelFile_M125_HOWZ_US is 'GameData:/Assets/3D/Units/US/Artillerie/M125/M125.Ase2NdfBin'
+
+Modele_M125_HOWZ_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M125_HOWZ_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M125_HOWZ_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Artillerie/M125_MID/M125_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M125_HOWZ_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Artillerie/LODS/M125_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

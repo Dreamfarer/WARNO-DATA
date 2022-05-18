@@ -1,0 +1,57 @@
+export SoldierNoiseDescriptor is TNoiseDescriptor
+(
+    // Chaos dans le mouvement des soldats.
+    // En gros, on va tirer deux temps: un temps d'attente t_wait et un temps pour appliquer le nouveau bruit t_lerp
+    // le temps total d'update du buit va être t_total = t_wait + t_lerp. Au bout de ce temps, on calcule le nouveau bruit.
+    // cedricp 26/03/2021: On a changé l'update un peu: maintenant un soldat à son bruit updaté à la fois. Donc le nouveau calculé
+    // sera appliqué à l'update suivant
+    NoiseWaitTimeMin            = 0.5
+    NoiseWaitTimeMax            = 2
+    NoiseLerpTimeMin            = 3
+    NoiseLerpTimeMax            = 4
+)
+
+export SoldierAnimationDataDescriptor is TSoldierAnimationDataDescriptor
+(
+    // Probabilite de lancement de l'animation d'inspection
+    IdleLookProba       = 0.03
+
+    // Constantes pour la mort.
+    ProbaViolentDeath       = 0.65 //0.5
+)
+
+export SoldierSquadDataDescriptor is TSoldierSquadDataDescriptor
+(
+    // Constantes prise en compte pour jouer les animations de hit.
+    OnHitProbaNormalWeapon  = 0.06 //0.1
+    OnHitProbaOtherWeapon   = 0.01
+
+    // Ratio de soldat utilisant leur arme secondaire (grenade, etc.)
+    FiringUnitRatio = 0.6
+
+    // Decalage entre les tirs secondaires
+    DecalageSeFire = 0.25
+)
+
+export SoldierColumnDescriptor is TColumnFormationDescriptor
+(
+    FrontWedgeDistanceFromLeader = 20 * Metre // 50 * Metre
+    BackWedgeDistanceFromLeader = 20* Metre // 40* Metre
+    InterSoldierDistance = 19.9 * Metre // 35 * Metre
+    WedgesAngle = 10 // 20
+)
+
+export SoldierLineDescriptor is TLineFormationDescriptor
+(
+    InterSoldierDistance = 19.9 * Metre // 35 * Metre
+)
+
+
+export SoldierSquadMovementDataDescriptor is TSoldierSquadMovementDataDescriptor
+(
+     // Distance min entre deux soldats, utilise pour les collisions
+    NoiseMax      = 19.9 * Metre // 150, Avant fix homothetie : 300
+
+    // Acceleration max des soldats. En unité IG, parce que honêtement pourquoi pas. J'ai testé entre 2000 et 10000, et 5000 est un bon compromis.
+    SoldierMaxAcceleration = 5000
+)

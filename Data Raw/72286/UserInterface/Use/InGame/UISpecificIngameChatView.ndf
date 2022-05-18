@@ -1,0 +1,488 @@
+//----------------------------------------------------------------------
+
+DropDownWidth is 380
+ChatClearAllButtonWidth is ChatButtonStandardWidth + 50.0
+ChatPanelWidth is 350 //3 * ChatButtonStandardWidth + DropDownWidth + 2 * ChatButtonChangeFontSizeWidth + ChatClearAllButtonWidth
+ChatPanelTotalHeight is ChatLogHeight + ChatEditableTextHeight + ChatButtonAndDropDownHeight
+ChatLogHeight is 198.0
+ChatEditableTextHeight is 25.0
+ChatButtonAndDropDownHeight is 25.0
+ChatButtonStandardWidth is 50.0
+ChatButtonChangeFontSizeWidth is 42.0
+//-------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+
+ChatParagraphStyleCentered is TParagraphStyleRTTI
+(
+    Alignment = UIText_Center
+    VerticalAlignment = UIText_VerticalCenter
+    InterLine = 0
+)
+
+ChatParagraphStyleTopLeft is TParagraphStyleRTTI
+(
+    Alignment = UIText_Left
+    VerticalAlignment = UIText_Up
+    InterLine = 0
+    BigWordAction = ~/BigWordAction/BigWordNewLine
+)
+
+//----------------------------------------------------------------------
+
+private IngameChatRadioButtonManager is TBUCKRadioButtonManager()
+
+ChatButtonSelectAll is BoutonFulda
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [65.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    ElementName = 'ButtonAll'
+    RadioButtonManager = IngameChatRadioButtonManager
+    IsTogglable = true
+    TextToken = "C_ALL"
+
+    HintTitleToken = "HCT_ALLBUT"
+    HintBodyToken = "HCT_ALLBUB"
+    HintExtendedToken = "HCT_ALLBUE"
+
+
+)
+ChatButtonSelectAlly is BoutonFulda
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [65.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    ElementName = "ButtonAlly"
+    RadioButtonManager = IngameChatRadioButtonManager
+    IsTogglable = true
+    TextToken = "C_TEAM"
+
+    HintTitleToken = "HCT_ALYBUT"
+    HintBodyToken = "HCT_ALYBUB"
+    HintExtendedToken = "HCT_ALYBUE"
+)
+
+
+
+ChatButtonSelectContacts is BoutonFulda
+(
+    ElementName = 'ButtonContacts'
+    RadioButtonManager = IngameChatRadioButtonManager
+    IsTogglable = true
+    TextToken = "C_CTACT"
+
+    HintTitleToken = "HCT_CONBUT"
+    HintBodyToken = "HCT_CONBUB"
+    HintExtendedToken = "HCT_CONBUE"
+
+)
+
+//----------------------------------------------------------------------
+
+ChatLogMessage is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    ParagraphStyle = ~/ChatParagraphStyleTopLeft
+    TextStyle = "ChatLogMessage"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/MultiLine
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextColor = "BlancEquipe"
+    TextSize = "15"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextFormatScript = ~/ChatTextFormatScript
+)
+
+//----------------------------------------------------------------------
+
+ChatSelectFriendDropDown is DropdownFulda
+(
+    ElementName = 'DropDownSelectFriend'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, ChatButtonAndDropDownHeight]
+    )
+
+    ItemComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [400.0, 40.0]
+    )
+)
+
+//----------------------------------------------------------------------
+
+ChatButtonClearAll is BoutonFulda
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [55.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    ElementName = 'ButtonClear'
+    TextToken = "C_CLEARH"
+    HintTitleToken = "HCT_CLRBUT"
+    HintBodyToken = "HCT_CLRBUB"
+    HintExtendedToken = "HCT_CLRBUE"
+)
+
+//----------------------------------------------------------------------
+
+ChatButtonDecreaseFontSize is BoutonFulda
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    ElementName = 'ButtonDecreaseFontSize'
+    TextToken = "CHAT_MINUS"
+    HintTitleToken = "HCT_DFTSIT"
+    HintBodyToken = "HCT_DFTSIB"
+    HintExtendedToken = "HCT_DFTSIE"
+
+)
+
+//----------------------------------------------------------------------
+
+ChatButtonIncreaseFontSize is BoutonFulda
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    ElementName = 'ButtonIncreaseFontSize'
+    TextToken = "CHAT_PLUS"
+    HintTitleToken = "HCT_IFTSIT"
+    HintBodyToken = "HCT_IFTSIB"
+    HintExtendedToken = "HCT_IFTSIE"
+)
+
+//----------------------------------------------------------------------
+
+IngameChatLogScrollingContainer is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = 'IngameChatLogScrollingContainer'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [0.0, -30.0]
+        MagnifiableOffset = [0.0, 30.0]
+    )
+
+    ExternalScrollbar = false
+    HasVerticalScrollbar = true
+
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [5.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKRackDescriptor
+        (
+            ElementName = 'MessageRack'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+
+                AlignementToFather = [0.0, 1.0]
+                AlignementToAnchor = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            AssumeChildrenAreClippable = true
+
+            BladeDescriptor = ~/ChatLogMessage
+        )
+    ]
+)
+
+//----------------------------------------------------------------------
+
+ChatLogBackground is BUCKContainerDescriptor
+(
+    ElementName = "ChatLogBackground"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "Fulda2_Noir"
+)
+
+//----------------------------------------------------------------------
+
+IngameChatLogComponent is BUCKContainerDescriptor
+(
+    ElementName = "ChatLog"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [-12.0, ChatLogHeight-10.0]
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableOffset = [10.0, 0.0]
+    )
+
+    Components =
+    [
+        ~/ChatLogBackground,
+        ~/IngameChatLogScrollingContainer
+    ]
+)
+
+//----------------------------------------------------------------------
+
+ChatBarComponent is BUCKContainerDescriptor
+(
+    ElementName = "ChatBar"
+
+    HidePointerEvents = true
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        PanelRoundedCorner( BackgroundBlockColorToken = 'TypeB' ),
+        BUCKEditableTextDescriptor
+        (
+            ElementName = 'ChatBarEditableText'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [-10.0, ChatEditableTextHeight-5.0]
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableOffset = [0.0, ChatLogHeight-5.0]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.0]
+            )
+
+            TypefaceToken = "UIMainFont"
+            TextSizeToken = "16"
+            TextColorToken = "CyanChrono"
+
+            SelectionColorToken = "Fulda2_Jaune100"
+
+            ClippingContainerFrameProperty = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [-6.0, -6.0]
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            MaxChars = 140
+            TextStyle = "Chat"
+
+            Components =
+            [
+                PanelRoundedCorner
+                (
+                    Radius = 3
+                    BackgroundBlockColorToken = 'TypeB'
+                    BorderLineColorToken = 'LigneA'
+                ),
+            ]
+        ),
+        LigneBoutonAqui,
+    ]
+)
+//-------------------------------------------------------------------------------------
+LigneBoutonAqui is BUCKListDescriptor
+(
+    ElementName = 'ChatBarButtonList'
+
+    ComponentFrame = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = [0.0, ChatButtonAndDropDownHeight]
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0.0, ChatLogHeight + 20.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    FirstMargin = TRTTILength( Magnifiable = 5.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+    LastMargin = TRTTILength( Magnifiable = 5.0 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatButtonSelectAll
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatButtonSelectAlly
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatButtonSelectContacts
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatSelectFriendDropDown
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI()
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatButtonClearAll
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatButtonDecreaseFontSize
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatButtonIncreaseFontSize
+        ),
+    ]
+)
+
+LigneBoutonOptions is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = [0.0, ChatButtonAndDropDownHeight]
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0.0, 5.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    FirstMargin = TRTTILength( Magnifiable = 5.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+
+    Elements =
+    [
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatButtonClearAll
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatButtonDecreaseFontSize
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ChatButtonIncreaseFontSize
+        ),
+    ]
+)
+//----------------------------------------------------------------------
+
+FlarePanelChatContainer is BUCKContainerDescriptor
+(
+    UniqueName = "UICommonFlarePanelViewMainContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [-10,0]
+        AlignementToFather = [1, 0.0]
+        AlignementToAnchor = [1, 0.0]
+
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    //HasBackground = true
+    BackgroundBlockColorToken = "Orange"
+
+    // envoie UICommonFlarePanelViewMainComponent
+)
+
+//----------------------------------------------------------------------
+
+BUCKSpecificIngameChatMainComponentDescriptor is BUCKContainerDescriptor
+(
+
+    ElementName = 'LeChatPanel'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [360.0, ChatPanelTotalHeight]
+        MagnifiableOffset = [10.0, -275.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    Components =
+    [
+        ~/ChatBarComponent,
+        ~/IngameChatLogComponent,
+    ]
+)
+
+//----------------------------------------------------------------------
+
+UISpecificIngameChatViewDescriptor is TUISpecificIngameChatViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificIngameChatMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    OpenAllCommandName = InGameKeyCommands/OpenChat_All
+    OpenTeamCommandName = InGameKeyCommands/OpenChat_Team
+
+    UserInputLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameChat
+
+    StartFadeFactor = TUIAnimFactorRTTI
+    (
+        AnimDuration = 6.0
+        Modificator = ~/AnimModificator/None
+    )
+
+    FadeFactor = TUIAnimFactorRTTI
+    (
+        AnimDuration = 2.0
+        Modificator = ~/AnimModificator/None
+    )
+
+    StartingMagnification = 1.3
+    MinMagnification = 0.8
+    MaxMagnification = 1.5
+)
+
+//----------------------------------------------------------------------

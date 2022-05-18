@@ -1,0 +1,56 @@
+export ModelFile_BTR_60_SOV is 'GameData:/Assets/3D/Units/URSS/APC/BTR_60/BTR_60.Ase2NdfBin'
+
+Modele_BTR_60_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BTR_60_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_60_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BTR_60/BTR_60.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_60_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BTR_60/BTR_60.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+//-------------------------------------------------------------------------------------
+Gfx_Modele_BTR_60_SOV  is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Socle_SOV ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Depiction = TDepictionTemplate
+            (
+                Scaler = CommonIdentityScaler
+                Selector = OnlyHighDepictionSelector
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_courte ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Anchor = "vehicule"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 7)
+                        Selector = CommonDepictionSelector
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_BTR_60_SOV ),
+                            DepictionDescriptor_LOD_Mid ( MeshDescriptor = Modele_BTR_60_SOV ),
+                            DepictionDescriptor_LOD_Low ( MeshDescriptor = Modele_BTR_60_SOV DisabledOperators = ['tourelle3'] ),
+                        ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)
+
+

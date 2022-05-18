@@ -1,0 +1,300 @@
+ZocRadius is 700 * Metre
+
+StrategicCampaignConstantes is TStrategicCampaignConstantes
+(
+    MovementSmoothingMaxAngle = 45. // entre 10° (si vraiment besoin de moins, venir en discuter avec un dev) et 180° (équivaut à "pas d'angle max")
+    MaxSubMovementLength = 500 * Metre
+
+    FatigueGainOnMove = ~/StrategicFatigueGainOnMove
+    FatigueLossOnNextTurn = ~/StrategicFatigueLossOnNextTurn
+    FatigueGainOnBombard = ~/StrategicFatigueGainOnBombard
+    FatigueGainOnFlee = ~/StrategicFatigueGainOnFlee
+    RoutOnMaxFatigue = ~/StrategicRoutOnMaxFatigue
+    AllowRepairsOnMaxFatigueRout = ~/StrategicAllowRepairsOnMaxFatigueRout
+    EmptyActionPointsOnMaxFatigueRout = ~/StrategicEmptyActionPointsOnMaxFatigueRout
+    KillOnMaxFatigueReached = ~/StrategicKillOnMaxFatigueReached
+    AttackerFatigueGainAfterCombat = ~/StrategicBattleAttackerFatigueGainAfterBattle
+    DefenderFatigueGainAfterCombat = ~/StrategicBattleDefenderFatigueGainAfterBattle
+
+    PawnDissolutionFactor = 0.70 //Un pion est dissout après le combat si sa dernière compagnie est en dessous de X% de son effectif initial
+    CompanyDissolutionFactor = 0.3 //Une compagnie est dissoute après le combat si elle est en dessous de X% de son effectif initial
+    FreeDefenseRadius = 1.75 * ~/ActionPointConsumptionRefs/CaseSize // Le rayon autour de l'unité attaquée dans lequel les unités alliés peuvent attaquer sans reset leur défense et sans bouger
+    NbActionPointsNeededToFight = 3 //Nombre de PA nécessaire pour participer à une bataille une fois sur place
+    NbActionPointsNeededToFightForAirplane = 1 //Nombre de PA nécessaire pour participer à une bataille une fois sur place
+
+    // Zocs et fuite
+    ConflictingUnitRadius = ZocRadius   //Taille de la ZOC des unités.
+    EnemiesDisableSpawnRadius = 0 * ~/ActionPointConsumptionRefs/CaseSize    //Taille du rayon qui desactive les point de renfort
+    EnemiesCaptureAirportRadius = 2 * ~/ActionPointConsumptionRefs/CaseSize        //Taille du rayon qui capture les aéroports
+    APSlowZocMalus = 1.0
+    APSlowZocMalusFeedbackDuration = 5//ticks
+    DisableGroundZocsWhenNoAP = false
+    DisableMoveOrderOnDisabledZocs = false
+    FleeToAlliesIfPossible = true
+    FleeMinimumCaseNumber = 1
+
+    //----------
+    // Airports
+    AirportSlotsRadius = 200 * Metre // Le rayon de base autour de l'aéroport sur lequel se placent les avions
+    NumberOfAerialUnitsPerRadius = 4 // Le nombre d'avions par rayon
+    AlignAirplaneInAirportOnGrid = true
+
+    //Regles du Tactique
+    TacticalTimeLimit = 30
+    TacticalScoreLimit = 2000
+
+    //----------
+    // Consequences de combat
+    MaxActionPointsUsedByDefenseToFlee = MAP [
+        (EVictoryType/Draw,             9),
+        (EVictoryType/MinorVictory,     9),
+        (EVictoryType/MajorVictory,     6),
+        (EVictoryType/TotalVictory,     3),
+    ]
+    MaxActionPointsUsedByAttackToFlee = MAP [
+        (EVictoryType/Draw,             9),
+        (EVictoryType/MinorDefeat,      9),
+        (EVictoryType/MajorDefeat,      9),
+        (EVictoryType/TotalDefeat,      3),
+    ]
+    ActionPointsPenaltyForDefenseDefeat = MAP [
+        (EVictoryType/MinorVictory,     4),
+        (EVictoryType/MajorVictory,     4),
+        (EVictoryType/TotalVictory,     4),
+    ]
+    ActionPointsPenaltyForAttackDefeat = MAP [
+        (EVictoryType/MinorDefeat,      4),
+        (EVictoryType/MajorDefeat,      4),
+        (EVictoryType/TotalDefeat,      4),
+    ]
+    ActionPointsPenaltyForDefenseDefeatForPlane = MAP [
+        (EVictoryType/MinorVictory,     4),
+        (EVictoryType/MajorVictory,     4),
+        (EVictoryType/TotalVictory,     4),
+    ]
+    ActionPointsPenaltyForAttackDefeatForPlane = MAP [
+        (EVictoryType/MinorDefeat,      4),
+        (EVictoryType/MajorDefeat,      4),
+        (EVictoryType/TotalDefeat,      4),
+    ]
+    ActionPointsPenaltyForDefenseDefeatForOutMapArtillery = MAP [
+        (EVictoryType/MinorVictory,     1),
+        (EVictoryType/MajorVictory,     2),
+        (EVictoryType/TotalVictory,     3),
+    ]
+    ActionPointsPenaltyForAttackDefeatForOutMapArtillery = MAP [
+        (EVictoryType/MinorDefeat,      2),
+        (EVictoryType/MajorDefeat,      3),
+        (EVictoryType/TotalDefeat,      4),
+    ]
+
+    ActionPointsPenaltyForAllAttackersIntercepted = 5 // embuscade
+
+    NbTurnToRepairDisabledUnit = 2
+
+    NbColumnsPerFormationLine = 5
+    DistanceBetweenFormationColumns = 500 * Metre
+    DistanceBetweenFormationLines = 500 * Metre
+
+    //cosmetique des ordres
+    BattleArrowStartBorderColor = [0, 0, 0, 0]
+    BattleArrowStartFillColor = [0, 0, 255, 0]
+    BattleArrowStartThickness = 1200.0
+
+    BattleArrowEndBorderColor = [0, 0, 0, 0]
+    BattleArrowEndFillColor = [0, 0, 255, 0]
+    BattleArrowEndThickness = 1200.0
+
+    BattleArrowLength = 1000.0
+    BattleArrowWidth = 3000.0
+    BattleLineWidth = 30.0
+
+    BattleArrowDuration = 1 //ticks
+    TextFeedbackDurationMin = 4
+    TextFeedbackDurationMax = 4
+
+    ForbidTacticalFightOnStrategicSectors =
+    [
+        "Urban_Area",
+    ]
+
+    UnitsToKilometersMultiplier = 0.000006 * Metre //000008
+
+    ShowDeathTextFeedback = false
+
+    // Règles de multisélection
+    MultiSelectionLimit = 5
+
+    // Règles de compagnies
+    MaxUnitsPerCompany = 9
+
+    // Ecoulement du temps
+    TurnTimeOfDay = ["StrMorn", "StrAftn"] // un tour de jeu a 8h, le suivant a 14h etc...
+
+    SteelmanCombatFX = $/GFX/GameFx/FX_Steelman_Combat_Binder
+    SteelmanFxDuration = 1
+    SteelmanCombatSound = $/VFX_Bank/SFX_Steelman_Combat_Sound
+
+    SteelmanAirCombatFX = $/GFX/GameFx/FX_Steelman_Combat_Binder
+    SteelmanAirCombatFxDuration = 45
+    SteelmanAirCombatSound = $/VFX_Bank/SFX_Steelman_Combat_Sound
+
+    // Possibilite de conserver un ordre sur plusieurs tours
+    MultipleTurnOrdersActivated = false
+
+    DeployDisplayFactor = 0.1
+    PowerValuesBattleFactor = 0.01 //0.0045*1.2  // valeur du point de force dans l'affichage des pions et de la barre
+    DigitToDisplayForAutoresolveUnitPower = 0
+    DigitToDisplayForAutoresolveArmyRatio = 1
+    DigitToDisplayForAutoresolveCombatAdvantage = 0
+    DigitToDisplayForAutoresolveBattleResult = 1
+
+    SpeedIncreaseBetweenTurns = 20 // vitesse des pions non pdt visibile pendant le tour de l'ia
+
+    BattleNbBattleGroup = 3 // Nombre maximal de pions qui peuvent rejoindre le combat pour une équipe
+    BattleNbSlotsAllowedPerBattleGroup = 1
+    BattleNbMaxSupportPawn = 1 // Nombre maximal de pions support (hors avions) qui peuvent rejoindre le combat pour une équipe
+    BattleNbMaxPlanePawn = 1 // Nombre maximal de pions avions qui peuvent rejoindre le combat pour une équipe
+
+    SteelmanMaxUnitSelection = MAP[
+        (ENationalite/Allied, 1),
+        (ENationalite/Axis, 1)
+    ]
+
+    DefaultStartingTicketsPoints = MAP
+    [
+        (ENationalite/Allied, 20),
+        (ENationalite/Axis, 20),
+    ]
+
+    DefaultTicketsPointsIncome = MAP // points par minute
+    [
+        (ENationalite/Allied, 5),
+        (ENationalite/Axis, 5),
+    ]
+
+    AerialBattleTicketsPoint = MAP
+    [
+        (ENationalite/Allied, 2000),   //350
+        (ENationalite/Axis, 2000),     //350
+    ]
+
+    SolAirBattleTicketsPoint = MAP
+    [
+        (ENationalite/Allied, 2000),   //350
+        (ENationalite/Axis, 2000),     //350
+    ]
+
+    StrategicMapVictoryTypeFromScoreRatio = [
+        (0.2   ,        EVictoryType/TotalDefeat),
+        (0.4    ,         EVictoryType/MajorDefeat),
+        (0.666    ,         EVictoryType/MinorDefeat),
+        (1.0    ,         EVictoryType/Draw),
+        (1.49    ,         EVictoryType/MinorVictory),
+        (2.49   ,         EVictoryType/MajorVictory),
+        (5      ,         EVictoryType/TotalVictory),
+    ]
+
+    //les tokens doivent être dans : INTERFACE_INGAME.csv
+    NumberLimitAndTokenLimitByTag = MAP
+    [
+        ("HQ", (3, "MAXPAWNTAG")),
+    ]
+
+    // Production des renforts
+    ReinforcementSnapCursorRadius = 1200 * Metre
+    ReinforcementSpawnNoAlliesRadius = 0.5 * ~/ActionPointConsumptionRefs/CaseSize //Impossible de spawn dans la case d'un allié
+    ReinforcementSpawnNoEnemiesRadius = ZocRadius //Impossible de spawn dans la ZoC d'un ennemi
+    ReinforcementSpawnStandardForbiddenTerrainMask = ~/ETerrainType/EauPeuProfonde
+    ReinforcementSpawnAirborneForbiddenTerrainMask = ~/ETerrainType/Urbain | ~/ETerrainType/EauPeuProfonde // Modifier PLACE_AIRB dans INTERFACE_INGAME.csv si la règle change
+
+    ValidGhostColors = TGhostColors(
+        GhostColor = [0, 255, 0, 128]
+        GhostAlpha = 0.6
+        GhostColor2 = [0, 255, 0, 128]
+        GhostAlpha2 = 0.8
+    )
+    InvalidGhostColors = TGhostColors(
+        GhostColor = [255, 0, 0, 128]
+        GhostAlpha = 0.6
+        GhostColor2 = [255, 0, 0, 128]
+        GhostAlpha2 = 0.8
+    )
+
+    // Ordres
+    ActionPointCostPerOrder = MAP [
+        ("Shoot",                   3.0), // GroundDeny - les zones de ralentissement terrestres posées par bombardier et artilleries.
+        ("AirplaneMoveAndEngage",   3.0), // Boxing/AirDeny - zones Air/Air
+        ("AirplanePatrol",          3.0), // AirplaneReco - reconnaissance aérienne
+        ("Bombarder",               1.0), // Bomb - bombardement single target (avion ou arti)
+        ("Fortify",                 3.0), // Fortify - action de défense
+        ("FortifyAntiAir",          2.0), // FortifyAntiAir - action de defense Anti aerienne des unites au sol
+        ("Move",                    0.0), // Le cout du move est calculé en fonction de la distance parcourue
+    ]
+    SetupDurationPerOrder = MAP [
+        ("FortifyAntiAir",          0), // FortifyAntiAir - action de defense Anti aerienne des unites au sol
+    ]
+
+    //Apparence
+    OverrideModelWithMostRepresentativeUnitInDeck = false
+
+    //IA steelman
+    AvailableAIList =
+    [
+        IADifficulty/Facile,
+        IADifficulty/Normal,
+        IADifficulty/Difficile,
+    ]
+
+     //Bonus en pourcentage donnée à l'IA à l'income, selon la difficulté
+    RelativeIABonusFluxByIADifficulty = MAP
+    [
+        (IADifficulty/TresFacile,            0.0),
+        (IADifficulty/Facile,                0.0),
+        (IADifficulty/Normal,                0.0),
+        (IADifficulty/Difficile,             0.5),
+        (IADifficulty/TresDifficile,         0.5),
+        (IADifficulty/PlusDifficile,         0.7),
+    ]
+
+
+    // Niveau des IA en partie tactique selon le niveau d'IA steelman
+    // le 1er élément du tableau est le niveau d'IA pour les IA du joueur
+    // le 2nd élement du tableau est le niveau d'IA pour les IA adverses
+    TacticalIALevelPerIADifficulty = MAP
+    [
+        (IADifficulty/TresFacile,          [IADifficulty/Difficile,     IADifficulty/Facile]),
+        (IADifficulty/Facile,              [IADifficulty/Difficile,     IADifficulty/Normal]),
+        (IADifficulty/Normal,              [IADifficulty/Normal,        IADifficulty/Normal]),
+        (IADifficulty/Difficile,           [IADifficulty/Normal,        IADifficulty/Difficile]),
+        (IADifficulty/TresDifficile,       [IADifficulty/Normal,        IADifficulty/Difficile]),
+        (IADifficulty/PlusDifficile,       [IADifficulty/Difficile,     IADifficulty/TresDifficile]),
+    ]
+
+    // IA TActiques dans steelman, les niveaux ici correspondent à ceux paramétrés dans les tableaux de TacticalIALevelPerIADifficulty
+
+    // Bonus en pourcentage donné à l'IA à l'income, par phase. Exemple : 0.0 = +0%, 0.10 = +10%
+    // Remplace le RelativeBonusFluxByIADifficultyAndPhase de GDConstantes.ndf
+    TacticalRelativeBonusFluxByIADifficulty = MAP
+    [
+        (IADifficulty/TresFacile,    0.0),
+        (IADifficulty/Facile,        0.0),
+        (IADifficulty/Normal,        0.0),
+        (IADifficulty/Difficile,     0.5),
+        (IADifficulty/TresDifficile, 0.5),
+        (IADifficulty/PlusDifficile, 0.5),
+    ]
+
+    FXTokensForMoveSequence = ["Move"]
+    FXTokensForDieSequence = ["Die"]
+    FXTokensForArtiFireSequence = ["ArtiFire"]
+    FXTokensForArtiBombSequence = ["ArtiBomb"]
+    FXTokensForAerialBombSequence = ["AerBomb"]
+
+    ActionPointConsumptionGridConstantsDescriptor = ~/ActionPointConsumptionGridConstants
+
+    HideManual = true
+
+    BataillonMoralValue = 50
+    DefeatMoralPercentage = 0.2
+)

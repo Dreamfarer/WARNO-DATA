@@ -1,0 +1,35 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+
+
+
+
+
+export Texture_Minimap_Unit_unit is TUIResourceTexture_InGame
+(
+    FileName = "GameData:/Assets/2D/Interface/UseInGame/Minimap/unit.png"
+)
+export Texture_Minimap_Unit_inf is TUIResourceTexture_InGame
+(
+    FileName = "GameData:/Assets/2D/Interface/UseInGame/Minimap/inf.png"
+)
+export Texture_Minimap_Unit_helico is TUIResourceTexture_InGame
+(
+    FileName = "GameData:/Assets/2D/Interface/UseInGame/Minimap/helico.png"
+)
+export Texture_Minimap_Unit_avion is TUIResourceTexture_InGame
+(
+    FileName = "GameData:/Assets/2D/Interface/UseInGame/Minimap/avion.png"
+)
+
+MinimapIconAdditionalTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+        ("Texture_Minimap_Unit_unit", MAP [(~/ComponentState/Normal, ~/Texture_Minimap_Unit_unit)]),
+        ("Texture_Minimap_Unit_inf", MAP [(~/ComponentState/Normal, ~/Texture_Minimap_Unit_inf)]),
+        ("Texture_Minimap_Unit_helico", MAP [(~/ComponentState/Normal, ~/Texture_Minimap_Unit_helico)]),
+        ("Texture_Minimap_Unit_avion", MAP [(~/ComponentState/Normal, ~/Texture_Minimap_Unit_avion)]),
+    ]
+)

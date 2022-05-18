@@ -1,0 +1,75 @@
+
+// -------------------------------------------------------------------------------------------------
+// StrategicContainer
+// -------------------------------------------------------------------------------------------------
+
+// Container for Strategic points
+private StrategicProductionMenuStrategicPointsContainer is BUCKListDescriptor
+(
+    UniqueName = 'tuto_pointcmd'
+    ElementName = 'incomeEnStrategique'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0,25]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    FirstMargin = TRTTILength( Magnifiable = 10.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+    LastMargin = TRTTILength( Magnifiable = 10.0 )
+
+    HasBorder = true
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "LigneSeparatricePanelRessources"
+    BordersToDraw =  ~/TBorderSide/Right
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = "RequisitionPoints"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [20.0, 20.0]
+
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                TextureToken = "UseInGame_RequisitionPoints"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/StrategicProductionMenuStrategicPointsText
+
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/StrategicProductionMenuStrategicIncomePointsText
+        ),
+
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner
+        (
+            BackgroundBlockColorToken = 'SM_Ebony'
+            BorderLineColorToken = 'SM_Grullo'
+            RoundedVertexes  = [true, true, false,false] // le 1er est en bas à gauche
+
+        )
+    ]
+)
+
+//------------------------------------------------------------------
+UIStrategicProductionMenuStrategicPointsViewDescriptor is TUIStrategicProductionMenuStrategicPointsViewDescriptor
+(
+    MainComponentDescriptor = ~/StrategicProductionMenuStrategicPointsContainer
+    MainComponentContainerUniqueName = "StrategicProductionMenuStrategicPointsContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

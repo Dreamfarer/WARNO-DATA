@@ -1,0 +1,389 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export GenericBreakthroughDefenseStrategy is TIAGeneralStrategy
+(
+    StrategyName = "GenBTDefAI"
+    FirstGenerator = GenBTDef_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    ShouldUseTaggedCorridorsForTouchDown = true
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        GenBTDef_Transition_StartToDeploy,
+        GenBTDef_Transition_StartToFrontLineDefense,
+        GenBTDef_Transition_StartToBackLineDefense,
+        GenBTDef_Transition_DeployToFrontLineDefense,
+        GenBTDef_Transition_FrontLineDefenseToBackLineDefense,
+        GenBTDef_Transition_BackLineDefenseToStrikeBack,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export GenBTDef_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Condition_TriggerBackLine is TSequenceCondition_MapPossessionPerCorridor
+(
+    PossessionRatio = 0.6
+    NumberOfCorridorsNeeded = 5  //2
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Condition_StrikeBack is TSequenceCondition_Wait
+(
+    Time = 1200
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export GenBTDef_Transition_StartToDeploy is TIAGeneralStrategyTransition
+(
+    Origine = GenBTDef_Choose_Strategy
+    Condition = GenBTDef_Condition_GotoGeneric
+    Destination = GenBTDef_PhaseDeploiement
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Transition_StartToFrontLineDefense is TIAGeneralStrategyTransition
+(
+    Origine = GenBTDef_Choose_Strategy
+    Condition = GenBTDef_Condition_CommandPhase
+    Destination = GenBTDef_Phase_FrontLineDefense
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Transition_StartToBackLineDefense is TIAGeneralStrategyTransition
+(
+    Origine = GenBTDef_Choose_Strategy
+    Condition = GenBTDef_Condition_TriggerBackLine
+    Destination = GenBTDef_Phase_BackLineDefense
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Transition_DeployToFrontLineDefense is TIAGeneralStrategyTransition
+(
+    Origine = GenBTDef_PhaseDeploiement
+    Condition = GenBTDef_Condition_CommandPhase
+    Destination = GenBTDef_Phase_FrontLineDefense
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Transition_FrontLineDefenseToBackLineDefense is TIAGeneralStrategyTransition
+(
+    Origine = GenBTDef_Phase_FrontLineDefense
+    Condition = GenBTDef_Condition_TriggerBackLine
+    Destination = GenBTDef_Phase_BackLineDefense
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Transition_BackLineDefenseToStrikeBack is TIAGeneralStrategyTransition
+(
+    Origine = GenBTDef_Phase_BackLineDefense
+    Condition = GenBTDef_Condition_StrikeBack
+    Destination = GenBTDef_Phase_StrikeBack
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export GenBTDef_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        //~/GenBTDef_Support_AntiTank,
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_PhaseDeploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        // Capture de zones
+        ~/CaptureAllZoneObjectif,
+
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+        ~/GenBTDef_Defense_Static_Adaptive_FrontLane, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/GenBTDef_Defense_Static_Adaptive_FrontLane,
+
+        ~/GenBTDef_Defense_Static_AA_FrontLane,
+        ~/GenBTDef_Static_SuperCommander_FrontLane,
+
+        ~/GenBTDef_Artillery_FrontLane,        // Artillerie pas chère                 //  80
+
+        ~/GenBTDef_Defense_Static_Adaptive_FrontLane,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/GenBTDef_Defense_Static_Adaptive_FrontLane,
+
+        ~/GenBTDef_Defense_Filler_FrontLane,
+
+        ~/GenBTDef_Defense_Static_Adaptive_FrontLane, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/GenBTDef_Defense_Static_Adaptive_FrontLane,
+        ~/GenBTDef_Defense_Static_Tank_FrontLane, // Mission avec un char lourd en static
+
+    ] + GenBTDef_Defenses_Airstrike_Arti_Shuffle_FrontLane
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    ScalingGeneratorList = ~/GenBTDef_Scaling_Defense_FrontLane
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Phase_FrontLineDefense is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        // Ici on cherche a economiser, on ne renforce que si l'on a assez d'argent pour pouvoir fill la backline en cas de trigger
+        // Capture de zones
+        ~/CaptureAllZoneObjectif,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+        //------------------------------
+        // Maitain
+        //------------------------------
+        ~/Maintain_CorridorDefenses,
+        ~/Maintain_CorridorDynamicDefenses,
+        ~/Maintain_AirStrike,
+        ~/Maintain_Artillery,
+
+        //------------------------------
+        // Priority Productions
+        //------------------------------
+        ~/GenBTDef_Defense_Dynamic_FrontLane,
+        ~/GenBTDef_Defense_Dynamic_FrontLane,
+    ]
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    ScalingGeneratorList = ~/GenBTDef_Scaling_Defense_Economic
+)
+
+//-------------------------------------------------------------------------
+export GenBTDef_Phase_BackLineDefense is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        // Ici on cherche a economiser, on ne renforce que si l'on a assez d'argent pour pouvoir fill la backline en cas de trigger
+
+        // Capture de zones
+        ~/CaptureAllZoneObjectif,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        ~/Support_Transports,
+
+        ~/Supply_Skirmish,
+
+        //------------------------------
+        // Maitain
+        //------------------------------
+        ~/Maintain_CorridorDefenses,
+        ~/Maintain_CorridorDynamicDefenses, //possiblement a créer
+        ~/Maintain_AirStrike,
+        ~/Maintain_Artillery,
+
+        //------------------------------
+        // Defense
+        //------------------------------
+        ~/GenBTDef_Defense_Static_Adaptive_BackLane, // Canon AT - Chasseur de char - ATInf - HMG - Flamer // 85
+        ~/GenBTDef_Defense_Static_Adaptive_BackLane,
+
+        ~/Attack_Objectives,
+
+        ~/GenBTDef_Defense_Static_AA_BackLane,
+        ~/GenBTDef_Static_SuperCommander_BackLane,
+
+        ~/Artillery_Expensive,
+
+        ~/GenBTDef_Defense_Static_Adaptive_BackLane,
+        ~/GenBTDef_Defense_Static_Adaptive_BackLane,
+
+        ~/GenBTDef_Defense_Static_Adaptive_BackLane_Filler,
+
+        ~/GenBTDef_Defense_Dynamic_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/GenBTDef_Defense_Dynamic_Adaptive,
+
+        ~/Attack_Objectives,
+    ] + GenBTDef_Defenses_Airstrike_Arti_Shuffle_BackLane
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    // Dans les difficultés supérieures il faudra surement maintenir
+    // ça avec des maintain à la phase d'après pour être sur qu'on
+    // produise de nouvelles unités
+    ScalingGeneratorList = ~/GenBTDef_Scaling_Defense
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Phase_StrikeBack is TSequenceGeneratorDescriptor
+(
+    // Les défenses prioritaires disparaissent, on lance un nouveau set d'attaques
+    // On ajoute des défenses non prioritaires dynamiques
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        // Capture de zones
+        ~/CaptureAllZoneObjectif,
+
+        ~/Maintain_CorridorAttacks,
+        ~/Maintain_ObjectiveAttacks,
+        ~/Maintain_CorridorDefenses,
+
+        //------------------------------
+        // Support & Supply
+        //------------------------------
+        //~/Support_AntiTank,
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+        ~/Attack_Filler,
+
+        //------------------------------
+        // Attaques principales
+        //------------------------------
+        ~/Attack_Objectives,
+
+        ~/GenBTDef_Defense_Dynamic_Adaptive,  // Faire du code pour adapater le budget en fonction de l'income
+        ~/GenBTDef_Defense_Dynamic_Adaptive,
+        ~/Attack_Adaptive,
+
+        ~/SuperCommander,
+
+        ~/Attack_Main,              // Plusieurs tanks pour un budget donné // 200
+        ~/Artillery_Support,        // Artillerie pas chère                 //  80
+
+        // Maintien
+        ~/Reco,
+
+        //------------------------------
+        // Défenses Avions Arti
+        //------------------------------
+        ~/Supply_Skirmish_Allied,
+
+
+    ] + ~/GenBTDef_Defenses_Airstrike_Arti_Shuffle
+
+
+    //------------------------------
+    // Scaling
+    //------------------------------
+    // Dans les difficultés supérieures il faudra surement maintenir
+    // ça avec des maintain à la phase d'après pour être sur qu'on
+    // produise de nouvelles unités
+    ScalingGeneratorList = ~/GenBTDef_Scaling
+)
+
+
+
+
+
+GenBTDef_Defenses_Airstrike_Arti_Shuffle_FrontLane is
+[
+    ~/GenBTDef_Defense_Static_Adaptive_FrontLane,
+    ~/Airstrike_Defense,
+    ~/Artillery_Expensive,
+    ~/GenBTDef_Defense_Static_Adaptive_FrontLane,
+    ~/GenBTDef_Defense_Static_AA_FrontLane,
+    ~/GenBTDef_Defense_Static_Adaptive_FrontLane,
+    ~/Maintain_AirStrike,
+    ~/Maintain_Artillery,
+]
+
+GenBTDef_Defenses_Airstrike_Arti_Shuffle_BackLane is
+[
+    ~/GenBTDef_Defense_Static_Adaptive_BackLane,
+    ~/Airstrike_Defense,
+    ~/Artillery_Expensive,
+    ~/GenBTDef_Defense_Static_Adaptive_BackLane,
+    ~/GenBTDef_Defense_Static_AA_BackLane,
+    ~/GenBTDef_Defense_Static_Adaptive_BackLane,
+    ~/Maintain_AirStrike,
+    ~/Maintain_Artillery,
+]
+
+GenBTDef_Defenses_Airstrike_Arti_Shuffle is
+[
+    ~/GenBTDef_Defense_Static_Adaptive,
+    ~/Airstrike_Defense,
+    ~/Artillery_Expensive,
+    ~/GenBTDef_Defense_Static_Adaptive,
+    ~/GenBTDef_Defense_Static_AA,
+    ~/GenBTDef_Defense_Static_Adaptive,
+    ~/AirReco,
+    ~/Maintain_AirStrike,
+    ~/Maintain_Artillery,
+]
+
+GenBTDef_Scaling_Defense_FrontLane is
+[
+    ~/GenBTDef_Defense_Static_Adaptive_Autogen_FrontLane,
+    ~/GenBTDef_Defense_Static_Adaptive_Autogen_FrontLane,
+    ~/Airstrike_Defense_Autogen,
+    ~/GenBTDef_Defense_Static_AA_Autogen,
+    ~/Artillery_TriggerHappy_Autogen,
+    ~/Airstrike_Defense_Autogen,
+    ~/Artillery_TriggerHappy_Autogen,
+    ~/Artillery_Expensive_Autogen,
+]
+
+GenBTDef_Scaling_Defense is
+[
+    ~/GenBTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/GenBTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/Airstrike_Defense_Autogen,
+    ~/GenBTDef_Defense_Static_AA_Autogen,
+    ~/Artillery_TriggerHappy_Autogen,
+    ~/Airstrike_Defense_Autogen,
+    ~/Artillery_TriggerHappy_Autogen,
+    ~/Artillery_Expensive_Autogen,
+]
+
+GenBTDef_Scaling_Defense_Economic is
+[
+    ~/GenBTDef_Defense_Dynamic_Adaptive_Autogen_Economic,
+    ~/GenBTDef_Defense_Dynamic_Adaptive_Autogen_Economic,
+    ~/Airstrike_Defense_Autogen_Economic,
+    ~/GenBTDef_Defense_Static_AA_Autogen_Economic,
+    ~/GenBTDef_Artillery_TriggerHappy_Autogen_Economic,
+    ~/Airstrike_Defense_Autogen_Economic,
+    ~/GenBTDef_Artillery_TriggerHappy_Autogen_Economic,
+    ~/Artillery_Expensive_Autogen_Economic,
+]
+
+GenBTDef_Scaling is
+[
+    ~/Attack_Main_Autogen,
+    ~/Attack_Adaptive_Autogen,
+    ~/Attack_Adaptive_Autogen,
+    ~/GenBTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/GenBTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/Airstrike_Defense_Autogen,
+    ~/GenBTDef_Defense_Dynamic_Adaptive_Autogen,
+    ~/GenBTDef_Defense_Static_AA_Autogen,
+    ~/Artillery_TriggerHappy_Autogen,
+    ~/Airstrike_Offense_Autogen,
+    ~/Artillery_TriggerHappy_Autogen,
+    ~/Attack_Objectives_Autogen,
+    ~/Artillery_Expensive_Autogen,
+    ~/Airstrike_Assault_Autogen,
+]

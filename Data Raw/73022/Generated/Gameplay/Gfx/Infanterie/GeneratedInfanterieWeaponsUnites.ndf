@@ -1,0 +1,3917 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+
+Weapon_AeroRifles_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_AeroRifles_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_AeroRifles_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_AeroRifles_US_1_FiringFXAll,
+        Weapon_AeroRifles_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_AeroRifles_US_1_World is TIntroduceMobileHappening( Happening = Weapon_AeroRifles_US_1_FX )
+
+Weapon_AeroRifles_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_AeroRifles_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_AeroRifles_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_AeroRifles_US_2_FiringFXAll,
+        Weapon_AeroRifles_US_2_ProjectileFXAll,
+        SFXWeapon_MMG_M60_7_62mm
+    ]
+)
+Weapon_AeroRifles_US_2_World is TIntroduceMobileHappening( Happening = Weapon_AeroRifles_US_2_FX )
+
+Weapon_AeroRifles_US_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_AeroRifles_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_AeroRifles_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_AeroRifles_US_3_FiringFXAll,
+        Weapon_AeroRifles_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_M72_LAW_66mm
+    ]
+)
+Weapon_AeroRifles_US_3_World is TIntroduceMobileHappening( Happening = Weapon_AeroRifles_US_3_FX )
+
+Weapon_Airborne_Engineer_CMD_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Airborne_Engineer_CMD_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Airborne_Engineer_CMD_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Airborne_Engineer_CMD_US_1_FiringFXAll,
+        Weapon_Airborne_Engineer_CMD_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Airborne_Engineer_CMD_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_Engineer_CMD_US_1_FX )
+
+Weapon_Airborne_Engineer_CMD_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Airborne_Engineer_CMD_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Airborne_Engineer_CMD_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Airborne_Engineer_CMD_US_2_FiringFXAll,
+        Weapon_Airborne_Engineer_CMD_US_2_ProjectileFXAll,
+        SFXWeapon_MMG_M60_7_62mm
+    ]
+)
+Weapon_Airborne_Engineer_CMD_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_Engineer_CMD_US_2_FX )
+
+Weapon_Airborne_Engineers_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Airborne_Engineers_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Airborne_Engineers_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Airborne_Engineers_US_1_FiringFXAll,
+        Weapon_Airborne_Engineers_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Airborne_Engineers_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_Engineers_US_1_FX )
+
+Weapon_Airborne_Engineers_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Airborne_Engineers_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Airborne_Engineers_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Airborne_Engineers_US_2_FiringFXAll,
+        Weapon_Airborne_Engineers_US_2_ProjectileFXAll,
+        SFXWeapon_MMG_M60_7_62mm
+    ]
+)
+Weapon_Airborne_Engineers_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_Engineers_US_2_FX )
+
+Weapon_Airborne_Engineers_US_3_ProjectileFXAll is fx_traine_grenade_Panzerknacker_1_2_False_00_00
+Weapon_Airborne_Engineers_US_3_FX is Weapon_Airborne_Engineers_US_3_ProjectileFXAll
+Weapon_Airborne_Engineers_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_Engineers_US_3_FX )
+
+Weapon_Airborne_MP_RCL_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Airborne_MP_RCL_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Airborne_MP_RCL_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Airborne_MP_RCL_US_1_FiringFXAll,
+        Weapon_Airborne_MP_RCL_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Airborne_MP_RCL_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_MP_RCL_US_1_FX )
+
+Weapon_Airborne_MP_RCL_US_2_FiringFXAll is fx_tir_Recoiless_Gun_1_2
+Weapon_Airborne_MP_RCL_US_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Airborne_MP_RCL_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Airborne_MP_RCL_US_2_FiringFXAll,
+        Weapon_Airborne_MP_RCL_US_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_M67_RCL_90mm
+    ]
+)
+Weapon_Airborne_MP_RCL_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_MP_RCL_US_2_FX )
+
+Weapon_Airborne_MP_RCL_US_3_FiringFXAll is fx_tir_Recoiless_Gun_1_2
+Weapon_Airborne_MP_RCL_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Airborne_MP_RCL_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Airborne_MP_RCL_US_3_FiringFXAll,
+        Weapon_Airborne_MP_RCL_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_M67_RCL_90mm_HE
+    ]
+)
+Weapon_Airborne_MP_RCL_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_MP_RCL_US_3_FX )
+
+Weapon_Airborne_MP_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Airborne_MP_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Airborne_MP_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Airborne_MP_US_1_FiringFXAll,
+        Weapon_Airborne_MP_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Airborne_MP_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_MP_US_1_FX )
+
+Weapon_Airborne_MP_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Airborne_MP_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Airborne_MP_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Airborne_MP_US_2_FiringFXAll,
+        Weapon_Airborne_MP_US_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_Airborne_MP_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Airborne_MP_US_2_FX )
+
+Weapon_Engineer_CMD_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineer_CMD_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineer_CMD_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineer_CMD_US_1_FiringFXAll,
+        Weapon_Engineer_CMD_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Engineer_CMD_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineer_CMD_US_1_FX )
+
+Weapon_Engineers_AT_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_AT_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_AT_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_AT_RFA_1_FiringFXAll,
+        Weapon_Engineers_AT_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Engineers_AT_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_AT_RFA_1_FX )
+
+Weapon_Engineers_AT_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Engineers_AT_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_AT_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_AT_RFA_2_FiringFXAll,
+        Weapon_Engineers_AT_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_Engineers_AT_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_AT_RFA_2_FX )
+
+Weapon_Engineers_AT_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Engineers_AT_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Engineers_AT_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_AT_RFA_3_FiringFXAll,
+        Weapon_Engineers_AT_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_Armbrust
+    ]
+)
+Weapon_Engineers_AT_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_AT_RFA_3_FX )
+
+Weapon_Engineers_CMD_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_CMD_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_CMD_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_CMD_DDR_1_FiringFXAll,
+        Weapon_Engineers_CMD_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_Engineers_CMD_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_CMD_DDR_1_FX )
+
+Weapon_Engineers_CMD_DDR_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Engineers_CMD_DDR_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Engineers_CMD_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_CMD_DDR_2_FiringFXAll,
+        Weapon_Engineers_CMD_DDR_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VL
+    ]
+)
+Weapon_Engineers_CMD_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_CMD_DDR_2_FX )
+
+Weapon_Engineers_CMD_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_CMD_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_CMD_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_CMD_RFA_1_FiringFXAll,
+        Weapon_Engineers_CMD_RFA_1_ProjectileFXAll,
+        SFXWeapon_PM_uzi
+    ]
+)
+Weapon_Engineers_CMD_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_CMD_RFA_1_FX )
+
+Weapon_Engineers_CMD_RFA_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Engineers_CMD_RFA_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Engineers_CMD_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_CMD_RFA_2_FiringFXAll,
+        Weapon_Engineers_CMD_RFA_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_Carl_Gustav
+    ]
+)
+Weapon_Engineers_CMD_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_CMD_RFA_2_FX )
+
+Weapon_Engineers_CMD_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_CMD_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_CMD_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_CMD_SOV_1_FiringFXAll,
+        Weapon_Engineers_CMD_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_Engineers_CMD_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_CMD_SOV_1_FX )
+
+Weapon_Engineers_CMD_SOV_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Engineers_CMD_SOV_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Engineers_CMD_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_CMD_SOV_2_FiringFXAll,
+        Weapon_Engineers_CMD_SOV_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VL
+    ]
+)
+Weapon_Engineers_CMD_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_CMD_SOV_2_FX )
+
+Weapon_Engineers_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_DDR_1_FiringFXAll,
+        Weapon_Engineers_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_Engineers_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_DDR_1_FX )
+
+Weapon_Engineers_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Engineers_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_DDR_2_FiringFXAll,
+        Weapon_Engineers_DDR_2_ProjectileFXAll,
+        SFXWeapon_MMG_PKM_7_62mm
+    ]
+)
+Weapon_Engineers_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_DDR_2_FX )
+
+Weapon_Engineers_DDR_3_ProjectileFXAll is fx_traine_grenade_Panzerknacker_1_2_False_00_00
+Weapon_Engineers_DDR_3_FX is Weapon_Engineers_DDR_3_ProjectileFXAll
+Weapon_Engineers_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_DDR_3_FX )
+
+Weapon_Engineers_Dragon_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_Dragon_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_Dragon_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Dragon_US_1_FiringFXAll,
+        Weapon_Engineers_Dragon_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Engineers_Dragon_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Dragon_US_1_FX )
+
+Weapon_Engineers_Dragon_US_2_FiringFXAll is fx_tir_missile_AT_BGM71TOW_1_5
+Weapon_Engineers_Dragon_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Dragon_US_2_FiringFXAll,
+        SFXWeapon_M47_DRAGON_II
+    ]
+)
+Weapon_Engineers_Dragon_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Dragon_US_2_FX )
+
+Weapon_Engineers_Flam_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_Flam_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_Flam_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flam_DDR_1_FiringFXAll,
+        Weapon_Engineers_Flam_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_Engineers_Flam_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flam_DDR_1_FX )
+
+Weapon_Engineers_Flam_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Engineers_Flam_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_Flam_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flam_DDR_2_FiringFXAll,
+        Weapon_Engineers_Flam_DDR_2_ProjectileFXAll,
+        SFXWeapon_MMG_PKM_7_62mm
+    ]
+)
+Weapon_Engineers_Flam_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flam_DDR_2_FX )
+
+Weapon_Engineers_Flam_DDR_3_FiringFXAll is fx_depart_tir_lance_flammes_1_2
+Weapon_Engineers_Flam_DDR_3_ProjectileFXAll is fx_tir_lance_flammes_1_2_False_00_00
+Weapon_Engineers_Flam_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flam_DDR_3_FiringFXAll,
+        Weapon_Engineers_Flam_DDR_3_ProjectileFXAll,
+        SFXWeapon_flamethrower_LPO
+    ]
+)
+Weapon_Engineers_Flam_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flam_DDR_3_FX )
+
+Weapon_Engineers_Flam_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_Flam_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_Flam_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flam_RFA_1_FiringFXAll,
+        Weapon_Engineers_Flam_RFA_1_ProjectileFXAll,
+        SFXWeapon_PM_uzi
+    ]
+)
+Weapon_Engineers_Flam_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flam_RFA_1_FX )
+
+Weapon_Engineers_Flam_RFA_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Engineers_Flam_RFA_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Engineers_Flam_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flam_RFA_2_FiringFXAll,
+        Weapon_Engineers_Flam_RFA_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_Handflammpatrone
+    ]
+)
+Weapon_Engineers_Flam_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flam_RFA_2_FX )
+
+Weapon_Engineers_Flam_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_Flam_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_Flam_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flam_SOV_1_FiringFXAll,
+        Weapon_Engineers_Flam_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_Engineers_Flam_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flam_SOV_1_FX )
+
+Weapon_Engineers_Flam_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Engineers_Flam_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_Flam_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flam_SOV_2_FiringFXAll,
+        Weapon_Engineers_Flam_SOV_2_ProjectileFXAll,
+        SFXWeapon_MMG_PKM_7_62mm
+    ]
+)
+Weapon_Engineers_Flam_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flam_SOV_2_FX )
+
+Weapon_Engineers_Flam_SOV_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Engineers_Flam_SOV_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Engineers_Flam_SOV_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flam_SOV_3_FiringFXAll,
+        Weapon_Engineers_Flam_SOV_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPO_A_93mm
+    ]
+)
+Weapon_Engineers_Flam_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flam_SOV_3_FX )
+
+Weapon_Engineers_Flash_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_Flash_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_Flash_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flash_US_1_FiringFXAll,
+        Weapon_Engineers_Flash_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Engineers_Flash_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flash_US_1_FX )
+
+Weapon_Engineers_Flash_US_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Engineers_Flash_US_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Engineers_Flash_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_Flash_US_2_FiringFXAll,
+        Weapon_Engineers_Flash_US_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_M202_Flash_66mm
+    ]
+)
+Weapon_Engineers_Flash_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_Flash_US_2_FX )
+
+Weapon_Engineers_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_RFA_1_FiringFXAll,
+        Weapon_Engineers_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Engineers_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_RFA_1_FX )
+
+Weapon_Engineers_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Engineers_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_RFA_2_FiringFXAll,
+        Weapon_Engineers_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_Engineers_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_RFA_2_FX )
+
+Weapon_Engineers_RFA_3_ProjectileFXAll is fx_traine_grenade_Panzerknacker_1_2_False_00_00
+Weapon_Engineers_RFA_3_FX is Weapon_Engineers_RFA_3_ProjectileFXAll
+Weapon_Engineers_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_RFA_3_FX )
+
+Weapon_Engineers_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_SOV_1_FiringFXAll,
+        Weapon_Engineers_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_Engineers_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_SOV_1_FX )
+
+Weapon_Engineers_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Engineers_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_SOV_2_FiringFXAll,
+        Weapon_Engineers_SOV_2_ProjectileFXAll,
+        SFXWeapon_MMG_PKM_7_62mm
+    ]
+)
+Weapon_Engineers_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_SOV_2_FX )
+
+Weapon_Engineers_SOV_3_ProjectileFXAll is fx_traine_grenade_Panzerknacker_1_2_False_00_00
+Weapon_Engineers_SOV_3_FX is Weapon_Engineers_SOV_3_ProjectileFXAll
+Weapon_Engineers_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_SOV_3_FX )
+
+Weapon_Engineers_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Engineers_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_US_1_FiringFXAll,
+        Weapon_Engineers_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Engineers_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_US_1_FX )
+
+Weapon_Engineers_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Engineers_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Engineers_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Engineers_US_2_FiringFXAll,
+        Weapon_Engineers_US_2_ProjectileFXAll,
+        SFXWeapon_MMG_M60_7_62mm
+    ]
+)
+Weapon_Engineers_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_US_2_FX )
+
+Weapon_Engineers_US_3_ProjectileFXAll is fx_traine_grenade_Panzerknacker_1_2_False_00_00
+Weapon_Engineers_US_3_FX is Weapon_Engineers_US_3_ProjectileFXAll
+Weapon_Engineers_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Engineers_US_3_FX )
+
+Weapon_Fallschirm_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fallschirm_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirm_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirm_RFA_1_FiringFXAll,
+        Weapon_Fallschirm_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Fallschirm_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirm_RFA_1_FX )
+
+Weapon_Fallschirm_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Fallschirm_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirm_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirm_RFA_2_FiringFXAll,
+        Weapon_Fallschirm_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_Fallschirm_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirm_RFA_2_FX )
+
+Weapon_Fallschirm_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Fallschirm_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Fallschirm_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirm_RFA_3_FiringFXAll,
+        Weapon_Fallschirm_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_PzF_3
+    ]
+)
+Weapon_Fallschirm_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirm_RFA_3_FX )
+
+Weapon_Fallschirmjager_CMD_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fallschirmjager_CMD_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_CMD_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_CMD_DDR_1_FiringFXAll,
+        Weapon_Fallschirmjager_CMD_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AKS_74NK
+    ]
+)
+Weapon_Fallschirmjager_CMD_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_CMD_DDR_1_FX )
+
+Weapon_Fallschirmjager_CMD_DDR_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Fallschirmjager_CMD_DDR_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Fallschirmjager_CMD_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_CMD_DDR_2_FiringFXAll,
+        Weapon_Fallschirmjager_CMD_DDR_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG18_64mm
+    ]
+)
+Weapon_Fallschirmjager_CMD_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_CMD_DDR_2_FX )
+
+Weapon_Fallschirmjager_CMD_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fallschirmjager_CMD_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_CMD_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_CMD_RFA_1_FiringFXAll,
+        Weapon_Fallschirmjager_CMD_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Fallschirmjager_CMD_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_CMD_RFA_1_FX )
+
+Weapon_Fallschirmjager_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fallschirmjager_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_DDR_1_FiringFXAll,
+        Weapon_Fallschirmjager_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AKS_74NK
+    ]
+)
+Weapon_Fallschirmjager_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_DDR_1_FX )
+
+Weapon_Fallschirmjager_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Fallschirmjager_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_DDR_2_FiringFXAll,
+        Weapon_Fallschirmjager_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_Fallschirmjager_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_DDR_2_FX )
+
+Weapon_Fallschirmjager_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Fallschirmjager_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Fallschirmjager_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_DDR_3_FiringFXAll,
+        Weapon_Fallschirmjager_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VL
+    ]
+)
+Weapon_Fallschirmjager_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_DDR_3_FX )
+
+Weapon_Fallschirmjager_FalseFlag_CMD_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fallschirmjager_FalseFlag_CMD_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_FalseFlag_CMD_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_FalseFlag_CMD_DDR_1_FiringFXAll,
+        Weapon_Fallschirmjager_FalseFlag_CMD_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Fallschirmjager_FalseFlag_CMD_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_FalseFlag_CMD_DDR_1_FX )
+
+Weapon_Fallschirmjager_FalseFlag_CMD_DDR_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Fallschirmjager_FalseFlag_CMD_DDR_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Fallschirmjager_FalseFlag_CMD_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_FalseFlag_CMD_DDR_2_FiringFXAll,
+        Weapon_Fallschirmjager_FalseFlag_CMD_DDR_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_M72_LAW_66mm
+    ]
+)
+Weapon_Fallschirmjager_FalseFlag_CMD_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_FalseFlag_CMD_DDR_2_FX )
+
+Weapon_Fallschirmjager_FalseFlag_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fallschirmjager_FalseFlag_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_FalseFlag_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_FalseFlag_DDR_1_FiringFXAll,
+        Weapon_Fallschirmjager_FalseFlag_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Fallschirmjager_FalseFlag_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_FalseFlag_DDR_1_FX )
+
+Weapon_Fallschirmjager_FalseFlag_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Fallschirmjager_FalseFlag_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_FalseFlag_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_FalseFlag_DDR_2_FiringFXAll,
+        Weapon_Fallschirmjager_FalseFlag_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_Fallschirmjager_FalseFlag_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_FalseFlag_DDR_2_FX )
+
+Weapon_Fallschirmjager_FalseFlag_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Fallschirmjager_FalseFlag_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Fallschirmjager_FalseFlag_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_FalseFlag_DDR_3_FiringFXAll,
+        Weapon_Fallschirmjager_FalseFlag_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_M72_LAW_66mm
+    ]
+)
+Weapon_Fallschirmjager_FalseFlag_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_FalseFlag_DDR_3_FX )
+
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_1_FiringFXAll,
+        Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_1_FX )
+
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_2_FiringFXAll,
+        Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_2_ProjectileFXAll,
+        SFXWeapon_MMG_M60_7_62mm
+    ]
+)
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_2_FX )
+
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_3_ProjectileFXAll is fx_traine_grenade_Panzerknacker_1_2_False_00_00
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_3_FX is Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_3_ProjectileFXAll
+Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_FlaseFlag_Demo_DDR_3_FX )
+
+Weapon_Fallschirmjager_Metys_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fallschirmjager_Metys_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_Metys_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_Metys_DDR_1_FiringFXAll,
+        Weapon_Fallschirmjager_Metys_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AKS_74NK
+    ]
+)
+Weapon_Fallschirmjager_Metys_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_Metys_DDR_1_FX )
+
+Weapon_Fallschirmjager_Metys_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Fallschirmjager_Metys_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_Metys_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_Metys_DDR_2_FiringFXAll,
+        Weapon_Fallschirmjager_Metys_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_Fallschirmjager_Metys_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_Metys_DDR_2_FX )
+
+Weapon_Fallschirmjager_Metys_DDR_3_FiringFXAll is fx_tir_missile_AT_BGM71TOW_1_5
+Weapon_Fallschirmjager_Metys_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_Metys_DDR_3_FiringFXAll,
+        SFXWeapon_ATGM_9K115_Metis_M
+    ]
+)
+Weapon_Fallschirmjager_Metys_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_Metys_DDR_3_FX )
+
+Weapon_Fallschirmjager_Scout_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fallschirmjager_Scout_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_Scout_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_Scout_RFA_1_FiringFXAll,
+        Weapon_Fallschirmjager_Scout_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Fallschirmjager_Scout_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_Scout_RFA_1_FX )
+
+Weapon_Fallschirmjager_Scout_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Fallschirmjager_Scout_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fallschirmjager_Scout_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_Scout_RFA_2_FiringFXAll,
+        Weapon_Fallschirmjager_Scout_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_Fallschirmjager_Scout_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_Scout_RFA_2_FX )
+
+Weapon_Fallschirmjager_Scout_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Fallschirmjager_Scout_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Fallschirmjager_Scout_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fallschirmjager_Scout_RFA_3_FiringFXAll,
+        Weapon_Fallschirmjager_Scout_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_PzF_3
+    ]
+)
+Weapon_Fallschirmjager_Scout_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Fallschirmjager_Scout_RFA_3_FX )
+
+Weapon_Feldgendarmerie_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Feldgendarmerie_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Feldgendarmerie_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Feldgendarmerie_RFA_1_FiringFXAll,
+        Weapon_Feldgendarmerie_RFA_1_ProjectileFXAll,
+        SFXWeapon_PM_MP_5A3
+    ]
+)
+Weapon_Feldgendarmerie_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Feldgendarmerie_RFA_1_FX )
+
+Weapon_Fernspaher_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Fernspaher_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fernspaher_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fernspaher_RFA_1_FiringFXAll,
+        Weapon_Fernspaher_RFA_1_ProjectileFXAll,
+        SFXWeapon_PM_MP_5SD
+    ]
+)
+Weapon_Fernspaher_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Fernspaher_RFA_1_FX )
+
+Weapon_Fernspaher_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Fernspaher_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Fernspaher_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Fernspaher_RFA_2_FiringFXAll,
+        Weapon_Fernspaher_RFA_2_ProjectileFXAll,
+        SFXWeapon_SAW_HK21_7_62mm
+    ]
+)
+Weapon_Fernspaher_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Fernspaher_RFA_2_FX )
+
+Weapon_Fernspaher_RFA_3_ProjectileFXAll is fx_traine_grenade_Panzerknacker_1_2_False_00_00
+Weapon_Fernspaher_RFA_3_FX is Weapon_Fernspaher_RFA_3_ProjectileFXAll
+Weapon_Fernspaher_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Fernspaher_RFA_3_FX )
+
+Weapon_FireSupport_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_FireSupport_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_FireSupport_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_FireSupport_SOV_1_FiringFXAll,
+        Weapon_FireSupport_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_FireSupport_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_FireSupport_SOV_1_FX )
+
+Weapon_FireSupport_SOV_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_FireSupport_SOV_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_FireSupport_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_FireSupport_SOV_2_FiringFXAll,
+        Weapon_FireSupport_SOV_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG29_105mm
+    ]
+)
+Weapon_FireSupport_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_FireSupport_SOV_2_FX )
+
+Weapon_Grenzer_CMD_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Grenzer_CMD_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Grenzer_CMD_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Grenzer_CMD_DDR_1_FiringFXAll,
+        Weapon_Grenzer_CMD_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_KMS_72
+    ]
+)
+Weapon_Grenzer_CMD_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Grenzer_CMD_DDR_1_FX )
+
+Weapon_Grenzer_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Grenzer_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Grenzer_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Grenzer_DDR_1_FiringFXAll,
+        Weapon_Grenzer_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_KMS_72
+    ]
+)
+Weapon_Grenzer_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Grenzer_DDR_1_FX )
+
+Weapon_Grenzer_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Grenzer_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Grenzer_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Grenzer_DDR_2_FiringFXAll,
+        Weapon_Grenzer_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_Grenzer_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Grenzer_DDR_2_FX )
+
+Weapon_HMG_NSV_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_HMG_NSV_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_HMG_NSV_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HMG_NSV_SOV_1_FiringFXAll,
+        Weapon_HMG_NSV_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_HMG_NSV_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_HMG_NSV_SOV_1_FX )
+
+Weapon_HMG_NSV_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_HMG_NSV_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_HMG_NSV_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HMG_NSV_SOV_2_FiringFXAll,
+        Weapon_HMG_NSV_SOV_2_ProjectileFXAll,
+        SFXWeapon_SAW_RPK_74_5_56mm
+    ]
+)
+Weapon_HMG_NSV_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_HMG_NSV_SOV_2_FX )
+
+Weapon_HMG_NSV_SOV_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_HMG_NSV_SOV_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_HMG_NSV_SOV_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HMG_NSV_SOV_3_FiringFXAll,
+        Weapon_HMG_NSV_SOV_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VR_64mm
+    ]
+)
+Weapon_HMG_NSV_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_HMG_NSV_SOV_3_FX )
+
+Weapon_HeimatschutzJager_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_HeimatschutzJager_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_HeimatschutzJager_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HeimatschutzJager_RFA_1_FiringFXAll,
+        Weapon_HeimatschutzJager_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_HeimatschutzJager_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_HeimatschutzJager_RFA_1_FX )
+
+Weapon_HeimatschutzJager_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_HeimatschutzJager_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_HeimatschutzJager_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HeimatschutzJager_RFA_2_FiringFXAll,
+        Weapon_HeimatschutzJager_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_HeimatschutzJager_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_HeimatschutzJager_RFA_2_FX )
+
+Weapon_HeimatschutzJager_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_HeimatschutzJager_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_HeimatschutzJager_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HeimatschutzJager_RFA_3_FiringFXAll,
+        Weapon_HeimatschutzJager_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_PzF_44
+    ]
+)
+Weapon_HeimatschutzJager_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_HeimatschutzJager_RFA_3_FX )
+
+Weapon_HvyScout_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_HvyScout_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_HvyScout_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HvyScout_DDR_1_FiringFXAll,
+        Weapon_HvyScout_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_HvyScout_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_HvyScout_DDR_1_FX )
+
+Weapon_HvyScout_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_HvyScout_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_HvyScout_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HvyScout_DDR_2_FiringFXAll,
+        Weapon_HvyScout_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_HvyScout_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_HvyScout_DDR_2_FX )
+
+Weapon_HvyScout_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_HvyScout_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_HvyScout_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HvyScout_DDR_3_FiringFXAll,
+        Weapon_HvyScout_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG18_64mm
+    ]
+)
+Weapon_HvyScout_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_HvyScout_DDR_3_FX )
+
+Weapon_HvyScout_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_HvyScout_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_HvyScout_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HvyScout_SOV_1_FiringFXAll,
+        Weapon_HvyScout_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_HvyScout_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_HvyScout_SOV_1_FX )
+
+Weapon_HvyScout_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_HvyScout_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_HvyScout_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_HvyScout_SOV_2_FiringFXAll,
+        Weapon_HvyScout_SOV_2_ProjectileFXAll,
+        SFXWeapon_SAW_RPK_74_5_56mm
+    ]
+)
+Weapon_HvyScout_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_HvyScout_SOV_2_FX )
+
+Weapon_Jager_Aufk_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Jager_Aufk_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Jager_Aufk_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Jager_Aufk_RFA_1_FiringFXAll,
+        Weapon_Jager_Aufk_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Jager_Aufk_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Jager_Aufk_RFA_1_FX )
+
+Weapon_Jager_Aufk_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Jager_Aufk_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Jager_Aufk_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Jager_Aufk_RFA_2_FiringFXAll,
+        Weapon_Jager_Aufk_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_Jager_Aufk_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Jager_Aufk_RFA_2_FX )
+
+Weapon_Jager_Aufk_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Jager_Aufk_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Jager_Aufk_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Jager_Aufk_RFA_3_FiringFXAll,
+        Weapon_Jager_Aufk_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_PzF_44
+    ]
+)
+Weapon_Jager_Aufk_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Jager_Aufk_RFA_3_FX )
+
+Weapon_Jager_CMD_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Jager_CMD_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Jager_CMD_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Jager_CMD_RFA_1_FiringFXAll,
+        Weapon_Jager_CMD_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Jager_CMD_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Jager_CMD_RFA_1_FX )
+
+Weapon_Jager_CMD_RFA_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Jager_CMD_RFA_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Jager_CMD_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Jager_CMD_RFA_2_FiringFXAll,
+        Weapon_Jager_CMD_RFA_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_Carl_Gustav
+    ]
+)
+Weapon_Jager_CMD_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Jager_CMD_RFA_2_FX )
+
+Weapon_Jager_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Jager_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Jager_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Jager_RFA_1_FiringFXAll,
+        Weapon_Jager_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Jager_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Jager_RFA_1_FX )
+
+Weapon_Jager_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Jager_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Jager_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Jager_RFA_2_FiringFXAll,
+        Weapon_Jager_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_Jager_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Jager_RFA_2_FX )
+
+Weapon_Jager_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Jager_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Jager_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Jager_RFA_3_FiringFXAll,
+        Weapon_Jager_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_PzF_44
+    ]
+)
+Weapon_Jager_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Jager_RFA_3_FX )
+
+Weapon_KSM_CMD_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_KSM_CMD_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_KSM_CMD_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_KSM_CMD_RFA_1_FiringFXAll,
+        Weapon_KSM_CMD_RFA_1_ProjectileFXAll,
+        SFXWeapon_PM_MP_5A3
+    ]
+)
+Weapon_KSM_CMD_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_KSM_CMD_RFA_1_FX )
+
+Weapon_KdA_CMD_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_KdA_CMD_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_KdA_CMD_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_KdA_CMD_DDR_1_FiringFXAll,
+        Weapon_KdA_CMD_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_KMS_72
+    ]
+)
+Weapon_KdA_CMD_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_KdA_CMD_DDR_1_FX )
+
+Weapon_KdA_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_KdA_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_KdA_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_KdA_DDR_1_FiringFXAll,
+        Weapon_KdA_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_KMS_72
+    ]
+)
+Weapon_KdA_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_KdA_DDR_1_FX )
+
+Weapon_KdA_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_KdA_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_KdA_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_KdA_DDR_2_FiringFXAll,
+        Weapon_KdA_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_KdA_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_KdA_DDR_2_FX )
+
+Weapon_KdA_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_KdA_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_KdA_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_KdA_DDR_3_FiringFXAll,
+        Weapon_KdA_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VL
+    ]
+)
+Weapon_KdA_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_KdA_DDR_3_FX )
+
+Weapon_LRRP_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_LRRP_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_LRRP_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_LRRP_RFA_1_FiringFXAll,
+        Weapon_LRRP_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_LRRP_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_LRRP_RFA_1_FX )
+
+Weapon_LRRP_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_LRRP_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_LRRP_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_LRRP_RFA_2_FiringFXAll,
+        Weapon_LRRP_RFA_2_ProjectileFXAll,
+        SFXWeapon_SAW_HK21_7_62mm
+    ]
+)
+Weapon_LRRP_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_LRRP_RFA_2_FX )
+
+Weapon_LRRP_RFA_3_ProjectileFXAll is fx_traine_grenade_Panzerknacker_1_2_False_00_00
+Weapon_LRRP_RFA_3_FX is Weapon_LRRP_RFA_3_ProjectileFXAll
+Weapon_LRRP_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_LRRP_RFA_3_FX )
+
+Weapon_LRRP_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_LRRP_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_LRRP_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_LRRP_US_1_FiringFXAll,
+        Weapon_LRRP_US_1_ProjectileFXAll,
+        SFXWeapon_PM_M4_Carbine
+    ]
+)
+Weapon_LRRP_US_1_World is TIntroduceMobileHappening( Happening = Weapon_LRRP_US_1_FX )
+
+Weapon_LRRP_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_LRRP_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_LRRP_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_LRRP_US_2_FiringFXAll,
+        Weapon_LRRP_US_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_LRRP_US_2_World is TIntroduceMobileHappening( Happening = Weapon_LRRP_US_2_FX )
+
+Weapon_LRRP_US_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_LRRP_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_LRRP_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_LRRP_US_3_FiringFXAll,
+        Weapon_LRRP_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_M72_LAW_66mm
+    ]
+)
+Weapon_LRRP_US_3_World is TIntroduceMobileHappening( Happening = Weapon_LRRP_US_3_FX )
+
+Weapon_MANPAD_Igla_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MANPAD_Igla_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MANPAD_Igla_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MANPAD_Igla_SOV_1_FiringFXAll,
+        Weapon_MANPAD_Igla_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_MANPAD_Igla_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_MANPAD_Igla_SOV_1_FX )
+
+Weapon_MANPAD_Igla_SOV_2_FiringFXAll is fx_tir_missile_moyen_1_5
+Weapon_MANPAD_Igla_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MANPAD_Igla_SOV_2_FiringFXAll,
+        SFXWeapon_MANPAD_igla
+    ]
+)
+Weapon_MANPAD_Igla_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_MANPAD_Igla_SOV_2_FX )
+
+Weapon_MANPAD_Redeye_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MANPAD_Redeye_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MANPAD_Redeye_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MANPAD_Redeye_RFA_1_FiringFXAll,
+        Weapon_MANPAD_Redeye_RFA_1_ProjectileFXAll,
+        SFXWeapon_PM_uzi
+    ]
+)
+Weapon_MANPAD_Redeye_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_MANPAD_Redeye_RFA_1_FX )
+
+Weapon_MANPAD_Redeye_RFA_2_FiringFXAll is fx_tir_missile_AA_petit_1_5
+Weapon_MANPAD_Redeye_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MANPAD_Redeye_RFA_2_FiringFXAll,
+        SFXWeapon_MANPAD_FIM43
+    ]
+)
+Weapon_MANPAD_Redeye_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_MANPAD_Redeye_RFA_2_FX )
+
+Weapon_MANPAD_Stinger_C_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MANPAD_Stinger_C_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MANPAD_Stinger_C_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MANPAD_Stinger_C_US_1_FiringFXAll,
+        Weapon_MANPAD_Stinger_C_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_MANPAD_Stinger_C_US_1_World is TIntroduceMobileHappening( Happening = Weapon_MANPAD_Stinger_C_US_1_FX )
+
+Weapon_MANPAD_Stinger_C_US_2_FiringFXAll is fx_tir_missile_AA_petit_1_5
+Weapon_MANPAD_Stinger_C_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MANPAD_Stinger_C_US_2_FiringFXAll,
+        SFXWeapon_MANPAD_FIM92
+    ]
+)
+Weapon_MANPAD_Stinger_C_US_2_World is TIntroduceMobileHappening( Happening = Weapon_MANPAD_Stinger_C_US_2_FX )
+
+Weapon_MANPAD_Strela_2M_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MANPAD_Strela_2M_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MANPAD_Strela_2M_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MANPAD_Strela_2M_DDR_1_FiringFXAll,
+        Weapon_MANPAD_Strela_2M_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_MANPAD_Strela_2M_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_MANPAD_Strela_2M_DDR_1_FX )
+
+Weapon_MANPAD_Strela_2M_DDR_2_FiringFXAll is fx_tir_missile_AA_petit_1_5
+Weapon_MANPAD_Strela_2M_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MANPAD_Strela_2M_DDR_2_FiringFXAll,
+        SFXWeapon_MANPAD_Strela2M
+    ]
+)
+Weapon_MANPAD_Strela_2M_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_MANPAD_Strela_2M_DDR_2_FX )
+
+Weapon_MP_RCL_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MP_RCL_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MP_RCL_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MP_RCL_US_1_FiringFXAll,
+        Weapon_MP_RCL_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_MP_RCL_US_1_World is TIntroduceMobileHappening( Happening = Weapon_MP_RCL_US_1_FX )
+
+Weapon_MP_RCL_US_2_FiringFXAll is fx_tir_Recoiless_Gun_1_2
+Weapon_MP_RCL_US_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MP_RCL_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MP_RCL_US_2_FiringFXAll,
+        Weapon_MP_RCL_US_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_M67_RCL_90mm
+    ]
+)
+Weapon_MP_RCL_US_2_World is TIntroduceMobileHappening( Happening = Weapon_MP_RCL_US_2_FX )
+
+Weapon_MP_RCL_US_3_FiringFXAll is fx_tir_Recoiless_Gun_1_2
+Weapon_MP_RCL_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MP_RCL_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MP_RCL_US_3_FiringFXAll,
+        Weapon_MP_RCL_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_M67_RCL_90mm_HE
+    ]
+)
+Weapon_MP_RCL_US_3_World is TIntroduceMobileHappening( Happening = Weapon_MP_RCL_US_3_FX )
+
+Weapon_MP_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MP_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MP_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MP_US_1_FiringFXAll,
+        Weapon_MP_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_MP_US_1_World is TIntroduceMobileHappening( Happening = Weapon_MP_US_1_FX )
+
+Weapon_MP_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_MP_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_MP_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MP_US_2_FiringFXAll,
+        Weapon_MP_US_2_ProjectileFXAll,
+        SFXWeapon_MMG_M60_7_62mm
+    ]
+)
+Weapon_MP_US_2_World is TIntroduceMobileHappening( Happening = Weapon_MP_US_2_FX )
+
+Weapon_MotRifles_BTR_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotRifles_BTR_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_BTR_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_BTR_DDR_1_FiringFXAll,
+        Weapon_MotRifles_BTR_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_MotRifles_BTR_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_BTR_DDR_1_FX )
+
+Weapon_MotRifles_BTR_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_MotRifles_BTR_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_BTR_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_BTR_DDR_2_FiringFXAll,
+        Weapon_MotRifles_BTR_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_MotRifles_BTR_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_BTR_DDR_2_FX )
+
+Weapon_MotRifles_BTR_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotRifles_BTR_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotRifles_BTR_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_BTR_DDR_3_FiringFXAll,
+        Weapon_MotRifles_BTR_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VL
+    ]
+)
+Weapon_MotRifles_BTR_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_BTR_DDR_3_FX )
+
+Weapon_MotRifles_BTR_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotRifles_BTR_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_BTR_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_BTR_SOV_1_FiringFXAll,
+        Weapon_MotRifles_BTR_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_MotRifles_BTR_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_BTR_SOV_1_FX )
+
+Weapon_MotRifles_BTR_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_MotRifles_BTR_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_BTR_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_BTR_SOV_2_FiringFXAll,
+        Weapon_MotRifles_BTR_SOV_2_ProjectileFXAll,
+        SFXWeapon_SAW_RPK_74_5_56mm
+    ]
+)
+Weapon_MotRifles_BTR_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_BTR_SOV_2_FX )
+
+Weapon_MotRifles_BTR_SOV_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotRifles_BTR_SOV_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotRifles_BTR_SOV_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_BTR_SOV_3_FiringFXAll,
+        Weapon_MotRifles_BTR_SOV_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VR_64mm
+    ]
+)
+Weapon_MotRifles_BTR_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_BTR_SOV_3_FX )
+
+Weapon_MotRifles_CMD_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotRifles_CMD_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_CMD_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_CMD_DDR_1_FiringFXAll,
+        Weapon_MotRifles_CMD_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_MotRifles_CMD_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_CMD_DDR_1_FX )
+
+Weapon_MotRifles_CMD_DDR_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotRifles_CMD_DDR_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotRifles_CMD_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_CMD_DDR_2_FiringFXAll,
+        Weapon_MotRifles_CMD_DDR_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG18_64mm
+    ]
+)
+Weapon_MotRifles_CMD_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_CMD_DDR_2_FX )
+
+Weapon_MotRifles_CMD_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotRifles_CMD_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_CMD_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_CMD_SOV_1_FiringFXAll,
+        Weapon_MotRifles_CMD_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_MotRifles_CMD_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_CMD_SOV_1_FX )
+
+Weapon_MotRifles_CMD_SOV_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotRifles_CMD_SOV_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotRifles_CMD_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_CMD_SOV_2_FiringFXAll,
+        Weapon_MotRifles_CMD_SOV_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG22_72_5mm
+    ]
+)
+Weapon_MotRifles_CMD_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_CMD_SOV_2_FX )
+
+Weapon_MotRifles_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotRifles_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_DDR_1_FiringFXAll,
+        Weapon_MotRifles_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_MotRifles_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_DDR_1_FX )
+
+Weapon_MotRifles_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_MotRifles_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_DDR_2_FiringFXAll,
+        Weapon_MotRifles_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_MotRifles_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_DDR_2_FX )
+
+Weapon_MotRifles_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotRifles_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotRifles_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_DDR_3_FiringFXAll,
+        Weapon_MotRifles_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VL
+    ]
+)
+Weapon_MotRifles_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_DDR_3_FX )
+
+Weapon_MotRifles_HMG_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotRifles_HMG_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_HMG_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_HMG_DDR_1_FiringFXAll,
+        Weapon_MotRifles_HMG_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_MotRifles_HMG_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_HMG_DDR_1_FX )
+
+Weapon_MotRifles_HMG_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_MotRifles_HMG_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_HMG_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_HMG_DDR_2_FiringFXAll,
+        Weapon_MotRifles_HMG_DDR_2_ProjectileFXAll,
+        SFXWeapon_MMG_PKM_7_62mm
+    ]
+)
+Weapon_MotRifles_HMG_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_HMG_DDR_2_FX )
+
+Weapon_MotRifles_HMG_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotRifles_HMG_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotRifles_HMG_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_HMG_DDR_3_FiringFXAll,
+        Weapon_MotRifles_HMG_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG18_64mm
+    ]
+)
+Weapon_MotRifles_HMG_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_HMG_DDR_3_FX )
+
+Weapon_MotRifles_HMG_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotRifles_HMG_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_HMG_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_HMG_SOV_1_FiringFXAll,
+        Weapon_MotRifles_HMG_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_MotRifles_HMG_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_HMG_SOV_1_FX )
+
+Weapon_MotRifles_HMG_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_MotRifles_HMG_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_HMG_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_HMG_SOV_2_FiringFXAll,
+        Weapon_MotRifles_HMG_SOV_2_ProjectileFXAll,
+        SFXWeapon_MMG_PKM_7_62mm
+    ]
+)
+Weapon_MotRifles_HMG_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_HMG_SOV_2_FX )
+
+Weapon_MotRifles_HMG_SOV_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotRifles_HMG_SOV_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotRifles_HMG_SOV_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_HMG_SOV_3_FiringFXAll,
+        Weapon_MotRifles_HMG_SOV_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG22_72_5mm
+    ]
+)
+Weapon_MotRifles_HMG_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_HMG_SOV_3_FX )
+
+Weapon_MotRifles_Metis_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotRifles_Metis_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_Metis_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_Metis_SOV_1_FiringFXAll,
+        Weapon_MotRifles_Metis_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_MotRifles_Metis_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_Metis_SOV_1_FX )
+
+Weapon_MotRifles_Metis_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_MotRifles_Metis_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_Metis_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_Metis_SOV_2_FiringFXAll,
+        Weapon_MotRifles_Metis_SOV_2_ProjectileFXAll,
+        SFXWeapon_SAW_RPK_74_5_56mm
+    ]
+)
+Weapon_MotRifles_Metis_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_Metis_SOV_2_FX )
+
+Weapon_MotRifles_Metis_SOV_3_FiringFXAll is fx_tir_missile_AT_BGM71TOW_1_5
+Weapon_MotRifles_Metis_SOV_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_Metis_SOV_3_FiringFXAll,
+        SFXWeapon_ATGM_9K115_Metis_M
+    ]
+)
+Weapon_MotRifles_Metis_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_Metis_SOV_3_FX )
+
+Weapon_MotRifles_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotRifles_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_SOV_1_FiringFXAll,
+        Weapon_MotRifles_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_MotRifles_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_SOV_1_FX )
+
+Weapon_MotRifles_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_MotRifles_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotRifles_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_SOV_2_FiringFXAll,
+        Weapon_MotRifles_SOV_2_ProjectileFXAll,
+        SFXWeapon_SAW_RPK_74_5_56mm
+    ]
+)
+Weapon_MotRifles_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_SOV_2_FX )
+
+Weapon_MotRifles_SOV_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotRifles_SOV_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotRifles_SOV_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotRifles_SOV_3_FiringFXAll,
+        Weapon_MotRifles_SOV_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VR_64mm
+    ]
+)
+Weapon_MotRifles_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_MotRifles_SOV_3_FX )
+
+Weapon_MotSchutzen_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_MotSchutzen_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_MotSchutzen_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotSchutzen_DDR_1_FiringFXAll,
+        Weapon_MotSchutzen_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_MotSchutzen_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_MotSchutzen_DDR_1_FX )
+
+Weapon_MotSchutzen_DDR_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotSchutzen_DDR_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotSchutzen_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotSchutzen_DDR_2_FiringFXAll,
+        Weapon_MotSchutzen_DDR_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VR_64mm
+    ]
+)
+Weapon_MotSchutzen_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_MotSchutzen_DDR_2_FX )
+
+Weapon_MotSchutzen_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_MotSchutzen_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_MotSchutzen_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_MotSchutzen_DDR_3_FiringFXAll,
+        Weapon_MotSchutzen_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VR_64mm
+    ]
+)
+Weapon_MotSchutzen_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_MotSchutzen_DDR_3_FX )
+
+Weapon_Panzergrenadier_APC_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Panzergrenadier_APC_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Panzergrenadier_APC_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Panzergrenadier_APC_RFA_1_FiringFXAll,
+        Weapon_Panzergrenadier_APC_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Panzergrenadier_APC_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Panzergrenadier_APC_RFA_1_FX )
+
+Weapon_Panzergrenadier_APC_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Panzergrenadier_APC_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Panzergrenadier_APC_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Panzergrenadier_APC_RFA_2_FiringFXAll,
+        Weapon_Panzergrenadier_APC_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_Panzergrenadier_APC_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Panzergrenadier_APC_RFA_2_FX )
+
+Weapon_Panzergrenadier_APC_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Panzergrenadier_APC_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Panzergrenadier_APC_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Panzergrenadier_APC_RFA_3_FiringFXAll,
+        Weapon_Panzergrenadier_APC_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_PzF_44
+    ]
+)
+Weapon_Panzergrenadier_APC_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Panzergrenadier_APC_RFA_3_FX )
+
+Weapon_Panzergrenadier_CMD_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Panzergrenadier_CMD_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Panzergrenadier_CMD_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Panzergrenadier_CMD_RFA_1_FiringFXAll,
+        Weapon_Panzergrenadier_CMD_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Panzergrenadier_CMD_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Panzergrenadier_CMD_RFA_1_FX )
+
+Weapon_Panzergrenadier_CMD_RFA_2_FiringFXAll is fx_tir_missile_AA_petit_1_5
+Weapon_Panzergrenadier_CMD_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Panzergrenadier_CMD_RFA_2_FiringFXAll,
+        SFXWeapon_MANPAD_FIM43
+    ]
+)
+Weapon_Panzergrenadier_CMD_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Panzergrenadier_CMD_RFA_2_FX )
+
+Weapon_Panzergrenadier_CMD_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Panzergrenadier_CMD_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Panzergrenadier_CMD_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Panzergrenadier_CMD_RFA_3_FiringFXAll,
+        Weapon_Panzergrenadier_CMD_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_PzF_44
+    ]
+)
+Weapon_Panzergrenadier_CMD_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Panzergrenadier_CMD_RFA_3_FX )
+
+Weapon_Panzergrenadier_IFV_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Panzergrenadier_IFV_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Panzergrenadier_IFV_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Panzergrenadier_IFV_RFA_1_FiringFXAll,
+        Weapon_Panzergrenadier_IFV_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Panzergrenadier_IFV_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Panzergrenadier_IFV_RFA_1_FX )
+
+Weapon_Panzergrenadier_IFV_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Panzergrenadier_IFV_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Panzergrenadier_IFV_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Panzergrenadier_IFV_RFA_2_FiringFXAll,
+        Weapon_Panzergrenadier_IFV_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_Panzergrenadier_IFV_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Panzergrenadier_IFV_RFA_2_FX )
+
+Weapon_Panzergrenadier_IFV_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Panzergrenadier_IFV_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Panzergrenadier_IFV_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Panzergrenadier_IFV_RFA_3_FiringFXAll,
+        Weapon_Panzergrenadier_IFV_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_PzF_44
+    ]
+)
+Weapon_Panzergrenadier_IFV_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Panzergrenadier_IFV_RFA_3_FX )
+
+Weapon_PzGrenadier_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_PzGrenadier_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_PzGrenadier_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_PzGrenadier_RFA_1_FiringFXAll,
+        Weapon_PzGrenadier_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_PzGrenadier_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_PzGrenadier_RFA_1_FX )
+
+Weapon_PzGrenadier_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_PzGrenadier_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_PzGrenadier_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_PzGrenadier_RFA_2_FiringFXAll,
+        Weapon_PzGrenadier_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_PzGrenadier_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_PzGrenadier_RFA_2_FX )
+
+Weapon_PzGrenadier_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_PzGrenadier_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_PzGrenadier_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_PzGrenadier_RFA_3_FiringFXAll,
+        Weapon_PzGrenadier_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_Carl_Gustav
+    ]
+)
+Weapon_PzGrenadier_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_PzGrenadier_RFA_3_FX )
+
+Weapon_Ranger_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Ranger_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Ranger_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Ranger_US_1_FiringFXAll,
+        Weapon_Ranger_US_1_ProjectileFXAll,
+        SFXWeapon_PM_M4_Carbine
+    ]
+)
+Weapon_Ranger_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Ranger_US_1_FX )
+
+Weapon_Ranger_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Ranger_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Ranger_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Ranger_US_2_FiringFXAll,
+        Weapon_Ranger_US_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_Ranger_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Ranger_US_2_FX )
+
+Weapon_Ranger_US_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Ranger_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Ranger_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Ranger_US_3_FiringFXAll,
+        Weapon_Ranger_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_AT4_83mm
+    ]
+)
+Weapon_Ranger_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Ranger_US_3_FX )
+
+Weapon_Rangers_CMD_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Rangers_CMD_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rangers_CMD_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rangers_CMD_US_1_FiringFXAll,
+        Weapon_Rangers_CMD_US_1_ProjectileFXAll,
+        SFXWeapon_PM_M4_Carbine
+    ]
+)
+Weapon_Rangers_CMD_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Rangers_CMD_US_1_FX )
+
+Weapon_Rangers_CMD_US_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Rangers_CMD_US_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Rangers_CMD_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rangers_CMD_US_2_FiringFXAll,
+        Weapon_Rangers_CMD_US_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_M202_Flash_66mm
+    ]
+)
+Weapon_Rangers_CMD_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Rangers_CMD_US_2_FX )
+
+Weapon_Rifles_CMD_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Rifles_CMD_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_CMD_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_CMD_US_1_FiringFXAll,
+        Weapon_Rifles_CMD_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Rifles_CMD_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_CMD_US_1_FX )
+
+Weapon_Rifles_CMD_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Rifles_CMD_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_CMD_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_CMD_US_2_FiringFXAll,
+        Weapon_Rifles_CMD_US_2_ProjectileFXAll,
+        SFXWeapon_MMG_M60_7_62mm
+    ]
+)
+Weapon_Rifles_CMD_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_CMD_US_2_FX )
+
+Weapon_Rifles_CMD_US_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Rifles_CMD_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Rifles_CMD_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_CMD_US_3_FiringFXAll,
+        Weapon_Rifles_CMD_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_M72_LAW_66mm
+    ]
+)
+Weapon_Rifles_CMD_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_CMD_US_3_FX )
+
+Weapon_Rifles_HMG_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Rifles_HMG_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_HMG_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_HMG_US_1_FiringFXAll,
+        Weapon_Rifles_HMG_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Rifles_HMG_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_HMG_US_1_FX )
+
+Weapon_Rifles_HMG_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Rifles_HMG_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_HMG_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_HMG_US_2_FiringFXAll,
+        Weapon_Rifles_HMG_US_2_ProjectileFXAll,
+        SFXWeapon_MMG_M60_7_62mm
+    ]
+)
+Weapon_Rifles_HMG_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_HMG_US_2_FX )
+
+Weapon_Rifles_HMG_US_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Rifles_HMG_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Rifles_HMG_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_HMG_US_3_FiringFXAll,
+        Weapon_Rifles_HMG_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_M72_LAW_66mm
+    ]
+)
+Weapon_Rifles_HMG_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_HMG_US_3_FX )
+
+Weapon_Rifles_LAW_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Rifles_LAW_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_LAW_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_LAW_US_1_FiringFXAll,
+        Weapon_Rifles_LAW_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Rifles_LAW_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_LAW_US_1_FX )
+
+Weapon_Rifles_LAW_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Rifles_LAW_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_LAW_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_LAW_US_2_FiringFXAll,
+        Weapon_Rifles_LAW_US_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_Rifles_LAW_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_LAW_US_2_FX )
+
+Weapon_Rifles_LAW_US_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Rifles_LAW_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Rifles_LAW_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_LAW_US_3_FiringFXAll,
+        Weapon_Rifles_LAW_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_M72_LAW_66mm
+    ]
+)
+Weapon_Rifles_LAW_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_LAW_US_3_FX )
+
+Weapon_Rifles_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Rifles_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_US_1_FiringFXAll,
+        Weapon_Rifles_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Rifles_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_US_1_FX )
+
+Weapon_Rifles_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Rifles_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_US_2_FiringFXAll,
+        Weapon_Rifles_US_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_Rifles_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_US_2_FX )
+
+Weapon_Rifles_US_3_FiringFXAll is fx_tir_missile_AT_BGM71TOW_1_5
+Weapon_Rifles_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_US_3_FiringFXAll,
+        SFXWeapon_M47_DRAGON_II
+    ]
+)
+Weapon_Rifles_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_US_3_FX )
+
+Weapon_Rifles_half_AT4_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Rifles_half_AT4_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_half_AT4_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_half_AT4_US_1_FiringFXAll,
+        Weapon_Rifles_half_AT4_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Rifles_half_AT4_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_half_AT4_US_1_FX )
+
+Weapon_Rifles_half_AT4_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Rifles_half_AT4_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_half_AT4_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_half_AT4_US_2_FiringFXAll,
+        Weapon_Rifles_half_AT4_US_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_Rifles_half_AT4_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_half_AT4_US_2_FX )
+
+Weapon_Rifles_half_AT4_US_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Rifles_half_AT4_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Rifles_half_AT4_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_half_AT4_US_3_FiringFXAll,
+        Weapon_Rifles_half_AT4_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_AT4_83mm
+    ]
+)
+Weapon_Rifles_half_AT4_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_half_AT4_US_3_FX )
+
+Weapon_Rifles_half_Dragon_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Rifles_half_Dragon_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_half_Dragon_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_half_Dragon_US_1_FiringFXAll,
+        Weapon_Rifles_half_Dragon_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Rifles_half_Dragon_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_half_Dragon_US_1_FX )
+
+Weapon_Rifles_half_Dragon_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Rifles_half_Dragon_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_half_Dragon_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_half_Dragon_US_2_FiringFXAll,
+        Weapon_Rifles_half_Dragon_US_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_Rifles_half_Dragon_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_half_Dragon_US_2_FX )
+
+Weapon_Rifles_half_Dragon_US_3_FiringFXAll is fx_tir_missile_AT_BGM71TOW_1_5
+Weapon_Rifles_half_Dragon_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_half_Dragon_US_3_FiringFXAll,
+        SFXWeapon_M47_DRAGON_II
+    ]
+)
+Weapon_Rifles_half_Dragon_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_half_Dragon_US_3_FX )
+
+Weapon_Rifles_half_LAW_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Rifles_half_LAW_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_half_LAW_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_half_LAW_US_1_FiringFXAll,
+        Weapon_Rifles_half_LAW_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Rifles_half_LAW_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_half_LAW_US_1_FX )
+
+Weapon_Rifles_half_LAW_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Rifles_half_LAW_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Rifles_half_LAW_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_half_LAW_US_2_FiringFXAll,
+        Weapon_Rifles_half_LAW_US_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_Rifles_half_LAW_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_half_LAW_US_2_FX )
+
+Weapon_Rifles_half_LAW_US_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Rifles_half_LAW_US_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Rifles_half_LAW_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Rifles_half_LAW_US_3_FiringFXAll,
+        Weapon_Rifles_half_LAW_US_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_M72_LAW_66mm
+    ]
+)
+Weapon_Rifles_half_LAW_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Rifles_half_LAW_US_3_FX )
+
+Weapon_Scout_BEL_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_BEL_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_BEL_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_BEL_1_FiringFXAll,
+        Weapon_Scout_BEL_1_ProjectileFXAll,
+        SFXWeapon_PM_uzi
+    ]
+)
+Weapon_Scout_BEL_1_World is TIntroduceMobileHappening( Happening = Weapon_Scout_BEL_1_FX )
+
+Weapon_Scout_BEL_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Scout_BEL_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Scout_BEL_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_BEL_2_FiringFXAll,
+        Weapon_Scout_BEL_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_M72_LAW_66mm
+    ]
+)
+Weapon_Scout_BEL_2_World is TIntroduceMobileHappening( Happening = Weapon_Scout_BEL_2_FX )
+
+Weapon_Scout_CMD_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_CMD_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_CMD_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_CMD_DDR_1_FiringFXAll,
+        Weapon_Scout_CMD_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_Scout_CMD_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Scout_CMD_DDR_1_FX )
+
+Weapon_Scout_CMD_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_CMD_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_CMD_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_CMD_RFA_1_FiringFXAll,
+        Weapon_Scout_CMD_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Scout_CMD_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Scout_CMD_RFA_1_FX )
+
+Weapon_Scout_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_DDR_1_FiringFXAll,
+        Weapon_Scout_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_Mpi_AK_74N
+    ]
+)
+Weapon_Scout_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Scout_DDR_1_FX )
+
+Weapon_Scout_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Scout_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_DDR_2_FiringFXAll,
+        Weapon_Scout_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_Scout_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Scout_DDR_2_FX )
+
+Weapon_Scout_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Scout_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Scout_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_DDR_3_FiringFXAll,
+        Weapon_Scout_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG18_64mm
+    ]
+)
+Weapon_Scout_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_Scout_DDR_3_FX )
+
+Weapon_Scout_LRRP_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_LRRP_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_LRRP_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_LRRP_DDR_1_FiringFXAll,
+        Weapon_Scout_LRRP_DDR_1_ProjectileFXAll,
+        SFXWeapon_PM_MPi_AKSU_74NK
+    ]
+)
+Weapon_Scout_LRRP_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Scout_LRRP_DDR_1_FX )
+
+Weapon_Scout_LRRP_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Scout_LRRP_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_LRRP_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_LRRP_DDR_2_FiringFXAll,
+        Weapon_Scout_LRRP_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_Scout_LRRP_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Scout_LRRP_DDR_2_FX )
+
+Weapon_Scout_LRRP_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Scout_LRRP_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Scout_LRRP_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_LRRP_DDR_3_FiringFXAll,
+        Weapon_Scout_LRRP_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG22_72_5mm
+    ]
+)
+Weapon_Scout_LRRP_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_Scout_LRRP_DDR_3_FX )
+
+Weapon_Scout_LRRP_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_LRRP_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_LRRP_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_LRRP_SOV_1_FiringFXAll,
+        Weapon_Scout_LRRP_SOV_1_ProjectileFXAll,
+        SFXWeapon_PM_AS_Val
+    ]
+)
+Weapon_Scout_LRRP_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_Scout_LRRP_SOV_1_FX )
+
+Weapon_Scout_LRRP_SOV_2_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_LRRP_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_LRRP_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_LRRP_SOV_2_FiringFXAll,
+        Weapon_Scout_LRRP_SOV_2_ProjectileFXAll,
+        SFXWeapon_PM_VSS_Vintorez
+    ]
+)
+Weapon_Scout_LRRP_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_Scout_LRRP_SOV_2_FX )
+
+Weapon_Scout_LRRP_SOV_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Scout_LRRP_SOV_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Scout_LRRP_SOV_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_LRRP_SOV_3_FiringFXAll,
+        Weapon_Scout_LRRP_SOV_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG27_105mm
+    ]
+)
+Weapon_Scout_LRRP_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_Scout_LRRP_SOV_3_FX )
+
+Weapon_Scout_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_RFA_1_FiringFXAll,
+        Weapon_Scout_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Scout_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Scout_RFA_1_FX )
+
+Weapon_Scout_RFA_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Scout_RFA_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_RFA_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_RFA_2_FiringFXAll,
+        Weapon_Scout_RFA_2_ProjectileFXAll,
+        SFXWeapon_MMG_inf__MG3_7_62mm
+    ]
+)
+Weapon_Scout_RFA_2_World is TIntroduceMobileHappening( Happening = Weapon_Scout_RFA_2_FX )
+
+Weapon_Scout_RFA_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Scout_RFA_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Scout_RFA_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_RFA_3_FiringFXAll,
+        Weapon_Scout_RFA_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_PzF_44
+    ]
+)
+Weapon_Scout_RFA_3_World is TIntroduceMobileHappening( Happening = Weapon_Scout_RFA_3_FX )
+
+Weapon_Scout_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_SOV_1_FiringFXAll,
+        Weapon_Scout_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_Scout_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_Scout_SOV_1_FX )
+
+Weapon_Scout_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Scout_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_SOV_2_FiringFXAll,
+        Weapon_Scout_SOV_2_ProjectileFXAll,
+        SFXWeapon_SAW_RPK_74_5_56mm
+    ]
+)
+Weapon_Scout_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_Scout_SOV_2_FX )
+
+Weapon_Scout_SOV_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Scout_SOV_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Scout_SOV_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_SOV_3_FiringFXAll,
+        Weapon_Scout_SOV_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG22_72_5mm
+    ]
+)
+Weapon_Scout_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_Scout_SOV_3_FX )
+
+Weapon_Scout_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Scout_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_US_1_FiringFXAll,
+        Weapon_Scout_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Scout_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Scout_US_1_FX )
+
+Weapon_Scout_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Scout_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Scout_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Scout_US_2_FiringFXAll,
+        Weapon_Scout_US_2_ProjectileFXAll,
+        SFXWeapon_MMG_M60_7_62mm
+    ]
+)
+Weapon_Scout_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Scout_US_2_FX )
+
+Weapon_Security_RFA_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Security_RFA_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Security_RFA_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Security_RFA_1_FiringFXAll,
+        Weapon_Security_RFA_1_ProjectileFXAll,
+        SFXWeapon_FM_G3KA4
+    ]
+)
+Weapon_Security_RFA_1_World is TIntroduceMobileHappening( Happening = Weapon_Security_RFA_1_FX )
+
+Weapon_Tuto_MotRifles_SOV_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Tuto_MotRifles_SOV_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Tuto_MotRifles_SOV_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Tuto_MotRifles_SOV_1_FiringFXAll,
+        Weapon_Tuto_MotRifles_SOV_1_ProjectileFXAll,
+        SFXWeapon_FM_AK_74
+    ]
+)
+Weapon_Tuto_MotRifles_SOV_1_World is TIntroduceMobileHappening( Happening = Weapon_Tuto_MotRifles_SOV_1_FX )
+
+Weapon_Tuto_MotRifles_SOV_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Tuto_MotRifles_SOV_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Tuto_MotRifles_SOV_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Tuto_MotRifles_SOV_2_FiringFXAll,
+        Weapon_Tuto_MotRifles_SOV_2_ProjectileFXAll,
+        SFXWeapon_SAW_RPK_74_5_56mm
+    ]
+)
+Weapon_Tuto_MotRifles_SOV_2_World is TIntroduceMobileHappening( Happening = Weapon_Tuto_MotRifles_SOV_2_FX )
+
+Weapon_Tuto_MotRifles_SOV_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Tuto_MotRifles_SOV_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Tuto_MotRifles_SOV_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Tuto_MotRifles_SOV_3_FiringFXAll,
+        Weapon_Tuto_MotRifles_SOV_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG7VR_64mm
+    ]
+)
+Weapon_Tuto_MotRifles_SOV_3_World is TIntroduceMobileHappening( Happening = Weapon_Tuto_MotRifles_SOV_3_FX )
+
+Weapon_Tuto_Rifles_US_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Tuto_Rifles_US_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Tuto_Rifles_US_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Tuto_Rifles_US_1_FiringFXAll,
+        Weapon_Tuto_Rifles_US_1_ProjectileFXAll,
+        SFXWeapon_FM_M16
+    ]
+)
+Weapon_Tuto_Rifles_US_1_World is TIntroduceMobileHappening( Happening = Weapon_Tuto_Rifles_US_1_FX )
+
+Weapon_Tuto_Rifles_US_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Tuto_Rifles_US_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Tuto_Rifles_US_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Tuto_Rifles_US_2_FiringFXAll,
+        Weapon_Tuto_Rifles_US_2_ProjectileFXAll,
+        SFXWeapon_SAW_M249_5_56mm
+    ]
+)
+Weapon_Tuto_Rifles_US_2_World is TIntroduceMobileHappening( Happening = Weapon_Tuto_Rifles_US_2_FX )
+
+Weapon_Tuto_Rifles_US_3_FiringFXAll is fx_tir_missile_AT_BGM71TOW_1_5
+Weapon_Tuto_Rifles_US_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Tuto_Rifles_US_3_FiringFXAll,
+        SFXWeapon_M47_DRAGON_II
+    ]
+)
+Weapon_Tuto_Rifles_US_3_World is TIntroduceMobileHappening( Happening = Weapon_Tuto_Rifles_US_3_FX )
+
+Weapon_Wachregiment_CMD_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Wachregiment_CMD_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Wachregiment_CMD_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Wachregiment_CMD_DDR_1_FiringFXAll,
+        Weapon_Wachregiment_CMD_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_StG_941
+    ]
+)
+Weapon_Wachregiment_CMD_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Wachregiment_CMD_DDR_1_FX )
+
+Weapon_Wachregiment_CMD_DDR_2_FiringFXAll is fx_tir_missile_AA_petit_1_5
+Weapon_Wachregiment_CMD_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Wachregiment_CMD_DDR_2_FiringFXAll,
+        SFXWeapon_MANPAD_Strela2M
+    ]
+)
+Weapon_Wachregiment_CMD_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Wachregiment_CMD_DDR_2_FX )
+
+Weapon_Wachregiment_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Wachregiment_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Wachregiment_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Wachregiment_DDR_1_FiringFXAll,
+        Weapon_Wachregiment_DDR_1_ProjectileFXAll,
+        SFXWeapon_FM_StG_942
+    ]
+)
+Weapon_Wachregiment_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Wachregiment_DDR_1_FX )
+
+Weapon_Wachregiment_DDR_2_FiringFXAll is fx_tir_mitrailleuse_M60_douilles_eject_1_2
+Weapon_Wachregiment_DDR_2_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_M60_1_1_2_False_00_00,
+    fx_traine_M60_2_1_2_False_00_00,
+    fx_traine_M60_3_1_2_False_00_00,
+    fx_traine_M60_4_1_2_False_00_00,
+    ]
+)
+Weapon_Wachregiment_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Wachregiment_DDR_2_FiringFXAll,
+        Weapon_Wachregiment_DDR_2_ProjectileFXAll,
+        SFXWeapon_SAW_lMG_K_7_62mm
+    ]
+)
+Weapon_Wachregiment_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Wachregiment_DDR_2_FX )
+
+Weapon_Wachregiment_DDR_3_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Wachregiment_DDR_3_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Wachregiment_DDR_3_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Wachregiment_DDR_3_FiringFXAll,
+        Weapon_Wachregiment_DDR_3_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPG29_105mm
+    ]
+)
+Weapon_Wachregiment_DDR_3_World is TIntroduceMobileHappening( Happening = Weapon_Wachregiment_DDR_3_FX )
+
+Weapon_Wachregiment_SMG_DDR_1_FiringFXAll is fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2
+Weapon_Wachregiment_SMG_DDR_1_ProjectileFXAll is TRandomHappening
+(
+    Alternatives = [
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00,
+    fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00,
+    ]
+)
+Weapon_Wachregiment_SMG_DDR_1_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Wachregiment_SMG_DDR_1_FiringFXAll,
+        Weapon_Wachregiment_SMG_DDR_1_ProjectileFXAll,
+        SFXWeapon_PM_Skorpion
+    ]
+)
+Weapon_Wachregiment_SMG_DDR_1_World is TIntroduceMobileHappening( Happening = Weapon_Wachregiment_SMG_DDR_1_FX )
+
+Weapon_Wachregiment_SMG_DDR_2_FiringFXAll is fx_tir_LAW_1_2
+Weapon_Wachregiment_SMG_DDR_2_ProjectileFXAll is fx_traine_LAW_1_2_False_00_00
+Weapon_Wachregiment_SMG_DDR_2_FX is TCompositeHappening
+(
+    SubHappenings = [
+        Weapon_Wachregiment_SMG_DDR_2_FiringFXAll,
+        Weapon_Wachregiment_SMG_DDR_2_ProjectileFXAll,
+        SFXWeapon_RocketInf_RPO_A_93mm
+    ]
+)
+Weapon_Wachregiment_SMG_DDR_2_World is TIntroduceMobileHappening( Happening = Weapon_Wachregiment_SMG_DDR_2_FX )
+fx_tir_missile_AT_BGM71TOW_1_5 is InfantryFiringHappening
+(
+    Action          = $/GFX/GameFx/fx_tir_missile_AT_BGM71TOW
+    Power           = 5.
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles_1_2 is InfantryFiringHappening
+(
+    Action          = $/GFX/GameFx/fx_tir_Fusil_Mitrailleur_M16_tres_petit_douilles
+    Power           = 2.
+    WaitBetweenShot = 0.5
+    ShotCount       = 1
+)
+fx_traine_Fusil_Mitrailleur_M16_tres_petite_1_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_Fusil_Mitrailleur_M16_tres_petite_1
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 0.5
+    ShotCount       = 1
+)
+fx_traine_Fusil_Mitrailleur_M16_tres_petite_2_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_Fusil_Mitrailleur_M16_tres_petite_2
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 0.5
+    ShotCount       = 1
+)
+fx_traine_Fusil_Mitrailleur_M16_tres_petite_3_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_Fusil_Mitrailleur_M16_tres_petite_3
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 0.5
+    ShotCount       = 1
+)
+fx_traine_Fusil_Mitrailleur_M16_tres_petite_4_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_Fusil_Mitrailleur_M16_tres_petite_4
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 0.5
+    ShotCount       = 1
+)
+fx_traine_grenade_Panzerknacker_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_grenade_Panzerknacker
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 2.0
+    ShotCount       = 1
+)
+fx_tir_missile_AA_petit_1_5 is InfantryFiringHappening
+(
+    Action          = $/GFX/GameFx/fx_tir_missile_AA_petit
+    Power           = 5.
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_tir_missile_moyen_1_5 is InfantryFiringHappening
+(
+    Action          = $/GFX/GameFx/fx_tir_missile_moyen
+    Power           = 5.
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_tir_mitrailleuse_M60_douilles_eject_1_2 is InfantryFiringHappening
+(
+    Action          = $/GFX/GameFx/fx_tir_mitrailleuse_M60_douilles_eject
+    Power           = 2.
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_traine_M60_1_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_M60_1
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_traine_M60_2_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_M60_2
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_traine_M60_3_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_M60_3
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_traine_M60_4_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_M60_4
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_tir_LAW_1_2 is InfantryFiringHappening
+(
+    Action          = $/GFX/GameFx/fx_tir_LAW
+    Power           = 2.
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_traine_LAW_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_traine_LAW
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_tir_Recoiless_Gun_1_2 is InfantryFiringHappening
+(
+    Action          = $/GFX/GameFx/fx_tir_Recoiless_Gun
+    Power           = 2.
+    WaitBetweenShot = 1.0
+    ShotCount       = 1
+)
+fx_depart_tir_lance_flammes_1_2 is InfantryFiringHappening
+(
+    Action          = $/GFX/GameFx/fx_depart_tir_lance_flammes
+    Power           = 2.
+    WaitBetweenShot = 3.0
+    ShotCount       = 1
+)
+fx_tir_lance_flammes_1_2_False_00_00 is InfantryProjectileHappening
+(
+    Action          = $/GFX/GameFx/fx_tir_lance_flammes
+    Power           = 2.
+    WithoutPhysics  = False
+    FluidFriction   = 0.0
+    InitialSpeed    = 0.0
+    WaitBetweenShot = 3.0
+    ShotCount       = 1
+)

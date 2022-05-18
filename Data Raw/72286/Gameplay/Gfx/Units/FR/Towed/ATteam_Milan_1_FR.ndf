@@ -1,0 +1,22 @@
+export ModelFile_ATteam_Milan_1_FR is 'GameData:/Assets/3D/Units/FR/Antichar/Milan_F1/Milan_F1.Ase2NdfBin'
+
+Modele_ATteam_Milan_1_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_ATteam_Milan_1_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_Milan_1_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Antichar/Milan_F1/Milan_F1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_Milan_1_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Antichar/Milan_F1/Milan_F1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

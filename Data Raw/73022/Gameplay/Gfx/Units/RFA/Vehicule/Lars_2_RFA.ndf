@@ -1,0 +1,25 @@
+export ModelFile_Lars_2_RFA is 'GameData:/Assets/3D/Units/RFA/Artillerie/Lars_2/Lars_2.Ase2NdfBin'
+
+Modele_Lars_2_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Lars_2_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Lars_2_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Artillerie/Lars_2/Lars_2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Lars_2_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Artillerie/Lars_2/Lars_2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Lars_2_RFA_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/Ammo/Tourelles/MG3_excentree.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

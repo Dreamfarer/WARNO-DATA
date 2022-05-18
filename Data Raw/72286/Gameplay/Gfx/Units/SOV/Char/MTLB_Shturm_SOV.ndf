@@ -1,0 +1,57 @@
+export ModelFile_MTLB_Shturm_SOV is 'GameData:/Assets/3D/Units/URSS/Antichar/MTLB_Shturm/MTLB_Shturm.Ase2NdfBin'
+
+Modele_MTLB_Shturm_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_MTLB_Shturm_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_Shturm_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/MTLB_Shturm/MTLB_Shturm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MTLB_Shturm_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/MTLB_Shturm/MTLB_Shturm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+//-------------------------------------------------------------------------------------
+Gfx_Modele_MTLB_Shturm_SOV  is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Socle_SOV ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Depiction = TDepictionTemplate
+            (
+                Scaler = CommonIdentityScaler
+                Selector = OnlyHighDepictionSelector
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_courte ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Anchor = "vehicule"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 7)
+                        Selector = CommonDepictionSelector
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_MTLB_Shturm_SOV ),
+                            DepictionDescriptor_LOD_Mid ( MeshDescriptor = Modele_MTLB_Shturm_SOV ),
+                            DepictionDescriptor_LOD_Low ( MeshDescriptor = Modele_MTLB_Shturm_SOV DisabledOperators = ['tourelle3'] ),
+                        ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)
+
+
+

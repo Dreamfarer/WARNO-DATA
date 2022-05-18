@@ -1,0 +1,147 @@
+
+template TacticVirtualFactory
+[
+    FactoryType,
+]
+is TVirtualFactoryDescriptor
+(
+    FactoryType = <FactoryType>
+    TimeMinBetweenEndOfEachProductionInSec = 1
+    IsSimultaneous = true
+)
+
+export Tactic_TeamUnitDescriptor is TEntityDescriptor
+(
+    World          = WorldIndices_Team
+    DescriptorId        = GUID:{00000000-0000-0000-0000-000032000000}
+
+    ModulesDescriptors =
+    [
+        TTeamAirportModuleDescriptor
+        (
+
+            // Point d'essence par tick
+            FuelSupplyAmountBySecond = 10
+            // Cout du ravitaillement de point de vie par tick
+            HealthSupplyAmountBySecond = 0.018 // 0.034
+            // Cout du ravitaillement de munition par tick
+            AmmunitionSupplyAmountBySecond = 10
+        ),
+        TTeamCurrencyManagerModuleDescriptor
+        (
+            PiggyBanks = [
+                TPiggyBankDescriptor
+                (
+                    CurrencyType = ~/Resource_CommandPoints
+                    BankMaxValue = 2147483647
+                ),
+                TPiggyBankDescriptor
+                (
+                    CurrencyType = ~/Resource_Tickets
+                    BankMaxValue = 2147483647
+                ),
+            ]
+        ),
+        TTeamDeckModuleDescriptor
+        (
+        ),
+        TWargameTeamProductionModuleDescriptor
+        (
+        ),
+        TFactoryModuleDescriptor
+        (
+            Factories = [
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Logistic
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Infantry
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Planes
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Vehicles
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Tanks
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Recons
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Helis
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Marine
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Support
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/DCA
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Art
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/AT
+                ),
+                TacticVirtualFactory
+                (
+                    FactoryType = EDefaultFactories/Defense
+                ),
+            ]
+        ),
+        TEventInfoManagerModuleDescriptor
+        (
+            SoundAcknowUnitPriority = 1
+            SoundAcknowUnitDuration = 5
+            DamageFeedbackTriggerLevel = 0.5        // niveau de santé restante pour trigger le feedback "damage received"
+            HeavyDamageFeedbackTriggerLevel = 0.25  // niveau de santé restante pour trigger le feedback "heavy damage received"
+            EnemyContactZoneRadius = 10000 * Metre   // 2000 * OneMeterInGameUnits
+        ),
+        TTeamDescriptionModuleDescriptor
+        (
+        ),
+        TTeamUnitsModuleDescriptor
+        (
+        ),
+        TTagsModuleDescriptor
+        (
+        ),
+        TEffectApplierModuleDescriptor
+        (
+        ),
+        TLinkAllianceModuleDescriptor
+        (
+        ),
+        TTeamForAIModuleDescriptor
+        (
+        ),
+        TTeamGameRulesModuleDescriptor
+        (
+        ),
+        TFumigeneModuleDescriptor
+        (
+        ),
+        TStatisticsModuleDescriptor
+        (
+        ),
+        TStrategicAssociationModuleDescriptor
+        (
+        ),
+    ]
+)

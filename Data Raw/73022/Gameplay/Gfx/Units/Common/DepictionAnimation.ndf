@@ -1,0 +1,383 @@
+
+template SkeletalAnimationTemplate
+[
+    FileName   : string,
+    Path       : string = 'GameData:/Assets/3D/Units/Common/Animations/Anims_Soldats/',
+    PlayInLoop : bool,
+] is TResourceMatrixArrayAnimation
+(
+    FileName   = <Path> + <FileName>
+    UsefulnessMask = CivMask/Common + TypeMask/Common
+    PlayInLoop     = <PlayInLoop>
+)
+//--Emplacement anims servants canons tractés
+template SkeletalServantAnimationTemplate
+[
+    FileName   : string,
+    PlayInLoop : bool,
+] is SkeletalAnimationTemplate
+(
+    FileName = <FileName>
+    Path = 'GameData:/Assets/3D/Units/Common/sources/Anims_Gunner_FULDA/'
+    PlayInLoop = <PlayInLoop>
+)
+//--Emplacement anims servants ATGM
+template SkeletalServantATGMAnimationTemplate
+[
+    FileName   : string,
+    PlayInLoop : bool,
+] is SkeletalAnimationTemplate
+(
+    FileName = <FileName>
+    Path = 'GameData:/Assets/3D/Units/Common/Animations/Anims_Gunner_ATGM/'
+    PlayInLoop = <PlayInLoop>
+)
+
+
+//Anims pour nouveau squelette Fulda
+FusilierAiming is SkeletalAnimationTemplate( FileName = 'Rifleman_Aim.Ase2NdfBin' PlayInLoop = false)
+FusilierAimingFlamer is SkeletalAnimationTemplate( FileName = 'Rifleman_Aim_Flamer.Ase2NdfBin' PlayInLoop = false)
+FusilierAimingMMG is SkeletalAnimationTemplate( FileName = 'Rifleman_Aim_MMG.Ase2NdfBin' PlayInLoop = false)
+FusilierAimingSMG is SkeletalAnimationTemplate( FileName = 'Rifleman_Aim_SMG.Ase2NdfBin' PlayInLoop = false)
+FusilierAimingGrenade is SkeletalAnimationTemplate( FileName = 'Rifleman_Aim.Ase2NdfBin' PlayInLoop = false)
+FusilierBazookaTir is SkeletalAnimationTemplate( FileName = 'Rifleman_Bazooka_Fire.Ase2NdfBin' PlayInLoop = false)
+FusilierBazookaTransition1 is SkeletalAnimationTemplate( FileName = 'Rifleman_Bazooka_Transition1.Ase2NdfBin' PlayInLoop = false)
+FusilierBazookaTransition2 is SkeletalAnimationTemplate( FileName = 'Rifleman_Bazooka_Transition2.Ase2NdfBin' PlayInLoop = false)
+FusilierBazookaVise is SkeletalAnimationTemplate( FileName = 'Rifleman_Bazooka_Aim.Ase2NdfBin' PlayInLoop = false)
+FusilierArriere is SkeletalAnimationTemplate( FileName = 'Rifleman_Run_Back.Ase2NdfBin' PlayInLoop = true)
+FusilierDroite is SkeletalAnimationTemplate( FileName = 'Rifleman_Run_Right.Ase2NdfBin' PlayInLoop = true)
+FusilierGauche is SkeletalAnimationTemplate( FileName = 'Rifleman_Run_Left.Ase2NdfBin' PlayInLoop = true)
+FusilierCrawl is SkeletalAnimationTemplate( FileName = 'Rifleman_Crawl.Ase2NdfBin' PlayInLoop = true)
+FusilierCrouch is SkeletalAnimationTemplate( FileName = 'Rifleman_Crouch.Ase2NdfBin' PlayInLoop = true)
+FusilierCrouch2 is SkeletalAnimationTemplate( FileName = 'Rifleman_Crouch2.Ase2NdfBin' PlayInLoop = true)
+FusilierDeroute is SkeletalAnimationTemplate( FileName = 'Rifleman_Rout.Ase2NdfBin' PlayInLoop = true)
+FusilierDeroute2 is SkeletalAnimationTemplate( FileName = 'Rifleman_Rout2.Ase2NdfBin' PlayInLoop = true)
+FusilierDeroute3 is SkeletalAnimationTemplate( FileName = 'Rifleman_Rout3.Ase2NdfBin' PlayInLoop = true)
+FusilierEau is SkeletalAnimationTemplate( FileName = 'Rifleman_Water.Ase2NdfBin' PlayInLoop = true)
+FusilierFire is SkeletalAnimationTemplate( FileName = 'Rifleman_Fire.Ase2NdfBin' PlayInLoop = false)
+FusilierFireFlamer is SkeletalAnimationTemplate( FileName = 'Rifleman_Fire_Flamer.Ase2NdfBin' PlayInLoop = false)
+FusilierFireGrenade is SkeletalAnimationTemplate( FileName = 'Rifleman_Fire_SMG.Ase2NdfBin' PlayInLoop = false)
+FusilierFireMMG is SkeletalAnimationTemplate( FileName = 'Rifleman_Fire_MMG.Ase2NdfBin' PlayInLoop = false)
+FusilierFireSMG is SkeletalAnimationTemplate( FileName = 'Rifleman_Fire_SMG.Ase2NdfBin' PlayInLoop = false)
+FusilierGetUp is SkeletalAnimationTemplate( FileName = 'Rifleman_Get_Up.Ase2NdfBin' PlayInLoop = false)
+FusilierHit is SkeletalAnimationTemplate( FileName = 'Rifleman_Hit.Ase2NdfBin' PlayInLoop = false)
+FusilierHitDos is SkeletalAnimationTemplate( FileName = 'Rifleman_Hit_Back.Ase2NdfBin' PlayInLoop = false)
+FusilierHitExplosion is SkeletalAnimationTemplate( FileName = 'Rifleman_Hit_Explosion.Ase2NdfBin' PlayInLoop = false)
+FusilierIdle is SkeletalAnimationTemplate( FileName = 'Rifleman_Idle.Ase2NdfBin' PlayInLoop = true)
+FusilierIdleGrenade is SkeletalAnimationTemplate( FileName = 'Rifleman_Look_Around.Ase2NdfBin' PlayInLoop = true)
+FusilierIdleMMG is SkeletalAnimationTemplate( FileName = 'Rifleman_Idle_MMG.Ase2NdfBin' PlayInLoop = true)
+FusilierIdleMMG2 is SkeletalAnimationTemplate( FileName = 'Rifleman_Idle_MMG2.Ase2NdfBin' PlayInLoop = true)
+FusilierIdleSMG is SkeletalAnimationTemplate( FileName = 'Rifleman_Idle_SMG.Ase2NdfBin' PlayInLoop = true)
+FusilierIdleSMG2 is SkeletalAnimationTemplate( FileName = 'Rifleman_Idle_SMG2.Ase2NdfBin' PlayInLoop = true)
+FusilierIdleSpecial is SkeletalAnimationTemplate( FileName = 'Rifleman_Idle_Special.Ase2NdfBin' PlayInLoop = true)
+FusilierIdle2 is SkeletalAnimationTemplate( FileName = 'Rifleman_Idle2.Ase2NdfBin' PlayInLoop = true)
+FusilierKneel is SkeletalAnimationTemplate( FileName = 'Rifleman_Kneel.Ase2NdfBin' PlayInLoop = false)
+FusilierLookAround is SkeletalAnimationTemplate( FileName = 'Rifleman_Look_Around.Ase2NdfBin' PlayInLoop = false)
+FusilierMarche is SkeletalAnimationTemplate( FileName = 'Rifleman_Walk.Ase2NdfBin' PlayInLoop = true)
+FusilierMortBalle is SkeletalAnimationTemplate( FileName = 'Rifleman_Death_Bullet.Ase2NdfBin' PlayInLoop = false)
+FusilierMortBalleDos is SkeletalAnimationTemplate( FileName = 'Rifleman_Death_Bullet_Back.Ase2NdfBin' PlayInLoop = false)
+FusilierMortBalleViolente is SkeletalAnimationTemplate( FileName = 'Rifleman_Death_Bullet_Violent.Ase2NdfBin' PlayInLoop = false)
+FusilierMortExplosion is SkeletalAnimationTemplate( FileName = 'Rifleman_Death_Explosion.Ase2NdfBin' PlayInLoop = false)
+FusilierMortExplosionDos is SkeletalAnimationTemplate( FileName = 'Rifleman_Death_Explosion_Back.Ase2NdfBin' PlayInLoop = false)
+FusilierReload is SkeletalAnimationTemplate( FileName = 'Rifleman_Reload.Ase2NdfBin' PlayInLoop = false)
+FusilierRun is SkeletalAnimationTemplate( FileName = 'Rifleman_Run.Ase2NdfBin' PlayInLoop = true)
+FusilierRunAim is SkeletalAnimationTemplate( FileName = 'Rifleman_Run_Aim.Ase2NdfBin' PlayInLoop = true)
+FusilierRunMMG is SkeletalAnimationTemplate( FileName = 'Rifleman_Run_MMG.Ase2NdfBin' PlayInLoop = true)
+FusilierRunSMG is SkeletalAnimationTemplate( FileName = 'Rifleman_Run_SMG.Ase2NdfBin' PlayInLoop = true)
+FusilierRun2 is SkeletalAnimationTemplate( FileName = 'Rifleman_Run2.Ase2NdfBin' PlayInLoop = true)
+FusilierRun3 is SkeletalAnimationTemplate( FileName = 'Rifleman_Run3.Ase2NdfBin' PlayInLoop = true)
+FusilierStandPinned is SkeletalAnimationTemplate( FileName = 'Rifleman_Pinned.Ase2NdfBin' PlayInLoop = true)
+FusilierStandPinned2 is SkeletalAnimationTemplate( FileName = 'Rifleman_Pinned2.Ase2NdfBin' PlayInLoop = true)
+FusilierStandVise is SkeletalAnimationTemplate( FileName = 'Rifleman_Aim.Ase2NdfBin' PlayInLoop = true)
+FusilierStart is SkeletalAnimationTemplate( FileName = 'Rifleman_Start.Ase2NdfBin' PlayInLoop = false)
+FusilierSteelman is SkeletalAnimationTemplate( FileName = 'Rifleman_Steelman.Ase2NdfBin' PlayInLoop = false)
+FusilierStop is SkeletalAnimationTemplate( FileName = 'Rifleman_Stop.Ase2NdfBin' PlayInLoop = false)
+FusilierTir is SkeletalAnimationTemplate( FileName = 'Rifleman_Fire_Burst.Ase2NdfBin' PlayInLoop = false)
+FusilierTransport is SkeletalAnimationTemplate( FileName = 'Rifleman_Transport.Ase2NdfBin' PlayInLoop = true)
+UnarmedCapture is SkeletalAnimationTemplate( FileName = 'Rifleman_Unarmed_Capture.Ase2NdfBin' PlayInLoop = false)
+
+UpperBodyBoneList is ['bip01 pelvis',
+        'bip01 spine',
+        'bip01 spine1',
+
+        // haut du corps
+        'bip01 neck',
+        'bip01 head',
+        'bip01 l clavicle',
+        'bip01 r clavicle',
+        'bip01 l upperarm',
+        'bip01 r upperarm',
+        'bip01 l forearm',
+        'bip01 r forearm',
+        'bip01 l hand',
+        'bip01 r hand',
+        'bip01 l finger0',
+        'bip01 l finger1',
+        'bip01 l finger2',
+        'bip01 l finger3',
+        'bip01 l finger4',
+        'bip01 r finger0',
+        'bip01 r finger1',
+        'bip01 r finger2',
+        'bip01 r finger3',
+        'bip01 r finger4',
+        'arme_1',
+        'arme_2',
+        'bip01 l finger01',
+        'bip01 l finger02',
+        'bip01 l finger11',
+        'bip01 l finger12',
+        'bip01 l finger21',
+        'bip01 l finger22',
+        'bip01 l finger31',
+        'bip01 l finger32',
+        'bip01 l finger41',
+        'bip01 l finger42',
+        'bip01 r finger01',
+        'bip01 r finger02',
+        'bip01 r finger11',
+        'bip01 r finger12',
+        'bip01 r finger21',
+        'bip01 r finger22',
+        'bip01 r finger31',
+        'bip01 r finger32',
+        'bip01 r finger41',
+        'bip01 r finger42',
+        'fx_tir_01',
+        'fx_tir_02',
+        ]
+
+template DepictionOperator_SkeletalAnimation2_Default [ConditionalTags = [] ] is TCosmeticSkeletalAnimation2OperatorDesc
+(
+    // réglage de l'animation de transition :
+    // SwappingDuration donne la durée de la présente du tag de swap, sachant que les infos gameplay auront toujours la prio
+    // On ne dispose que du temps de visée pour swapper l'arme, donc si le temps de visée est + court que le temps de swap, l'animation va glitch
+    SwappingDuration = 1.0
+
+    ConditionalTags = <ConditionalTags>
+    Animations = [
+        TAnimationWithTags(
+            Animation = TBlendSpace2DBipedAnimation(
+                IsLegCycle = true
+                Front = FusilierRun
+                Back = FusilierArriere
+                Left = FusilierGauche
+                Right = FusilierDroite
+            InTransition = 1.0 OutTransition = 1.0
+            )
+            Tags = ['run']
+        ),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierMarche IsLegCycle = true InTransition = 1.0 OutTransition = 0.3 ) Tags = ['walk']),
+        TAnimationWithTags( Animation = TAlternativeBipedAnimation( Resources = [FusilierCrouch, FusilierCrouch2, FusilierIdle, FusilierIdle2] IsLegCycle = false InTransition = 0.5 OutTransition = 0.5) Tags = ['stand']),
+        TAnimationWithTags( Animation = TAlternativeBipedAnimation( Resources = [FusilierIdleMMG, FusilierIdleMMG2] IsLegCycle = false InTransition = 0.5 OutTransition = 0.5) Tags = ['mmg', 'stand']),
+        TAnimationWithTags( Animation = TAlternativeBipedAnimation( Resources = [FusilierIdleGrenade] IsLegCycle = false InTransition = 0.5 OutTransition = 0.5) Tags = ['grenade', 'stand']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierMortBalle IsLegCycle = false InTransition = 2.0 OutTransition = 1.0) Tags = ['dead', 'stand']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierMortExplosion IsLegCycle = false InTransition = 2.0 OutTransition = 1.0) Tags = ['dead', 'explosion', 'stand']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = UnarmedCapture IsLegCycle = false InTransition = 2.0 OutTransition = 1.0) Tags = ['dead', 'stand', 'captured']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierAiming IsLegCycle = false InTransition = 0.5 OutTransition = 0.5) TorsoOnly = true Tags = ['aiming']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierBazookaTransition1 IsLegCycle = false InTransition = 0.5 OutTransition = 0.5) TorsoOnly = true Tags = ['swapping']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierFire IsLegCycle = false InTransition = 0.0 OutTransition = 0.5) TorsoOnly = true PlayTillEnd = true Tags = ['aiming', 'shoot']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierAimingMMG IsLegCycle = false InTransition = 0.5 OutTransition = 0.5) TorsoOnly = true Tags = ['aiming', 'mmg']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierFireMMG IsLegCycle = false InTransition = 0.0 OutTransition = 0.5) PlayTillEnd = true Tags = ['aiming', 'shoot', 'mmg']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierBazookaVise IsLegCycle = false InTransition = 0.5 OutTransition = 0.5) TorsoOnly = true Tags = ['aiming', 'bazooka']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierBazookaTir IsLegCycle = false InTransition = 0.0 OutTransition = 0.5) PlayTillEnd = true Tags = ['aiming', 'shoot', 'bazooka']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierAimingGrenade IsLegCycle = false InTransition = 0.5 OutTransition = 0.5) TorsoOnly = true Tags = ['aiming', 'grenade']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierFireGrenade IsLegCycle = false InTransition = 0.0 OutTransition = 0.5) PlayTillEnd = true Tags = ['aiming', 'shoot', 'grenade']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierHit IsLegCycle = false InTransition = 0.0 OutTransition = 0.5) TorsoOnly = true PlayTillEnd = true Tags = ['aiming', 'hit']),
+        TAnimationWithTags( Animation = TSimpleBipedAnimation( Resource = FusilierHitExplosion IsLegCycle = false InTransition = 0.0 OutTransition = 0.5) TorsoOnly = true PlayTillEnd = true Tags = ['aiming', 'explosion', 'hit']),
+    ]
+
+    TorsoPivot = 'bip01 spine'
+
+    UpperBodyBones = UpperBodyBoneList
+
+    DebugAnimations = [FusilierAiming,FusilierAimingFlamer, FusilierAimingMMG, FusilierAimingSMG,
+     FusilierBazookaTir, FusilierBazookaTransition1, FusilierBazookaTransition2, FusilierBazookaVise,
+     FusilierArriere, FusilierDroite, FusilierGauche,FusilierCrawl, FusilierCrouch, FusilierCrouch2,
+     FusilierDeroute, FusilierDeroute2, FusilierDeroute3, FusilierEau, FusilierFire,
+     FusilierFireFlamer, FusilierFireMMG, FusilierFireSMG, FusilierGetUp,
+     FusilierHit, FusilierHitDos, FusilierHitExplosion, FusilierIdle,
+     FusilierIdleMMG, FusilierIdleMMG2, FusilierIdleSMG, FusilierIdleSMG2, FusilierIdleSpecial, FusilierIdle2,
+     FusilierKneel, FusilierLookAround, FusilierMarche, FusilierMortBalle, FusilierMortBalleDos, FusilierMortBalleViolente,
+     FusilierMortExplosion, FusilierMortExplosionDos, FusilierReload, FusilierRun, FusilierRunAim, FusilierRunMMG, FusilierRunSMG, FusilierRun2, FusilierRun3,
+     FusilierStandPinned, FusilierStandPinned2, FusilierStandVise, FusilierStart, FusilierSteelman, FusilierStop, FusilierTir, FusilierTransport,
+     UnarmedCapture]
+)
+
+DepictionOperator_FreezeAnimation_Ghost is TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = FusilierIdle)
+
+
+// ****************************************************************************************************************************************
+// ***** Animation des unités tractables **************************************************************************************************
+// ****************************************************************************************************************************************
+
+template DepictionOperator_AnimationDeployable
+[
+    DeployAnimation,
+    FoldAnimation,
+
+    DeployFromMoveTime : float,
+    DeployFromTurnTime : float,
+    FoldForMoveTime    : float,
+    FoldForTurnTime    : float,
+]
+is TCosmeticSkeletalAnimationDeployableOperatorDesc
+(
+    OperatorId = 'AnimationDeployable'
+    DeployAnimation = <DeployAnimation>
+    FoldAnimation = <FoldAnimation>
+
+    DeployFromMoveTime = <DeployFromMoveTime>
+    DeployFromTurnTime = <DeployFromTurnTime>
+    FoldForMoveTime = <FoldForMoveTime>
+    FoldForTurnTime = <FoldForTurnTime>
+)
+
+// ****************************************************************************************************************************************
+// ***** Animation des servants des unités tractables *************************************************************************************
+// ****************************************************************************************************************************************
+
+template DepictionOperator_AnimationServant
+[
+    AimAnimation,
+    DeadAnimation,
+    DeployAnimation,
+    FireAnimation,
+    FoldAnimation,
+    IdleAnimation,
+    MoveBackAnimation,
+    MoveFrontAnimation,
+    MoveLeftAnimation,
+    MoveRightAnimation,
+    ReloadAnimation,
+]
+is TCosmeticSkeletalAnimationServantOperatorDesc
+(
+    OperatorId = 'AnimationServant'
+    TransitionDuration = 0.2
+    AimAnimation = <AimAnimation>
+    DeadAnimation = <DeadAnimation>
+    DeployAnimation = <DeployAnimation>
+    FireAnimation = <FireAnimation>
+    FoldAnimation = <FoldAnimation>
+    IdleAnimation = <IdleAnimation>
+    MoveBackAnimation = <MoveBackAnimation>
+    MoveFrontAnimation = <MoveFrontAnimation>
+    MoveLeftAnimation = <MoveLeftAnimation>
+    MoveRightAnimation = <MoveRightAnimation>
+    ReloadAnimation = <ReloadAnimation>
+)
+
+ServantLeftDeploy     is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Deploy.Ase2NdfBin' PlayInLoop = false)
+ServantLeftFold       is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Fold.Ase2NdfBin' PlayInLoop = false)
+ServantLeftMoveFront  is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Move.Ase2NdfBin' PlayInLoop = true)
+ServantLeftIdle       is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Idle.Ase2NdfBin' PlayInLoop = true)
+ServantLeftFire       is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Fire.Ase2NdfBin' PlayInLoop = false)
+ServantLeftAim        is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Ready_To_Fire.Ase2NdfBin' PlayInLoop = false)
+ServantLeftReload     is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Reload.Ase2NdfBin' PlayInLoop = false)
+ServantLeftDead       is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Dead.Ase2NdfBin' PlayInLoop = false)
+ServantLeftMoveBack   is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Move_Back.Ase2NdfBin' PlayInLoop = true)
+ServantLeftMoveLeft   is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Turn_Left.Ase2NdfBin' PlayInLoop = true)
+ServantLeftMoveRight  is SkeletalServantAnimationTemplate(FileName = 'Gunner_L_Turn_Right.Ase2NdfBin' PlayInLoop = true)
+
+ServantRightDeploy    is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Deploy.Ase2NdfBin' PlayInLoop = false)
+ServantRightFold      is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Fold.Ase2NdfBin' PlayInLoop = false)
+ServantRightIdle      is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Idle.Ase2NdfBin' PlayInLoop = true)
+ServantRightMoveFront is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Move.Ase2NdfBin' PlayInLoop = true)
+ServantRightAim       is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Ready_To_Fire.Ase2NdfBin' PlayInLoop = false)
+ServantRightReload    is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Reload.Ase2NdfBin' PlayInLoop = false)
+ServantRightFire      is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Fire.Ase2NdfBin' PlayInLoop = false)
+ServantRightDead      is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Dead.Ase2NdfBin' PlayInLoop = false)
+ServantRightMoveBack  is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Move_Back.Ase2NdfBin' PlayInLoop = true)
+ServantRightMoveLeft  is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Turn_Left.Ase2NdfBin' PlayInLoop = true)
+ServantRightMoveRight is SkeletalServantAnimationTemplate(FileName = 'Gunner_R_Turn_Right.Ase2NdfBin' PlayInLoop = true)
+
+DepictionOperator_AnimationServant_Cannon_Left is DepictionOperator_AnimationServant
+(
+    AimAnimation = ServantLeftAim
+    DeadAnimation = ServantLeftDead
+    DeployAnimation = ServantLeftDeploy
+    FireAnimation = ServantLeftFire
+    FoldAnimation = ServantLeftFold
+    IdleAnimation = ServantLeftIdle
+    MoveBackAnimation = ServantLeftMoveBack
+    MoveFrontAnimation = ServantLeftMoveFront
+    MoveLeftAnimation = ServantLeftMoveLeft
+    MoveRightAnimation = ServantLeftMoveRight
+    ReloadAnimation = ServantLeftReload
+)
+
+DepictionOperator_AnimationServant_Cannon_Right is DepictionOperator_AnimationServant
+(
+    AimAnimation = ServantRightAim
+    DeadAnimation = ServantRightDead
+    DeployAnimation = ServantRightDeploy
+    FireAnimation = ServantRightFire
+    FoldAnimation = ServantRightFold
+    IdleAnimation = ServantRightIdle
+    MoveBackAnimation = ServantRightMoveBack
+    MoveFrontAnimation = ServantRightMoveFront
+    MoveLeftAnimation = ServantRightMoveLeft
+    MoveRightAnimation = ServantRightMoveRight
+    ReloadAnimation = ServantRightReload
+)
+
+// ****************************************************************************************************************************************
+// ***** Animation des servants des unités ATGM *******************************************************************************************
+// ****************************************************************************************************************************************
+
+ServantATGMLeftDeploy     is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_L_Deploy.Ase2NdfBin' PlayInLoop = false)
+ServantATGMLeftFold       is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_L_Fold.Ase2NdfBin' PlayInLoop = false)
+ServantATGMLeftIdle       is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_L_Idle.Ase2NdfBin' PlayInLoop = true)
+ServantATGMLeftMoveFront  is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_L_Move.Ase2NdfBin' PlayInLoop = true)
+ServantATGMLeftFire       is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_L_Fire.Ase2NdfBin' PlayInLoop = false)
+ServantATGMLeftAim        is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_L_Fire.Ase2NdfBin' PlayInLoop = false)
+ServantATGMLeftReload     is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_L_Idle.Ase2NdfBin' PlayInLoop = false)
+ServantATGMLeftMoveBack   is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_L_Move_Back.Ase2NdfBin' PlayInLoop = true)
+//----
+ServantATGMLeftDead       is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_L_Dead.Ase2NdfBin' PlayInLoop = false)
+ServantATGMLeftMoveLeft   is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_L_Turn_Left.Ase2NdfBin' PlayInLoop = true)
+ServantATGMLeftMoveRight  is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_L_Turn_Right.Ase2NdfBin' PlayInLoop = true)
+
+ServantATGMRightDeploy    is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_R_Deploy.Ase2NdfBin' PlayInLoop = false)
+ServantATGMRightFold      is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_R_Fold.Ase2NdfBin' PlayInLoop = false)
+ServantATGMRightIdle      is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_R_Idle.Ase2NdfBin' PlayInLoop = true)
+ServantATGMRightMoveFront is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_R_Move.Ase2NdfBin' PlayInLoop = true)
+ServantATGMRightAim       is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_R_Aim.Ase2NdfBin' PlayInLoop = false)
+ServantATGMRightReload    is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_R_Idle.Ase2NdfBin' PlayInLoop = false)
+ServantATGMRightFire      is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_R_Aim.Ase2NdfBin' PlayInLoop = false)
+ServantATGMRightMoveBack  is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_ATGM_R_Move_Back.Ase2NdfBin' PlayInLoop = true)
+//----
+ServantATGMRightDead      is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_R_Dead.Ase2NdfBin' PlayInLoop = false)
+ServantATGMRightMoveLeft  is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_R_Turn_Left.Ase2NdfBin' PlayInLoop = true)
+ServantATGMRightMoveRight is SkeletalServantATGMAnimationTemplate(FileName = 'Gunner_R_Turn_Right.Ase2NdfBin' PlayInLoop = true)
+
+DepictionOperator_AnimationServant_ATGM_Left is DepictionOperator_AnimationServant
+(
+    AimAnimation = ServantATGMLeftAim
+    DeadAnimation = ServantATGMLeftDead
+    DeployAnimation = ServantATGMLeftDeploy
+    FireAnimation = ServantATGMLeftFire
+    FoldAnimation = ServantATGMLeftFold
+    IdleAnimation = ServantATGMLeftIdle
+    MoveBackAnimation = ServantATGMLeftMoveBack
+    MoveFrontAnimation = ServantATGMLeftMoveFront
+    MoveLeftAnimation = ServantATGMLeftMoveLeft
+    MoveRightAnimation = ServantATGMLeftMoveRight
+    ReloadAnimation = ServantATGMLeftReload
+)
+
+DepictionOperator_AnimationServant_ATGM_Right is DepictionOperator_AnimationServant
+(
+    AimAnimation = ServantATGMRightAim
+    DeadAnimation = ServantATGMRightDead
+    DeployAnimation = ServantATGMRightDeploy
+    FireAnimation = ServantATGMRightFire
+    FoldAnimation = ServantATGMRightFold
+    IdleAnimation = ServantATGMRightIdle
+    MoveBackAnimation = ServantATGMRightMoveBack
+    MoveFrontAnimation = ServantATGMRightMoveFront
+    MoveLeftAnimation = ServantATGMRightMoveLeft
+    MoveRightAnimation = ServantATGMRightMoveRight
+    ReloadAnimation = ServantATGMRightReload
+)

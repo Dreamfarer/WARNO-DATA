@@ -1,0 +1,19 @@
+export ModelFile_Mi_8TV_PodGatling_DDR is 'GameData:/Assets/3D/Units/DDR/Helico/Mi_8TV/Mi_8TV.Ase2NdfBin'
+
+Modele_Mi_8TV_PodGatling_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_8TV_PodGatling_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_8TV_PodGatling_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Helico/Mi_8TV/Mi_8TV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_8TV_PodGatling_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Helico/Mi_8TV/Mi_8TV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

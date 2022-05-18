@@ -1,0 +1,176 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_Company_TestPawn is TEntityDescriptor
+(
+    DescriptorId       = GUID:{2557d375-e520-4b33-803c-448a76d9386d}
+    ClassNameForDebug  = 'Company_TestPawn'
+    ModulesDescriptors = [
+        // TypeUnit
+            TModuleSelector
+            (
+                Default            = TTypeUnitModuleDescriptor
+                (
+                    TypeUnitValue                    = ETypeUnit/Undef
+                    Nationalite                      = ENationalite/Allied
+                    TypeUnitFormation                = 'Char'
+                )
+                Selection = [
+                    NilDescriptorIfCadavre,
+                    TModuleSelectorFilterIfGhost
+                    (
+                        Descriptor = TTypeUnitModuleDescriptor
+                        (
+                            Nationalite                      = ENationalite/Allied
+                            TypeUnitValue                    = ETypeUnit/Undef
+                        )
+                    )
+                ]
+            ),
+
+        // Flags
+            TFlagsModuleDescriptor
+            (
+                InitialFlagSet =
+                [
+                    Flag_Detectable,
+                    Flag_LdDetectable,
+                    Flag_Highlightable,
+                    Flag_Selectionnable,
+                    Flag_Target,
+                    Flag_Tank,
+                    Flag_Blessable,
+                    Flag_DEPRECATED_NePasUtiliser_OnlyForBriquePython_UniteDeCommandement,
+                ]
+            ),
+
+        // Position
+            TModuleSelector
+            (
+                Default        = TPositionModuleDescriptor
+                (
+                    UseFollowCam               = False
+                    StickToGround              = True
+                    InGeoDb                    = False
+                    PorteurMustBeVisible       = True
+                    ClampInWorld               = True
+                    ClampOutMap                = False
+                    HasNearlyNullBBox          = False
+                    GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                    Radius                     = ((0) * Metre)
+                    RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                    LowAltitudeFlyingAltitude  = ((0) * Metre)
+                    NearGroundFlyingAltitude   = ((0) * Metre)
+                )
+                Selection = [
+                    TModuleSelectorFilterIfCadavre
+                    (
+                        Descriptor = TPositionModuleDescriptor
+                        (
+                            UseFollowCam               = False
+                            StickToGround              = True
+                            InGeoDb                    = False
+                            PorteurMustBeVisible       = True
+                            ClampInWorld               = True
+                            ClampOutMap                = False
+                            HasNearlyNullBBox          = False
+                            GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                            Radius                     = ((0) * Metre)
+                            RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                            LowAltitudeFlyingAltitude  = ((0) * Metre)
+                            NearGroundFlyingAltitude   = ((0) * Metre)
+                        )
+                    ),
+                    TModuleSelectorFilterIfGhost
+                    (
+                        Descriptor = TPositionModuleDescriptor
+                        (
+                            UseFollowCam               = False
+                            StickToGround              = True
+                            InGeoDb                    = False
+                            PorteurMustBeVisible       = True
+                            ClampInWorld               = True
+                            ClampOutMap                = False
+                            HasNearlyNullBBox          = False
+                            GfxDescriptorPorteur       = ~/GfxPorteurUnite
+                            Radius                     = ((0) * Metre)
+                            RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                            LowAltitudeFlyingAltitude  = ((0) * Metre)
+                            NearGroundFlyingAltitude   = ((0) * Metre)
+                        )
+                    ),
+                ]
+            ),
+
+        // LinkTeam
+            ~/LinkTeamModuleDescriptor,
+
+        // Tags
+            TTagsModuleDescriptor
+            (
+                TagSet = [
+                    "AllUnits",
+                    "Unite",
+                    "UNITE_TestPawn",
+                ]
+            ),
+
+        // ApparenceModel
+        ApparenceModel is
+            TApparenceModelModuleDescriptor
+            (
+                PickableObject                     = True
+                Depiction                          = ~/Gfx_TestPawn
+            ),
+
+        // Debug
+            ~/DebugModuleDescriptor,
+
+        // PackSignaux
+            ~/PackSignauxModuleDescriptor,
+
+        // Visibility
+            TModuleSelector
+            (
+                Default        = TVisibilityModuleDescriptor
+                (
+                    AutoRevealType       = EAutoRevealType/AutoRevealAllies
+                    UnitConcealmentBonus = 1.0
+                    VisionUnitType       = EVisionUnitType/Undefined
+                    AlwaysComputeLoS     = False
+                    UnitIsStealth        = False
+                    HideFromDebug        = False
+                    VisionObstructionType = EVisionObstructionType/Vehicle
+                    GroundDissimulationModifierType = EGroundDissumulationModifierType/Ground
+                )
+                Selection = [~/NilDescriptorIfGhostOrCadavre]
+            ),
+
+        // ActionPoints
+        TActionPointsModuleDescriptor
+        (
+            InitialActionPoint = 3
+            ActionPointRecoveryPerTurn = -1
+            NbInitialActionsPointsForProducedPawn = 1
+        ),
+
+        // StrategicMovementLink
+        $/GFX/Everything/StrategicMovementDescriptor_company,
+
+        // PackCarrier
+        TPackCarrierModuleDescriptor
+        (
+        ),
+
+    ]
+)
+
+
+//-----------------------------------------------------------
+//-----------------------------------------------------------
+private companyDepictions is TCompanyDepictionUnitlist
+(
+    TagToDescriptor = MAP[
+        ("TTank", ~/Descriptor_Company_TestPawn),
+    ]
+)

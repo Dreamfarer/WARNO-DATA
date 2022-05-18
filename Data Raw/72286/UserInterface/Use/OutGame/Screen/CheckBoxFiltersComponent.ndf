@@ -1,0 +1,165 @@
+
+
+private CheckBoxComponent is BUCKSensibleAreaDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [44.0, 16.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        BUCKSpecificCheckBoxDescriptor
+        (
+            ElementName = 'CheckBox'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [16.0, 16.0]
+                MagnifiableOffset = [12.0, 0.0]
+            )
+        ),
+        BUCKTextDescriptor
+        (
+            ChildFitToContent = true
+            ElementName = 'CheckBoxText'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [32.0, 0.0]
+            )
+
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextToken = "BTN_FILTER"
+            TextSize = "17"
+            TextColor = "Blanc"
+            TextStyle = 'Default'
+            TypefaceToken = "UIMainFont"
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToParent
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                VerticalAlignment = ~/UIText_VerticalCenter
+            )
+        ),
+    ]
+)
+
+private CheckBoxListFilters is BUCKListDescriptor
+(
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'Checkbox/Background'
+
+    HasBorder = true
+    BorderThicknessToken = '1'
+    BorderLineColorToken = 'Checkbox/Frame'
+
+    LocalRenderLayer = 4
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength(Magnifiable = 12)
+    InterItemMargin = TRTTILength(Magnifiable = 6)
+    LastMargin = TRTTILength(Magnifiable = 12)
+
+    BackgroundComponents =
+    [
+        BUCKSensibleAreaDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            HidePointerEvents = true
+            MaskEvents = true
+        )
+    ]
+)
+
+private CheckBoxDefaultHeight is 16.0
+
+template CheckBoxFilters
+[
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, CheckBoxDefaultHeight]
+        MagnifiableOffset = [10, 4.0]
+    )
+
+] is BUCKButtonDescriptor
+(
+    ElementName = 'FilterCheckBox'
+
+    ComponentFrame = <ComponentFrame>
+
+    HidePointerEvents = true
+
+    LeftClickSound = ~/SoundEvent_CheckBoxTick
+
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            InterItemMargin = TRTTILength( Magnifiable = 6.0)
+            Axis = ~/ListAxis/Horizontal
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'CheckBox'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [16.0, 16.0]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = 'Checkbox/Background'
+
+                        HasBorder = true
+                        BorderLineColorToken = "Checkbox/Frame"
+                        BorderThicknessToken = "1"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = 'CheckBoxText'
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "BTN_FILTER"
+                        TextSize = "17"
+                        TextColor = "Blanc"
+                        TextStyle = 'Default'
+                        TypefaceToken = "UIMainFont"
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToParent
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+                    )
+                ),
+            ]
+        )
+    ]
+)

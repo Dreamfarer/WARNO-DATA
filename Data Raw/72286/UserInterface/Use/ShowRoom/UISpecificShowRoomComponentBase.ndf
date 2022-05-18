@@ -1,0 +1,263 @@
+template UnitButtonPackDescriptor
+[
+    RadioButtonManager : TBUCKRadioButtonManager = nil,
+    IsTogglable : bool = true,
+    CannotDeselect : bool = true,
+    ShowXPButtons : bool = false,
+    ShowAddUnitButton : bool = false,
+    ShowRemoveUnitButton : bool = false,
+    ForceEvents : bool = false
+]
+is UISpecificUnitButtonViewDescriptor
+(
+    ComponentFrameAlignment = [0.0, 0.5]
+
+    IsTogglable = <IsTogglable>
+    CannotDeselect = <IsTogglable> ? <CannotDeselect> : false
+    RadioButtonManager = <IsTogglable> ? <RadioButtonManager> : nil
+    ForceEvents = <ForceEvents>
+
+    TextureDrawerWhenUnitNotAvailable = "ColorMultiply_Grayscale"
+    UnitCostGlowColorIndexWhenUnitNotAvailable = "Fulda2_Orange100"
+    UnitNameBackgroundColorWhenUnitNotAvailable = "Gris123"
+
+    AceUnitNameColor = "Fulda2_Orange100"
+    AceUnitBorderColorBySide =
+    [
+        (~/TBorderSide/Top | ~/TBorderSide/Left, "Fulda2_Orange100"),
+        (~/TBorderSide/Bottom | ~/TBorderSide/Right, "Fulda2_Orange100"),
+    ]
+    AceUnitBorderThickness = "1"
+
+    OpacityPercentWhenUnitNotAvailable = 1.0
+    TimeInSecondBeforeAdditionalUnitSpecificContainerShowUp = 0.2
+    ShowXPButtons = <ShowXPButtons>
+    ShowAddUnitButton = <ShowAddUnitButton>
+    ShowRemoveUnitButton = <ShowRemoveUnitButton>
+)
+
+//-------------------------------------------------------------------------------------
+
+AnimationPanelUnitInfos is BUCKTranslationAnimatedContainerDescriptor
+(
+    ElementName = "AnimationPanelUnitInfos"
+    FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        AlignementToFather = [0.5, 1.0]
+        MagnifiableOffset = [380,0]
+    )
+
+    TriggerWhenSetVisible = true
+    AnimationTotalDuration = 0.10
+
+    FramePropertyAfterAnimation = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        AlignementToFather = [0.5, 1.0]
+
+    )
+
+    Components =
+    [
+        ~/UnitInfosSheet
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+UnitInfosSheet is BUCKContainerDescriptor
+(
+    ElementName = "UnitInfosSheet"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "RightPanelsList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+
+                AlignementToFather = [0.0, 1.0]
+                AlignementToAnchor = [0.0, 1.0]
+            )
+
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+            Axis = ~/ListAxis/Vertical
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor (ComponentFrame = TUIFramePropertyRTTI())
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/UnitInfosPanels
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI( MagnifiableWidthHeight = [0.0, 30.0] )
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+UnitInfosPanels is BUCKListDescriptor
+(
+    ElementName = "UnitInfosPanels"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight  = [0.0, 890.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    LastMargin = TRTTILength(Magnifiable = 30.0)
+    InterItemMargin = TRTTILength( Magnifiable = 20.0 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitInfoPanelUnitAndAdditionalUnitContainer(ListElementName = "HighlightedUnitContainer")
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = UnitInfoPanelUnitAndAdditionalUnitContainer
+            (
+                ListElementName = "SelectedUnitContainer"
+                HasTransportPanel = true
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template UnitInfoPanelUnitAndAdditionalUnitContainer
+[
+    ListElementName : string,
+    HasTransportPanel : bool = false,
+] is BUCKContainerDescriptor
+(
+    ElementName = 'UnitInfoPanelUnitAndAdditionalUnitContainer' + <ListElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    Components =
+    [
+        (<HasTransportPanel>
+        ?
+        BUCKContainerDescriptor
+        (
+            ElementName = "Sub" + <ListElementName>
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [15.0, 15.0]
+            )
+            FitStyle = ~/ContainerFitStyle/FitToContent
+        )
+        : BUCKContainerDescriptor( ComponentFrame = TUIFramePropertyRTTI() )
+        )
+        ,
+        BUCKContainerDescriptor
+        (
+            ElementName = <ListElementName>
+            ComponentFrame = TUIFramePropertyRTTI()
+            FitStyle = ~/ContainerFitStyle/FitToContent
+
+            ChildFitToContent = true
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+SideBySideButtonDescriptor is BUCKButtonDescriptor
+(
+    ElementName = "SideBySideButton"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, 25.0]
+        AlignementToAnchor = [1.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+        MagnifiableOffset = [-18.0, 20.0]
+    )
+
+    IsTogglable = true
+
+    HasBorder = true
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            TextureToken = "showRoomTexture_epingle"
+            TextureColorToken = "MarronPanel_noir_toggled2"
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+AnimationButtonDescriptor is BUCKButtonDescriptor
+(
+    ElementName = 'BoutonAnimationPanelInfo'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, 25.0]
+        AlignementToAnchor = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        MagnifiableOffset = [14.0, 25.0]
+    )
+
+    IsTogglable = true
+    DefaultToggleValue = false
+    RadioButtonManager =  nil
+    CannotDeselect = false
+    ForceEvents = false
+    LeftClickSound = SoundEvent_ShowHideUnitInfoSheet
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [20.0, 20.0]
+            )
+            TextureToken = 'showRoomTexture_minimize'
+            TextureColorToken = 'MarronPanel_noir_toggled2'
+            Rotation = -90
+        ),
+    ]
+)

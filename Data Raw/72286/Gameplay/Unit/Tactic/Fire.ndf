@@ -1,0 +1,152 @@
+export ModernWarfareModularUnitFireDescriptorForTestIA is TEntityDescriptor
+(
+    World        = WorldIndices_Fires
+    DescriptorId      = GUID:{00000000-0000-0000-0000-000013000000}
+    ClassNameForDebug = 'WargameFireForTestIA'
+
+    ModulesDescriptors           =
+    [
+        TTypeUnitModuleDescriptor
+        (
+            TypeUnitValue     =  ETypeUnit/Fire
+        ),
+        TPositionModuleDescriptor
+        (
+            InGeoDb              = false
+            Radius               = ((100) * Metre)
+            PorteurMustBeVisible = False
+            GfxDescriptorPorteur = ~/GfxPorteurUnite
+        ),
+        TApparenceModelModuleDescriptor
+        (
+            Depiction  = Template_DescriptorFire_Depiction
+            (
+                Radius = 200 * Metre
+                Density = 0.1
+                FX = $/GFX/GameFx/fx_binder_fire
+            )
+            DefaultVisibility = True
+        ),
+        TFireModuleDescriptor
+        (
+            TimeToLive                = ((40) * Seconde)
+            TimeBeforeSpreading       = ((10) * Seconde)
+            TimeBeforeSpreadAttempt   = ((2) * Seconde)
+            SpreadProbability         = 0.25
+            IsNewFireProbability      = 0.10
+            Radius                    = ((100) * Metre)
+            AmmunitionForBurn         = Ammo_FireWithHighSpreadProba // Faut bien mettre quelque chose... -> et quelque chose qui fait au moins 1 de PhysicalDamages si on veut pas péter un test
+            TimeBetweenBurns          = ((1) * Seconde)
+            OverridenSpreadDescriptor = nil
+            SmokeDescriptor           = ~/ModernWarfareModularUnitSmokeDescriptorForTestIA
+        ),
+        TLinkTeamModuleDescriptor
+        (
+        ),
+    ]
+)
+
+export Ammo_FireWithHighSpreadProba is TAmmunitionDescriptor
+(
+    DescriptorId                = GUID:{00000000-0000-0000-0600-00000f270000}
+    Name                        = 'FireHSP'
+    TypeName                    = 'NA'
+    Caliber                     = 'Napalm'
+    WeaponCursorType            = Weapon_Cursor_MachineGun
+    Level                       = 1
+    Arme                        = TDamageTypeRTTI(Family="he" Index=1)
+    ProjectileType              = EProjectileType/Obus
+    Puissance                   = 100.0
+    TempsEntreDeuxTirs          = 1.0
+    PorteeMaximale              = ((3000) * Metre)
+    PorteeMinimaleTBA           = ((0) * Metre)
+    PorteeMaximaleTBA           = ((0) * Metre)
+    PorteeMinimaleHA            = ((0) * Metre)
+    PorteeMaximaleHA            = ((0) * Metre)
+    PorteeMinimale              = ((0) * Metre)
+    AltitudeAPorteeMinimale     = ((0.1) * Metre)
+    AltitudeAPorteeMaximale     = ((0.1) * Metre)
+    AffecteParNombre            = False
+    AngleDispersion             = 0.01
+    RadiusSplashPhysicalDamages = ((50) * Metre)
+    PhysicalDamages             = 2.0
+    RadiusSplashSuppressDamages = ((50) * Metre)
+    SuppressDamages             = 100.0
+    RayonPinned                 = ((50) * Metre)
+    TirIndirect                 = True
+    FX_tir_sans_physic          = False
+    FX_vitesse_de_depart        = 22000.0
+    FX_frottement               = 0.01
+    TempsAnimation              = 0.0
+    NoiseDissimulationMalus     = 3.0
+    ShotsBeforeMaxNoise         = 1
+    SupplyCost                  = 200
+    HitRollRuleDescriptor       = TDiceHitRollRuleDescriptor
+    (
+        DescriptorId          = GUID:{0dcec000-0000-0000-0000-0000000dcec0}
+        BaseHitValueModifiers =
+        [
+            (EBaseHitValueModifier/Targeted, 0.0),
+            (EBaseHitValueModifier/Idling, 0.0),
+            (EBaseHitValueModifier/Base, 0.0),
+            (EBaseHitValueModifier/Moving, 0.0),
+        ]
+        HitModifierList       =
+        [
+            EDiceHitModifier/Precision,
+            EDiceHitModifier/DistanceToTarget,
+            EDiceHitModifier/SuccesiveShots,
+            EDiceHitModifier/Suppress,
+        ]
+    )
+    TempsDeVisee                = 2.0
+    TempsEntreDeuxSalves        = 4.0
+    NbTirParSalves              = 20
+    NbrProjectilesSimultanes    = 1
+    AffichageMunitionParSalve   = 40
+    MissileDescriptor           = nil
+    SmokeDescriptor             = nil
+    FireDescriptor              = ~/Descriptor_FireWithHighSpreadProba
+    FireTriggeringProbability   = 1.0
+    CanHarmInfantry             = True
+    CanHarmVehicles             = True
+    CanHarmHelicopters          = True
+    CanHarmAirplanes            = True
+    CanHarmGuidedMissiles       = True
+)
+
+export Descriptor_FireWithHighSpreadProba is TEntityDescriptor
+(
+    World        = WorldIndices_Fires
+    DescriptorId      = GUID:{00000000-0000-0000-0000-000014000000}
+    ClassNameForDebug = 'FireWithHighSpreadProba'
+    ModulesDescriptors           = [
+        TTypeUnitModuleDescriptor
+        (
+            TypeUnitValue     = ETypeUnit/Fire
+        ),
+        TPositionModuleDescriptor
+        (
+            InGeoDb              = False
+            Radius               = ((50) * Metre)
+            PorteurMustBeVisible = True
+            GfxDescriptorPorteur = nil
+        ),
+        TFireModuleDescriptor
+        (
+            TimeToLive                     = ((60) * Seconde)
+            TimeBeforeSpreading            = ((1) * Seconde)
+            TimeBeforeSpreadAttempt        = ((0.5) * Seconde)
+            SpreadProbability              = 1
+            IsNewFireProbability           = 1
+            Radius                         = ((100) * Metre)
+            AmmunitionForBurn              = ~/Ammo_Degats_incendie
+            TimeBetweenBurns               = ((0.5) * Seconde)
+            OverridenSpreadDescriptor      = nil
+            SmokeDescriptor                = Descriptor_Smoke_FumiNapalm
+        ),
+        TLinkTeamModuleDescriptor
+        (
+        ),
+    ]
+)

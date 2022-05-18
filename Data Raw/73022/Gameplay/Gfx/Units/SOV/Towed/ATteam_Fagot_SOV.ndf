@@ -1,0 +1,22 @@
+export ModelFile_ATteam_Fagot_SOV is 'GameData:/Assets/3D/Units/URSS/Antichar/Konkurs/Fagot.Ase2NdfBin'
+
+Modele_ATteam_Fagot_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_ATteam_Fagot_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_Fagot_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/Konkurs/Fagot.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_Fagot_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/Konkurs/Fagot.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

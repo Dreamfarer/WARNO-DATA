@@ -1,0 +1,14 @@
+export template AirRecoMissionLaunchSettingHolderTemplate
+[
+    PriorityCorridors = [],
+    MaxAirplaneCountOnBattlefield:int = 1,
+    TicksBetweenTwoLaunch:int = 0,
+    TicksBetweenTwoMissions:int = 0,
+]
+is TAirRecoMissionLaunchSettingHolder
+(
+    PriorityCorridors = <PriorityCorridors>
+    MaxAirplaneCountOnBattlefield = <MaxAirplaneCountOnBattlefield>
+    TicksBetweenTwoLaunch = <TicksBetweenTwoLaunch>
+    TicksBetweenTwoMissions = <TicksBetweenTwoMissions>
+)

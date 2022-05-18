@@ -1,0 +1,1771 @@
+SpecificInGameLDHintResource is TUICommonInGameLDHintResource
+(
+    UserInputLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_SkipLDHint
+
+    PauseButton = ~/LDHintDefaultButton
+
+    DontMaskUserInputEvents = true
+
+    ComponentByName = MAP[
+        ( "DefaultComponent", LDHintDefaultComponent ),
+        ( "HintComponent", LDHintDefaultComponentWithoutPause ),
+
+        ( "ScoreMessageEconomyOrDestruction", LDHintDefaultComponentWithoutPause ),
+        ( "CampaignComponent", LDHintDefaultComponentWithoutPause_2 ),
+        ( "CampaignComponentWithoutPause", LDHintDefaultComponent ),
+        ( "AlertComponent", LDHintAlertComponent ),
+        ( "RemainingTimeAlertComponent", LDHintRemainingTimeAlertComponent),
+        ( "ConquestLocalPlayerHasAdvantageComponent", LDHintConquestLocalPlayerHasAdvantageComponent ),
+        ( "ConquestOpponentHasAdvantageComponent", LDHintConquestOpponentHasAdvantageComponent ),
+        ( "StrategicPlayerTurn", LDHintDefaultComponentWithoutPause ),
+        ( "LocalPlayerAllianceMoralComponent", LDHintLocalPlayerAllianceMoralComponent ),
+        ( "EnemyAllianceMoralComponent", LDHintEnemyAllianceMoralComponent ),
+        ( "SuperHint", SuperHint ),
+        ( "shint", SuperHint ),
+
+        //-------------------------------------------------------------------------------------
+        // ajouter ici le composant
+        //-------------------------------------------------------------------------------------
+        // testTuto
+        ( "testTuto", MES_PauseAndTexture (TextureToken = "Image_testTuto") ),
+        ( "Recon3", MES_PauseAndTexture (TextureToken = "Recon3") ),
+        ( "redhat_radio2", MES_PauseAndTexture (TextureToken = "redhat_radio2") ),
+        ( "tanker3", MES_PauseAndTexture (TextureToken = "tanker3") ),
+        ( "combat_char", Hint_PauseAndTexture (TextureToken = "combat_char") ),
+        ( "combat_charTop", Hint_PauseAndTexture (TextureToken = "combat_charTop") ),
+        ( "combat_charLeft", Hint_PauseAndTexture (TextureToken = "combat_charLeft") ),
+        ( "combat_charRight", Hint_PauseAndTexture (TextureToken = "combat_charRight") ),
+        ( "test_hint", Hint_PauseAndTexture (TextureToken = "test_hint") ),
+        ( "hint", PORTRAIT_PauseAndTexture (TextureToken = "") ),
+
+        //-------------------------------------------------------------------------------------
+        // test_tuto_5
+        ( "test_Tuto_5_shootAircraft", MES_PauseAndTexture (TextureToken = "Image_test_Tuto_5_shootAircraft") ),
+        ( "aigle", PORTRAIT_PauseAndTexture (TexturePortrait = "Image_aigle") ),
+        ( "portrait_aigle", PORTRAIT_Narration  (TextureToken = "Image_aigle") ),
+
+        ( "test_Tuto_5_A", MES_PauseAndTexture (TextureToken = "Image_test_Tuto_5_A") ),
+        ( "test_Tuto_5_B", MES_PauseAndTexture (TextureToken = "Image_test_Tuto_5_B") ),
+        ( "test_Tuto_5_C", MES_PauseAndTexture (TextureToken = "Image_test_Tuto_5_C") ),
+        ( "test_Tuto_5_D", MES_PauseAndTexture (TextureToken = "Image_test_Tuto_5_D") ),
+        ( "test_Tuto_5_E", MES_PauseAndTexture (TextureToken = "Image_test_Tuto_5_E") ),
+        ( "hint_hunt", PORTRAIT_PauseAndTexture     (TextureToken = "hint_hunt"         IsHint = true) ),
+        ( "hint_curseur", PORTRAIT_PauseAndTexture  (TextureToken = "hint_curseur"      IsHint = true) ),
+
+
+
+        // z_tuto_camera
+        ( "tuto_camera_videoCamera",              PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/hint_camera.webm" )),
+        ( "tuto_camera_videoPanelInfo",              PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/tuto_camera_panelinfo.webm" )),
+        ( "tuto_camera_label",              PORTRAIT_PauseAndTexture (TextureToken = 'tuto_camera_label'                            IsHint = true )),
+        ( "tuto_camera_planelArme",         PORTRAIT_PauseAndTexture (TextureToken = 'tuto_camera_planelArme'                       IsHint = true )),
+        ( "tuto_camera_planelInfo",         PORTRAIT_PauseAndTexture (TextureToken = 'tuto_camera_planelInfo'                       IsHint = true )),
+        ( "tuto_camera_planelSelection",    PORTRAIT_PauseAndTexture (TextureToken = 'tuto_camera_planelSelection'                  IsHint = true )),
+        ( "dragon",             PORTRAIT_PauseAndTexture (TexturePortrait = 'tuto_camera_dragon'                )),
+        ( "sabre",             PORTRAIT_PauseAndTexture (TexturePortrait = 'Image_aigle'                )),
+
+
+        // z_tuto_reco
+        ( "tuto_reco_los",              PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/tuto_reco_los.webm" )),
+        ( "tuto_reco_stealth",              PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/tuto_reco_stealth.webm" )),
+
+        // challenge
+
+        ("titre" , TitreMissionFullscreen),
+        ( "challenge_test",                     challenge (TextureToken = 'challenge_test' )),
+        ( "challenge_test_armory0",             challenge (TextureToken = 'challenge_test_armory0' )),
+        ( "challenge_test_armory1",             challenge (TextureToken = 'challenge_test_armory1' )),
+
+
+   ]
+)
+//-------------------------------------------------------------------------------------
+// Liste des Textures
+//-------------------------------------------------------------------------------------
+
+
+
+UseInGame_AdditionalLDHintTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+    ("LDHintCampaign_PortraitHintPauseTexture",                     MAP [(~/ComponentState/Normal, ~/LDHintCampaign_PortraitHintPauseTexture)] ),
+    ("LDHintCampaign_InfoTexture",                                  MAP [(~/ComponentState/Normal, ~/LDHintCampaign_InfoTexture)] ),
+
+    //-------------------------------------------------------------------------------------
+    ( "Image_testTuto", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/Image_testTuto.png' ))] ),
+    ( "tanker3", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/tanker3.png' ))] ),
+    ( "redhat_radio2", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/redhat_radio2.png' ))] ),
+    ( "Recon3", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/Recon3.png' ))] ),
+    ( "combat_char", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/combat_char.png' ))] ),
+    ( "combat_charTop", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/combat_charTop.png' ))] ),
+    ( "combat_charRight", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/combat_charRight.png' ))] ),
+    ( "combat_charLeft", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/combat_charLeft.png' ))] ),
+    ( "test_hint", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_hint.png' ))] ),
+
+    //-------------------------------------------------------------------------------------
+    // test_tuto_5
+    ( "Image_test_Tuto_5_shootAircraft", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/shootAircraft.png' ))] ),
+    ( "Image_aigle",                     MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/aigle.png' ))] ),
+    ( "Image_test_Tuto_5_A", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/A.png' ))] ),
+    ( "Image_test_Tuto_5_B", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/B.png' ))] ),
+    ( "Image_test_Tuto_5_C", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/C.png' ))] ),
+    ( "Image_test_Tuto_5_D", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/D.png' ))] ),
+    ( "Image_test_Tuto_5_E", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/E.png' ))] ),
+
+    ( "hint_hunt", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/hint_hunt.png' ))] ),
+    ( "hint_curseur", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/hint_curseur.png' ))] ),
+
+    //-------------------------------------------------------------------------------------
+    // z_tuto_camera
+    ( "tuto_camera_label",               MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_label.png' ))] ),
+    ( "tuto_camera_planelArme",             MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_planelArme.png' ))] ),
+    ( "tuto_camera_planelInfo",             MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_planelInfo.png' ))] ),
+    ( "tuto_camera_planelSelection",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_planelSelection.png' ))] ),
+    ( "tuto_camera_dragon",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_dragon.png' ))] ),
+
+
+
+    //-------------------------------------------------------------------------------------
+    // challenge
+    ( "challenge_test",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/challenge_test.png' ))] ),
+    ( "challenge_test_armory0",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/test_armory0.png' ))] ),
+    ( "challenge_test_armory1",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/test_armory1.png' ))] ),
+    ]
+)
+//----------------------------------------------------------------------
+// Liste des LDHintComponent
+//----------------------------------------------------------------------
+
+private LDHintDefaultComponent is LDHintStandardComponentWithPause()
+private LDHintDefaultComponentWithoutPause is LDHintStandardComponent
+(
+    HasButtons = false
+    ComponentFrame = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = [1200.0, 0.0]
+        MagnifiableOffset = [0.0, 300.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+)
+
+private LDHintDefaultComponentWithoutPause_2 is BUCKContainerDescriptor
+(
+
+    ComponentFrame = TUIFramePropertyRTTI(
+
+    MagnifiableWidthHeight = [600.0, 80.0]
+    MagnifiableOffset = [0.0, 300.0]
+    AlignementToFather = [0.5, 0.0]
+    AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Components =
+    [
+        PanelRoundedCorner
+        (
+            BorderLineColorToken = 'LDHintSolo_texte'
+            BackgroundBlockColorToken = 'LDHintSolo_fond'
+        ),
+        BUCKTextDescriptor
+        (
+
+            ElementName = 'LDHintText'
+            ComponentFrame = TUIFramePropertyRTTI(
+
+            RelativeWidthHeight = [1,1]
+
+            )
+
+
+
+            ParagraphStyle = ~/LDHintParagraphStyleCentered
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "SevenSegments"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextColor = "LDHintSolo_texte_or"
+            TextSize = "46"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        )
+    ]
+)
+
+
+
+LDHintCampaign_PortraitHintPauseTexture is TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/hint.png' )
+LDHintCampaign_InfoTexture is TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/icone_info.png' )
+
+private LDHintAlertComponent is LDHintStandardComponent
+(
+    TextureToken = "LDHintCampaign_InfoTexture"
+    TextureMagnifiableWidthHeight = [32,32]
+)
+
+private LDHintRemainingTimeAlertComponent is LDHintStandardComponent( TextSize = "19" )
+private LDHintConquestLocalPlayerHasAdvantageComponent is LDHintStandardComponent( TextSize = "19" BackgroundBlockColorToken = "SD2_BleuGris" BorderLineColorToken = 'SD2_LigneBleuGris')
+private LDHintConquestOpponentHasAdvantageComponent is LDHintStandardComponent( TextSize = "19" )
+
+private LDHintLocalPlayerAllianceMoralComponent is LDHintStandardComponent( TextSize = "19" BackgroundBlockColorToken = "SD2_BleuGris" BorderLineColorToken = 'SD2_LigneBleuGris')
+private LDHintEnemyAllianceMoralComponent is LDHintStandardComponent( TextSize = "19" )
+
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+//   TOUT CE QUI EST SOUS CETTE LIGNE EST POUR LES DEV UNIQUEMENT
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+// Templates standard
+//----------------------------------------------------------------------
+
+template LDHintStandardComponent
+[
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [700.0, 0.0]
+        MagnifiableOffset = [0.0, 300.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    ),
+    TextureToken : string = "",
+    HasButtons : bool = false,
+    BorderLineColorToken : string = 'H2_bleu_2',
+    BackgroundBlockColorToken : string = 'H2_bleu_2',
+    TextColor : string = "BoutonTemps",
+    TextSize : string = "30",
+    DimensionPourTexte : int = 750,
+    TextureMagnifiableWidthHeight : float2 = [150,150],
+
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    Elements =
+    [
+        //Separateur du haut
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LDHintTopBottomBorder
+        ),
+
+        //Contenu
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = LDHintStandardContentHorizontalList
+            (
+                TextureToken = <TextureToken>
+                TextColor = <TextColor>
+                TextSize = <TextSize>
+                DimensionPourTexte = <DimensionPourTexte>
+                TextureMagnifiableWidthHeight = <TextureMagnifiableWidthHeight>
+
+            )
+        ),
+    ]
+    +
+    (<HasButtons> ?
+    [
+        //Separateur entre contenu et boutons
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LDHintSeparatorBetweenContentAndButtons
+        ),
+
+        //Boutons
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LDHintDefaultButtonContainer
+        ),
+    ]
+    :
+    [])
+    +
+    [
+           //Separateur du bas
+           BUCKListElementDescriptor
+           (
+               ComponentDescriptor = ~/LDHintTopBottomBorder
+           ),
+       ]
+
+    BackgroundComponents =
+    [
+            PanelRoundedCorner
+            (
+                BackgroundBlockColorToken = <BackgroundBlockColorToken>
+                BorderLineColorToken = <BorderLineColorToken>
+            )
+    ]
+)
+
+template LDHintStandardComponentWithPause
+[
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(
+        MagnifiableWidthHeight = [700.0, 0.0]
+        MagnifiableOffset = [0.0, 300.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    ),
+    TextureToken : string = ""
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 0.0]
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        LDHintStandardComponent
+        (
+            ComponentFrame = <ComponentFrame>
+            TextureToken = <TextureToken>
+            HasButtons = true
+        )
+    ]
+)
+
+template LDHintStandardContentHorizontalList
+[
+    TextureToken : string = "",
+    TextColor : string = "SD2_Blanc184",
+    TextSize : string = "30",
+    DimensionPourTexte : int,
+    TextureMagnifiableWidthHeight : float2 = [150,150],
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 0.0]
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+
+    Elements =
+    (<TextureToken> != "" ?
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LDHintRightLeftBorder
+            ExtendWeight = 1
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = LDHintDefaultTexture
+            (
+                TextureToken = <TextureToken>
+                TextureMagnifiableWidthHeight = <TextureMagnifiableWidthHeight>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LDHintSeparatorBetweenTextureAndText
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LDHintDefaultTextLeftAligned
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LDHintRightLeftBorder
+            ExtendWeight = 1
+        ),
+    ]
+    :
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LDHintRightLeftBorder
+            ExtendWeight = 1
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = LDHintDefaultTextCentered ( TextColor = <TextColor> TextSize = <TextSize> DimensionPourTexte = <DimensionPourTexte>)
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/LDHintRightLeftBorder
+            ExtendWeight = 1
+        ),
+    ])
+)
+
+template LDHintDefaultTexture
+[
+    TextureToken : string = "",
+    TextureMagnifiableWidthHeight : float2 = [106, 150]
+]
+is BUCKTextureDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <TextureMagnifiableWidthHeight>
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    TextureToken = <TextureToken>
+    TextureFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,1]
+    )
+)
+//----------------------------------------------------------------------------------
+//template pour diapo
+//----------------------------------------------------------------------------------
+// MiseEnScene
+//-------------------------------------------------------------------------------------
+TitreMissionFullscreen is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,1]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'Noir'
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = 'LDHintText'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                BigWordAction = ~/BigWordAction/BigWordNewLine
+                InterLine = 0.5
+            )
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TypefaceToken = "Eurostyle"
+            BigLineAction = ~/BigLineAction/MultiLine
+            ColorMode = ~/ColorMode/Override
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextColor = "Blanc"
+            TextSize = "65"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        )
+    ]
+)
+
+template challenge
+[
+TextureToken : string = "",
+] is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,1]
+
+        )
+
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [1920,1080]
+                MagnifiableOffset = [0,0]
+                )
+            Components =
+            [
+                BUCKTextureDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1,1]
+                        //MagnifiableWidthHeight = [1980,1200]
+                    )
+                    TextureToken = <TextureToken>
+                ),
+
+                LDHintDefaultButtonContainer,
+                BUCKTextDescriptor
+                (
+                    ElementName = 'LDHintText'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        //RelativeWidthHeight = [1.0, 0.0]
+                        MagnifiableWidthHeight = [500.0, 0.0]
+                        MagnifiableOffset = [0.0, 0.0]
+                        AlignementToFather = [0.0, 0.0]
+                        AlignementToAnchor = [0.0, 0.0]
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Left
+                        VerticalAlignment = UIText_VerticalCenter
+                        BigWordAction = ~/BigWordAction/BigWordNewLine
+                        InterLine = 0.5
+                    )
+                    TextStyle = "Default"
+
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                    TypefaceToken = "Eurostyle"
+                    BigLineAction = ~/BigLineAction/MultiLine
+                    ColorMode = ~/ColorMode/Override
+
+                    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                    TextColor = "BlancEquipe"
+                    TextSize = "22"
+
+                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+SuperHint is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [10,45]
+        MagnifiableWidthHeight = [360.0, 0.0]
+    )
+    //BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    FirstMargin = TRTTILength ( Magnifiable = 10)
+    InterItemMargin = TRTTILength( Magnifiable = 20.0 )
+    LastMargin = TRTTILength( Magnifiable = 10.0 )
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    [
+    BUCKListElementDescriptor
+    (
+        ComponentDescriptor = BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,0]
+                MagnifiableWidthHeight = [-40,0]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.0]
+
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Left
+                VerticalAlignment = UIText_VerticalCenter
+                BigWordAction = ~/BigWordAction/BigWordNewLine
+                InterLine = 0.5
+            )
+            TextStyle = "Default"
+            TextToken = 'OBJ_NEWI'
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+
+
+            TypefaceToken = "Liberator"
+            BigLineAction = ~/BigLineAction/MultiLine
+            ColorMode = ~/ColorMode/Override
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextColor = "ObjectiveLabel/Primary/Title"
+            TextSize = "30"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        )
+    ),
+    BUCKListElementDescriptor
+    (
+        ComponentDescriptor = BUCKTextDescriptor
+        (
+            ElementName = 'LDHintText'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,0]
+                MagnifiableWidthHeight = [-50,0]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Left
+                VerticalAlignment = UIText_VerticalCenter
+                BigWordAction = ~/BigWordAction/BigWordNewLine
+                InterLine = 0.5
+            )
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+
+
+            TypefaceToken = "Eurostyle"
+            BigLineAction = ~/BigLineAction/MultiLine
+            ColorMode = ~/ColorMode/Override
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextColor = "BlancEquipe"
+            TextSize = "16"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        )
+    )
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner ()
+    ]
+)
+
+
+//-------------------------------------------------------------------------------------
+template PORTRAIT_PauseAndTexture
+[
+    TextureToken : string = "",
+    IsHint : bool = false,
+    VideoName : string = "",
+    TexturePortrait : string = "",
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 0.0]
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableOffset =  [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    HidePointerEvents = true
+    PointerEventsToAllow = ~/EAllowablePointerEventType/Move | ~/EAllowablePointerEventType/Button3 | ~/EAllowablePointerEventType/Scroll
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 0.0]
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableOffset = [0.0, -200.0]
+                AlignementToFather = [0.5, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+            )
+
+        Components =
+        (<TexturePortrait> != "" ?
+        [
+
+            BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [310,310]
+                    AlignementToFather = [0.5, 1]
+                    AlignementToAnchor = [0, 1]
+                    MagnifiableOffset = [450,0]
+                )
+
+                Components =
+                [
+                    PanelRoundedCorner
+                    (
+                        RoundedVertexes = [false, false, true, true]
+                        Radius = 5
+                        BackgroundBlockColorToken = 'LDHintSolo_fond'
+                        BorderLineColorToken = 'LDHintSolo_texte'
+                        BorderThicknessToken = '2'
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                         MagnifiableWidthHeight = [300,300]
+                         AlignementToAnchor = [0.5, 0.5]
+                         AlignementToFather = [0.5, 0.5]
+                        )
+
+                        TextureToken = <TexturePortrait>
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1,1]
+                        )
+                    )
+                ]
+            )
+        ] : [] )
+
+        +
+        (<TextureToken> != "" ?
+        [
+
+            BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [160,160]
+                    AlignementToFather = [0.5, 1]
+                    AlignementToAnchor = [1, 1]
+                    MagnifiableOffset = [-450,0]
+                )
+
+                Components =
+                [
+                    PanelRoundedCorner
+                    (
+                        RoundedVertexes = [true, true, false, false]
+                        Radius = 5
+                        BackgroundBlockColorToken = 'LDHintSolo_fond'
+                        BorderLineColorToken = 'LDHintSolo_texte'
+                        BorderThicknessToken = '2'
+                    ),
+                    BUCKTextureDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                         MagnifiableWidthHeight = [150,150]
+                         AlignementToAnchor = [0.5, 0.5]
+                         AlignementToFather = [0.5, 0.5]
+                        )
+
+                        TextureToken = <TextureToken>
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1,1]
+                        )
+                    )
+                ]
+            )
+        ] : [] )
+
+        +
+
+        (<VideoName> != "" ?
+        [
+
+            BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [310,310]
+                    AlignementToFather = [0.5, 1]
+                    AlignementToAnchor = [1, 1]
+                    MagnifiableOffset = [-450,0]
+                )
+
+                Components =
+                [
+                    PanelRoundedCorner
+                    (
+                        RoundedVertexes = [true, true, false, false]
+                        Radius = 5
+                        BackgroundBlockColorToken = 'LDHintSolo_fond'
+                        BorderLineColorToken = 'LDHintSolo_texte'
+                        BorderThicknessToken = '2'
+                    ),
+                    BUCKVideoDescriptor
+                    (
+                        ElementName = "BackgroundVideo"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                           MagnifiableWidthHeight = [300,300]
+                           AlignementToAnchor = [0.5, 0.5]
+                           AlignementToFather = [0.5, 0.5]
+                        )
+
+                        VideoDrawer  = $/UserInterface/UIVideoDrawer
+                        Video        = TUIResourceVideo ( VideoFile =  <VideoName>  DicoVideo =  ~/DicoVideoOutGame)
+                        VideoFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.,1.])
+                    )
+                ]
+            )
+        ] : [] )
+
+        +
+
+        [
+            BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [900, 0.0]
+                    AlignementToFather = [0.5, 1.0]
+                    AlignementToAnchor = [0.5, 1.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                //BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+                Elements =
+                [
+                    //Separateur du haut
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ~/LDHintTopBottomBorder
+                    ),
+
+                    //-------------------------------------------------------------------------------------
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = 'LDHintText'
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [900.0, 0.0]
+                            )
+
+                            ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                Alignment = UIText_Center
+                                VerticalAlignment = UIText_VerticalCenter
+                                BigWordAction = ~/BigWordAction/BigWordNewLine
+                                InterLine = 0.5
+                            )
+                            TextStyle = "Default"
+
+                            HorizontalFitStyle = ~/FitStyle/UserDefined
+                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                            TextPadding = TRTTILength4 (Magnifiable = [10,0,10,0])
+
+                            TypefaceToken = (<TexturePortrait> != "" ? "Eurostyle_Italic" : "Eurostyle")
+                            BigLineAction = ~/BigLineAction/MultiLine
+                            ColorMode = ~/ColorMode/Override
+
+                            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                            TextColor = (<TexturePortrait> != "" ? "LDHintSolo_texte_or" : "LDHintSolo_texte")
+                            TextSize = "22"
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        )
+                    ),
+
+
+                    //-------------------------------------------------------------------------------------
+
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1
+                        ComponentDescriptor = ~/LDHintSeparatorBetweenContentAndButtons
+                    ),
+
+
+                    //Boutons
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKListDescriptor
+                        (
+                            ElementName = 'LDHintButtonList'
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [0.0, 0.0]
+                                //MagnifiableOffset = ( <TextureToken> != '' ? [-40.0, 0.0] : [0, 0])
+                                AlignementToFather = [0.5, 0]
+                                AlignementToAnchor = [0.5, 0]
+                            )
+
+                            Axis = ~/ListAxis/Horizontal
+                            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                            InterItemMargin = TRTTILength( Magnifiable = ~/LDHintMagnifiableInterButtonMargin )
+
+                            Elements =
+                            [
+                                // envoie LDHintDefaultButton
+                            ]
+                        )
+                    ),
+                    //Separateur du bas
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ~/LDHintTopBottomBorder
+                    ),
+                ]
+
+                BackgroundComponents =
+                [
+                    PanelRoundedCorner
+                    (
+                        RoundedVertexes =
+                            ( <TextureToken> != '' ? [false, false, true, true]
+                                : ( <VideoName> != '' ? [false, false, true, true]
+                                    : ( <TexturePortrait> != '' ? [true, true , false, false]
+                                        : [true, true, true, true] ) ) )
+
+                        Radius = 5
+                        BackgroundBlockColorToken = 'LDHintSolo_fond'
+                        BorderLineColorToken = 'LDHintSolo_texte'
+                        BorderThicknessToken = '2'
+                    )
+                ]
+            )
+        ]
+        ),
+
+    ]
+)
+//-------------------------------------------------------------------------------------
+template PORTRAIT_Narration
+[
+    TextureToken : string = "",
+    IsHint : bool = false,
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 0.0]
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableOffset =  [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    HidePointerEvents = true
+    PointerEventsToAllow = ~/EAllowablePointerEventType/Move | ~/EAllowablePointerEventType/Button3 | ~/EAllowablePointerEventType/Scroll
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 0.0]
+                MagnifiableOffset = [0.0, -200.0]
+                AlignementToFather = [0.5, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            Elements =
+
+
+
+                [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+
+                        Elements =
+                        [
+                        //Separator
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/LDHintSeparatorBetweenTextureAndText
+                        ),
+                        ///Content
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKListDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [800, 0.0]
+                                )
+
+                                Axis = ~/ListAxis/Vertical
+                                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                                InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+                                Elements =
+                                [
+                                    //Separateur du haut
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = ~/LDHintTopBottomBorder
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKTextDescriptor
+                                        (
+                                            ElementName = 'LDHintText'
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 0.0]
+                                                MagnifiableWidthHeight = [0.0, 0.0]
+                                                MagnifiableOffset = [0.0, 0.0]
+                                                AlignementToFather = [0.0, 0.0]
+                                                AlignementToAnchor = [0.0, 0.0]
+                                            )
+
+                                            ParagraphStyle = TParagraphStyleRTTI
+                                            (
+                                                Alignment = UIText_Center
+                                                VerticalAlignment = UIText_VerticalCenter
+                                                BigWordAction = ~/BigWordAction/BigWordNewLine
+                                                InterLine = 0.5
+                                            )
+                                            TextStyle = "Default"
+
+                                            HorizontalFitStyle = ~/FitStyle/UserDefined
+                                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                            TypefaceToken = "UIMainFont"
+                                            BigLineAction = ~/BigLineAction/MultiLine
+                                            ColorMode = ~/ColorMode/Override
+
+                                            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                                            TextColor = "BlancEquipe"
+                                            TextSize = "30"
+
+                                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                        )
+                                    ),
+                                    BUCKListElementDescriptor
+                                    (
+                                        ExtendWeight = 1
+                                        ComponentDescriptor = ~/LDHintSeparatorBetweenContentAndButtons
+                                    ),
+
+                                    //Boutons
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKListDescriptor
+                                        (
+                                            ElementName = 'LDHintButtonList'
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [0.0, 0.0]
+                                                MagnifiableOffset = ( <TextureToken> != '' ? [-40.0, 0.0] : [0, 0])
+                                                AlignementToFather = [0.5, 0]
+                                                AlignementToAnchor = [0.5, 0]
+                                            )
+
+                                            Axis = ~/ListAxis/Horizontal
+                                            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                                            InterItemMargin = TRTTILength( Magnifiable = ~/LDHintMagnifiableInterButtonMargin )
+
+                                            Elements =
+                                            [
+                                                // envoie LDHintDefaultButton
+                                            ]
+                                        )
+                                    ),
+                                    //Separateur du bas
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = ~/LDHintTopBottomBorder
+                                    ),
+                                ]
+                            )
+                        ),
+
+
+
+                        //Separator
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/LDHintCampaignRightBorder
+                        ),
+                        // autre container pour symetrie
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKContainerDescriptor
+                            ( ComponentFrame = TUIFramePropertyRTTI (MagnifiableWidthHeight = [0,0])
+                                )
+                        ),
+
+                        ]
+
+
+
+                        BackgroundComponents =
+                        [
+                            PanelRoundedCorner
+                            (
+                                Radius = 10
+                                RoundedVertexes =  [true, true, false, false]
+                                BackgroundBlockColorToken = 'H2_bleu_2'
+                            )
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+                        FirstMargin = TRTTILength (Magnifiable = 5)
+                        LastMargin = TRTTILength (Magnifiable = 5)
+                        Elements =
+                        [
+
+                        //Portraits
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = LDHintCampaignPortraitTexture
+                            (
+                                TextureToken = <TextureToken>
+                                TextureMagnifiableWidthHeight = (<IsHint> == true ? [150,150] : [100,150])
+                            )
+                        ),
+
+
+                        ]
+                        BackgroundComponents = [ PanelRoundedCorner( Radius = 10 RoundedVertexes = [false, false, true, true]) ]
+                    )
+                )
+            ]
+
+
+        )
+    ]
+)
+//-------------------------------------------------------------------------------------
+
+template MES_PauseAndTexture
+[
+    TextureToken : string = "",
+    AlignementToFather : float2 = [1.0, 1.0],
+    AlignementToAnchor : float2 = [1.0, 1.0],
+    MagnifiableOffset : float2 = [0.0, 0.0],
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+    )
+    HasBackground = true
+    BackgroundBlockColorToken = "SD2_Noir80"
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [1347.0,734.0]
+                AlignementToFather = [0.5, 1]
+                AlignementToAnchor = [0.5, 1]
+                MagnifiableOffset = [0.0, -195.0]
+            )
+
+            Components =
+            [
+            BUCKTextureDescriptor
+            (
+
+
+                ElementName = "DiapoContainer"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1,1]
+                    AlignementToFather = [0.5, 1]
+                    AlignementToAnchor = [0.5, 1]
+                    //MagnifiableOffset = [0.0, -195.0]
+                )
+
+                TextureToken = <TextureToken>
+                TextureFrame = TUIFramePropertyRTTI
+                                (
+                                    //MagnifiableWidthHeight = [0.0, 735.0]
+                                    //RelativeWidthHeight = [1,1]
+                                     //MagnifiableWidthHeight = [1347.0,734.0]
+                                    AlignementToFather = <AlignementToFather>
+                                    AlignementToAnchor = <AlignementToAnchor>
+                                    //MagnifiableOffset = <MagnifiableOffset>
+                                )
+                HasBackground = false
+                BackgroundBlockColorToken = 'Orange'
+                ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+            ),
+            ]
+        ),
+
+        BUCKContainerDescriptor
+        (
+            //HasBackground = true
+            BackgroundBlockColorToken = 'Vert'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [1347,95]
+                //RelativeWidthHeight = [1, 0]
+                MagnifiableOffset = [0.0, -95.0]
+                AlignementToFather = [0.5, 1]
+                AlignementToAnchor = [0.5, 1]
+            )
+
+            HidePointerEvents = true
+
+            Components =
+            [
+                LDHintStandardComponent //liste verticale
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        //MagnifiableWidthHeight = [700.0, 0.0]
+                        RelativeWidthHeight = [1,0]
+                        //MagnifiableOffset = [0.0, 300.0]
+                        AlignementToFather = [0.5, 0.0]
+                        AlignementToAnchor = [0.5, 0.0]
+                    )
+                    //TextureToken = <TextureToken>
+                    HasButtons = true
+                    DimensionPourTexte = 1300
+
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+// hint
+//-------------------------------------------------------------------------------------
+template Hint_PauseAndTexture
+[
+    TextureToken : string = "",
+
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [842,0]
+        AlignementToFather = [0.5,0.5]
+        AlignementToAnchor = [0.5,0.5]
+    )
+    MagnifierMultiplication = 1.2
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0, 55]
+                    RelativeWidthHeight = [1,0]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextCenter
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/UserDefined
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/MultiLine
+                ColorMode = ~/ColorMode/Override
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+                //TextPadding = TRTTILength4(Magnifiable = [8.0, 8.0, 8.0, 8.0])
+                TextColor = "Blanc"
+                TextSize = "30"
+                TextToken = 'ldhint'
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight =[0,408]
+                    AlignementToFather = [0.5,0]
+                    AlignementToAnchor = [0.5,0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                InterItemMargin = TRTTILength (Magnifiable = 10)
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextureDescriptor
+                        (
+                            HasBackground = true
+                            BackgroundBlockColorToken = "SD2_Noir80"
+
+                            ElementName = "DiapoContainer"
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [408.0, 408.0]
+
+                            )
+
+                            TextureToken = <TextureToken>
+                            TextureFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [408.0, 408.0]
+
+                            )
+
+                            ResizeMode = ~/TextureResizeMode/UserDefined
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = 'LDHintText'
+                            ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [408.0, 408.0]
+
+                                )
+                            //HasBackground = true
+                            BackgroundBlockColorToken = 'Orange'
+                            ParagraphStyle = ~/paragraphStyleTextCenter
+                            TextStyle = "Default"
+
+                            HorizontalFitStyle = ~/FitStyle/UserDefined
+                            VerticalFitStyle = ~/FitStyle/UserDefined
+
+                            TypefaceToken = "UIMainFont"
+                            BigLineAction = ~/BigLineAction/MultiLine
+                            ColorMode = ~/ColorMode/Override
+
+                            UniformDrawer = $/UserInterface/UIUniformDrawer
+                            TextPadding = TRTTILength4(Magnifiable = [8.0, 8.0, 8.0, 8.0])
+                            TextColor = "Blanc"
+                            TextSize = "30"
+
+                            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                            Components = [PanelRoundedCorner()]
+                        )
+
+
+                    )
+
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0,15]
+                    RelativeWidthHeight = [1,0]
+                    )
+
+                //Components = [~/LDHintDefaultButtonContainer]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = LDHintDefaultButtonContainer
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0,15]
+                    RelativeWidthHeight = [1,0]
+                    )
+
+                //Components = [~/LDHintDefaultButtonContainer]
+            )
+        ),
+
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner()
+    ]
+)
+
+//----------------------------------------------------------------------
+// Templates campagne
+//----------------------------------------------------------------------
+
+template LDHintCampaignPortraitTexture
+[
+    TextureToken : string = "",
+    TextureMagnifiableWidthHeight : float2 = [150,150]
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <TextureMagnifiableWidthHeight>
+        PixelWidthHeight = [0.0, 2 * ~/DistanceBetweenExternalAndInternalBorder]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = <TextureMagnifiableWidthHeight>
+                AlignementToFather = [0.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+            )
+
+            TextureToken = <TextureToken>
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,1]
+            )
+        )
+    ]
+)
+
+//----------------------------------------------------------------------
+// Sous composants
+//----------------------------------------------------------------------
+
+private LDHintMagnifiableBorderSize is 15.0
+private LDHintMagnifiableLengthBetweenTextureAndText is 15.0
+private LDHintMagnifiableLengthBetweenTextAndRightBorder is 15.0
+private LDHintMagnifiableInterItemBetweenTextAndPauseButton is 15.0
+
+private LDHintTopBottomBorder is BUCKContainerDescriptor
+(
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1.0, LDHintMagnifiableBorderSize]
+    )
+)
+
+private LDHintRightLeftBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [LDHintMagnifiableBorderSize, 1.0]
+    )
+)
+
+private LDHintSeparatorBetweenTextureAndText is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [LDHintMagnifiableLengthBetweenTextureAndText, 1.0]
+    )
+)
+
+private LDHintCampaignLeftBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        PixelWidthHeight = [~/DistanceBetweenExternalAndInternalBorder, 1.0]
+    )
+)
+
+private LDHintCampaignRightBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [LDHintMagnifiableLengthBetweenTextAndRightBorder + ~/DistanceBetweenExternalAndInternalBorder, 1.0]
+    )
+)
+
+private LDHintSeparatorBetweenContentAndButtons is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1.0, LDHintMagnifiableInterItemBetweenTextAndPauseButton]
+    )
+)
+
+template LDHintDefaultTextCentered
+[
+    TextColor : string = "Orange",
+    TextSize : string = "30",
+    DimensionPourTexte : int = 900,
+]
+is BUCKTextDescriptor
+(
+    ElementName = 'LDHintText'
+    ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [<DimensionPourTexte>, 0.0]
+        )
+
+    ParagraphStyle = ~/LDHintParagraphStyleCentered
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/MultiLine
+    ColorMode = ~/ColorMode/Override
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextColor = <TextColor>
+    TextSize = <TextSize>
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+private LDHintCampaignText is BUCKTextDescriptor
+(
+    ElementName = 'LDHintText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    ParagraphStyle = ~/LDHintParagraphStyleLeftAligned
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "Courrier"
+    BigLineAction = ~/BigLineAction/MultiLine
+    ColorMode = ~/ColorMode/Override
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextColor = "BlancEquipe"
+    TextSize = "22"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+private LDHintCampaignText_left is BUCKTextDescriptor
+(
+    ElementName = 'LDHintText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    ParagraphStyle = ~/LDHintParagraphStyleLeftAlignedExact
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/MultiLine
+    ColorMode = ~/ColorMode/Override
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextColor = "Orange"
+    TextSize = "20"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+private LDHintDefaultTextLeftAligned is BUCKTextDescriptor
+(
+    ElementName = 'LDHintText'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableWidthHeight = [500, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    ParagraphStyle = ~/LDHintParagraphStyleLeftAligned
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/MultiLine
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TextColor = "Orange"
+    TextSize = "20"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+
+{private LDHintDefaultButton is HUDDarkButton
+(
+    ElementName = 'LDHintPauseButton'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [120.0, 30.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    HasText = true
+    TextParagraphStyle = ~/LDHintParagraphStyleCentered
+    TextStyle = "Default"
+
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+    TextSizeToken = "SD2_Petit"
+    HidePointerEvents = true
+
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+    HintDico = ~/LocalisationConstantes/dico_interface_ingame
+)}
+
+private LDHintDefaultButton is ConfirmButton
+(
+    ElementName = "LDHintPauseButton"
+    //TextToken = ''
+
+    //HintableAreaElementName = "SurrenderOrQuitButtonHintableAreaElement"
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+    //HintDico = ~/LocalisationConstantes/dico_interface_outgame
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+    ButtonAlignementToFather = [0.0, 0.0]
+    ButtonAlignementToAnchor = [0.0, 0.0]
+    ButtonMagnifiableWidthHeight = [EscapeMenuButtonWidth, 32]
+    TextTypefaceToken = "Eurostyle"
+    TextStyle = 'TextStyleEcranMoniteur_solo'
+    TextColorToken = 'LDHintSolo_texte'
+    BorderLineColorToken = 'LDHintSolo_texte'
+    HasBackground = true
+    BackgroundBlockColorToken = 'LDHintSolo_fond'
+    TextSizeToken = '18'
+    BorderThicknessToken = '2'
+)
+
+private LDHintParagraphStyleCentered is TParagraphStyleRTTI
+(
+    Alignment = UIText_Center
+    VerticalAlignment = UIText_VerticalCenter
+    BigWordAction = ~/BigWordAction/BigWordNewLine
+    InterLine = 0.3
+)
+
+private LDHintParagraphStyleLeftAlignedExact is TParagraphStyleRTTI
+(
+    Alignment = UIText_Left
+    VerticalAlignment = UIText_VerticalCenter
+    BigWordAction = ~/BigWordAction/BigWordNewLine
+    InterLine = 0
+)
+
+private LDHintParagraphStyleLeftAligned is TParagraphStyleRTTI
+(
+    Alignment = UIText_Left
+    VerticalAlignment = UIText_VerticalCenter
+    InterLine = 0.5
+)
+
+private LDHintMagnifiableInterButtonMargin is 5
+
+private LDHintDefaultButtonContainer is BUCKListDescriptor
+(
+    ElementName = 'LDHintButtonList'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [0.5, 0]
+        AlignementToAnchor = [0.5, 0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    InterItemMargin = TRTTILength( Magnifiable = ~/LDHintMagnifiableInterButtonMargin )
+
+    Elements =
+    [
+    ]
+)

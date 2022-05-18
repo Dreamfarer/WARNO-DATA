@@ -1,0 +1,19 @@
+export ModelFile_CH53G_trans_RFA is 'GameData:/Assets/3D/Units/RFA/Helico/CH_53_G_Trans/CH_53_G_Trans.Ase2NdfBin'
+
+Modele_CH53G_trans_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_CH53G_trans_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_CH53G_trans_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Helico/CH_53_G_Trans/CH_53_G_Trans.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_CH53G_trans_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Helico/CH_53_G_Trans/CH_53_G_Trans.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

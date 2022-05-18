@@ -1,0 +1,19 @@
+// Francis (25/10/19)
+// l'existence de ce fichier est foireuse
+// la démarche qu'on veut c'est ajouter un mesh de table/hq dans une map, pour cela il faut que le
+// ase2ndfbin soit "généré" (avec tout ce que ca ne veut rien dire).
+// Or apparemment, un mesh n'est généré que s'il est listé dans un mesh pack.
+//
+// Le seul mesh pack qui m'avait l'air fonctionnel c'est mesh_All.spk.
+//
+// La liste des meshs présents dans ce pack (et dans les autres) utilisent un mécanisme d'auto-
+// remplissage de la "liste" via des clusters NDF utilisant la propriété `FillResourceList = True`
+// On en arrive donc à ce fichier, qui est listé dans les transactions NDF du cluster générant le
+// ndfbin 'GFX/Unit' lui même référéncé par le meshpack dans sa liste des ndfbins à parcourir pour
+// trouver les resources à packer. Tout ça pour rajouter un mesh...
+
+export Table_HQ is TResourceMultiMaterialMesh
+(
+    FileName = 'GameData:/Assets/3D/HQ/Table_HQ.Ase2NdfBin'
+    UsefulnessMask = CivMask/Common + TypeMask/Common
+)

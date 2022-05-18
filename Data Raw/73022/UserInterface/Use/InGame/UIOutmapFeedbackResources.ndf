@@ -1,0 +1,204 @@
+
+
+UISpecificOutmapFeedbackResources is TUISpecificOutmapFeedbackResources
+(
+    Camera                          = $/M3D/Camera/CameraPrincipale
+
+    // ATTENTION: Si des ajustables ont ete sauvegardes, les reglages suivants qui ont ete
+    // enregistres ne seront pas pris en compte
+
+    //---------------------------------------------------------------------------------------//
+    //--------------------- REGLAGES OBSERVATEUR EXTERIEUR ----------------------------------//
+    //---------------------------------------------------------------------------------------//
+    VitesseDeRotation = 0.4// En tours par minute
+    EcartementEntreCerclesExterieurs = 1750.0
+    EpaisseurDesTraitsExterieurs = 400.0
+    TailleRelativeDeLaZoneRemplie = 0.55 // Entre 0 et 1 proportion de partie blanche/partie vide
+    NomreDeMotifsExterieurs = 24
+    CouleurExterieure = [  235,   235,   235, 125] // alpha 15
+
+    //---------------------------------------------------------------------------------------//
+    //--------------------- REGLAGES OBSERVATEUR INTERIEUR ----------------------------------//
+    //---------------------------------------------------------------------------------------//
+    EcartementEntreCerclesInterieurs = 1750.0
+    EpaisseurDesTraitsInterieurs = 400.0
+    PositionAnneauInterieur = 0.6// Entre 0 et 1 par rapport au rayon de vision
+    NomreDeMotifsInterieurs = 36
+    CouleurInterieure = [  235,   235,   235, 30] // 10
+
+    //---------------------------------------------------------------------------------------//
+    //--------------------- REGLAGES OBSERVATEUR CROIX     ----------------------------------//
+    //---------------------------------------------------------------------------------------//
+    EpaisseurCroix = 50.0 // 400
+    LongueurCroix = 2000.0 // 8000
+    CouleurCroix = [  235,   235,   235, 30] // 10
+
+    //---------------------------------------------------------------------------------------//
+    //--------------------------- REGLAGES STRIKE FEEDBACK ----------------------------------//
+    //---------------------------------------------------------------------------------------//
+    CouleurAPortee = [ 0, 210, 18,  255] //[ 100,   0,   0,  255] //[  20,   0,   0,  255] contour
+    CouleurAPorteeInterieur = [ 20, 20,  20, 120] //[ 100,   0,   0, 100] //[  20,   0,   0,  60] INTERIEUR
+    CouleurHorsDePortee = [  200,   10,   10,  255]
+    CouleurHorsDePorteeInterieur = [  10,   10,   10,  100]
+    CouleurDuFlash = [ 175,   40,   40,  255] // [  100,   20,   20,  255]
+    CouleurDuFlashInterieur = [  175,   40,   40,  100] //[  100,   20,   20,  60]
+    DureeDuFadeOutAuTir = 1.000 // en secondes
+    DureeDuFlashDeValidation = 0.5//0.300 // en secondes
+    EpaisseurTraitStrike = 250.0//550.0
+
+    //---------------------------------------------------------------------------------------//
+    //------------------------------------- REGLAGES TEXTE ----------------------------------//
+    //---------------------------------------------------------------------------------------//
+    CouleurDuTexte = "OutmapFeedback/Text"
+    CouleurDeLaBordure = [  20,   20,   20,  255] //[  230,   230,   230,  255] A regler apres le jira 3D
+    DistanceApparition = 50000.0
+    DistanceDisparition = 550000.0
+    OffsetDuTexte = 12000.0
+
+    DescripteurDuPanel = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1, 1]
+            MagnifiableWidthHeight = [0, 0]
+        )
+    )
+
+    DescripteurDuMessage = BUCKContainerDescriptor
+    (
+        ElementName = "MainContainer"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [0, 0]
+            MagnifiableWidthHeight = [200, 60] // 200, 20
+            AlignementToFather = [0.5, 0.45]
+            AlignementToAnchor = [0.5, 0.45]
+        )
+
+        UniformDrawer = $/UserInterface/UIUniformDrawer
+        HasBorder = false
+
+        Components =
+        [
+            BUCKGradientDescriptor
+            (
+                ElementName = 'PlayerGradient'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.33]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                Transition0 = 0
+                Transition1 = 0.5
+                Transition2 = 0.5
+                Transition3 = 1
+
+                TransitionColor0 = "OffmapFeedback/Gradient0"
+                TransitionColor1 = "OffmapFeedback/Gradient1"
+                IsRelative = true
+            ),
+
+            BUCKTextDescriptor
+            (
+                ElementName = 'Player'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.33]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "OutmapFeedback"
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "OutmapFeedback/Text"
+                TextSize = "OutmapFeedback/Text"
+            ),
+
+            BUCKTextDescriptor
+            (
+                ElementName = 'Message'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.33]
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "OutmapFeedback"
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "OutmapFeedback/Text"
+                TextSize = "OutmapFeedback/Text"
+            ),
+
+            BUCKTextDescriptor
+            (
+                ElementName = 'Timer'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.33]
+                    AlignementToFather = [0.5, 1.0]
+                    AlignementToAnchor = [0.5, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "OutmapFeedback"
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "OutmapFeedback/Text"
+                TextSize = "OutmapFeedback/TimerText"
+            )
+        ]
+    )
+
+    UILayer         = $/UserInterface/UILayer_Labels
+)
+

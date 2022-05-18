@@ -1,0 +1,67 @@
+
+BUCKSpecificReinforcementLabelMainComponentDescriptor is BUCKTextDescriptor
+(
+    ElementName = "ArrowText"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    TextStyle = "Default"
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = UIText_Left
+        VerticalAlignment = UIText_Up
+        InterLine         = 0
+        LineWidth         = 0
+    )
+
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TextSize = "5000"
+    TextColor = "White"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TypefaceToken = "Liberator"
+)
+
+ReinforcementTextReferentiel is TLabelTransformationComposition
+(
+    Transformations =
+    [
+        TLabelTransformPostTranslateForArea
+        (
+            Translation = [0,0,0]
+        )
+    ]
+)
+
+UISpecificReinforcementLabelViewDescriptor is TUISpecificReinforcementLabelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificReinforcementLabelMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+
+    LabelReferentiel = ~/ReinforcementTextReferentiel
+
+    VisibilityRange = ~/AllInGameRanges/ZoomRenfortArrow
+    FadeDuration = 0.5
+
+    OpacityControlByFloat = $/M3D/Shader/AreaFillOpacity
+
+    ReinforcementTokens =
+    [
+        "REINF_LAND", //Land
+        "REINF_AIR", //Air
+        "REINF_SEA", //Maritime
+    ]
+)

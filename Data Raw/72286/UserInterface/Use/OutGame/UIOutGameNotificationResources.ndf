@@ -1,0 +1,177 @@
+NotificationFrame_DefaultBackground is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/fond_notification.png")
+
+template NotificationFrame
+[
+    Content : LIST<TBUCKContainerDescriptor> = [],
+]
+is PanelRoundedCorner
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [420.0, 100.0]
+    )
+
+    BackgroundBlockColorToken = "H2_bleu_2_hint"
+    Radius = 10
+    RoundedVertexes = [false, false, true,true]
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = 'Content'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableOffset = [30.0, 5.0]
+                MagnifiableWidthHeight = [-60.0, 0]
+            )
+
+            Components = <Content>
+        )
+    ]
+)
+
+private CloseNotificationFrame is BUCKButtonDescriptor
+(
+    ElementName = 'CloseNotificationButton'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25.0, 25.0]
+        MagnifiableOffset = [-15.0, 15.0]
+        AlignementToAnchor = [1.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TypefaceToken = "UIMainFont"
+            TextStyle = 'Default'
+            TextToken = 'CL_DEFVAL'
+            TextSize = 'BoutonsDAction/Standard'
+            TextColor = 'Blanc'
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            ParagraphStyle = ~/CenteredParagraphStyle
+        ),
+    ]
+)
+
+private NotificationAvatarTextFrame is NotificationFrame
+(
+    Content =
+    [
+        BUCKListDescriptor
+        (
+            Axis = ~/ListAxis/Horizontal
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            FirstMargin = TRTTILength(Magnifiable = 5.0)
+            InterItemMargin = TRTTILength(Magnifiable = 10.0)
+            LastMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificAvatarDescriptor
+                    (
+                        ElementName = 'Avatar'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [64.0, 64.0]
+                            RelativeOffset = [0.0, 0.25]
+                        )
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "NotificationText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0,0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            BigWordAction = ~/BigWordAction/BigWordNewLine
+                            Balanced = true
+                        )
+                        TextStyle = "Default"
+
+                        HorizontalFitStyle = ~/FitStyle/FitToParent
+                        VerticalFitStyle = ~/FitStyle/FitToParent
+
+                        TypefaceToken = "Liberator"
+                        BigLineAction = ~/BigLineAction/MultiLine
+
+                        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                        TextColor = "BlancEquipe"
+                        TextSize = "14"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+private NotificationTextFrame is NotificationFrame
+(
+    Content =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "NotificationText"
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                BigWordAction = ~/BigWordAction/BigWordNewLine
+                Balanced = true
+            )
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/FitToParent
+            VerticalFitStyle = ~/FitStyle/FitToParent
+
+            TypefaceToken = "UIMainFont"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextColor = "Blanc"
+            TextSize = "InfoSecondaire"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        ),
+    ]
+)
+
+NotificationPanelResource is TUISpecificOutGameNotificationPanelResource
+(
+    CloseNotificationFrame = ~/CloseNotificationFrame
+
+    NotificationAvatarTextFrame = ~/NotificationAvatarTextFrame
+    NotificationTextFrame = ~/NotificationTextFrame
+    NotificationTextSizeToken = "InfoSecondaire"
+    MaxPlayerAndTeamNameSize = 10
+)

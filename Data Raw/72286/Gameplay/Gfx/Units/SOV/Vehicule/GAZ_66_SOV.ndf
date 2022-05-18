@@ -1,0 +1,19 @@
+export ModelFile_GAZ_66_SOV is 'GameData:/Assets/3D/Units/URSS/Vehicule/Ural_4320/Ural_4320.Ase2NdfBin'
+
+Modele_GAZ_66_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_GAZ_66_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_GAZ_66_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Vehicule/Ural_4320_MID/Ural_4320_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_GAZ_66_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Vehicule/LODS/Ural_4320_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

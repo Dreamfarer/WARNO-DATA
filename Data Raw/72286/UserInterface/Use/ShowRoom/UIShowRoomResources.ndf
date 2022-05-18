@@ -1,0 +1,84 @@
+private DummyComponentForBlur is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 1]
+    )
+)
+
+ShowRoomResource is TUISpecificShowRoomResources
+(
+    Handler = $/UI/ResourcesHandler/ShowRoomResourcesHandler
+
+    UILayer                     = $/UserInterface/UILayer_2DInterface_ShowRoom
+    UILayerAboveBlur            = $/UserInterface/UILayer_2DInterfaceAboveBlur_ShowRoom
+    UILayerLDHint               = $/UserInterface/UILayer_2DInterfaceLDHint
+
+    CommonResources             = ~/UICommonResource
+    InGameResourcesHandler      = $/UI/ResourcesHandler/InGameResourcesHandler
+    OutGameResourcesHandler     = $/UI/ResourcesHandler/OutGameResourcesHandler
+    MousePointerMaskLayer       = $/UserInterface/UILayer_ShowRoomMousePointerMask
+
+    MainStyleGuides             =
+    [
+        ~/DefaultStyleGuide,
+    ]
+
+    ViewDescriptors = MAP
+    [
+        ("UISpecificUnitInfoPanelViewDescriptor", UISpecificUnitInfoPanelViewDescriptor(MainComponentFrame = TUIFramePropertyRTTI() IsShowRoom = true)),
+        ("ArmoryComponentDescriptor", ~/ArmoryComponentDescriptor),
+        ("DeckCreatorScreenComponentDescriptor", ~/DeckCreatorScreenComponentDescriptor),
+        ("UISpecificShowRoomGroupsDeckCreatorScreenViewDescriptor", UISpecificShowRoomGroupsDeckCreatorScreenViewDescriptor),
+    ]
+
+    GroupSelectionReminderResources = ~/GroupSelectionReminder
+    LabelResource                   = ~/SpecificInGameLabelResource
+    MainContainerResource           = ~/ShowRoomMainContainerResource
+    MousePolicyManagerResources     = nil
+
+    LDHintResource                  = ~/SpecificInGameLDHintResource
+    WarningPanelResources           = ~/WarningPanelResources
+
+    WarnOnMultiplayerDeckNotFilled  = true
+
+    SelectionHandlerInGameResources = ~/SelectionResources
+    MagnifierMultiplier = 0.9
+
+    DummyComponentForBlur = ~/DummyComponentForBlur
+
+    CountriesToShow = ["SOV","US","UK","FR","CAN","POL","DDR","RFA","BEL"]
+    AllianceToCountriesToShow = MAP [
+        (ENationalite/Axis, ["SOV","DDR","POL"]),
+        (ENationalite/Allied, ["US","UK","FR","RFA","CAN","BEL"])
+    ]
+
+    SpecificHidingViewDescriptor = ~/UISpecificHidingViewDescriptor
+    DeckCreatorViewHelperDescriptor = ~/DeckCreatorScreenViewHelperDescriptor
+
+    ShortcutUserInputLayer      = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+)
+
+ShowRoomMainContainerResource is TUICommonMainContainerResource
+(
+    RefMagnification = ~/RefMagnification
+    ContentRefSize = [ 2134 , 1440 ]
+    SafeBoxMin     = [  107 ,   80 ]
+    SafeBoxSize    = ~/FullScreenSafeBoxSize
+
+    ForegroundComponents = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+        Components =
+        [
+            BUCKContainerDescriptor
+            (
+                UniqueName = "ShowRoomChatContainer"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            ),
+        ]
+    )
+)

@@ -1,0 +1,667 @@
+
+// -------------------------------------------------------------------------------------------------
+
+// Strategic Production Menu Container
+BUCKSpecificStrategicProductionMenuMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.9, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    HidePointerEvents = true
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI()
+
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                Axis = ~/ListAxis/Horizontal
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = ~/FlecheDeRenfort
+                    ),
+                ]
+            )
+        ),
+    ]
+)
+
+private FlecheDeRenfort is BUCKListDescriptor
+(
+    ElementName = "MainList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 30.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    //LastMargin = TRTTILength( Magnifiable = 15.0 )
+
+    Elements =
+    [
+        // liste des renforts
+        BUCKListElementDescriptor
+        (
+            //ExtendWeight = 1.0
+            ComponentDescriptor = BUCKSpecificScrollingContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    AlignementToAnchor = [0.0, 0.0]
+                    AlignementToFather = [0.0, 0.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+                FitToMaximumSize = TRTTILength2(Magnifiable = [1200.0, 0.0] )
+                //ExternalScrollbar = true
+                //HasBackground = true
+                BackgroundBlockColorToken = 'Orange'
+                Components =
+                [
+                    ~/StrategicProductionMenuCategoryList
+                ]
+            )
+        ),
+        // bout de la flèche
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKPolygonDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [13.0, 0.0]
+                )
+
+                HidePointerEvents = true
+
+                PolygonShape = PolygonShapeManual
+                (
+                    Corners =
+                    [
+                        [0.0, 0.0],
+                        [1.0, 0.5],
+                        [0.0, 1.0],
+                    ]
+                )
+                Color0 = "H2_bleu_2"
+                Color1 = "H2_bleu_2"
+            )
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// CategoryList
+// -------------------------------------------------------------------------------------------------
+
+// Categories List
+private StrategicProductionMenuCategoryList is BUCKListDescriptor
+(
+    ElementName = 'CategoryButtonList'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+
+    Axis = ~/ListAxis/Horizontal
+    FirstMargin = TRTTILength (Magnifiable = 5)
+    InterItemMargin = TRTTILength (Magnifiable = 20)
+    LastMargin = TRTTILength(Magnifiable = 5.0)
+
+    BackgroundComponents =
+    [ PanelRoundedCorner( RoundedVertexes = [true,true,false, false])]
+)
+
+// -------------------------------------------------------------------------------------------------
+// CategoryButton
+// -------------------------------------------------------------------------------------------------
+
+private StrategicProductionMenuCategoryButtonRadioButtonManager is TBUCKRadioButtonManager()
+
+// Available Unit Category Button
+StrategicProductionMenuAvailableCategoryButton is BUCKButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "GrayMineShaft80"
+
+    IsTogglable = true
+    RadioButtonManager = StrategicProductionMenuCategoryButtonRadioButtonManager
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            //FirstMargin = TRTTILength( Magnifiable = 10.0 )
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "TextElement"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [0.0, -10.0]
+                            PixelWidthHeight = [0.0, -2.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+                        TextPadding = TRTTILength4( Pixel = [1.0, 0.0, 1.0, 0.0] )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        TypefaceToken = "UIMainFont"
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextSize = "SD2_Moyen"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextColor = "Glacier"
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            ElementName = "ButtonHintableArea"
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                            HintBodyToken = "mpro_avab"
+                        )
+
+                        Components =
+                        [
+                            BUCKContainerDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 1.0]
+                                    PixelWidthHeight = [0.0, 1.0]
+                                    AlignementToFather = [0.5, 1.0]
+                                    AlignementToAnchor = [0.5, 1.0]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Underline"
+                            )
+                        ]
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+// Unit Category Button
+StrategicProductionMenuCategoryButton is BUCKButtonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "Black80"
+
+    IsTogglable = true
+    RadioButtonManager = StrategicProductionMenuCategoryButtonRadioButtonManager
+
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            //FirstMargin = TRTTILength( Magnifiable = 10.0 )
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "TextElement"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [0.0, -10.0]
+                            PixelWidthHeight = [0.0, -2.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        TextStyle = "Default"
+                        TextPadding = TRTTILength4( Pixel = [1.0, 0.0, 1.0, 0.0] )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        TypefaceToken = "UIMainFont"
+                        BigLineAction = ~/BigLineAction/CutByDots
+
+                        TextSize = "SD2_Moyen"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextColor = "Glacier"
+
+                        Hint = BUCKSpecificHintableArea
+                        (
+                            ElementName = "ButtonHintableArea"
+                            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                             HintBodyToken = "mpro_nexb"
+                        )
+
+                        Components =
+                        [
+                            BUCKContainerDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 1.0]
+                                    PixelWidthHeight = [0.0, 1.0]
+                                    AlignementToFather = [0.5, 1.0]
+                                    AlignementToAnchor = [0.5, 1.0]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Underline"
+                            )
+                        ]
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitButtonList
+// -------------------------------------------------------------------------------------------------
+
+// Unit Buttons List
+private StrategicProductionMenuUnitList is BUCKListDescriptor
+(
+    ElementName = 'UnitContainerList'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    // FirstMargin = TRTTILength( Magnifiable = 15.0 )
+    //LastMargin = TRTTILength( Magnifiable = 20.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+)
+
+// -------------------------------------------------------------------------------------------------
+// UnitListScrollingContainer
+// -------------------------------------------------------------------------------------------------
+
+// Unit List Scroll Container
+private StrategicProductionMenuUnitListScrollingContainer is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = "UnitContainerListScrollingContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.9, 0.0]
+        MagnifiableOffset = [10.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    HasHorizontalScrollbar = true
+    ExternalScrollbar = true
+
+    Components =
+    [
+        ~/StrategicProductionMenuUnitList
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+template PawnFullPowerSummary
+[
+    ElementName : string,
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    ),
+    HasBackground : bool = true,
+    ValueColor : string,
+    BackgroundBlockColorToken: string = 'SD2_Gris90',
+    ShowDetails : bool  = False,
+    ShowIcons : bool  = True,
+    TextSize : string = "22",
+    ContentExtendWeight : float = 1.0
+]
+is BUCKListDescriptor
+(
+
+    ElementName = <ElementName>
+
+    ComponentFrame = <ComponentFrame>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    ChildFitToContent = true
+
+    FirstMargin = TRTTILength(Magnifiable = 10.0)
+    InterItemMargin = TRTTILength(Magnifiable = (<ShowIcons> ? 0.0 : 5.0))
+    LastMargin = TRTTILength(Magnifiable = 10.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = <ContentExtendWeight>
+            ComponentDescriptor = PawnCategoryPower
+            (
+                Category = "Full"
+                TextColor = <ValueColor>
+                ValueColor = 'Strategic/PawnPower/AssaultTop'
+                TextureToken = 'UseStrategic_SelectionPanel_Assault'
+                ShowTexture = <ShowIcons>
+                HintTitleToken = 'ST_VCMT'
+                HintBodyToken = 'ST_VCMB'
+
+                Quality_HintExtendedToken = 'pip_quaMe'
+
+                ContentExtendWeight = <ContentExtendWeight>
+
+                ShowDetails = <ShowDetails>
+                TextSize = <TextSize>
+            )
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private StrategicProductionBattalionRack is BUCKRackDescriptor
+(
+    ElementName = "BattalionRack"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Axis = ~/ListAxis/Vertical
+    InterItemMargin = TRTTILength(Magnifiable = 2.0)
+
+    BladeDescriptor = BUCKSpecificButton
+    (
+        ButtonMagnifiableWidthHeight = [450.0, 35.0]
+
+        TextColorToken  = "ButtonHUD/Text3"
+        BigBorderBackgroundColorToken  = "ButtonHUD/BigBorder"
+        BorderLineColorToken  = "ButtonHUD/Border"
+        BackgroundBlockColorToken = "Transparent"
+
+        IsTogglable = true
+
+        Components =
+        [
+            BUCKContainerDescriptor
+            (
+                ElementName = "BattalionFrieze"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                HasBackground = true
+
+                Components =
+                [
+                    HUDBackgroundParallelogram
+                    (
+                        MagnifiableWidthHeight = [900.0, 35.0]
+                        MagnifiableOffset = [-400.0, 0.0]
+                        AlignementToAnchor = [0.5, 0.5]
+                        AlignementToFather = [0.5, 0.5]
+                        Color0 = "Transparent"
+                        Color1 = "Noir50"
+                    )
+                ]
+            ),
+            BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+                InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+                FirstMargin = TRTTILength( Magnifiable = 10.0 )
+                LastMargin = TRTTILength( Magnifiable = 5.0 )
+                ChildFitToContent = true
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = "BattalionName"
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 1.0]
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+
+                            ParagraphStyle = TParagraphStyleRTTI
+                            (
+                                Alignment = UIText_Left
+                                VerticalAlignment = UIText_VerticalCenter
+                            )
+
+                            TextStyle = "Default"
+
+                            BigLineAction   = ~/BigLineAction/CutByDots
+                            TextColor       = "ButtonHUD/Text3"
+                            TextSize        = "SD2_Moyen"
+                            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TypefaceToken   = "UIMainFont"
+                            UniformDrawer   = $/UserInterface/UIUniformDrawer
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = PawnFullPowerSummary
+                        (
+                            ElementName = 'DataTabularContainer'
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [0.0, 1.0]
+                            )
+
+                            ContentExtendWeight = 0.0
+
+                            ValueColor = 'SD2_Gris80'
+                            HasBackground = false
+                            ShowIcons = false
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKContainerDescriptor
+                        (
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+
+                                MagnifiableWidthHeight = [42.0, 26.0]
+                                AlignementToAnchor = [0.0, 0.5]
+                                AlignementToFather = [0.0, 0.5]
+                            )
+
+                            HasBackground = true
+                            BackgroundBlockColorToken = 'SD2_Blanc184'
+
+                            Components =
+                            [
+                                BUCKTextureDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 1.0]
+                                    )
+
+                                    ElementName = 'BattalionTexture'
+                                    ResizeMode = ~/TextureResizeMode/UserDefined
+
+                                    TextureDrawer = 'ColorMultiply_NoGrayscale'
+                                )
+                            ]
+                        )
+                    )
+                ]
+
+                BackgroundComponents =
+                [
+                    OmbrePanel()
+                ]
+            )
+
+        ]
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private StrategicProductionBattalionRackScrollingContainer is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = "BattalionRackScrollingContainer"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 195.0] //h 171
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+    HasVerticalScrollbar = true
+
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [7.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    Components =
+    [
+        ~/StrategicProductionBattalionRack
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// UIStrategicProductionMenuViewDescriptor
+// -------------------------------------------------------------------------------------------------
+
+private StrategicUnitButtonRadioButtonManager is TBUCKRadioButtonManager()
+
+UIStrategicProductionMenuViewDescriptor is TUIStrategicProductionMenuViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicProductionMenuMainComponentDescriptor
+    MainComponentContainerUniqueName = "StrategicProductionMenuPanelContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    UnitButtonListContainerDescriptor = ~/StrategicProductionMenuUnitListScrollingContainer
+    UnitButtonListContainerContainerUniqueName = "StrategicProductionUnitContainerListScrollingContainer"
+
+    BattalionRackScrollingContainerDescriptor = ~/StrategicProductionBattalionRackScrollingContainer
+    BattalionRackScrollingContainerUniqueName = "StrategicProductionBattalionRackScrollingContainer"
+
+    ShortcutUILayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+
+    AvailableCategoryButtonDescriptor = ~/StrategicProductionMenuAvailableCategoryButton
+    CategoryButtonDescriptor = ~/StrategicProductionMenuCategoryButton
+    CategoryRadioButtonManager = ~/StrategicProductionMenuCategoryButtonRadioButtonManager
+
+    UnitContainerDescriptor = UISpecificUnitButtonViewDescriptor
+    (
+        // Temps en secondes avant que le conteneur de l'unité additionnelle apparaisse lorsqu'on survole le bouton de l'unité
+        TimeInSecondBeforeAdditionalUnitSpecificContainerShowUp = 0.2
+
+        // Transparence (en pourcentage entre 0 et 1) ajouté au conteneur d'une unité lorsque cette unité n'est pas disponible
+        OpacityPercentWhenUnitNotAvailable = 0.5
+
+        // Couleur et drawer pour les textures et les textes quand l'unité n'est pas disponible
+        TextureDrawerWhenUnitNotAvailable = "ColorMultiply_Grayscale"
+        UnitNameColorWhenUnitNotAvailable = "ProductionMenu/UnitNameWhenNotAvailable"
+        UnitCostColorWhenUnitNotAvailable = "ProductionMenu/UnitCostWhenNotAvailable"
+        UnitCostGlowColorIndexWhenUnitNotAvailable = "ProductionMenu/UnitCostWhenNotAvailable/Glow"
+        UnitCostColorWhenUnitCannotBeBought = "ProductionMenu/UnitCostWhenCannotBeBought"
+        UnitNameBackgroundColorWhenUnitNotAvailable = "Gris123"
+
+        AceUnitNameColor = "Fulda2_Orange100"
+        AceUnitBorderColorBySide =
+        [
+            (~/TBorderSide/Top | ~/TBorderSide/Left, "Fulda2_Orange100"),
+            (~/TBorderSide/Bottom | ~/TBorderSide/Right, "Fulda2_Orange100"),
+        ]
+        AceUnitBorderThickness = "1"
+
+        CannotDeselect = true
+        ForceEvents = true
+        RadioButtonManager = ~/StrategicUnitButtonRadioButtonManager
+    )
+)

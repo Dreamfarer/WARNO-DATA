@@ -1,0 +1,22 @@
+export ModelFile_BRDM_Strela_1_SOV is 'GameData:/Assets/3D/Units/URSS/DCA/BRDM_Strela_1/BRDM_Strela_1.Ase2NdfBin'
+
+Modele_BRDM_Strela_1_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BRDM_Strela_1_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_Strela_1_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/BRDM_Strela_1_MID/BRDM_Strela_1_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_Strela_1_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/LODS/BRDM_Strela_1_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

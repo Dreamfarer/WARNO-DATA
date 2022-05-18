@@ -1,0 +1,458 @@
+//-------------------------------------------------------------------------
+//----------------------------- ARTILLERY ---------------------------------
+//-------------------------------------------------------------------------
+// Maintains
+//-------------------------------------------------------------------------
+export Maintain_Artillery is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_Maintain),
+    ]
+)
+// Missions
+//-------------------------------------------------------------------------
+private template Template_Artillery_TriggerHappy
+[
+    MinimumResourceForLaunch:int = 0,
+    ParametresDeMission = [],
+    GenerationSettingHolder = TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+    ArtilleryStrikeSettingHolder = TArtilleryStrikeSettingHolder(),
+]
+is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        <GenerationSettingHolder>,
+        TArtilleryPositionningSettingHolder(SupportPointSafetyMargin = 1 ArtilleryPositionOffset = 12500 * Metre {2500m ingame} OutMapArtilleryPositionOffset = 7000 * Metre ArtilleryUpdateOffset = 3750 * Metre),
+        TArtilleryThreatPerSplashSettingHolder(MinimumThreatPerSplashForKill = 30 { 45 }MinimumThreatPerSplashForSupport = 20 { 30 }),
+        TArtilleryThreatPerSplashSettingHolder(DifficultyList = [IADifficulty/TresDifficile] MinimumThreatPerSplashForKill = 20 MinimumThreatPerSplashForSupport = 10),
+        TArtilleryMoveOutThreatSettingHolder(ThreatThresholdValue = 10 MoveOutThreatProbability = 0.1),
+        TArtilleryMoveOutThreatSettingHolder(DifficultyList = [IADifficulty/TresDifficile] ThreatThresholdValue = 10 MoveOutThreatProbability = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Artillery_TriggerHappy] DistanceToOptimumStartDuringDeployment = 3000*Metre),
+        <ArtilleryStrikeSettingHolder>,
+
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TArtilleryDeployOnRoadSettingHolder(),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+    +
+    <ParametresDeMission>
+)
+//-------------------------------------------------------------------------
+export Generic_ArtilleryStrikeSettingHolder is TArtilleryStrikeSettingHolder(
+    SupportStrikeRatio = [0.25]
+    ArtilleryStrikeThreatBonusPerTags =
+    [
+        (["Canon_AT"], 2.0),
+        (["Canon_AA"], 1.5),
+        (["Infanterie_Standard"], 1.5),
+        (["Infanterie_SuperCMD"], 3.0),
+        (["Infanterie_Spec_Defense"], 2.0),
+        (["Artillerie"], 2.0),
+        (["Vehicule_Logistique"], 2.0),
+        (["Vehicule_SuperCMD"], 2.0),
+        (["Infanterie"], 1.5),
+        (["Vehicule"], 0.5),
+        (["Char"], 0.3),
+        (["Char_SuperCMD"], 0.5),
+    ]
+)
+//-------------------------------------------------------------------------
+export GentBTAtk_ArtilleryStrikeSettingHolder is TArtilleryStrikeSettingHolder(
+    GameModeList = [EDeploymentMode/Breakthrough]
+    SupportStrikeRatio = [0.25]
+    ArtilleryStrikeThreatBonusPerTags =
+    [
+        (["Canon_AT"], 1.5),
+        (["Canon_AA"], 1.5),
+        (["Infanterie_Standard"], 1.5),
+        (["Infanterie_SuperCMD"], 3.0),
+        (["Infanterie_Spec_Defense"], 2.0),
+        (["Artillerie"], 2.0),
+        (["Defense_BunkerMG"], 5.0),
+        (["Defense_BunkerAT_Leger"], 2.0),
+        (["Defense_BunkerAT_Standard"], 2.0),
+        (["Defense_BunkerAT_Lourd"], 2.0),
+        (["Vehicule_Logistique"], 2.0),
+        (["Vehicule_SuperCMD"], 2.0),
+        (["Infanterie"], 1.5),
+        (["Vehicule"], 0.5),
+        (["Char"], 0.3),
+        (["Char_SuperCMD"], 0.5),
+    ]
+)
+
+//-------------------------------------------------------------------------
+export Artillery_TriggerHappy_1for4Corridors is Template_Artillery_TriggerHappy
+(
+    GenerationSettingHolder = TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 4 AlsoConsiderTheseDescriptorsForMaintain = [])
+    ArtilleryStrikeSettingHolder = Generic_ArtilleryStrikeSettingHolder
+)
+//-------------------------------------------------------------------------
+export Artillery_TriggerHappy_1for2Corridors is Template_Artillery_TriggerHappy
+(
+    GenerationSettingHolder = TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 2 AlsoConsiderTheseDescriptorsForMaintain = [])
+    ArtilleryStrikeSettingHolder = Generic_ArtilleryStrikeSettingHolder
+)
+
+//-------------------------------------------------------------------------
+export Artillery_Sniper is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TArtilleryPositionningSettingHolder(SupportPointSafetyMargin = 1 ArtilleryPositionOffset = 6000 * Metre OutMapArtilleryPositionOffset = 6000 * Metre ArtilleryUpdateOffset = 0 * Metre),
+        TArtilleryThreatPerSplashSettingHolder(MinimumThreatPerSplashForKill = 50 MinimumThreatPerSplashForSupport = 75),
+        TArtilleryMoveOutThreatSettingHolder(ThreatThresholdValue = 10 MoveOutThreatProbability = 0.03 {50% à 17s}),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/Pool_Artillery_Sniper] DistanceToOptimumStartDuringDeployment = 3000*Metre),
+        TArtilleryStrikeSettingHolder(SupportStrikeRatio = [0]
+            ArtilleryStrikeThreatBonusPerTags =
+            [
+                (["Canon_AT"], 2),
+                (["Canon_AA"], 1.5),
+                (["Infanterie_Standard"], 1.5),
+                (["Infanterie_SuperCMD"], 4.0),
+                (["Infanterie_Spec_Defense"], 2.0),
+                (["Artillerie"], 3),
+                (["Vehicule_Logistique"], 2.0),
+                (["Vehicule_SuperCMD"], 2.0),
+                (["Infanterie"], 1.5),
+                (["Vehicule"], 0.3),
+                (["Char"], 0.5),
+                (["Char_SuperCMD"], 1.0),
+            ]
+        ),
+        TArtilleryDeployOnRoadSettingHolder(),
+        TIgnoreSafePathSettingHolder(),
+    ]
+)
+//-------------------------------------------------------------------------
+export Artillery_TriggerHappy is Template_Artillery_TriggerHappy
+(
+    ArtilleryStrikeSettingHolder = Generic_ArtilleryStrikeSettingHolder
+)
+//-------------------------------------------------------------------------
+export Artillery_TriggerHappy_Autogen is Template_Artillery_TriggerHappy
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    ArtilleryStrikeSettingHolder = Generic_ArtilleryStrikeSettingHolder
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Artillery_TriggerHappy_Autogen_Economic is Template_Artillery_TriggerHappy
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Economic
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Artillery_TriggerHappy_1for4Corridors is Template_Artillery_TriggerHappy
+(
+
+    GenerationSettingHolder = TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 4 AlsoConsiderTheseDescriptorsForMaintain = [])
+    ArtilleryStrikeSettingHolder = GentBTAtk_ArtilleryStrikeSettingHolder
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Artillery_TriggerHappy is Template_Artillery_TriggerHappy
+(
+    ArtilleryStrikeSettingHolder = GentBTAtk_ArtilleryStrikeSettingHolder
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Artillery_TriggerHappy_Autogen is Template_Artillery_TriggerHappy
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    ArtilleryStrikeSettingHolder = GentBTAtk_ArtilleryStrikeSettingHolder
+)
+//-------------------------------------------------------------------------
+export Artillery_Support is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TCoordinationSettingHolder(CoordinationType = ESupportingStatus/IsSupport),
+        TArtilleryPositionningSettingHolder(SupportPointSafetyMargin = 1 ArtilleryPositionOffset = 10000 * Metre {2000m ingame} OutMapArtilleryPositionOffset = 7000 * Metre ArtilleryUpdateOffset = 3750 * Metre),
+        TArtilleryThreatPerSplashSettingHolder(MinimumThreatPerSplashForKill = 20 { 30 } MinimumThreatPerSplashForSupport = 15 { 30 }),
+                TArtilleryThreatPerSplashSettingHolder(DifficultyList = [IADifficulty/TresDifficile] MinimumThreatPerSplashForKill = 15 MinimumThreatPerSplashForSupport = 10),
+        TArtilleryMoveOutThreatSettingHolder(ThreatThresholdValue = 10 MoveOutThreatProbability = 0.1),
+        TArtilleryMoveOutThreatSettingHolder(DifficultyList = [IADifficulty/TresDifficile] ThreatThresholdValue = 10 MoveOutThreatProbability = 1),
+        TArtilleryStrikeSettingHolder(SupportStrikeRatio = [0.1]
+            ArtilleryStrikeThreatBonusPerTags =
+            [
+                (["Canon_AT"], 2.0),
+                (["Canon_AA"], 1.5),
+                (["Infanterie_Standard"], 2.5),
+                (["Infanterie_Spec_Defense"], 2.5),
+                (["Infanterie"], 2.0),
+                (["Artillerie"], 1.5),
+                (["Vehicule_Logistique"], 0.5),
+                (["Vehicule"], 1.0),
+                (["Char"], 0.5),
+            ]
+        ),
+
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Artillery_Support] DistanceToOptimumStartDuringDeployment = 3000*Metre),
+        TArtilleryDeployOnRoadSettingHolder(),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Artillery_Support is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TCoordinationSettingHolder(CoordinationType = ESupportingStatus/IsSupport),
+        TArtilleryPositionningSettingHolder(SupportPointSafetyMargin = 1 ArtilleryPositionOffset = 10000 * Metre {2000m ingame} OutMapArtilleryPositionOffset = 7000 * Metre ArtilleryUpdateOffset = 3750 * Metre),
+        TArtilleryThreatPerSplashSettingHolder(MinimumThreatPerSplashForKill = 20 { 30 } MinimumThreatPerSplashForSupport = 15 { 30 }),
+        TArtilleryMoveOutThreatSettingHolder(ThreatThresholdValue = 10 MoveOutThreatProbability = 0.1),
+
+        TArtilleryStrikeSettingHolder(GameModeList = [EDeploymentMode/Breakthrough]
+            SupportStrikeRatio = [0.1]
+            ArtilleryStrikeThreatBonusPerTags =
+            [
+                (["Canon_AT"], 1.5),
+                (["Canon_AA"], 1.5),
+                (["Infanterie_Standard"], 2.5),
+                (["Infanterie_Spec_Defense"], 2.5),
+                (["Infanterie"], 2.0),
+                (["Artillerie"], 1.5),
+                (["Defense_BunkerMG"], 5.0),
+                (["Defense_BunkerAT_Leger"], 2.0),
+                (["Defense_BunkerAT_Standard"], 2.0),
+                (["Defense_BunkerAT_Lourd"], 2.0),
+                (["Vehicule_Logistique"], 0.5),
+                (["Vehicule"], 1.0),
+                (["Char"], 0.5),
+            ]
+        ),
+
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Artillery_Support] DistanceToOptimumStartDuringDeployment = 3000*Metre),
+        TArtilleryDeployOnRoadSettingHolder(),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+//-------------------------------------------------------------------------
+private template Template_Artillery_Expensive
+[
+    MinimumResourceForLaunch:int = 0,
+    ArtilleryStrikeSettingHolder = [],
+]
+is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TArtilleryPositionningSettingHolder(SupportPointSafetyMargin = 1 ArtilleryPositionOffset = 6000 * Metre OutMapArtilleryPositionOffset = 6000 * Metre ArtilleryUpdateOffset = 0 * Metre),
+        TArtilleryThreatPerSplashSettingHolder(MinimumThreatPerSplashForKill = 55 MinimumThreatPerSplashForSupport = 999),
+        TArtilleryMoveOutThreatSettingHolder(ThreatThresholdValue = 10 MoveOutThreatProbability = 0.1),
+        TArtilleryMoveOutThreatSettingHolder(DifficultyList = [IADifficulty/TresDifficile] ThreatThresholdValue = 10 MoveOutThreatProbability = 1),
+
+
+        TMacroActionProductionSettingHolder(GameModeList = [EDeploymentMode/Breakthrough]
+            ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+            PoolModelList = [~/Pool_Artillery_Expensive]
+            TaggedPoolModelList = [(["AttackMain"], [~/Pool_Artillery_Expensive]),]
+            DistanceToOptimumStartDuringDeployment = 3000*Metre PrioritizeCorridorsForTaggedPoolModels = true),
+
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Artillery_Expensive] ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]DistanceToOptimumStartDuringDeployment = 3000*Metre),
+
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TArtilleryDeployOnRoadSettingHolder(),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ] + <ArtilleryStrikeSettingHolder>
+)
+//-------------------------------------------------------------------------
+export ArtilleryExpensiveStrikeSettingHolder is TArtilleryStrikeSettingHolder(
+    SupportStrikeRatio = [0.0]
+    ArtilleryStrikeThreatBonusPerTags =
+    [
+        (["Canon_AT"], 1.0),
+        (["Canon_AA"], 1.0),
+        (["Infanterie_Standard"], 2.5),
+        (["Infanterie_Spec_Defense"], 2.5),
+        (["Infanterie"], 2.0),
+        (["Artillerie"], 3.0),
+        (["Vehicule_Logistique"], 0.5),
+        (["Vehicule"], 0.5),
+        (["Char"], 0.5),
+    ]
+)
+//-------------------------------------------------------------------------
+export VHard_ArtilleryExpensiveStrikeSettingHolder is TArtilleryStrikeSettingHolder(
+    DifficultyList = [IADifficulty/TresDifficile]
+    SupportStrikeRatio = [0.0]
+    ArtilleryStrikeThreatBonusPerTags =
+    [
+        (["Canon_AT"], 1.0),
+        (["Canon_AA"], 1.0),
+        (["Infanterie_Standard"], 2.5),
+        (["Infanterie_Spec_Defense"], 2.5),
+        (["Infanterie"], 2.0),
+        (["Artillerie"], 1.5),
+        (["Vehicule_Logistique"], 0.5),
+        (["Vehicule"], 0.5),
+        (["Char"], 0.5),
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_ArtilleryExpensiveStrikeSettingHolder is TArtilleryStrikeSettingHolder(
+    GameModeList = [EDeploymentMode/Breakthrough]
+    SupportStrikeRatio = [0.0]
+    ArtilleryStrikeThreatBonusPerTags =
+    [
+        (["Canon_AT"], 1.0),
+        (["Canon_AA"], 1.0),
+        (["Infanterie_Standard"], 2.5),
+        (["Infanterie_Spec_Defense"], 2.5),
+        (["Infanterie"], 2.0),
+        (["Artillerie"], 1.5),
+        (["Defense_BunkerMG"], 5.0),
+        (["Defense_BunkerAT_Leger"], 2.0),
+        (["Defense_BunkerAT_Standard"], 2.0),
+        (["Defense_BunkerAT_Lourd"], 2.0),
+        (["Vehicule_Logistique"], 0.5),
+        (["Vehicule"], 0.5),
+        (["Char"], 0.5),
+    ]
+)
+//-------------------------------------------------------------------------
+export Artillery_Expensive is Template_Artillery_Expensive
+(
+    ArtilleryStrikeSettingHolder = [ArtilleryExpensiveStrikeSettingHolder, VHard_ArtilleryExpensiveStrikeSettingHolder]
+)
+//-------------------------------------------------------------------------
+export Artillery_Expensive_Autogen is Template_Artillery_Expensive
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    ArtilleryStrikeSettingHolder = [ArtilleryExpensiveStrikeSettingHolder, VHard_ArtilleryExpensiveStrikeSettingHolder]
+)
+//-------------------------------------------------------------------------
+export GenBTDef_Artillery_FrontLane is TMacroActionDescriptor_Artillery_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TCoordinationSettingHolder(CoordinationType = ESupportingStatus/IsSupport),
+        TArtilleryPositionningSettingHolder(SupportPointSafetyMargin = 1 ArtilleryPositionOffset = 10000 * Metre {2000m ingame} OutMapArtilleryPositionOffset = 7000 * Metre ArtilleryUpdateOffset = 3750 * Metre),
+        TArtilleryThreatPerSplashSettingHolder(MinimumThreatPerSplashForKill = 20 { 30 } MinimumThreatPerSplashForSupport = 20 { 30 }),
+        TArtilleryMoveOutThreatSettingHolder(ThreatThresholdValue = 10 MoveOutThreatProbability = 0.1),
+        TArtilleryStrikeSettingHolder(SupportStrikeRatio = [0.1]
+            ArtilleryStrikeThreatBonusPerTags =
+            [
+                (["Canon_AT"], 1.5),
+                (["Canon_AA"], 1.5),
+                (["Infanterie_Standard"], 2.5),
+                (["Infanterie_Spec_Defense"], 2.5),
+                (["Infanterie"], 2.0),
+                (["Artillerie"], 0.5),
+                (["Vehicule_Logistique"], 0.5),
+                (["Vehicule"], 1.5),
+                (["Char"], 1.0),
+            ]
+        ),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Artillery_Support] DistanceToOptimumStartDuringDeployment = 3000*Metre),
+        TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [1]),
+        TArtilleryDeployOnRoadSettingHolder(),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Artillery_Expensive is Template_Artillery_Expensive
+(
+    ArtilleryStrikeSettingHolder = [GenBTAtk_ArtilleryExpensiveStrikeSettingHolder]
+)
+//-------------------------------------------------------------------------
+export GenBTAtk_Artillery_Expensive_Autogen is Template_Artillery_Expensive
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    ArtilleryStrikeSettingHolder = [GenBTAtk_ArtilleryExpensiveStrikeSettingHolder]
+)
+//-------------------------------------------------------------------------
+//principalement pour Breakthrough Defense
+export Artillery_Expensive_Autogen_Economic is Template_Artillery_Expensive
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Economic
+    ArtilleryStrikeSettingHolder = [ArtilleryExpensiveStrikeSettingHolder, VHard_ArtilleryExpensiveStrikeSettingHolder]
+)
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_Artillery_TriggerHappy is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80abfc9e-d931-11e8-975b-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Artillerie_Longue_Portee",
+            "Artillerie_Courte_Portee",
+        ]
+        ForbiddenTags = [
+            "InfmapCommander"
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_Artillery_Support is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80abfc9f-d931-11e8-a532-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        PriceComparisonMethod = EPriceComparatorType/Cheapest
+        TagsPriority = [
+            "Artillerie_Courte_Portee",
+            "Artillerie_Longue_Portee",
+            "Artillerie_Observateur",
+        ]
+        ForbiddenTags = [
+            "InfmapCommander"
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_Artillery_Expensive is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{80abfca0-d931-11e8-a4d2-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Artillerie_MLRS",
+            "Artillerie_Observateur",
+        ]
+        ForbiddenTags = [
+            "Avion",
+            "InfmapCommander"
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_Artillery_Sniper is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{9b64f06e-d796-11e8-a573-704d7b2c87d4}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        TagsPriority = [
+            "Artillerie_Longue_Portee",
+            "Artillerie",
+        ]
+        ForbiddenTags = [
+            "InfmapCommander"
+        ]
+    ),
+    ]
+)
+

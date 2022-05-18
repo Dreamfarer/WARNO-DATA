@@ -1,0 +1,36 @@
+template TFeedbackRenderToolboxStyleDescriptorForCommander
+[
+    Thickness : float = 800.0,
+    BorderColor : color,
+    FillColor : color,
+    Effect : int = ~/FeedbackEffectMode/Solid
+]
+is TFeedbackRenderToolboxStyleDescriptor
+(
+    Thickness = <Thickness>
+    BorderColor = <BorderColor>
+    FillColor = <FillColor>
+    Effect = <Effect>
+)
+
+CommanderResources is TUISpecificCommanderResources
+(
+    CommanderSelectionArrowStyleDescriptor = TFeedbackRenderToolboxStyleDescriptorForCommander
+    (
+        BorderColor = [245, 230, 185, 190]
+        FillColor = [245, 230, 185, 190]
+        Effect = ~/FeedbackEffectMode/Pulse
+    )
+    SuperCommanderSelectionArrowStyleDescriptor = TFeedbackRenderToolboxStyleDescriptorForCommander
+    (
+        BorderColor = [235, 220, 140, 230]
+        FillColor = [235, 220, 140, 230]
+        Effect = ~/FeedbackEffectMode/Pulse
+    )
+    CommanderEffectAreaStyleDescriptor = TFeedbackRenderToolboxStyleDescriptorForCommander
+    (
+        BorderColor = [255, 255, 255, 64]
+        FillColor = [255, 255, 255, 64]
+        Effect = ~/FeedbackEffectMode/Dotted
+    )
+)

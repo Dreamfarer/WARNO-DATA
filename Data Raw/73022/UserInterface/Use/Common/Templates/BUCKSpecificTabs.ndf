@@ -1,0 +1,224 @@
+
+TabMagnifiableWidth is 160
+TabMagnifiableHeight is 36
+TabMagnifiableMarginIfFitContent is 30.0 //On ajoute la moitie de la hauteur, ce qui correspond a la diagonale
+
+template BUCKSpecificWithTabsComponentDescriptor
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+    HasBackground : bool = false,
+    BackgroundBlockColorToken : string = "",
+    HidePointerEvents : bool = false,
+
+    FitStyle : int = ~/ContainerFitStyle/None,
+    TabsAndContent : LIST<PAIR<TBUCKOneTabDescriptor, TBUCKContainerDescriptor>> = [],
+    TabsListBackgroundColorToken : string = "Onglet/Background",
+    RedefinedTabsContainer : TBUCKContainerDescriptor = nil,
+    Axis : int = ~/ListAxis/Horizontal,
+    CanReselectTabs : bool = false
+]
+is BUCKWithTabsDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+
+    ComponentFrame = <ComponentFrame>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HidePointerEvents = <HidePointerEvents>
+
+    FitStyle = <FitStyle>
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TabsAndContent = <TabsAndContent>
+
+    TabsListBackgroundColorToken = <TabsListBackgroundColorToken>
+    RedefinedTabsContainer = <RedefinedTabsContainer>
+
+    CanReselectTabs = <CanReselectTabs>
+    Axis = <Axis>
+    IsFocusable = true
+)
+
+template BUCKSpecificOneTabComponentDescriptor
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+
+    BigLineAction : int = ~/BigLineAction/CutByDots,
+    TextToken : string,
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+
+    HorizontalFitStyle : int = ~/FitStyle/FitToContent,
+]
+is BUCKOneTabDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = (<HorizontalFitStyle> == ~/FitStyle/UserDefined ? [TabMagnifiableWidth, TabMagnifiableHeight] : [TabMagnifiableMarginIfFitContent * 2.0, TabMagnifiableHeight])
+    )
+
+    FitStyle = (<HorizontalFitStyle> == ~/FitStyle/UserDefined ? ~/ContainerFitStyle/None : ~/ContainerFitStyle/FitToContentHorizontally)
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = (<ElementName> != '' ? <ElementName> + "Text" : '')
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather  = [0.5, 0.5]
+                AlignementToAnchor  = [0.5, 0.5]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+            BigLineAction = <BigLineAction>
+            TextToken = <TextToken>
+            TextDico = <TextDico>
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TextColor = "Cyan"
+            TextSize = "17"
+
+            ChildFitToContent = true
+
+            Components =
+            [
+                // UNDERLINE
+                BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        PixelWidthHeight = [0.0, 1.0]
+                        PixelOffset = [0.0, 2.0]
+                        AlignementToFather  = [0.5, 1.0]
+                        AlignementToAnchor  = [0.5, 0.0]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = "Onglet/Underline"
+                ),
+
+                // Second Underline (displayed on focused)
+                BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        PixelWidthHeight = [0.0, 1.0]
+                        PixelOffset = [0.0, 4.0]
+                        AlignementToFather  = [0.5, 1.0]
+                        AlignementToAnchor  = [0.5, 0.0]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = "Onglet/AdditionalUnderline"
+                ),
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+template BUCKSpecific_Fulda_WithTabsComponentDescriptor
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+    HasBackground : bool = false,
+    BackgroundBlockColorToken : string = "",
+    HidePointerEvents : bool = false,
+
+    FitStyle : int = ~/ContainerFitStyle/None,
+    TabsAndContent : LIST<PAIR<TBUCKOneTabDescriptor, TBUCKContainerDescriptor>> = [],
+
+    RedefinedTabsContainer : TBUCKContainerDescriptor = nil,
+
+    CanReselectTabs : bool = false
+]
+is BUCKWithTabsDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+
+    ComponentFrame = <ComponentFrame>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HidePointerEvents = <HidePointerEvents>
+    InterMarginBetwwenTabsAndContent = TRTTILength(Magnifiable = 40.0)
+    FitStyle = <FitStyle>
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    TabsAndContent = <TabsAndContent>
+
+    TabsListBackgroundColorToken = ""
+    RedefinedTabsContainer = <RedefinedTabsContainer>
+
+    CanReselectTabs = <CanReselectTabs>
+
+    IsFocusable = true
+)
+
+//-------------------------------------------------------------------------------------
+
+{ //Ci dessous un exemple a se servir pour la suite !
+TestComponent is TOutGameComponentWithTabs
+(
+    MagnifiableWidthHeight = [600, 400]
+
+    TabsAndContent = [
+        (
+            BUCKSpecificOneTabComponentDescriptor
+            (
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                TextToken = "CP_REMPASS"
+            ),
+            BUCKSpecificButton
+            (
+                ButtonAlignementToFather = [0.5, 0.5]
+                TextToken = "EVAC_BINGO"
+            )
+        ),
+        (
+            BUCKSpecificOneTabComponentDescriptor
+            (
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                TextToken = "CP_LINKACC"
+            ),
+            BUCKSpecificButton
+            (
+                ButtonAlignementToFather = [0.5, 0.5]
+                TextToken = "EVAC_WINCH"
+            )
+        ),
+        (
+            BUCKSpecificOneTabComponentDescriptor
+            (
+                UniqueName = "GogoPenguin"
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                TextToken = "CP_LINKACC"
+            ),
+            BUCKSpecificButton
+            (
+                ButtonAlignementToFather = [0.5, 0.5]
+                TextToken = "EVAC_WINCH"
+            )
+        ),
+    ]
+)
+}

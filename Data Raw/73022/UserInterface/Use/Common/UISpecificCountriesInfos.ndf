@@ -1,0 +1,139 @@
+
+export SpecificCountriesInfos is MAP [
+    ("GER", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_GERW"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_GER"
+            Country = "GER"
+        )),
+    ("SOV", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_SOV"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_SOV"
+            Country = "SOV"
+        )),
+    ("HON", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_HON"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_HON"
+            Country = "HON"
+        )),
+    ("UK", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_UK"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_UK"
+            Country = "UK"
+        )),
+    ("US", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_US"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_US"
+            Country = "US"
+        )),
+    ("DDR", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_DDR"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_RDA"
+            Country = "DDR"
+        )),
+    ("RFA", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_RFA"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_RFA"
+            Country = "RFA"
+        )),
+    //----------------------^ affichées dans la showroom-------------------------- // Voir UIShowRoomResources.ndf, CountriesToShow
+    ("FR", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_FR"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_FR"
+            Country = "FR"
+        )),
+    ("CAN", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_CAN"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_CAN"
+            Country = "CAN"
+        )),
+    ("POL", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_POL"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_POL"
+            Country = "POL"
+        )),
+    ("AWP", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_AWP"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_AWP"
+            Country = "AWP"
+        )),
+    ("FIN", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_FIN"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_FIN"
+            Country = "FIN"
+        )),
+    ("ROU", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_ROU"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_ROU"
+            Country = "ROU"
+        )),
+    ("BEL", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_BEL"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_BEL"
+            Country = "BEL"
+        )),
+    ("LIT", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_POL"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_LIT"
+            Country = "LIT"
+        )),
+    ("EST", TUISpecificCountryInfos
+        (
+            FlagTexture = "CommonTexture_MotherCountryFlag_POL"
+            PawnExpTexture = "CommonTexture_Etoile_Grande"
+            ExpTextures = [ "CommonTexture_Chevron_0", "CommonTexture_Chevron_1", "CommonTexture_Chevron_2", "CommonTexture_Chevron_3"]
+            LocalisationToken = "COUN_EST"
+            Country = "EST"
+        )),
+]
+
+//-----------------------------------------------
+
+SpecificCountriesInfosSingleton is TUISpecificCountriesInfos
+(
+    CountriesInfos = ~/SpecificCountriesInfos
+)

@@ -1,0 +1,646 @@
+// !!!!!! ATTENTION
+// Toutes les textures listées ici doivent forcement se trouver dans GameData:/Assets/2D/Interface/UseOutGame
+// !!!!!! ATTENTION
+
+//Ex : OutGameTexture_Blablabla is TUIResourceTexture_Common(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Blablabla.png")
+
+OutgameTexture_Bg_Credits is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/HQ/HQ_Background_Logo.png")
+
+OutgameTexture_WG2_BgOutGame_AddFriend_Button is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/HQ/HQ_AddFriend_Button.png")
+
+OutgameTexture_WG2_BgOutGame_BlackList_Button   is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/HQ/HQ_BlackList_Button.png")
+
+OutgameTexture_WG2_BgOutGame_Erase_Button is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/HQ/HQ_EraseChat_Button.png")
+
+OutgameTexture_PlayerBanner is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/PlayerBanner.png")
+OutgameTexture_UnknownMap is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/UnknownMap.png")
+
+OutgameTexture_ConquestModeTexture is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Conquest.png")
+OutgameTexture_ConquestModeTexture2 is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Conquest.png")
+OutgameTexture_CaptureTheFlagTypeTexture is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Conquest.png")
+OutgameTexture_CaptureTheFlagTypeTexture2 is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Conquest.png")
+
+
+OutgameTexture_CloseQuarterModeTexture is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Close_Quarter_Conquest.png")
+OutgameTexture_BreakthroughModeTexture is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Breakthrough.png")
+OutgameTexture_StrategicModeTexture is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Strategic.png")
+OutgameTexture_DestructionTypeTexture is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Destruction2.png")
+OutgameTexture_DestructionTypeTexture2 is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Destruction.png")
+
+
+
+OutgameTexture_Mode_CloseQuarter is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_CloseQuarter.png")
+OutgameTexture_Mode_Breakthrough2 is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_Breakthrough2.png")
+OutgameTexture_Mode_EncounterBatte is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Mode_EncounterBatte.png")
+OutgameTexture_RedAttack is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/RedAttack.png")
+OutgameTexture_BlueAttack is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/BlueAttack.png")
+OutgameTexture_TrendEqual is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Multi/TrendEqual.png")
+OutgameTexture_TrendMinus is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Multi/TrendMinus.png")
+OutgameTexture_TrendPlus is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Multi/TrendPlus.png")
+OutgameTexture_TrendUnranked is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/Multi/TrendUnranked.png")
+
+OutgameTexture_DivisionBackground is TUIResourceTexture_OutGame(FileName = "Assets/2D/Interface/UseOutGame/Division/Panel/fond.png")
+OutgameTexture_DivisionBackground_Frontal_Assault is TUIResourceTexture_OutGame(FileName = "Assets/2D/Interface/UseOutGame/Division/Panel/fond_frontal_assault.png")
+
+OutGameTexture_Category_Support    is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/CategoryTextures/Support.png" )
+OutGameTexture_Category_Infanterie is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/CategoryTextures/Infanterie.png" )
+OutGameTexture_Category_Artillerie is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/CategoryTextures/Artillerie.png" )
+OutGameTexture_Category_Tank       is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/CategoryTextures/Tank.png" )
+OutGameTexture_Category_Reco       is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/CategoryTextures/Reco.png" )
+OutGameTexture_Category_AT         is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/CategoryTextures/Anti-Tank.png" )
+OutGameTexture_Category_DCA        is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/CategoryTextures/DCA.png" )
+OutGameTexture_Category_Aviation   is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/CategoryTextures/Aviation.png" )
+OutgameTexture_Bagration_Mood_2    is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_2.png" )
+OutgameTexture_Bagration_Mood_3    is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_3.png" )
+OutgameTexture_Bagration_Mood_4    is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_4.png" )
+OutgameTexture_Bagration_Mood_5    is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_5.png" )
+OutgameTexture_Bagration_Mood_6    is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_6.png" )
+OutgameTexture_Bagration_Mood_7    is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_7.png" )
+OutgameTexture_Bagration_Mood_8    is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_8.png" )
+OutgameTexture_Bagration_Mood_9    is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_9.png" )
+OutgameTexture_Bagration_Mood_10   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_10.png" )
+OutgameTexture_Bagration_Mood_11   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_11.png" )
+OutgameTexture_Bagration_Mood_12   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_12.png" )
+OutgameTexture_Bagration_Mood_13   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_13.png" )
+OutgameTexture_Bagration_Mood_14   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_14.png" )
+OutgameTexture_Bagration_Mood_15   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_15.png" )
+OutgameTexture_Bagration_Mood_16   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_16.png" )
+OutgameTexture_Bagration_Mood_17   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_17.png" )
+OutgameTexture_Bagration_Mood_18   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_18.png" )
+OutgameTexture_Bagration_Mood_19   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_19.png" )
+OutgameTexture_Bagration_Mood_20   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_20.png" )
+OutgameTexture_Bagration_Mood_21   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_21.png" )
+OutgameTexture_Bagration_Mood_22   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_22.png" )
+OutgameTexture_Bagration_Mood_23   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_23.png" )
+OutgameTexture_Bagration_Mood_24   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_24.png" )
+OutgameTexture_Bagration_Mood_25   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_25.png" )
+OutgameTexture_Bagration_Mood_26   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_26.png" )
+OutgameTexture_Bagration_Mood_27   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_27.png" )
+OutgameTexture_Bagration_Mood_28   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_28.png" )
+OutgameTexture_Bagration_Mood_29   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_29.png" )
+OutgameTexture_Bagration_Mood_30   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_30.png" )
+OutgameTexture_Bagration_Mood_31   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_31.png" )
+OutgameTexture_Bagration_Mood_32   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_32.png" )
+OutgameTexture_Bagration_Mood_33   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_33.png" )
+OutgameTexture_Bagration_Mood_34   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_34.png" )
+OutgameTexture_Bagration_Mood_35   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_35.png" )
+OutgameTexture_Bagration_Mood_36   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_36.png" )
+OutgameTexture_Bagration_Mood_37   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_37.png" )
+OutgameTexture_Bagration_Mood_38   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_38.png" )
+OutgameTexture_Bagration_Mood_39   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_39.png" )
+OutgameTexture_Bagration_Mood_40   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_40.png" )
+OutgameTexture_Bagration_Mood_41   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_41.png" )
+OutgameTexture_Bagration_Mood_42   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_42.png" )
+OutgameTexture_Bagration_Mood_43   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_43.png" )
+OutgameTexture_Bagration_Mood_44   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_44.png" )
+OutgameTexture_Bagration_Mood_45   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_45.png" )
+OutgameTexture_Bagration_Mood_46   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_46.png" )
+OutgameTexture_Bagration_Mood_47   is TUIResourceTexture_LoadingScreen( FileName = "Bagration_Mood_47.png" )
+
+
+
+
+OutgameTexture_LevelUp_Background is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/LevelUp/LEVELUP_Background.png" )
+OutgameTexture_LevelUp_Cadre is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/LevelUp/LEVELUP_Cadre.png" )
+
+OutgameTexture_ModCenter_Star is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/ModCenter/etoile.png" )
+
+OutgameTexture_Mod_Gameplay is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/TagMod/gameplay.png")
+OutgameTexture_Mod_Interface is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/TagMod/interface.png" )
+OutgameTexture_Mod_Mesh is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/TagMod/mesh.png" )
+OutgameTexture_Mod_Downloading is TUIResourceTexture_OutGame(FileName = "GameData:/Assets/2D/Interface/UseOutGame/TagMod/downloading_tags.png")
+
+OutgameTexture_GameRoomList_ModNotInLocal is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/mod_not_in_local.png" )
+OutgameTexture_GameRoomList_ModInLocal is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/mod_in_local.png" )
+OutgameTexture_GameRoomList_ModActive is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/mod_active.png" )
+
+OutgameTexture_GameRoomList_Observable is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/StyleDesk/observer_mode.png" )
+
+OutgameTexture_Division_Dlc_Corner is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/banniere_dlc.png" )
+OutgameTexture_Division_Dlc_Seal is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/cachet_dlc.png" )
+
+OutgameTexture_ArmoryMenuIcon is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/ArmoryMenuIcon.png" )
+OutgameTexture_ArmoryMenuIcon_h is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/ArmoryMenuIcon_h.png" )
+OutgameTexture_BattlegroupMenuIcon is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/battlegroupMenuIcon.png" )
+OutgameTexture_BattlegroupMenuIcon_h is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/battlegroupMenuIcon_h.png" )
+OutgameTexture_DivisionsMenuIcon is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/DivisionsMenuIcon.png" )
+OutgameTexture_DivisionsMenuIcon_h is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/DivisionsMenuIcon_h.png" )
+
+
+
+OutgameTexture_Lobby_Filter_East is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/socialism_icon.png" )
+
+OutgameTexture_outgame_Solo is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/solo/HUB_Solo.png" )
+OutgameTexture_outgame_Solo_fond is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/solo/solo_fond.png" )
+
+
+OutGameTexture_1vs1 is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/1vs1.png" )
+OutGameTexture_2vs2 is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/2vs2.png" )
+OutGameTexture_3vs3 is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/3vs3.png" )
+OutGameTexture_4vs4 is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/4vs4.png" )
+OutGameTexture_10vs10 is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/10vs10.png" )
+
+LobbyStrat_flagGer is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Strategic/lobbyStrat_flagGer.png" )
+LobbyStrat_flagSov is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Strategic/lobbyStrat_flagSov.png" )
+
+UseOutGame_Manual_AG_01 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_01.png')
+UseOutGame_Manual_AG_02 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_02.png')
+UseOutGame_Manual_AG_03 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_03.png')
+UseOutGame_Manual_AG_04 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_04.png')
+UseOutGame_Manual_AG_05 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_05.png')
+UseOutGame_Manual_AG_06 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_06.png')
+UseOutGame_Manual_AG_07 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_07.png')
+UseOutGame_Manual_AG_08 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_08.png')
+UseOutGame_Manual_AG_09 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_09.png')
+UseOutGame_Manual_AG_10 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_10.png')
+UseOutGame_Manual_AG_11 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_11.png')
+UseOutGame_Manual_AG_115 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_115.png')
+UseOutGame_Manual_AG_12 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_12.png')
+UseOutGame_Manual_AG_13 is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Manual/manual_AG_13.png')
+
+UseOutGame_Cadenas is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/cadenas_2.png')
+
+UseOutGame_Alert is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Lobby/alert.png')
+UseOutGame_Warning is TUIResourceTexture_OutGame( FileName = 'GameData:/Assets/2D/Interface/UseOutGame/Lobby/warning.png')
+
+//-------------------------------------------------------------------------------------
+// fulda
+Outgame_backgroundOfflineHomeScreen is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/home_background.png" )
+
+
+//Outgame_backgroundOnlineHomeScreen is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/BackgroundOnlineHomeScreen.png" )
+Outgame_HL_solo is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/home_solo_HL.png" )
+Outgame_HL_armory is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/home_armory_HL.png" )
+Outgame_HL_multi is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/home_multi_HL.png" )
+Outgame_HL_options is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/home_options_HL.png" )
+Outgame_HL_mods is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/home_modding_HL.png" )
+Outgame_HL_profile is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/home_profile_HL.png" )
+
+Outgame_backgroundMultiScreen is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Multi/Multi.png" )
+
+outgame_fond_test is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/solo/fond_effet_test.png" )
+outgame_chaise_pour_multi is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/chaise_pour_multi.png" )
+outgame_cable_pour_multi is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/cable_pour_multi.png" )
+outgame_icone_filter is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/icone_filter.png" )
+outgame_dropdown_parametre is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/dropdown_parametre.png" )
+
+Outgame_backgroundOption is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Options/HUB_Options.png" )
+OutgameTexture_NavigationOption is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Options/NavigationOption.png" )
+option_ombreOnglet is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/option_ombreOnglet.png" )
+Outgame_Onglet_Option_Selection is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/onglet_optionSelection.png" )
+Outgame_Onglet_Option_Normal is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/onglet_optionNormal.png" )
+sliderHorizontal_option is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/sliderHorizontal_option.png" )
+sliderCurseur_option is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/sliderCurseur_option.png" )
+sliderCurseur_option_hl is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/sliderCurseur_option_hl.png" )
+
+Outgame_Chat_Dropdown_Normal is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/Common/Expandable/vitesseUpn.png" )
+Outgame_Chat_Dropdown_Selected is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/Common/Expandable/vitesseDownn.png" )
+//-------------------------------------------------------------------------------------
+// EndGame
+Outgame_fond_EndGame is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/EndGame/EndGame_FondEcran.png" )
+Outgame_fond_EndGame_foreground is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/EndGame/endgame_foreground.png" )
+EndGame_ForegroundEcranXP is TUIResourceTexture_OutGame( FileName =         "GameData:/Assets/2D/Interface/UseOutGame/EndGame/EndGame_ForegroundEcranXP.png" )
+Endgame_postit is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/EndGame/endgame_postit.png" )
+
+
+
+//-------------------------------------------------------------------------------------
+// ModCenter
+
+Outgame_fond_modding_screen is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/ModCenter/fond_modding_screen.png" )
+//Outgame_fond_ecran_modding_screen is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/ModCenter/fond_ecran_modding_screen.png" )
+Outgame_fond_ecran_modding_screen is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/ModCenter/fond_ecran_modding_screen2.png" )
+//-------------------------------------------------------------------------------------
+//Stats
+
+Outgame_stats_onglet_normal is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Stats/stats_onglet_normal.png" )
+Outgame_stats_onglet_selected is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Stats/stats_onglet_selected.png" )
+Outgame_stats_fond_feuille is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Stats/stats_fond_feuille.png" )
+//-------------------------------------------------------------------------------------
+// solo
+dossier_solo is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/solo/dossier.png" )
+load_solo is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/solo/load.png" )
+onglets_solo_selected is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/solo/onglet_selected.png" )
+onglets_solo is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/solo/onglet.png" )
+
+
+
+//-------------------------------------------------------------------------------------
+// lobby
+texture_switch_icon is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/switch_icon.png" )
+ecran_lobby_wip is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/ecran_lobby_wip.png" )
+//dossier_vide_lobby is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/dossier_vide_lobby.png" )
+dossier_vide_lobby is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/dossier_vide_lobby2.png" )
+Texture_dossier_triple_lobby is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/dossier_triple.png" )
+bouton_ajout_ia is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/bouton_ajout_ia.png" )
+bouton_ajout_ia_toggled is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/bouton_ajout_ia_toggled.png" )
+bouton_choose_ia is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/bouton_choose_ia.png" )
+
+equipe_bleu is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/equipe_bleu.png" )
+equipe_rouge is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/equipe_rouge.png" )
+fleche_deck is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/fleche_deck.png" )
+lobby_closed is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/lobby_place_vide.png" )
+lobby_ouvert is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/lobby_ouvert.png" )
+show_hide_arrow is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/show_hide_arrow.png" )
+
+//-------------------------------------------------------------------------------------
+// profile
+fond_stats is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Stats/fond_stats.png" )
+
+//-------------------------------------------------------------------------------------
+// deck
+
+ListeDivision_fond is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/ListeDivision_fond.png" )
+deck_fond is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/deck_fond.png" )
+Texture_battlegroupe_icone is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/battlegroupe_icone.png" )
+deck_ligne is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/deck_ligne.png" )
+Outgame_deck_pochette is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/deck_pochette.png" )
+Outgame_deck_ligne_survol is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/deck_ligne_survol.png" )
+Outgame_foreground_smartGroup is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/foreground_smartGroup.png" )
+Outgame_foreground_smartGroupDeckEdition is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/foreground_smartGroupDeckEdition.png" )
+Outgame_deck_filter is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/filter.png" )
+Outgame_deck_arrow is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/arrow.png" )
+Outgame_fond_deckCreator_foreground is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/fond_deckCreator_foreground.png" )
+Outgame_foreground_panelPawn is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Deck/foreground_panelPawn.png" )
+
+//-------------------------------------------------------------------------------------
+// buttons
+
+Texture_ShortButton is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Boutons/bouton_court.png" )
+Texture_ShortButton_grayed is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Boutons/bouton_court_grayed.png" )
+Texture_ShortButton_toggled is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Boutons/bouton_court_toggled.png" )
+Texture_ShortButton_toggled_clicked is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Boutons/bouton_court_toggled_clicked.png" )
+Texture_LongButton is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Boutons/bouton_long.png" )
+Texture_LongButton_grayed is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Boutons/bouton_long_grayed.png" )
+Texture_LongButton_toggled is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Boutons/bouton_long_toggled.png" )
+Texture_LongButton_toggled_clicked is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Boutons/bouton_long_toggled_clicked.png" )
+
+//-------------------------------------------------------------------------------------
+// accueil
+Outgame_accueil_foreground_ecranHome is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/foreground_ecranHome.png" )
+Outgame_accueil_foreground_ecranHome2 is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/foreground_ecranHome2.png" )
+Outgame_accueil_foreground_ecranHome3 is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Home/foreground_ecranHome3.png" )
+// chat font
+Outgame_chat_fond is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/chat_fond.png" )
+Outgame_chat_foreground is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/chat_foreground.png" )
+Outgame_chat_button is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/chat_button.png" )
+Outgame_chat_button_filter is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/HUB/chat_button_filter.png" )
+//-------------------------------------------------------------------------------------
+Outgame_iconeNavigationTest  is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Proto/TestIconeNavigation.png" )
+Outgame_survol_menuSolo is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/survol_menuSolo.png" )
+Outgame_survol_menuSolo_blanc is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/survol_menuSolo_blanc.png" )
+Outgame_survol_photoSolo is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/survol_photoSolo.png" )
+Outgame_survol_liste_mission is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Missions/survol_liste_mission.png" )
+Outgame_transparent is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/transparent.png" )
+transparent is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/transparent.png" )
+Outgame_bandeNoireListeMission is TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/bandeNoireListeMission.png" )
+
+
+unnamed TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+
+        //-------------------------------------------------------------------------------------
+        // modale
+        ("Outgame_modale_fond", MAP [( ~/ComponentState/Normal, TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Modale/modale_fond.png")), ]),
+        ("Outgame_modale_foreground", MAP [( ~/ComponentState/Normal, TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Modale/modale_foreground.png")), ]),
+        //-------------------------------------------------------------------------------------
+        ("Outgame_iconeNavigationTest", MAP [( ~/ComponentState/Normal, ~/Outgame_iconeNavigationTest), ]),
+        ("Outgame_backgroundOfflineHomeScreen", MAP [( ~/ComponentState/Normal, ~/Outgame_backgroundOfflineHomeScreen), ]),
+
+        //("Outgame_backgroundOnlineHomeScreen", MAP [( ~/ComponentState/Normal, ~/Outgame_backgroundOnlineHomeScreen), ]),
+
+
+
+        ("Outgame_HL_mods", MAP [
+                                ( ~/ComponentState/Normal, ~/Outgame_transparent),
+                                ( ~/ComponentState/Highlighted, ~/Outgame_HL_mods),
+                                ]),
+        ("Outgame_HL_options", MAP [
+                                ( ~/ComponentState/Normal, ~/Outgame_transparent),
+                                ( ~/ComponentState/Highlighted, ~/Outgame_HL_options),
+                                ]),
+        ("Outgame_HL_profile", MAP [
+                                ( ~/ComponentState/Normal, ~/Outgame_transparent),
+                                ( ~/ComponentState/Highlighted, ~/Outgame_HL_profile),
+                                ]),
+        ("Outgame_HL_multi", MAP [
+                                ( ~/ComponentState/Normal, ~/Outgame_transparent),
+                                ( ~/ComponentState/Highlighted, ~/Outgame_HL_multi),
+                                ]),
+        ("Outgame_HL_armory", MAP [
+                                ( ~/ComponentState/Normal, ~/Outgame_transparent),
+                                ( ~/ComponentState/Highlighted, ~/Outgame_HL_armory),
+                                ]),
+
+        ("Outgame_HL_solo", MAP [
+                                ( ~/ComponentState/Normal, ~/Outgame_transparent),
+                                ( ~/ComponentState/Highlighted, ~/Outgame_HL_solo),
+                                ]),
+
+        ("Outgame_Chat_Dropdown", MAP [
+                                ( ~/ComponentState/Normal, ~/Outgame_Chat_Dropdown_Normal),
+                                ( ~/ComponentState/ToggleHighlighted, ~/Outgame_Chat_Dropdown_Selected),
+                                ( ~/ComponentState/Toggled, ~/Outgame_Chat_Dropdown_Selected),
+                                ( ~/ComponentState/Highlighted, ~/Outgame_Chat_Dropdown_Normal),
+                                ]),
+
+
+        ("Outgame_survol_menuSolo", MAP [( ~/ComponentState/Highlighted, ~/Outgame_survol_menuSolo),
+                                         ( ~/ComponentState/Normal, ~/Outgame_transparent), ]),
+        ("Outgame_survol_menuSolo_blanc", MAP [( ~/ComponentState/Highlighted, ~/Outgame_survol_menuSolo_blanc),
+                                         ( ~/ComponentState/Normal, ~/Outgame_transparent), ]),
+
+        ("EffetSurvol_listeMission", MAP [
+                                            ( ~/ComponentState/Highlighted, ~/Outgame_transparent),
+                                            ( ~/ComponentState/Toggled, ~/Outgame_survol_liste_mission),
+                                            ( ~/ComponentState/ToggleHighlighted, ~/Outgame_survol_liste_mission),
+                                            ( ~/ComponentState/Normal, ~/Outgame_transparent),
+                                        ]),
+
+        ("Outgame_survol_photoSolo", MAP [( ~/ComponentState/Highlighted, ~/Outgame_survol_photoSolo),
+                                          ( ~/ComponentState/Normal, ~/Outgame_transparent), ]),
+        ("Outgame_survol_liste_mission", MAP [( ~/ComponentState/Highlighted, ~/Outgame_survol_liste_mission),
+                                               ( ~/ComponentState/Normal, ~/Outgame_transparent), ]),
+        ("Outgame_bandeNoireListeMission", MAP [( ~/ComponentState/Normal, ~/Outgame_bandeNoireListeMission), ]),
+        ("Outgame_backgroundMultiScreen", MAP [( ~/ComponentState/Normal, ~/Outgame_backgroundMultiScreen), ]),
+        //-------------------------------------------------------------------------------------
+        // fond test pour effets
+        ("outgame_fond_test", MAP [( ~/ComponentState/Normal, ~/outgame_fond_test), ]),
+        ("outgame_chaise_pour_multi", MAP [( ~/ComponentState/Normal, ~/outgame_chaise_pour_multi), ]),
+        ("outgame_cable_pour_multi", MAP [( ~/ComponentState/Normal, ~/outgame_cable_pour_multi), ]),
+        ("outgame_icone_filter", MAP [( ~/ComponentState/Normal, ~/outgame_icone_filter), ]),
+        ("outgame_dropdown_parametre", MAP [( ~/ComponentState/Normal, ~/outgame_dropdown_parametre), ]),
+        ("outgame_dropdown_lobby", MAP [( ~/ComponentState/Normal, TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/dropdown_parametre.png" )), ]),
+        //-------------------------------------------------------------------------------------
+        // endgame
+         ("Outgame_fond_EndGame", MAP [( ~/ComponentState/Normal, ~/Outgame_fond_EndGame), ]),
+         ("Outgame_fond_EndGame_foreground", MAP [( ~/ComponentState/Normal, ~/Outgame_fond_EndGame_foreground), ]),
+         ("EndGame_ForegroundEcranXP", MAP [( ~/ComponentState/Normal, ~/EndGame_ForegroundEcranXP), ]),
+         ("Endgame_postit", MAP [( ~/ComponentState/Normal, ~/Endgame_postit), ]),
+
+
+        //-------------------------------------------------------------------------------------
+        // ModCenter
+        ("Outgame_fond_modding_screen", MAP [( ~/ComponentState/Normal, ~/Outgame_fond_modding_screen), ]),
+        ("Outgame_fond_ecran_modding_screen", MAP [( ~/ComponentState/Normal, ~/Outgame_fond_ecran_modding_screen), ]),
+
+
+        //-------------------------------------------------------------------------------------
+        // accueil
+        ("Outgame_accueil_foreground_ecranHome", MAP [( ~/ComponentState/Normal, ~/Outgame_accueil_foreground_ecranHome), ]),
+        ("Outgame_accueil_foreground_ecranHome2", MAP [( ~/ComponentState/Normal, ~/Outgame_accueil_foreground_ecranHome2), ]),
+        ("Outgame_accueil_foreground_ecranHome3", MAP [( ~/ComponentState/Normal, ~/Outgame_accueil_foreground_ecranHome3), ]),
+
+        // chat_fond
+        ("Outgame_chat_fond", MAP [( ~/ComponentState/Normal, ~/Outgame_chat_fond), ]),
+        ("Outgame_chat_foreground", MAP [( ~/ComponentState/Normal, ~/Outgame_chat_foreground), ]),
+        ("Outgame_chat_button", MAP [( ~/ComponentState/Normal, ~/Outgame_chat_button), ]),
+        ("Outgame_chat_button_filter", MAP [( ~/ComponentState/Normal, ~/Outgame_chat_button_filter), ]),
+        //-------------------------------------------------------------------------------------
+        // solo
+        ("dossier_solo", MAP [( ~/ComponentState/Normal, ~/dossier_solo), ]),
+        ("load_solo", MAP [( ~/ComponentState/Normal, ~/load_solo), ]),
+        ("onglets_solo", MAP [
+                                        ( ~/ComponentState/Normal, ~/onglets_solo),
+                                        ( ~/ComponentState/ToggleHighlighted, ~/onglets_solo_selected),
+                                        ( ~/ComponentState/Toggled, ~/onglets_solo_selected),
+                                        ( ~/ComponentState/Highlighted, ~/onglets_solo),
+                                        ]),
+        ("onglets_solo_selected", MAP [( ~/ComponentState/Normal, ~/onglets_solo_selected), ]),
+        //-------------------------------------------------------------------------------------
+        // options
+        ("Outgame_backgroundOption", MAP [( ~/ComponentState/Normal, ~/Outgame_backgroundOption), ]),
+        ("OutgameTexture_NavigationOption", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_NavigationOption), ]),
+        ("option_ombreOnglet", MAP [( ~/ComponentState/Normal, ~/option_ombreOnglet), ]),
+
+        ("Outgame_Onglet_Options", MAP [
+                                        ( ~/ComponentState/Normal, ~/Outgame_Onglet_Option_Normal),
+                                        ( ~/ComponentState/ToggleHighlighted, ~/Outgame_Onglet_Option_Selection),
+                                        ( ~/ComponentState/Toggled, ~/Outgame_Onglet_Option_Selection),
+                                        ( ~/ComponentState/Highlighted, ~/Outgame_Onglet_Option_Normal),
+                                        ]),
+        ("sliderHorizontal_option", MAP [( ~/ComponentState/Normal, ~/sliderHorizontal_option), ]),
+        ("sliderCurseur_option",    MAP [
+                                        (~/ComponentState/Normal, ~/sliderCurseur_option),
+                                        (~/ComponentState/Highlighted, ~/sliderCurseur_option_hl),
+                                        (~/ComponentState/Toggled, ~/sliderCurseur_option_hl),
+                                     ]),
+        //-------------------------------------------------------------------------------------
+        // stats
+        ("Outgame_stats_fond_feuille", MAP [( ~/ComponentState/Normal, ~/Outgame_stats_fond_feuille), ]),
+
+        ("Outgame_stats_onglet", MAP    [
+                                            ( ~/ComponentState/Normal, ~/Outgame_stats_onglet_normal),
+                                            ( ~/ComponentState/ToggleHighlighted, ~/Outgame_stats_onglet_selected),
+                                            ( ~/ComponentState/Toggled, ~/Outgame_stats_onglet_selected),
+                                            ( ~/ComponentState/Highlighted, ~/Outgame_stats_onglet_normal),
+                                        ]),
+        //-------------------------------------------------------------------------------------
+        // challenge
+        ("challenge_star", MAP [( ~/ComponentState/Normal, TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Missions/status_done.png" )), ]),
+
+        //-------------------------------------------------------------------------------------
+        // lobby
+        ("Lobby_icone_Rank", MAP [( ~/ComponentState/Normal, TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Lobby/rank.png" )), ]),
+
+
+        ("mission_dossierVide", MAP [( ~/ComponentState/Normal, TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Missions/MissionDossierVide.png" )), ]),
+        ("tutorial_dossierVide", MAP [( ~/ComponentState/Normal, TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Tutorial/tutorial_folder.png" )), ]),
+        ("tutorial_blade", MAP [
+            ( ~/ComponentState/Normal, TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Tutorial/blade.png" )),
+            ( ~/ComponentState/Highlighted, TUIResourceTexture_OutGame( FileName = "GameData:/Assets/2D/Interface/UseOutGame/Tutorial/blade_hl.png" )),
+            ]),
+
+        ("ecran_lobby_wip", MAP [( ~/ComponentState/Normal, ~/ecran_lobby_wip), ]),
+        ("texture_switch_icon", MAP [( ~/ComponentState/Normal, ~/texture_switch_icon), ]),
+        ("dossier_vide_lobby", MAP [( ~/ComponentState/Normal, ~/dossier_vide_lobby), ]),
+        ("Texture_dossier_triple_lobby", MAP [( ~/ComponentState/Normal, ~/Texture_dossier_triple_lobby), ]),
+        ("bouton_ajout_ia", MAP [
+                            ( ~/ComponentState/Normal, ~/bouton_ajout_ia),
+                            ( ~/ComponentState/Highlighted, ~/bouton_ajout_ia_toggled),
+                            ( ~/ComponentState/Toggled, ~/bouton_ajout_ia_toggled),
+                            ( ~/ComponentState/Grayed, ~/transparent),
+                            ]),
+        ("bouton_choose_ia", MAP [
+                            ( ~/ComponentState/Normal, ~/bouton_choose_ia),
+                            ( ~/ComponentState/Grayed, ~/transparent),
+                            ]),
+        ("equipe_rouge", MAP [( ~/ComponentState/Normal, ~/equipe_rouge), ]),
+        ("equipe_bleu", MAP [( ~/ComponentState/Normal, ~/equipe_bleu), ]),
+
+        ("fleche_deck", MAP [
+                            ( ~/ComponentState/Grayed, ~/transparent),
+                            ( ~/ComponentState/Normal, ~/fleche_deck),
+                            ]),
+
+        ("lobby_closed", MAP [
+                            ( ~/ComponentState/Grayed, ~/lobby_closed),
+                            ( ~/ComponentState/Normal, ~/transparent),
+                            ]),
+
+        ("lobby_ouvert", MAP [
+                            ( ~/ComponentState/Grayed, ~/lobby_ouvert),
+                            ( ~/ComponentState/Normal, ~/transparent),
+                            ]),
+        ("show_hide_arrow", MAP [( ~/ComponentState/Normal, ~/show_hide_arrow),]),
+        //-------------------------------------------------------------------------------------
+        // profile
+        ("fond_stats", MAP [( ~/ComponentState/Normal, ~/fond_stats), ]),
+        //-------------------------------------------------------------------------------------
+        //deck
+        ("deck_ligne", MAP [( ~/ComponentState/Normal, ~/deck_ligne), ]),
+        ("Texture_battlegroupe_icone", MAP [( ~/ComponentState/Normal, ~/Texture_battlegroupe_icone), ]),
+        ("Texture_bordure_drapeau", MAP [( ~/ComponentState/Normal, ~/Texture_ShortButton), ]),
+        ("Texture_ShortButton", MAP [
+                                            ( ~/ComponentState/Normal, ~/Texture_ShortButton),
+                                            ( ~/ComponentState/Grayed, ~/Texture_ShortButton_grayed),
+                                            ( ~/ComponentState/Highlighted, ~/Texture_ShortButton),
+                                            ( ~/ComponentState/Clicked, ~/Texture_ShortButton_toggled_clicked),
+                                            ( ~/ComponentState/Toggled, ~/Texture_ShortButton_toggled),
+                                            ( ~/ComponentState/ToggleHighlighted, ~/Texture_ShortButton_toggled),
+                                            ( ~/ComponentState/ToggleClicked, ~/Texture_ShortButton_toggled_clicked),
+                                        ]),
+        ("Texture_LongButton", MAP [
+                                            ( ~/ComponentState/Normal, ~/Texture_LongButton),
+                                            ( ~/ComponentState/Grayed, ~/Texture_LongButton_grayed),
+                                            ( ~/ComponentState/Highlighted, ~/Texture_LongButton),
+                                            ( ~/ComponentState/Clicked, ~/Texture_LongButton_toggled_clicked),
+                                            ( ~/ComponentState/Toggled, ~/Texture_LongButton_toggled),
+                                            ( ~/ComponentState/ToggleHighlighted, ~/Texture_LongButton_toggled),
+                                            ( ~/ComponentState/ToggleClicked, ~/Texture_LongButton_toggled_clicked),
+                                        ]),
+        ("ListeDivision_fond", MAP [( ~/ComponentState/Normal, ~/ListeDivision_fond), ]),
+        ("deck_fond", MAP [( ~/ComponentState/Normal, ~/deck_fond), ]),
+        ("Outgame_deck_pochette", MAP [( ~/ComponentState/Normal, ~/Outgame_deck_pochette), ]),
+        ("Outgame_deck_ligne_survol", MAP [
+                                            ( ~/ComponentState/Normal, ~/transparent),
+                                            ( ~/ComponentState/Highlighted, ~/Outgame_deck_ligne_survol),
+                                        ]),
+        ("Outgame_foreground_smartGroup", MAP [
+                                            ( ~/ComponentState/Normal, ~/transparent),
+                                            ( ~/ComponentState/Highlighted, ~/Outgame_foreground_smartGroup),
+                                        ]),
+        ("Outgame_foreground_smartGroupDeckEdition", MAP [
+                                            ( ~/ComponentState/Normal, ~/transparent),
+                                            ( ~/ComponentState/Highlighted, ~/Outgame_foreground_smartGroupDeckEdition),
+                                        ]),
+        ("Outgame_deck_filter", MAP [( ~/ComponentState/Normal, ~/Outgame_deck_filter), ]),
+        ("Outgame_deck_arrow", MAP [( ~/ComponentState/Normal, ~/Outgame_deck_arrow), ]),
+        ("Outgame_fond_deckCreator_foreground", MAP [( ~/ComponentState/Normal, ~/Outgame_fond_deckCreator_foreground), ]),
+        ("Outgame_foreground_panelPawn", MAP [( ~/ComponentState/Normal, ~/Outgame_foreground_panelPawn), ]),
+        //-------------------------------------------------------------------------------------
+        ("OutgameTexture_outgame_Solo", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_outgame_Solo), ]),
+        ("OutgameTexture_outgame_Solo_fond", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_outgame_Solo_fond), ]),
+        //-------------------------------------------------------------------------------------
+        // SD2 à virer à terme
+        ("OutgameTexture_TrendEqual", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_TrendEqual), ]),
+        ("OutgameTexture_TrendMinus", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_TrendMinus), ]),
+        ("OutgameTexture_TrendPlus", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_TrendPlus), ]),
+        ("OutgameTexture_TrendUnranked", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_TrendUnranked), ]),
+
+
+        ("OutgameTexture_Bagration_Mood_2", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_2), ]),
+        ("OutgameTexture_Bagration_Mood_3", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_3), ]),
+        ("OutgameTexture_Bagration_Mood_4", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_4), ]),
+        ("OutgameTexture_Bagration_Mood_5", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_5), ]),
+        ("OutgameTexture_Bagration_Mood_6", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_6), ]),
+        ("OutgameTexture_Bagration_Mood_7", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_7), ]),
+        ("OutgameTexture_Bagration_Mood_8", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_8), ]),
+        ("OutgameTexture_Bagration_Mood_9", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_9), ]),
+        ("OutgameTexture_Bagration_Mood_10", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_10), ]),
+        ("OutgameTexture_Bagration_Mood_11", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_11), ]),
+        ("OutgameTexture_Bagration_Mood_12", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_12), ]),
+        ("OutgameTexture_Bagration_Mood_13", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_13), ]),
+        ("OutgameTexture_Bagration_Mood_14", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_14), ]),
+        ("OutgameTexture_Bagration_Mood_15", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_15), ]),
+        ("OutgameTexture_Bagration_Mood_16", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_16), ]),
+        ("OutgameTexture_Bagration_Mood_17", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_17), ]),
+        ("OutgameTexture_Bagration_Mood_18", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_18), ]),
+        ("OutgameTexture_Bagration_Mood_19", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_19), ]),
+        ("OutgameTexture_Bagration_Mood_20", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_20), ]),
+        ("OutgameTexture_Bagration_Mood_21", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_21), ]),
+        ("OutgameTexture_Bagration_Mood_22", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_22), ]),
+        ("OutgameTexture_Bagration_Mood_23", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_23), ]),
+        ("OutgameTexture_Bagration_Mood_24", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_24), ]),
+        ("OutgameTexture_Bagration_Mood_25", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_25), ]),
+        ("OutgameTexture_Bagration_Mood_26", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_26), ]),
+        ("OutgameTexture_Bagration_Mood_27", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_27), ]),
+        ("OutgameTexture_Bagration_Mood_28", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_28), ]),
+        ("OutgameTexture_Bagration_Mood_29", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_29), ]),
+        ("OutgameTexture_Bagration_Mood_30", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_30), ]),
+        ("OutgameTexture_Bagration_Mood_31", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_31), ]),
+        ("OutgameTexture_Bagration_Mood_32", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_32), ]),
+        ("OutgameTexture_Bagration_Mood_33", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_33), ]),
+        ("OutgameTexture_Bagration_Mood_34", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_34), ]),
+        ("OutgameTexture_Bagration_Mood_35", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_35), ]),
+        ("OutgameTexture_Bagration_Mood_36", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_36), ]),
+        ("OutgameTexture_Bagration_Mood_37", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_37), ]),
+        ("OutgameTexture_Bagration_Mood_38", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_38), ]),
+        ("OutgameTexture_Bagration_Mood_39", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_39), ]),
+        ("OutgameTexture_Bagration_Mood_40", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_40), ]),
+        ("OutgameTexture_Bagration_Mood_41", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_41), ]),
+        ("OutgameTexture_Bagration_Mood_42", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_42), ]),
+        ("OutgameTexture_Bagration_Mood_43", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_43), ]),
+        ("OutgameTexture_Bagration_Mood_44", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_44), ]),
+        ("OutgameTexture_Bagration_Mood_45", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_45), ]),
+        ("OutgameTexture_Bagration_Mood_46", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_46), ]),
+        ("OutgameTexture_Bagration_Mood_47", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Bagration_Mood_47), ]),
+
+
+
+        ("OutgameTexture_Mod_Gameplay", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Mod_Gameplay), ]),
+        ("OutgameTexture_Mod_Interface", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Mod_Interface), ]),
+        ("OutgameTexture_Mod_Mesh", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Mod_Mesh), ]),
+        ("OutgameTexture_Mod_Downloading", MAP [( ~/ComponentState/Normal, ~/OutgameTexture_Mod_Downloading), ]),
+
+        ("OutGameTexture_1vs1", MAP [( ~/ComponentState/Normal, ~/OutGameTexture_1vs1), ]),
+        ("OutGameTexture_2vs2", MAP [( ~/ComponentState/Normal, ~/OutGameTexture_2vs2), ]),
+        ("OutGameTexture_3vs3", MAP [( ~/ComponentState/Normal, ~/OutGameTexture_3vs3), ]),
+        ("OutGameTexture_4vs4", MAP [( ~/ComponentState/Normal, ~/OutGameTexture_4vs4), ]),
+        ("OutGameTexture_10vs10", MAP [( ~/ComponentState/Normal, ~/OutGameTexture_10vs10), ]),
+
+        ("LobbyStrat_flagGer", MAP [( ~/ComponentState/Normal, ~/LobbyStrat_flagGer), ]),
+        ("LobbyStrat_flagSov", MAP [( ~/ComponentState/Normal, ~/LobbyStrat_flagSov), ]),
+
+        ("OutgameTexture_Lobby_Filter_East", MAP [(~/ComponentState/Normal, ~/OutgameTexture_Lobby_Filter_East)]),
+
+        ("UseOutGame_Manual_AG_01", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_01)]),
+        ("UseOutGame_Manual_AG_02", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_02)]),
+        ("UseOutGame_Manual_AG_03", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_03)]),
+        ("UseOutGame_Manual_AG_04", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_04)]),
+        ("UseOutGame_Manual_AG_05", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_05)]),
+        ("UseOutGame_Manual_AG_06", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_06)]),
+        ("UseOutGame_Manual_AG_07", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_07)]),
+        ("UseOutGame_Manual_AG_08", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_08)]),
+        ("UseOutGame_Manual_AG_09", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_09)]),
+        ("UseOutGame_Manual_AG_10", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_10)]),
+        ("UseOutGame_Manual_AG_11", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_11)]),
+        ("UseOutGame_Manual_AG_115", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_115)]),
+        ("UseOutGame_Manual_AG_12", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_12)]),
+        ("UseOutGame_Manual_AG_13", MAP [(~/ComponentState/Normal, ~/UseOutGame_Manual_AG_13)]),
+        ("UseOutGame_Cadenas", MAP [(~/ComponentState/Normal, ~/UseOutGame_Cadenas)]),
+        ("UseOutGame_Alert", MAP [(~/ComponentState/Normal, ~/UseOutGame_Alert)]),
+        ("UseOutGame_Warning", MAP [(~/ComponentState/Normal, ~/UseOutGame_Warning)]),
+
+("OutgameTexture_DivisionsMenuIcon", MAP[
+            ( ~/ComponentState/Normal, ~/OutgameTexture_DivisionsMenuIcon),
+            ( ~/ComponentState/Highlighted, ~/OutgameTexture_DivisionsMenuIcon_h),
+   ]),
+("OutgameTexture_BattlegroupMenuIcon", MAP[
+( ~/ComponentState/Normal, ~/OutgameTexture_BattlegroupMenuIcon),
+( ~/ComponentState/Highlighted, ~/OutgameTexture_BattlegroupMenuIcon_h),
+]),
+        ("OutgameTexture_ArmoryMenuIcon", MAP[
+( ~/ComponentState/Normal, ~/OutgameTexture_ArmoryMenuIcon),
+( ~/ComponentState/Highlighted, ~/OutgameTexture_ArmoryMenuIcon_h),
+]),
+    ]
+)
+
+
+UseOutGameTexture_DefeatAnimation_89 is TUIResourceTexture_OutGameNoGen( FileName = "GameData:/Assets/2D/Interface/UseOutGame/EndGameAnim/Defeat/SD2_anim_defeat89.png" )
+UseOutGameTexture_AlliesVictoryAnimation_89 is TUIResourceTexture_OutGameNoGen( FileName = "GameData:/Assets/2D/Interface/UseOutGame/EndGameAnim/VictoryAllies/anim_victory_global_00089.png" )
+UseOutGameTexture_AxisVictoryAnimation_89 is TUIResourceTexture_OutGameNoGen( FileName = "GameData:/Assets/2D/Interface/UseOutGame/EndGameAnim/VictoryAxe/anim_victory_global_00089.png" )
+

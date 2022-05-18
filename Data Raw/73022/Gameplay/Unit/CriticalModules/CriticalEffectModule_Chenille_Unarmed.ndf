@@ -1,0 +1,120 @@
+
+export CriticalEffectModule_Chenille_Unarmed is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,100) //Attention le debug crée un assert si on a des unités utilisant des bounds différents vaut mieux garder les mêmes partout
+    TerrainCriticalEffectTimer = 5.0
+
+    EffectsFromTerrain = []
+
+    EffectsOnFront =
+    [
+        CriticalEffect_DriverKO(Roll = (1,20)), // Driver KO -> Full stop 10sec
+        CriticalEffect_CrewKO(Roll = (21,40)), // Crew KO -> Bailout 10sec
+        CriticalEffect_TracksBroken(Roll = (41,60)), // Track broken -> no rotation
+        CriticalEffect_EngineStalled(Roll = (61,80)), // Moteur calé -> Full stop 30sec
+    ]
+
+    EffectsOnSides =
+    [
+        CriticalEffect_DriverKO(Roll = (1,20)), // Driver KO -> Full stop 10sec
+        CriticalEffect_CrewKO(Roll = (21,40)), // Crew KO -> Bailout 10sec
+        CriticalEffect_TracksBroken(Roll = (41,60)), // Track broken -> no rotation
+        CriticalEffect_EngineStalled(Roll = (61,80)), // Moteur calé -> Full stop 30sec
+    ]
+
+    EffectsOnRear =
+    [
+        CriticalEffect_DriverKO(Roll = (1,20)), // Driver KO -> Full stop 10sec
+        CriticalEffect_CrewKO(Roll = (21,40)), // Crew KO -> Bailout 10sec
+        CriticalEffect_TracksBroken(Roll = (41,60)), // Track broken -> no rotation
+        CriticalEffect_EngineStalled(Roll = (61,80)), // Moteur calé -> Full stop 30sec
+    ]
+
+    EffectsOnTop =
+    [
+        CriticalEffect_DriverKO(Roll = (1,20)), // Driver KO -> Full stop 10sec
+        CriticalEffect_CrewKO(Roll = (21,40)), // Crew KO -> Bailout 10sec
+        CriticalEffect_TracksBroken(Roll = (41,60)), // Track broken -> no rotation
+        CriticalEffect_EngineStalled(Roll = (61,80)), // Moteur calé -> Full stop 30sec
+    ]
+
+    PierceEffectsOnFront =
+    [
+        CriticalEffect_FuelExplosion(Roll = (1,2)), // Fuel explosion -> mort
+        CriticalEffect_BailedOut(Roll = (3,4)), // Bailed out
+        CriticalEffect_TransmissionDamaged(Roll = (5,8)), // Transmission endommagée -> 50% vitesse
+        CriticalEffect_CrewPanicked(Roll = (9,10)), // Crew panicked -> Deroute
+        CriticalEffect_Spalling(Roll = (11,12)), // Spalling -> perd 2PV
+        CriticalEffect_DriverKilled(Roll = (13,17)), // Driver killed -> Full stop 30sec
+    ]
+
+    PierceEffectsOnSides =
+    [
+        CriticalEffect_FuelExplosion(Roll = (1,2)), // Fuel explosion -> mort
+        CriticalEffect_CrewKilled(Roll = (3,4)), // Crew killed -> Bail out
+        CriticalEffect_TracksBroken(Roll = (5,8)), // Track broken -> no rotation
+        CriticalEffect_TransmissionDestroyed(Roll = (9,12)), // Transmission pétée -> Full stop
+        CriticalEffect_CrewPanicked(Roll = (13,14)), // Crew panicked -> Deroute
+        CriticalEffect_Spalling(Roll = (15,16)), // Spalling -> perd 2PV
+        CriticalEffect_DriverKilled(Roll = (17,18)), // Driver killed -> Full stop 30sec
+    ]
+
+    PierceEffectsOnRear =
+    [
+        CriticalEffect_FuelExplosion(Roll = (1,2)), // Fuel explosion -> mort
+        CriticalEffect_BailedOut(Roll = (3,4)), // Bailed out
+        CriticalEffect_TransmissionDestroyed(Roll = (5,8)), // Transmission pétée -> Full stop
+        CriticalEffect_TransmissionDamaged(Roll = (11,12)), // Transmission endommagée -> 50% vitesse
+        CriticalEffect_CrewPanicked(Roll = (13,14)), // Crew panicked -> Deroute
+        CriticalEffect_Incendiary(Roll = (15,16)), // Incendiary -> perd 2PV
+        CriticalEffect_DriverKilled(Roll = (17,18)), // Driver killed -> Full stop 30sec
+    ]
+
+    PierceEffectsOnTop =
+    [
+        CriticalEffect_FuelExplosion(Roll = (1,3)), // Fuel explosion -> mort
+        CriticalEffect_BailedOut(Roll = (4,6)), // Bailed out
+        CriticalEffect_CrewPanicked(Roll = (7,9)), // Crew panicked -> Deroute
+        CriticalEffect_Spalling(Roll = (10,12)), // Spalling -> perd 2PV
+    ]
+
+    RicochetEffectsOnFront =
+    [
+        CriticalEffect_DriverKO(Roll = (1,4)), // Driver KO -> Full stop 10sec
+        CriticalEffect_TransmissionDamaged(Roll = (5,9)), // Transmission endommagée -> 50% vitesse
+        CriticalEffect_Bounce(Roll = (10,100)), // BOUNCE
+    ]
+
+    RicochetEffectsOnSides =
+    [
+        CriticalEffect_DriverKO(Roll = (1,4)), // Driver KO -> Full stop 10sec
+        CriticalEffect_TransmissionDamaged(Roll = (5,9)), // Transmission endommagée -> 50% vitesse
+        CriticalEffect_Bounce(Roll = (10,100)), // BOUNCE
+        {CriticalEffect_Bounce(Roll = (1,65)), // BOUNCE
+                CriticalEffect_CrewPanicked(Roll = (66,70)), // Crew panicked -> Deroute
+                CriticalEffect_ShooterKO(Roll = (71,75)), // Shooter KO -> Armes stop 10sec
+                CriticalEffect_LoaderKO(Roll = (76,80)), // Loader KO -> no reload 10sec
+                CriticalEffect_DriverKO(Roll = (81,85)), // Driver KO -> Full stop 10sec
+                CriticalEffect_CrewKO(Roll = (86,90)), // Crew KO -> Bailout 10sec
+                CriticalEffect_TransmissionDamaged(Roll = (91,95)), // Transmission endommagée -> 50% vitesse
+                CriticalEffect_EngineDamaged(Roll = (96,100)), // Moteur endommagée -> 50% vitesse}
+    ]
+
+    RicochetEffectsOnRear =
+    [
+        CriticalEffect_DriverKO(Roll = (1,4)), // Driver KO -> Full stop 10sec
+        CriticalEffect_TransmissionDamaged(Roll = (5,9)), // Transmission endommagée -> 50% vitesse
+        CriticalEffect_Bounce(Roll = (10,100)), // BOUNCE
+        {CriticalEffect_Bounce(Roll = (1,60)), // BOUNCE
+                CriticalEffect_CrewPanicked(Roll = (61,65)), // Crew panicked -> Deroute
+                CriticalEffect_ShooterKO(Roll = (66,70)), // Shooter KO -> Armes stop 10sec
+                CriticalEffect_LoaderKO(Roll = (71,75)), // Loader KO -> no reload 10sec
+                CriticalEffect_DriverKO(Roll = (76,80)), // Driver KO -> Full stop 10sec
+                CriticalEffect_CrewKO(Roll = (81,85)), // Crew KO -> no move et tir 10sec
+                CriticalEffect_TransmissionDamaged(Roll = (86,90)), // Transmission endommagée -> 50% vitesse
+                CriticalEffect_EngineDamaged(Roll = (91,95)), // Moteur endommagée -> 50% vitesse
+                CriticalEffect_EngineStalled(Roll = (96,100)), // Moteur calé -> Full stop 30sec}
+    ]
+
+    RicochetEffectsOnTop = []
+)

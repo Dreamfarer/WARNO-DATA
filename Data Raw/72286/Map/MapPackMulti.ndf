@@ -1,0 +1,305 @@
+ArgentInitialSetting is [250*2, 500*2, 750*2, 1000*2, 1250*2, 1500*2] //Toute nouvelle valeur d'ArgentInitial doit apparaitre dans VictoryTypeDestructionLevelsTable du fichier GDConstantes.ndf
+DestructionScoreToReachSetting is [1500*2, 2000*2, 2500*2, 3000*2, 4000*2, 0]
+DestructionScoreToReachForAISetting is [1500*2, 2000*2, 2500*2, 3000*2, 0]
+
+// --------------------------------------------------------------------
+// -------------------------- MAP TACTIC ------------------------------
+// --------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------
+
+export _2x3_Two_lakes is TMultiMapInfo
+(
+    Description = "2lakes"
+    DefaultNbSlotsOpened = 4
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750*2
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750*2
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+        (EDeploymentMode/ConquestGameMode, "_2x3_Two_lakes"),
+        (EDeploymentMode/Breakthrough, "_2x3_Two_lakes"),
+    ]
+
+    AlternativeMapNames = [
+        "_2x3_Two_lakes",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+
+// --------------------------------------------------------------------
+//Nom exact in-game :
+//DEATH ROW
+export _2x3_Death_Row is TMultiMapInfo
+(
+    Description = "deathrow"
+    DefaultNbSlotsOpened = 4
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750*2
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750*2
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+        (EDeploymentMode/ConquestGameMode, "_2x3_Death_Row"),
+        (EDeploymentMode/Breakthrough, "_2x3_Death_Row"),
+    ]
+
+    AlternativeMapNames = [
+        "_2x3_Death_Row",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+// --------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+//Two Ways
+//Nom exact in-game :
+//TWO WAYS
+export _2x3_DeuxCouloirs is TMultiMapInfo
+(
+    Description = "2couloirs"
+    DefaultNbSlotsOpened = 4
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750*2
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750*2
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+        (EDeploymentMode/ConquestGameMode, "_2x3_DeuxCouloirs"),
+        (EDeploymentMode/Breakthrough, "_2x3_DeuxCouloirs"),
+    ]
+
+    AlternativeMapNames = [
+        "_2x3_DeuxCouloirs",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+
+//-------------------------------------------------------------------------------------
+//DeuxTiers Deux Tiers Black Forest BlackForest 2tiers
+//Nom exact in-game :
+//BLACK FOREST
+export _2x3_DeuxTiers is TMultiMapInfo
+(
+    Description = "2tiers"
+    DefaultNbSlotsOpened = 4
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750*2
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750*2
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+        (EDeploymentMode/ConquestGameMode, "_2x3_DeuxTiers"),
+        (EDeploymentMode/Breakthrough, "_2x3_DeuxTiers"),
+    ]
+
+    AlternativeMapNames = [
+        "_2x3_DeuxTiers",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+
+// --------------------------------------------------------------------
+//dangerHills danger hills
+//Nom exact in-game :
+//DANGER HILLS
+export _3x3_Archipel is TMultiMapInfo
+(
+    Description = "archipel"
+    DefaultNbSlotsOpened = 6
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750*2
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750*2
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+        (EDeploymentMode/ConquestGameMode, "_3x3_Archipel"),
+        (EDeploymentMode/Breakthrough, "_3x3_Archipel"),
+    ]
+
+    AlternativeMapNames = [
+        "_3x3_Archipel",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+// --------------------------------------------------------------------
+//Nom exact in-game :
+//CHEMICAL
+export _4x2_Chemical is TMultiMapInfo
+(
+    Description = "chemical"
+    DefaultNbSlotsOpened = 8
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750*2
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750*2
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+        (EDeploymentMode/ConquestGameMode, "_4x2_Chemical"),
+        (EDeploymentMode/Breakthrough, "_4x2_Chemical"),
+    ]
+
+    AlternativeMapNames = [
+        "_4x2_Chemical",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+
+//Mountriver
+//Nom exact in-game :
+//MOUNT RIVER
+    export _3x3_IFleuve is TMultiMapInfo
+    (
+        Description = "mountriver"
+        DefaultNbSlotsOpened = 6
+        RankedAvailability = [true, true, true, true]
+        DefaultArgentInitial = 750*2
+        DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+        DefaultArgentInitialForIASkirmish = 750*2
+        DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+        ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+        GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+        CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+        MapAssociationByMode = MAP
+        [
+            (EDeploymentMode/ConquestGameMode, "_3x3_IFleuve"),
+            (EDeploymentMode/Breakthrough, "_3x3_IFleuve"),
+        ]
+
+        AlternativeMapNames = [
+            "_3x3_IFleuve",
+        ]
+        ArgentInitialTable = ArgentInitialSetting
+    )
+
+//ironwaters iron waters perpi perpendicular
+//Nom exact in-game :
+//IRON WATERS
+export _3x3_IronWaters is TMultiMapInfo
+(
+   Description = "ironwaters"
+   DefaultNbSlotsOpened = 20
+   OnlyPlayableOnDedicatedServer = false
+   RankedAvailability = [true, true, true, true]
+   DefaultArgentInitial = 750*2
+   DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+   DefaultArgentInitialForIASkirmish = 750*2
+   DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+   ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+   GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+   CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+   MapAssociationByMode = MAP
+   [
+       (EDeploymentMode/ConquestGameMode, "_3x3_IronWaters"),
+       (EDeploymentMode/Breakthrough, "_3x3_IronWaters"),
+   ]
+
+   AlternativeMapNames = [
+       "_3x3_IronWaters",
+   ]
+   ArgentInitialTable = ArgentInitialSetting
+)
+
+// Loop
+export _5x2_Boucle is TMultiMapInfo
+(
+    Description = "boucle"
+    OnlyPlayableOnDedicatedServer = false
+    DefaultNbSlotsOpened = 20
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750*2
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750*2
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+        (EDeploymentMode/ConquestGameMode, "_5x2_boucle"),
+        (EDeploymentMode/Breakthrough, "_5x2_boucle"),
+    ]
+
+    AlternativeMapNames = [
+        "_5x2_boucle",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+
+export _4x3_geisa is TMultiMapInfo
+(
+    Description = "geisa"
+    OnlyPlayableOnDedicatedServer = false
+    DefaultNbSlotsOpened = 20
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750*2
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750*2
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+        (EDeploymentMode/ConquestGameMode, "_4x3_geisa"),
+        (EDeploymentMode/Breakthrough, "_4x3_geisa"),
+    ]
+
+    AlternativeMapNames = [
+        "_4x3_geisa",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)
+
+
+
+
+
+// --------------------------------------------------------------------
+export _2x3_Death_Row_1vs1 is TMultiMapInfo
+(
+    Description = "deathr1v1"
+    DefaultNbSlotsOpened = 2
+    RankedAvailability = [true, true, true, true]
+    DefaultArgentInitial = 750*2
+    DefaultDestructionScoreToReach = DestructionScoreToReachSetting
+    DefaultArgentInitialForIASkirmish = 750*2
+    DefaultDestructionScoreToReachForIASkirmish = DestructionScoreToReachForAISetting
+    ConquestPointsDefaultIndex = 1 //Indice dans ConquestPossibleScores de GDConstantes
+    GameModeAvailability = [EDeploymentMode/ConquestGameMode]
+    CombatRuleAvailability = [CombatRule/CaptureTheFlag]
+    MapAssociationByMode = MAP
+    [
+        (EDeploymentMode/ConquestGameMode, "_2x3_Death_Row_1vs1"),
+        (EDeploymentMode/Breakthrough, "_2x3_Death_Row_1vs1"),
+    ]
+
+    AlternativeMapNames = [
+        "_2x3_Death_Row_1vs1",
+    ]
+    ArgentInitialTable = ArgentInitialSetting
+)

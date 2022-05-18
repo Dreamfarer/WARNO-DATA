@@ -1,0 +1,100 @@
+// Fichier écrit à la main
+private bonusPrecision is 10
+// spec: WARGAMENORMANDIE-285
+export HitRollParams is TRollParameters
+(
+    // Common
+    DistanceTolerance = 20000 * Metre //Distance parcouru par la cible entre deux tirs successifs au delà de laquelle on considère que l'unité à bougé
+
+    // Modificateur_Ratio_ArmeArmure
+    // Cette valeur permet de régler à partir de quel niveau d'armure un canon commence à avoir une
+    // chance de pénétrer. Avec 0 il faut un niveau d'armure inférieur ou égal.
+    // Appliqué uniquement sur le Pierce
+    ModificateurArmeArmure = 1
+
+    ///////////////////////
+    // Début dice params //
+    ///////////////////////
+    // Success if roll > RollSuccessThreshold - modifiersum
+    DiceParametersMap = MAP
+    [
+        (
+            ERoll/Hit,
+            TDiceParameters
+            (   // 2d6
+                DiceCount = 1
+                DiceType = 100
+                RollSuccessThreshold = 100
+            )
+        ),
+        (
+            ERoll/Pierce,
+            TDiceParameters
+            (   // 2d6
+                DiceCount = 1
+                DiceType = 1
+                RollSuccessThreshold = 1
+            )
+        ),
+        (
+            // Pas de modificateurs
+            // le lancer est donc toujours <= 12 donc on ne crit jamais.
+            ERoll/Critic,
+            TDiceParameters
+            (   // 2d6
+                DiceCount = 1
+                DiceType = 100
+                RollSuccessThreshold = 100
+            )
+        ),
+    ]
+
+    // Uniquement sur Hit
+    // Si distance/maxRange < Valeur dans le tableau, on gagne le premier bonus valide. /!\Interpolation entre les paliers si InterpolateRangeTable est à true/!\
+    InterpolateRangeTable = true
+    RangeModifiersTable =
+    [
+        (0.05, 1000),
+        (0.17, 100),
+        (0.33, 75),
+        (0.50, 50),
+        (0.67, 25),
+        (1.00, 0),
+        (9999, 0)  // Au cas où on vise au delà de la portée pour certains calculs pas de bonus de precision
+    ]
+
+    // Uniquement sur Hit
+    SuccessiveHitModifiersTable =
+    [
+        (0,  0), //     successiveHits <= 0    ->  0
+        (1,  1*bonusPrecision), // 0 < successiveHits <= 1    ->  1
+        (2,  2*bonusPrecision), // 1 < successiveHits <  inf  ->  2
+        (3,  3*bonusPrecision),
+        (4,  4*bonusPrecision),
+        (5,  5*bonusPrecision),
+        (6,  6*bonusPrecision),
+        (7,  7*bonusPrecision),
+        (8,  8*bonusPrecision),
+        (9,  9*bonusPrecision),
+        (10,  10*bonusPrecision),
+    ]
+    // Note : un autre modificateur entre en compte. Ce modificateur est défini dans l'ODS des paliers de dégâts de suppression.
+
+    // Coefficient de dispersion max - Ce coefficient est utilisé pour augmenter artificiellement la dispersion.
+    // Pour les missiles, on utilise un coffiecient beaucoup plus faible, mais juste supérieur à 0 pour éviter de skipper les calculs, car sinon ça fait n'imp et on a vraiment l'impression que le tireur fait exprès de rater...
+    MaxDispersionCoefficient = 10 // pourquoi 10 ... là est tout le mystère
+    MaxDispersionCoefficientForMissiles = 0.1
+
+    // defini si on utilise les ecm des avions pour réduire les chances de toucher.
+    UseECMToReduceHitChance = true
+
+    // défini quel sera le minimum, cad qu'on prend le max entre BaseHitChance - ECM et MinimalHitChanceWithECM
+    MinimalHitChanceWithECM = 20
+
+    // pour l'instant on part du principe qu'on est entre -0.6 et 0.0. Si on change cette valeur, merci de prévenir un dev, il faut que l'exporteur soit updaté aussi
+    MinimalECMValue = -0.6
+
+    /////////////////////
+    // Fin dice params //
+    /////////////////////
+)

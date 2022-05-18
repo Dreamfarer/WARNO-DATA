@@ -1,0 +1,19 @@
+export ModelFile_M998_Humvee_US is 'GameData:/Assets/3D/Units/US/Vehicule/M998_Humvee/M998_Humvee.Ase2NdfBin'
+
+Modele_M998_Humvee_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M998_Humvee_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M998_Humvee_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/M998_Humvee_MID/M998_Humvee_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M998_Humvee_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/LODS/M998_Humvee_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

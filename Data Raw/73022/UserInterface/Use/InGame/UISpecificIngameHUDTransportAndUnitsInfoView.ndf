@@ -1,0 +1,128 @@
+
+BUCKSpecificInGameHUDTransportAndUnitsInfoMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [30.0, 30.0]
+        MagnifiableOffset = [15.0, -1.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        BUCKButtonDescriptor
+        (
+            ElementName = 'DisplayButton'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [150.0, 24.0]
+                MagnifiableOffset = [-30.0, 6.0]
+                AlignementToAnchor = [1.0, 0.0]
+                AlignementToFather = [1.0, 0.0]
+            )
+
+            Components =
+            [
+                BUCKTextDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+
+                    TextStyle = "Default"
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Center
+                        VerticalAlignment = UIText_VerticalCenter
+                    )
+
+                    TextSize = "12"
+                    TextColor = "ButtonSimple/TextBleuGris"
+                    TextToken = "ShowTr"
+                    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                    TypefaceToken = "UIMainFont"
+
+
+                    HasBorder = true
+                    BorderLineColorToken = "SD2_LigneBleuGris"
+                    HasBackground = true
+                    BackgroundBlockColorToken = "SD2_BleuGris"
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/UserDefined
+
+                    Hint = BUCKSpecificHintableArea
+                    (
+                        ElementName = "DisplayButtonHintableArea"
+                        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                        HintTitleToken = "HIP_DISPT"
+                        HintBodyToken = "HIP_DISPB"
+                        HintExtendedToken = "HIP_DISPE"
+                    )
+                )
+            ]
+        ),
+
+        BUCKContainerDescriptor
+        (
+            ElementName = 'DisplayContainer'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [15.0, 0.0]
+            )
+
+            FitStyle = ~/ContainerFitStyle/FitToContent
+
+            Components =
+            [
+                BUCKContainerDescriptor
+                (
+                    ElementName = 'TransporterContainer'
+                    ComponentFrame = TUIFramePropertyRTTI()
+                    FitStyle = ~/ContainerFitStyle/FitToContent
+                ),
+            ]
+        ),
+
+        BUCKListDescriptor
+        (
+            ElementName = 'DisplayList'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [0.0, -15.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+            ChildFitToContent = true
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'UnitContainer'
+                        ComponentFrame = TUIFramePropertyRTTI()
+                        FitStyle = ~/ContainerFitStyle/FitToContent
+                    )
+                )
+            ]
+        ),
+    ]
+)
+
+UISpecificInGameHUDTransportAndUnitsInfoViewDescriptor is TUISpecificInGameHUDTransportAndUnitsInfoViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificInGameHUDTransportAndUnitsInfoMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

@@ -1,0 +1,1196 @@
+// Index
+//
+// • StrategicEndGamePanelMainContainer (Container)
+//      - StrategicEndGamePanelMainInfosContainer (Container)
+//      - StrategicEndGamePanelCategoryContainer (Template/Container)
+//
+// • StrategicEndGamePanelMainInfosContainer (Template/Container)
+//      - StrategicEndGamePanelTitleTextContainer (Template/Container)
+//      - StrategicEndGamePanelMapViewTexture (Texture)
+//      - StrategicEndGamePanelGridElement (Template/Container)
+//      - StrategicEndGamePanelScoreElement (Container)
+//
+// • StrategicEndGamePanelCategoryContainer (Template/Container)
+//      - StrategicEndGamePanelTitleTextContainer (Template/Container)
+//      - StrategicEndGamePanelRackDivision (Template/Rack)
+//
+// • StrategicEndGamePanelRackDivision (Template/Rack)
+//      - StrategicEndGamePanelFlagAndTextContainer (Template/List)
+//      - StrategicEndGamePanelRackDivisionUnitsList (Template/Rack)
+//
+// • StrategicEndGamePanelStrengthContainer (Container)
+//      - StrategicEndGamePanelTitleTextContainer (Template/Container)
+//      - StrategicEndGamePanelTextContainer (Template/Text)
+//
+// • StrategicEndGamePanelLossesContainer (Container)
+//      - StrategicEndGamePanelTitleTextContainer (Template/Container)
+//      - StrategicEndGamePanelTextContainer (Template/Text)
+//
+// • StrategicEndGamePanelFlagAndTextContainer (Template/List)
+// • StrategicEndGamePanelBulletAndTextContainer (Template/List)
+// • StrategicEndGamePanelTextContainer (Template/Text)
+// • StrategicEndGamePanelDetailsButton (SpecificButton)
+// • StrategicEndGamePanelOKButton (SpecificButton)
+
+
+StrategicEndGamePanelMainContainerMagnifiableWidth is 500
+StrategicEndGamePanelMainListMagnifiableWidth is 20
+StrategicEndGamePanelLineMagnifiableHeight is 15.0
+MagnifiableInterItemMarginBetweenTexts is 4.0
+MapViewTextureMagnifiableHeight is 220.0
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelMainContainer
+// -------------------------------------------------------------------------------------------------
+
+// Main Panel
+StrategicEndGamePanelMainContainer is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableWidthHeight = [StrategicEndGamePanelMainContainerMagnifiableWidth, -100.0]
+        MagnifiableOffset = [0.0, 16.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "DarkGray"
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [-StrategicEndGamePanelMainListMagnifiableWidth, 0.0]
+                MagnifiableOffset = [StrategicEndGamePanelMainListMagnifiableWidth * 0.5, StrategicEndGamePanelMainListMagnifiableWidth * 0.5]
+            )
+
+            InterItemMargin = TRTTILength( Magnifiable = StrategicEndGamePanelMainListMagnifiableWidth * 0.5 )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+            Elements =
+            [
+                // Battle name and main infos
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/StrategicEndGamePanelMainInfosContainer
+                ),
+
+                // Commanders
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicEndGamePanelCategoryContainer
+                    (
+                        ElementName = "Commanders"
+                        TextToken = "ENDSTCOMMA"
+                    )
+                ),
+
+                // Units Involved
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicEndGamePanelCategoryContainer
+                    (
+                        ElementName = "UnitsInvolved"
+                        TextToken = "ENDSTUNINV"
+                    )
+                ),
+
+                // Strength
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/StrategicEndGamePanelStrengthContainer
+                ),
+
+                // Locations Controlled
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicEndGamePanelCategoryContainer
+                    (
+                        ElementName = "LocationsControlled"
+                        TextToken = "ENDSTLOCCT"
+                    )
+                ),
+
+                // Losses
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/StrategicEndGamePanelLossesContainer
+                ),
+            ]
+        ),
+
+        ~/StrategicEndGamePanelButtonsList
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelMainInfosContainer
+// -------------------------------------------------------------------------------------------------
+
+// Main infos : Battle Title + Map view + Date + Score + Result
+StrategicEndGamePanelMainInfosContainer is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+    ChildFitToContent = true
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            InterItemMargin = TRTTILength(Magnifiable = StrategicEndGamePanelMainListMagnifiableWidth * 0.5 )
+
+            Elements =
+            [
+                // Battle Name Title
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicEndGamePanelTitleTextContainer
+                    (
+                        ElementName = "MainInfosTitleText"
+                        // PLACEHOLDER : Here, the text token is the battle name (which is dynamic)
+                        TextToken = "HSL_WGAUGT"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/StrategicEndGamePanelMapViewTexture
+                ),
+
+                // Date + Score + Result Grid
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKGridDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        InterElementMargin = TRTTILength2( Magnifiable = [2.0, MagnifiableInterItemMarginBetweenTexts])
+                        MaxElementsPerDimension = [3, 0]
+
+                        GridElements = MAP
+                        [
+                            // Date title
+                            ([0,0], StrategicEndGamePanelGridElement(ElementName = "AttributeDate" Token = "ENDSTDATE")),
+                            // Score title
+                            ([1,0], StrategicEndGamePanelGridElement(ElementName = "AttributeScore" Token = "ENDSTSCORE")),
+                            // Result title
+                            ([2,0], StrategicEndGamePanelGridElement(ElementName = "AttributeResult" Token = "ENDSTRESLT")),
+                            // Date value
+                            ([0,1], StrategicEndGamePanelGridElement(ElementName = "ValueDate" Token = "T_SEPARA2")),
+                            // Score value
+                            ([1,1], StrategicEndGamePanelScoreElement),
+                            // Result value
+                            ([2,1], StrategicEndGamePanelGridElement(ElementName = "ValueResult" Token = "StAP_CON")), //Placeholder token
+                        ]
+                    )
+                ),
+
+                // Battle Description
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "BattleDescriptionText"
+                        ComponentFrame =  TUIFramePropertyRTTI
+                        (
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+                        TextStyle = "Default"
+                        TypefaceToken = "UIMainFont"
+
+                        BigLineAction = ~/BigLineAction/MultiLine
+
+                        HorizontalFitStyle = ~/FitStyle/FitToParent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextColor = "LighterGray"
+                        TextSize = "14"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        // PLACEHOLDER
+                        TextToken = "SH_MOR"
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelTitleTextContainer
+// -------------------------------------------------------------------------------------------------
+
+// Background + title text template
+template StrategicEndGamePanelTitleTextContainer
+[
+    ElementName : string = "",
+    TextToken : string = "",
+    TextSize : string = "16",
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0, 25.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "LighterGray"
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName>
+            ComponentFrame =  TUIFramePropertyRTTI
+            (
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToParent
+
+            TextColor = "DarkerGray"
+            TextSize = <TextSize>
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextToken = <TextToken>
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelMapViewTexture
+// -------------------------------------------------------------------------------------------------
+
+// Texture displaying the map (see SDDEUX-1415 TR v1 for reference)
+StrategicEndGamePanelMapViewTexture is BUCKTextureDescriptor
+(
+    ElementName = "EndGamePanelMapViewTexture"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [StrategicEndGamePanelMainContainerMagnifiableWidth - StrategicEndGamePanelMainListMagnifiableWidth, MapViewTextureMagnifiableHeight]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelGridElement
+// -------------------------------------------------------------------------------------------------
+
+// Grid Element
+private template StrategicEndGamePanelGridElement
+[
+    ElementName : string,
+    Token : string,
+    ValueToken : string = "",
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [StrategicEndGamePanelMainContainerMagnifiableWidth * 0.25, StrategicEndGamePanelLineMagnifiableHeight]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName>
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToAnchor = [0.0, 0.5]
+                AlignementToFather = [0.0, 0.5]
+            )
+
+            ChildFitToContent = true
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            TextStyle = "Default"
+
+            VerticalFitStyle = ~/FitStyle/FitToContent
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+            TypefaceToken = "UIMainFont"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextToken = <Token>
+
+            TextColor = "LighterGray"
+            TextSize = "14"
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelScoreElement
+// -------------------------------------------------------------------------------------------------
+
+// Score Element in the main infos' grid
+StrategicEndGamePanelScoreElement is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [StrategicEndGamePanelMainContainerMagnifiableWidth * 0.25, StrategicEndGamePanelLineMagnifiableHeight]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 20.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicEndGamePanelFlagAndTextContainer
+                    (
+                        ElementName = "PlayerScore"
+                        MagnifiableWidthHeight = [50, StrategicEndGamePanelLineMagnifiableHeight]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicEndGamePanelFlagAndTextContainer
+                    (
+                        ElementName = "OpponentScore"
+                        MagnifiableWidthHeight = [50, StrategicEndGamePanelLineMagnifiableHeight]
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelCategoryContainer
+// -------------------------------------------------------------------------------------------------
+
+// Title category + content template
+template StrategicEndGamePanelCategoryContainer
+[
+    TextToken : string = "",
+    ElementName : string = "",
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+    ChildFitToContent = true
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            InterItemMargin = TRTTILength(Magnifiable = MagnifiableInterItemMarginBetweenTexts)
+
+            Elements =
+            [
+                // Title
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicEndGamePanelTitleTextContainer
+                    (
+                        ElementName = <ElementName> + "TitleText"
+                        TextToken = <TextToken>
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI()
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        Elements =
+                        [
+                            // Player Team Infos
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = StrategicEndGamePanelRackDivision
+                                (
+                                    ElementName = <ElementName> + "PlayerTeam"
+                                )
+                            ),
+
+                            // OpponentTeam Infos
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = StrategicEndGamePanelRackDivision
+                                (
+                                    ElementName = <ElementName> + "OpponentTeam"
+                                )
+                            ),
+                        ]
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelRackDivision
+// -------------------------------------------------------------------------------------------------
+
+// Rack containing a text + flag and another rack for potential content
+template StrategicEndGamePanelRackDivision [ElementName : string = ""]
+is BUCKRackDescriptor
+(
+    ElementName = <ElementName> + "RackDivision"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [ StrategicEndGamePanelMainContainerMagnifiableWidth * 0.5 - StrategicEndGamePanelMainListMagnifiableWidth * 0.5, 0.0]
+    )
+
+    InterItemMargin = TRTTILength( Magnifiable = MagnifiableInterItemMarginBetweenTexts)
+
+    BladeDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+            MagnifiableWidthHeight = [0.0, StrategicEndGamePanelLineMagnifiableHeight]
+        )
+
+        // Each Line has a flag + text as a title for the division
+        // and a list of texts to describe what's inside the division
+        Components =
+        [
+            StrategicEndGamePanelFlagAndTextContainer(),
+            StrategicEndGamePanelRackDivisionUnitsList(),
+        ]
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelRackDivision
+// -------------------------------------------------------------------------------------------------
+
+// Rack used to display the units of a division (contained inside StrategicEndGamePanelRackDivision)
+template StrategicEndGamePanelRackDivisionUnitsList [ElementName : string = ""]
+is BUCKRackDescriptor
+(
+    ElementName = "RackDivisionUnitsList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [ StrategicEndGamePanelMainContainerMagnifiableWidth * 0.5 - StrategicEndGamePanelMainListMagnifiableWidth * 0.5, 0.0]
+    )
+
+    InterItemMargin = TRTTILength( Magnifiable = MagnifiableInterItemMarginBetweenTexts)
+
+    BladeDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+            MagnifiableWidthHeight = [0.0, StrategicEndGamePanelLineMagnifiableHeight]
+        )
+
+        Components =
+        [
+            StrategicEndGamePanelBulletAndTextContainer(),
+        ]
+    )
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelStrengthContainer
+// -------------------------------------------------------------------------------------------------
+
+// Strength Container
+StrategicEndGamePanelStrengthContainer is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+    ChildFitToContent = true
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            InterItemMargin = TRTTILength(Magnifiable = MagnifiableInterItemMarginBetweenTexts)
+
+            Elements =
+            [
+                // Strength Title
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicEndGamePanelTitleTextContainer
+                    (
+                        ElementName = "StrengthTitleText"
+                        TextToken = "ENDSTSTRGT"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI()
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        Elements =
+                        [
+                            // Strength player team infos List
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKListDescriptor
+                                (
+                                    ElementName = "StrengthPlayerTeam"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [ StrategicEndGamePanelMainContainerMagnifiableWidth * 0.5 - StrategicEndGamePanelMainListMagnifiableWidth * 0.5, 0.0]
+                                    )
+
+                                    Axis = ~/ListAxis/Vertical
+                                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                                    InterItemMargin = TRTTILength( Magnifiable = MagnifiableInterItemMarginBetweenTexts)
+
+                                    // Connect PlayerTeam Infos here
+                                    Elements =
+                                    [
+                                        // Soldiers Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthPlayerTeamSoldiers"
+                                                TextToken = "ENDST_SOLD"
+                                            )
+                                        ),
+
+                                        // Tanks Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthPlayerTeamTanks"
+                                                TextToken = "ENDST_TANK"
+                                            )
+                                        ),
+
+                                        // Guns Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthPlayerTeamGuns"
+                                                TextToken = "ENDST_GUNS"
+                                            )
+                                        ),
+
+                                        // Armored Vehicles Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthPlayerTeamArmoredVehicles"
+                                                TextToken = "ENDST_AVHC"
+                                            )
+                                        ),
+
+                                        // Aircrafts Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthPlayerTeamAircrafts"
+                                                TextToken = "ENDST_AIRC"
+                                            )
+                                        ),
+                                    ]
+                                )
+                            ),
+
+                            // Strength opponent team infos List
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKListDescriptor
+                                (
+                                    ElementName = "StrengthOpponentTeam"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [StrategicEndGamePanelMainContainerMagnifiableWidth * 0.5 - StrategicEndGamePanelMainListMagnifiableWidth * 0.5, 0.0]
+                                    )
+
+                                    Axis = ~/ListAxis/Vertical
+                                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                                    InterItemMargin = TRTTILength( Magnifiable = MagnifiableInterItemMarginBetweenTexts)
+
+                                    // Connect Opponent Team infos here
+                                    Elements =
+                                    [
+                                        // Soldiers Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthOpponentTeamSoldiers"
+                                                TextToken = "ENDST_SOLD"
+                                            )
+                                        ),
+
+                                        // Tanks Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthOpponentTeamTanks"
+                                                TextToken = "ENDST_TANK"
+                                            )
+                                        ),
+
+                                        // Guns Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthOpponentTeamGuns"
+                                                TextToken = "ENDST_GUNS"
+                                            )
+                                        ),
+
+                                        // Armored Vehicles Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthOpponentTeamArmoredVehicles"
+                                                TextToken = "ENDST_AVHC"
+                                            )
+                                        ),
+
+                                        // Aircrafts Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "StrengthOpponentTeamAircrafts"
+                                                TextToken = "ENDST_AIRC"
+                                            )
+                                        ),
+                                    ]
+                                )
+                            ),
+                        ]
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelLossesContainer
+// -------------------------------------------------------------------------------------------------
+
+// Losses Container
+StrategicEndGamePanelLossesContainer is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+    ChildFitToContent = true
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            InterItemMargin = TRTTILength(Magnifiable = MagnifiableInterItemMarginBetweenTexts)
+
+            Elements =
+            [
+                // Strength Title
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = StrategicEndGamePanelTitleTextContainer
+                    (
+                        ElementName = "LossesTitleText"
+                        TextToken = "ENDSTSTRGT"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI()
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        Elements =
+                        [
+                            // Strength player team infos List
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKListDescriptor
+                                (
+                                    ElementName = "LossesPlayerTeam"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [ StrategicEndGamePanelMainContainerMagnifiableWidth * 0.5 - StrategicEndGamePanelMainListMagnifiableWidth * 0.5, 0.0]
+                                    )
+
+                                    Axis = ~/ListAxis/Vertical
+                                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                                    InterItemMargin = TRTTILength( Magnifiable = MagnifiableInterItemMarginBetweenTexts)
+
+                                    // Connect PlayerTeam Infos here
+                                    Elements =
+                                    [
+                                        // Soldiers Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesPlayerTeamSoldiers"
+                                                TextToken = "ENDST_SOLD"
+                                            )
+                                        ),
+
+                                        // Tanks Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesPlayerTeamTanks"
+                                                TextToken = "ENDST_TANK"
+                                            )
+                                        ),
+
+                                        // Guns Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesPlayerTeamGuns"
+                                                TextToken = "ENDST_GUNS"
+                                            )
+                                        ),
+
+                                        // Armored Vehicles Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesPlayerTeamArmoredVehicles"
+                                                TextToken = "ENDST_AVHC"
+                                            )
+                                        ),
+
+                                        // Aircrafts Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesPlayerTeamAircrafts"
+                                                TextToken = "ENDST_AIRC"
+                                            )
+                                        ),
+                                    ]
+                                )
+                            ),
+
+                            // Strength opponent team infos List
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKListDescriptor
+                                (
+                                    ElementName = "LossesOpponentTeam"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [StrategicEndGamePanelMainContainerMagnifiableWidth * 0.5 - StrategicEndGamePanelMainListMagnifiableWidth * 0.5, 0.0]
+                                    )
+
+                                    Axis = ~/ListAxis/Vertical
+                                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                                    InterItemMargin = TRTTILength( Magnifiable = MagnifiableInterItemMarginBetweenTexts)
+
+                                    // Connect Opponent Team infos here
+                                    Elements =
+                                    [
+                                        // Soldiers Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesOpponentTeamSoldiers"
+                                                TextToken = "ENDST_SOLD"
+                                            )
+                                        ),
+
+                                        // Tanks Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesOpponentTeamTanks"
+                                                TextToken = "ENDST_TANK"
+                                            )
+                                        ),
+
+                                        // Guns Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesOpponentTeamGuns"
+                                                TextToken = "ENDST_GUNS"
+                                            )
+                                        ),
+
+                                        // Armored Vehicles Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesOpponentTeamArmoredVehicles"
+                                                TextToken = "ENDST_AVHC"
+                                            )
+                                        ),
+
+                                        // Aircrafts Text
+                                        BUCKListElementDescriptor
+                                        (
+                                            ComponentDescriptor = StrategicEndGamePanelTextContainer
+                                            (
+                                                ElementName = "LossesOpponentTeamAircrafts"
+                                                TextToken = "ENDST_AIRC"
+                                            )
+                                        ),
+                                    ]
+                                )
+                            ),
+                        ]
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelFlagAndTextContainer
+// -------------------------------------------------------------------------------------------------
+
+// Flag + Text template
+template StrategicEndGamePanelFlagAndTextContainer
+[
+    MagnifiableWidthHeight : float2 = [(StrategicEndGamePanelMainContainerMagnifiableWidth * 0.5) - 30, StrategicEndGamePanelLineMagnifiableHeight],
+    ElementName : string = "",
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI()
+
+    InterItemMargin = TRTTILength(Magnifiable = 5.0)
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [21.0, 13.0]
+                )
+
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                // PLACEHOLDER
+                TextureToken = "CommonTexture_MotherCountryFlag_SOV"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = <ElementName> + "Text"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = <MagnifiableWidthHeight>
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextStyle = "Default"
+                TypefaceToken = "UIMainFont"
+                TextColor = "LighterGray"
+                TextSize = "14"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                // PLACEHOLDER
+                TextToken = "CSQTOTH90"
+            )
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelBulletAndTextContainer
+// -------------------------------------------------------------------------------------------------
+
+// Bullet point + Text template
+template StrategicEndGamePanelBulletAndTextContainer [ ElementName : string = "" ]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI()
+
+    InterItemMargin = TRTTILength(Magnifiable = 5.0)
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+        // Bullet point "-"
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [4.0, StrategicEndGamePanelLineMagnifiableHeight]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextStyle = "Default"
+                TypefaceToken = "UIMainFont"
+                TextColor = "LighterGray"
+                TextSize = "14"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "CHAT_MINUS"
+            )
+        ),
+
+        // Text
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = <ElementName>
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [(StrategicEndGamePanelMainContainerMagnifiableWidth * 0.5) - 30, StrategicEndGamePanelLineMagnifiableHeight]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextStyle = "Default"
+                TypefaceToken = "UIMainFont"
+                TextColor = "LighterGray"
+                TextSize = "14"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                // PLACEHOLDER
+                TextToken = "CSQTOTH90"
+            )
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelTextContainer
+// -------------------------------------------------------------------------------------------------
+
+// Regular text template
+template StrategicEndGamePanelTextContainer
+[
+    ElementName : string = "",
+    TextToken : string = "",
+]
+is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0, StrategicEndGamePanelLineMagnifiableHeight]
+    )
+
+    ParagraphStyle = paragraphStyleTextLeftAlign
+
+    TextStyle = "Default"
+    TypefaceToken = "UIMainFont"
+    TextColor = "LighterGray"
+    TextSize = "14"
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextToken = <TextToken>
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelButtonsList
+// -------------------------------------------------------------------------------------------------
+
+// Buttons List : Details Button + OK Button
+StrategicEndGamePanelButtonsList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, -10.0]
+        AlignementToAnchor = [0.5, 1.0]
+        AlignementToFather = [0.5, 1.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/StrategicEndGamePanelDetailsButton
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/StrategicEndGamePanelOKButton
+        )
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelDetailsButton
+// -------------------------------------------------------------------------------------------------
+
+// Details Button
+StrategicEndGamePanelDetailsButton is BUCKSpecificButton
+(
+    ElementName = "StrategicEndGamePanelDetailsButton"
+    TextToken = "DETAIL_BTN"
+    ButtonMagnifiableWidthHeight = [170.0, 24.0]
+)
+
+// -------------------------------------------------------------------------------------------------
+// StrategicEndGamePanelOKButton
+// -------------------------------------------------------------------------------------------------
+
+// OK Button
+StrategicEndGamePanelOKButton is BUCKSpecificButton
+(
+    ElementName = "StrategicEndGamePanelOKButton"
+    TextToken = "OK_BTN"
+    ButtonMagnifiableWidthHeight = [170.0, 24.0]
+)
+
+

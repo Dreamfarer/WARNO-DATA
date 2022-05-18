@@ -1,0 +1,885 @@
+//-------------------------------------------------------------------------------------
+
+template OneOption
+[
+    ElementName : string,
+    TextToken : string,
+    Hint : TBUCKHintableAreaDescriptor = nil,
+    AdditionalElements : LIST<TBUCKListElementDescriptor> = [],
+    ItemComponents : LIST<TBUCKContainerDescriptor> = [],
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    ItemsTextPadding : TRTTILength4 = TRTTILength4(Magnifiable = [20.0, 5.0, 0.0, 5.0]),
+    MainTextPadding : TRTTILength4 = TRTTILength4(Magnifiable = [0.0, 0.0, 0.0, 0.0]),
+]
+is BUCKListDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 34.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [138.0, 0.0]
+                )
+
+                TextStyle = "Default"
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Right
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextToken = <TextToken>
+                TextSize = "14"
+                TextColor = "noir_param"
+                TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 10.0, 0.0])
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TypefaceToken = "Liberator"
+
+                BigLineAction = ~/BigLineAction/CutByDots
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/UserDefined
+
+                Hint = <Hint>
+            )
+        ),
+    ]
+    + <AdditionalElements> +
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKSpecificDropdownDescriptor
+            (
+                ElementName = <ElementName> + 'DropDown'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+                OpenUpward = true
+                HasBorder = false
+                BackgroundBlockColorToken = 'deck_lobby'
+                ArrowTextureToken = 'outgame_dropdown_lobby'
+                MainTextColorToken = 'Blanc'
+                ArrowMagnifiableWidthHeight = [34.0, 34.0]
+                FloatingListMagnifiableHeight = 250.0
+                ItemTextHorizontalAlignment = UIText_Left
+                ItemsTextColorToken = 'Noir_option'
+
+                ItemComponents = <ItemComponents>
+                Components = <Components>
+
+                ItemsTextPadding = <ItemsTextPadding>
+                MainTextPadding = <MainTextPadding>
+
+                OpenSound = SoundEvent_OpenOptionDropdown
+                SelectItemSound = SoundEvent_SelectOption
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+MainListLobby is BUCKListDescriptor
+(
+    ElementName = 'MainListLobby'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 760.0]
+        MagnifiableOffset = [23.0, 185.0 - LobbyVerticalOffset]
+        AlignementToAnchor = [0.0, 1.0]
+        AlignementToFather = [0.0, 1.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    InterItemMargin = TRTTILength(Magnifiable = 13.0)
+
+    Elements =
+    [
+        ~/AxisContainer,
+        ~/AlliesContainer,
+        // filler
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [52.0, 0.0]
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 0.0]
+                    MagnifiableWidthHeight = [382.0, 0.0]
+                    MagnifiableOffset = [0.0, -15.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+
+                Elements =
+                [
+                    ~/Minimap,
+                    ~/GameOptions
+                ]
+            )
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template PlayersNumberText
+[
+    TextColor : string
+] is BUCKTextDescriptor
+(
+    ElementName = "PlayersNumber"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableWidthHeight = [0.0, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Right
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = "Liberator"
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+    TextPadding = TRTTILength4(Magnifiable = [8.0, 0.0, 0.0, 0.0])
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+    TextToken = "BTFPLYNB"
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextColor = <TextColor>
+    TextSize = "14"
+)
+
+//-------------------------------------------------------------------------------------
+
+GameOptions is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKListDescriptor
+    (
+        ElementName = "GameOptions"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        Axis = ~/ListAxis/Vertical
+
+        Elements =
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        MagnifiableWidthHeight = [0.0, 40.0]
+                    )
+
+                    TextStyle = "Default"
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Left
+                        VerticalAlignment = UIText_VerticalCenter
+                    )
+
+                    TextToken = "OP_PARAMS"
+                    TextSize = "20"
+                    TextColor = "White"
+
+                    TextPadding = TRTTILength4(Magnifiable = [10.0, 0.0, 20.0, 0.0])
+
+                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    TypefaceToken = "Liberator"
+
+                    BigLineAction = ~/BigLineAction/CutByDots
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/UserDefined
+                )
+            ),
+
+            BUCKListElementDescriptor
+            (
+                ExtendWeight = 1.0
+                ComponentDescriptor = BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+
+                    FirstMargin = TRTTILength( Magnifiable = 0.0 )
+                    InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_BATTLEF"
+                                ElementName = "OptionBattleField"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_BATTLEB"
+                                    HintExtendedToken = "GS_BATTLEE"
+                                )
+
+                                ItemsTextPadding = TRTTILength4(Magnifiable = [45.0, 5.0, 0.0, 5.0])
+                                MainTextPadding = TRTTILength4(Magnifiable = [40.0, 5.0, 0.0, 5.0])
+
+                                // Description for the list of possible battlefields
+                                ItemComponents =
+                                [
+                                    PlayersNumberText( TextColor = "LightGrayBlue" )
+                                ]
+
+                                // Description for the selected battlefield
+                                Components =
+                                [
+                                    PlayersNumberText( TextColor = "LightestestGray" )
+                                ]
+
+                                AdditionalElements =
+                                [
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKTextureDescriptor
+                                        (
+                                            ElementName = 'BattlefieldWarningTexture'
+
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [26.0, 26.0]
+                                                AlignementToAnchor = [0.0, 0.5]
+                                                AlignementToFather = [0.0, 0.5]
+                                            )
+
+                                            ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                                            TextureFrame = TUIFramePropertyRTTI
+                                            (
+                                                AlignementToAnchor = [0.5, 0.5]
+                                                AlignementToFather = [0.5, 0.5]
+                                            )
+
+                                            TextureToken = "UseOutGame_Warning"
+
+                                            Components =
+                                            [
+                                                BUCKSpecificHintableArea
+                                                (
+                                                    ElementName = 'HintWarning'
+                                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                                    HintTitleToken = "GRL_WART"
+                                                    HintBodyToken = "GRL_WARB"
+                                                    HintExtendedToken = "GRL_WARE"
+                                                ),
+                                            ]
+                                        )
+                                    ),
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKTextureDescriptor
+                                        (
+                                            ElementName = 'BattlefieldAlertTexture'
+
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [26.0, 26.0]
+                                                AlignementToAnchor = [0.0, 0.5]
+                                                AlignementToFather = [0.0, 0.5]
+                                            )
+
+                                            ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                                            TextureFrame = TUIFramePropertyRTTI
+                                            (
+                                                AlignementToAnchor = [0.5, 0.5]
+                                                AlignementToFather = [0.5, 0.5]
+                                            )
+
+                                            TextureToken = "UseOutGame_Alert"
+
+                                            Components =
+                                            [
+                                                BUCKSpecificHintableArea
+                                                (
+                                                    ElementName = 'HintAlert'
+                                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                                    HintTitleToken = "GRL_ALRT"
+                                                    HintBodyToken = "GRL_ALRB"
+                                                    HintExtendedToken = "GRL_ALRE"
+                                                ),
+                                            ]
+                                        )
+                                    ),
+                                ]
+                            )
+                        ),
+                        // combat rules
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_CMBRLDE"
+                                ElementName = "OptionCombatRule"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_CMBRLDB"
+                                    HintExtendedToken = "GS_CMBRLEE"
+                                )
+                            )
+                        ),
+                        // difficulty ?? contre l'ia?
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_DIFFICU"
+                                ElementName = "OptionDifficulty"
+                            )
+                        ),
+                        // en mode attaque / défense ?
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_BKTSIDE"
+                                ElementName = "OptionBreakthroughSide"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_BKTSIDB"
+                                    HintExtendedToken = "GS_BKTSIEE"
+                                )
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_OPPOSI"
+                                ElementName = "OptionOpposition"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_OPPOSIB"
+
+                                )
+                            )
+                        ),
+                        // ressources
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_STARTRE"
+                                ElementName = "OptionStartRes"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_STARTRB"
+
+                                )
+                            )
+                        ),
+                        // income rate
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_INCOMRA"
+                                ElementName = "OptionIncome"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_INCOMRB"
+
+                                )
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_SCORLIM"
+                                ElementName = "OptionConquestPoint"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_SCORLIB"
+                                    HintExtendedToken = "GS_SCORLIE"
+                                )
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_TIMELIM"
+                                ElementName = "OptionTimeLimit"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_TIMELIB"
+                                    HintExtendedToken = "HintTL"
+                                )
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_LOSSDE"
+                                ElementName = "OptionLossThreshold"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_LOSSDB"
+                                    HintExtendedToken = "GS_LOSSEE"
+                                )
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKSpecificScrollingContainerDescriptor
+                            (
+                                ElementName = "CampaignDescriptionScrollingContainer"
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 650.0]
+                                )
+
+                                ExternalScrollbar = true
+                                HasVerticalScrollbar = true
+
+                                Components =
+                                [
+                                    BUCKContainerDescriptor
+                                    (
+                                        ElementName = "CampaignDescriptionContainer"
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [1.0, 0.0]
+                                        )
+
+                                        FitStyle = ~/ContainerFitStyle/FitToContentVertically
+                                    )
+                                ]
+                            )
+                        ),
+                        // OptionAccessibility ?? en multi ?
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = OneOption
+                            (
+                                TextToken = "GS_ACCESS"
+                                ElementName = "OptionAccessibility"
+
+                                Hint = BUCKSpecificHintableArea
+                                (
+                                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                                    HintBodyToken = "GS_ACCESSB"
+                                    HintExtendedToken = "GS_ACCESSE"
+                                )
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ExtendWeight = 1.0
+                            ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                        ),
+                    ]
+                )
+            ),
+        ]
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+Minimap is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [416.0, 250.0]
+            AlignementToFather = [0.5, 0.0]
+            AlignementToAnchor = [0.5, 0.0]
+        )
+
+        Components =
+        [
+            BUCKTextureDescriptor
+            (
+                ElementName = "MapOverviewTexture"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                    MagnifiableOffset = [0.0, 14.0]
+                )
+
+                TextureFrame   = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ]
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+AlliesContainer is BUCKListElementDescriptor
+(
+    ComponentDescriptor =  BUCKContainerDescriptor
+    (
+        ElementName = "AlliesContainer"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [440.0, 0.0]
+        )
+
+        FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+        //=> envoie ici : BUCKSpecificOutGameLobbyPlayerListMainComponentDescriptor
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+AxisContainer is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKContainerDescriptor
+    (
+        ElementName = "AxisContainer"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [440.0, 0.0]
+        )
+
+        FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+        //=> envoie ici : BUCKSpecificOutGameLobbyPlayerListMainComponentDescriptor
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+BUCKSpecificOutGameLobbyMainComponentDescriptor is  BUCKContainerDescriptor
+(
+    ElementName = "BUCKSpecificOutGameLobbyMainComponentDescriptor"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTranslationAnimatedContainerDescriptor
+        (
+            ElementName = "LobbyAnimatedContainer"
+            FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToAnchor = [0.5, 0.3]
+                AlignementToFather = [0.5, 1.0]
+            )
+
+            TriggerWhenSetVisible = true
+            AnimationTotalDuration = 0.15
+
+            FramePropertyAfterAnimation = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+                AlignementToFather = [0.5, 1.0]
+            )
+
+            Components =
+            [
+                ~/FullPanelLobby
+            ]
+        ),
+        BUCKContainerDescriptor
+        (
+            UniqueName = "BattlegroupsListForLobby"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            FitStyle = ~/ContainerFitStyle/None
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+LobbyVerticalOffset is 27.0
+
+FullPanelLobby is BUCKContainerDescriptor
+(
+    ElementName = 'FullPanelLobby'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+
+        MagnifiableWidthHeight = [1920.0, 1080.0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [1479.0, 695.0]
+                AlignementToFather = [0.0, 1.0]
+                AlignementToAnchor = [0.0, 1.0]
+                MagnifiableOffset = [0.0, 74.0 - LobbyVerticalOffset]
+            )
+            TextureToken = 'Texture_dossier_triple_lobby'
+
+            HidePointerEvents = true
+        ),
+        ~/ShowHideButton,
+        ~/MainListLobby,
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [800.0, 44.0]
+                AlignementToFather  = [0.5, 1.0]
+                AlignementToAnchor  = [0.5, 0.0]
+                MagnifiableOffset = [0.0, -40.0]
+            )
+            TextureFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+            TextureColorToken = 'bleu_navigation'
+            TextureToken =  'OutgameTexture_NavigationOption'
+            Components =
+            [
+                SmallOmbrePanel(),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ElementName = 'ButtonList'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToFather  = [0.5, 0.5]
+                            AlignementToAnchor  = [0.5, 0.5]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+                        InterItemMargin = TRTTILength(Magnifiable = 10.0)
+                        Elements = ~/LobbyButtonList
+                    )
+                )
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+ShowHideButton is BUCKButtonDescriptor
+(
+    ElementName = "ShowHideButton"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [50.0, 0.0]
+        MagnifiableOffset = [5.0, 520.0 - LobbyVerticalOffset]
+    )
+
+    FitStyle = ~/FitStyle/FitToContent
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [50.0, 0.0]
+            )
+            Axis = ~/ListAxis/Vertical
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "ShowHideText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 25.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        TextStyle = "Default"
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_Up
+                        )
+
+                        TextToken = ""
+                        TextSize = "18"
+                        TextColor = "Lobby/ShowHideButton"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TypefaceToken = "Liberator"
+
+                        BigLineAction = ~/BigLineAction/ResizeFont
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = 'ShowArrowTexture'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [32.0, 32.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        TextureToken = "show_hide_arrow"
+                        TextureColorToken = "Lobby/ShowHideButton"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = 'HideArrowTexture'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [32.0, 32.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        Rotation = 180
+                        TextureToken = "show_hide_arrow"
+                        TextureColorToken = "Lobby/ShowHideButton"
+                    )
+                ),
+            ] // Elements
+        )
+    ] // Components
+)
+
+//-------------------------------------------------------------------------------------
+
+ModaleConfirmUseDlcContentWindowFrame is SpecificModaleWindowFrame
+(
+    ContentMagnifiableWidthHeight = [550.0, 150.0]
+    TitleToken = 'DLC_USE'
+    TitleBigLineAction = ~/BigLineAction/MultiLine
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = StandardButton
+            (
+                ElementName = 'AlwaysConfirmButton'
+                TextToken = 'Val_Always'
+            )
+        ),
+        BUCKListElementDescriptor(
+            ComponentDescriptor = ConfirmButton
+            (
+                ElementName = 'ConfirmButton'
+                TextToken = 'Val_YesMaj'
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+            )
+        ),
+        BUCKListElementDescriptor(
+            ComponentDescriptor = CancelButton
+            (
+                ElementName = 'CancelButton'
+                TextToken = 'Val_NoMaj'
+                Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+UISpecificOutGameLobbyViewDescriptor is TUISpecificOutGameLobbyViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameLobbyMainComponentDescriptor
+    MainComponentContainerUniqueName = "LobbyContainer"// Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    PlayerListViewDescriptor = ~/UISpecificOutGameLobbyPlayerListViewDescriptor
+    PlayerLineViewDescriptor = ~/UISpecificOutGameLobbyPlayerViewDescriptor
+
+    ModaleConfirmUseDlcContent = ~/ModaleConfirmUseDlcContentWindowFrame
+    NbPlayersWarning = ~/NbPlayersWarning
+    NbPlayersAlert = ~/NbPlayersAlert
+
+    UnknownMapOverview = "OutgameTexture_UnknownMap"
+    LobbyDedicatedComponent = ~/DedicatedServerInfos
+)

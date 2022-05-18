@@ -1,0 +1,20 @@
+export ModelFile_2S1_DDR is 'GameData:/Assets/3D/Units/DDR/Artillerie/2S1_Gvozdika/2S1_Gvozdika.Ase2NdfBin'
+
+Modele_2S1_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_2S1_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_2S1_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Artillerie/2S1_Gvozdika/2S1_Gvozdika.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_2S1_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Artillerie/2S1_Gvozdika/2S1_Gvozdika.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

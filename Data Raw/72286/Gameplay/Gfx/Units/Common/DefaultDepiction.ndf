@@ -1,0 +1,21 @@
+Gfx_Unicorn is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        CoatingName = 'unicorn'
+        Scaler = CommonVehicleScaler
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [
+        DepictionDescriptor_LOD_High
+            (
+                MeshDescriptor = TResourceMultiMaterialMeshWithLod
+                (
+                    FileName = 'CommonData:/Assets/3D/Units_Tests_Autos/Char/Char_Test.Ase2NdfBin'
+                    CivMask =  CivMask/Common
+                )
+            )
+        ]
+        Operators = []
+        Actions = MAP[]
+    )
+)

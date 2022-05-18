@@ -1,0 +1,9 @@
+
+wargame2NotificationManager is TUISpecificOutGameNotificationManager
+(
+    Layer = $/UserInterface/UILayer_2DInterfaceAboveBlur_OutGame
+    OutGameResources = ~/OutGameResourceSpecific
+    BlockingModalPriority = ~/ModalPriority/Normal
+    DisplayTimeInviteFriend = 10.0
+    DisplayTimeInviteTeam = 10.0
+)

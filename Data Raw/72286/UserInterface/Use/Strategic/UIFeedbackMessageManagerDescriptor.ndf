@@ -1,0 +1,548 @@
+//----------------------------------------------------------------------------------
+// Feedbacks
+//----------------------------------------------------------------------------------
+// Exemple is TUIFeedbackDispatchedMessageDescriptor
+// (
+//     HudSound            = ~/HudSoundUnitContact
+//     UnitAcknow          = TAcknowUnitAction_ConstructionFinished
+//     GlobalAcknow        = TAcknowGlobalAction_ElectricityShortage
+//     MinimapPingType     = $/UI/Components/MinimapPing_Cross
+//     MinimapPingAnimType = $/UI/Components/MinimapPingAnim_Fade
+//     MinimapPingDuration = 4
+//     MinimapPingAnimStartTime = 2
+//     AlertMessageType    = AlertMsg_Per_UniteDetruite
+//     TimeBeforeRepeat    = 30 (Seulement pour OnResourceEmpty, OnMaxStock, OnEnemyContact)
+//
+//     UseTeamColorForMinimap = False
+//     BaseFilterColorForMinimap = RGBA[255,0,0,255]
+//
+
+StrategicOnUnitLost is TUIFeedbackDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundOnUnitDestroyed //son placeholder
+    TimeBeforeRepeat = 10
+    AllowFocusOnEvent = true
+    IsActiveForPlayer = true
+)
+
+StrategicOnObjectiveCaptured is TUIFeedbackDispatchedMessageDescriptor
+(
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = false
+    AllowFocusOnEvent = true
+    HudSound = ~/HudSoundOnObjectiveCaptured
+    TimeBeforeRepeat = 20
+)
+
+StrategicOnObjectiveLost is TUIFeedbackDispatchedMessageDescriptor
+(
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = false
+    AllowFocusOnEvent = true
+    HudSound = ~/HudSoundOnObjectiveLost
+    TimeBeforeRepeat = 20
+)
+
+StrategicOnFlareAttackPlaced is TUIFeedbackDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+)
+
+StrategicOnFlareDefendPlaced is TUIFeedbackDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+)
+
+StrategicOnFlareHelpPlaced is TUIFeedbackDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+)
+
+StrategicOnFlareCustomPlaced is TUIFeedbackDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+)
+
+StrategicOnFlareFireSupportPlaced is TUIFeedbackDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+)
+
+StrategicOnFlareEnemySpottedPlaced is TUIFeedbackDispatchedMessageDescriptor
+(
+    HudSound = ~/HudSoundFlarePlaced
+    IsActiveForAllies = true
+    IsActiveForPlayer = true
+    AllowFocusOnEvent = true
+)
+
+StrategicOnAPLost is TUIFeedbackDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 0
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = true
+
+    LabelDescriptor = TFeedback2DLabelDescriptor(
+        UILayer = $/UserInterface/UILayer_Labels
+        Camera = $/M3D/Camera/CameraPrincipale
+
+        TextTypeface = $/M3D/Typefaces/Typeface3D_Default
+
+        TextStyle = TTextStyleRTTI
+        (
+            FontSize    = 16
+            ColorUp     = [255, 0, 0, 255]
+            ColorBottom = [255, 128, 128, 255]
+            ColorStroke = [  0,   0,   0, 0]
+            Stroke      = false
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Center
+            VerticalAlignment = UIText_FirstBaseLine
+            InterLine         = 0
+            LineWidth         = 0
+        )
+
+        TotalTime = 2.5
+        FadeInTime = 0.0
+        FadeOutTime = 0.0
+        InitialOffset = 0.0
+        FinalOffset = 100.0
+    )
+
+    TextFormatter = TUIFeedbackTextFormatterWithToken
+    (
+        Dico = ~/LocalisationConstantes/dico_interface_ingame
+        Token = "FORMAT_PA"
+    )
+)
+
+StrategicOnAPGained is TUIFeedbackDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 0
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = true
+
+    LabelDescriptor = TFeedback2DLabelDescriptor(
+        UILayer = $/UserInterface/UILayer_Labels
+        Camera = $/M3D/Camera/CameraPrincipale
+
+        TextTypeface = $/M3D/Typefaces/Typeface3D_Default
+
+        TextStyle = TTextStyleRTTI
+        (
+            FontSize    = 16
+            ColorUp     = [0, 255, 0, 0]
+            ColorBottom = [128, 255, 128, 0]
+            ColorStroke = [  0,   0,   0, 0]
+            Stroke      = false
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Center
+            VerticalAlignment = UIText_FirstBaseLine
+            InterLine         = 0
+            LineWidth         = 0
+        )
+
+        TotalTime = 2.5
+        FadeInTime = 0.0
+        FadeOutTime = 0.0
+        InitialOffset = 0.0
+        FinalOffset = 100.0
+    )
+
+    TextFormatter = TUIFeedbackTextFormatterWithToken
+    (
+        Dico = ~/LocalisationConstantes/dico_interface_ingame
+        Token = "FORMAT_PAP"
+    )
+)
+
+template StrategicOnPawnDeath
+[
+    Token : string,
+] is TUIFeedbackDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 0
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = true
+    AllowFocusOnEvent = true
+
+    LabelDescriptor = TFeedback2DLabelDescriptor(
+        UILayer = $/UserInterface/UILayer_Labels
+        Camera = $/M3D/Camera/CameraPrincipale
+
+        TextTypeface = $/M3D/Typefaces/Typeface3D_Default
+
+        TextStyle = TTextStyleRTTI
+        (
+            FontSize    = 16
+            ColorUp     = [255, 0, 0, 255]
+            ColorBottom = [255, 128, 128, 255]
+            ColorStroke = [  0,   0,   0, 128]
+            Stroke      = true
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Center
+            VerticalAlignment = UIText_FirstBaseLine
+            InterLine         = 0
+            LineWidth         = 0
+        )
+
+        TotalTime = 2.5
+        FadeInTime = 0.0
+        FadeOutTime = 0.0
+        InitialOffset = 0.0
+        FinalOffset = 100.0
+    )
+
+    TextFormatter = TUIFeedbackTextFormatterWithToken
+    (
+        Dico = ~/LocalisationConstantes/dico_interface_ingame
+        Token = <Token>
+    )
+)
+
+StrategicOnPawnIntercepted is TUIFeedbackDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 0
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = true
+    AllowFocusOnEvent = true
+
+    LabelDescriptor = TFeedback2DLabelDescriptor(
+        UILayer = $/UserInterface/UILayer_Labels
+        Camera = $/M3D/Camera/CameraPrincipale
+
+        TextTypeface = $/M3D/Typefaces/Typeface3D_Default
+
+        TextStyle = TTextStyleRTTI
+        (
+            FontSize    = 16
+            ColorUp     = [255, 0, 0, 255]
+            ColorBottom = [255, 128, 128, 255]
+            ColorStroke = [  0,   0,   0, 128]
+            Stroke      = true
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Center
+            VerticalAlignment = UIText_FirstBaseLine
+            InterLine         = 0
+            LineWidth         = 0
+        )
+
+        TotalTime = 2.5
+        FadeInTime = 0.0
+        FadeOutTime = 0.0
+        InitialOffset = 0.0
+        FinalOffset = 100.0
+    )
+
+    TextFormatter = TUIFeedbackTextFormatterWithToken
+    (
+        Dico = ~/LocalisationConstantes/dico_interface_ingame
+        Token = "SINTERC"
+    )
+)
+
+StrategicOnAttackLoss is TUIFeedbackDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 0
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = true
+
+    LabelDescriptor = TFeedback2DLabelDescriptor(
+        UILayer = $/UserInterface/UILayer_Labels
+        Camera = $/M3D/Camera/CameraPrincipale
+
+        TextTypeface = $/M3D/Typefaces/Typeface_Third
+
+        TextStyle = TTextStyleRTTI
+        (
+            FontSize    = 20
+            ColorUp     = [0,0,0,255]
+            ColorBottom = [0,0,0,255]
+            ColorStroke = [  0,   0,   0, 128]
+            Stroke      = true
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Center
+            VerticalAlignment = UIText_FirstBaseLine
+            InterLine         = 0
+            LineWidth         = 0
+        )
+
+        TextFormatScript = TTextFormatScriptRTTI
+        (
+            Commands = MAP
+            [
+                (
+                    "attack",
+                    TTFSCommand_UISymbol
+                    (
+                        TextureToken = "UseStrategic_SelectionPanel_Attack"
+                        BBMin=[0, -1, 0]
+                        BBMax=[1.5, 0.5, 0]
+                        ShaderDescriptor = $/M3D/Shader/MaterialInterface2D_Blend
+                    )
+                ),
+                (
+                    "default", // BLANC PUR
+                    TTFSCommand_StyleChangeRTTI
+                    (
+                        Style = TTextStyleRTTI
+                        (
+                            FontSize    = 20
+                            ColorBottom = [255, 255, 255, 255]
+                            ColorUp     = [255, 255, 255, 255]
+                            ColorStroke = [  0,   0,   0, 255]
+                            Stroke = false
+                            AllowSmallFont = true
+                        )
+                    )
+                ),
+            ]
+        )
+
+        TotalTime = 2.5
+        FadeInTime = 0.0
+        FadeOutTime = 0.0
+        InitialOffset = 0.0
+        FinalOffset = 100.0
+    )
+
+    TextFormatter = TUIFeedbackTextFormatterWithToken
+    (
+        Dico = ~/LocalisationConstantes/dico_interface_ingame
+        Token = "LOSSATQ"
+    )
+)
+
+StrategicOnDefenseLoss is TUIFeedbackDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 0
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = true
+
+    LabelDescriptor = TFeedback2DLabelDescriptor(
+        UILayer = $/UserInterface/UILayer_Labels
+        Camera = $/M3D/Camera/CameraPrincipale
+
+        TextTypeface = $/M3D/Typefaces/Typeface_Third
+
+        TextStyle = TTextStyleRTTI
+        (
+            FontSize    = 20
+            ColorUp     = [202,223,229,255]
+            ColorBottom = [202,223,229,255]
+            ColorStroke = [  0,   0,   0, 128]
+            Stroke      = true
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Center
+            VerticalAlignment = UIText_FirstBaseLine
+            InterLine         = 0
+            LineWidth         = 0
+        )
+
+        TextFormatScript = TTextFormatScriptRTTI
+        (
+            Commands = MAP
+            [
+                (
+                    "defense",
+                    TTFSCommand_UISymbol
+                    (
+                        TextureToken = "UseStrategic_SelectionPanel_Defense"
+                        BBMin=[0, -1, 0]
+                        BBMax=[1.5, 0.5, 0]
+                        ShaderDescriptor = $/M3D/Shader/MaterialInterface2D_Blend
+                    )
+                ),
+                (
+                    "default", // BLANC PUR
+                    TTFSCommand_StyleChangeRTTI
+                    (
+                        Style = TTextStyleRTTI
+                        (
+                            FontSize    = 20
+                            ColorBottom = [255, 255, 255, 255]
+                            ColorUp     = [255, 255, 255, 255]
+                            ColorStroke = [  0,   0,   0, 255]
+                            Stroke = false
+                            AllowSmallFont = true
+                        )
+                    )
+                ),
+            ]
+        )
+
+        TotalTime = 2.5
+        FadeInTime = 0.0
+        FadeOutTime = 0.0
+        InitialOffset = 0.0
+        FinalOffset = 100.0
+    )
+
+    TextFormatter = TUIFeedbackTextFormatterWithToken
+    (
+        Dico = ~/LocalisationConstantes/dico_interface_ingame
+        Token = "LOSSDEF"
+    )
+)
+
+StrategicOrderCancelled is TUIFeedbackDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 0
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = true
+
+    LabelDescriptor = TFeedback2DLabelDescriptor(
+        UILayer = $/UserInterface/UILayer_Labels
+        Camera = $/M3D/Camera/CameraPrincipale
+
+        TextTypeface = $/M3D/Typefaces/Typeface3D_Default
+
+        TextStyle = TTextStyleRTTI
+        (
+            FontSize    = 16
+            ColorUp     = [255, 0, 0, 255]
+            ColorBottom = [255, 128, 128, 255]
+            ColorStroke = [  0,   0,   0, 128]
+            Stroke      = true
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Center
+            VerticalAlignment = UIText_FirstBaseLine
+            InterLine         = 0
+            LineWidth         = 0
+        )
+
+        TotalTime = 2.5
+        FadeInTime = 0.0
+        FadeOutTime = 0.0
+        InitialOffset = 0.0
+        FinalOffset = 100.0
+    )
+
+    TextFormatter = TUIFeedbackTextFormatterWithToken
+    (
+        Dico = ~/LocalisationConstantes/dico_interface_ingame
+        Token = "ORDCANC"
+    )
+)
+
+
+StrategicOnBombarderOrder is TUIFeedbackDispatchedMessageDescriptor
+(
+    TimeBeforeRepeat = 0
+    IsActiveForPlayer = true
+    IsActiveForAllies = true
+    IsActiveForEnemies = true
+
+    LabelDescriptor = TFeedback2DLabelDescriptor(
+        UILayer = $/UserInterface/UILayer_Labels
+        Camera = $/M3D/Camera/CameraPrincipale
+
+        TextTypeface = $/M3D/Typefaces/Typeface3D_Default
+
+        TextStyle = TTextStyleRTTI
+        (
+            FontSize    = 16
+            ColorUp     = [255, 0, 0, 255]
+            ColorBottom = [255, 128, 128, 255]
+            ColorStroke = [  0,   0,   0, 128]
+            Stroke      = true
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Center
+            VerticalAlignment = UIText_FirstBaseLine
+            InterLine         = 0
+            LineWidth         = 0
+        )
+
+        TotalTime = 2.5
+        FadeInTime = 0.0
+        FadeOutTime = 0.0
+        InitialOffset = 0.0
+        FinalOffset = 100.0
+    )
+
+    TextFormatter = TUIFeedbackTextFormatterWithToken
+    (
+        Dico = ~/LocalisationConstantes/dico_interface_ingame
+        Token = "ORDCANC"
+    )
+)
+//----------------------------------------------------------------------------------
+// Declaration liste des messages
+//----------------------------------------------------------------------------------
+
+StrategicFeedbackMessageManagerDescriptor is TUISpecificFeedbackMessageManagerDescriptor
+(
+    MessagesByType = MAP
+    [
+    ( FeedbackMessage_OnUnitLost, ~/StrategicOnUnitLost ),
+    ( FeedbackMessage_OnObjectiveCaptured, ~/StrategicOnObjectiveCaptured ),
+    ( FeedbackMessage_OnObjectiveLost, ~/StrategicOnObjectiveLost ),
+    ( FeedbackMessage_OnFlareAttackPlaced, ~/StrategicOnFlareAttackPlaced ),
+    ( FeedbackMessage_OnFlareDefendPlaced, ~/StrategicOnFlareDefendPlaced ),
+    ( FeedbackMessage_OnFlareHelpPlaced, ~/StrategicOnFlareHelpPlaced ),
+    ( FeedbackMessage_OnFlareCustomPlaced, ~/StrategicOnFlareCustomPlaced ),
+    ( FeedbackMessage_OnFlareFireSupportPlaced, ~/StrategicOnFlareFireSupportPlaced ),
+    ( FeedbackMessage_OnFlareEnemySpottedPlaced, ~/StrategicOnFlareEnemySpottedPlaced ),
+    ( FeedbackMessage_Strategic_APLost, ~/StrategicOnAPLost ),
+    ( FeedbackMessage_Strategic_APGained, ~/StrategicOnAPGained ),
+    ( FeedbackMessage_Strategic_PawnDeath, StrategicOnPawnDeath( Token = "SDR_UD") ),
+    ( FeedbackMessage_Strategic_PawnDeathNoFleeCourse, StrategicOnPawnDeath( Token = "SDR_NFC") ),
+    ( FeedbackMessage_Strategic_PawnDeathOutOfCombat, StrategicOnPawnDeath( Token = "SDR_OOC") ),
+    ( FeedbackMessage_Strategic_PawnDeathNoMoreUnits, StrategicOnPawnDeath( Token = "SDR_NMU") ),
+    ( FeedbackMessage_Strategic_PawnDeathNoMoreAirports, StrategicOnPawnDeath( Token = "SDR_NMA") ),
+    ( FeedbackMessage_Strategic_PawnDeathEnemyCapturedAirport, StrategicOnPawnDeath( Token = "SDR_ECA") ),
+    ( FeedbackMessage_Strategic_PawnIntercepted, ~/StrategicOnPawnIntercepted ),
+    ( FeedbackMessage_Strategic_AttackLoss, ~/StrategicOnAttackLoss ),
+    ( FeedbackMessage_OnBombarderOrder, ~/StrategicOnBombarderOrder ),
+    ( FeedbackMessage_Strategic_DefenseLoss, ~/StrategicOnDefenseLoss ),
+    ( FeedbackMessage_Strategic_OrderCancelled, ~/StrategicOrderCancelled ),
+    ]
+)

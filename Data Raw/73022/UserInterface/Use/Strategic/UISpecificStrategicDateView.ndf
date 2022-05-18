@@ -1,0 +1,146 @@
+
+BUCKSpecificStrategicDateMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [20,0]
+    )
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    Axis = ~/ListAxis/Horizontal
+
+    InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PanelDate
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "StratMorningOrAfternoon"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [80,25]
+
+                )
+                ParagraphStyle = CenteredParagraphStyle
+
+                TextStyle = "Default"
+
+                HasBackground = true
+                BackgroundBlockColorToken = 'SM_Feldgrau'
+                //TextPadding = TRTTILength4( Magnifiable = [10.0, 0.0, 10.0, 0.0] )
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/UserDefined
+
+                TextColor = "BlancEquipe"
+                TextSize = "14"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TypefaceToken = "UIMainFont"
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = "nextT_apt"
+                    HintBodyToken = "nextT_apb"
+                    HintExtendedToken = "nextT_ape"
+                )
+
+                HasBorder = true
+                BorderThicknessToken = "1"
+                BorderLineColorToken = "SM_Grullo"
+                BordersToDraw =  ~/TBorderSide/Bottom
+            )
+        ),
+
+    ]
+)
+private PanelDate is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI (MagnifiableWidthHeight = [60,60])
+    MagnifierMultiplication = 0.7
+    Components =
+    [
+    FondImageDate,
+    BUCKTextDescriptor
+    (
+        ElementName = "StratDate"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1,1]
+            MagnifiableOffset = [0,2]
+        )
+        ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_Up
+                    LineWidth = 0
+                )
+
+        TextStyle = "Default"
+
+        HorizontalFitStyle = ~/FitStyle/UserDefined
+        VerticalFitStyle = ~/FitStyle/UserDefined
+
+        TextToken = "StrStrDate"
+        TextColor = "Noir"
+        TextSize = "28"
+        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+        TypefaceToken = "Eurostyle"
+
+        Hint = BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "nextT_dat"
+            HintBodyToken = "nextT_dab"
+            HintExtendedToken = "nextT_dae"
+        )
+    )
+    ]
+)
+//------------------------------------------------------------------
+private FondImageDate is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI (MagnifiableWidthHeight = [60,0])
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    [
+    BUCKListElementDescriptor
+    (
+        ComponentDescriptor = PanelRoundedCorner
+        (
+            ComponentFrame = TUIFramePropertyRTTI (RelativeWidthHeight = [1,0] MagnifiableWidthHeight = [0,20])
+            HasBorder = false
+            HasBackground = true
+            BackgroundBlockColorToken = 'Red'
+            RoundedVertexes = [false, true, true, false]
+        )
+    ),
+    BUCKListElementDescriptor
+    (
+        ComponentDescriptor = PanelRoundedCorner
+        (
+            ComponentFrame = TUIFramePropertyRTTI (RelativeWidthHeight = [1,0] MagnifiableWidthHeight = [0,40])
+            HasBackground = true
+            HasBorder = false
+            BackgroundBlockColorToken = 'SM_paleSilver'
+            RoundedVertexes = [true, false, false, true]
+        )
+    )
+    ]
+
+)
+//------------------------------------------------------------------
+UISpecificStrategicDateViewDescriptor is TUISpecificStrategicDateViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicDateMainComponentDescriptor
+    MainComponentContainerUniqueName = "StrategicDateContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

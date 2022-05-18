@@ -1,0 +1,1311 @@
+// ****************************************************************************************************************************************
+// *** Critiques de véhicules à roues ou à chenilles **************************************************************************************
+// ****************************************************************************************************************************************
+
+CriticalEffect_New_Fuel_leak_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC1'
+    EffectsPack = ~/UnitEffect_Fuel_leak
+    TimeOut = 100
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+
+template CriticalEffect_New_Fuel_leak
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_New_Fuel_leak_Desc
+)
+
+CriticalEffect_AmmoExplosion_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC1'
+    HappeningKey = 'critical_ammo'
+    EffectsPack = ~/UnitEffect_Critic_Pert_2_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Ammo explosion -> degats 2PV
+template CriticalEffect_AmmoExplosion
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_AmmoExplosion_Desc
+)
+
+CriticalEffect_FuelExplosion_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC2'
+    HappeningKey = 'critical_fuel_explosion'
+    EffectsPack = ~/UnitEffect_Critic_Pert_4_PV
+    TimeOut = 5
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Fuel explosion -> -> perd 4PV
+template CriticalEffect_FuelExplosion
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_FuelExplosion_Desc
+)
+
+CriticalEffect_ArmourCracked_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC3'
+    HappeningKey = 'critical_hull_break'
+    EffectsPack = ~/UnitEffect_Effet_Meurt
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Armour cracked -> mort, rupture de coque
+template CriticalEffect_ArmourCracked
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_ArmourCracked_Desc
+)
+
+CriticalEffect_CrewKilled_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC4'
+    HappeningKey = 'critical_crew_dead'
+    EffectsPack = ~/UnitEffect_Critic_Bailed_Out
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = False
+)
+// Crew killed -> Bail out
+template CriticalEffect_CrewKilled
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_CrewKilled_Desc
+)
+
+
+CriticalEffect_BailedOut_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC5'
+    HappeningKey = 'critical_crew_dead'
+    EffectsPack = ~/UnitEffect_Critic_Bailed_Out
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = False
+)
+// Bailed out
+template CriticalEffect_BailedOut
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_BailedOut_Desc
+)
+
+CriticalEffect_TransmissionDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC6'
+    HappeningKey = 'critical_engine_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Vitesse_50
+    TimeOut = -1
+    RepairCost = 50
+    Unique = True
+    DisplayOnDeath = False
+)
+// Transmission endommagée -> 50% vitesse
+template CriticalEffect_TransmissionDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_TransmissionDamaged_Desc
+)
+
+CriticalEffect_TransmissionDestroyed_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC7'
+    HappeningKey = 'critical_engine_destroyed'
+    EffectsPack = ~/UnitEffect_Critic_Full_Stop
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = False
+)
+// Transmission pétée -> Full stop
+template CriticalEffect_TransmissionDestroyed
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_TransmissionDestroyed_Desc
+)
+
+CriticalEffect_EngineDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC8'
+    HappeningKey = 'critical_engine_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Vitesse_50
+    TimeOut = -1
+    RepairCost = 50
+    Unique = True
+    DisplayOnDeath = False
+)
+// Moteur endommagée -> 50% vitesse
+template CriticalEffect_EngineDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_EngineDamaged_Desc
+)
+
+CriticalEffect_EngineDestroyed_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC9'
+    HappeningKey = 'critical_engine_destroyed'
+    EffectsPack = ~/UnitEffect_Critic_Full_Stop
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = False
+)
+// Moteur pété -> Full stop
+template CriticalEffect_EngineDestroyed
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_EngineDestroyed_Desc
+)
+
+CriticalEffect_TracksBroken_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC10'
+    HappeningKey = 'critical_track_broke'
+    EffectsPack = ~/UnitEffect_Critic_Chenille_Detruite
+    TimeOut = 60
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = False
+)
+// Track broken -> no rotation
+template CriticalEffect_TracksBroken
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_TracksBroken_Desc
+)
+
+CriticalEffect_TurretStuck_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC13'
+    HappeningKey = 'critical_gun_turret_stuck'
+    EffectsPack = ~/UnitEffect_Critic_Tourelle_Bloquee
+    TimeOut = 60
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = False
+)
+// Turret stuck -> no rotation tourelle
+template CriticalEffect_TurretStuck
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_TurretStuck_Desc
+)
+
+CriticalEffect_GunJammed_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC14'
+    HappeningKey = 'critical_gun_turret_stuck'
+    EffectsPack = ~/UnitEffect_Critic_Stop_Armes
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = False
+)
+// Gun Jammed -> plus de tir
+template CriticalEffect_GunJammed
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_GunJammed_Desc
+)
+
+CriticalEffect_ShooterKilled_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC15'
+    HappeningKey = 'critical_crew'
+    EffectsPack = ~/UnitEffect_Critic_Stop_Armes
+    TimeOut = 30
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = False
+)
+// Shooter killed -> Armes stop 30sec
+template CriticalEffect_ShooterKilled
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_ShooterKilled_Desc
+)
+
+CriticalEffect_LoaderKilled_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC16'
+    HappeningKey = 'critical_crew'
+    EffectsPack = ~/UnitEffect_Critic_Stop_Reload
+    TimeOut = 30
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = False
+)
+// Loader killed -> no reload 30sec
+template CriticalEffect_LoaderKilled
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_LoaderKilled_Desc
+)
+
+CriticalEffect_DriverKilled_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC17'
+    HappeningKey = 'critical_crew'
+    EffectsPack = ~/UnitEffect_Critic_Full_Stop
+    TimeOut = 30
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = False
+)
+// Driver killed -> Full stop 30sec
+template CriticalEffect_DriverKilled
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_DriverKilled_Desc
+)
+
+CriticalEffect_SightDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC18'
+    EffectsPack = ~/UnitEffect_Critic_Visee_50
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = False
+)
+// Laser range damaged -> Précision 0.5
+template CriticalEffect_SightDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_SightDamaged_Desc
+)
+
+CriticalEffect_LoaderWounded_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC19'
+    HappeningKey = 'critical_gun_turret_stuck'
+    EffectsPack = ~/UnitEffect_Critic_Reload_50
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = False
+)
+// Gun breech damaged -> reload *0.5
+template CriticalEffect_LoaderWounded
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_LoaderWounded_Desc
+)
+
+CriticalEffect_Incendiary_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC20'
+    HappeningKey = 'critical_incendiary'
+    EffectsPack = ~/UnitEffect_Critic_Pert_3_PV
+    TimeOut = 5
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = True
+)
+// Engine Incendiary -> perd 3PV
+template CriticalEffect_Incendiary
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_Incendiary_Desc
+)
+
+CriticalEffect_Spalling_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC21'
+    HappeningKey = 'critical_spalling'
+    EffectsPack = ~/UnitEffect_Critic_Pert_2_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = True
+)
+// Spalling -> perd 2PV
+template CriticalEffect_Spalling
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_Spalling_Desc
+)
+
+CriticalEffect_EngineStalled_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC22'
+    HappeningKey = 'critical_engine_destroyed'
+    EffectsPack = ~/UnitEffect_Critic_Full_Stop
+    TimeOut = 30
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Moteur calé -> Full stop 30sec
+template CriticalEffect_EngineStalled
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_EngineStalled_Desc
+)
+
+CriticalEffect_CrewPanicked_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC23'
+    EffectsPack = ~/UnitEffect_Critic_Deroute
+    TimeOut = 30
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = False
+)
+// Crew panicked -> Deroute
+template CriticalEffect_CrewPanicked
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_CrewPanicked_Desc
+)
+
+
+CriticalEffect_Bounce_Desc is TCriticalEffectDescriptor
+(
+    Token = 'BOUNCE1'
+    EffectsPack = nil
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// BOUNCE
+template CriticalEffect_Bounce
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_Bounce_Desc
+)
+
+CriticalEffect_ShooterKO_Desc is TCriticalEffectDescriptor
+(
+    Token = 'BOUNCE2'
+    EffectsPack = ~/UnitEffect_Critic_Stop_Armes
+    TimeOut = 10
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Shooter KO -> Armes stop 10sec
+template CriticalEffect_ShooterKO
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_ShooterKO_Desc
+)
+
+CriticalEffect_LoaderKO_Desc is TCriticalEffectDescriptor
+(
+    Token = 'BOUNCE3'
+    EffectsPack = ~/UnitEffect_Critic_Stop_Reload
+    TimeOut = 10
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Loader KO -> no reload 10sec
+template CriticalEffect_LoaderKO
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_LoaderKO_Desc
+)
+
+CriticalEffect_DriverKO_Desc is TCriticalEffectDescriptor
+(
+    Token = 'BOUNCE4'
+    EffectsPack = ~/UnitEffect_Critic_Full_Stop
+    TimeOut = 10
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Driver KO -> Full stop 10sec
+template CriticalEffect_DriverKO
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_DriverKO_Desc
+)
+
+CriticalEffect_CrewKO_Desc is TCriticalEffectDescriptor
+(
+    Token = 'BOUNCE5'
+    EffectsPack = ~/UnitEffect_Critic_Bailed_Out
+    TimeOut = 10
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Crew KO -> Bailout 10sec
+template CriticalEffect_CrewKO
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_CrewKO_Desc
+)
+
+CriticalEffect_CompReset_Desc is TCriticalEffectDescriptor
+(
+    Token = 'BOUNCE6'
+    HappeningKey = 'critical_compreset'
+    EffectsPack = ~/UnitEffect_Critic_Visee_50
+    TimeOut = 30
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Computer reset -> Précision 0.5
+template CriticalEffect_CompReset
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/CriticalEffect_CompReset_Desc
+)
+
+
+// ****************************************************************************************************************************************
+// *** Critiques d'avions *****************************************************************************************************************
+// ****************************************************************************************************************************************
+
+AirplaneCriticalEffect_WingRippedOff_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC101'
+    EffectsPack = ~/UnitEffect_Effet_Meurt
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Wing ripped off -> mort
+template AirplaneCriticalEffect_WingRippedOff
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_WingRippedOff_Desc
+)
+
+AirplaneCriticalEffect_ElevatorRippedOff_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC102'
+    EffectsPack = ~/UnitEffect_Effet_Meurt
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Elevator ripped off -> mort
+template AirplaneCriticalEffect_ElevatorRippedOff
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_ElevatorRippedOff_Desc
+)
+
+AirplaneCriticalEffect_EngineOnFire_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC103'
+    HappeningKey = 'critical_engine_fire'
+    EffectsPack = ~/UnitEffect_Critic_Pert_2_PV
+    TimeOut = 5
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Engine on fire -> RTB
+template AirplaneCriticalEffect_EngineOnFire
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_EngineOnFire_Desc
+)
+
+AirplaneCriticalEffect_FuelTankOnFire_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC104'
+    HappeningKey = 'critical_tank_fire'
+    EffectsPack = ~/UnitEffect_Critic_Pert_2_PV
+    TimeOut = 5
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Fuel tank on fire -> RTB
+template AirplaneCriticalEffect_FuelTankOnFire
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_FuelTankOnFire_Desc
+)
+
+AirplaneCriticalEffect_PilotKilled_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC105'
+    HappeningKey = 'critical_pilot'
+    EffectsPack = ~/UnitEffect_Effet_Meurt
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Pilot killed -> mort
+template AirplaneCriticalEffect_PilotKilled
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_PilotKilled_Desc
+)
+
+AirplaneCriticalEffect_PilotInjured_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC106'
+    HappeningKey = 'critical_pilot'
+    EffectsPack = ~/UnitEffect_Critic_Visee_50
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = True
+)
+// Pilot injured -> Deroute
+template AirplaneCriticalEffect_PilotInjured
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_PilotInjured_Desc
+)
+
+AirplaneCriticalEffect_WeaponsJammed_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC107'
+    HappeningKey = 'computer_down'
+    EffectsPack = ~/UnitEffect_Critic_Stop_Armes
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = False
+)
+// Firing calculator failure -> No more shots
+template AirplaneCriticalEffect_WeaponsJammed
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_WeaponsJammed_Desc
+)
+
+AirplaneCriticalEffect_PilotUnconscious_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC109'
+    HappeningKey = 'critical_pilot'
+    EffectsPack = ~/UnitEffect_Critic_Deroute
+    TimeOut = 5
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Pilot unconscious -> Loose control during 5s
+template AirplaneCriticalEffect_PilotUnconscious
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_PilotUnconscious_Desc
+)
+
+AirplaneCriticalEffect_EngineDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC111'
+    HappeningKey = 'critical_reactor_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Deroute
+    TimeOut = 5
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Engine damaged -> Loose control during 5s
+template AirplaneCriticalEffect_EngineDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_EngineDamaged_Desc
+)
+
+AirplaneCriticalEffect_PilotPanicked_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC112'
+    HappeningKey = 'critical_pilot'
+    EffectsPack = ~/UnitEffect_Critic_Deroute
+    TimeOut = 10
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = True
+)
+// Pilot Panicked -> Deroute
+template AirplaneCriticalEffect_PilotPanicked
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_PilotPanicked_Desc
+)
+
+AirplaneCriticalEffect_OilLeak_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC114'
+    HappeningKey = 'critical_HUD'
+    EffectsPack = ~/UnitEffect_Critic_Visee_50
+    TimeOut = -1
+    RepairCost = 100
+    Unique = False
+    DisplayOnDeath = False
+)
+// HUD failure -> Précision 0.5
+template AirplaneCriticalEffect_OilLeak
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_OilLeak_Desc
+)
+
+AirplaneCriticalEffect_PropellerDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC115'
+    HappeningKey = 'critical_tank_fire'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Hydraulic fluid fire -> Loss 1 HP
+template AirplaneCriticalEffect_PropellerDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_PropellerDamaged_Desc
+)
+
+AirplaneCriticalEffect_RadiatorDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC116'
+    HappeningKey = 'critical_reactor_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Air intake damaged -> Loss 1 HP
+template AirplaneCriticalEffect_RadiatorDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_RadiatorDamaged_Desc
+)
+
+AirplaneCriticalEffect_EngineOverheating_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC117'
+    HappeningKey = 'critical_reactor_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Deroute
+    TimeOut = 10
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = False
+)
+// Engine Overheating -> Falling back
+template AirplaneCriticalEffect_EngineOverheating
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_EngineOverheating_Desc
+)
+
+AirplaneCriticalEffect_LandingGearDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC118'
+    HappeningKey = 'structural_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Landing gear damaged -> Loss 1 HP
+template AirplaneCriticalEffect_LandingGearDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_LandingGearDamaged_Desc
+)
+
+AirplaneCriticalEffect_WingsDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC121'
+    HappeningKey = 'structural_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Wings damaged -> Loss 1 HP
+template AirplaneCriticalEffect_WingsDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_WingsDamaged_Desc
+)
+
+AirplaneCriticalEffect_EngineStalling_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC122'
+    HappeningKey = 'critical_reactor_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Deroute
+    TimeOut = 5
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = False
+)
+// Engine stalling -> Falling back
+template AirplaneCriticalEffect_EngineStalling
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_EngineStalling_Desc
+)
+
+AirplaneCriticalEffect_FloatCarburatorFailure_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC123'
+    HappeningKey = 'critical_reactor_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Deroute
+    TimeOut = 5
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Turbine engine failure -> Loose control during 5s
+template AirplaneCriticalEffect_FloatCarburatorFailure
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_FloatCarburatorFailure_Desc
+)
+
+AirplaneCriticalEffect_FuelTankLeaking_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC124'
+    HappeningKey = 'critical_leak'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Fuel tank leaking -> Loss 1 HP
+template AirplaneCriticalEffect_FuelTankLeaking
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_FuelTankLeaking_Desc
+)
+
+AirplaneCriticalEffect_AileronDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC125'
+    HappeningKey = 'structural_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Aileron damaged -> Loss 1 HP
+template AirplaneCriticalEffect_AileronDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_AileronDamaged_Desc
+)
+
+AirplaneCriticalEffect_RadiatorOverheating_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC126'
+    HappeningKey = 'critical_reactor_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Deroute
+    TimeOut = 10
+    RepairCost = -1
+    Unique = True
+    DisplayOnDeath = False
+)
+// Radiator Overheating -> Falling back
+template AirplaneCriticalEffect_RadiatorOverheating
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_RadiatorOverheating_Desc
+)
+
+AirplaneCriticalEffect_TailDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC127'
+    HappeningKey = 'structural_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Tail damaged -> Loss 1 HP
+template AirplaneCriticalEffect_TailDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_TailDamaged_Desc
+)
+
+AirplaneCriticalEffect_RudderDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC128'
+    HappeningKey = 'structural_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Rudder damaged -> Loss 1 HP
+template AirplaneCriticalEffect_RudderDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_RudderDamaged_Desc
+)
+
+AirplaneCriticalEffect_ElevatorDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC129'
+    HappeningKey = 'structural_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Elevator damaged -> Loss 1 HP
+template AirplaneCriticalEffect_ElevatorDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/AirplaneCriticalEffect_ElevatorDamaged_Desc
+)
+
+// ****************************************************************************************************************************************
+// *** Critiques d'helicos *****************************************************************************************************************
+// ****************************************************************************************************************************************
+
+HelicoCriticalEffect_HUD_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC114'
+    HappeningKey = 'critical_HUD'
+    EffectsPack = ~/UnitEffect_Critic_Visee_50
+    TimeOut = -1
+    RepairCost = 100
+    Unique = False
+    DisplayOnDeath = False
+)
+// HUD failure -> Précision 0.5
+template HelicoCriticalEffect_HUD
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_HUD_Desc
+)
+
+HelicoCriticalEffect_FuelTankLeaking_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC124'
+    HappeningKey = 'critical_helico_leak'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = False
+)
+// Fuel tank leaking -> Loss 1 HP
+template HelicoCriticalEffect_FuelTankLeaking
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_FuelTankLeaking_Desc
+)
+
+HelicoCriticalEffect_TailRotorDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC130'
+    HappeningKey = 'structural_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Tail rotor damaged -> Loss 1 HP
+template HelicoCriticalEffect_TailRotorDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_TailRotorDamaged_Desc
+)
+
+HelicoCriticalEffect_MainRotorDamaged_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC131'
+    HappeningKey = 'structural_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Main rotor damaged -> Loss 1 HP
+template HelicoCriticalEffect_MainRotorDamaged
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_MainRotorDamaged_Desc
+)
+
+HelicoCriticalEffect_Turbine_Engine_Failure_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC123'
+    HappeningKey = 'critical_reactor_damaged'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Turbine engine failure -> Loss 1 HP
+template HelicoCriticalEffect_Turbine_Engine_Failure
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_Turbine_Engine_Failure_Desc
+)
+
+HelicoCriticalEffect_turbineOnFire_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC132'
+    HappeningKey = 'critical_engine_fire'
+    EffectsPack = ~/UnitEffect_Critic_Pert_2_PV
+    TimeOut = 5
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// turbine on fire -> dmg
+template HelicoCriticalEffect_turbineOnFire
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_turbineOnFire_Desc
+)
+
+HelicoCriticalEffect_FuelTankOnFire_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC104'
+    HappeningKey = 'critical_tank_fire'
+    EffectsPack = ~/UnitEffect_Critic_Pert_2_PV
+    TimeOut = 5
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Fuel tank on fire -> dmg
+template HelicoCriticalEffect_FuelTankOnFire
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_FuelTankOnFire_Desc
+)
+
+
+HelicoCriticalEffect_CrewInjured_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC134'
+    HappeningKey = 'critical_pilot'
+    EffectsPack = ~/UnitEffect_Critic_Visee_50
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = True
+)
+// Crew injured -> perte precision
+template HelicoCriticalEffect_CrewInjured
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_CrewInjured_Desc
+)
+
+HelicoCriticalEffect_WeaponsJammed_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC133'
+    HappeningKey = 'computer_down'
+    EffectsPack = ~/UnitEffect_Critic_Stop_Armes
+    TimeOut = -1
+    RepairCost = 100
+    Unique = True
+    DisplayOnDeath = False
+)
+// Weapon system failure -> No more shots
+template HelicoCriticalEffect_WeaponsJammed
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_WeaponsJammed_Desc
+)
+
+HelicoCriticalEffect_Hydraulic_Fluid_Fire_Desc is TCriticalEffectDescriptor
+(
+    Token = 'CRITIC115'
+    HappeningKey = 'critical_tank_fire'
+    EffectsPack = ~/UnitEffect_Critic_Perd_1_PV
+    TimeOut = 0
+    RepairCost = -1
+    Unique = False
+    DisplayOnDeath = True
+)
+// Hydraulic fluid fire -> Loss 1 HP
+template HelicoCriticalEffect_Hydraulic_Fluid_Fire
+[
+    Roll
+] is TCriticalEffect
+(
+    Roll = <Roll>
+    Descriptor = ~/HelicoCriticalEffect_Hydraulic_Fluid_Fire_Desc
+)
+
+//-------------------------------------------------------------------------------------
+// Liste d'effets
+//-------------------------------------------------------------------------------------
+
+
+PackEffetCritique_VehiculeStandard is
+[
+    CriticalEffect_Incendiary(Roll = (1,1)),
+    CriticalEffect_EngineDamaged(Roll = (2,2)),
+    CriticalEffect_EngineDestroyed(Roll = (3,3)),
+    CriticalEffect_AmmoExplosion(Roll = (4,4)),
+    CriticalEffect_FuelExplosion(Roll = (5,5)),
+    CriticalEffect_CompReset(Roll = (6,6)),
+    CriticalEffect_BailedOut(Roll = (7,7)),
+    CriticalEffect_ArmourCracked (Roll = (8,8)),
+    CriticalEffect_Spalling (Roll = (9,9)),
+    CriticalEffect_TracksBroken(Roll = (10,10)),
+    CriticalEffect_TurretStuck(Roll = (11,11)),
+]
+
+PackEffetCritique_VehiculeNonArme is
+[
+    CriticalEffect_Incendiary(Roll = (1,1)),
+    CriticalEffect_EngineDamaged(Roll = (2,2)),
+    CriticalEffect_EngineDestroyed(Roll = (3,3)),
+    CriticalEffect_FuelExplosion(Roll = (4,4)),
+    CriticalEffect_BailedOut(Roll = (5,5)),
+    CriticalEffect_Spalling (Roll = (6,6)),
+]
+
+PackEffetChenille is
+[
+    CriticalEffect_TracksBroken(Roll = (8,8)),
+]
+
+PackEffetCritiqueTourelle is
+[
+    CriticalEffect_TurretStuck(Roll = (9,9)),
+]
+
+PackEffetCritique_HelicoArme is
+[
+    HelicoCriticalEffect_HUD(Roll = (1,1)),
+    HelicoCriticalEffect_CrewInjured(Roll = (2,2)),
+    HelicoCriticalEffect_MainRotorDamaged(Roll = (3,3)),
+    HelicoCriticalEffect_Turbine_Engine_Failure(Roll = (4,4)),
+    HelicoCriticalEffect_turbineOnFire(Roll = (5,5)),
+    HelicoCriticalEffect_FuelTankOnFire(Roll = (6,6)),
+    HelicoCriticalEffect_FuelTankLeaking(Roll = (7,7)),
+    HelicoCriticalEffect_WeaponsJammed(Roll = (8,8)),
+    HelicoCriticalEffect_Hydraulic_Fluid_Fire(Roll = (9,9)),
+    HelicoCriticalEffect_TailRotorDamaged(Roll = (10,10)),
+]
+PackEffetCritique_HelicoNonArme is
+[
+    HelicoCriticalEffect_HUD(Roll = (1,1)),
+    HelicoCriticalEffect_CrewInjured(Roll = (2,2)),
+    HelicoCriticalEffect_MainRotorDamaged(Roll = (3,3)),
+    HelicoCriticalEffect_Turbine_Engine_Failure(Roll = (4,4)),
+    HelicoCriticalEffect_turbineOnFire(Roll = (5,5)),
+    HelicoCriticalEffect_FuelTankOnFire(Roll = (6,6)),
+    HelicoCriticalEffect_FuelTankLeaking(Roll = (7,7)),
+    HelicoCriticalEffect_Hydraulic_Fluid_Fire(Roll = (9,9)),
+    HelicoCriticalEffect_TailRotorDamaged(Roll = (10,10)),
+]

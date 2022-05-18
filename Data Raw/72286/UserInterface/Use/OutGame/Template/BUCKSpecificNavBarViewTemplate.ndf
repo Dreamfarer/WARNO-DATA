@@ -1,0 +1,75 @@
+template MainBackButtonContainer
+[
+    ButtonDefaultToken  : string,
+    BackMapping : TEugBMutablePBaseClass,
+    ButtonLeftClickSound : TSoundDescriptor = SoundEvent_BackToMainMenu,
+]
+ is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+    Components =
+    [
+        BUCKButtonDescriptor
+        (
+            ElementName = "GlobalBackButton"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeOffset = [0, 0.0]
+                MagnifiableWidthHeight = [200, 60]
+                AlignementToAnchor = [0.0, 1.0]
+                AlignementToFather = [0.0, 1.0]
+            )
+            HasBackground = true
+            BackgroundBlockColorToken = "HUBOutGameNavBar/ButtonOverlay"
+            LeftClickSound = <ButtonLeftClickSound>
+
+            Mapping = <BackMapping>
+            Components =
+            [
+                BUCKTextDescriptor
+                (
+                    ElementName = "GlobalBackButtonMainText"
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        VerticalAlignment = ~/UIText_VerticalCenter
+                        Alignment = ~/UIText_Center
+                    )
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+                    TextColor = "ListeExcel/Cartouche"
+                    TextSize  = "28"
+                    TextStyle = "Default"
+                    TypefaceToken = "UIMainFont"
+                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    TextToken = <ButtonDefaultToken>
+                ),
+            ]
+        ),
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+template UISpecificNavBarViewDescriptor
+[
+    BackButtonDefaultToken : string = "AB_QUIT",
+    BackMapping : TEugBMutablePBaseClass = TEugBMutablePBaseClass(Value = TUserInputMapping(KeyboardEventID = UserInputKeyboard/KEY_ESCAPE)),
+    MainComponentContainerUniqueName : string = "",
+    ButtonLeftClickSound : TSoundDescriptor = nil,
+]
+is TUISpecificNavBarViewDescriptor
+(
+    MainComponentDescriptor = MainBackButtonContainer
+    (
+        ButtonDefaultToken = <BackButtonDefaultToken>
+        BackMapping = <BackMapping>
+        ButtonLeftClickSound = <ButtonLeftClickSound>
+    )
+    MainComponentContainerUniqueName = <MainComponentContainerUniqueName>
+)
+

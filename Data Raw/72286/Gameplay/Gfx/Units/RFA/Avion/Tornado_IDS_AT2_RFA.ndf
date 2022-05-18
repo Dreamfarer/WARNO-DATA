@@ -1,0 +1,25 @@
+export ModelFile_Tornado_IDS_AT2_RFA is 'GameData:/Assets/3D/Units/RFA/Avion/Tornado_IDS/Tornado_IDS.Ase2NdfBin'
+
+Modele_Tornado_IDS_AT2_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Tornado_IDS_AT2_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Tornado_IDS_AT2_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/Tornado_IDS/Tornado_IDS.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Tornado_IDS_AT2_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/Tornado_IDS/Tornado_IDS.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Tornado_IDS_AT2_RFA_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/Tornado_IDS/Tornado_IDS_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

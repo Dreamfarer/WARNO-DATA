@@ -1,0 +1,9 @@
+// Enum TModernWarfareDamageType // a maintenir synchro avec EugIA_ModernWarfare/ModernWarfareArmeArmure.h
+EDamageType is TBaseClass
+(
+    Stress    is 0
+    Suppress  is 1
+    Physical  is 2
+    Stun      is 3
+    Length    is 4
+)

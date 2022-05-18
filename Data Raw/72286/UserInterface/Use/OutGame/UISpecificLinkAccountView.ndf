@@ -1,0 +1,212 @@
+
+// Vue permettant de configurer un lien avec un compte Eugen
+
+//------------------------------------------------------------------------------
+
+BUCKSpecificLinkAccountMainComponentDescriptor is LoginTvContainer
+(
+    ElementName = "LinkAccountComponent"
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "LinkAccountContentList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [450.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength( Magnifiable = 10.0)
+            InterItemMargin = TRTTILength( Magnifiable = 10.0)
+            LastMargin = TRTTILength( Magnifiable = 10.0)
+
+            BackgroundComponents =
+            [
+                ~/LoginPanelMonitorBackground
+            ]
+
+            ForegroundComponents =
+            [
+                ~/LoginPanelMonitorForeground
+            ]
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTypingTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 70.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TextStyle = "TextStyleEcranMoniteur"
+                        TypefaceToken = "UISecondFont"
+
+                        TextColor       = "Blanc"
+                        TextSize        = "16"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "T_LINKACC"
+
+                        AnimDuration = 10000000
+                        AnimTextInSec = 0.1
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = EcranGaucheTextEditable
+                    (
+                        ElementName = "Login"
+                        TokenTitle = "login"
+                        IsPassword = false
+                    )
+
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = EcranGaucheTextEditable
+                    (
+                        ElementName = "Password"
+                        TokenTitle = "password"
+                        IsPassword = true
+                    )
+
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = EcranGaucheTextEditable
+                    (
+                        ElementName = "CDKey"
+                        TokenTitle = "cdkey"
+                        IsPassword = false
+                    )
+
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [200.0, 60.0]
+                        )
+
+                        Components =
+                        [
+                            AnimatedWaitingComponent
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [45.0, 45.0]
+                                    MagnifiableOffset = [50.0, 0.0]
+                                )
+                            ),
+
+                            BUCKTextDescriptor
+                            (
+                                ElementName = "ErrorText"
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [0.0, 1.0]
+                                    MagnifiableWidthHeight = [300.0, 0.0]
+                                    MagnifiableOffset = [100.0, 0.0]
+                                )
+
+                                ParagraphStyle = ~/paragraphStyleTextCenter
+                                TextStyle = "Default"
+
+                                TextColor       = "Rouge"
+                                TextSize        = "FeedbackTextInModal"
+                                TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                                BigLineAction = ~/BigLineAction/MultiLine
+
+                                TypefaceToken   = "Liberator"
+                                UniformDrawer   = $/UserInterface/UIUniformDrawer
+                            ),
+                        ]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = LoginScreenMainButton
+                    (
+                        ElementName = "ChangePasswordButton"
+
+                        ButtonMagnifiableOffset = [-20.0, 0.0]
+                        ButtonAlignementToFather = [1.0, 0.0]
+                        ButtonAlignementToAnchor = [1.0, 0.0]
+
+                        TextToken = 'CP_CHGPASS'
+                    )
+                ),
+            ]
+        ),
+
+        BUCKListDescriptor
+        (
+            ElementName = "LinkAccountButtonList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 40.0]
+                MagnifiableOffset = [0.0, 0.0]
+                AlignementToFather  = [0.5, 1.0]
+                AlignementToAnchor  = [0.5, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = LoginScreenMainButton
+                    (
+                        ElementName = "LinkButton"
+                        TextToken = 'BTN_LINK'
+                        Mapping = TEugBMutablePBaseClass(Value = TUserInputMapping(KeyboardEventID = UserInputKeyboard/KEY_ENTER))
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = LoginScreenMainButton
+                    (
+                        ElementName = "CancelButton"
+                        TextToken = 'BTN_CANCEL'
+                        Mapping = TEugBMutablePBaseClass(Value = TUserInputMapping(KeyboardEventID = UserInputKeyboard/KEY_ESCAPE))
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+UISpecificLinkAccountViewDescriptor is TUISpecificLinkAccountViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificLinkAccountMainComponentDescriptor
+    MainComponentContainerUniqueName = "LoginPanel" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)
+
+//------------------------------------------------------------------------------

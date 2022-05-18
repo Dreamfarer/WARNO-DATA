@@ -1,0 +1,185 @@
+
+private FlaresButtonDims is [25.0, 25.0]
+private dimensionBoutonFlare is 25
+
+//-------------------------------------------------------------------------------------
+
+FlareButtonSupport is BoutonFulda_AvecIcone
+(
+    ElementName = 'FlareFireSupport'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [dimensionBoutonFlare, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    TextureToken = 'textureFlareFireSupport'
+    HintTitleToken = "HFL_SuppT"
+    HintBodyToken = "HFL_SuppB"
+
+    Mapping = $/KeyboardOption/Mapping_FlareFireSupport
+    IsTogglable = true
+)
+
+
+//-------------------------------------------------------------------------------------
+
+FlareButtonNeedHelp is BoutonFulda_AvecIcone
+(
+    ElementName = 'FlareHelp'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [dimensionBoutonFlare, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    TextureToken = 'textureFlareHelp'
+    HintTitleToken = "HFL_HELPT"
+    HintBodyToken = "HFL_HELPB"
+    HintExtendedToken = "HFL_HELPE"
+
+    Mapping = $/KeyboardOption/Mapping_FlareHelp
+    IsTogglable = true
+)
+
+//-------------------------------------------------------------------------------------
+
+FlareButtonEnemySpotted is BoutonFulda_AvecIcone
+(
+    ElementName = 'FlareEnemySpotted'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [dimensionBoutonFlare, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    TextureToken = 'textureFlareEnemySpotted'
+    HintTitleToken = "HFL_recoT"
+    HintBodyToken = "HFL_recoB"
+
+    Mapping = $/KeyboardOption/Mapping_FlareEnemySpotted
+    IsTogglable = true
+)
+
+//-------------------------------------------------------------------------------------
+
+FlareButtonStrategyAttack is BoutonFulda_AvecIcone
+(
+    ElementName = 'FlareAttack'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [dimensionBoutonFlare, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    Mapping = $/KeyboardOption/Mapping_FlareAttack
+    IsTogglable = true
+    TextureToken = 'textureFlareAttack'
+    HintTitleToken = "HFL_ATTACT"
+    HintBodyToken = "HFL_ATTACB"
+    HintExtendedToken = "HFL_ATTACE"
+)
+
+//-------------------------------------------------------------------------------------
+
+FlareButtonStrategyDefend is BoutonFulda_AvecIcone
+(
+    ElementName = 'FlareDefend'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [dimensionBoutonFlare, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    Mapping = $/KeyboardOption/Mapping_FlareDefend
+    IsTogglable = true
+    TextureToken = 'textureFlareDefense'
+    HintTitleToken = "HFL_DEFENT"
+    HintBodyToken = "HFL_DEFENB"
+    HintExtendedToken = "HFL_DEFENE"
+)
+
+//-------------------------------------------------------------------------------------
+
+FlareButtonCustom is BoutonFulda_AvecIcone
+(
+    ElementName = 'FlareCustom'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [dimensionBoutonFlare, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    Mapping = $/KeyboardOption/Mapping_FlareCustom
+    IsTogglable = true
+    TextureToken = 'textureFlareCustom'
+    HintTitleToken = "HFL_CUSMET"
+    HintBodyToken = "HFL_CUSMEB"
+    HintExtendedToken = "HFL_CUSMEE"
+)
+
+//-------------------------------------------------------------------------------------
+
+FlareCustomEditableText is BUCKEditableTextDescriptor
+(
+    ElementName = "FlareCustomEditableText"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [200.0, 20.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "BoutonTemps"
+
+    ClippingContainerFrameProperty = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-6.0, -6.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    TextSizeToken = "FlaresPanel/CustomFlare/EditableText"
+    TypefaceToken = "IBM"
+    TextColorToken = "Blanc"
+    SelectionColorToken = "FlaresPanel/CustomFlare/EditableText/Selected"
+
+    MaxChars = 100
+)
+
+//-------------------------------------------------------------------------------------
+
+// Conteneur pour les flares
+UICommonFlarePanelViewMainComponent is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+        MagnifiableWidthHeight = [0.0, 27.0]
+    )
+
+    InterItemMargin = TRTTILength( Magnifiable = 11.0 )
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+    Axis = ~/ListAxis/Horizontal
+
+    HidePointerEvents = true
+
+    Elements =
+    [
+        BUCKListElementDescriptor(ComponentDescriptor = ~/FlareCustomEditableText),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/FlareButtonNeedHelp),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/FlareButtonStrategyAttack),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/FlareButtonStrategyDefend),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/FlareButtonSupport),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/FlareButtonEnemySpotted),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/FlareButtonCustom),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+UICommonFlarePanelViewDescriptor is TUIInGameFlarePanelViewDescriptor
+(
+    MainComponentDescriptor = ~/UICommonFlarePanelViewMainComponent
+    MainComponentContainerUniqueName = "UICommonFlarePanelViewMainContainer"
+)

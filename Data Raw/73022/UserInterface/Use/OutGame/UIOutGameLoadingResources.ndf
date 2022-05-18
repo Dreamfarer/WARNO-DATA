@@ -1,0 +1,139 @@
+
+SpecificOutGameLoadingPanelResource is TUISpecificOutGameLoadingPanelResource
+(
+    LoadingText = BUCKTypingTextDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 40.0]
+            AlignementToFather = [1.0, 1.0]
+            AlignementToAnchor = [1.0, 1.0]
+        )
+
+        ParagraphStyle = TParagraphStyleRTTI
+        (
+            Alignment         = UIText_Right
+            VerticalAlignment = UIText_VerticalCenter
+        )
+
+        TextStyle = "DefaultSubtitle"
+
+        HorizontalFitStyle = ~/FitStyle/FitToContent
+        VerticalFitStyle = ~/FitStyle/UserDefined
+
+        TypefaceToken = "Subtitles"
+        BigLineAction = ~/BigLineAction/MultiLine
+
+        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+        TextColor = "SD2_BleuVariable"
+        TextSize = "18"
+        TextToken = "M_LOADING"
+        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+        AnimDuration = 4.5
+        AnimTextInSec = 0.7
+        AnimCursorPulseCount = 6.0
+    )
+
+    UserInputLayer =  $/M3D/Input/UserInputLayerHandler/InputLayer_Loading
+
+    EditorHints = [
+        "HintEd_01",
+        "HintEd_02",
+        "HintEd_03",
+        "HintEd_04",
+        "HintEd_05",
+    ]
+
+    DevHints = [
+        "HNT_DT001",
+        "HNT_DT002",
+        "HNT_DT003",
+        "HNT_DT004",
+        "HNT_DT005",
+        "HNT_DT006",
+        "HNT_DT007",
+        "HNT_DT008",
+        "HNT_DT009",
+        "HNT_DT010",
+        "HNT_DT011",
+    ]
+
+    CommonHints = [
+    ]
+
+    LoadingComponents = BUCKContainerDescriptor
+    (
+        Components =
+        [
+            BUCKRandomVideoContainerDescriptor
+            (
+                ElementName = "OutGameLoadingRandomContainer"
+
+                ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+                VideoDescriptor = BUCKVideoDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                       MagnifiableWidthHeight = [1920.0, 1080.0]
+                    )
+
+                    VideoDrawer  = $/UserInterface/UIVideoDrawer
+                    VideoFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0,1.0])
+                    Loop         = false
+                )
+
+                PossibleVideos =
+                [
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_01_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_02_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_03_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_04_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_05_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_06_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_07_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_08_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_09_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_10_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                    TUIResourceVideo ( VideoFile =  "GameData:/Assets/Videos/loading_screen_animated/Video_Loading_Screen_11_.webm"  DicoVideo =  ~/DicoVideoOutGame),
+                ]
+            ),
+
+            BUCKTextDescriptor
+            (
+                ElementName = "OutGameLoadingHint"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [1080.0, 65.0]
+                    AlignementToFather = [0.5, 1.0]
+                    AlignementToAnchor = [0.5, 1.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0.1
+                )
+
+                TextStyle = "DefaultSubtitle"
+
+                BigLineAction = ~/BigLineAction/MultiLine
+                VerticalFitStyle = ~/FitStyle/MaxBetweenUserDefinedAndContent
+
+                TextColor = "Subtitle/Text"
+                TextSize = "32"
+
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                TypefaceToken = "Subtitles"
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+            ),
+        ]
+        ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    )
+)
+

@@ -1,0 +1,475 @@
+template BUCKSpecificDropdownDescriptor
+[
+    ElementName : string = "",
+    UniqueName : string = "",
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [250,24]
+        AlignementToFather = [0,0.5]
+        AlignementToAnchor = [0,0.5]
+    ),
+    HasBackground : bool = true,
+    BackgroundBlockColorToken : string = "Transparent",
+
+    HasBorder : bool = true,
+    BordersToDraw : int = ~/TBorderSide/Default,
+    BorderThicknessToken : string = "1",
+    BorderLineColorToken : string = "menu_solo_liste_mission",
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    HidePointerEvents : bool = false,
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+
+    ComponentStateLocked : bool = true,
+    IsForModale : bool = false,
+
+    // IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) ),
+    ItemFocusable : bool = true,
+
+    MainTextElementName : string = "",
+    ItemTextElementName : string = "",
+
+    FloatingListMagnifiableWidth : float = 250.0,
+    FloatingListMagnifiableHeight : float = 200.0,
+    FloatingListRelativeWidth : float = 0,
+    FloatingListRelativeHeight: float = 0,
+
+    ItemDescriptor : TBUCKButtonDescriptor = nil,
+    ItemComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0]),
+    ItemComponentBackgroundColor : string = "Blanc",
+    ItemValues : LIST<PAIR<int, string>> = [],
+    ItemsDico : string = "",
+    ItemsTextSizeToken : string = "14",
+    ItemsTextColorToken : string = "ButtonHUD/Text2",
+    ItemComponents : LIST<TBUCKContainerDescriptor> = [],
+    ItemsTextTypefaceToken : string = "UIMainFont",
+    ItemsTextPadding : TRTTILength4 = TRTTILength4(Magnifiable = [20.0, 5.0, 0.0, 5.0]),
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+
+    MainTextColorToken : string = "menu_solo_liste_mission",
+    MainTextSizeToken : string = "14",
+    MainTextHorizontalAlignment : int = UIText_Left,
+    ItemTextHorizontalAlignment : int = UIText_Left,
+    MainTextTypefaceToken : string = "Liberator",
+    MainTextStyle : string = "Default",
+    MainTextPadding : TRTTILength4 = TRTTILength4(Magnifiable = [0.0, 0.0, 0.0, 0.0]),
+
+    MainTextComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [0.0, 0]
+        MagnifiableOffset = [7.0, 0.0]
+    ),
+
+    ShowArrow : bool = true,
+    ArrowTextureToken : string = "StyleCockpitTexture_DropDownArrow",
+    ArrowMagnifiableWidthHeight : float2 = [34.0 div 1.5, 24.0 div 1.5 ],
+    ArrowTextureColorToken : string = "menu_solo_liste_mission",
+    ArrowHasBackground : bool = false,
+    ArrowBackgroundBlockColorToken : string = "Vert_boutonDeck",
+
+    OpenUpward : bool = false,
+
+    OpenSound : TSoundDescriptor = nil,
+    SelectItemSound : TSoundDescriptor = nil,
+]
+is BUCKDropdownDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+
+    // Permet d'identifier différentes dropdowns si on en instancie plusieurs à la fois
+    BaseElementName is (<ElementName> + ((<ElementName> != "") ? "/" : ""))
+
+    ComponentFrame = <ComponentFrame>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+
+    ComponentStateLocked = false
+
+    HidePointerEvents = <HidePointerEvents>
+    PointerEventsToAllow = <PointerEventsToAllow>
+    // BUCKDropdownDescriptor
+    Layer = <IsForModale> ? $/UserInterface/UILayer_InterfaceModal_Foreground : $/UserInterface/UILayer_2DInterfaceDropDown_OutGame
+
+    IsFocusable = false
+    FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+    LeftClickSound = <OpenSound>
+
+    FloatingListElementName = BaseElementName + "DropDownInnerList"
+    MainTextElementName = BaseElementName + "DropDownMainText"
+    ItemTextElementName = BaseElementName + "DropDownItemText"
+
+    FloatingContainerDescriptor = TScrollingDescriptor
+    (
+        ScrollingElementName = <ElementName> + "FloatingContainerScrolling"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [<FloatingListRelativeWidth> , <FloatingListRelativeHeight>]
+            MagnifiableWidthHeight = [<FloatingListMagnifiableWidth> , <FloatingListMagnifiableHeight>]
+            AlignementToFather = (<OpenUpward> ? [1,0]: [1, 1.0])
+            AlignementToAnchor = (<OpenUpward> ? [1,1]: [1, 0.0])
+        )
+
+        Component = BUCKListDescriptor
+        (
+            ElementName = BaseElementName + "DropDownInnerList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                AlignementToAnchor = (<OpenUpward> ? [0,1]: [0, 0.0])
+                AlignementToFather = (<OpenUpward> ? [0,1]: [0, 0.0])
+            )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+            HasBorder = true
+            BorderThicknessToken = <BorderThicknessToken>
+            BorderLineColorToken = <BorderLineColorToken>
+        )
+    )
+
+    ItemDescriptor = BUCKButtonDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 30]
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        IsTogglable = true
+        IsFocusable = <ItemFocusable>
+
+        HasBorder = false
+        BordersToDraw = ~/TBorderSide/Top | ~/TBorderSide/Bottom
+        BorderLineColorToken = "SD2_LigneBleuGris"
+        BorderThicknessToken = "1"
+
+        HasBackground = true
+        BackgroundBlockColorToken = <ItemComponentBackgroundColor>
+
+        LeftClickSound = <SelectItemSound>
+
+        Components =
+        [
+            BUCKTextDescriptor
+            (
+                ElementName = BaseElementName + "DropDownItemText"
+
+                ComponentFrame = <ItemComponentFrame>
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = <ItemTextHorizontalAlignment>
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+                TextPadding = <ItemsTextPadding>
+                TextStyle = "Default"
+                TypefaceToken = <ItemsTextTypefaceToken>
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextColor = <ItemsTextColorToken> //"ButtonHUD/Text2"
+                TextSize = <ItemsTextSizeToken>
+            ),
+        ] + <ItemComponents>
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = BaseElementName + "DropDownMainText"
+
+            ComponentFrame = <MainTextComponentFrame>
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = <MainTextHorizontalAlignment>
+                VerticalAlignment = UIText_VerticalCenter
+                BigWordAction = ~/BigWordAction/BigWordNewLine
+            )
+            TextStyle = <MainTextStyle>
+            TypefaceToken = <MainTextTypefaceToken>
+            BigLineAction = ~/BigLineAction/MultiLine
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextPadding = <MainTextPadding>
+            TextColor = <MainTextColorToken>
+            TextSize = <MainTextSizeToken>
+        ),
+
+    ] +
+
+    (<ShowArrow> == true ?
+        [
+            BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = <ArrowMagnifiableWidthHeight>
+                    MagnifiableOffset = [0.0, 0.0]
+                    AlignementToAnchor = [1.0, 0.5]
+                    AlignementToFather = [1.0, 0.5]
+                )
+                HasBackground = <ArrowHasBackground>
+                BackgroundBlockColorToken = <ArrowBackgroundBlockColorToken>
+                TextureToken = <ArrowTextureToken>
+                TextureFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        AlignementToAnchor = [0.5,0.5]
+                        AlignementToFather = [0.5,0.5]
+                    )
+                TextureColorToken = <ArrowTextureColorToken>
+            )
+        ] : []
+    )
+
+    +  <Components>
+)
+
+template TScrollingDescriptor
+[
+    ScrollingElementName : string = "",
+    HasScrollbars : bool = true,
+    ComponentFrame : TUIFramePropertyRTTI,
+    Component,
+    BorderLineColorToken : string = '',
+    BorderThicknessToken : string = "1",
+    BordersToDraw : int = ~/TBorderSide/Default,
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+
+    Components =
+    [
+        BUCKSpecificScrollingContainerDescriptor
+        (
+            ElementName = <ScrollingElementName>
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [0.0, -6.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            Components =
+            [
+                <Component>
+            ]
+
+            HasVerticalScrollbar = true
+        )
+    ]
+
+    HasBorder = (<BorderLineColorToken> != '')
+    BordersToDraw = <BordersToDraw>
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderThicknessToken = <BorderThicknessToken>
+)
+
+//-------------------------------------------------------------------------------------
+template DropdownFulda
+[
+    ElementName : string = "",
+    UniqueName : string = "",
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [250,24]
+        AlignementToFather = [0,0.5]
+        AlignementToAnchor = [0,0.5]
+    ),
+
+    HasBackground : bool = false,
+        BackgroundBlockColorToken : string = "Fulda2_Orange100",
+
+        HasBorder : bool = false,
+        BordersToDraw : int = ~/TBorderSide/Default,
+        BorderThicknessToken : string = "1",
+        BorderLineColorToken : string = "Fulda2_Orange100",
+        BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    HidePointerEvents : bool = false,
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+
+    ComponentStateLocked : bool = true,
+    IsForModale : bool = false,
+
+    // IsFocusable : bool = false,
+    FocusMapping : TEugBMutablePBaseClass = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) ),
+
+    MainTextElementName : string = "",
+    ItemTextElementName : string = "",
+
+    FloatingListMagnifiableHeight : float = 200.0,
+
+    ItemDescriptor : TBUCKButtonDescriptor = nil,
+    ItemComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0]),
+    ItemValues : LIST<PAIR<int, string>> = [],
+    ItemsDico : string = "",
+    ItemsTextSizeToken : string = "14",
+    ItemComponents : LIST<TBUCKContainerDescriptor> = [],
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+
+    MainTextColorToken : string = "SD2_Blanc184",
+    MainTextSizeToken : string = "SD2_Moyen",
+    MainTextHorizontalAlignment : int = UIText_Left,
+    ItemTextHorizontalAlignment : int = UIText_Left,
+]
+is BUCKDropdownDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+
+    // Permet d'identifier différentes dropdowns si on en instancie plusieurs à la fois
+    BaseElementName is (<ElementName> + ((<ElementName> != "") ? "/" : ""))
+
+    ComponentFrame = <ComponentFrame>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+
+    ComponentStateLocked = false
+
+    HidePointerEvents = <HidePointerEvents>
+    PointerEventsToAllow = <PointerEventsToAllow>
+    // BUCKDropdownDescriptor
+    Layer = <IsForModale> ? $/UserInterface/UILayer_InterfaceModal_Foreground : $/UserInterface/UILayer_2DInterfaceDropDown_OutGame
+
+    IsFocusable = false
+    FocusMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+
+    FloatingListElementName = BaseElementName + "DropDownInnerList"
+    MainTextElementName = BaseElementName + "DropDownMainText"
+    ItemTextElementName = BaseElementName + "DropDownItemText"
+
+    FloatingContainerDescriptor = TScrollingDescriptor
+    (
+        ScrollingElementName = <ElementName> + "FloatingContainerScrolling"
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1,0]
+            MagnifiableWidthHeight = [0.0 , <FloatingListMagnifiableHeight>]
+            AlignementToFather = [0.0, 0.0]
+            AlignementToAnchor = [0.0, 0.0]
+        )
+
+        Component = BUCKListDescriptor
+        (
+            ElementName = BaseElementName + "DropDownInnerList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+            HasBorder = true
+            BorderThicknessToken = "1"
+            BorderLineColorToken = "SD2_LigneBleuGris"
+        )
+    )
+
+    ItemDescriptor = BUCKButtonDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 30]
+            RelativeWidthHeight = [1.0, 0.0]
+        )
+
+        IsTogglable = true
+        IsFocusable = true
+
+        HasBorder = false
+        BordersToDraw = ~/TBorderSide/Top | ~/TBorderSide/Bottom
+        BorderLineColorToken = "SD2_LigneBleuGris"
+        BorderThicknessToken = "1"
+
+        HasBackground = true
+        BackgroundBlockColorToken = "Fulda2_Orange100"
+
+        Components =
+        [
+            BUCKTextDescriptor
+            (
+                ElementName = BaseElementName + "DropDownItemText"
+
+                ComponentFrame = <ItemComponentFrame>
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = <ItemTextHorizontalAlignment>
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+                TextPadding = TRTTILength4( Magnifiable = [20.0, 5.0, 0.0, 5.0] )
+                TextStyle = "Default"
+                TypefaceToken = "UIMainFont"
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextColor = "ButtonHUD/Text2"
+                TextSize = <ItemsTextSizeToken>
+            ),
+        ] + <ItemComponents>
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = BaseElementName + "DropDownMainText"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-27.0, 0]
+                MagnifiableOffset = [7.0, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = <MainTextHorizontalAlignment>
+                VerticalAlignment = UIText_VerticalCenter
+            )
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextColor = <MainTextColorToken>
+            TextSize = <MainTextSizeToken>
+        ),
+
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [13.0, 10.0]
+                MagnifiableOffset = [-4.0, 0.0]
+                AlignementToAnchor = [1.0, 0.5]
+                AlignementToFather = [1.0, 0.5]
+            )
+
+            TextureToken = "StyleCockpitTexture_DropDownArrow"
+            TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            TextureColorToken = "Fulda2_Orange30"
+        )
+    ] + <Components>
+)

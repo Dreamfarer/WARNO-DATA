@@ -1,0 +1,22 @@
+export ModelFile_UAZ_469_SPG9_DDR is 'GameData:/Assets/3D/Units/DDR/Vehicule/UAZ_469_SPG9/UAZ_469_SPG9.Ase2NdfBin'
+
+Modele_UAZ_469_SPG9_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_UAZ_469_SPG9_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_UAZ_469_SPG9_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Vehicule/UAZ_469_SPG9/UAZ_469_SPG9.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_UAZ_469_SPG9_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Vehicule/UAZ_469_SPG9/UAZ_469_SPG9.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

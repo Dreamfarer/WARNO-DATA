@@ -1,0 +1,97 @@
+export TestAuto_IADStrategy is TIAGeneralStrategy
+(
+    StrategyName = "Strat_DUT"
+    FirstGenerator = TestAuto_DDefense
+    TransitionList =
+    [
+        TestAuto_DTransition,
+    ]
+    AuthorizedCorridorList = [0, 1]
+)
+
+export TestAuto_DTransition is TIAGeneralStrategyTransition
+(
+    Origine = TestAuto_DDefense
+    Condition = TestAuto_DCondition
+    Destination = TestAuto_DAttaque
+)
+
+export TestAuto_DCondition is TSequenceCondition_Wait
+(
+    Time = 6000
+)
+
+export TestAuto_DDefense is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+
+    GeneratorList =
+    [
+        ~/test_auto_Dmission_defense,
+    ]
+)
+
+export TestAuto_DAttaque is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 1
+
+    GeneratorList =
+    [
+        ~/test_auto_Dmission_attaque,
+        ~/test_auto_Dmission_attaque,
+        ~/test_auto_Dmission_attaque,
+        ~/test_auto_Dmission_attaque,
+    ]
+)
+
+export test_auto_Dmission_defense is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModelTestAutoDMissionDefense,] ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] LaunchASAP_RatioMin = 0.0),
+    ]
+)
+
+export test_auto_Dmission_attaque is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/poolModelTestAutoDMissionAttaque] LaunchASAP_RatioMin = 0.0),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 1.1 CompterLesUnitesEnZoneExtendedDansLaMenace = true UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true),
+        TForcedPlacementSettingHolder(ForcedCorridor = [0]),
+        TCorridorPlacementSettingHolder(StayInCorridorIfp = true ActiveComportementEnBoutDeCouloir = true),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+export poolModelTestAutoDMissionDefense is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{eca5bdc0-36f2-11e7-b8c5-00b0c202714c}
+            Required = true
+            Nb = 1
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "TestUnitIAStratDefense",
+            ]
+        ),
+    ]
+)
+
+export poolModelTestAutoDMissionAttaque is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{eca94030-36f2-11e7-9cd0-00b0c202714c}
+            Required = true
+            Nb = 2
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "TestUnitIAStratAttaque",
+            ]
+        ),
+    ]
+)

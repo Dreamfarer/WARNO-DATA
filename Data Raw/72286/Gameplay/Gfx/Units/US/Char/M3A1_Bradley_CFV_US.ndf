@@ -1,0 +1,22 @@
+export ModelFile_M3A1_Bradley_CFV_US is 'GameData:/Assets/3D/Units/US/Char/M3A1_Bradley/M3A1_Bradley.Ase2NdfBin'
+
+Modele_M3A1_Bradley_CFV_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_M3A1_Bradley_CFV_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M3A1_Bradley_CFV_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Char/M3A1_Bradley_MID/M3A1_Bradley_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M3A1_Bradley_CFV_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Char/LODS/M3A1_Bradley_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

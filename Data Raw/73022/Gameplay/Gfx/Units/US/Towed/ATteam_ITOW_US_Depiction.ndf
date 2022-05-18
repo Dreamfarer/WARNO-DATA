@@ -1,0 +1,93 @@
+Gfx_ATteam_ITOW_US_Servant_G is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_G_US
+    MeshDescriptorLow  = MeshDescriptor_Servant_G_US
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = DepictionOperator_AnimationServant_ATGM_Left
+)
+
+Gfx_ATteam_ITOW_US_Servant_D is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_D_US
+    MeshDescriptorLow  = MeshDescriptor_Servant_D_US
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = DepictionOperator_AnimationServant_ATGM_Right
+)
+
+
+Gfx_ATteam_ITOW_US is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = CommonVehicleScaler
+        Selector = SpecificVehicleDepictionSelector
+        DepictionAlternatives = ATteam_TOW_US_Alternatives
+
+        Operators = [
+            DepictionOperator_Reset_Generic,
+            DepictionOperator_DamageRatio_Generic,
+            DepictionOperator_AnimationDeployable
+            (
+                DeployAnimation = SkeletalAnimationTemplate(FileName = 'BGM71E_TOW_2A_deploy.Ase2NdfBin' Path = AnimationPath_ATteam_TOW_US PlayInLoop = false)
+                FoldAnimation = SkeletalAnimationTemplate(FileName = 'BGM71E_TOW_2A_fold.Ase2NdfBin' Path = AnimationPath_ATteam_TOW_US PlayInLoop = false)
+
+                // MoveFrontAnimation = SkeletalAnimationTemplate(FileName = 'BGM71E_TOW_2A_move.Ase2NdfBin' Path = AnimationPath_ATteam_TOW_US PlayInLoop = true)
+                DeployFromMoveTime = 1.5
+                DeployFromTurnTime = 1.5
+                FoldForMoveTime = 1.5
+                FoldForTurnTime = 1.5
+            ),
+            // DepictionOperator_Carriable_ATGM,
+            DepictionOperator_ShadowPointCloudProvider,
+        ]
+
+        Actions = MAP []
+                + Weapons_ATteam_ITOW_US
+                + DepictionAction_Stress_And_Wrecked
+
+        SubDepictions = [
+            TSubDepiction( Anchor = 'servant_g' Depiction = Gfx_ATteam_ITOW_US_Servant_G ),
+            TSubDepiction( Anchor = 'servant_d' Depiction = Gfx_ATteam_ITOW_US_Servant_D ),
+        ]
+    )
+)
+
+
+// stub showroom le temps qu'on dÃ©cide ce qu'on veux afficher
+Gfx_ATteam_ITOW_US_Servant_G_Showroom is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_G_US
+    MeshDescriptorLow  = MeshDescriptor_Servant_G_US
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = ServantATGMLeftIdle)
+)
+
+// stub showroom le temps qu'on dÃ©cide ce qu'on veux afficher
+Gfx_ATteam_ITOW_US_Servant_D_Showroom is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_D_US
+    MeshDescriptorLow  = MeshDescriptor_Servant_D_US
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = ServantATGMRightIdle)
+)
+
+// stub showroom le temps qu'on dÃ©cide ce qu'on veux afficher
+Gfx_ATteam_ITOW_US_Showroom is ShowroomDepictionTemplate
+(
+    MeshDescriptor = Modele_ATteam_ITOW_US
+    Operators =
+    [
+        DepictionOperator_Reset_Generic,
+    ]
+    SubDepictions =
+    [
+        TSubDepiction( Anchor = 'servant_g' Depiction = Gfx_ATteam_ITOW_US_Servant_G_Showroom ),
+        TSubDepiction( Anchor = 'servant_d' Depiction = Gfx_ATteam_ITOW_US_Servant_D_Showroom ),
+    ]
+)
+
+GhostDepiction_ATteam_ITOW_US is GhostVehicleDepictionTemplate
+(
+    Selector = SpecificVehicleDepictionSelector
+    Alternatives = ATteam_TOW_US_Alternatives
+)

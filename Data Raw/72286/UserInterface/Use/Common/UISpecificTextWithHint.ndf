@@ -1,0 +1,177 @@
+template BUCKSpecificTextWithHint
+[
+    // ++ BUCKContainerDescriptor
+    ElementName : string = "",
+    UniqueName : string = "",
+    RequiredTags : LIST<string> = [],
+    ForbiddenTags : LIST<string> = [],
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+
+    MagnifierMultiplication : float = 0.0,
+
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+    HidePointerEvents : bool = false,
+
+    GridAlign : bool = false,
+
+    IsDroppable : bool = false,
+    ForegroundForDropBlockColor : string = "",
+    BorderForDropLineColor : string = "",
+    BorderForDropLineThicknessToken : string = "",
+
+    FitStyle : int = ~/ContainerFitStyle/None,
+    ChildFitToContent : bool = false,
+
+    ClipContent : bool = false,
+
+    SpotlightComponent : TBUCKContainerDescriptor = nil,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HasBackground : bool = false,
+    BackgroundBlockColorToken : string = "",
+
+    HasBorder : bool = false,
+    BordersToDraw : int = ~/TBorderSide/Default,
+    BorderThicknessToken : string = "",
+    BorderLineColorToken : string = "",
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    LocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+
+    ComponentStateLocked : bool = false,
+    // -- BUCKContainerDescriptor
+
+    ParagraphStyle : TParagraphStyleRTTI = TParagraphStyleRTTI(),               // Permet de définir comment va s'afficher le texte par rapport à son container
+                                                                                // - (int) Alignment (Horizontal) (Globals.ndf)
+                                                                                // - (int) VerticalAlignment (Globals.ndf)
+                                                                                // - (int) BigWordAction (enum dans UICommonEnum.ndf)
+                                                                                // - (float) InterLine (en pixel)
+                                                                                // - (float) LineWidth (si 0, pas de largeur max)
+                                                                                // - (u32) MaxLine (nombre de lignes max si le texte passe en multilignes)
+                                                                                // - (bool) Balanced (fait en sorte d'avoir des lignes de même largeur)
+
+    TextStyle : string,                                                         // Token associé à un TTextStyleRTTI, qui permet de définir le style du texte
+
+    TypefaceToken : string = "",                                                // Token associé à une Typeface, qui permet de définir la/les font(s) pour dessiner ce texte
+
+    BigLineAction : int = ~/BigLineAction/CutByDots,                            // Comportement du texte s'il est plus grand que son container (UICommonEnum.ndf)
+    ColorMode : int = ~/ColorMode/Multiply,                                     // Défini si la couleur du texte ignore ou non la couleur du context (TFS)
+    HorizontalFitStyle : int = ~/FitStyle/UserDefined,                          // Comment le conteneur du texte réagit par rapport au contenu (UserDefined = on utilise le ComponentFrame)
+    VerticalFitStyle : int = ~/FitStyle/UserDefined,                            // Comment le conteneur du texte réagit par rapport au contenu (UserDefined = on utilise le ComponentFrame)
+
+    TextDico : string = "",                                                     // Token qui défini dans quel dictionnaire on va chercher le token de texte (valeurs dans LocalisationConstantes.ndf)
+    TextToken : string = "",                                                    // Token du texte
+    TextSize : string = "",                                                     // Taille du texte (définie dans le StyleGuide)
+    TextColor : string = "",                                                    // Couleur du texte (définie dans le StyleGuide)
+
+    TextPadding : TRTTILength4 = TRTTILength4(),                                // Permet de mettre du padding au texte
+
+    HasUnderline : bool = false,                                                // Affiche l'underline
+    UnderlineColor : string = "",                                               // Couleur de l'underline
+    UnderlineThickness : string = "",                                           // Taille de l'underline
+
+    SpotlightColor : string = "",                                               // Couleur du spotlight
+    SpotlightStrokeSize : float = 0.0,                                          // Taille max du glow du spotlight              | il faut généralement
+    SpotlightStrokeHardness : float = 0.0,                                      // Précision du découpage du glow               | ajuster ces 3 paramètres en même temps
+    SpotlightTextThickness : float = 0.0,                                       // Démarquage du texte par rapport au glow      | pour que ça rende bien
+
+    HasAutoHint : bool = true,
+    AutoHintElementName : string = "AutoHint",
+    Hint : TBUCKHintableAreaDescriptor = nil,                                   // Hint du texte
+
+    Rotation : int = 0,                                                         // La rotation du text en degrés (ne peut être qu'un multiple de 90)
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+]
+is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    RequiredTags = <RequiredTags>
+    ForbiddenTags = <ForbiddenTags>
+    ComponentFrame = <ComponentFrame>
+
+    MagnifierMultiplication = <MagnifierMultiplication>
+
+    PointerEventsToAllow = <PointerEventsToAllow>
+    HidePointerEvents = <HidePointerEvents>
+
+    GridAlign = <GridAlign>
+
+    IsDroppable = <IsDroppable>
+    ForegroundForDropBlockColor = <ForegroundForDropBlockColor>
+    BorderForDropLineColor = <BorderForDropLineColor>
+    BorderForDropLineThicknessToken = <BorderForDropLineThicknessToken>
+
+    FitStyle = <FitStyle>
+    ChildFitToContent = <ChildFitToContent>
+
+    ClipContent = <ClipContent>
+
+    SpotlightComponent = <SpotlightComponent>
+
+    UniformDrawer = <UniformDrawer>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BordersToDraw = <BordersToDraw>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    UseLocalRenderLayer = <UseLocalRenderLayer>
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    LocalRenderLayer = <LocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+
+    ComponentStateLocked = <ComponentStateLocked>
+
+    ParagraphStyle = <ParagraphStyle>
+
+    TextStyle = <TextStyle>
+
+    TypefaceToken = <TypefaceToken>
+
+    BigLineAction = <BigLineAction>
+    ColorMode = <ColorMode>
+    HorizontalFitStyle = <HorizontalFitStyle>
+    VerticalFitStyle = <VerticalFitStyle>
+
+    TextDico = <TextDico>
+    TextToken = <TextToken>
+    TextSize = <TextSize>
+    TextColor = <TextColor>
+
+    TextPadding = <TextPadding>
+
+    HasUnderline = <HasUnderline>
+    UnderlineColor = <UnderlineColor>
+    UnderlineThickness = <UnderlineThickness>
+
+    SpotlightColor = <SpotlightColor>
+    SpotlightStrokeSize = <SpotlightStrokeSize>
+    SpotlightStrokeHardness = <SpotlightStrokeHardness>
+    SpotlightTextThickness = <SpotlightTextThickness>
+
+    Rotation = <Rotation>
+
+    AutoHintElementName = <AutoHintElementName>
+
+    Components = <Components>
+    Hint =
+    (<HasAutoHint> ?
+        BUCKSpecificHintableArea
+        (
+            ElementName = <AutoHintElementName>
+        )
+        :
+        <Hint>
+    )
+
+)

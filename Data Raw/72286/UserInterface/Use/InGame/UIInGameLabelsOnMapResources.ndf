@@ -1,0 +1,139 @@
+
+labelsOnMapResources is TUICommonGameplayLabelOnMapResources
+(
+    LabelsLayer = $/UserInterface/UI3DLayer_General
+    LabelsTransformation = TLabelTransformationComposition
+    (
+        Transformations = [
+            TLabelTransformPreTranslate
+            (
+                Translation = [0,0,42000]//[0,0,11500]
+            ),
+            TLabelTransformFaceCam
+            (
+                Camera = $/M3D/Camera/CameraPrincipale
+            ),
+            TLabelTransformFakePerspective
+            (
+                ScalePerAltitudeConstReso = 1.5
+                Camera = $/M3D/Camera/CameraPrincipale
+                Scene2D = $/M3D/Scene/Scene_2D_Interface
+                ConstnessFactor = 0.6
+            ),
+        ]
+
+    )
+
+    Camera = $/M3D/Camera/CameraPrincipale
+    WorldFloorProxy = $/M3D/Scene/WorldFloorForIAProxy
+
+    Labels = MAP
+    [
+        (
+            'LabelVille',
+            TBUCKLabelContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [ 0.0, 30.0 ] // 0.0, 40.0
+                    MagnifiableOffset = [ 0.0, 0.0 ]
+                    AlignementToFather = [ 0.0, 0.0 ]
+                    AlignementToAnchor = [ 0.0, 0.0 ]
+                )
+
+                VisibilityRange = TVisibilityRange
+                (
+                    AltitudeMin = 75000 //50000
+                    AltitudeMax = 1000000//130000
+                )
+
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI(
+                            RelativeWidthHeight = [0.0, 0.7]
+                            MagnifiableOffset = [0.0, 0.0]
+                            AlignementToFather = [0.5, 0.5]
+                            AlignementToAnchor = [0.5, 0.5]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                        InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+                        Elements =
+                        [
+                            //Left separator
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/LabelOnMapLeftRightBorder
+                            ),
+
+                            //Content
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ElementName = "IngameLabelText"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                        MagnifiableWidthHeight = [0.0, 0.0]
+                                        MagnifiableOffset = [0.0, 0.0]
+                                        AlignementToFather = [0.0, 0.0]
+                                        AlignementToAnchor = [0.0, 0.0]
+                                    )
+
+                                    TextSize = "Labels/Ville"
+                                    TextColor = "Labels/Ville"
+                                    TextToken = ""
+                                    TextDico = ~/LocalisationConstantes/dico_maps
+                                    TypefaceToken = "UIMainFont"
+
+                                    BigLineAction = ~/BigLineAction/CutByDots
+                                    TextStyle = "Default"
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        Alignment = UIText_Center
+                                        VerticalAlignment = UIText_VerticalCenter
+                                    )
+                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                                    VerticalFitStyle = ~/FitStyle/UserDefined
+                                )
+                            ),
+
+                            //Right separator
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/LabelOnMapLeftRightBorder
+                            ),
+                        ]
+
+                        BackgroundComponents = [
+                            TContainerDarkStyle
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                HidePointerEvents = false
+                                ShowLightTexture = false
+                            ),
+                        ]
+                    ),
+                ]
+            )
+        ),
+    ]
+)
+
+private LabelOnMapLeftRightBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [~/DistanceBetweenExternalAndInternalBorder + 7, 1.0]
+    )
+)
+

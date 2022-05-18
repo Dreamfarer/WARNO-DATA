@@ -1,0 +1,15 @@
+
+orderEvaluatorCollectionList is TOrderEvaluatorCollectionListDescriptor
+(
+    CollectionByName = MAP
+    [
+        (
+            'Tactic',
+            orderEvaluatorCollectionTactic
+        ),
+        (
+            'Strategic',
+            orderEvaluatorCollectionStrategic
+        )
+    ]
+)

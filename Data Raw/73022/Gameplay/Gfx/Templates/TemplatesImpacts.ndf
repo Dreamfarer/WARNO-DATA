@@ -1,0 +1,98 @@
+private template template_ImpactActionHappening
+[
+    Action
+]
+is TSequencingActionHappening
+(
+    ActionDescriptor = TSimultaneousAction
+    (
+        LocalVariables =
+        [
+            parPower is TPinnableValue(ExpectedType: float InitialValue = 5),
+            parPosition is TPinnableValue(ExpectedType: float3),
+            parDirection is TPinnableValue(ExpectedType: float3),
+            parRadiusPhysical is TPinnableValue(ExpectedType: float InitialValue = 0),
+            parRadiusSuppress is TPinnableValue(ExpectedType: float InitialValue = 0),
+            parTerrain is TPinnableValue(ExpectedType: float),
+        ]
+        Mobile = TMobileWithLocalRepereMatrixFactory
+        (
+            Position = parPosition
+            Orientation = -parDirection
+            InitialScale = 1
+            MaxScale = 1
+            UsePreviousMobileAsCenterOfScale = false
+            DoNotInheritCentroid = false
+            ForceIntroduceCentroid = true
+            CentroidIgnoreMobileVisibility = false
+            CentroidRelative = false
+            UseMobileScale = true
+        )
+        Actions =
+        [
+            TActionDescriptorScaleMobile_PixelConstant
+            (
+                Camera = $/M3D/Camera/CameraPrincipale
+                ScaleFactor = $/GFX/Everything/PixelConstantValuesSpecific/ImpactFactor
+                ScaleMinReferenceAltitude = $/GFX/Everything/PixelConstantValuesSpecific/ImpactMinReferenceAltitude
+                ScaleMax = $/GFX/Everything/PixelConstantValuesSpecific/ImpactScaleMax
+                ScaleOption = $/GUIOption/UnitScalingEnabled
+
+                PeriodInFrames = 1
+                DurationInSec = 20
+                SkipWhenTimeServerPaused = false
+            ),
+            TActionCall
+            (
+                Action = <Action>
+
+                NamedParams = MAP[
+                    ('parPosition', [0, 0, 0]),
+                    ('parPower', parPower),
+                    ('parDirection', [1,0,0]),
+                    ('parRadiusPhysical', parRadiusPhysical),
+                    ('parRadiusSuppress', parRadiusSuppress),
+                    ('parTerrain', parTerrain),
+                ]
+            )
+        ]
+    )
+)
+
+template ImpactConnector
+[
+    Action1,
+    Action2 = nil,
+    Action3 = nil,
+    Action4 = nil,
+    Action5 = nil,
+    Action6 = nil,
+    Action7 = nil,
+    Action8 = nil,
+    Action9 = nil,
+    Action10 = nil,
+    Action11 = nil,
+    Action12 = nil,
+    Action13 = nil,
+    Action14 = nil,
+    Action15 = nil,
+]
+is TRandomHappening
+(
+    Alternatives =
+    [ template_ImpactActionHappening( Action = <Action1> ) ]
+    + (<Action2> == nil ? [] : [ template_ImpactActionHappening( Action = <Action2> ) ] )
+    + (<Action3> == nil ? [] : [ template_ImpactActionHappening( Action = <Action3> ) ] )
+    + (<Action4> == nil ? [] : [ template_ImpactActionHappening( Action = <Action4> ) ] )
+    + (<Action5> == nil ? [] : [ template_ImpactActionHappening( Action = <Action5> ) ] )
+    + (<Action6> == nil ? [] : [ template_ImpactActionHappening( Action = <Action6> ) ] )
+    + (<Action7> == nil ? [] : [ template_ImpactActionHappening( Action = <Action7> ) ] )
+    + (<Action8> == nil ? [] : [ template_ImpactActionHappening( Action = <Action8> ) ] )
+    + (<Action9> == nil ? [] : [ template_ImpactActionHappening( Action = <Action9> ) ] )
+    + (<Action10> == nil ? [] : [ template_ImpactActionHappening( Action = <Action10> ) ] )
+    + (<Action11> == nil ? [] : [ template_ImpactActionHappening( Action = <Action11> ) ] )
+    + (<Action12> == nil ? [] : [ template_ImpactActionHappening( Action = <Action12> ) ] )
+    + (<Action13> == nil ? [] : [ template_ImpactActionHappening( Action = <Action13> ) ] )
+    + (<Action14> == nil ? [] : [ template_ImpactActionHappening( Action = <Action14> ) ] )
+    + (<Action15> == nil ? [] : [ template_ImpactActionHappening( Action = <Action15> ) ] )
+)

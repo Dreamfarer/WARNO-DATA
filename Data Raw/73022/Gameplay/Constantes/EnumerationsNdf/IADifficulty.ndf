@@ -1,0 +1,73 @@
+// A maintenir synchro avec Enumerations/IADifficulty.ndf
+// A maintenir synchro avec Data/Python/Eugen/leveldesign_specific/enum_ia_difficulty.py
+
+IADifficultyNdfEnum is EIADifficulty
+(
+    Values = [
+        "NoDifficulty",
+        "VeryEasy",
+        "Easy",
+        "Medium",
+        "Hard",
+        "VeryHard",
+        "Hardest",
+    ]
+)
+
+IAListConfig is TIADifficultyListConfiguration
+(
+    IANoDifficulty = IADifficulty/NoDifficulty
+    IAAnyDifficulty = IADifficulty/AnyDifficulty
+    DefaultIADifficulty = IADifficulty/Normal
+    IADifficultyList = MAP
+    [
+        (
+            IADifficulty/TresFacile,
+            TIADifficultyConfiguration
+            (
+                IAName = 'AI_VEASY'
+                IADifficultyName = 'AB_AI_0'
+            )
+        ),
+        (
+            IADifficulty/Facile,
+            TIADifficultyConfiguration
+            (
+                IAName = 'AI_EASY'
+                IADifficultyName = 'AB_AI_1'
+            )
+        ),
+        (
+            IADifficulty/Normal,
+            TIADifficultyConfiguration
+            (
+                IAName = 'AI_MEDIUM'
+                IADifficultyName = 'AB_AI_2'
+            )
+        ),
+        (
+            IADifficulty/Difficile,
+            TIADifficultyConfiguration
+            (
+                IAName = 'AI_HARD'
+                IADifficultyName = 'AB_AI_3'
+            )
+        ),
+        (
+            IADifficulty/TresDifficile,
+            TIADifficultyConfiguration
+            (
+                IAName = 'AI_VHARD'
+                IADifficultyName = 'AB_AI_4'
+            )
+        ),
+        (
+            IADifficulty/PlusDifficile,
+            TIADifficultyConfiguration
+            (
+                IAName = 'AI_HARDEST'
+                IADifficultyName = 'AB_AI_5'
+            )
+        ),
+    ]
+)

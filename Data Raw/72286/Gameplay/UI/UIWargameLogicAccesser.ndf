@@ -1,0 +1,7 @@
+
+logicAccesser is TSpecificIALogicAccesser
+(
+    InGameLogicIATo3D       = TCommonGameplayLogicIATo3D(LogicManagerHandler = $/UI/LogicManagers/InGameLogicManagerHandler)
+    StrategicLogicIATo3D    = TCommonGameplayLogicIATo3D(LogicManagerHandler = $/UI/LogicManagers/StrategicLogicManagerHandler)
+    ShowRoomLogicIATo3D     = TCommonGameplayLogicIATo3D(LogicManagerHandler = $/UI/LogicManagers/ShowRoomLogicManagerHandler)
+)

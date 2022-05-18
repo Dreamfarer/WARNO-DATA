@@ -1,0 +1,21 @@
+// Terrains autorisés pour la construction de défenses
+export AllowedTerrainsTypeForDefense is ETerrainType/Default
+    | ETerrainType/StrategicRalentisseur
+    | ETerrainType/ForetLegere
+
+// Les TDefensePlacementConstraintDescriptor réutilisables
+export DefensePlacementConstraint_IsInPlayableZone is TDefensePlacementConstraint_IsInPlayableZone(ErrorMsg = "DEFPC_PLZO")
+export DefensePlacementConstraint_IsInDeploymentZone is TDefensePlacementConstraint_IsInDeploymentZone(ErrorMsg = "DEFPC_DPZO")
+export DefensePlacementConstraint_NoSelfIntersect is TDefensePlacementConstraint_NoSelfIntersect(ErrorMsg = "DEFPC_SINT")
+export DefensePlacementConstraint_AnglesInValidRange is TDefensePlacementConstraint_AnglesInValidRange(ErrorMsg = "DEFPC_AIVR")
+export DefensePlacementConstraint_MinimumLength is TDefensePlacementConstraint_MinimumLength(ErrorMsg = "DEFPC_MLEN")
+export DefensePlacementConstraint_CheckAllowedTerrain is TDefensePlacementConstraint_CheckAllowedTerrain(ErrorMsg = "DEFPC_ATER")
+export DefensePlacementConstraint_EnoughAvailableUnits is TDefensePlacementConstraint_EnoughAvailableUnits(ErrorMsg = "DEFPC_EAUN")
+export DefensePlacementConstraint_EnoughCurrency is TDefensePlacementConstraint_EnoughCurrency(ErrorMsg = "NOT_EMONEY")
+export DefensePlacementConstraint_TerrainDrop is TDefensePlacementConstraint_TerrainDrop
+(
+    ErrorMsg = "DEFPC_TDRO"
+    WorldFloorProxy = $/M3D/Scene/WorldFloorForIAProxy
+    LineStep = 10.0
+    MaxHeightDiff = 50.0
+)

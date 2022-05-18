@@ -1,0 +1,19 @@
+export ModelFile_M35_supply_US is 'GameData:/Assets/3D/Units/US/Vehicule/M35_Supply/M35_Supply.Ase2NdfBin'
+
+Modele_M35_supply_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M35_supply_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M35_supply_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/M35_Supply_MID/M35_Supply_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M35_supply_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Vehicule/LODS/M35_Supply_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

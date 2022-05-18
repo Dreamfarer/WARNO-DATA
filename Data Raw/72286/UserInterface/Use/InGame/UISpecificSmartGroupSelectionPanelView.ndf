@@ -1,0 +1,451 @@
+//----------------------------------------------------
+
+SmartGroupPanelHeadList is BUCKListDescriptor
+(
+    ElementName = "SmartGroupPanelHeadList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    HasBackground = false
+    BackgroundBlockColorToken = "SD2_Noir"
+
+    FirstMargin = TRTTILength(Magnifiable = 4.0)
+    InterItemMargin = TRTTILength(Magnifiable = 1.0)
+    LastMargin = TRTTILength(Magnifiable = 2.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'GroupName'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 0.0]
+                )
+
+                TextPadding = TRTTILength4(Magnifiable = [10.0, 0.0, 0.0, 0.0])
+
+                ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                TextStyle = "Default"
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextColor       = "BlancEquipe"
+                TextSize        = "16"
+                TextToken       = "SGR_CUSTM"
+                TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                TypefaceToken   = "UIMainFont"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "NbUnits"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.0, 0.0]
+                    AlignementToAnchor = [0.0, 0.0]
+                )
+                TextPadding = TRTTILength4(Magnifiable = [10.0, 0.0, 0.0, 0.0])
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+
+                TextStyle = "Default"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextToken = "SGR_NBUNT"
+
+                TypefaceToken = "UISecondFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "Cyan"
+                TextSize = "14"
+            )
+        ),
+    ]
+)
+
+//----------------------------------------------------
+
+template SmartGroupActionButton
+[
+    ElementName : string,
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [75.0, 25.0]
+    ),
+    TextToken : string,
+    ReinforceBackgroundBlockColorToken : string = "BoutonTemps",
+    ReinforceBorderLineColorToken : string = "BoutonTemps",
+    IsTogglable : bool,
+    HasHintableArea : bool,
+    IsClippable : bool = true,
+] is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = <ComponentFrame>
+
+    HasBorder = false
+    IsTogglable = <IsTogglable>
+
+    IsClippable = <IsClippable>
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-4.0, -4.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Components =
+            [
+                PanelRoundedCorner
+                (
+                    Radius = 3
+                    BackgroundBlockColorToken = <ReinforceBackgroundBlockColorToken>
+                    BorderLineColorToken = <ReinforceBorderLineColorToken>
+                )
+            ]
+        ),
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TextToken = <TextToken>
+
+            TypefaceToken   = "UIMainFont"
+            BigLineAction = ~/BigLineAction/BalancedMultiline
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "ButtonHUD/Text2"
+            TextSize  = "12"
+        ),
+    ] +
+    (<HasHintableArea> ?
+        [
+            BUCKSpecificHintableArea
+            (
+                ElementName = <ElementName> + "HintableArea"
+
+                HintBodyToken = "SGR_RCOSB"
+            ),
+        ] : []
+    )
+)
+
+//----------------------------------------------------
+
+SmartGroupActions is BUCKGridDescriptor
+(
+    ElementName = "SmartGroupActions"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    MaxElementsPerDimension = [0, 2]
+
+    FirstElementMargin = TRTTILength2(Magnifiable = [10.0, 0.0])
+    InterElementMargin = TRTTILength2(Magnifiable = [1.0, 1.0])
+    LastElementMargin = TRTTILength2(Magnifiable = [10.0, 0.0])
+
+    GridElements = MAP
+    [
+        ( [0, 0], SmartGroupActionButton(ElementName = "ReinforceButton" TextToken = "SGR_REIN" IsTogglable = false HasHintableArea = true) ),
+        ( [0, 1], SmartGroupActionButton(ElementName = "DisolveButton" TextToken = "SGR_DISLV" IsTogglable = false HasHintableArea = false) ),
+        ( [1, 0], SmartGroupActionButton(ElementName = "RemoveUnitButton" TextToken = "SGR_REMOV" IsTogglable = true HasHintableArea = false) ),
+        ( [1, 1], SmartGroupActionButton(ElementName = "AddUnitButton" TextToken = "SGR_ADDU" IsTogglable = true HasHintableArea = false) ),
+    ]
+)
+
+//----------------------------------------------------
+
+SmartGroupDisolveSubActions is BUCKListDescriptor
+(
+    ElementName = "SmartGroupDisolveSubActions"
+
+    ComponentFrame = TUIFramePropertyRTTI()
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    InterItemMargin = TRTTILength(Magnifiable = 2.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = SmartGroupActionButton
+            (
+                ElementName = "DisolveOkButton"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [49.0, 32.0]
+                )
+
+                TextToken = "OK_BTN"
+                IsTogglable = false
+                HasHintableArea = false
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = SmartGroupActionButton
+            (
+                ElementName = "DisolveCancelButton"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [49.0, 32.0]
+                )
+
+                TextToken = "BTL_CANCL"
+                IsTogglable = false
+                HasHintableArea = false
+            )
+        ),
+    ]
+)
+
+//----------------------------------------------------
+
+SmartGroupLabelContainer is BUCKContainerDescriptor
+(
+    ElementName = "SmartGroupLabelContainerAndButton"
+    ComponentFrame = TUIFramePropertyRTTI()
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        SmartGroupActionButton
+        (
+            ElementName = "ReinforceLabelButton"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [75.0, 25.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 1.0]
+            )
+
+            ReinforceBackgroundBlockColorToken = "BoutonSelectionMultiple"
+            ReinforceBorderLineColorToken = "H2_bleu_2_40p"
+
+            TextToken = "SGR_REIN"
+            IsTogglable = false
+            HasHintableArea = true
+            IsClippable = false
+        ),
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI()
+            FitStyle = ~/ContainerFitStyle/FitToContent
+            ChildFitToContent = true
+
+            Components =
+            [
+                BUCKContainerDescriptor
+                (
+                    ElementName = "SmartGroupLabelContainer"
+                    ComponentFrame = TUIFramePropertyRTTI()
+                    FitStyle = ~/ContainerFitStyle/FitToContent
+                    ChildFitToContent = true
+                ),
+                BUCKContainerDescriptor
+                (
+                    ElementName = "ForegroundOverlay"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = "BoutonTemps"
+                )
+            ]
+        ),
+    ]
+)
+
+//----------------------------------------------------
+
+SmartGroupUnitGrid is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = 'ScrollingContainer'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToAnchor = [0.0, 1.0]
+        AlignementToFather = [0.0, 1.0]
+    )
+
+    ExternalScrollbar = false
+    HasVerticalScrollbar = true
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    FitToMaximumSize = TRTTILength2(Magnifiable = [1100.0, 83.0])
+
+    ScrollStepSize = [0.0, 10.0]
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [10.0, 0.0]
+        MagnifiableOffset = [-3.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKGridDescriptor
+        (
+            ElementName = "SmartGroupUnitGrid"
+
+            MaxElementsPerDimension = [6, 0]
+
+            FirstElementMargin = TRTTILength2(Magnifiable = [10.0, 0.0])
+            InterElementMargin = TRTTILength2( Magnifiable = [2.0, 2.0] )
+            LastElementMargin = TRTTILength2( Magnifiable = [10.0, 0.0] )
+        )
+    ]
+)
+
+//----------------------------------------------------
+
+template SmartGroupSelectionPanelMainPanel
+[
+    HasActionButtons : bool,
+
+] is BUCKListDescriptor
+(
+    ElementName = "SmartGroupSelectionPanelMainPanel"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 88.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    InterItemMargin = TRTTILength(Magnifiable = 0.0)
+
+    Elements =
+    (<HasActionButtons> ?
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = ~/SmartGroupActions
+            ),
+        ] : []
+    ) +
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/SmartGroupUnitGrid
+        ),
+    ]
+
+)
+
+//-------------------------------------------------------------------------------------
+
+template BUCKSpecificSmartGroupSelectionPanelMainComponentDescriptor
+[
+    HasActionButtons : bool,
+]
+ is BUCKListDescriptor
+(
+    ElementName = "SmartGroupSelectionPanelMainComponent"
+
+    ComponentFrame = TUIFramePropertyRTTI()
+
+    HidePointerEvents = true
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength(Magnifiable = 0.0)
+    InterItemMargin = TRTTILength(Magnifiable = 0.0)
+    LastMargin = TRTTILength(Magnifiable = 5.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = SmartGroupSelectionPanelMainPanel(HasActionButtons = <HasActionButtons>)
+        )
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner
+        (
+            BorderLineColorToken = "H2_bleu_2"
+            BackgroundBlockColorToken = "H2_bleu_2_60p"
+        ),
+        SmartGroupPanelHeadList
+    ]
+)
+
+//----------------------------------------------------
+
+template UISpecificSmartGroupSelectionPanelViewDescriptor
+[
+    MainComponentContainerUniqueName : string,
+    HasActionButtons : bool,
+] is TUISpecificSmartGroupSelectionPanelViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificSmartGroupSelectionPanelMainComponentDescriptor
+    (
+        HasActionButtons = <HasActionButtons>
+    )
+
+    MainComponentContainerUniqueName = <MainComponentContainerUniqueName> // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    SmartGroupDisolveSubActionList = (<HasActionButtons> ? ~/SmartGroupDisolveSubActions : nil)
+    SmartGroupLabelContainer = ~/SmartGroupLabelContainer
+
+    UnitLabelResources = ~/SpecificInGameUnitLabelResources
+    LabelMagnifier = 0.8
+)

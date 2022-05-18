@@ -1,0 +1,86 @@
+
+//------------------------------------------------------------------------------
+//---- Constantes --------------------------------------------------------------
+
+private LEFT_TO_RIGHT is 0
+private RIGHT_TO_LEFT is 1
+private TOP_TO_BOTTOM is 2
+private BOTTOM_TO_TOP is 3
+
+//------------------------------------------------------------------------------
+//---- Flèche indiquant les endroits de spawn des unités de renfort ------------
+
+export GfxReinforcementLocation is TGfxDescriptorPath
+(
+    VisibilityRange       = $/GFX/Visibility/AllRanges/Zoom12bis
+    Color                 = [  0, 255,   0, 1]
+    PlaqueSurLeSol        = true
+    AngularPrecision      = 20
+    VertexCountPerSection = 3
+    RenderLayerSelector = TRenderLayerSelector(RenderLayerName='Calque_Fleche_GD')
+    Material              = $/M3D/Shader/MaterialBezierLine_Bichrome
+    Width                 = 1500
+    ArrowLength           = 2500
+    ArrowWidth            = 2500
+    Texture               = ~/TextureToutBlanc
+    FadeOffDuration       = 0
+    GrowingSpeed          = 0
+    GrowingDuration       = 0
+    EndPathShapeMode      = EndPathShapeMode_WideArrow
+    SizeMultiplierHelper  = PathAndArrowSizeMultiplierHelper
+    GFxInstanceDirectRenderHandler = ~/directRenderHandler_default
+
+    OpacityControlByFloat   = $/M3D/Shader/AreaFillOpacity
+)
+
+//------------------------------------------------------------------------------
+//---- Flèche indiquant les couloirs aériens                        ------------
+
+export GfxAerialCorridorLocation is TGfxDescriptorPath
+(
+    VisibilityRange       = $/GFX/Visibility/AllRanges/Zoom12bis
+    Color                 = [  0, 255,   0, 64]
+    PlaqueSurLeSol        = true
+    AngularPrecision      = 20
+    VertexCountPerSection = 3
+    RenderLayerSelector = TRenderLayerSelector(RenderLayerName='Calque_Fleche_GD')
+    Material              = $/M3D/Shader/MaterialBezierLine_Bichrome
+    Width                 = 1000
+    ArrowLength           = 1000
+    ArrowWidth            = 500
+    Texture               = ~/TextureToutBlanc
+    FadeOffDuration       = 0
+    GrowingSpeed          = 0
+    GrowingDuration       = 0
+    EndPathShapeMode      = EndPathShapeMode_NarrowArrow
+    SizeMultiplierHelper  = PathAndArrowSizeMultiplierHelper
+    GFxInstanceDirectRenderHandler = ~/directRenderHandler_default
+
+    OpacityControlByFloat   = $/M3D/Shader/AreaFillOpacity
+)
+
+//------------------------------------------------------------------------------
+//---- Flèche indiquant les couloirs maritimes                        ------------
+
+export GfxMaritimeCorridorLocation is TGfxDescriptorPath
+(
+    VisibilityRange       = $/GFX/Visibility/AllRanges/Zoom12bis
+    Color                 = [  0, 255,   0, 64]
+    PlaqueSurLeSol        = true
+    AngularPrecision      = 20
+    VertexCountPerSection = 3
+    RenderLayerSelector = TRenderLayerSelector(RenderLayerName='Calque_Fleche_GD')
+    Material              = $/M3D/Shader/MaterialBezierLine_Bichrome
+    Width                 = 1500
+    ArrowLength           = 2500
+    ArrowWidth            = 2500
+    Texture               = ~/TextureToutBlanc
+    FadeOffDuration       = 0
+    GrowingSpeed          = 0
+    GrowingDuration       = 0
+    EndPathShapeMode      = EndPathShapeMode_WideArrow
+    SizeMultiplierHelper  = PathAndArrowSizeMultiplierHelper
+    GFxInstanceDirectRenderHandler = ~/directRenderHandler_default
+
+    OpacityControlByFloat   = $/M3D/Shader/AreaFillOpacity
+)

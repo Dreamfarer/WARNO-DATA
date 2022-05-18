@@ -1,0 +1,132 @@
+// private AnimationPath_ATteam_RCL_M40A1_RFA is 'GameData:/Assets/3D/Units/RFA/Canon/TOW_40mm/'
+
+// // Test avec le seul mesh d'infanterie qui soit compatible avec le nouveau squelette.
+// private MeshDescriptor_Servant_G is TResourceMultiMaterialMeshWithLod
+// (
+//     FileName = 'GameData:/Assets/3D/Units/US/Infanterie/Test_Soldier/Fulda_Soldier.Ase2NdfBin'
+//     CivMask = CivMask/Common
+// )
+
+// private MeshDescriptor_Servant_D is TResourceMultiMaterialMeshWithLod
+// (
+//     FileName = 'GameData:/Assets/3D/Units/US/Infanterie/Test_Soldier/Fulda_Soldier.Ase2NdfBin'
+//     CivMask = CivMask/Common
+// )
+
+
+// Gfx_ATteam_RCL_M40A1_RFA_Tireur_G is TemplateDepictionPose
+// (
+//     MeshDescriptorHigh = MeshDescriptor_Servant_G
+//     MeshDescriptorLow  = MeshDescriptor_Servant_G
+//     Selector = SpecificSittingServantDepictionSelector
+//     Animation = GunnerSittingDown
+// )
+
+// Gfx_ATteam_RCL_M40A1_RFA_Tireur_D is TemplateDepictionPose
+// (
+//     MeshDescriptorHigh = MeshDescriptor_Servant_D
+//     MeshDescriptorLow  = MeshDescriptor_Servant_D
+//     Selector = SpecificSittingServantDepictionSelector
+//     Animation = GunnerSittingDown
+// )
+
+Gfx_ATteam_RCL_M40A1_RFA_Servant_G is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_G_RFA
+    MeshDescriptorLow  = MeshDescriptor_Servant_G_RFA
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = DepictionOperator_AnimationServant_Cannon_Left
+)
+
+Gfx_ATteam_RCL_M40A1_RFA_Servant_D is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_D_RFA
+    MeshDescriptorLow  = MeshDescriptor_Servant_D_RFA
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = DepictionOperator_AnimationServant_Cannon_Right
+)
+
+ATteam_RCL_M40A1_RFA_Alternatives is [
+    DepictionDescriptor_LOD_High( MeshDescriptor = Modele_ATteam_RCL_M40A1_RFA ),
+    DepictionDescriptor_LOD_Mid( MeshDescriptor = Modele_ATteam_RCL_M40A1_RFA_MID ),
+    DepictionDescriptor_LOD_Low( MeshDescriptor = Modele_ATteam_RCL_M40A1_RFA_LOW DisabledOperators = ['tourelle4'] ),
+]
+
+Gfx_ATteam_RCL_M40A1_RFA is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = CommonVehicleScaler
+        Selector = SpecificVehicleDepictionSelector
+        DepictionAlternatives = ATteam_RCL_M40A1_RFA_Alternatives
+
+        Operators = [
+            DepictionOperator_Reset_Generic,
+            DepictionOperator_DamageRatio_Generic,
+            // DepictionOperator_AnimationDeployable
+            // (
+            //     DeployAnimation = SkeletalAnimationTemplate(FileName = 'TOW_40mm_Deploy.Ase2NdfBin' Path = AnimationPath_ATteam_RCL_M40A1_RFA PlayInLoop = false)
+            //     FoldAnimation = SkeletalAnimationTemplate(FileName = 'TOW_40mm_Fold.Ase2NdfBin' Path = AnimationPath_ATteam_RCL_M40A1_RFA PlayInLoop = false)
+            //     DeployFromMoveTime = 1.5
+            //     DeployFromTurnTime = 1.5
+            //     FoldForMoveTime = 1.5
+            //     FoldForTurnTime = 1.5
+            // ),
+            // DepictionOperator_Turret_1_Aim,
+            // DepictionOperator_Propulsion_Wheels_Generic,
+            DepictionOperator_Carriable_Mortar,
+            DepictionOperator_ShadowPointCloudProvider,
+        ]
+
+        Actions = MAP []
+                + Weapons_ATteam_RCL_M40A1_RFA
+                + DepictionAction_Stress_And_Wrecked
+
+        SubDepictions = [
+            // TSubDepiction( Anchor = 'tireur_d' Depiction = Gfx_ATteam_RCL_M40A1_RFA_Tireur_D ),
+            // TSubDepiction( Anchor = 'tireur_g' Depiction = Gfx_ATteam_RCL_M40A1_RFA_Tireur_G ),
+            TSubDepiction( Anchor = 'servant_g' Depiction = Gfx_ATteam_RCL_M40A1_RFA_Servant_G ),
+            TSubDepiction( Anchor = 'servant_d' Depiction = Gfx_ATteam_RCL_M40A1_RFA_Servant_D ),
+        ]
+    )
+)
+
+
+// stub showroom le temps qu'on dÃƒÂ©cide ce qu'on veux afficher
+Gfx_ATteam_RCL_M40A1_RFA_Servant_G_Showroom is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_G_RFA
+    MeshDescriptorLow  = MeshDescriptor_Servant_G_RFA
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = ServantATGMLeftIdle)
+)
+
+// stub showroom le temps qu'on dÃƒÂ©cide ce qu'on veux afficher
+Gfx_ATteam_RCL_M40A1_RFA_Servant_D_Showroom is TemplateDepictionServant
+(
+    MeshDescriptorHigh = MeshDescriptor_Servant_D_RFA
+    MeshDescriptorLow  = MeshDescriptor_Servant_D_RFA
+    Selector = SpecificAlwaysOnFootServantDepictionSelector
+    AnimationOperator = TCosmeticFreezeSkeletalAnimationOperatorDesc(Animation = ServantATGMRightIdle)
+)
+
+// stub showroom le temps qu'on dÃƒÂ©cide ce qu'on veux afficher
+Gfx_ATteam_RCL_M40A1_RFA_Showroom is ShowroomDepictionTemplate
+(
+    MeshDescriptor = Modele_ATteam_RCL_M40A1_RFA
+    Operators =
+    [
+        DepictionOperator_Reset_Generic,
+    ]
+    SubDepictions =
+    [
+        TSubDepiction( Anchor = 'servant_g' Depiction = Gfx_ATteam_RCL_M40A1_RFA_Servant_G_Showroom ),
+        TSubDepiction( Anchor = 'servant_d' Depiction = Gfx_ATteam_RCL_M40A1_RFA_Servant_D_Showroom ),
+    ]
+)
+
+GhostDepiction_ATteam_RCL_M40A1_RFA is GhostVehicleDepictionTemplate
+(
+    Selector = SpecificVehicleDepictionSelector
+    Alternatives = ATteam_RCL_M40A1_RFA_Alternatives
+)

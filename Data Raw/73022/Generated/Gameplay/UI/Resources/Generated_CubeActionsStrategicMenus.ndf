@@ -1,0 +1,65 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export CubeAction_Menu_Ordres_Pawn is TCubeActionMenuDescriptor
+(
+    CubeActionName               = "Ordres_Pawn"
+    CubeActionContent            = MAP
+    [
+        (
+            0,
+            [
+                ~/CubeAction_Strategic_GroundDeny,
+                ~/CubeAction_Strategic_AirplaineAirDeny,
+                ~/CubeAction_Strategic_FortifyAntiAir,
+            ]
+        ),
+        (
+            1,
+            [
+                ~/CubeAction_Strategic_AirplaineReco,
+            ]
+        ),
+        (
+            2,
+            [
+                ~/CubeAction_Strategic_Bombardment,
+            ]
+        ),
+    ]
+)
+
+export CubeAction_Menu_Ordres_Pawn_old is TCubeActionMenuDescriptor
+(
+    CubeActionName               = "Ordres_Pawn_old"
+    CubeActionContent            = MAP
+    [
+        (
+            0,
+            [
+                ~/CubeAction_Strategic_GroundDeny,
+                ~/CubeAction_Strategic_AirplaineAirDeny,
+                ~/CubeAction_Strategic_FortifyAntiAir,
+            ]
+        ),
+        (
+            1,
+            [
+                ~/CubeAction_Strategic_AirplaineReco,
+            ]
+        ),
+        (
+            2,
+            [
+                ~/CubeAction_Strategic_Bombardment,
+            ]
+        ),
+        (
+            3,
+            [
+                ~/CubeAction_Strategic_Fortify,
+            ]
+        ),
+    ]
+)
+

@@ -1,0 +1,10 @@
+// Enum EStrategicPatternFeature // a maintenir synchro avec EUnitPower
+EStrategicPatternFeature is TBaseClass
+(
+    Assault   is 1
+    Armored   is 2
+    Artillery is 4
+    PhaseA    is 256 //Decalage de 8 bits + 1 par phase
+    PhaseB    is 512
+    PhaseC    is 1024
+)
