@@ -10,6 +10,8 @@ def getReference(keyword):
         return descriptor.weapon
     elif keyword == "Ammunition":
         return descriptor.ammo
+    elif keyword == "DeckDescriptor":
+        return descriptor.deck
     
 def writeToFile(content, folder, name, version):
 
@@ -25,7 +27,7 @@ def writeToFile(content, folder, name, version):
     file = open(folderPath, "w")
     file.write(content)
 
-def table(database, tableName, inputArray, version):
+def table(inputArray, version, filename, database, tableName):
     
     createTableString = "CREATE TABLE `" + database + "`.`" + tableName + "` (\n  `id` INT NOT NULL AUTO_INCREMENT,\n"
 
@@ -37,9 +39,9 @@ def table(database, tableName, inputArray, version):
             createTableString += "  `" + inputArray[1][index+1] + "` FLOAT(15) NULL,\n"
 
         createTableString += "  PRIMARY KEY (`id`))\nENGINE = InnoDB\nDEFAULT CHARACTER SET = utf8\nCOLLATE = utf8_bin;"
-        writeToFile(createTableString, "mysql", "createTable_" + "DamageResistance.txt", version)
+        writeToFile(createTableString, "mysql", "createTable_" + filename + ".txt", version)
         return
-    
+
     referenceArray = getReference(inputArray[0][0][0])
 
     for index in range(len(referenceArray)):
@@ -56,14 +58,14 @@ def table(database, tableName, inputArray, version):
             createTableString += "  `" + referenceArray[index][0] + "` JSON NULL,\n"
 
     createTableString += "  PRIMARY KEY (`id`))\nENGINE = InnoDB\nDEFAULT CHARACTER SET = utf8\nCOLLATE = utf8_bin;"
-    writeToFile(createTableString, "mysql", "createTable_" + inputArray[0][0][0] + ".txt", version)
+    writeToFile(createTableString, "mysql", "createTable_" + filename + ".txt", version)
     
-def export(inputArray, version):
+def export(inputArray, version, filename):
     
     #DamageResistance is special
     if inputArray[0] == "DamageResistance":
-        writeToFile(inputArray[2], "csv", "DamageResistance.csv", version)
-        return
+        writeToFile(inputArray[2], "csv", filename + ".csv", version)
+        return inputArray
 
     outputRow = ""
     
@@ -86,11 +88,13 @@ def export(inputArray, version):
                 outputRow += "\"" + str(inputArray[index][columns][1]) + "\";"
             elif referenceArray[columns][2] == list:
                 for x in range(len(inputArray[index][columns][1])):
-                    inputArray[index][columns][1][x] = str(inputArray[index][columns][1][x])
+                    inputArray[index][columns][1][x] = inputArray[index][columns][1][x]
                 outputRow += "\"" + str(inputArray[index][columns][1]) + "\";"
             else:
                 outputRow += str(inputArray[index][columns][1]) + ";"
 
         outputRow = outputRow[:-1] + "\n"
+        
+    writeToFile(outputRow, "csv", filename + ".csv", version)
 
-    writeToFile(outputRow, "csv", inputArray[0][0][0] + ".csv", version)
+    return inputArray

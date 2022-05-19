@@ -62,9 +62,12 @@ def variable(text, keyword):
     if index == -1:
         return None
 
+    if keyword[0] == "DeckDescriptor":
+        captured = text[index:text.find("\n", index)-1]
+        return captured
+
     #If keyword itself is present in the value 
     if keyword[0] == "WeaponDescriptor" and keyword[1] == "WeaponDescriptor":
-        keywordlength = len(keyword[1])
         captured = text[index:text.find("\n", index)]
         return captured
     
@@ -76,7 +79,7 @@ def variable(text, keyword):
         return captured[1:]
         
     #If value of keyword is NOT an array
-    if keyword[0] != "RoleList" and keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken":
+    if keyword[0] != "RoleList" and keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier":
         keywordlength = len(keyword[1])
         captured = text[index+keywordlength:text.find("\n", index+keywordlength)]
         captured = captured.translate({ord('\''):None})
@@ -95,22 +98,32 @@ def variable(text, keyword):
         captured = captured.translate({ord('\''):None})
         captured = captured.translate({ord(' '):None})
         captured = captured.translate({ord('\n'):None})
+        captured = captured.translate({ord('/'):None})
+        captured = captured.translate({ord('~'):None})
 
         #If array always has one element
-        if keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo"and keyword[0] != "TraitsToken":
+        if keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier":
             return helper.stringToType(captured.translate({ord(','):None}))
 
         #Seperate the elements by looking at ","
         captureArrayString = ""
         captureArray = []
         for i in range(len(captured)):
-            if captured[i] == ",": #We need a dedicated return type function which gives either integer, float, string or boolean back
+            
+            if captured[i] == ",":
+                captureArray.append(helper.stringToType(captureArrayString))
+                captureArrayString = ""
+            elif i+1 == len(captured):
+                captureArrayString += captured[i]
                 captureArray.append(helper.stringToType(captureArrayString))
                 captureArrayString = ""
             else:
                 captureArrayString += captured[i]
-                
-        return captureArray #Returns array. Maybe it needs quotation marks to be a JSON array.
+
+        if captureArray == []:
+            return None
+        else:
+            return captureArray 
 
     #If content is specific
     if captured == "nil":
