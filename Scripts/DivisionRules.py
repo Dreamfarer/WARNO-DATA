@@ -2,7 +2,7 @@ import copy
 import descriptor
 import analyze
 
-def extractWeaponDescriptor(subStr, level, index):
+def extractDivisionRules(subStr, level):
 
     counterChar = 0
     counterUnit = 0
@@ -11,49 +11,38 @@ def extractWeaponDescriptor(subStr, level, index):
     while counterChar < len(subStr):
         match level:
             case 0: 
-                if subStr[counterChar:counterChar+23] == "export WeaponDescriptor" or counterChar == len(subStr)-1:
+                if subStr[counterChar:counterChar+16] == "Descriptor_Deck_" or counterChar == len(subStr)-1:
                     if counterUnit > 0:
 
-                        WeaponDescriptor.append(copy.deepcopy(descriptor.weapon)) #Add a template copy
+                        #Record deck name
 
-                        WeaponDescriptor[index[0]][0] = [WeaponDescriptor[index[0]][0][0], WeaponDescriptor[index[0]][0][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][0])]
-                        WeaponDescriptor[index[0]][1] = [WeaponDescriptor[index[0]][1][0], WeaponDescriptor[index[0]][1][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][1])]
-                        WeaponDescriptor[index[0]][2] = [WeaponDescriptor[index[0]][2][0], WeaponDescriptor[index[0]][2][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][2])]
-                        WeaponDescriptor[index[0]][3] = [WeaponDescriptor[index[0]][3][0], WeaponDescriptor[index[0]][3][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][3])]
-                        extractWeaponDescriptor(temporaryStr, level + 1, index)
+                        print("Bla")
                         
-                        for listIndex in range(len(WeaponDescriptor[index[0]])):
-                            WeaponDescriptor[index[0]][listIndex] = [WeaponDescriptor[index[0]][listIndex][0], WeaponDescriptor[index[0]][listIndex][2]]
+                        #WeaponDescriptor.append(copy.deepcopy(descriptor.weapon)) #Add a template copy
+
+                        #WeaponDescriptor[index[0]][0] = [WeaponDescriptor[index[0]][0][0], WeaponDescriptor[index[0]][0][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][0])]
+                        #WeaponDescriptor[index[0]][1] = [WeaponDescriptor[index[0]][1][0], WeaponDescriptor[index[0]][1][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][1])]
+                        #WeaponDescriptor[index[0]][2] = [WeaponDescriptor[index[0]][2][0], WeaponDescriptor[index[0]][2][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][2])]
+                        #WeaponDescriptor[index[0]][3] = [WeaponDescriptor[index[0]][3][0], WeaponDescriptor[index[0]][3][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][3])]
+                        extractDivisionRules(temporaryStr, level + 1)
                         
-                        index[1] = 1
-                        index[0] += 1
+                        #for listIndex in range(len(WeaponDescriptor[index[0]])):
+                        #    WeaponDescriptor[index[0]][listIndex] = [WeaponDescriptor[index[0]][listIndex][0], WeaponDescriptor[index[0]][listIndex][2]]
 
                     temporaryStr = ""
                     counterUnit += 1
             case 1:
-                if subStr[counterChar:counterChar+24] == "TTurretTwoAxisDescriptor" or subStr[counterChar:counterChar+21] == "TTurretWeaponDescriptor" or subStr[counterChar:counterChar+27] == "TTurretInfanterieDescriptor" or counterChar == len(subStr)-1:
+                if subStr[counterChar:counterChar+14] == "TDeckUniteRule" or counterChar == len(subStr)-1:
                     if counterUnit > 0:
-                        addToIndex = 4 if index[1] == 1 else 17 + 7 *(index[1] -2)
-                        WeaponDescriptor[index[0]][0+addToIndex] = [WeaponDescriptor[index[0]][0+addToIndex][0], WeaponDescriptor[index[0]][0+addToIndex][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][0+addToIndex])]
-                        WeaponDescriptor[index[0]][1+addToIndex] = [WeaponDescriptor[index[0]][1+addToIndex][0], WeaponDescriptor[index[0]][1+addToIndex][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][1+addToIndex])]
-                        WeaponDescriptor[index[0]][2+addToIndex] = [WeaponDescriptor[index[0]][2+addToIndex][0], WeaponDescriptor[index[0]][2+addToIndex][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][2+addToIndex])]
-                        WeaponDescriptor[index[0]][3+addToIndex] = [WeaponDescriptor[index[0]][3+addToIndex][0], WeaponDescriptor[index[0]][3+addToIndex][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][3+addToIndex])]
-                        index[1] = index[1] + 1
-                        extractWeaponDescriptor(temporaryStr, level + 1, index)
-                        index[2] = 1
 
-                    temporaryStr = ""
-                    counterUnit += 1
-            case 2:
-                if subStr[counterChar:counterChar+24] == "TMountedWeaponDescriptor" or counterChar == len(subStr)-1:
-                    if counterUnit > 0:
-                        addToIndex = 4 if index[1] == 2 else 17 + 7 *(index[1] -3)
-                        addToIndex = addToIndex + 3 * (index[2])
-                        WeaponDescriptor[index[0]][1+addToIndex] = [WeaponDescriptor[index[0]][1+addToIndex][0], WeaponDescriptor[index[0]][1+addToIndex][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][1+addToIndex])]
-                        WeaponDescriptor[index[0]][2+addToIndex] = [WeaponDescriptor[index[0]][2+addToIndex][0], WeaponDescriptor[index[0]][1+addToIndex][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][2+addToIndex])]
-                        WeaponDescriptor[index[0]][3+addToIndex] = [WeaponDescriptor[index[0]][3+addToIndex][0], WeaponDescriptor[index[0]][1+addToIndex][1], analyze.variable(temporaryStr, WeaponDescriptor[index[0]][3+addToIndex])]
-                        index[2] = index[2] + 1
+                        #Record every other variable
 
+                        DivisionRules.append(copy.deepcopy(descriptor.deck))
+
+                        for listIndex in range(len(DivisionRules[-1])):
+                            
+                            print(analyze.variable(temporaryStr, DivisionRules[-1][listIndex]))
+                        
                     temporaryStr = ""
                     counterUnit += 1
 
@@ -62,10 +51,12 @@ def extractWeaponDescriptor(subStr, level, index):
 
 def extract(filePath):
     
-    global WeaponDescriptor
-    WeaponDescriptor = []
+    global DivisionRules
+    DivisionRules = []
     
-    extractWeaponDescriptor(open(filePath,"r").read(), 0, [0, 1, 1])
+    extractDivisionRules(open(filePath,"r").read(), 0)
     
-    return WeaponDescriptor
+    return DivisionRules
+
+extract("data/DivisionRules.ndf")
     

@@ -166,3 +166,13 @@ ammo = [
     ["FlightTimeForSpeed", "FlightTimeForSpeed", float],
     ["DistanceForSpeed", "DistanceForSpeed", float] #Metre 
 ]
+
+deck = [
+    ["DeckDescriptor", "Descriptor_Deck_", str], #Keyword itself is the variable, needs to be inserted into multiple rows
+    ["UnitDescriptor", "UnitDescriptor", str], #OK
+    ["AvailableWithoutTransport", "AvailableWithoutTransport", bool], #OK
+    ["AvailableTransportList", "AvailableTransportList", list], #String Array #NOT
+    ["MaxPackNumber", "MaxPackNumber", int], #OK
+    ["NumberOfUnitInPack", "NumberOfUnitInPack ", int], #OK
+    ["NumberOfUnitInPackXPMultiplier", "NumberOfUnitInPackXPMultiplier", list] #Float Array
+]
