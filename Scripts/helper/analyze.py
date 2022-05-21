@@ -1,4 +1,25 @@
-import helper
+####################################################################
+# Convert 0 to int, 0.0 to float and False to 1
+####################################################################
+def stringToType(string):
+
+    #Boolean
+    if string == "True":
+        return 1
+    elif string == "False":
+        return 0
+
+    #Must be either float or string
+    if string.find(".") != -1:
+        try:
+            return float(string)
+        except:
+            return string
+    try:
+        return int(string)
+    except:
+        return string
+
 
 ####################################################################
 # RETRIEVE A VARIABLE FROM A readFile
@@ -104,7 +125,7 @@ def variable(text, keyword):
 
         #If array always has one element
         if keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier" and keyword[0] != "Orders":
-            return helper.stringToType(captured.translate({ord(','):None}))
+            return stringToType(captured.translate({ord(','):None}))
 
         #Seperate the elements by looking at ","
         captureArrayString = ""
@@ -112,11 +133,11 @@ def variable(text, keyword):
         for i in range(len(captured)):
             
             if captured[i] == ",":
-                captureArray.append(helper.stringToType(captureArrayString))
+                captureArray.append(stringToType(captureArrayString))
                 captureArrayString = ""
             elif i+1 == len(captured):
                 captureArrayString += captured[i]
-                captureArray.append(helper.stringToType(captureArrayString))
+                captureArray.append(stringToType(captureArrayString))
                 captureArrayString = ""
             else:
                 captureArrayString += captured[i]
@@ -164,4 +185,4 @@ def variable(text, keyword):
             return captured[:-5]
 
     #Return value in it's correct type
-    return helper.stringToType(captured)
+    return stringToType(captured)

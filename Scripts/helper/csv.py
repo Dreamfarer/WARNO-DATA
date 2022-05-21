@@ -1,19 +1,6 @@
-import descriptor
 import os
 
 exportDirectory = ""
-
-def getReference(keyword):
-    if keyword == "UniteDescriptor":
-        return descriptor.unit
-    elif keyword == "WeaponDescriptor":
-        return descriptor.weapon
-    elif keyword == "Ammunition":
-        return descriptor.ammo
-    elif keyword == "DeckDescriptor":
-        return descriptor.deck
-    elif keyword == "OrderAvailability":
-        return descriptor.order
     
 def writeToFile(content, folder, name, version):
 
@@ -29,7 +16,7 @@ def writeToFile(content, folder, name, version):
     file = open(folderPath, "w")
     file.write(content)
 
-def table(inputArray, version, filename, database, tableName):
+def table(inputArray, version, filename, database, tableName, referenceArray):
     
     createTableString = "CREATE TABLE `" + database + "`.`" + tableName + "` (\n  `id` INT NOT NULL AUTO_INCREMENT,\n"
 
@@ -43,8 +30,6 @@ def table(inputArray, version, filename, database, tableName):
         createTableString += "  PRIMARY KEY (`id`))\nENGINE = InnoDB\nDEFAULT CHARACTER SET = utf8\nCOLLATE = utf8_bin;"
         writeToFile(createTableString, "mysql", "createTable_" + filename + ".txt", version)
         return
-
-    referenceArray = getReference(inputArray[0][0][0])
 
     for index in range(len(referenceArray)):
         
@@ -62,7 +47,7 @@ def table(inputArray, version, filename, database, tableName):
     createTableString += "  PRIMARY KEY (`id`))\nENGINE = InnoDB\nDEFAULT CHARACTER SET = utf8\nCOLLATE = utf8_bin;"
     writeToFile(createTableString, "mysql", "createTable_" + filename + ".txt", version)
     
-def export(inputArray, version, filename):
+def export(inputArray, version, filename, referenceArray):
     
     #DamageResistance is special
     if inputArray[0] == "DamageResistance":
@@ -75,8 +60,6 @@ def export(inputArray, version, filename):
     for index in range(len(inputArray[0])):
         outputRow += inputArray[0][index][0] + ";"
     outputRow = outputRow[:-1] + "\n" # Cut the last "," away and add a line break
-
-    referenceArray = getReference(inputArray[0][0][0])
 
     #Add data into it
     for index in range(len(inputArray)):

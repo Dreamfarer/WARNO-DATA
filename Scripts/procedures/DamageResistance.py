@@ -1,6 +1,5 @@
 import copy
-import descriptor
-import analyze
+import helper.analyze
 
 def convertTypeRTTI(typeRTTI):
 
