@@ -12,6 +12,8 @@ def getReference(keyword):
         return descriptor.ammo
     elif keyword == "DeckDescriptor":
         return descriptor.deck
+    elif keyword == "OrderAvailability":
+        return descriptor.order
     
 def writeToFile(content, folder, name, version):
 

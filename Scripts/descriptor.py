@@ -1,6 +1,6 @@
 unit = [
     ["UniteDescriptor", "export", str],
-    ["ClassNameForDebug", "ClassNameForDebug", str],
+    ["ClassNameForDebug", "ClassNameForDebug", str], #Only necessary until we are able to decode tokens
     ["Nationalite", "Nationalite", str],
     ["MotherCountry", "MotherCountry", str],
     ["UnitConcealmentBonus", "UnitConcealmentBonus", float],
@@ -176,4 +176,9 @@ deck = [
     ["MaxPackNumber", "MaxPackNumber", int], #OK
     ["NumberOfUnitInPack", "NumberOfUnitInPack ", int], #OK
     ["NumberOfUnitInPackXPMultiplier", "NumberOfUnitInPackXPMultiplier", list] #Float Array
+]
+
+order = [
+    ["OrderAvailability", "export", str], #Keyword itself is part of the vari
+    ["Orders", " is ", list], #OK
 ]

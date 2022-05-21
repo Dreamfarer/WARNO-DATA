@@ -3,6 +3,7 @@ import WeaponDescriptor
 import Ammunition
 import DamageResistance
 import DivisionRules
+import OrderAvailability
 import csv
 import os
 
@@ -15,6 +16,7 @@ WeaponDescriptorArray = csv.export(WeaponDescriptor.extract("data/WeaponDescript
 AmmunitionArray = csv.export(Ammunition.extract("data/Ammunition.ndf"), version, "Ammunition")
 DamageResistanceArray = csv.export(DamageResistance.extract("data/DamageResistance.ndf"), version, "DamageResistance")
 DivisionRulesArray = csv.export(DivisionRules.extract("data/DivisionRules.ndf"), version, "DivisionRules")
+OrderAvailabilityArray = csv.export(OrderAvailability.extract("data/OrderAvailability_Tactic.ndf"), version, "OrderAvailability")
 
 #'CREATE TABLE' SQL queries for MySQL Workbench
 csv.table(UnitDescriptorArray, version, "UniteDescriptor", "bedartch_warno", "UniteDescriptor")
@@ -22,3 +24,4 @@ csv.table(WeaponDescriptorArray, version, "WeaponDescriptor", "bedartch_warno", 
 csv.table(AmmunitionArray, version, "Ammunition", "bedartch_warno", "Ammunition")
 csv.table(DamageResistanceArray, version, "DamageResistance", "bedartch_warno", "DamageResistance")
 csv.table(DivisionRulesArray, version, "DivisionRules", "bedartch_warno", "DivisionRules")
+csv.table(OrderAvailabilityArray, version, "OrderAvailability", "bedartch_warno", "OrderAvailability")

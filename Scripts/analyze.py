@@ -79,7 +79,7 @@ def variable(text, keyword):
         return captured[1:]
         
     #If value of keyword is NOT an array
-    if keyword[0] != "RoleList" and keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier":
+    if keyword[0] != "RoleList" and keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier" and keyword[0] != "Orders":
         keywordlength = len(keyword[1])
         captured = text[index+keywordlength:text.find("\n", index+keywordlength)]
         captured = captured.translate({ord('\''):None})
@@ -96,13 +96,14 @@ def variable(text, keyword):
         captured = captured.translate({ord('='):None})
         captured = captured.translate({ord('['):None})
         captured = captured.translate({ord('\''):None})
+        captured = captured.translate({ord('"'):None})
         captured = captured.translate({ord(' '):None})
         captured = captured.translate({ord('\n'):None})
         captured = captured.translate({ord('/'):None})
         captured = captured.translate({ord('~'):None})
 
         #If array always has one element
-        if keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier":
+        if keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier" and keyword[0] != "Orders":
             return helper.stringToType(captured.translate({ord(','):None}))
 
         #Seperate the elements by looking at ","
@@ -159,6 +160,8 @@ def variable(text, keyword):
             return captured[17:]
         case "Nationalite":
             return captured[12:]
+        case "OrderAvailability":
+            return captured[:-5]
 
     #Return value in it's correct type
     return helper.stringToType(captured)
