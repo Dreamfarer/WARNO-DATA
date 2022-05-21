@@ -42,6 +42,7 @@ CREATE TABLE `bedartch_warno`.`UniteDescriptor` (
   `SupplyCapacity` FLOAT(15) NULL,
   `UnlockableOrders` VARCHAR(255) NULL,
   `WeaponDescriptor` VARCHAR(255) NULL,
+  `DeploymentShift` FLOAT(15) NULL,
   `Altitude` FLOAT(15) NULL,
   `AltitudeMax` FLOAT(15) NULL,
   `AltitudeMin` FLOAT(15) NULL,

@@ -41,6 +41,7 @@ unit = [
     ["SupplyCapacity", "SupplyCapacity", float],
     ["UnlockableOrders", "UnlockableOrders", str],
     ["WeaponDescriptor", "WeaponDescriptor", str],
+    ["DeploymentShift", "DeploymentShift =", float],
     ["Altitude", " Altitude =", float], #Metre
     ["AltitudeMax", "AltitudeMax", float],
     ["AltitudeMin", "AltitudeMin", float], #Metre
