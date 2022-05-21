@@ -1,3 +1,10 @@
+def convertTypeRTTI(typeRTTI):
+
+    family = typeRTTI[typeRTTI.find("Family")+8:typeRTTI.find(" ")-1]
+    index = typeRTTI[typeRTTI.find("Index")+6:-1]
+
+    return [family + "_" + index, typeRTTI[:typeRTTI.find("(")]]
+
 ####################################################################
 # Convert 0 to int, 0.0 to float and False to 1
 ####################################################################
@@ -95,9 +102,9 @@ def variable(text, keyword):
     if keyword[0] == "Arme":
         keywordlength = len(keyword[1])
         captured = text[index+keywordlength:text.find("\n", index+keywordlength)]
-        captured = captured.translate({ord('"'):ord('\'')})
         captured = captured.strip()
-        return captured[1:]
+        captured = captured[2:]
+        return convertTypeRTTI(captured)[0]
         
     #If value of keyword is NOT an array
     if keyword[0] != "RoleList" and keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier" and keyword[0] != "Orders":

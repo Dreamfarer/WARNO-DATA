@@ -116,7 +116,7 @@ ammo = [
     ["Caliber", "Caliber", str], #Enclosed in '
     ["TraitsToken", "TraitsToken", str], #Array enclosed in '
     ["Level", "Level", int],
-    ["Arme", "Arme", str], #Special case, don't remove "" #NOT WORKING CORRECTLY
+    ["Arme", "Arme", str], #Special case, don't remove ""
     ["Puissance", "Puissance", float],
     ["ShotsBeforeMaxNoise", "ShotsBeforeMaxNoise", int],
     ["NbTirParSalves", "NbTirParSalves", int],

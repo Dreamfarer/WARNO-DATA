@@ -1,13 +1,6 @@
 import copy
 import helper.analyze
 
-def convertTypeRTTI(typeRTTI):
-
-    family = typeRTTI[typeRTTI.find("Family")+8:typeRTTI.find(" ")-1]
-    index = typeRTTI[typeRTTI.find("Index")+6:-1]
-
-    return [family + "_" + index, typeRTTI[:typeRTTI.find("(")]]
-
 def extractDamageResistance(subStr, index):
 
     
@@ -25,7 +18,7 @@ def extractDamageResistance(subStr, index):
         if subStr[counterChar:counterChar+19] == "TResistanceTypeRTTI" or subStr[counterChar:counterChar+15] == "TDamageTypeRTTI" or counterChar == len(subStr)-1:
             if counterUnit > 0:
 
-                temporaryStr = convertTypeRTTI(temporaryStr[:temporaryStr.find("\n", 0)-1])
+                temporaryStr = helper.analyze.convertTypeRTTI(temporaryStr[:temporaryStr.find("\n", 0)-1])
 
                 #Get ResistanceTypeList
                 if temporaryStr[1] == "TResistanceTypeRTTI":
