@@ -1,0 +1,63 @@
+// utfhuité
+
+FxFumigeneWithParams is TActionCall
+(
+    Action = $/GFX/GameFx/FX_Fumigene
+    LocalVariables =
+    [
+        Par_Fumigene_Color is TPinnableValue(ExpectedType : float3),
+        Par_Fumigene_Alpha is TPinnableValue(ExpectedType : float),
+    ]
+
+    NamedParams =
+    MAP[
+        ('Par_Fumigene_Color', Par_Fumigene_Color),
+        ('Par_Fumigene_Alpha', Par_Fumigene_Alpha),
+    ]
+)
+
+FxFumigeneGhostWithParams is TActionCall
+(
+    Action = $/GFX/GameFx/FX_Fumigene_Ghost
+    LocalVariables =
+    [
+        Par_Fumigene_Color is TPinnableValue(ExpectedType : float3),
+        Par_Fumigene_Alpha is TPinnableValue(ExpectedType : float),
+    ]
+
+    NamedParams =
+    MAP[
+        ('Par_Fumigene_Color', Par_Fumigene_Color),
+        ('Par_Fumigene_Alpha', Par_Fumigene_Alpha),
+    ]
+)
+
+GfxFumigene is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = CommonIdentityScaler
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [
+            DepictionDescriptor_LOD_High(
+                MeshDescriptor = TResourceMultiMaterialMesh
+                (
+                    FileName = 'CommonData:/Assets/3D/Editor/FxBatiment.Ase2NdfBin'
+                    UsefulnessMask = CivMask/Common + TypeMask/Common
+                )
+            ),
+        ]
+        Actions = MAP
+        [
+            (
+                ['fumigene'],
+                TSequencingActionHappening( ActionDescriptor = FxFumigeneWithParams )
+            ),
+            (
+                ['fumigene_ghost'],
+                TSequencingActionHappening( ActionDescriptor = FxFumigeneGhostWithParams )
+            )
+        ]
+    )
+)
+

@@ -1,0 +1,182 @@
+//------------------------------------------------------------------------------
+// Template de tir pour les animations
+// Utilise par tout sauf les infanteries (pour les infanteries, voir TemplateInfantry.ndf)
+//------------------------------------------------------------------------------
+Default_FX_WAIT_BETWEEN_SHOT is 0.99
+//------------------------------------------------------------------------------
+// template référencés par la génération de l'ODS
+//------------------------------------------------------------------------------
+template templateFXWeapon_FiringActionDescriptor
+[
+    Action,
+    Power,
+    ShotCount,
+    WaitBetweenShot
+]
+is TActionCall
+(
+    Action = <Action>
+    LocalVariables =
+    [
+        private parPower            is TPinnableValue(ExpectedType = 'float'    InitialValue = <Power>),
+        private parShotCount        is TPinnableValue(ExpectedType = 'float'    InitialValue = <ShotCount>),
+        private parShotOnGround     is TPinnableValue(ExpectedType = 'bool'     InitialValue = true),
+        private parTerrain          is TPinnableValue(ExpectedType = 'int'      InitialValue = 1),
+        private parWaitBetweenShot  is TPinnableValue(ExpectedType = 'float'    InitialValue = <WaitBetweenShot>),
+    ]
+    NamedParams = MAP
+    [
+        ('parPower',            parPower ),
+        ('parShotCount',        parShotCount ),
+        ('parShotOnGround',     parShotOnGround ),
+        ('parTerrain',          parTerrain ),
+        ('parWaitBetweenShot',  parWaitBetweenShot),
+    ]
+)
+//------------------------------------------------------------------------------
+template FXWeaponFiringHappeningSingle
+[
+    Action,
+    Power,
+    WaitBetweenShot
+] is TSequencingActionHappening
+(
+    ActionDescriptor = templateFXWeapon_FiringActionDescriptor
+    (
+        Action = <Action>
+        Power = <Power>
+        ShotCount = 1
+        WaitBetweenShot = <WaitBetweenShot>
+    )
+)
+//------------------------------------------------------------------------------
+template FXMissileFiring [ Action ] is TIntroduceMobileHappening
+(
+    Happening = FXWeaponFiringHappeningSingle
+    (
+        Action = <Action>
+        Power           = EFXPower/UltraLourd
+        WaitBetweenShot = Default_FX_WAIT_BETWEEN_SHOT
+    )
+)
+//------------------------------------------------------------------------------
+template FXWeaponFiringHappeningInfinite
+[
+    Action,
+    Power,
+    WaitBetweenShot
+] is TSequencingActionHappening
+(
+    ActionDescriptor = templateFXWeapon_FiringActionDescriptor
+    (
+        Action = <Action>
+        Power = <Power>
+        ShotCount = 0
+        WaitBetweenShot = <WaitBetweenShot>
+    )
+)
+//------------------------------------------------------------------------------
+template templateFXWeapon_ProjectileActionDescriptor
+[
+    Action,
+    Power,
+    WithoutPhysics,
+    DirectFire,
+    FluidFriction,
+    InitialSpeed,
+    ShotCount,
+    WaitBetweenShot
+]
+is TActionCall
+(
+    Action = <Action>
+    LocalVariables =
+    [
+        private parDestination      is TPinnableValue(ExpectedType = 'float3'),
+        private parFluidFriction    is TPinnableValue(ExpectedType = 'float'    InitialValue = <FluidFriction>),
+        private parImpactOnGround   is TPinnableValue(ExpectedType = 'bool'     InitialValue = true),
+        private parInitialShotDelay is TPinnableValue(ExpectedType = 'float'    InitialValue = 0.0),
+        private parInitialSpeed     is TPinnableValue(ExpectedType = 'float3'   InitialValue = <InitialSpeed> * $/VFX_Bank/MobileDirection),
+        private parPower            is TPinnableValue(ExpectedType = 'float'    InitialValue = <Power>),
+        private parShotCount        is TPinnableValue(ExpectedType = 'float'    InitialValue = <ShotCount>),
+        private parShotOnGround     is TPinnableValue(ExpectedType = 'bool'     InitialValue = true),
+        private parTerrain          is TPinnableValue(ExpectedType = 'int'      InitialValue = 1),
+        private parTirPhysic        is TPinnableValue(ExpectedType = 'bool'     InitialValue = !<WithoutPhysics>),
+        private parTirTendu         is TPinnableValue(ExpectedType = 'bool'     InitialValue = <DirectFire>),
+        private parTravelDuration   is TPinnableValue(ExpectedType = 'float'),
+        private parWaitBetweenShot  is TPinnableValue(ExpectedType = 'float'    InitialValue = <WaitBetweenShot>),
+    ]
+    NamedParams = MAP
+    [
+        ('parDestination',      parDestination),
+        ('parFluidFriction',    parFluidFriction),
+        ('parFlyDuration',      parTravelDuration),
+        ('parImpactOnGround',   parImpactOnGround),
+        ('parInitialShotDelay', parInitialShotDelay),
+        ('parInitialSpeed',     parInitialSpeed),
+        ('parPower',            parPower),
+        ('parShotCount',        parShotCount),
+        ('parShotOnGround',     parShotOnGround),
+        ('parTerrain',          parTerrain),
+        ('parTirPhysic',        parTirPhysic),
+        ('parTirTendu',         parTirTendu),
+        ('parWaitBetweenShot',  parWaitBetweenShot),
+    ]
+)
+//------------------------------------------------------------------------------
+template FXWeaponProjectileHappeningSingle
+[
+    Action,
+    Power,
+    WithoutPhysics,
+    DirectFire,
+    FluidFriction,
+    InitialSpeed,
+    WaitBetweenShot
+] is TSequencingActionHappening
+(
+    ActionDescriptor = templateFXWeapon_ProjectileActionDescriptor
+    (
+        Action = <Action>
+        Power = <Power>
+        ShotCount = 1
+        WithoutPhysics = <WithoutPhysics>
+        DirectFire = <DirectFire>
+        FluidFriction = <FluidFriction>
+        InitialSpeed = <InitialSpeed>
+        WaitBetweenShot = <WaitBetweenShot>
+    )
+)
+//------------------------------------------------------------------------------
+template FXWeaponProjectileHappeningInfinite
+[
+    Action,
+    Power,
+    WithoutPhysics,
+    DirectFire,
+    FluidFriction,
+    InitialSpeed,
+    WaitBetweenShot
+] is TSequencingActionHappening
+(
+    ActionDescriptor = templateFXWeapon_ProjectileActionDescriptor
+    (
+        Action = <Action>
+        Power = <Power>
+        ShotCount = 0
+        WithoutPhysics = <WithoutPhysics>
+        DirectFire = <DirectFire>
+        FluidFriction = <FluidFriction>
+        InitialSpeed = <InitialSpeed>
+        WaitBetweenShot = <WaitBetweenShot>
+    )
+)
+//------------------------------------------------------------------------------
+template FiringAndProjectile[ Happenings ]
+is TIntroduceMobileHappening
+(
+    Happening = TCompositeHappening
+    (
+        SubHappenings = <Happenings>
+    )
+)

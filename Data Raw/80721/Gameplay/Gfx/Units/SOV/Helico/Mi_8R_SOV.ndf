@@ -1,0 +1,19 @@
+export ModelFile_Mi_8R_SOV is 'GameData:/Assets/3D/Units/URSS/Helico/Mi_9/Mi_9.Ase2NdfBin'
+
+Modele_Mi_8R_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_8R_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_8R_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/Mi_9_MID/Mi_9_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_8R_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/LODS/Mi_9_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

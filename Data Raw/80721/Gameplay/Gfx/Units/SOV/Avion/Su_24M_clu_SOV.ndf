@@ -1,0 +1,25 @@
+export ModelFile_Su_24M_clu_SOV is 'GameData:/Assets/3D/Units/URSS/Avion/Su_24M_SOV/Su_24M_SOV.Ase2NdfBin'
+
+Modele_Su_24M_clu_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Su_24M_clu_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_24M_clu_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/Su_24M_SOV_MID/Su_24M_SOV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_24M_clu_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/LODS/Su_24M_SOV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_24M_clu_SOV_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/Su_24M_SOV/Su_24M_SOV_Train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

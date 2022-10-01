@@ -1,0 +1,178 @@
+
+// Panneau "en attente de connection"
+
+//------------------------------------------------------------------------------
+
+BUCKSpecificConnectingPanelMainComponentDescriptor is LoginTvContainer
+(
+    ElementName = "ConnectingPanelComponent"
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "ConnectingPanelContentList"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [450.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength( Magnifiable = 10.0)
+            InterItemMargin = TRTTILength( Magnifiable = 10.0)
+            LastMargin = TRTTILength( Magnifiable = 10.0)
+
+            BackgroundComponents =
+            [
+                ~/LoginPanelMonitorBackground
+            ]
+
+            ForegroundComponents =
+            [
+                ~/LoginPanelMonitorForeground
+            ]
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTypingTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 150.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TextStyle = "Default"
+                        TypefaceToken = "UISecondFont"
+
+                        TextColor       = "Blanc"
+                        TextSize        = "14"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "LOGIN_CON"
+
+                        AnimDuration = 10000000
+                        AnimTextInSec = 0.1
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI()
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        InterItemMargin = TRTTILength( Magnifiable = 5.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = AnimatedWaitingComponent
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        MagnifiableWidthHeight = [45.0, 45.0]
+                                        AlignementToFather = [0.0, 0.5]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                    )
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                        AlignementToFather = [0.0, 0.5]
+                                        AlignementToAnchor = [0.0, 0.5]
+                                    )
+
+                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                                    ParagraphStyle = ~/paragraphStyleTextCenter
+                                    TextStyle = "Default"
+
+                                    TextColor       = "SD2_Blanc184"
+                                    TextSize        = "LoginModale/Default"
+                                    TextToken       = "LOGIN_WAI"
+                                    TextDico        = ~/LocalisationConstantes/dico_interface_outgame
+
+                                    TypefaceToken   = "Liberator"
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                            ),
+                        ]
+                    )
+                ),
+            ]
+        ),
+        BUCKListDescriptor
+        (
+            ElementName = "ConnectingPanelButtonList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 50.0]
+                MagnifiableOffset = [0.0, -50.0]
+                AlignementToFather  = [0.5, 1.0]
+                AlignementToAnchor  = [0.5, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = CancelButton
+                    (
+                        ElementName = "CancelButton"
+                        TextToken = 'BTN_CANCEL'
+
+                        Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+
+                        HintTitleToken = ""
+                        HintBodyToken = ""
+                        HintDico = ~/LocalisationConstantes/dico_interface_outgame
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+UISpecificConnectingPanelViewDescriptor is TUISpecificConnectingPanelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificConnectingPanelMainComponentDescriptor
+    MainComponentContainerUniqueName = "LoginPanel" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

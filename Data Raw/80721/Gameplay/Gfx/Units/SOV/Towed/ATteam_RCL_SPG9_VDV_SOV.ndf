@@ -1,0 +1,22 @@
+export ModelFile_ATteam_RCL_SPG9_VDV_SOV is 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_SPG9/SPG9.Ase2NdfBin'
+
+Modele_ATteam_RCL_SPG9_VDV_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_ATteam_RCL_SPG9_VDV_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_RCL_SPG9_VDV_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_SPG9/SPG9.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_RCL_SPG9_VDV_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_SPG9/SPG9.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

@@ -1,0 +1,19 @@
+export ModelFile_UH1D_RFA is 'GameData:/Assets/3D/Units/RFA/Helico/UH_1H_Huey/UH_1H_Huey.Ase2NdfBin'
+
+Modele_UH1D_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_UH1D_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_UH1D_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Helico/UH_1H_Huey/UH_1H_Huey.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_UH1D_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Helico/UH_1H_Huey/UH_1H_Huey.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

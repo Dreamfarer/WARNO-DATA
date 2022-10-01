@@ -1,0 +1,14 @@
+// -------------------------------------------------------------------------------
+// Curseurs tactiques FIN
+// -------------------------------------------------------------------------------
+
+TextureGameplay_AdditionalTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+        ("Texture_RTS_H_NATO_Unidentified",         MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_NATO_Unidentified)] ),
+        ("Texture_Test_RTS_H_NATO_Unidentified",    MAP [(~/ComponentState/Normal, ~/Texture_Test_RTS_H_NATO_Unidentified)] ),
+        ("Texture_NATO_Unidentified",               MAP [(~/ComponentState/Normal, ~/Texture_RTS_H_NATO_Unidentified)] ),
+        ("Texture_Test_NATO_Unidentified",          MAP [(~/ComponentState/Normal, ~/Texture_Test_NATO_Unidentified)] ),
+    ]
+)

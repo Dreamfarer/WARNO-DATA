@@ -1,0 +1,25 @@
+export ModelFile_VAB_CMD_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/VAB_CMD/VAB.Ase2NdfBin'
+
+Modele_VAB_CMD_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_VAB_CMD_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_VAB_CMD_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Vehicule/VAB_CMD/VAB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VAB_CMD_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Vehicule/VAB_CMD/VAB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VAB_CMD_FR_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_VAB_FR_Tourelle_01
+    CivMask =  CivMask/Common
+)

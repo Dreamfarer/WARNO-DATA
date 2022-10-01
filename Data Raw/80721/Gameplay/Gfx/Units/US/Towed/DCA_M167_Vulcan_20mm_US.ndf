@@ -1,0 +1,22 @@
+export ModelFile_DCA_M167_Vulcan_20mm_US is 'GameData:/Assets/3D/Units/US/Canon/DCA_M167_Vulcan_20mm/DCA_M167_Vulcan_20mm.Ase2NdfBin'
+
+Modele_DCA_M167_Vulcan_20mm_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_DCA_M167_Vulcan_20mm_US
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_M167_Vulcan_20mm_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Canon/DCA_M167_Vulcan_20mm/DCA_M167_Vulcan_20mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_M167_Vulcan_20mm_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Canon/DCA_M167_Vulcan_20mm/DCA_M167_Vulcan_20mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

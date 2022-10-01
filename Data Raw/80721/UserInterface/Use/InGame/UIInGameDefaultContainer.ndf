@@ -1,0 +1,195 @@
+DistanceBetweenExternalAndInternalBorder is 3
+
+template TContainerDarkStyle
+[
+    ComponentFrame : TUIFramePropertyRTTI,
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    ElementName : string = '',
+    UniqueName : string = '',
+    FitStyle : int = ~/ContainerFitStyle/None,
+    ShowLightTexture : bool = true,
+    HidePointerEvents : bool = true,
+    HasInternalBorders : bool = false,
+    BorderLineColorToken : string = "ContainerDarkStyle/BordureExterne",
+    BackgroundBlockColorToken : string = "SD2_Noir80"
+]
+is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = <ComponentFrame>
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = true
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderThicknessToken = "1"
+    BordersToDraw = ~/TBorderSide/All
+
+    HidePointerEvents = <HidePointerEvents>
+
+    Components =
+    (<ShowLightTexture> ?
+        [
+            BUCKTextureDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                   RelativeWidthHeight = [0.17, 0.9]
+                )
+
+                TextureToken = "StyleCockpitTexture_Light_BackgroundDarkStyle"
+                TextureFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1, 1]
+                )
+            ),
+        ]
+        :
+        []
+    ) +
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+                PixelWidthHeight = [-2 * DistanceBetweenExternalAndInternalBorder, -2 * DistanceBetweenExternalAndInternalBorder]
+                MagnifiableOffset = [0.0, 0.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            HasBorder = <HasInternalBorders>
+            BorderLineColorToken = <BorderLineColorToken>
+            BorderThicknessToken = "1"
+            BordersToDraw = ~/TBorderSide/All
+
+            Components = <Components>
+        )
+    ]
+)
+
+template OmbrePanel
+[
+    ElementName : string = "",
+] is AuraDescriptor
+(
+    ElementName = <ElementName>
+    TextureDrawer = "ColorMultiply"
+    AuraBorderSize = 12.0
+    TopTextureToken = "CommonTexture_Ombre_TopTileTexture"
+    BottomTextureToken = "CommonTexture_Ombre_BottomTileTexture"
+    LeftTextureToken = "CommonTexture_Ombre_LeftTileTexture"
+    RightTextureToken = "CommonTexture_Ombre_RightTileTexture"
+    TopLeftTexture = "CommonTexture_Ombre_CornerTexture_TopLeft"
+    TopRightTexture = "CommonTexture_Ombre_CornerTexture_TopRight"
+    BottomRightTexture = "CommonTexture_Ombre_CornerTexture_BottomRight"
+    BottomLeftTexture = "CommonTexture_Ombre_CornerTexture_BottomLeft"
+)
+
+template SmallOmbrePanel
+[
+    ElementName : string = "",
+] is AuraDescriptor
+(
+    ElementName = <ElementName>
+    TextureDrawer = "ColorMultiply"
+    AuraBorderSize = 4.0
+    TopTextureToken = "CommonTexture_Ombre_TopTileTexture"
+    BottomTextureToken = "CommonTexture_Ombre_BottomTileTexture"
+    LeftTextureToken = "CommonTexture_Ombre_LeftTileTexture"
+    RightTextureToken = "CommonTexture_Ombre_RightTileTexture"
+    TopLeftTexture = "CommonTexture_Ombre_CornerTexture_TopLeft"
+    TopRightTexture = "CommonTexture_Ombre_CornerTexture_TopRight"
+    BottomRightTexture = "CommonTexture_Ombre_CornerTexture_BottomRight"
+    BottomLeftTexture = "CommonTexture_Ombre_CornerTexture_BottomLeft"
+)
+
+template PanelRoundedCorner
+[
+    // ++ BUCKContainerDescriptor
+    ElementName : string = "",
+    UniqueName : string = "",
+    RequiredTags : LIST<string> = [],
+    ForbiddenTags : LIST<string> = [],
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI ( RelativeWidthHeight = [1.0, 1.0] ),
+
+    MagnifierMultiplication : float = 0.0,
+
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+    HidePointerEvents : bool = false,
+
+    GridAlign : bool = false,
+
+    IsDroppable : bool = false,
+    ForegroundForDropBlockColor : string = "",
+    BorderForDropLineColor : string = "",
+    BorderForDropLineThicknessToken : string = "",
+
+    FitStyle : int = ~/ContainerFitStyle/None,
+    ChildFitToContent : bool = false,
+
+    ClipContent : bool = false,
+    IsClippable : bool = true,
+
+    SpotlightComponent : TBUCKContainerDescriptor = nil,
+    SpotlightLayer : TUILayer = nil,
+
+    UniformDrawer : TUIUniformDrawer = $/UserInterface/UIUniformDrawer,
+
+    HasBackground : bool = true,
+    BackgroundBlockColorToken : string = "H2_bleu_2",
+    HasBorder : bool = true,
+    BorderThicknessToken : string = '1',
+    BorderLineColorToken :string = "H2_bleu_2",
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    UseLocalRenderLayer : bool = false,
+    BackgroundLocalRenderLayer : int = 0,
+    LocalRenderLayer : int = -1,
+    BorderLocalRenderLayer : int = 0,
+
+    ComponentStateLocked : bool = false,
+    Components = [],
+    // -- BUCKContainerDescriptor
+
+    Radius : int = 5,
+    RoundedVertexes : LIST< bool > = [true, true, true, true], // le 1er est en bas à gauche
+    NbOfPoints = 5,
+]
+is BUCKPolygonDescriptor
+(
+    MagnifierMultiplication = <MagnifierMultiplication>
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+
+    PolygonShape = PolygonShapeRoundedContainer
+    (
+        Radius = TRTTILength( Magnifiable = <Radius>)
+        NbOfPoints = <NbOfPoints>
+        RoundedVertexes = <RoundedVertexes>
+    )
+
+    FitStyle = <FitStyle>
+
+    HidePointerEvents = <HidePointerEvents>
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+
+    UseLocalRenderLayer = (<LocalRenderLayer> != -1 ? true : false)
+    LocalRenderLayer = <LocalRenderLayer>
+
+    Components = <Components>
+)

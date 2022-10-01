@@ -1,0 +1,133 @@
+StrategicBattleResources is TStrategicBattleResources
+(
+    //Couleur des unités ne pouvant pas participer au combat lors de la préparation d'une bataille (0 partout = désactivé)
+    CantFightGhostColors = TGhostColors(
+        GhostColor = [0, 0, 0, 0]
+        GhostAlpha = 0.5 //(cf. LabelTransparencyIfNoEngagementPhase)
+        GhostColor2 = [0, 0, 0, 0]
+        GhostAlpha2 = 0.5 //(cf. LabelTransparencyIfNoEngagementPhase)
+    )
+
+    // Couleur des unités ne pouvant plus bouger
+    CantMoveGhostColors = TGhostColors(
+        GhostColor = [0, 0, 0, 0]
+        GhostAlpha = 0.5 //(cf. LabelTransparencyIfNoEngagementPhase)
+        GhostColor2 = [0, 0, 0, 0]
+        GhostAlpha2 = 0.5 //(cf. LabelTransparencyIfNoEngagementPhase)
+    )
+
+    //Pour un pion de support qui est mobilisé pour le combat
+    BattlePlanningSupportInBattleGroupStyleDescriptor = TLineFeedbackStyleDescriptor(
+                                                    GeometryMode = ~/FeedbackGeometryMode/Border_AlwaysOnTop
+                                                    EffectMode = ~/FeedbackEffectMode/Solid
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 4000.0
+                                                                Border = [221, 30, 30, 180]
+                                                                Fill = [221, 30, 30, 180]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 4000.0
+                                                                Border = [221, 0, 0, 180]
+                                                                Fill = [221, 0, 0, 100]
+                                                            )
+                                                    ParabolicArrowHeight = 25000.0
+                                                )
+    //Pour un pion de support qui n'est pas encore mobilisé pour le combat mais qui est disponible à l'ajout
+    BattlePlanningSupportNotInBattleGroupStyleDescriptor = TLineFeedbackStyleDescriptor(
+                                                    GeometryMode = ~/FeedbackGeometryMode/Border_AlwaysOnTop
+                                                    EffectMode = ~/FeedbackEffectMode/Hatched
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 1200.0
+                                                                Border = [54, 54, 54, 150]
+                                                                Fill = [208, 208, 208, 150]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 1200.0
+                                                                Border = [0, 0, 0, 0]
+                                                                Fill = [0, 0, 0, 0]
+                                                            )
+                                                    ParabolicArrowHeight = 25000.0
+                                                )
+    //Pour un pion classique qui est mobilisé pour le combat
+    BattlePlanningPawnInBattleGroupStyleDescriptor = TArrowFeedbackStyleDescriptor(
+                                                    GeometryMode = ~/FeedbackGeometryMode/Border_Fill_MergeBorder
+                                                    EffectMode = ~/FeedbackEffectMode/Solid
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 0
+                                                                Border = [221, 30, 30, 180]
+                                                                Fill = [221, 30, 30, 180]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 0
+                                                                Border = [221, 0, 0, 180]
+                                                                Fill = [221, 0, 0, 180]
+                                                            )
+                                                    ArrowTipLength = 3000
+                                                    ArrowTipWidth = 3000
+                                                    ArrowLineStartWidth = 4000
+                                                    ArrowLineEndWidth = 2000
+                                                    Fade = 0
+                                                )
+    //Pour un pion classique qui est potentiellement attaquant en phase A
+    BattlePlanningPotentialAttackerPawnStyleDescriptor = TArrowFeedbackStyleDescriptor(
+                                                    GeometryMode = ~/FeedbackGeometryMode/Border_Fill_MergeBorder
+                                                    EffectMode = ~/FeedbackEffectMode/Solid
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 0
+                                                                Border = [221, 30, 30, 90]
+                                                                Fill = [221, 30, 30, 90]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 0
+                                                                Border = [221, 0, 0, 90]
+                                                                Fill = [221, 0, 0, 90]
+                                                            )
+                                                    ArrowTipLength = 3000
+                                                    ArrowTipWidth = 3000
+                                                    ArrowLineStartWidth = 4000
+                                                    ArrowLineEndWidth = 2000
+                                                    Fade = 0
+                                                )
+
+    //Pour un pion de support EN COMBAT qui est mobilisé pour le combat
+    FightingSupportPawnStyleDescriptor = TLineFeedbackStyleDescriptor(
+                                                    GeometryMode = ~/FeedbackGeometryMode/Border_AlwaysOnTop
+                                                    EffectMode = ~/FeedbackEffectMode/Solid
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 4000.0
+                                                                Border = [221, 30, 30, 180]
+                                                                Fill = [221, 30, 30, 180]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 4000.0
+                                                                Border = [221, 0, 0, 180]
+                                                                Fill = [221, 0, 0, 100]
+                                                            )
+                                                    ParabolicArrowHeight = 25000.0
+                                                )
+    //Pour un pion fighter EN COMBAT qui est mobilisé pour le combat
+    FightingFighterPawnStyleDescriptor = TArrowFeedbackStyleDescriptor(
+                                                    GeometryMode = ~/FeedbackGeometryMode/Border_Fill_MergeBorder
+                                                    EffectMode = ~/FeedbackEffectMode/Solid
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 0
+                                                                Border = [221, 30, 30, 180]
+                                                                Fill = [221, 30, 30, 180]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 0
+                                                                Border = [221, 0, 0, 180]
+                                                                Fill = [221, 0, 0, 180]
+                                                            )
+                                                    ArrowTipLength = 3000
+                                                    ArrowTipWidth = 3000
+                                                    ArrowLineStartWidth = 4000
+                                                    ArrowLineEndWidth = 2000
+                                                    Fade = 0
+                                                )
+
+    //Data pour animer l'alpha fade des flèches des attaquants potentiels
+    PotentialAttackersAnimDuration = 1.0
+    MinAlphaForPotentialAttackers = 0
+    MaxAlphaForPotentialAttackers = 90
+)

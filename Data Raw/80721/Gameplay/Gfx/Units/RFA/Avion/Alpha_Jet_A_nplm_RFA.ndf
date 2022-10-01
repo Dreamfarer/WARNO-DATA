@@ -1,0 +1,25 @@
+export ModelFile_Alpha_Jet_A_nplm_RFA is 'GameData:/Assets/3D/Units/RFA/Avion/Alpha_Jet_A/Alpha_Jet_A.Ase2NdfBin'
+
+Modele_Alpha_Jet_A_nplm_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Alpha_Jet_A_nplm_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Alpha_Jet_A_nplm_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/Alpha_Jet_A/Alpha_Jet_A.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Alpha_Jet_A_nplm_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/Alpha_Jet_A/Alpha_Jet_A.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Alpha_Jet_A_nplm_RFA_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Avion/Alpha_Jet_A/Alpha_Jet_A_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

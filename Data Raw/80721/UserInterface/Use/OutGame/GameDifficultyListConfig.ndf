@@ -1,0 +1,48 @@
+GameDifficultyNdfEnum is EGameDifficulty
+(
+    Values = [
+        "NotDefined",
+        "Easy",
+        "Medium",
+        "Hard",
+    ]
+)
+
+GameDifficultyListConfig is TGameDifficultyListConfiguration
+(
+    GameDifficultyList = MAP
+    [
+        (
+            EGameDifficulty/NotSpecified,
+            TGameDifficultyConfiguration
+            (
+                GameName = "GM_NOTSP"
+                GameDifficultyName = "CD_NS"
+            )
+        ),
+        (
+            EGameDifficulty/Easy,
+            TGameDifficultyConfiguration
+            (
+                GameName = "GM_EASY"
+                GameDifficultyName = "AB_GM_0"
+            )
+        ),
+        (
+            EGameDifficulty/Medium,
+            TGameDifficultyConfiguration
+            (
+                GameName = "GM_MEDIUM"
+                GameDifficultyName = "AB_GM_1"
+            )
+        ),
+        (
+            EGameDifficulty/Hard,
+            TGameDifficultyConfiguration
+            (
+                GameName = "GM_HARD"
+                GameDifficultyName = "AB_GM_2"
+            )
+        )
+    ]
+)

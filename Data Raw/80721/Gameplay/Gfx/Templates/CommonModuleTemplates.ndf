@@ -1,0 +1,27 @@
+TemplateSelectionModule is TModuleSelector
+(
+    Default            = TSelectionModuleDescriptor
+    (
+        IsSelectable        = True
+        IsHighlightable     = True
+        HasSelectionShader  = False // Disabled by [SDDEUX-1276]
+        HasHighlightShader  = True
+    )
+    Selection = [ ~/NilDescriptorIfCadavre ]
+)
+
+TemplateDistrictSelectionModule is TModuleSelector
+(
+    Default            = TSelectionModuleDescriptor
+    (
+        IsSelectable        = True
+        IsHighlightable     = True
+        HasSelectionShader  = True
+        HasHighlightShader  = True
+    )
+    Selection = [ ~/NilDescriptorIfCadavre ]
+)
+
+TemplateLinkTeam is TLinkTeamModuleDescriptor
+(
+)

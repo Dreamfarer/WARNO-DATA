@@ -1,0 +1,25 @@
+export ModelFile_MiG_23P_SOV is 'GameData:/Assets/3D/Units/URSS/Avion/MiG_23P/MiG_23P.Ase2NdfBin'
+
+Modele_MiG_23P_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MiG_23P_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_23P_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/MiG_23P_MID/MiG_23P_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_23P_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/LODS/MiG_23P_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_23P_SOV_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/MiG_23P/MiG_23P_Train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

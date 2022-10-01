@@ -1,0 +1,22 @@
+export ModelFile_FV438_Swingfire_UK is 'GameData:/Assets/3D/Units/UK/Antichar/FV438_Swingfire/FV438_Swingfire.Ase2NdfBin'
+
+Modele_FV438_Swingfire_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_FV438_Swingfire_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_FV438_Swingfire_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Antichar/FV438_Swingfire_MID/FV438_Swingfire_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV438_Swingfire_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Antichar/LODS/FV438_Swingfire_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

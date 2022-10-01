@@ -1,0 +1,25 @@
+export ModelFile_F111F_Aardvark_US is 'GameData:/Assets/3D/Units/US/Avion/Aardvark_F_111F/Aardvark_F_111F.Ase2NdfBin'
+
+Modele_F111F_Aardvark_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_F111F_Aardvark_US
+    CivMask =  CivMask/Common
+)
+
+Modele_F111F_Aardvark_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/Aardvark_F_111F_MID/Aardvark_F_111F_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F111F_Aardvark_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/LODS/Aardvark_F_111F_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F111F_Aardvark_US_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/Aardvark_F_111F/Aardvark_F_111F_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

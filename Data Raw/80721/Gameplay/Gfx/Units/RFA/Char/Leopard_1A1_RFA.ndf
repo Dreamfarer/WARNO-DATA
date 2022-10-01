@@ -1,0 +1,61 @@
+export ModelFile_Leopard_1A1_RFA is 'GameData:/Assets/3D/Units/RFA/Char/Leopard_1A1/Leopard_1A1.Ase2NdfBin'
+
+Modele_Leopard_1A1_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Leopard_1A1_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Leopard_1A1_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Char/Leopard_1A1/Leopard_1A1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Leopard_1A1_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Char/Leopard_1A1/Leopard_1A1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Leopard_1A1_RFA_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/Ammo/Tourelles/MG3_t2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+//-------------------------------------------------------------------------------------
+Gfx_Modele_Leopard_1A1_RFA  is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Socle_RFA ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Depiction = TDepictionTemplate
+            (
+                Scaler = CommonIdentityScaler
+                Selector = OnlyHighDepictionSelector
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_courte ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Anchor = "vehicule"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 7)
+                        Selector = CommonDepictionSelector
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_Leopard_1A1_RFA ),
+                            DepictionDescriptor_LOD_Mid ( MeshDescriptor = Modele_Leopard_1A1_RFA_MID ),
+                            DepictionDescriptor_LOD_Low ( MeshDescriptor = Modele_Leopard_1A1_RFA_LOW DisabledOperators = ['tourelle3'] ),
+                        ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)

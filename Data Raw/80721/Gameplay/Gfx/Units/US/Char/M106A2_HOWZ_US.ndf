@@ -1,0 +1,20 @@
+export ModelFile_M106A2_HOWZ_US is 'GameData:/Assets/3D/Units/US/Artillerie/M106_A2/M106_A2.Ase2NdfBin'
+
+Modele_M106A2_HOWZ_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M106A2_HOWZ_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M106A2_HOWZ_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Artillerie/M106_A2_MID/M106_A2_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M106A2_HOWZ_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Artillerie/LODS/M106_A2_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

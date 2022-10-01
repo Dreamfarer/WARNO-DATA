@@ -1,0 +1,55 @@
+export ModelFile_OH58C_Scout_US is 'GameData:/Assets/3D/Units/US/Helico/OH_58D_Combat_Scout/OH_58C_Scout.Ase2NdfBin'
+
+Modele_OH58C_Scout_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_OH58C_Scout_US
+    CivMask =  CivMask/Common
+)
+
+Modele_OH58C_Scout_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/OH_58D_Combat_Scout_MID/OH_58C_Scout_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_OH58C_Scout_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/LODS/OH_58C_Scout_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+//-------------------------------------------------------------------------------------
+
+Gfx_Modele_OH58C_Scout_US is TTimelyReceiverFactoryCarrier
+(
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Socle_USA ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Depiction = TDepictionTemplate
+            (
+                Scaler = CommonIdentityScaler
+                Selector = OnlyHighDepictionSelector
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_moyenne ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Anchor = "helico"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 7)
+                        Selector = CommonDepictionSelector
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High( MeshDescriptor = Modele_OH58C_Scout_US ),
+                            DepictionDescriptor_LOD_Mid ( MeshDescriptor = Modele_OH58C_Scout_US_MID ),
+                            DepictionDescriptor_LOD_Low ( MeshDescriptor = Modele_OH58C_Scout_US_LOW DisabledOperators = ['tourelle3'] ),
+                        ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)

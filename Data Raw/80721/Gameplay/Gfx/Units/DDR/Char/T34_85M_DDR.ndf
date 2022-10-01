@@ -1,0 +1,19 @@
+export ModelFile_T34_85M_DDR is 'GameData:/Assets/3D/Units/DDR/Char/T34_85_obr_44/T34_85_obr_44.Ase2NdfBin'
+
+Modele_T34_85M_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T34_85M_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_T34_85M_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Char/T34_85_obr_44_MID/T34_85_obr_44_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_T34_85M_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Char/LODS/T34_85_obr_44_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

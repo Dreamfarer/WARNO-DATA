@@ -1,0 +1,19 @@
+export ModelFile_Gazelle_SNEB_UK is 'GameData:/Assets/3D/Units/UK/Helico/Gazelle_SNEB/Gazelle_SNEB.Ase2NdfBin'
+
+Modele_Gazelle_SNEB_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Gazelle_SNEB_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Gazelle_SNEB_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/Gazelle_SNEB/Gazelle_SNEB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Gazelle_SNEB_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/Gazelle_SNEB/Gazelle_SNEB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

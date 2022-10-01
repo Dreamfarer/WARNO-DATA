@@ -1,0 +1,19 @@
+export ModelFile_AMX_10_RCR_FR is 'GameData:/Assets/3D/Units/FR/Char/AMX_10RC_Surblinde/AMX_10RC_Surblinde.Ase2NdfBin'
+
+Modele_AMX_10_RCR_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AMX_10_RCR_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_10_RCR_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/AMX_10RC_Surblinde_MID/AMX_10RC_Surblinde_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_10_RCR_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/LODS/AMX_10RC_Surblinde_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

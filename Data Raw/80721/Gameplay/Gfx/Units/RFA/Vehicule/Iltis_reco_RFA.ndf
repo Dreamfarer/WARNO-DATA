@@ -1,0 +1,25 @@
+export ModelFile_Iltis_reco_RFA is 'GameData:/Assets/3D/Units/RFA/Vehicule/Iltis_reco/Iltis_reco.Ase2NdfBin'
+
+Modele_Iltis_reco_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Iltis_reco_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Iltis_reco_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Vehicule/Iltis_reco/Iltis_reco.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Iltis_reco_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Vehicule/Iltis_reco/Iltis_reco.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Iltis_reco_RFA_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Artillerie/M106_A2/cal50_t1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

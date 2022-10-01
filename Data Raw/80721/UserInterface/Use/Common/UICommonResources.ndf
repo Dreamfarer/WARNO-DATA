@@ -1,0 +1,165 @@
+template InterfaceSound
+[
+    FileName  : string
+] is TSoundDescriptor
+(
+    SoundSettings = $/SoundSettings/HUD_SoundSettings
+    TheSoundStream = TSoundStream ( FileName = <FileName> )
+)
+
+//=======================================================================================================================
+// SOUNDS DATABASE
+
+ButtonClickSound is InterfaceSound( FileName = "GameData:/Assets/Sons/Hud/mouse.wav" )
+BeepClickSound is InterfaceSound( FileName = "GameData:/Assets/Sons/Hud/beep.wav" )
+ClickSound_folder is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/folder.wav" )
+ClickSound_page is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/folder2.wav" )
+ClickSound_folder3 is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/folder3.wav" )
+ClickSound_computer is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/computer.wav" )
+ClickSound_boutonFilter is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/boutonFilter.wav" )
+ClickSound_boutonCountry is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/boutonCountry.wav" )
+ClickSound_boutonSide is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/boutonSide.wav" )
+ClickSound_boutonRole is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/boutonRole.wav" )
+ClickSound_focusHub is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/focusHub.wav" )
+ClickSound_whoosh is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/whoosh.wav" )
+ClickSound_keyboard is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/Keyboard.wav" )
+ClickSound_RadioBlip is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/Radio_Blip.wav" )
+ClickSound_Back is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/hub_back.wav" )
+ClickSound_NotepadSweep is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/Notepad_sweep.wav" )
+ClickSound_PaperSweep is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/Paper_sweep.wav" )
+ClickSound_BitchingBetty is InterfaceSound( FileName = "GameData:/Assets/Sons/Hud/AirRaid.wav" )
+ClickSound_Frequency_search is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/Frequency_search.wav" )
+ClickSound_Add_Card is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/Add_Card.wav" )
+ClickSound_Remove_Card is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/Remove_Card.wav" )
+ClickSound_Change_Selector is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/Selector_Change.wav" )
+
+HoverSound_hub_armory is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/hub_armory.wav" )
+HoverSound_hub_armory_exit is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/hub_armory_exit.wav" )
+HoverSound_hub_mod is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/hub_mod.wav" )
+HoverSound_hub_Enter_multi is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/hub_multi_enter.wav" )
+HoverSound_hub_multi is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/hub_multi.wav" )
+HoverSound_hub_solo is InterfaceSound( FileName = "GameData:/Assets/Sons/OutGame/hub_solo.wav" )
+
+NoSound is InterfaceSound( FileName = "GameData:/Assets/Sons/InGame/Silence.ogg" )
+
+//=======================================================================================================================
+// SOUND EVENTS
+
+// General
+SoundEvent_CheckBoxTick                     is ButtonClickSound
+SoundEvent_OpenCloseWarchat                 is ClickSound_RadioBlip
+
+// Main menu
+SoundEvent_EnterArmory                      is HoverSound_hub_armory
+SoundEvent_EnterMods                        is HoverSound_hub_mod
+SoundEvent_EnterMulti                       is HoverSound_hub_Enter_multi
+SoundEvent_EnterSolo                        is HoverSound_hub_solo
+SoundEvent_EnterOptions                     is ClickSound_folder
+SoundEvent_BackToMainMenu                   is ClickSound_Back
+SoundEvent_BackToMainMenuFromArmory         is HoverSound_hub_armory_exit
+SoundEvent_QuitGame                         is ClickSound_boutonFilter
+
+// Options
+SoundEvent_OptionsSwitchCategory            is ClickSound_page
+
+// Profile
+SoundEvent_CloseProfile                     is ClickSound_folder3
+SoundEvent_ProfileSwitchTab                 is ClickSound_page
+SoundEvent_MainMenuOpenProfile              is ClickSound_folder
+SoundEvent_LeaderboardViewProfile           is ClickSound_folder
+
+// Login menu
+SoundEvent_LoginMenuStandardButton          is ClickSound_keyboard
+SoundEvent_LoginMenuSecondaryButton         is ClickSound_boutonFilter
+
+// Solo menu
+SoundEvent_EnterSoloTutorial                is ClickSound_NotepadSweep
+SoundEvent_EnterSoloCampaign                is ClickSound_NotepadSweep
+SoundEvent_EnterSoloSkirmish                is ClickSound_folder
+SoundEvent_EnterSoloChallenge               is ClickSound_NotepadSweep
+SoundEvent_EnterSoloLoad                    is ClickSound_folder
+SoundEvent_SaveLoadSwitchTab                is ClickSound_page
+SoundEvent_SelectTutorialOrChallenge        is ClickSound_PaperSweep
+SoundEvent_SelectCampaign                   is ClickSound_PaperSweep
+
+// Multi menu
+SoundEvent_MultiClickJoinWithCode           is ClickSound_keyboard
+SoundEvent_MultiClickJoinGame               is ClickSound_folder
+SoundEvent_MultiClickSpectate               is HoverSound_hub_Enter_multi
+SoundEvent_MultiClickRefresh                is ClickSound_Frequency_search
+SoundEvent_MultiClickShowLobby              is ClickSound_folder
+SoundEvent_MultiClickHostGame               is ClickSound_keyboard
+SoundEvent_MultiClickRankedGame             is ClickSound_keyboard
+SoundEvent_MultiClickLoadGame               is ClickSound_folder
+SoundEvent_MultiCreateLobby                 is ClickSound_folder
+SoundEvent_MultiLaunchRanked                is ClickSound_BitchingBetty
+SoundEvent_LeaderboardAddFriend             is HoverSound_hub_mod
+
+// Showroom
+SoundEvent_ShowHideUnitInfoSheet            is ClickSound_NotepadSweep
+SoundEvent_ArmorySwitchCategory             is ClickSound_boutonRole
+SoundEvent_ArmorySelectRole                 is ClickSound_boutonRole
+SoundEvent_ArmorySelectAlliance             is ClickSound_boutonSide
+SoundEvent_ArmorySelectCountry              is ClickSound_boutonCountry
+SoundEvent_ArmorySelectDivision             is ClickSound_boutonFilter
+SoundEvent_DeckEditorShowHideUnitsPanel     is ClickSound_NotepadSweep
+SoundEvent_DeckEditorSwitchCategory         is ClickSound_PaperSweep
+SoundEvent_DeckEditorAddUnit                is ClickSound_Add_Card
+SoundEvent_DeckEditorRemoveUnit             is ClickSound_Remove_Card
+SoundEvent_DeckEditorSetUnitXP              is ClickSound_Change_Selector
+SoundEvent_SmartGroupsSwitchCompany         is ClickSound_PaperSweep
+SoundEvent_SmartGroupsShowHidePanel         is ClickSound_NotepadSweep
+SoundEvent_AddUnitToCombatGroup             is NoSound
+SoundEvent_RemoveUnitFromCombatGroup        is NoSound
+
+// Battlegroups panel
+SoundEvent_OpenBattlegroupsList             is ClickSound_folder
+SoundEvent_OpenImportDeckModal              is ClickSound_keyboard
+SoundEvent_OpenCreateDeckModal              is ClickSound_keyboard
+SoundEvent_CloseDeckList                    is ClickSound_folder3
+SoundEvent_EditDeck                         is ClickSound_keyboard
+SoundEvent_ViewDeck                         is ClickSound_folder
+SoundEvent_RenameDeck                       is ClickSound_keyboard
+SoundEvent_RemoveDeck                       is HoverSound_hub_mod
+SoundEvent_CopyDeck                         is HoverSound_hub_solo
+SoundEvent_ExportDeck                       is ClickSound_computer
+SoundEvent_SaveDeck                         is HoverSound_hub_solo
+SoundEvent_AutofillDeck                     is ClickSound_computer
+SoundEvent_ShowDeckOverview                 is NoSound
+SoundEvent_HideDeckOverview                 is NoSound
+SoundEvent_ChangeDeckOverview               is NoSound
+SoundEvent_CombatGroupUnitAmount            is NoSound
+
+// Lobby
+SoundEvent_SelectDeck                       is ClickSound_folder3
+SoundEvent_OpenDeckList                     is ClickSound_folder
+SoundEvent_OpenNewSlot                      is HoverSound_hub_Enter_multi
+SoundEvent_OpenOptionDropdown               is ClickSound_Change_Selector
+SoundEvent_SelectOption                     is ClickSound_Change_Selector
+
+
+//=======================================================================================================================
+
+UICommonResource is TUISpecificResource
+(
+    DistortTextureDrawerAdditive    = $/UserInterface/UIDistortTextureDrawer_Additive
+    DistortTextureDrawer            = $/UserInterface/UIDistortTextureDrawer
+
+    UniformDrawer                   = $/UserInterface/UIUniformDrawer
+    UniformAntiAliasedDrawer        = $/UserInterface/UIUniformAntiAliasedDrawer
+
+    VideoDrawer                     = $/UserInterface/UIVideoDrawer
+
+    TextureDrawer                   = "ColorMultiply"
+    TextureDrawerAdditive           = "ColorMultiply_Additive"
+    TextureDrawerGrayscale          = "ColorMultiply_Grayscale"
+    TextureDrawerHighlight          = "ColorMultiply_Highlight"
+
+    ProductionMenuUserInputLayer    = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+    ShowProductionMenuMapping       = $/KeyboardOption/Mapping_MainMenu
+
+    FlarePanelUserInputLayer        = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+
+    ButtonClickSound                = ~/ButtonClickSound
+    BeepClickSound                  = ~/BeepClickSound
+)

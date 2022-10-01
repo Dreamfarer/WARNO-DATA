@@ -1,0 +1,20 @@
+export ModelFile_M109A2_UK is 'GameData:/Assets/3D/Units/UK/Artillerie/M109_A2/M109_A2.Ase2NdfBin'
+
+Modele_M109A2_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M109A2_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_M109A2_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Artillerie/M109_A2_MID/M109_A2_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M109A2_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Artillerie/LODS/M109_A2_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

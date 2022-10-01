@@ -1,0 +1,22 @@
+export ModelFile_Mortier_2S12_120mm_SOV is 'GameData:/Assets/3D/Units/URSS/Canon/2S12_120mm/2S12_120mm.Ase2NdfBin'
+
+Modele_Mortier_2S12_120mm_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Mortier_2S12_120mm_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_2S12_120mm_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/2S12_120mm/2S12_120mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_2S12_120mm_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/2S12_120mm/2S12_120mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

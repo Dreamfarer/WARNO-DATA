@@ -1,0 +1,66 @@
+
+//------------------------ Low violence ------------------------------------
+
+template TUIResourceTexture_Common_LowViolence
+    [
+    FileNameToUseWhenOptionEnabled : string,
+    FileNameToUseWhenOptionDisabled : string,
+    SynchroneTextureSourceCarac : TTextureSourceCarac_FromFile = nil,
+    ] is TUIResourceTexture_Common_UnlockedByOption
+(
+    FileNameToUseWhenOptionEnabled = <FileNameToUseWhenOptionEnabled>
+    FileNameToUseWhenOptionDisabled = <FileNameToUseWhenOptionDisabled>
+    SynchroneTextureSourceCarac = <SynchroneTextureSourceCarac>
+    Option = $/GUIOption/LowViolence
+    CommandName = SpecificCommandName/UpdateGUIFromLowViolence
+)
+
+template TUIResourceTexture_CommonNoGen_LowViolence
+    [
+    FileNameToUseWhenOptionEnabled : string,
+    FileNameToUseWhenOptionDisabled : string,
+    SynchroneTextureSourceCarac : TTextureSourceCarac_FromFile = nil,
+    ] is TUIResourceTexture_CommonNoGen_UnlockedByOption
+(
+    FileNameToUseWhenOptionEnabled = <FileNameToUseWhenOptionEnabled>
+    FileNameToUseWhenOptionDisabled = <FileNameToUseWhenOptionDisabled>
+    SynchroneTextureSourceCarac = <SynchroneTextureSourceCarac>
+    Option = $/GUIOption/LowViolence
+    CommandName = SpecificCommandName/UpdateGUIFromLowViolence
+)
+
+template TUIResourceTexture_OutGame_LowViolence
+    [
+    FileNameToUseWhenOptionEnabled : string,
+    FileNameToUseWhenOptionDisabled : string,
+    ] is TUIResourceTexture_OutGame_UnlockedByOption
+(
+    FileNameToUseWhenOptionEnabled = <FileNameToUseWhenOptionEnabled>
+    FileNameToUseWhenOptionDisabled = <FileNameToUseWhenOptionDisabled>
+    Option = $/GUIOption/LowViolence
+    CommandName = SpecificCommandName/UpdateGUIFromLowViolence
+)
+
+template TUIResourceTexture_InGame_LowViolence
+    [
+    FileNameToUseWhenOptionEnabled : string,
+    FileNameToUseWhenOptionDisabled : string,
+    ] is TUIResourceTexture_InGame_UnlockedByOption
+(
+    FileNameToUseWhenOptionEnabled = <FileNameToUseWhenOptionEnabled>
+    FileNameToUseWhenOptionDisabled = <FileNameToUseWhenOptionDisabled>
+    Option = $/GUIOption/LowViolence
+    CommandName = SpecificCommandName/UpdateGUIFromLowViolence
+)
+
+template TUIResourceTexture_MapPack_LowViolence
+    [
+    FileNameToUseWhenOptionEnabled : string,
+    FileNameToUseWhenOptionDisabled : string,
+    ] is TUIResourceTexture_MapPack_UnlockedByOption
+(
+    FileNameToUseWhenOptionEnabled = <FileNameToUseWhenOptionEnabled>
+    FileNameToUseWhenOptionDisabled = <FileNameToUseWhenOptionDisabled>
+    Option = $/GUIOption/LowViolence
+    CommandName = SpecificCommandName/UpdateGUIFromLowViolence
+)

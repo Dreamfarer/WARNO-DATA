@@ -1,0 +1,19 @@
+export ModelFile_GAZ_66B_ZU_SOV is 'GameData:/Assets/3D/Units/URSS/DCA/GAZ_66B_ZU/GAZ_66B_ZU.Ase2NdfBin'
+
+Modele_GAZ_66B_ZU_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_GAZ_66B_ZU_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_GAZ_66B_ZU_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/GAZ_66B_ZU/GAZ_66B_ZU.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_GAZ_66B_ZU_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/GAZ_66B_ZU/GAZ_66B_ZU.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

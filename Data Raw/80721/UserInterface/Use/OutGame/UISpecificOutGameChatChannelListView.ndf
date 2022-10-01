@@ -1,0 +1,458 @@
+
+BUCKSpecificOutGameChatChannelListMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ElementName = "ChatChannelListMainComponent"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [430,0]
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableOffset = [-19,0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            FirstMargin = TRTTILength()
+            //InterItemMargin = TRTTILength(Pixel = 2.0)
+            LastMargin = TRTTILength()
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/Titre_channel
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = ~/OutGameChatAllChannelScrollingContainer
+                ),
+            ]
+        ),
+        // bouton de fermer / ouverture
+        BUCKButtonDescriptor
+        (
+            ElementName = "ChatChannelToggleButton"
+            IsTogglable = true
+            DefaultToggleValue = true
+            //HasBackground = true
+            BackgroundBlockColorToken = 'Orange'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [80.0, 20.0]
+                MagnifiableOffset = [385,230]
+            )
+            Components =
+            [
+                BUCKTextDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [80,20]
+
+                        AlignementToFather = [0.0, 0.0]
+                        AlignementToAnchor = [0.0, 0.0]
+                    )
+
+                    ParagraphStyle = paragraphStyleTextCenter
+                    TextStyle = "Default"
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/UserDefined
+                    TypefaceToken = "IBM"
+                    BigLineAction = ~/BigLineAction/MultiLine
+                    TextToken = 'OC_chan'
+                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    TextColor = "BlancTexte"
+                    TextSize = "10"
+                ),
+            ]
+        ),
+    ]
+)
+
+private Titre_channel is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 18.0]
+        RelativeWidthHeight = [1,0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "ListeExcel/Cartouche"
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+                AlignementToAnchor = [0.5,0.5]
+                AlignementToFather = [0.5,0.5]
+                MagnifiableOffset = [0,2]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+
+            InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                // Titre du channel
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            //RelativeWidthHeight = [0.0, 1.0]
+                            //MagnifiableWidthHeight = [200.0, 0.0]
+                        )
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "ALLCHAN_p"
+                        TextColor = "BlancEquipe"
+                        TextSize  = "14"
+                        TypefaceToken = "IBM"
+                        TextStyle = "Default"
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Right
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+
+                    )
+                ),
+                // Titre du channel
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "CurrentChatChannelName"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            //RelativeWidthHeight = [0.0, 1.0]
+                            //MagnifiableWidthHeight = [200.0, 0.0]
+                        )
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = ""
+                        TextColor = "Cyan"
+                        TextSize  = "14"
+                        TypefaceToken = "IBM"
+                        TextStyle = "Default"
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Right
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+
+                    )
+                ),
+
+                // Titre de la section
+                BUCKListElementDescriptor
+                (
+                    //ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            //RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "ALLCHAN"
+                        TextColor = "BlancEquipe"
+                        TextSize  = "14"
+                        TypefaceToken = "IBM"
+                        TextStyle = "Default"
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+
+
+                    )
+                )
+            ]
+        ),
+    ]
+)
+
+private OutGameChatAllChannelScrollingContainer is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = 'ChannelListContainer'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight =[0,197]
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+    HasBackground = true
+    BackgroundBlockColorToken = 'CouleurfondChat'
+    HasVerticalScrollbar = true
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = 'ChannelList'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                MagnifiableWidthHeight = [0,20]
+                                RelativeWidthHeight = [1.0, 0.0]
+                                AlignementToFather = [0.5, 0.0]
+                                AlignementToAnchor = [0.5, 0.0]
+                                )
+                            ParagraphStyle = paragraphStyleTextCenter
+                            TextStyle = "Default"
+                            HorizontalFitStyle = ~/FitStyle/UserDefined
+                            VerticalFitStyle = ~/FitStyle/UserDefined
+                            TypefaceToken = "IBM"
+                            BigLineAction = ~/BigLineAction/MultiLine
+                            TextToken = 'selectC'
+                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                            TextColor = "BlancEquipe"
+                            TextSize = "14"
+                            )
+
+                ),
+
+                // ChatGlobalChannelsHeaderAndList
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = OutGameOneChannelHeaderAndChannelListDescriptor
+                    (
+                        TitleToken = "OC_GLOBAL"
+                        TitleElementName = "ChatGlobalTitle"
+                        ShrinkButtonElementName = "ChatGlobalShrinkButton"
+                        ChannelListElementName = "ChatGlobalChannelList"
+                    )
+                ),
+
+                // ChatFriendsHeaderAndList
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = OutGameOneChannelHeaderAndChannelListDescriptor
+                    (
+                        TitleToken = "OC_FRIENDS"
+                        TitleElementName = "ChatFriendsTitle"
+                        ShrinkButtonElementName = "ChatFriendsShrinkButton"
+                        ChannelListElementName = "ChatFriendsChannelList"
+                    )
+                ),
+
+                // ChatRecentContactHeaderAndList
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = OutGameOneChannelHeaderAndChannelListDescriptor
+                    (
+                        TitleToken = "OC_CNTCTS"
+                        TitleElementName = "ChatRecentContactsTitle"
+                        ShrinkButtonElementName = "ChatRecentContactsShrinkButton"
+                        ChannelListElementName = "ChatRecentContactsChannelList"
+                    )
+                ),
+
+                // ChatMutedContactsHeaderAndList
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = OutGameOneChannelHeaderAndChannelListDescriptor
+                    (
+                        TitleToken = "OC_BL"
+                        TitleElementName = "ChatMutedContactsTitle"
+                        ShrinkButtonElementName = "ChatMutedContactsShrinkButton"
+                        ChannelListElementName = "ChatMutedContactsChannelList"
+                    )
+                ),
+
+                // ChatMutedChannelsHeaderAndList
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = OutGameOneChannelHeaderAndChannelListDescriptor
+                    (
+                        TitleToken = "OC_BLCHAN"
+                        TitleElementName = "ChatMutedChannelsTitle"
+                        ShrinkButtonElementName = "ChatMutedChannelsShrinkButton"
+                        ChannelListElementName = "ChatMutedChannelsChannelList"
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+template OutGameOneChannelHeaderAndChannelListDescriptor
+[
+    TitleToken : string,
+    TitleElementName : string,
+    ShrinkButtonElementName : string,
+    ChannelListElementName : string,
+]
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    GridAlign = true
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = OutGameOneChannelHeaderDescriptor
+            (
+                TitleToken = <TitleToken>
+                TitleElementName = <TitleElementName>
+                ShrinkButtonElementName = <ShrinkButtonElementName>
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = <ChannelListElementName>
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+            )
+        ),
+    ]
+)
+
+template OutGameOneChannelHeaderDescriptor
+[
+    TitleToken : string,
+    TitleElementName : string,
+    ShrinkButtonElementName : string,
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 15.0]
+    )
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame =TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [0.0, -2.0]
+            )
+        ),
+
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+
+            FirstMargin = TRTTILength(Magnifiable = 5.0)
+            InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                // Bouton d'ouverture/fermeture de la section
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ImageButton
+                    (
+                        ElementName = <ShrinkButtonElementName>
+                        TextureElementName = <ShrinkButtonElementName> + 'Texture'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [15.0, 15.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        BackgroundTextureToken = "ShrinkSectionTexture"
+                        HasBorder = false
+                        HasBackground = false
+                    )
+                ),
+
+                // Titre de la section
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = <TitleElementName>
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = <TitleToken>
+                        TextColor = 'BlancEquipe'
+                        TextSize  = "14"
+                        TypefaceToken = "IBM"
+                        TextStyle = "Default"
+
+                        ParagraphStyle = ~/paragraphStyleTextLeftAlign
+                    )
+                )
+            ]
+        ),
+    ]
+)
+
+UISpecificOutGameChatChannelListViewDescriptor is TUISpecificOutGameChatChannelListViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameChatChannelListMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    ShrinkButtonTexture = "ShrinkSectionTexture"
+    ExpandButtonTexture = "ExpandSectionTexture"
+)

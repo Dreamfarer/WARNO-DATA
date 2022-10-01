@@ -1,0 +1,22 @@
+export ModelFile_DCA_ZU_23_2_DDR is 'GameData:/Assets/3D/Units/URSS/DCA/GAZ_66B_ZU/Zu_23_2.Ase2NdfBin'
+
+Modele_DCA_ZU_23_2_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_DCA_ZU_23_2_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_ZU_23_2_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/GAZ_66B_ZU/Zu_23_2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_ZU_23_2_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/GAZ_66B_ZU/Zu_23_2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

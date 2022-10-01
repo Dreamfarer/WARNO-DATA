@@ -1,0 +1,226 @@
+
+HUDLaunchBattleButtonResources is TUISpecificInGameLaunchBattleResources
+(
+    MainComponent = ~/LaunchBattleMainComponent
+    TimerComponent = ~/LaunchBattleTimerComponent
+)
+
+private LaunchBattleMainComponentWidth is 190.0
+private LaunchBattleSpaceBetweenButtonAndTimer is 5.0
+private LaunchBattleButtonHeight is 31.0
+private LaunchBattleTimerPanelHeight is 31.0
+
+private LaunchBattleMainComponent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, 65.0]
+        MagnifiableWidthHeight = [440.0, 210.0-50]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Components =
+    [
+        //AffichageHintNewbieDeployement,
+        PanelRoundedCorner
+        (
+            BackgroundBlockColorToken = 'H2_bleu_2'
+            BorderLineColorToken = 'H2_bleu_2'
+        ),
+        //cadre
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [427,200-50]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            HasBorder = true
+            BorderLineColorToken = 'BoutonTemps'
+            BorderThicknessToken = '3'
+        ),
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [427,30]
+                MagnifiableOffset = [0,8]
+                AlignementToFather = [0.5, 0]
+                AlignementToAnchor = [0.5, 0]
+            )
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+            TextStyle = 'Default'
+            TextToken = 'DSI_Title2'
+            TypefaceToken = "UIMainFont"
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextColor = "BlancTexte"
+            TextSize = "28"
+            //TextPadding = TRTTILength4( Magnifiable = [0.0, 5.0, 15.0, 0.0] )
+            HasBackground = true
+            BackgroundBlockColorToken = 'BoutonTemps'
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+            HasBorder = true
+            BorderLineColorToken = 'BoutonTemps'
+            BorderThicknessToken = '3'
+            BordersToDraw = ~/TBorderSide/Bottom
+        ),
+        //Bouton Launch Battle et timer
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 0.0]
+                //MagnifiableWidthHeight = [LaunchBattleMainComponentWidth, 0.0]
+                MagnifiableOffset = [0.0, 99.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+            Elements =
+            [
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificButton
+                    (
+
+                        UniqueName = "LaunchBattleButton"
+                        ElementName = 'LaunchBattleButton'
+
+                        RoundedCorner = true
+                        RoundedVertexes = [true, true, false, false]
+
+                        ButtonMagnifiableWidthHeight = [190.0, 31.0]
+
+                        HasText = true
+                        TextParagraphStyle = ~/LaunchBattleParagraphStyleCentered
+                        TextStyle = "Default"
+                        TextSizeToken = "SD2_Moyen"
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                        HidePointerEvents = true
+
+                        HintTitleToken = "HLB_BUTTOT"
+                        HintBodyToken = "HLB_BUTTOB"
+                        HintExtendedToken = "HLB_BUTTOE"
+                        HintDico = ~/LocalisationConstantes/dico_interface_ingame
+                    )
+                ),
+
+                //Conteneur pour le timer
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ElementName = 'LaunchBattleTimerContainer'
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [LaunchBattleMainComponentWidth, LaunchBattleTimerPanelHeight]
+                            //RelativeWidthHeight = [1.0, 0.0]
+                        )
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+private AffichageHintNewbieDeployement is PanelRoundedCorner
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [250.0, 250.0]
+        AlignementToAnchor = [1.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        MagnifiableOffset = [-10,0]
+    )
+
+    BackgroundBlockColorToken = 'hint_fond'
+    BorderLineColorToken = 'MarronPanel_noir'
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                //MagnifiableWidthHeight = [96,20]
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+                )
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Left
+                VerticalAlignment = UIText_Up
+                InterLine = 0.5
+            )
+            TextPadding = TRTTILength4 ( Magnifiable = [5,15,5,15])
+            TextStyle = "Default"
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+            TypefaceToken = "Eurostyle"
+            BigLineAction = ~/BigLineAction/MultiLine
+            TextToken = 'nwb_deploy'
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextColor = "MarronPanel_noir"
+            TextSize = "14"
+            )
+    ]
+)
+
+
+private LaunchBattleTimerComponent is TContainerDarkStyle
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = 'LaunchBattleTimerText'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            ParagraphStyle = ~/LaunchBattleParagraphStyleCentered
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "UIMainFont"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextColor = "SD2_Blanc184"
+            TextSize = "SD2_Moyen"
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+        )
+    ]
+)
+
+private LaunchBattleParagraphStyleCentered is TParagraphStyleRTTI
+(
+    Alignment = UIText_Center
+    VerticalAlignment = UIText_VerticalCenter
+    InterLine = 0
+)

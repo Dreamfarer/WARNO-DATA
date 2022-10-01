@@ -1,0 +1,22 @@
+export ModelFile_BRM_1_DDR is 'GameData:/Assets/3D/Units/DDR/APC/BRM1/BRM1.Ase2NdfBin'
+
+Modele_BRM_1_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BRM_1_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_BRM_1_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/APC/BRM1/BRM1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BRM_1_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/APC/BRM1/BRM1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

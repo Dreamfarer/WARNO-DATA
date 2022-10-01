@@ -1,0 +1,22 @@
+export ModelFile_BRDM_Malyu_P_DDR is 'GameData:/Assets/3D/Units/DDR/Antichar/BRDM_Malyutka/BRDM_Malyutka.Ase2NdfBin'
+
+Modele_BRDM_Malyu_P_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BRDM_Malyu_P_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_Malyu_P_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Antichar/BRDM_Malyutka/BRDM_Malyutka.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_Malyu_P_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Antichar/BRDM_Malyutka/BRDM_Malyutka.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

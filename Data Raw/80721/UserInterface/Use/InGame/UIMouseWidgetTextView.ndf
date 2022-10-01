@@ -1,0 +1,63 @@
+
+//--------------------------------------------------------
+
+template BUCKSpecificMouseWidgetTextMainComponentDescriptor
+[
+    RelativeTextPlacement,
+    TextSize : string,
+    PaddingX : float,
+    TypeFace : string,
+    ParagraphStyle : TParagraphStyleRTTI = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    ),
+] is BUCKTextDescriptor
+(
+    ElementName = "TextComponent"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = <RelativeTextPlacement>
+    )
+
+    ParagraphStyle = <ParagraphStyle>
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TypefaceToken = <TypeFace>
+
+    TextStyle = "DefaultWithStroke"
+    TextColor = "MouseWidget/TextModule"
+
+    TextSize = <TextSize>
+    TextPadding = TRTTILength4( Magnifiable = [<PaddingX>, 0.0, <PaddingX>, 0.0])
+)
+
+//--------------------------------------------------------
+
+template UIMouseWidgetTextViewDescriptor
+[
+    RelativeTextPlacement = [0.0, 0.0],
+    TextSize : string = "MouseWidget/TextModule",
+    PaddingX : float = 50.0,
+    TypeFace : string = "UIMainFont",
+    ParagraphStyle : TParagraphStyleRTTI = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    ),
+] is TUIMouseWidgetTextViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificMouseWidgetTextMainComponentDescriptor
+    (
+        RelativeTextPlacement = <RelativeTextPlacement>
+        TextSize = <TextSize>
+        PaddingX = <PaddingX>
+        TypeFace = <TypeFace>
+        ParagraphStyle = <ParagraphStyle>
+    )
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

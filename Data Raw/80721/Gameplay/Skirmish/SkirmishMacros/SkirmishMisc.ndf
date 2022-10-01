@@ -1,0 +1,235 @@
+//-------------------------------------------------------------------------
+//----------------------------- MISC ---------------------------------
+//-------------------------------------------------------------------------
+export MinimumResourceForLaunch_Stage_1 is 400
+export MinimumResourceForLaunch_Economic is 1000
+
+//-------------------------------------------------------------------------
+//------------------------------ SUPPLY -----------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export Supply_Skirmish is TMacroActionDescriptor_Supply_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 2),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Supply_Skirmish]),
+        TSupplySettingHolder(SupplyableMinimumRatio = MAP[
+            (ESupplyableType_Fuel, 0.3),
+            (ESupplyableType_Weapons, 0.3),
+            (ESupplyableType_Life, 0.5),
+        ]),
+    ]
+)
+//-------------------------------------------------------------------------
+export Supply_Skirmish_Allied is TMacroActionDescriptor_Supply_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Supply_Skirmish] DisableReinforcement = true),
+        TSupplySettingHolder(SupplyableMinimumRatio = MAP[
+            (ESupplyableType_Fuel, 0.2),
+            (ESupplyableType_Weapons, 0.2),
+            (ESupplyableType_Life, 0.4),
+        ]),
+        TCanTargetAlliedSettingHolder(),
+    ]
+)
+
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_Supply_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{e902f9de-d39e-11e8-8c68-88d7f642f58e}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Vehicule_Logistique",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//------------------------------- RECO ------------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export Reco is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 2 AlsoConsiderTheseDescriptorsForMaintain = []),
+        TDefensePositionSettingHolder(IgnoreEnemyDirectionForDefensePosition = true),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Reco_Skirmish]),
+        TDefenseBehaviorSettingHolder(
+            DisableAttackDuringZoneDefense = true
+            DefensePointScoringFeature =
+                TDefensePointScoringFeature(DefensePointScoringValue =  MAP
+                [
+                    (EDefensePointScoringFeature/AltitudeCoeff, 0.0),                       // Bonus dépendant de l'altitude min et max sur la carte et appliqué sur toute la carte
+                    (EDefensePointScoringFeature/SlopeCoeff, 0.0),                          // Bonus dépendant de l'altitude min et max sur la carte et appliqué sur les pentes
+
+                    (EDefensePointScoringFeature/DistanceBonus, 1.0),                       // | Entre 0 et DistanceMargin => Bonus de DistanceBonus
+                    (EDefensePointScoringFeature/DistanceMargin, 500.0 * Metre),            // | Entre DistanceMargin et DistanceDecayLength => Diminution progressive du bonus jusqu'à 0
+                    (EDefensePointScoringFeature/DistanceDecayLength, 1000.0 * Metre),      // | Après DistanceDecayLength => Malus progressif
+                    (EDefensePointScoringFeature/DistanceDecayCoeff, 1.0),
+
+                    (EDefensePointScoringFeature/DistrictCoeff, 1.0),                       // | Bonus appliqués en fonction de la présence d'un quartier ou d'un terrain
+                    (EDefensePointScoringFeature/ForetDenseCoeff, 1.0),                     // | Seul le bonus le plus prioritaire est appliqué si plusieurs bonus sont applicables
+                    (EDefensePointScoringFeature/ForetLightCoeff, 1.0),                     // | Ordre de priorité : District > Foret Dense > Foret Legere
+
+                    (EDefensePointScoringFeature/IsObjectifCoeff, 0.0),                     // Bonus si la case contient un objectif
+                    (EDefensePointScoringFeature/MalusDefaultDefensePoint, 10.0),           // Malus si la case a été prise à défaut d'autres possibilités
+                    (EDefensePointScoringFeature/IsDefenseUnit, 0.0),                       // Bonus si la case contient une tranchée ou une position de tir
+                ]
+            DefensePointPositioning = EDefensePointPositioningType/Offensive)
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+export AirReco is TMacroActionDescriptor_AirReco_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSizeByAlliance NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_AirReco_Skirmish]),
+        AirRecoMissionLaunchSettingHolderTemplate(MaxAirplaneCountOnBattlefield = 1 TicksBetweenTwoLaunch = 60 TicksBetweenTwoMissions = 60),
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_Reco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{e902f9df-d39e-11e8-aa23-88d7f642f58e}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false // On veut le moins cher
+        PriceComparisonMethod = EPriceComparatorType/Cheapest
+        TagsPriority = [
+            "Infanterie_Reco",
+            "Vehicule_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_AirReco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{e902f9e0-d39e-11e8-94bc-88d7f642f58e}
+        Required = true
+        Nb = 1
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Avion_Reco",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//--------------------------- SUPERCOMMANDER ------------------------------
+//-------------------------------------------------------------------------
+
+export SuperCommander is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Renfort_AT]),
+        TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"]),
+        TDefensePositionSettingHolder(IgnoreVisionForDefensePosition = true IgnoreEnemyDirectionForDefensePosition = true),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+        PoolModelList = [~/Pool_SuperCommander]
+        TaggedPoolModelList =
+        (
+            [
+                (["AttackMain"], [~/Pool_SuperCommander]),
+            ]
+        )
+        PrioritizeCorridorsForTaggedPoolModels = true
+        LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+//-------------------------------------------------------------------------
+//Uniquement pour Breakthrough Defense
+private template GenBTDef_Template_Static_SuperCommander
+[
+    OrderedZoneWeightList = [],
+    DefensePointScoringFeatureValue = MAP[],
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(InMapArtilleryAmount = 1 OutMapArtilleryAmount = 0),
+        TSupportSettingHolder(SettingList = [Renfort_AT]),
+        TAvoidCorridorTagsSettingHolder(AvoidedCorridorTags = ["Filler"]),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = [~/Pool_SuperCommander]
+            TaggedPoolModelList = ([(["AttackMain"], [~/Pool_SuperCommander]),]) PrioritizeCorridorsForTaggedPoolModels = true LaunchASAP_RatioMin = 0.01 DisableReinforcement = true),
+        TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = <OrderedZoneWeightList>),
+        TDefenseBehaviorSettingHolder(DefensePointScoringFeature = TDefensePointScoringFeature(DefensePointScoringValue = <DefensePointScoringFeatureValue> DefensePointPositioning = EDefensePointPositioningType/Defensive)),
+        TIgnoreSafePathSettingHolder(), //on esquive pas la menace sur le chemin
+    ]
+)
+
+//-------------------------------------------------------------------------
+export GenBTDef_Static_SuperCommander_FrontLane is GenBTDef_Template_Static_SuperCommander
+(
+    OrderedZoneWeightList = [1]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+)
+
+//-------------------------------------------------------------------------
+export GenBTDef_Static_SuperCommander_BackLane is GenBTDef_Template_Static_SuperCommander
+(
+    OrderedZoneWeightList = [2]
+    DefensePointScoringFeatureValue = ~/WeightDefensePointScoringFeatureMap
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_SuperCommander is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{ea368fee-e1d8-11e8-86d6-2c56dc4c150d}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = false
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Char_SuperCMD",
+            "Vehicule_SuperCMD",
+            "Infanterie_SuperCMD",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+BasicAirstrikeSupport is
+[
+    (["Avion_Assaut", "Chasseur_Bombardier", "Bombardier",], 2),
+]

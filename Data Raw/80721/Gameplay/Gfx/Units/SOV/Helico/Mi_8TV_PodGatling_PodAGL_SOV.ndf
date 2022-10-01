@@ -1,0 +1,19 @@
+export ModelFile_Mi_8TV_PodGatling_PodAGL_SOV is 'GameData:/Assets/3D/Units/URSS/Helico/Mi_8TV/Mi_8TV.Ase2NdfBin'
+
+Modele_Mi_8TV_PodGatling_PodAGL_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_8TV_PodGatling_PodAGL_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_8TV_PodGatling_PodAGL_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/Mi_8TV/Mi_8TV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_8TV_PodGatling_PodAGL_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/Mi_8TV/Mi_8TV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -2,6 +2,9 @@ import copy
 import keywords
 import helper.analyze
 
+# Initialize gloabl variable
+rootDirectory = None
+
 def extractWeaponDescriptor(subStr, level, index):
 
     counterChar = 0
@@ -65,7 +68,7 @@ def extract(filePath):
     global WeaponDescriptor
     WeaponDescriptor = []
     
-    extractWeaponDescriptor(open(filePath,"r").read(), 0, [0, 1, 1])
+    extractWeaponDescriptor(open(rootDirectory + filePath,"r").read(), 0, [0, 1, 1])
     
     return WeaponDescriptor
     

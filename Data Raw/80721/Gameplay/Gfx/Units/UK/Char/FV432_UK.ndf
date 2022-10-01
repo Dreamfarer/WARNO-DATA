@@ -1,0 +1,25 @@
+export ModelFile_FV432_UK is 'GameData:/Assets/3D/Units/UK/APC/FV432/FV432.Ase2NdfBin'
+
+Modele_FV432_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FV432_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_FV432_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/APC/FV432_MID/FV432_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV432_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/APC/LODS/FV432_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV432_UK_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Char/Chieftain_Mk11/L37_t1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

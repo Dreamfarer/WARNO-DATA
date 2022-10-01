@@ -1,0 +1,21 @@
+MainPositionEvents is TDescriptorPositionEvents
+(
+    MaxEventCount = 10
+    EventsDurationInSeconds = 30
+    TriggNextEventDurationCeilInSeconds = 2.0
+    CameraMoverTargetClient = $/Camera/CameraMoverTargetClient
+
+    World3D = $/M3D/Scene/DefaultWorld
+    SituationAwarenessNextEventCommandName = CommandName/SituationAwarenessNextEvent
+
+    MinAltitudeInMeter = 100
+    MaxAltitudeInMeter = 1300
+)
+
+GroupSelectionReminder is TGroupSelectionReminderResources
+(
+    UserInputLayer              = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+    EpsilonTimeForDoubleClic    = 1
+    PositionEventManager        = ~/MainPositionEvents
+    MergeUnitsMapping           = $/KeyboardOption/Mapping_MergeUnits
+)

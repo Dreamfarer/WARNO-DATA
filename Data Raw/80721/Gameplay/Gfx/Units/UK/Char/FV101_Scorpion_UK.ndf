@@ -1,0 +1,22 @@
+export ModelFile_FV101_Scorpion_UK is 'GameData:/Assets/3D/Units/UK/Char/FV101_Scorpion/FV101_Scorpion.Ase2NdfBin'
+
+Modele_FV101_Scorpion_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_FV101_Scorpion_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_FV101_Scorpion_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Char/FV101_Scorpion_MID/FV101_Scorpion_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV101_Scorpion_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Char/LODS/FV101_Scorpion_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

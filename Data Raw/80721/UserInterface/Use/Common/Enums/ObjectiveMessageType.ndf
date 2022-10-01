@@ -1,0 +1,24 @@
+// NOTA : laisser la valeur "None" (pas de message) associée au 0
+
+ObjectiveMsg_None                      is 0
+ObjectiveMsg_NewObjective              is 1
+ObjectiveMsg_DownloadObjective         is 2
+ObjectiveMsg_DisplayObjective          is 3
+ObjectiveMsg_PrimaryObjectiveSucceed   is 4
+ObjectiveMsg_SecondaryObjectiveSucceed is 5
+ObjectiveMsg_PrimaryObjectiveFailed    is 6
+ObjectiveMsg_SecondaryObjectiveFailed  is 7
+
+export ObjectiveMessage_Enum is TEnumObjectiveMessageType
+(
+    Values = [
+        "ObjectiveMsg_None",
+        "ObjectiveMsg_NewObjective",
+        "ObjectiveMsg_DownloadObjective",
+        "ObjectiveMsg_DisplayObjective",
+        "ObjectiveMsg_PrimaryObjectiveSucceed",
+        "ObjectiveMsg_SecondaryObjectiveSucceed",
+        "ObjectiveMsg_PrimaryObjectiveFailed",
+        "ObjectiveMsg_SecondaryObjectiveFailed",
+    ]
+)

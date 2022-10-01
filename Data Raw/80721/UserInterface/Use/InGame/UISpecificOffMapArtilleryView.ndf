@@ -1,0 +1,489 @@
+ArtilleryRadioButton is TBUCKRadioButtonManager()
+
+// -------------------------------------------------------------------------------------------------
+// HUDArtilleryButton
+// -------------------------------------------------------------------------------------------------
+
+// Order button template
+template HUDArtilleryButton
+[
+    ElementName : string = "",
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [25,25]
+        AlignementToFather = [0,0.5]
+        AlignementToAnchor = [0,0.5]
+    ),
+
+
+    HasBackground : bool = true,
+    BackgroundBlockColorToken : string = "ButtonHUD/Background2",
+    UniformDrawer : string = $/UserInterface/UIUniformDrawer,
+
+    BackgroundTexture : string = "",
+    ResizeMode : int = ~/TextureResizeMode/UserDefined,
+    TUIFramePropertyRTTI = TUIFramePropertyRTTI( RelativeWidthHeight = [1, 1] ),
+
+    UseLocalRenderLayer : bool = false,
+    LocalRenderLayer : int = 0,
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    HintTitleToken : string = "HUD_UNKN",
+    HintBodyToken : string = "HUD_UNKN",
+    HintExtendedToken : string = "HUD_UNKN",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_ingame,
+    HintableAreaElementName : string = "",
+]
+is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+
+    IsTogglable = true
+    // LocalRenderLayer = <LocalRenderLayer>
+
+    HasBackground = true
+    BackgroundBlockColorToken = "ButtonHUD/Background2"
+
+    RadioButtonManager = ~/ArtilleryRadioButton
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,1]
+            )
+
+            // UseLocalRenderLayer = <UseLocalRenderLayer>
+            // LocalRenderLayer = <LocalRenderLayer>
+            ClipTextureToComponent = true
+            HasBorder = true
+            BorderLineColorToken = "ButtonHUD/Border2"
+            BorderThicknessToken = "1"
+
+            TextureToken = <BackgroundTexture>
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1, 1]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = <HintableAreaElementName>
+            DicoToken = <HintDico>
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        )
+    ] + <Components>
+)
+
+
+// -------------------------------------------------------------------------------------------------
+// OffMapArtilleryAmmo
+// -------------------------------------------------------------------------------------------------
+
+// Ammunition display
+OffMapArtilleryAmmo is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0,1]
+        MagnifiableWidthHeight = [30, 0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "ArtilleryAmmo"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0,1]
+                AlignementToFather = [1.0, 0.5]
+                AlignementToAnchor = [0.8, 0.5]
+            )
+
+            TextStyle = "Default"
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Right
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            TextSize = "12"
+            TextColor = "Glacier"
+            TextToken = "OFF_AMMO"
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TypefaceToken = "UIMainFont"
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            Hint = BUCKSpecificHintableArea
+            (
+                DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                HintTitleToken = "HOM_ARTAMT"
+                HintBodyToken = "HOM_ARTAMB"
+                HintExtendedToken = "HOM_ARTAME"
+            )
+        )
+    ]
+)
+// -------------------------------------------------------------------------------------------------
+// OffMapArtillerySpecialtiesSubPanel
+// -------------------------------------------------------------------------------------------------
+
+private OffMapArtillerySpecialtiesSubPanel is BUCKRackDescriptor
+(
+    ElementName = "OffMapArtillerySpecialtiesSubPanel"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    FirstMargin = TRTTILength(Magnifiable = 3.0)
+    LastMargin = TRTTILength(Pixel = 1.0)
+
+    BladeDescriptor = BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            AlignementToAnchor = [0.0, 0.0]
+            AlignementToFather = [0.0, 0.0]
+        )
+
+        Axis = ~/ListAxis/Horizontal
+        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+        FirstMargin = TRTTILength(Magnifiable = 20.0)
+        InterItemMargin = TRTTILength(Magnifiable = 2.0)
+
+        Elements =
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextureDescriptor
+                (
+                    ElementName = "IconTexture"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [SpecialityIconMagnifiableWitdhHeight, SpecialityIconMagnifiableWitdhHeight]
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+
+                    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                    ClipTextureToComponent = true
+
+                    Components =
+                    [
+                        BUCKSpecificHintableArea
+                        (
+                            ElementName = "IconHint"
+
+                            DicoToken = ~/LocalisationConstantes/dico_unites
+                        )
+                    ]
+                )
+            ),
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = "NameText"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToAnchor = [0.0, 0.5]
+                        AlignementToFather = [0.0, 0.5]
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Left
+                        VerticalAlignment = UIText_VerticalCenter
+                        InterLine = 0
+                    )
+
+                    TextStyle = "Default"
+
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+                    HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                    TypefaceToken = "UIMainFont"
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    TextDico = ~/LocalisationConstantes/dico_unites
+
+                    TextColor = "SD2_Blanc184"
+                    TextSize = "10"
+                )
+            ),
+        ]
+    )
+)
+// -------------------------------------------------------------------------------------------------
+// OffMapArtillerySpecialtyTexture
+// -------------------------------------------------------------------------------------------------
+
+// Specialty icon
+OffMapArtillerySpecialtyTexture is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [18, 18]
+        PixelWidthHeight = [-2.0, -2.0]
+        AlignementToFather = [0, 0.5]
+        AlignementToAnchor = [0, 0.5]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = "SpecialtyTexture"
+            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+
+            // UseLocalRenderLayer = true
+            // LocalRenderLayer = 4
+
+            TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = 'SpecialtyTextureHint'
+            DicoToken = ~/LocalisationConstantes/dico_unites
+            HintTitleToken = "UNKNOWN"
+            HintBodyToken = "UNKNOWN"
+            HintExtendedToken = "UNKNOWN"
+        ),
+    ]
+)
+
+
+// (Artillery) Unit texture + Unit Name + Ammo
+OffMapArtilleryMainContent is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [0,1] )
+
+            Axis = ~/ListAxis/Horizontal
+            FirstMargin = TRTTILength( Magnifiable = 12 )
+            LastMargin = TRTTILength( Magnifiable = 8 )
+            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/OffMapUnitTexture
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1
+                    ComponentDescriptor = ~/OffMapUnitName
+                ),
+            ]
+        ),
+    ]
+)
+
+BUCKSpecificOffMapArtilleryMainComponentDescriptor is BUCKSpecificOffMapButton
+(
+    ButtonWidthHeight = [429,25]
+    HeightCoefficientToRemoveFromInteriorButtonWidth = 0.4
+
+    IsTogglable = true
+
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = 'artyline'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0,1]
+            )
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 5 )
+
+            Elements =
+            [
+                // Main content container (icon + name + ammo)
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificButton
+                    (
+                        ElementName = 'SelectionButton'
+                        ButtonMagnifiableWidthHeight = [185.0, 20.0]
+                        ButtonAlignementToFather = [0.0, 0.5]
+                        ButtonAlignementToAnchor = [0.0, 0.5]
+
+                        BorderLineColorToken = "ButtonHUD/Border2"
+                        BigBorderBackgroundColorToken = "ButtonHUD/BigBorder2"
+                        BackgroundBlockColorToken  = "ButtonHUD/Background2"
+                        TextColorToken = "ButtonHUD/Text2"
+
+                        IsTogglable = true
+
+                        Components =
+                        [
+                            OffMapArtilleryMainContent,
+                        ]
+                    )
+                ),
+
+                // Orders blocks
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0,1]
+                            MagnifiableWidthHeight = [96,0]
+                        )
+
+                        Components =
+                        [
+                            BUCKListDescriptor
+                            (
+                                ElementName = "ArtilleryShootModeButtonList"
+                                ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [0,1] )
+                                Axis = ~/ListAxis/Horizontal
+
+                                FirstMargin = TRTTILength( Magnifiable = 1 )
+                                InterItemMargin = TRTTILength( Magnifiable = 3 )
+                                LastMargin = TRTTILength( Magnifiable = 3 )
+
+                                Elements =
+                                [
+                                    // Warning
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = HUDArtilleryButton
+                                        (
+                                            ElementName = "WarningButton"
+                                            BackgroundTexture = "textureArtillerieAlerte"
+                                            HintableAreaElementName = "WarningHintableArea"
+
+                                            HintTitleToken = "HOM_WRNT"
+                                            HintBodyToken  = "HOM_WRNB"
+                                            HintExtendedToken = "HOM_WRNE"
+                                        )
+                                    ),
+
+                                    // Shoot for effect
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = HUDArtilleryButton
+                                        (
+                                            ElementName = "ShootForEffectButton"
+                                            BackgroundTexture = "textureArtilleriePrecision"
+                                            HintableAreaElementName = "ShootForEffectHintableArea"
+
+                                            HintTitleToken = "HOM_EFFT"
+                                            HintBodyToken  = "HOM_EFFB"
+                                            HintExtendedToken = "HOM_EFFE"
+                                        )
+                                    ),
+
+                                    // Barrage
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = HUDArtilleryButton
+                                        (
+                                            ElementName = "BarrageButton"
+                                            BackgroundTexture = "textureArtillerieBarrage"
+                                            HintableAreaElementName = "BarrageHintableArea"
+
+                                            HintTitleToken = "HOM_BART"
+                                            HintBodyToken  = "HOM_BARB"
+                                            HintExtendedToken = "HOM_BARE"
+                                        )
+                                    ),
+                                ]
+                            )
+                        ]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/OffMapArtilleryAmmo
+                ),
+
+                // Gauge background block
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [60.0, 9.0]
+                            AlignementToAnchor     = [0.0, 0.5]
+                            AlignementToFather     = [0.0, 0.5]
+                        )
+
+                        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = "Gray"
+
+                        Components =
+                        [
+                            StateGauge,
+                        ]
+                    )
+                ),
+
+
+            ]
+        ),
+
+        // Overblock
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1,1]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "OffMapPanel/Overblock"
+        ),
+    ]
+)
+
+UISpecificOffMapArtilleryViewDescriptor is TUISpecificOffMapArtilleryViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOffMapArtilleryMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

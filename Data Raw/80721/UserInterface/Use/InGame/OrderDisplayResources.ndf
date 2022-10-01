@@ -1,0 +1,18 @@
+
+UIOrderDisplayResources is TUICommonOrderDisplayResources
+(
+    Camera                      = $/M3D/Camera/CameraPrincipale
+    OrderDisplayUserInputLayer  = $/M3D/Input/UserInputLayerHandler/InputLayer_OrderDisplay
+    OrderDisplayDrawer          = ~/OrderDisplayDrawer
+    AlwaysShowOrderButtonAlsoShowsSmartOrders = true
+
+    // configuration des flèches d'ordres
+
+    StartFadeAlphaAfterTimeInSeconds = 1.0
+    AlphaFadeDurationInSeconds = 2.0
+
+    CameraMoverHelperProxy          = $/M3D/Scene/IngameCameraMoverHelperProxy
+    FadeHeightTansitionStart        = 4*16000.0//9000.0
+    FadeHeightTansitionEnd          = 3*16000.0 //5000.0
+    InstantOrdersThatNeedFakeFeedback = ["UnloadFromTransport"]
+)

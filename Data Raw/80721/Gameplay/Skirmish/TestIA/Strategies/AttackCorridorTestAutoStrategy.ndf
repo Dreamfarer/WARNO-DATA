@@ -1,0 +1,18 @@
+export AttackCorridor_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "AtkCorIA"
+    FirstGenerator = TestAuto_AttackCorridor
+    TransitionList = []
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_AttackCorridor is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Attack_Corridor_OnlyTestAuto,
+    ]
+)

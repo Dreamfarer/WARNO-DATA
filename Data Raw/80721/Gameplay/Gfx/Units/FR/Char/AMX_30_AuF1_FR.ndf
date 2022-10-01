@@ -1,0 +1,20 @@
+export ModelFile_AMX_30_AuF1_FR is 'GameData:/Assets/3D/Units/FR/Artillerie/AMX_30_AuF1/AMX_30_AuF1.Ase2NdfBin'
+
+Modele_AMX_30_AuF1_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AMX_30_AuF1_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_30_AuF1_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Artillerie/AMX_30_AuF1_MID/AMX_30_AuF1_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_30_AuF1_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Artillerie/LODS/AMX_30_AuF1_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

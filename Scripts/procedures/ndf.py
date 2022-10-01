@@ -1,6 +1,9 @@
 import copy
 import helper.analyze
 
+# Initialize gloabl variable
+rootDirectory = None
+
 def working(subString, keywords, newUnitIdentifier):
 
     counterUnit = 0 #Count units (Only used to filter out the first catch)
@@ -34,4 +37,4 @@ def working(subString, keywords, newUnitIdentifier):
 
 def extract(filePath, keywords, newUnitIdentifier):
     
-    return working(open(filePath,"r").read(), keywords, newUnitIdentifier)
+    return working(open(rootDirectory + filePath,"r").read(), keywords, newUnitIdentifier)

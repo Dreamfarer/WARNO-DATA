@@ -1,0 +1,269 @@
+private Emblem is BUCKTextureDescriptor
+(
+    ElementName = 'Emblem'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [110, 101]
+    )
+
+    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+)
+
+private Portrait is BUCKTextureDescriptor
+(
+    ElementName = 'Portrait'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [82.0, 101.0]
+    )
+
+    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+    Components=
+    [
+        BUCKSpecificHintableArea
+        (
+            ElementName = 'PortraitHint'
+            DicoToken = ~/LocalisationConstantes/dico_unites
+        ),
+    ]
+)
+
+private NameHeader is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0, 41]
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Components=
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "DivisionName"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, 25.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "Liberator"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "Blanc"
+            TextSize = "DivisionPanel/DivisionName"
+        ),
+        BUCKTextDescriptor
+        (
+            ElementName = "DivisionNickname"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, 15.0]
+                AlignementToFather = [0.5, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "Liberator"
+            BigLineAction = ~/BigLineAction/CutByDots
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "Blanc"
+            TextSize = "DivisionPanel/DivisionNickname"
+        ),
+
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [39.0, 32.0]
+                MagnifiableOffset = [-5, 0]
+                AlignementToAnchor = [1.0, 0.5]
+                AlignementToFather = [1.0, 0.5]
+            )
+
+            Components=
+            [
+                BUCKTextureDescriptor
+                (
+                    ElementName = "TypeIcon"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1, 1]
+                    )
+
+                    TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                ),
+                BUCKSpecificHintableArea
+                (
+                    ElementName = 'TypeHint'
+                    DicoToken = ~/LocalisationConstantes/dico_unites
+                ),
+            ]
+        )
+    ]
+)
+
+template CentralBlock
+[
+    NeedUniqueName : bool = false,
+    UniqueNamePrefix : string = "",
+    UseInGame : bool = false,
+
+] is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [399, 101.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "LightGray"
+
+    Components=
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = 'CentralBlockBackground'
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [399,  101.0]
+            )
+
+            TextureToken   = "OutgameTexture_DivisionBackground"
+            TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+        ),
+
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [399, 0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            Elements=
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/NameHeader
+                ),
+            ]
+        )
+    ]
+)
+
+template DivisionPanelDescriptor
+[
+    MagnifierMultiplication : float = 1.0,
+    NeedUniqueName : bool = false,
+    UniqueNamePrefix : string = "",
+    UseInGame : bool = false,
+]
+is TUISpecificDivisionPanelComponentDescriptor
+(
+    ElementName = 'DivisionPanelComponent'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [591.0, 101.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    MagnifierMultiplication = <MagnifierMultiplication>
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0, 101]
+                AlignementToFather = [ 0.5, 0.0 ]
+                AlignementToAnchor = [ 0.5, 0.0 ]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 0 )
+
+            Elements=
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/Emblem
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = CentralBlock
+                    (
+                        NeedUniqueName = <NeedUniqueName>
+                        UniqueNamePrefix = <UniqueNamePrefix>
+                        UseInGame = <UseInGame>
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/Portrait
+                )
+            ]
+        )
+    ]
+
+    CentralBlockBackgroundByTag = MAP
+    [
+        (
+            'Frontal_Assault_Mod_Ally_Attacker',
+            'OutgameTexture_DivisionBackground_Frontal_Assault'
+        ),
+        (
+            'Frontal_Assault_Mod_Axis_Attacker',
+            'OutgameTexture_DivisionBackground_Frontal_Assault'
+        ),
+        (
+            'Frontal_Assault_Mod_Ally_Defender',
+            'OutgameTexture_DivisionBackground_Frontal_Assault'
+        ),
+        (
+            'Frontal_Assault_Mod_Axis_Defender',
+            'OutgameTexture_DivisionBackground_Frontal_Assault'
+        )
+    ]
+)
+
+

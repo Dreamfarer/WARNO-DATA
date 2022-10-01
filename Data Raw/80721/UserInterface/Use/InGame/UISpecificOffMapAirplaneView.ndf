@@ -1,0 +1,331 @@
+
+// -------------------------------------------------------------------------------------------------
+
+// Unit texture + Unit name + specialty + experience
+OffMapAirplaneMainContent is BUCKContainerDescriptor
+(
+    ElementName = "OffMapAirplaneMainContent"
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [0.0, 1.0] )
+
+            Axis = ~/ListAxis/Horizontal
+            FirstMargin = TRTTILength( Magnifiable = 12.0 )
+            LastMargin = TRTTILength( Magnifiable = 12.0 )
+            InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/OffMapArtillerySpecialtyTexture
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/OffMapUnitExperience
+                ),
+            ]
+        ),
+    ]
+)
+
+OffMapAirplaneComponentDimension is [111.0, 72.0]
+
+BUCKSpecificOffMapAirplaneMainComponentDescriptor is BUCKSpecificOffMapButton
+(
+    ElementName = "OffMapAirplaneMainComponent"
+
+    ButtonWidthHeight = ~/OffMapAirplaneComponentDimension
+    HeightCoefficientToRemoveFromInteriorButtonWidth = 0.4
+    MainBackgroundColorToken = 'BoutonTemps'
+    BorderLineColorToken = 'BoutonTemps'
+    IsTogglable = true
+
+    HintTitleToken = ""
+    HintBodyToken = ""
+    HintExtendedToken = ""
+
+    Components =
+    [
+        BUCKSpecificButton
+        (
+            ElementName = 'SelectionButton'
+
+            ButtonMagnifiableWidthHeight = ~/OffMapAirplaneComponentDimension
+            ButtonAlignementToFather = [0.0, 0.5]
+            ButtonAlignementToAnchor = [0.0, 0.5]
+
+            BorderLineColorToken = "BoutonTemps"
+            BigBorderBackgroundColorToken = "BoutonTemps"
+            BackgroundBlockColorToken  = "BoutonTemps"
+            TextColorToken = "ButtonHUD/Text2"
+            IsTogglable = true
+            //HasBackground = true
+            HasBorder = true
+
+            Components =
+            [
+                     ~/OffMapAirplaneMainContent,
+                     IconeUnite,
+                    BlocNom_status_jauge,
+            ]
+        ),
+        // bouton EVAC
+        BUCKButtonDescriptor
+        (
+            ElementName = 'EvacuateButton'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [23.0, 23.0]
+                AlignementToFather = [1.0, 0.0]
+                AlignementToAnchor = [1.0, 0.0]
+            )
+
+            IsTogglable = true
+
+            RadioButtonManager = ~/ArtilleryRadioButton
+
+            Components =
+            [
+                BUCKTextureDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1,1]
+                    )
+
+                    TextureToken = 'icone_evacuation'
+                    TextureFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1, 1]
+                        AlignementToFather = [0.5, 0.5]
+                        AlignementToAnchor = [0.5, 0.5]
+                    )
+                    TextureColorToken = 'BoutonTemps'
+                ),
+
+                BUCKSpecificHintableArea
+                (
+
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = "HOM_EVAT"
+                    HintBodyToken = "HOM_EVAB"
+                    HintExtendedToken = "HOM_EVAE"
+                )
+            ]
+        )
+    ]
+
+)
+//-------------------------------------------------------------------------------------
+BlocNom_status_jauge is BUCKListDescriptor
+(
+    ElementName = 'BlocNom_status_jauge'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToAnchor  = [0.0, 1.0]
+        AlignementToFather  = [0.0, 1.0]
+    )
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    [
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/StateGauge
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/NomUnite
+        ),
+    ]
+
+)
+
+//-------------------------------------------------------------------------------------
+StatusUnite is BUCKTextDescriptor
+(
+    ElementName = 'StateGaugeText'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 12.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+        InterLine = 0
+    )
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+
+    TypefaceToken = "IBM"
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+    HasBackground = false
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "Blanc"
+    TextSize = "12"
+
+    Hint = BUCKSpecificHintableArea
+    (
+        ElementName = "StateHint"
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = "HOM_STATT"
+        HintBodyToken = "HOM_STATB"
+        HintExtendedToken = "HOM_STATE"
+    )
+)
+//-------------------------------------------------------------------------------------
+NomUnite is BUCKTextDescriptor
+(
+    ElementName = "UnitName"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 15.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'OffMapUnitButtonName'
+    TextStyle = "Default"
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    TextSize = "12"
+    TextColor = "BlancEquipe"
+    TextToken = ""
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TypefaceToken = "UIMainFont"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = "HOM_UNNAMT"
+        HintBodyToken = "HOM_UNNAMB"
+        HintExtendedToken = "HOM_UNNAME"
+    )
+)
+//-------------------------------------------------------------------------------------
+IconeUnite is BUCKContainerDescriptor
+(
+    ElementName = "IconeUnite"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = 'UnitTexture'
+            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+            TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            //TextureColorToken = "Fulda2_Orange100"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            ElementName = 'UnitTextureHint'
+            DicoToken = ~/LocalisationConstantes/dico_unites
+            HintTitleToken = "UNKNOWN"
+            HintBodyToken = "UNKNOWN"
+            HintExtendedToken = "UNKNOWN"
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+StateGauge is BUCKSimpleGaugeDescriptor
+(
+    ElementName = 'StateGauge'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 12.0]
+    )
+
+    GaugeComponentName = 'StateGaugeValue'
+    GaugeValueMinSize = TRTTILength( Pixel = 1.0 )
+    DurationForGaugeFullChange = 1
+    GaugeMax = 100
+
+    HasBackground = true
+    BackgroundBlockColorToken = 'TypeC'
+
+    Components =
+    [
+        BUCKSimpleGaugeValueDescriptor
+        (
+            ElementName = 'StateGaugeValue'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            ValueContainerName = 'StateGaugeValueContainer'
+            ValueContainerComponent = BUCKContainerDescriptor
+            (
+                ElementName = 'StateGaugeValueContainer'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "Fulda2_Orange100"
+            )
+        ),
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HPD_UEXPT"
+            HintBodyToken = "HPD_UEXPB"
+            HintExtendedToken = "HPD_UEXPE"
+        ),
+        StatusUnite
+    ]
+)
+//-------------------------------------------------------------------------------------
+UISpecificOffMapAirplaneViewDescriptor is TUISpecificOffMapAirplaneViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOffMapAirplaneMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

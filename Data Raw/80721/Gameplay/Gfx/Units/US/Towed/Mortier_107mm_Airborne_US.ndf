@@ -1,0 +1,22 @@
+export ModelFile_Mortier_107mm_Airborne_US is 'GameData:/Assets/3D/Units/US/Canon/M30_107mm_Mortar/M30_107mm_Mortar.Ase2NdfBin'
+
+Modele_Mortier_107mm_Airborne_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Mortier_107mm_Airborne_US
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_107mm_Airborne_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Canon/M30_107mm_Mortar/M30_107mm_Mortar.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_107mm_Airborne_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Canon/M30_107mm_Mortar/M30_107mm_Mortar.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

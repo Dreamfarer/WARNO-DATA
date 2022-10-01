@@ -1,0 +1,19 @@
+export ModelFile_M113A2_supply_US is 'GameData:/Assets/3D/Units/US/APC/M113A2/M113A2_supply.Ase2NdfBin'
+
+Modele_M113A2_supply_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M113A2_supply_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M113A2_supply_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/APC/M113A2_MID/M113A2_supply_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M113A2_supply_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/APC/LODS/M113A2_supply_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,19 @@
+export ModelFile_Alouette_III_FR is 'GameData:/Assets/3D/Units/FR/Helico/Alouette_III/Alouette_III.Ase2NdfBin'
+
+Modele_Alouette_III_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Alouette_III_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_Alouette_III_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Helico/Alouette_III/Alouette_III.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Alouette_III_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Helico/Alouette_III/Alouette_III.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

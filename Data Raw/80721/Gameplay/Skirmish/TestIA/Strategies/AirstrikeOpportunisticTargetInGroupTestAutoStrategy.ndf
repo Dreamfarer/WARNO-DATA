@@ -1,0 +1,18 @@
+export Airstrike_OpportunisticTargetInGroup_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "AIRGROUP"
+    FirstGenerator = TestAuto_Airstrike_OpportunisticTargetInGroup
+    TransitionList = []
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Airstrike_OpportunisticTargetInGroup is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Airstrike_OpportunisticTargetInGroup_TestAutoOnly,
+    ]
+)

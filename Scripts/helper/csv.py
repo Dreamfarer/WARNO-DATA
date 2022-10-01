@@ -1,18 +1,16 @@
 import os
+import errno
 
 exportDirectory = ""
     
 def writeToFile(content, folder, name, version):
 
     folderPath = os.path.join(exportDirectory, str(version), folder)
-
-    try:
-        os.mkdir(folderPath) 
-    except:
-        folderPath += "\\" + name
-    else:
-        folderPath += "\\" + name
     
+    os.makedirs(folderPath, mode=0o777, exist_ok=True)
+
+    folderPath += "\\" + name
+
     file = open(folderPath, "w")
     file.write(content)
 

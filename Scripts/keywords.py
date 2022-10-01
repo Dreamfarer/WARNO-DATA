@@ -10,7 +10,6 @@ unit = [
     ["ArmorDescriptorTop", "ArmorDescriptorTop", str],
     ["MaxDamages", "MaxDamages", float],
     ["HitRollECM", "HitRollECM", float],
-    ["Dangerousness", "Dangerousness  =", float],
     ["NbSoldatInGroupeCombat", "NbSoldatInGroupeCombat  =", int],
     ["MaxSpeed","MaxSpeed", float], #Metre 
     ["RoadSpeed"," RoadSpeed", int],
@@ -25,9 +24,9 @@ unit = [
     ["OpticalStrengthAltitude","OpticalStrengthAltitude", int],
     ["IdentifyBaseProbability","IdentifyBaseProbability", float],
     ["TimeBetweenEachIdentifyRoll","TimeBetweenEachIdentifyRoll", float],
+    ["TransportedSoldier", "TransportedSoldier", str],
+    ["IsTowable","IsTowable", bool],
     ["ProductionYear","ProductionYear", int],
-    ["IsTransporter","IsTransporter", bool],
-    ["IsPlane","IsPlane", bool],
     ["UnitAttackValue","UnitAttackValue", int],
     ["UnitDefenseValue","UnitDefenseValue", int],
     ["EvacuationTime","EvacuationTime", int],
@@ -36,6 +35,7 @@ unit = [
     ["SpecialtiesList", "SpecialtiesList", list],
     ["Factory", "Factory", str],
     ["Resource_CommandPoints", "Resource_CommandPoints", int],
+    ["Resource_Tickets", "Resource_Tickets", int],
     ["RevealInfluence", "TInfluenceScoutModuleDescriptor", bool],
     ["UpgradeFromUnit", "UpgradeFromUnit", str],
     ["SupplyCapacity", "SupplyCapacity", float],
@@ -170,12 +170,29 @@ ammo = [
 
 deck = [
     ["DeckDescriptor", "Descriptor_Deck_", str], #Keyword itself is the variable, needs to be inserted into multiple rows
+    ["DivisionName", "DivisionName ", str], #Enclosed in '' (Divisions.ndf)
+    ["DivisionTags", "DivisionTags ", list], #Built like array (Divisions.ndf)
+    ["AvailableForPlay", "AvailableForPlay ", bool], #(Divisions.ndf)
+    ["MaxActivationPoints", "MaxActivationPoints ", int], #(Divisions.ndf)
+    ["CountryId", "CountryId ", str], #Enclosed in "" (Divisions.ndf)
     ["UnitDescriptor", "UnitDescriptor", str], #OK
     ["AvailableWithoutTransport", "AvailableWithoutTransport", bool], #OK
     ["AvailableTransportList", "AvailableTransportList", list], #String Array #NOT
-    ["MaxPackNumber", "MaxPackNumber", int], #OK
-    ["NumberOfUnitInPack", "NumberOfUnitInPack ", int], #OK
-    ["NumberOfUnitInPackXPMultiplier", "NumberOfUnitInPackXPMultiplier", list] #Float Array
+    ["MaxPackNumber", None, int], #This is very special: Search for DeckDescriptor + UnitDescriptor (without ~/Descriptor_Unit_) in Divisions.ndf and retrieve the number next to it
+    ["NumberOfUnitInPack_Poor", None, int], #'NumberOfUnitInPack_Poor' (NumberOfUnitInPack * NumberOfUnitInPackXPMultiplier[0])
+    ["NumberOfUnitInPack_Trained", None, int], #'NumberOfUnitInPack_Trained' (NumberOfUnitInPack * NumberOfUnitInPackXPMultiplier[1])
+    ["NumberOfUnitInPack_Veteran", None, int], #'NumberOfUnitInPack_Veteran' (NumberOfUnitInPack * NumberOfUnitInPackXPMultiplier[2])
+    ["NumberOfUnitInPack_Elite", None, int] #'NumberOfUnitInPack_Elite' (NumberOfUnitInPack * NumberOfUnitInPackXPMultiplier[3])
+]
+
+division = [
+    ["Divisions", "export", str],
+    ["DivisionName", "DivisionName ", str], #Enclosed in ''
+    ["DivisionTags", "DivisionTags ", list], #Built like array
+    ["AvailableForPlay", "AvailableForPlay ", bool],
+    ["MaxActivationPoints", "MaxActivationPoints ", int],
+    ["CountryId", "CountryId ", str], #Enclosed in ""
+    ["PackList", "PackList ", list] # 2d list in form of [unitName, availability]
 ]
 
 order = [

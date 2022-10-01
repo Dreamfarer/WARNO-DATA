@@ -1,0 +1,181 @@
+private NicknameChangeButtonDescriptor is ConfirmButton
+(
+    ElementName = "ChangeButton"
+    TextToken = 'BTN_CONFIR'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+)
+
+private NicknameChangeCancelButtonDescriptor is CancelButton
+(
+    ElementName = "CancelButton"
+    TextToken = 'BTN_CANCEL'
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+
+private NicknameChangePanel is SpecificModaleWindowFrame
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [850.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 80.0]
+
+    UniqueName = "NicknameChangePanel"
+    //ContentMagnifiableWidthHeight = [850.0, 0.0]
+    TitleToken = 'T_CHGPSUDO'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/NicknameChangeButtonDescriptor ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/NicknameChangeCancelButtonDescriptor ),
+    ]
+
+    ContentComponents =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            AssumeChildrenAreFixedSize = false
+
+            InterItemMargin = TRTTILength( Magnifiable = 5.0 )
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        Components =
+                        [
+                            BUCKListDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    AlignementToAnchor = [0.5, 1.0]
+                                    AlignementToFather = [0.5, 1.0]
+                                )
+
+                                Axis = ~/ListAxis/Horizontal
+
+                                InterItemMargin = TRTTILength( Magnifiable = 14.0 )
+                                FirstMargin = TRTTILength( Magnifiable = 5.0 )
+                                LastMargin = TRTTILength( Magnifiable = 5.0 )
+                                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                                Elements =
+                                [
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = BUCKTextDescriptor
+                                        (
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                AlignementToAnchor = [0.0, 0.5]
+                                                AlignementToFather = [0.0, 0.5]
+                                            )
+
+                                            ParagraphStyle = TParagraphStyleRTTI
+                                            (
+                                                Alignment = ~/UIText_Left
+                                                VerticalAlignment = ~/UIText_VerticalCenter
+                                            )
+
+                                            HorizontalFitStyle = ~/FitStyle/FitToContent
+                                            VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                            TextStyle = "Default"
+                                            TypefaceToken = "UIMainFont"
+
+                                            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                            TextToken = "pseudo"
+
+                                            TextColor = 'Blanc'
+                                            TextSize = 'StandardTextInModal'
+                                        )
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = ~/NicknameEditableTextDescriptor
+                                    ),
+
+                                    BUCKListElementDescriptor
+                                    (
+                                        ComponentDescriptor = AnimatedWaitingComponent()
+                                    ),
+                                ]
+                            )
+                        ]
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = "ErrorMsg"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [0.0, 1.0]
+                                    AlignementToAnchor = [0.5, 0.0]
+                                    AlignementToFather = [0.5, 0.0]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Left
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                                TextStyle = "Default"
+                                TypefaceToken = "UIMainFont"
+
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                TextColor = 'Rouge'
+                                TextSize = 'RightTextInModal'
+                            )
+                        ]
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+private NicknameEditableTextDescriptor is BUCKEditableTextInputFieldDescriptor
+(
+    ElementName = "EditableText"
+    ComponentFrame = TUIFramePropertyRTTI( MagnifiableWidthHeight = [490.0, 35.0] )
+)
+
+NicknameChangeResource is TUISpecificOutGameNicknameChangeResource
+(
+    NicknameChangePanel = ~/NicknameChangePanel
+)

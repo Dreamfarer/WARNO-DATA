@@ -1,0 +1,138 @@
+private playerMissionIconeDim is [ 65.0, 65.0 ]
+
+SpecificInGamePlayerMissionLabelResources is TUISpecificPlayerMissionLabelResources
+(
+    Layer = $/UserInterface/UILayer_Labels
+
+    PlayerMissionLabelMagnificationMultiplier = 1.0
+    PlayerMissionUserInputLayer  = $/M3D/Input/UserInputLayerHandler/InputLayer_PlayerMission
+
+    // Faire le lien avec PlayerMissionConstantes.ndf
+    PlayerMissionLabelDescriptor = MAP
+    [
+        (   1,
+            PlayerMissionLabelDescriptor
+            (
+                TextToken = "ORD_AIATTS"
+                IconTextureToken = "texturePlayerMissionSeize"
+                IconSize = playerMissionIconeDim
+            )
+        ),
+    ]
+
+    PlayerMissionLabelTransformation = TLabelTransformationComposition
+    (
+        Transformations = [
+            TLabelTransformFaceCam
+            (
+                Camera = $/M3D/Camera/CameraPrincipale
+            ),
+            TLabelTransformFakePerspective
+            (
+                ScalePerAltitudeConstReso = 1.35
+                Camera = $/M3D/Camera/CameraPrincipale
+                Scene2D = $/M3D/Scene/Scene_2D_Interface
+                ConstnessFactor = 0
+            )
+        ]
+    )
+)
+
+private template PlayerMissionLabelDescriptor
+[
+    TextToken : string = "",
+    IconTextureToken : string = "",
+    IconSize : float2,
+    Margin : float = 3.0,
+    Largeur : float = 70.0,
+]
+is  BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <IconSize>
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.5, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            TextureToken = <IconTextureToken>
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = <IconSize>
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [0.0, 0.0]
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        ),
+
+        PlayerMissionLabelText
+        (
+            ElementName = "Text"
+            TextToken = <TextToken>
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            TextSize = "42"
+            TextColor = "SD2_BlancPur"
+
+            Alignment = UIText_Left
+            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+        )
+
+    ]
+)
+
+private template PlayerMissionLabelText
+[
+    ElementName : string,
+    TextToken : string = "",
+    ComponentFrame : TUIFramePropertyRTTI,
+    TypefaceToken : string = "UIMainFont",
+    TextSize : string,
+    TextColor : string = "ObjectiveEtiquetteManager/Text",
+    Alignment = UIText_Left,
+    HorizontalFitStyle = ~/FitStyle/FitToContent,
+    BigLineAction = ~/BigLineAction/MultiLine,
+    BigWordAction = ~/BigWordAction/BigWordNewLine,
+]
+is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+
+    TextToken = <TextToken>
+
+    ComponentFrame = <ComponentFrame>
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment         = <Alignment>
+        VerticalAlignment = UIText_Up
+        Balanced          = true
+        BigWordAction     = <BigWordAction>
+    )
+
+    TextStyle = "Default"
+    TypefaceToken = <TypefaceToken>
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextSize = <TextSize>
+    TextColor = <TextColor>
+
+    HorizontalFitStyle = <HorizontalFitStyle>
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    BigLineAction = <BigLineAction>
+)

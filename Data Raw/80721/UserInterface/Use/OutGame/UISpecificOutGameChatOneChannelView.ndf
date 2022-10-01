@@ -1,0 +1,70 @@
+
+private OutGameChatOneChannelChannelRadioButton is TBUCKRadioButtonManager()
+
+BUCKSpecificOutGameChatOneChannelMainComponentDescriptor is BUCKButtonDescriptor
+(
+    ElementName = "ChannelButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0, 15]
+        RelativeWidthHeight = [1, 0]
+    )
+
+    Grayed = false
+
+    IsTogglable = true
+    RadioButtonManager = ~/OutGameChatOneChannelChannelRadioButton
+    CannotDeselect = true
+    ForceEvents = true
+    //HasBackground = true
+    BackgroundBlockColorToken = "Cyan"
+
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            ElementName = "ChannelButtonHintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+            HintTitleToken = ""
+            HintBodyToken = ""
+            HintExtendedToken = ""
+        ),
+        BUCKTextDescriptor
+        (
+            ElementName = "ChannelButtonText"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                //MagnifiableWidthHeight = [-(2 * 15), 0.0]
+                MagnifiableOffset = [10.0, 0.0]
+                AlignementToFather = [0.0, 0.5]
+                AlignementToAnchor = [0.0, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Left
+                VerticalAlignment = UIText_VerticalCenter
+                BigWordAction = ~/BigWordAction/BigWordCut
+            )
+            TextStyle = "Default"
+            TypefaceToken = "IBM"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextToken = ''
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor =  "Cyan"
+            TextSize = "14"
+        )
+    ]
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+)
+
+UISpecificOutGameChatOneChannelViewDescriptor is TUISpecificOutGameChatOneChannelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameChatOneChannelMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

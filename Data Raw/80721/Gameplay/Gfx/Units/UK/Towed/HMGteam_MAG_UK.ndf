@@ -1,0 +1,22 @@
+export ModelFile_HMGteam_MAG_UK is 'GameData:/Assets/3D/Units/US/Canon/M2HB/M2HB.Ase2NdfBin'
+
+Modele_HMGteam_MAG_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_HMGteam_MAG_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_MAG_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Canon/M2HB/M2HB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_MAG_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Canon/M2HB/M2HB.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

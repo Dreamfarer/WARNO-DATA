@@ -1,0 +1,27 @@
+
+// L'etiquette d'un pion
+PawnLabelAggregationMainComponentDescriptor is BUCKSensibleAreaDescriptor
+(
+    ElementName = 'Background'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 23.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        ~/UpperLabelList,
+
+        ~/MainLabelList,
+
+        ~/LowerLabelList,
+    ]
+)
+
+UISpecificStrategicPawnLabelAggregationViewDescriptor is PawnLabelViewDescriptor
+(
+    MainComponentDescriptor = ~/PawnLabelAggregationMainComponentDescriptor
+)

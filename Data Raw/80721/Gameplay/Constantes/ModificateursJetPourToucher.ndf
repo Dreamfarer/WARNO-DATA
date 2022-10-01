@@ -1,0 +1,32 @@
+// Courbe de Portee
+// La formule est la suivante :
+//
+// Multiplicateur = MultiplicateurAPorteeMaximale +
+//                     (MultiplicateurAPorteeMinimale - MultiplicateurAPorteeMaximale) *
+//                     (1.0 - %age de la portée) ^ (exposant)
+//
+//
+// Par exemple :
+//     MultiplicateurAPorteeMaximale = 1.0 => Lorsque l'unité est a portée maximale, on utilise sa probabilité de toucher multipliée par 1.0
+//     MultiplicateurAPorteeMinimale = 16.0 => Lorsque l'unité est a portée minimale, on utilise sa probabilité de toucher multipliée par 16.0
+//     Exposant = 3 => La forme de la courbe correspond a f(x) = x^3
+//
+// La formule devient : 1 + 15 * (x)^3
+// On obtient la table de valeur suivante
+//          Portée | Multiplicateur
+//          -----------------------
+//            0%   |      16.0
+//           25%   |      7.2
+//           50%   |      2.8
+//           75%   |      1.23
+//          100%   |      1.0
+//
+// Pour observer la courbe, je vous conseille de la tracer : http://www.mathe-fa.de/fr
+DefaultMultiplicateurAPorteeMaximale    is 1.0     // Correspond au multiplicateur appliqué quand l'unité est a portée maximale
+DefaultMultiplicateurAPorteeMinimale    is 4.0    // Correspond au multiplicateur appliqué quand l'unité est a portée minimale
+DefaultExposant             is 3
+
+// Exactement comme au dessus, mais lorsque l'unité est en mouvement
+DefaultMultiplicateurAPorteeMaximaleEnMouvement is 1.0
+DefaultMultiplicateurAPorteeMinimaleEnMouvement is 4.0
+DefaultExposantEnMouvement          is 3

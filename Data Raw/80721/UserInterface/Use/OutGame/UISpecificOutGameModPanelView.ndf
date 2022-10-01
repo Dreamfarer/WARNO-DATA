@@ -1,0 +1,852 @@
+
+template ModPanelButton [
+    ElementName : string,
+    TextToken : string,
+] is ConfirmButton
+(
+    TextColorToken = 'blanc_modding'
+    TextTypefaceToken = "Liberator"
+    TextSizeToken = '20'
+    HasBorder = true
+    BorderLineColorToken = 'blanc_modding_line'
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextToken = <TextToken>
+    ElementName = <ElementName>
+    ButtonMagnifiableWidthHeight = [212.0, ~/DefaultButtonHUDDims[1]]
+)
+
+private ModPanelApplyButton is ModPanelButton
+(
+    TextToken = 'AB_MODAPPL'
+    ElementName = 'ModPanelApplyButton'
+)
+
+private ModPanelDefaultButton is ModPanelButton
+(
+    TextToken = 'AB_MODREVE'
+    ElementName = 'ModPanelDefaultButton'
+)
+
+private ModPanelBrowseButton is ModPanelButton
+(
+    TextToken = 'AB_MODBROW'
+    ElementName = 'ModPanelBrowseButton'
+)
+
+private ModPanelRefreshButton is ModPanelButton
+(
+    TextToken = 'AB_MODREFR'
+    ElementName = 'ModPanelRefreshButton'
+)
+
+//---------------------------------------------------------------------------------
+
+ModPanelScrollingContainer is BUCKSpecificScrollingContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    HasVerticalScrollbar = true
+
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [7.0, 0.0]
+        MagnifiableOffset = [-6.0, 0.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Components = [
+        BUCKRackDescriptor
+        (
+            ElementName = "ModPanelRack"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            BladeDescriptor = ~/ModPanelMultiListLine
+        ),
+    ]
+)
+
+ModPanelMultiListTitle is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 50.0]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "ListeExcel/Cartouche"
+
+    Axis = ~/ListAxis/Horizontal
+    FirstMargin = TRTTILength(Magnifiable = 0.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'ModName'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [200.0, 25.0]
+                )
+                ShowCheckbox = false
+                SortingType = ~/MultiListSorting/String
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+                        //TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 5.0, 0.0])
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TypefaceToken = "Liberator"
+                        TextSize = '20'
+                        TextColor = 'Blanc'
+                        TextToken = 'LS_Name'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'ModRating'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [140.0, 25.0]
+                )
+
+                ShowCheckbox = false
+                SortingType = ~/MultiListSorting/Integer
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TypefaceToken = "Liberator"
+                        TextSize = '20'
+                        TextColor = 'Blanc'
+                        TextToken = 'LS_Rating'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'ModType'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [145.0, 25.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+                HidePointerEvents = true
+                ShowCheckbox = false
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+                        TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 5.0, 0.0])
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TypefaceToken = "Liberator"
+                        TextSize = '20'
+                        TextColor = 'Blanc'
+                        TextToken = 'LS_Types'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'ModSize'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [116.0, 25.0]
+                )
+                ShowCheckbox = false
+                SortingType = ~/MultiListSorting/Integer
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+                        TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 5.0, 0.0])
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TypefaceToken = "Liberator"
+                        TextSize = '20'
+                        TextColor = 'Blanc'
+                        TextToken = 'LS_Size'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'ModActive'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [137.0, 25.0]
+                )
+
+                SortingType = ~/MultiListSorting/Bool
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+                        TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 5.0, 0.0])
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TypefaceToken = "Liberator"
+                        TextSize = '20'
+                        TextColor = 'Blanc'
+                        TextToken = 'LS_Active'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = 'ModDetail'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [140.0, 25.0]
+                )
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+                        TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 5.0, 0.0])
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TypefaceToken = "Liberator"
+                        TextSize = '20'
+                        TextColor = 'Blanc'
+                        TextToken = 'LS_DETAILS'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+    ]
+)
+
+ModPanelMultiListLine is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 40.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = 'ModName'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [200.0, 0.0]
+                )
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = 'ModNameText'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Left
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+                        TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 5.0, 0.0])
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TypefaceToken = "Liberator"
+                        TextSize = '20'
+                        TextColor = 'Blanc'
+                        TextToken = 'LS_Name'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = 'ModRating'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [140.0, 0.0]
+                )
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKRackDescriptor
+                                (
+                                    ElementName = 'ModRatingRack'
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                    )
+
+                                    Axis = ~/ListAxis/Horizontal
+
+                                    BladeDescriptor = BUCKTextureDescriptor
+                                    (
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            MagnifiableWidthHeight = [20.0, 20.0]
+                                            AlignementToFather = [0.0, 0.5]
+                                            AlignementToAnchor = [0.0, 0.5]
+                                        )
+                                        TextureFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [1.0, 1.0]
+                                        )
+                                        TextureToken = "OutgameTexture_ModCenter_Star"
+                                        TextureColorToken = "SD2_Blanc184"
+                                    )
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                            ),
+                        ]
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = 'ModType'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [145.0, 0.0]
+                )
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKRackDescriptor
+                                (
+                                    ElementName = 'ModTypeRack'
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                    )
+
+                                    Axis = ~/ListAxis/Horizontal
+
+                                    BladeDescriptor = BUCKTextureDescriptor
+                                    (
+                                        ElementName = 'ModTypeTexture'
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [0.0, 1.0]
+                                            MagnifiableWidthHeight = [40.0, 0.0]
+                                        )
+                                        TextureFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [1.0, 1.0]
+                                        )
+                                        TextureColorToken = "SD2_Blanc184"
+                                    )
+
+                                    BackgroundComponents =
+                                    [
+                                        BUCKSpecificHintableArea
+                                        (
+                                            ElementName = "ModRatingHint"
+                                        )
+                                    ]
+                                )
+                            ),
+
+                            BUCKListElementDescriptor
+                            (
+                                ExtendWeight = 1.0
+                                ComponentDescriptor = BUCKContainerDescriptor(ComponentFrame = TUIFramePropertyRTTI())
+                            ),
+                        ]
+                    ),
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = 'ModSize'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [116.0, 0.0]
+                )
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = 'ModSizeText'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+                        TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 5.0, 0.0])
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TypefaceToken = "UIMainFont"
+                        TextSize = '14'
+                        TextColor = 'ListeExcel/Cartouche'
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = 'ModActive'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [137.0, 0.0]
+                )
+
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKSpecificCheckBoxDescriptor
+                    (
+                        ElementName = "ModActiveBox"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = DefaultCheckBoxDims
+                            AlignementToFather = [0.5, 0.5]
+                            AlignementToAnchor = [0.5, 0.5]
+                        )
+                    )
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = 'ModDetail'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [140.0, 0.0]
+                )
+
+                HidePointerEvents = true
+                Components =
+                [
+                    BUCKButtonDescriptor
+                    (
+                        ElementName = 'ModDetailButton'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ElementName = 'ModTypeTexture'
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [0.0, 1.0]
+                                    MagnifiableWidthHeight = [40.0, 0.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+                                TextureFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+                                TextureToken = "OutgameTexture_Mod_Downloading"
+                                TextureColorToken = "SD2_Blanc184"
+                            )
+                        ]
+                    ),
+                ]
+            )
+        ),
+    ]
+)
+
+BUCKSpecificOutGameModPanelMainComponentDescriptor is WindowFrame
+(
+    TitleToken = 'T_MODCENT'
+
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    ContentExtendWeight = 1.0
+    HidePointerEvents = true
+    HasBackground = false
+
+    ContentComponents =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [1920.0, 1080.0]
+                AlignementToAnchor = [0.0, 1.0]
+                AlignementToFather = [0.0, 1.0]
+            )
+            TextureToken = 'Outgame_fond_modding_screen'
+        ),
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [0,-77.5]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+            TextureToken = 'Outgame_fond_ecran_modding_screen'
+            TextureDrawer = 'MonochromeMonitorEffect'
+        ),
+        //-------------------------------------------------------------------------------------
+        // affichage du titre
+
+        BUCKTextDescriptor
+        (
+
+            ElementName = 'ActivationPointsTitre'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0,60]
+                MagnifiableOffset = [0,-372+14]
+                RelativeWidthHeight = [1.0, 0.0]
+                AlignementToFather = [0, 0.5]
+                AlignementToAnchor = [0, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            TextStyle = "TextStyleEcranMoniteur"
+
+            HorizontalFitStyle = ~/FitStyle/UserDefined
+            VerticalFitStyle = ~/FitStyle/UserDefined
+
+            TypefaceToken = "Liberator"
+            BigLineAction = ~/BigLineAction/MultiLine
+
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            TextToken = 'T_MODCENT'
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = "Blanc"
+            TextSize = "24"
+        ),
+
+        //-------------------------------------------------------------------------------------
+
+        BUCKMultiListDescriptor
+        (
+            ElementName = "ModMultilist"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                 MagnifiableWidthHeight = [863.0, 470.0]
+                 MagnifiableOffset = [0, 210]
+                 AlignementToAnchor = [0.5, 0.0]
+                 AlignementToFather = [0.5, 0.0]
+            )
+
+            ColumnNames =
+            [
+                "ModDetail"
+            ]
+
+            SortableColumnNames =
+            [
+                "ModName",
+                "ModRating",
+                "ModType",
+                "ModSize",
+                "ModActive",
+            ]
+
+            HasBackground = false
+            BackgroundBlockColorToken = "Orange"
+
+            RackName = "ModPanelRack"
+
+            ContentDescriptor = ~/ModPanelScrollingContainer
+            TitleDescriptor = ~/ModPanelMultiListTitle
+        ),
+
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToAnchor  = [0.0, 1.0]
+                AlignementToFather  = [0.0, 1.0]
+                MagnifiableOffset = [0.0, 50.0]
+            )
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKSpecificCheckBoxDescriptor
+                    (
+                        ElementName = "SaveButton"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            AlignementToFather = [0.0, 0.0]
+                            AlignementToAnchor = [0.0, 0.0]
+                        )
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        TextPadding = TRTTILength4(Magnifiable = [5.0, 0.0, 5.0, 0.0])
+                        TextStyle = 'TextStyleEcranMoniteur'
+                        TypefaceToken = "UIMainFont"
+                        TextSize = '14'
+                        TextColor = 'SD2_Blanc184'
+                        TextToken = 'SR_SAVE'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    )
+                ),
+            ]
+        ),
+        // boutons
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather  = [0.5, 0.5]
+                AlignementToAnchor  = [0.5, 0.5]
+                MagnifiableOffset = [0,203]
+            )
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    //ElementName = 'ButtonList'
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToFather  = [0.5, 0.0]
+                        AlignementToAnchor  = [0.5, 0.0]
+                    )
+
+                    Axis = ~/ListAxis/Horizontal
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/ModPanelApplyButton ),
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/ModPanelDefaultButton ),
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/ModPanelBrowseButton ),
+                        BUCKListElementDescriptor( ComponentDescriptor = ~/ModPanelRefreshButton ),
+                    ]
+                )
+            ]
+        ),
+
+        //-------------------------------------------------------------------------------------
+
+        MainBackButtonContainer
+        (
+            ButtonDefaultToken = "BTN_BACK"
+            BackMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+        )
+    ]
+)
+
+UISpecificOutGameModPanelViewDescriptor is TUISpecificOutGameModPanelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameModPanelMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

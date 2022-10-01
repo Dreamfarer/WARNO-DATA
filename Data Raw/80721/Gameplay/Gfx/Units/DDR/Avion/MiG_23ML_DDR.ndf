@@ -1,0 +1,25 @@
+export ModelFile_MiG_23ML_DDR is 'GameData:/Assets/3D/Units/DDR/Avion/MiG_23ML/MiG_23ML.Ase2NdfBin'
+
+Modele_MiG_23ML_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MiG_23ML_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_23ML_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/MiG_23ML/MiG_23ML.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_23ML_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/MiG_23ML/MiG_23ML.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_23ML_DDR_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/MiG_23ML/MiG_23ML_Train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

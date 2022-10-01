@@ -1,0 +1,22 @@
+export ModelFile_FV101_Scorpion_BEL is 'GameData:/Assets/3D/Units/BEL/Char/FV101_Scorpion/FV101_Scorpion.Ase2NdfBin'
+
+Modele_FV101_Scorpion_BEL is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_FV101_Scorpion_BEL
+    CivMask =  CivMask/Common
+)
+
+Modele_FV101_Scorpion_BEL_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/BEL/Char/FV101_Scorpion/FV101_Scorpion.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV101_Scorpion_BEL_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/BEL/Char/FV101_Scorpion/FV101_Scorpion.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

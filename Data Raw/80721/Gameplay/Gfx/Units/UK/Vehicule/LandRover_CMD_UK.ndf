@@ -1,0 +1,19 @@
+export ModelFile_LandRover_CMD_UK is 'GameData:/Assets/3D/Units/UK/Vehicule/LandRover_CV/LandRover_CV.Ase2NdfBin'
+
+Modele_LandRover_CMD_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_LandRover_CMD_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_LandRover_CMD_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Vehicule/LandRover_CV_MID/LandRover_CV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_LandRover_CMD_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Vehicule/LODS/LandRover_CV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

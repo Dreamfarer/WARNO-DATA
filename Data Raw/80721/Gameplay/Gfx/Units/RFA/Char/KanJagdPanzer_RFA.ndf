@@ -1,0 +1,19 @@
+export ModelFile_KanJagdPanzer_RFA is 'GameData:/Assets/3D/Units/RFA/Char/KanJagdPanzer/KanJagdPanzer.Ase2NdfBin'
+
+Modele_KanJagdPanzer_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_KanJagdPanzer_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_KanJagdPanzer_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Char/KanJagdPanzer/KanJagdPanzer.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_KanJagdPanzer_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Char/KanJagdPanzer/KanJagdPanzer.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

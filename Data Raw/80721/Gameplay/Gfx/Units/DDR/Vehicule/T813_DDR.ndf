@@ -1,0 +1,19 @@
+export ModelFile_T813_DDR is 'GameData:/Assets/3D/Units/DDR/Vehicule/T813/T813.Ase2NdfBin'
+
+Modele_T813_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T813_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_T813_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/T813/T813.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_T813_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/T813/T813.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

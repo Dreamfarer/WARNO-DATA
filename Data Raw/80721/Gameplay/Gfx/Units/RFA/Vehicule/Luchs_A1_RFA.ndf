@@ -1,0 +1,22 @@
+export ModelFile_Luchs_A1_RFA is 'GameData:/Assets/3D/Units/RFA/APC/Luchs_A1/Luchs_A1.Ase2NdfBin'
+
+Modele_Luchs_A1_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Luchs_A1_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Luchs_A1_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/APC/Luchs_A1/Luchs_A1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Luchs_A1_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/APC/Luchs_A1/Luchs_A1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

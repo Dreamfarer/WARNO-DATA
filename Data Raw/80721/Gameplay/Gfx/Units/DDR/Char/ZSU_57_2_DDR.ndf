@@ -1,0 +1,22 @@
+export ModelFile_ZSU_57_2_DDR is 'GameData:/Assets/3D/Units/DDR/DCA/ZSU_57_2/ZSU_57_2.Ase2NdfBin'
+
+Modele_ZSU_57_2_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_ZSU_57_2_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_ZSU_57_2_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/ZSU_57_2/ZSU_57_2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_ZSU_57_2_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/ZSU_57_2/ZSU_57_2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

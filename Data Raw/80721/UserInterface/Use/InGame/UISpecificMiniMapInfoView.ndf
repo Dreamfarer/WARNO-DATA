@@ -1,0 +1,46 @@
+
+MinimapMagnifiableSize is 320
+
+BUCKSpecificMiniMapInfoMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [-10.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    InterItemMargin = TRTTILength(Magnifiable = 1.0)
+    Elements =
+    [
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [MinimapMagnifiableSize, MinimapMagnifiableSize] //Doit être carré
+                    AlignementToFather = [1.0, 0.0]
+                    AlignementToAnchor = [1.0, 0.0]
+                )
+
+                HidePointerEvents = true
+                Components =
+                [
+                    PanelRoundedCorner(),
+                    ~/MinimapPanelDescriptor, // MUST BE A SQUARE!!!,
+                ]
+            )
+        ),
+
+    ]
+)
+
+UISpecificMiniMapInfoViewDescriptor is TUISpecificMiniMapInfoViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificMiniMapInfoMainComponentDescriptor
+    MainComponentContainerUniqueName = "UISpecificMiniMapInfoViewMainContainer"
+)

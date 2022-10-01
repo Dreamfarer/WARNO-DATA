@@ -1,3 +1,30 @@
+####################################################################
+# CONSTANTS
+####################################################################
+class Constant:
+    def __init__(self):
+        self.distance = None
+        self.speed = None
+        self.altitudeMax = None
+        self.pitchSpeed = None
+        self.altitudeMinForRoll = None
+        self.minRollSpeedForRoll = None
+
+    def initialize(self):
+
+        # constant_Distance = file("data/GDConstantes.ndf", "MultiplicateurMetreRTSVersDistanceFeedbackTactique")
+        self.distance = 1.0 / 2.83 # has moved into a c-header file, for the meantime, we will just hard-code it
+        self.speed = file(rootDirectory + "/Scripts/data/GDConstantes.ndf", "MultiplicateurMetreRTSVersVitesseTactiquePourVehicule")
+        self.altitudeMax = file(rootDirectory + "/Scripts/data/AirplaneConstantes.ndf", "MaxAltitude is") #Metre
+        self.pitchSpeed = file(rootDirectory + "/Scripts/data/AirplaneConstantes.ndf", "MaxPitchSpeed is")
+        self.altitudeMinForRoll = file(rootDirectory + "/Scripts/data/AirplaneConstantes.ndf", "MinAltitudeForRoll is") #Metre
+        self.minRollSpeedForRoll = file(rootDirectory + "/Scripts/data/AirplaneConstantes.ndf", "MinRollSpeedForRoll is")
+
+# Initialize gloabl variables
+rootDirectory = None
+constants = Constant()
+
+# Convert
 def convertTypeRTTI(typeRTTI):
 
     family = typeRTTI[typeRTTI.find("Family")+8:typeRTTI.find(" ")-1]
@@ -62,63 +89,39 @@ def file(filename, varName):
 
     return float(var)
 
-
-####################################################################
-# CONSTANTS
-####################################################################
-constant_Distance = file("data/GDConstantes.ndf", "MultiplicateurMetreRTSVersDistanceFeedbackTactique")
-constant_Speed = file("data/GDConstantes.ndf", "MultiplicateurMetreRTSVersVitesseTactiquePourVehicule")
-constant_AltitudeMax = file("data/AirplaneConstantes.ndf", "MaxAltitude is") #Metre
-constant_PitchSpeed = file("data/AirplaneConstantes.ndf", "MaxPitchSpeed is")
-constant_AltitudeMinForRoll = file("data/AirplaneConstantes.ndf", "MinAltitudeForRoll is") #Metre
-constant_MinRollSpeedForRoll = file("data/AirplaneConstantes.ndf", "MinRollSpeedForRoll is")
-
 ####################################################################
 # SEARCH KEYWORD IN GIVEN TEXT AND RETRIEVE ITS VALUE
 ####################################################################
 def variable(text, keyword):
     index = text.find(keyword[1])
 
-    #If descriptor itself is the variable
-    if keyword[0] == "RevealInfluence":
+    # The presence of the keyword itself means this unit posesses this ability
+    if keyword[0] in ["RevealInfluence"]:
         if index != -1:
             return 1
         else:
             return 0
     
-    #If the given keyword does not exist
+    # Return 'None' if the keyword hasn't been found
     if index == -1:
         return None
 
-    if keyword[0] == "DeckDescriptor":
-        captured = text[index:text.find("\n", index)-1]
-        return captured
-
-    #If keyword itself is present in the value 
-    if keyword[0] == "WeaponDescriptor" and keyword[1] == "WeaponDescriptor":
-        captured = text[index:text.find("\n", index)]
-        return captured
-    
+    # If the variable is of type: TDamageTypeRTTI, for example: TDamageTypeRTTI(Family="artillerie" Index=1)
     if keyword[0] == "Arme":
         keywordlength = len(keyword[1])
         captured = text[index+keywordlength:text.find("\n", index+keywordlength)]
         captured = captured.strip()
         captured = captured[2:]
         return convertTypeRTTI(captured)[0]
+
+    # Special case for 'PackList': We need to record everything inbetween its []
+    # if keyword[0] in ["PackList"]:
+    #    return captured[captured.find("[") + 1:captured.find("]") - 1]
         
-    #If value of keyword is NOT an array
-    if keyword[0] != "RoleList" and keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier" and keyword[0] != "Orders":
-        keywordlength = len(keyword[1])
-        captured = text[index+keywordlength:text.find("\n", index+keywordlength)]
-        captured = captured.translate({ord('\''):None})
-        captured = captured.translate({ord('='):None})
-        captured = captured.translate({ord(','):None})
-        captured = captured.translate({ord('('):None})
-        captured = captured.translate({ord(')'):None})
-        captured = captured.translate({ord('~'):None})
-        captured = captured.translate({ord('/'):None})
-        captured = captured.strip()
-    else:
+    #Append all parsed strings that are array like to this list
+    if keyword[0] in ["RoleList", "SpecialtiesList", "Salves", "SalvoIsMainSalvo", "TraitsToken", "AvailableTransportList", "NumberOfUnitInPackXPMultiplier", "Orders", "DivisionTags", "PackList"]:
+
+        # Array like parsed strings
         keywordlength = len(keyword[1])
         captured = text[index+keywordlength:text.find("]", index+keywordlength)]
         captured = captured.translate({ord('='):None})
@@ -130,11 +133,51 @@ def variable(text, keyword):
         captured = captured.translate({ord('/'):None})
         captured = captured.translate({ord('~'):None})
 
-        #If array always has one element
-        if keyword[0] != "SpecialtiesList" and keyword[0] != "Salves" and keyword[0] != "SalvoIsMainSalvo" and keyword[0] != "TraitsToken" and keyword[0] != "AvailableTransportList" and keyword[0] != "NumberOfUnitInPackXPMultiplier" and keyword[0] != "Orders":
+        #Append all parsed strings that are array like to this list which ONLY contain one element
+        if keyword[0] in ["RoleList"]:
             return stringToType(captured.translate({ord(','):None}))
 
-        #Seperate the elements by looking at ","
+        # Append all parsed strings that are array like to this list which appear in form of a 2D array: [(x,y),(x,y)]
+        if keyword[0] in ["PackList"]:
+            captureArrayString = ""
+            captureArray = []
+            captureTuple = []
+
+            for i in range(len(captured)):
+
+                # Start of new tuple
+                if captured[i] == "(":
+                    captureArrayString = ""
+
+                # First element of tuple is finished
+                elif captured[i] == "," and captured[i-1] != ")":
+
+                    # Modify the Descriptor; at the moment it is the deck descriptor, but we need the unit descriptor
+                    captureArrayString = "Descriptor_Unit_" + captureArrayString[captureArrayString.find("multi") + 6:]
+                    
+                    captureTuple.append(stringToType(captureArrayString))
+                    captureArrayString = ""
+
+                # End of current tuple
+                elif captured[i] == ")":
+
+                    # Second element of tuple is finished
+                    captureTuple.append(stringToType(captureArrayString))
+                    captureArrayString = ""
+
+                    captureArray.append(captureTuple) # Add tuple to list
+                    captureTuple = [] # Reset tuple
+
+                else:
+                    captureArrayString += captured[i]
+
+            # Export list
+            if captureArray == []:
+                return None
+            else:
+                return captureArray
+
+        # Seperates the elements by looking at "," when array is in form of: [x,y,z,a,b, etc.]
         captureArrayString = ""
         captureArray = []
         for i in range(len(captured)):
@@ -154,42 +197,57 @@ def variable(text, keyword):
         else:
             return captureArray 
 
+    # Trim string to only contain valuable information (it will cut away everything after the line break)
+    keywordlength = len(keyword[1])
+    captured = text[index+keywordlength:text.find("\n", index+keywordlength)]
+    captured = captured.translate({ord('\''):None})
+    captured = captured.translate({ord('='):None})
+    captured = captured.translate({ord(','):None})
+    captured = captured.translate({ord('('):None})
+    captured = captured.translate({ord(')'):None})
+    captured = captured.translate({ord('~'):None})
+    captured = captured.translate({ord('/'):None})
+    captured = captured.translate({ord('"'):None})
+    captured = captured.strip()
+
     #If content is specific
     if captured == "nil":
         return None
     
+     # If the variable we search has the keyword included, record the whole variable (e.g keyword: Descriptor_Deck_ and the variable is: ~/Descriptor_Deck_Division_US_82nd_Airborne_multi)
+    if keyword[0] == "DeckDescriptor":
+        return text[index:text.find("\n", index)-1]
+
+    # Special case because there are two different 'WeaponDescriptor', we need to specify.
+    if keyword[0] == "WeaponDescriptor" and keyword[1] == "WeaponDescriptor":
+        return text[index:text.find("\n", index)]
+    
     #If keyword is a constant and always the same
-    if keyword[0] == "AltitudeMax":
-        return constant_AltitudeMax * constant_Distance
-    if keyword[0] == "PitchSpeed":
-        return constant_PitchSpeed
-    if keyword[0] == "AltitudeMinForRoll":
-        return constant_AltitudeMinForRoll * constant_Distance
-    if keyword[0] == "MinRollSpeedForRoll":
-        return constant_MinRollSpeedForRoll
+    match keyword[0]:
+        case "AltitudeMax":
+            return constants.altitudeMax * constants.distance
+        case "PitchSpeed":
+            return constants.pitchSpeed
+        case "AltitudeMinForRoll":
+            return constants.altitudeMinForRoll * constants.distance
+        case "MinRollSpeedForRoll":
+            return constants.minRollSpeedForRoll
 
     #SPEED: For every value that has "* Metre" in it, chop it away and multiply it by the corresponding constant.
     if keyword[0] in ["MaxSpeed","MaxAcceleration","MaxDeceleration", "UpwardSpeed", "Speed"]:
-        return float(captured[:-8]) * constant_Speed
+        return float(captured[:-8]) * constants.speed
 
-    #Distance: For every value that has "* Metre" in it, chop it away and multiply it by the corresponding constant.
+    #DISTANCE: For every value that has "* Metre" in it, chop it away and multiply it by the corresponding constant.
     if keyword[0] in ["AltitudeMin","Altitude","AgilityRadius", "PorteeMaximale", "PorteeMinimale", "PorteeMaximaleTBA", "PorteeMinimaleTBA", "PorteeMaximaleHA", "PorteeMinimaleHA", "AltitudeAPorteeMaximale", "AltitudeAPorteeMinimale", "DispersionAtMaxRange", "DispersionAtMinRange", "RadiusSplashPhysicalDamages", "RadiusSplashSuppressDamages", "RayonPinned", "DistanceForSpeed", "DeploymentShift"]:
-        return float(captured[:-8]) * constant_Distance
+        return float(captured[:-8]) * constants.distance
 
-    #Special cases
-    match keyword[0]:
-        case "Ammunition":
-            return captured[:-25]
-        case "WeaponDescriptor":
-            return captured[:-34]
-        case "UniteDescriptor":
-            return captured[:-21]
-        case "Factory":
-            return captured[17:]
-        case "Nationalite":
-            return captured[12:]
-        case "OrderAvailability":
-            return captured[:-5]
+    # Cases of type 'export Descriptor_Unit_AeroRifles_CMD_US is TEntityDescriptor' and we only want 'Descriptor_Unit_AeroRifles_CMD_US'
+    if keyword[0] in ["WeaponDescriptor","UniteDescriptor","OrderAvailability", "Divisions", "Ammunition"]:
+        return captured[:captured.find(" ")]
+
+    # Cases of type 'Factory = EDefaultFactories/Infantry' and we only want 'Infantry'
+    if keyword[0] in ["Factory","Nationalite"]:
+        return captured[captured.find("/") + 1:]
 
     #Return value in it's correct type
     return stringToType(captured)

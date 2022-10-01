@@ -1,0 +1,95 @@
+
+//------------------------------------------------------------------------------
+
+template BUCKSpecificUrlButtonMainComponentDescriptor
+[
+    ElementName : string = "",
+    BackgroundTextureToken : string = "",
+    TextToken : string = "",
+
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+] is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI()
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    Components =
+    [
+        ImageButton
+        (
+            ElementName = <ElementName>
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [250.0, 190.0]
+            )
+            BackgroundTextureToken = <BackgroundTextureToken>
+            ChildFitToContent = true
+
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+            HintDico = <HintDico>
+            HintableAreaElementName = <HintableAreaElementName>
+        ),
+
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 0.0]
+                AlignementToFather = [0.5, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "Liberator"
+            UniformDrawer = $/UserInterface/UIUniformDrawer
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+            VerticalFitStyle = ~/FitStyle/FitToContent
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+            TextColor = "SD2_Blanc2"
+            TextSize = "20"
+
+            TextPadding = TRTTILength4(Magnifiable = [0.0, 0.0, 0.0, 2.0])
+        ),
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+template UISpecificUrlButtonViewDescriptor
+[
+    BackgroundTextureToken : string = "",
+    TextToken : string = "",
+    Url : string = "",
+
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+    HintDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    HintableAreaElementName : string = "",
+] is TUISpecificUrlButtonViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificUrlButtonMainComponentDescriptor
+    (
+        ElementName = "VideoButton"
+        BackgroundTextureToken = <BackgroundTextureToken>
+        TextToken = <TextToken>
+
+        HintTitleToken = <HintTitleToken>
+        HintBodyToken = <HintBodyToken>
+        HintExtendedToken = <HintExtendedToken>
+        HintDico = <HintDico>
+        HintableAreaElementName = <HintableAreaElementName>
+    )
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+    Url = <Url>
+)

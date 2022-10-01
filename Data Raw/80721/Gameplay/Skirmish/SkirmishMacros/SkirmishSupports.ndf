@@ -1,0 +1,59 @@
+// Missions
+//-------------------------------------------------------------------------
+export Support_Transports is TMacroActionDescriptor_Support_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Support_Transports]),
+        TCounterTagSettingHolder(TagDeContre = "AllUnits"),
+    ]
+)
+//-------------------------------------------------------------------------
+
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_Support_Transports is TPoolModel
+(
+    Budget = 1
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{e90320f2-d39e-11e8-9b94-88d7f642f58e}
+            Required = true
+            Nb = 1
+            TagsPriority = [
+                "Vehicule_Transport_Arme"
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//Settings
+//-------------------------------------------------------------------------
+// pour l'AT les missions support changent au cours de la partie mais pas le setting
+export Renfort_AT is TSupportSetting
+(
+    TagDeContre = "Anti_Char_Mobile"
+    TagAContrer = "Char"
+    VerifierEnnemiesDansLesZonesVoisines = true
+    Ratio = 0.01 // Un seul AT du coup
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+//-------------------------------------------------------------------------
+export Renfort_AntiInfanterie is TSupportSetting
+(
+    TagDeContre = "Anti_Infanterie_Mobile"
+    TagAContrer = "Infanterie"
+    Ratio = 0.2
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+//-------------------------------------------------------------------------
+export Renfort_TransportsAbandonnes is TSupportSetting
+(
+    TagDeContre = "AllUnits"
+    TagAContrer = "AllUnits"
+    Ratio = 0.8 // on veut utiliser le plus de transports possible
+    NecessaireAuLancement = false // La mission ne lancera sont attaque que si le ratio est respecté au point de regroupement
+)
+

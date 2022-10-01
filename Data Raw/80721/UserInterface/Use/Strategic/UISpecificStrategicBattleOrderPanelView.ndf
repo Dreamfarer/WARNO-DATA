@@ -1,0 +1,689 @@
+
+
+StrategicBattleOrderAllianceFilterRadioButtonManager is TBUCKRadioButtonManager()
+
+
+//-------------------------------------------------------------------------------------//
+template BoutonAxisAllies
+[
+ElementName : string,
+TextToken : string = "SSC_HALLIE",
+
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+    Components =
+    [
+        BUCKButtonDescriptor
+        (
+            ElementName = <ElementName> + 'Filter'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [100.0, 40.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            HasBackground = false
+            BackgroundBlockColorToken = "ButtonHUD/Second"
+
+            IsTogglable = true
+            CannotDeselect = true
+            RadioButtonManager = ~/StrategicBattleOrderAllianceFilterRadioButtonManager
+
+            HasBorder = false
+            BorderThicknessToken = "1"
+            BorderLineColorToken = "LighterGray"
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToFather = [0.5, 0.5]
+                        AlignementToAnchor = [0.5, 0.5]
+                    )
+
+                    Axis = ListAxis/Horizontal
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                    LastMargin = TRTTILength(Magnifiable = 5.0)
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextureDescriptor
+                            (
+                                ElementName = <ElementName> + 'Flag'
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [48.0, 26.0]
+                                    AlignementToFather = [0.0, 0.5]
+                                    AlignementToAnchor = [0.0, 0.5]
+                                )
+
+                                TextureFrame = TUIFramePropertyRTTI()
+                                ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [50.0, 0.0]
+                                    AlignementToFather = [0.0, 0.5]
+                                    AlignementToAnchor = [0.0, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Left
+                                    VerticalAlignment = UIText_VerticalCenter
+                                    InterLine = 0
+                                )
+
+                                TextStyle = "Default"
+                                TextToken = <TextToken>
+
+                                //HorizontalFitStyle = ~/FitStyle/FitToContent
+                                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                TypefaceToken = "UIMainFont"
+                                BigLineAction = ~/BigLineAction/CutByDots
+
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                                TextColor = "ButtonHUD"
+                                TextSize = "14"
+                            )
+                        )
+                    ]
+                )
+            ]
+        )
+    ]
+)
+//-------------------------------------------------------------------------------------//
+StrategicBattleOrderAllianceFilterLine is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        //RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 50.0]
+        AlignementToAnchor =  [0.5,0]
+        AlignementToFather =  [0.5,0]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "SD2_Gris80"
+
+    Axis = ~/ListAxis/Horizontal
+    //BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    //LastMargin = TRTTILength( Magnifiable = 30.0 )
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.7
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1
+            ComponentDescriptor = BoutonAxisAllies (ElementName = 'Allies' TextToken = 'SSC_HALLIE' )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1
+            ComponentDescriptor = BoutonAxisAllies (ElementName = 'Axis' TextToken = 'SSC_HAXIS' )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.7
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+    ]
+)
+
+// ----------------------------------------------------------
+
+private template StrategicBattleOrderTabTitleDescriptor
+[
+    TitleTextDico : string
+]
+is BUCKOneTabDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 3.0 )
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = ~/paragraphStyleTextCenter
+                        TextStyle = "Default"
+                        TypefaceToken = "UIMainFont"
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextToken = "SBO_ARROW"
+
+                        TextColor = "SD2_Blanc184"
+                        TextSize = "SD2_Moyen"
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "TitleText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                        )
+
+                        ParagraphStyle = ~/paragraphStyleTextCenter
+                        TextStyle = "Default"
+                        TypefaceToken = "UIMainFont"
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                        TextDico = <TitleTextDico>
+
+                        TextColor = "SD2_BleuVariable"
+                        TextSize = "SD2_Moyen"
+
+                        Components =
+                        [
+                            // UNDERLINE
+                            BUCKContainerDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableOffset = [0.0, 8.0]
+                                    PixelWidthHeight = [0.0, 1.0]
+                                    AlignementToFather  = [0.5, 0.5]
+                                    AlignementToAnchor  = [0.5, 0.5]
+                                )
+
+                                HasBackground = true
+                                BackgroundBlockColorToken = "Onglet/Underline"
+                            ),
+                        ]
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+// ----------------------------------------------------------
+private AffichageTitreGrille is BUCKListDescriptor
+(
+  ComponentFrame = TUIFramePropertyRTTI
+    (
+      MagnifiableOffset = [941,20]
+      AlignementToFather = [0,0.5]
+      AlignementToAnchor = [0,0.5]
+    )
+  Axis = ~/ListAxis/Horizontal
+  InterItemMargin = TRTTILength( Magnifiable = 3.0 )
+  Elements =
+  [
+    BUCKListElementDescriptor
+    (
+      //ExtendWeight = 1
+      ComponentDescriptor = BUCKTextDescriptor
+      (
+          // soldats
+          ComponentFrame = TUIFramePropertyRTTI
+          (
+                MagnifiableWidthHeight = [80,25]
+          )
+
+          ParagraphStyle = TParagraphStyleRTTI
+          (
+              Alignment = UIText_Center
+              VerticalAlignment = UIText_VerticalCenter
+          )
+          HorizontalFitStyle = ~/FitStyle/UserDefined
+          TextStyle = "Default"
+
+          TypefaceToken = "UISecondFont"
+          BigLineAction = ~/BigLineAction/CutByDots
+
+          TextToken = "LS_sol"
+          TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+          TextColor = "SD2_Blanc184"
+          TextSize = "SD2_Petit"
+
+          Hint = BUCKSpecificHintableArea
+          (
+              DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+              HintBodyToken = "pip_solb"
+              HintExtendedToken = "pip_sole"
+          )
+      )
+    ),
+    BUCKListElementDescriptor
+    (
+      //ExtendWeight = 1
+      ComponentDescriptor = BUCKTextDescriptor
+      (
+          // soldats
+          ComponentFrame = TUIFramePropertyRTTI
+          (
+            MagnifiableWidthHeight = [80,25]
+          )
+
+          ParagraphStyle = TParagraphStyleRTTI
+          (
+              Alignment = UIText_Center
+              VerticalAlignment = UIText_VerticalCenter
+          )
+           HorizontalFitStyle = ~/FitStyle/UserDefined
+          TextStyle = "Default"
+
+          TypefaceToken = "UISecondFont"
+          BigLineAction = ~/BigLineAction/CutByDots
+
+          TextToken = "LS_tank"
+          TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+          TextColor = "SD2_Blanc184"
+          TextSize = "SD2_Petit"
+
+          Hint = BUCKSpecificHintableArea
+          (
+              DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+              HintBodyToken = "pip_tanb"
+          )
+      )
+    ),
+    BUCKListElementDescriptor
+    (
+      //ExtendWeight = 1
+      ComponentDescriptor = BUCKTextDescriptor
+      (
+          // soldats
+          ComponentFrame = TUIFramePropertyRTTI
+          (
+            MagnifiableWidthHeight = [80,25]
+          )
+
+          ParagraphStyle = TParagraphStyleRTTI
+          (
+              Alignment = UIText_Center
+              VerticalAlignment = UIText_VerticalCenter
+          )
+           HorizontalFitStyle = ~/FitStyle/UserDefined
+          TextStyle = "Default"
+
+          TypefaceToken = "UISecondFont"
+          BigLineAction = ~/BigLineAction/CutByDots
+
+          TextToken = "LS_art"
+          TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+          TextColor = "SD2_Blanc184"
+          TextSize = "SD2_Petit"
+
+          Hint = BUCKSpecificHintableArea
+          (
+              DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+              HintBodyToken = "pip_artb"
+          )
+      )
+    ),
+    BUCKListElementDescriptor
+    (
+      //ExtendWeight = 1
+      ComponentDescriptor = BUCKTextDescriptor
+      (
+          // soldats
+          ComponentFrame = TUIFramePropertyRTTI
+          (
+            MagnifiableWidthHeight = [80,25]
+          )
+
+          ParagraphStyle = TParagraphStyleRTTI
+          (
+              Alignment = UIText_Center
+              VerticalAlignment = UIText_VerticalCenter
+          )
+           HorizontalFitStyle = ~/FitStyle/UserDefined
+          TextStyle = "Default"
+
+          TypefaceToken = "UISecondFont"
+          BigLineAction = ~/BigLineAction/CutByDots
+
+          TextToken = "LS_air"
+          TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+          TextColor = "SD2_Blanc184"
+          TextSize = "SD2_Petit"
+      )
+    )
+  ]
+
+)
+//-------------------------------------------------------------------------------------
+BUCKSpecificStrategicBattleOrderPanelMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [800.0, 900.0] // NOCOMMIT
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            //HasBackground = true
+            BackgroundBlockColorToken = "SD2_Gris80"
+
+            Components =
+            [
+                PanelRoundedCorner (Radius = 20 BackgroundBlockColorToken = "SD2_Gris80"),
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+                                // Titre du panel
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 60.0]
+                                )
+
+                                HasBackground = false
+                                BackgroundBlockColorToken = "SD2_Gris80"
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Center
+                                    VerticalAlignment = UIText_VerticalCenter
+                                )
+
+                                TextStyle = "Default"
+                                TextPadding = TRTTILength4( Magnifiable = [10.0, 0.0, 0.0, 0.0])
+
+                                TypefaceToken = "UIMainFont"
+                                BigLineAction = ~/BigLineAction/CutByDots
+
+                                TextToken = "SBO_TITL"
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                                TextColor = "SD2_Blanc184"
+                                TextSize = "42"
+
+
+                            )
+                        ),
+
+                        // filtre axis / allies
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = ~/StrategicBattleOrderAllianceFilterLine
+                        ),
+
+                        BUCKListElementDescriptor
+                        (
+                            ExtendWeight = 1.0
+                            ComponentDescriptor = BUCKSpecificWithTabsComponentDescriptor
+                            (
+                                ElementName = 'TabsComponent'
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                HasBackground = false
+                                BackgroundBlockColorToken = "SD2_Gris80"
+
+                                // ligne de navigation
+                                RedefinedTabsContainer = BUCKContainerDescriptor
+                                (
+                                    ElementName = 'LigneDeNavigation'
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [1.0, 0.0]
+                                        MagnifiableWidthHeight = [0.0, 30.0]
+                                    )
+
+                                    HasBackground = true
+                                    BackgroundBlockColorToken = "SD2_Gris80"
+
+                                    Components =
+                                    [
+
+                                        AffichageTitreGrille,
+                                        // affichage de la grille
+                                        BUCKSpecificScrollingContainerDescriptor
+                                        (
+                                            ComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                RelativeWidthHeight = [1.0, 1.0]
+                                                MagnifiableWidthHeight = [-36.0, 0.0] //-36
+                                                AlignementToAnchor = [0.5, 0.0]
+                                                AlignementToFather = [0.5, 0.0]
+                                            )
+
+                                            ExternalScrollbar = true
+                                            HasHorizontalScrollbar = true
+                                            HorizontalScrollbarComponentFrame = TUIFramePropertyRTTI
+                                            (
+                                                MagnifiableWidthHeight = [0.0, 7.0]
+                                                MagnifiableOffset = [0.0, 2.0]
+                                                AlignementToAnchor = [0.0, 1.0]
+                                                AlignementToFather = [0.0, 1.0]
+                                            )
+
+                                            Components =
+                                            [
+                                                BUCKListDescriptor
+                                                (
+                                                    ElementName = "TabsComponentTabs"
+                                                    ComponentFrame = TUIFramePropertyRTTI
+                                                    (
+                                                        RelativeWidthHeight = [0.0, 1.0]
+                                                    )
+
+                                                    Axis = ~/ListAxis/Horizontal
+                                                    InterItemMargin = TRTTILength( Magnifiable = 4.0 )
+                                                )
+                                            ]
+                                        )
+                                    ]
+                                )
+
+
+                            )
+                        ),
+                        // bouton close
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKContainerDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, 30.0]
+                                )
+
+                                Components =
+                                [
+                                    BUCKSpecificButton
+                                    (
+                                        ElementName = "CloseButton"
+                                        ButtonAlignementToAnchor = [0.5, 0.5]
+                                        ButtonAlignementToFather = [0.5, 0.5]
+                                        TextToken = "CPT_CLOSE"
+
+                                        Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+                                    )
+                                ]
+                            )
+                        ),
+
+                    ]
+                )
+            ]
+        )
+    ]
+)
+
+// ----------------------------------------------------------
+// ligne de navigation
+StrategicBattleOrderRootTabDescriptor is BUCKOneTabDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            ParagraphStyle = ~/paragraphStyleTextCenter
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+
+            HorizontalFitStyle = ~/FitStyle/FitToContent
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+            TextToken = "SBO_THQ"
+
+            TextColor = "SD2_BleuVariable"
+            TextSize = "SD2_Moyen"
+
+            Components =
+            [
+                // UNDERLINE
+                BUCKContainerDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                        MagnifiableOffset = [0.0, 8.0]
+                        PixelWidthHeight = [0.0, 1.0]
+                        AlignementToFather  = [0.5, 0.5]
+                        AlignementToAnchor  = [0.5, 0.5]
+                    )
+
+                    HasBackground = true
+                    BackgroundBlockColorToken = "Onglet/Underline"
+                ),
+            ]
+        )
+    ]
+)
+
+// ----------------------------------------------------------
+
+SelectPawnPositionEvent is TDescriptorPositionEvents
+(
+    MaxEventCount = 10
+    EventsDurationInSeconds = 30
+    TriggNextEventDurationCeilInSeconds = 2.0
+    CameraMoverTargetClient = $/Camera/CameraMoverTargetClient
+
+    World3D = $/M3D/Scene/DefaultWorld
+    SituationAwarenessNextEventCommandName = CommandName/SituationAwarenessNextEvent
+
+    EraseEventWhenVisited = true
+    EnablePlayFX = true
+
+    MinAltitudeInMeter = 800
+    MaxAltitudeInMeter = 1100
+)
+
+// ----------------------------------------------------------
+
+UISpecificStrategicBattleOrderPanelViewDescriptor is TUISpecificStrategicBattleOrderPanelViewDescriptor
+(
+    SubPanelDescriptor = UISpecificStrategicBattleOrderSubPanelViewDescriptor( Interspacing = 7.0 )
+    SectionSubPanelDescriptor = UISpecificStrategicBattleOrderSubPanelViewDescriptor ( Interspacing = 3.0 )
+    TabTitleDescriptor = StrategicBattleOrderTabTitleDescriptor( TitleTextDico = ~/LocalisationConstantes/dico_unites )
+    CompanyTabTitleDescriptor = StrategicBattleOrderTabTitleDescriptor( TitleTextDico = ~/LocalisationConstantes/dico_packs )
+    RootTabDescriptor = ~/StrategicBattleOrderRootTabDescriptor
+    SelectPawnPositionEvent = ~/SelectPawnPositionEvent
+
+    MainComponentDescriptor = ~/BUCKSpecificStrategicBattleOrderPanelMainComponentDescriptor
+    MainComponentContainerUniqueName = "StrategicMenuPanelContainer"
+)

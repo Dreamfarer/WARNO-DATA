@@ -1,0 +1,11 @@
+// A maitenir synchro avec Engine\Code\Eugen\CPP\EugIA_Common\InfluenceMapConstantes.h
+template InfluenceMapGeometryParameters
+[
+    DistanceDeLissage : float = 10000.0,
+    DecallageCelluleVideParDefaut : float = -0.2,
+]
+is TInfluenceMapGeometryParameters
+(
+    SmoothDistance  = <DistanceDeLissage>
+    EmptyCellDefaultOffset = <DecallageCelluleVideParDefaut>
+)

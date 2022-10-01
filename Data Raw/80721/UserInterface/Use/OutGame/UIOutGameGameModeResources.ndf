@@ -1,0 +1,141 @@
+
+
+template GameModeDecorationComponent
+[
+    TextureToken : string = "",
+    HintTitle : string = "",
+    HintBody : string = "",
+    HintExtended : string = "",
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = 'TextureGameMode'
+            ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+            TextureToken        = <TextureToken>
+            TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+            ClipTextureToComponent = true
+        ),
+        BUCKTextureDescriptor
+        (
+            ElementName = "ObservableGameIndicator"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [33,33]
+                AlignementToFather = [1,1]
+                AlignementToAnchor = [1,1]
+            )
+            TextureToken        = "OutgameTexture_GameRoomList_Observable"
+            TextureFrame   = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+            ClipTextureToComponent = true
+
+            Components =
+            [
+                BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+                    HintTitleToken = "GRL_OBST"
+                    HintBodyToken = "GRL_OBSB"
+                    HintExtendedToken = "GRL_OBSE"
+                ),
+            ]
+        ),
+        BUCKSpecificHintableArea
+        (
+            ElementName = 'HintGameMode'
+            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+            HintTitleToken = <HintTitle>
+            HintBodyToken = <HintBody>
+            HintExtendedToken = <HintExtended>
+        ),
+    ]
+)
+
+GameModeResources is TUIOutGameGameModeResources
+(
+    GameModeInfos =
+    [
+        //EDeploymentMode/NotSpecified,
+        TUIGameModeResource
+        (
+            Name = 'NON_APP'
+            HintBody = 'NON_APP'
+            GameRoomListFilterName = ''
+            GameRoomListIconComponent = nil
+        ),
+
+        //EDeploymentMode/Conquest,
+        TUIGameModeResource
+        (
+            Name = 'GMODE_CONQ'
+            HintBody = 'HGM_CQST'
+            GameRoomListIconComponent = GameModeDecorationComponent
+            (
+                TextureToken = "OutgameTexture_ConquestModeTexture"
+                HintTitle = "GRL_CONQT"
+                HintBody = "GRL_CONQB"
+                HintExtended = "GRL_CONQE"
+            )
+            GameRoomListFilterName = 'GRL_CONQ'
+        ),
+
+        //EDeploymentMode/CloseQuarter,
+        TUIGameModeResource
+        (
+            Name = 'GMODE_CLOQ'
+            HintBody = 'HGM_CLOQ'
+            GameRoomListIconComponent = GameModeDecorationComponent
+            (
+                TextureToken = "OutgameTexture_CloseQuarterModeTexture"
+                HintTitle = "GRL_CLOQU"
+                HintBody = "GRL_CLOQB"
+                HintExtended = "GRL_CLOQE"
+            )
+            GameRoomListFilterName = 'GRL_CLOS'
+        ),
+
+        //EDeploymentMode/Strategic,
+        TUIGameModeResource
+        (
+            Name = 'new_AG'
+            HintBody = 'HGM_STR'
+            GameRoomListIconComponent = GameModeDecorationComponent
+            (
+                TextureToken = "OutgameTexture_StrategicModeTexture"
+                HintTitle = "GRL_STRAT"
+                HintBody = "GRL_STRAB"
+                HintExtended = "GRL_STRAE"
+            )
+            GameRoomListFilterName = 'GRL_STRA'
+        ),
+
+        //EDeploymentMode/Breakthrough,
+        TUIGameModeResource
+        (
+            Name = 'GMODE_BREA'
+            HintBody = 'HGM_BREA'
+            GameRoomListIconComponent = GameModeDecorationComponent
+            (
+                TextureToken = "OutgameTexture_BreakthroughModeTexture"
+                HintTitle = "GRL_ATTP"
+                HintBody = "GRL_ATTPB"
+                HintExtended = "GRL_ATTPE"
+            )
+            GameRoomListFilterName = 'GRL_BREA'
+        ),
+
+        //EDeploymentMode/NoDeployment,
+        TUIGameModeResource
+        (
+            Name = 'NON_APP'
+            HintBody = 'NON_APP'
+            GameRoomListFilterName = ''
+            GameRoomListIconComponent = nil
+        ),
+    ]
+)

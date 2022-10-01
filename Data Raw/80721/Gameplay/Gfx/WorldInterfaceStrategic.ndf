@@ -1,0 +1,21 @@
+
+WorldInterfaceStrategic is TWorldInterfaceDescriptor
+(
+    World3D = $/M3D/Scene/DefaultWorld
+    HelperVisibility = ~/World_Constante.HelperVisibility
+    GamePhaseManagerDescriptor = ~/gamePhaseManagerDescriptor
+
+    VisibilityRangeZooms = TVisibilityRangeContainer
+    (
+        ItemList =
+        [
+            $/GFX/Visibility/AllRanges/Zoom1,
+            $/GFX/Visibility/AllRanges/Zoom2,
+            $/GFX/Visibility/AllRanges/Zoom3,
+            $/GFX/Visibility/AllRanges/Zoom4,
+        ]
+    )
+
+    PathDrawingManager = ~/PathDrawingManager
+    SoundAndMusicSwitchDescriptor = soundAndMusic
+)

@@ -1,0 +1,120 @@
+
+private CreateButton is ConfirmButton
+(
+    ElementName = "CreateButton"
+    TextToken = "BTN_CREATE"
+
+    {ButtonAlignementToFather = [0.5, 0.0]
+        ButtonAlignementToAnchor = [0.5, 0.0]}
+    ButtonMagnifiableWidthHeight = [175, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur_cyan'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'Cyan'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_cyan'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+    LeftClickSound = SoundEvent_MultiCreateLobby
+)
+
+private LocCancelButton is ConfirmButton
+(
+    ElementName = "CancelButton"
+    TextToken = "BTN_CANCEL"
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+    ButtonMagnifiableWidthHeight = [175, 35]
+    TextTypefaceToken = "UISecondFont"
+    TextStyle = 'TextStyleEcranMoniteur'
+    TextColorToken = 'loginBlanc'
+    BorderLineColorToken = 'VertLogin'
+    HasBackground = true
+    BackgroundBlockColorToken = 'loginBoutonBackground_vert'
+    TextSizeToken = '24'
+    BorderThicknessToken = '3'
+)
+
+private ModalWindowHost is SpecificModaleWindowFrame
+(
+    UniqueName = "ModalWindowHostOrAutoMatch"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [848.0, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        MagnifiableOffset = [0,360]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 450.0]
+
+    TitleToken = 'T_HOST'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/CreateButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LocCancelButton ),
+    ]
+
+    AdditionalComponents =
+    [
+    BUCKTextureDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [904.0, 732.0]
+            MagnifiableOffset = [-27,-150]
+            )
+        TextureToken = 'Outgame_modale_fond'
+        TextureDrawer = 'MonochromeMonitorEffect'
+    )
+
+    // envoie BUCKSpecificOutGameHostPanelMainComponentDescriptor
+
+    ]
+
+    AdditionalComponentsForeground =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [904.0, 732.0]
+                MagnifiableOffset = [-27,-150]
+                )
+            TextureToken = 'Outgame_modale_foreground'
+            TextureDrawer = 'ColorMultiply_Additive'
+        )
+    ]
+)
+
+private ModalWindowCreateAutoMatch is SpecificModaleWindowFrame
+(
+    UniqueName = "ModalWindowHostOrAutoMatch"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [848.0, 0.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ContentRelativeWidthHeight = [1.0, 0.0]
+    ContentMagnifiableWidthHeight = [0.0, 552.0]
+    TitleToken = 'T_RANKED'
+
+    ButtonList =
+    [
+        BUCKListElementDescriptor( ComponentDescriptor = ~/CreateButton ),
+        BUCKListElementDescriptor( ComponentDescriptor = ~/LocCancelButton ),
+    ]
+)
+
+export HostPanelResources is TUISpecificOutGameHostPanelResources
+(
+    ModalWindowHost                         = ~/ModalWindowHost
+    ModalWindowCreateAutoMatch              = ~/ModalWindowCreateAutoMatch
+
+    ContentDescriptor                       = ~/UISpecificOutGameHostPanelViewDescriptor
+)

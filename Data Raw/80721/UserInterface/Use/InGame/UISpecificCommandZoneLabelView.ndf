@@ -1,0 +1,168 @@
+
+BUCKSpecificCommandZoneLabelMainComponentDescriptor is BUCKListDescriptor
+(
+    ElementName = "BUCKSpecificCommandZoneLabelMainComponent"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "CommandPointsGenerated"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                TextStyle = "Default"
+
+                ParagraphStyle = ~/paragraphStyleTextCenter
+
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextSize = "17000"
+                TextColor = "TransparentWhite"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TypefaceToken = "Area"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = "Spacer1"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 0.0]
+                    MagnifiableWidthHeight = [10000.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "AreaName"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                TextStyle = "Default"
+
+                ParagraphStyle = ~/paragraphStyleTextCenter
+
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextSize = "25000"
+                TextColor = "TransparentWhite"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TypefaceToken = "Area"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = "Spacer2"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 0.0]
+                    MagnifiableWidthHeight = [10000.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "AreaOwningPercent"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                TextStyle = "Default"
+
+                ParagraphStyle = ~/paragraphStyleTextCenter
+
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextSize = "17000"
+                TextColor = "TransparentWhite"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TypefaceToken = "Area"
+            )
+        ),
+    ]
+)
+
+CommandZoneLabelReferentiel is TLabelTransformationComposition
+(
+    Transformations =
+    [
+        TLabelTransformPostTranslateForArea
+        (
+            Translation = [0,0,0]
+        ),
+    ]
+)
+
+UISpecificCommandZoneLabelViewDescriptor is TUISpecificCommandZoneLabelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificCommandZoneLabelMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    UI3DLayer = $/UserInterface/UI3DLayer_General
+
+    LabelReferentiel = ~/CommandZoneLabelReferentiel
+
+    VisibilityRange = ~/AllInGameRanges/ZoomCommandArea
+    FadeDuration = 0.5
+
+    OpacityControlByFloat = $/M3D/Shader/AreaFillOpacity
+
+    TokenFormatCommandPoints = "FRM_COM_AR"
+    TokenFormatAreaOwningPercent = "FRM_OWN_AR"
+)

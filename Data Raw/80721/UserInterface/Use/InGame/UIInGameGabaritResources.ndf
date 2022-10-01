@@ -1,0 +1,145 @@
+
+//-------------------------------------------------------------------------------------
+
+template TTacticalFeedbackUICommonGabaritDefinition
+[
+    CircleThickness : float = 1.0,
+    CircleColor : color,
+    TextStyle : TTextStyleRTTI,
+    Effect : int = ~/FeedbackEffectMode/Dotted
+]
+is TUICommonGabaritDefinition
+(
+    CircleThickness = <CircleThickness>
+    CircleColor = <CircleColor>
+    TextStyle = <TextStyle>
+    Effect = <Effect>
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalFeedbackAreaOfEffectRangeGabaritResource is TTacticalFeedbackUICommonGabaritDefinition
+(
+    CircleColor = [216,80,73,255]
+    CircleThickness = 1.0
+    TextStyle       = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorBottom = [255,128, 0,255]
+        ColorUp     = [255,128, 0,255]
+        ColorStroke = [ 0, 0, 0, 255]
+        Stroke = false
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalFeedbackAreaOfEffectRadiusGabaritResource is TTacticalFeedbackUICommonGabaritDefinition
+(
+    CircleColor = [160,250,250,255]
+    CircleThickness = 1.0
+    TextStyle       = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorBottom = [255,128, 0,255]
+        ColorUp     = [255,128, 0,255]
+        ColorStroke = [ 0, 0, 0, 255]
+        Stroke = false
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalFeedbackSplashGabaritResource is TTacticalFeedbackUICommonGabaritDefinition
+(
+    CircleColor = [255,128, 0,96]
+    CircleThickness = 1.0
+    TextStyle       = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorBottom = [255,128, 0,255]
+        ColorUp     = [255,128, 0,255]
+        ColorStroke = [ 0, 0, 0, 255]
+        Stroke = false
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalFeedbackCapacityGabaritResource is TTacticalFeedbackUICommonGabaritDefinition
+(
+    CircleColor = [128,128, 0,96]
+    CircleThickness = 1.0
+    TextStyle       = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorBottom = [0,255, 0,255]
+        ColorUp     = [0,255, 0,255]
+        ColorStroke = [ 0, 0, 0, 255]
+        Stroke = false
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalFeedbackDispersionGabaritResource is TTacticalFeedbackUICommonGabaritDefinition
+(
+    CircleColor = [255,0, 0,96]
+    CircleThickness = 1.0
+    TextStyle       = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorBottom = [255,0, 0,255]
+        ColorUp     = [255,0, 0,255]
+        ColorStroke = [0,0, 0,255]
+        Stroke = false
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalFeedbackMinRangeGabaritResource is TTacticalFeedbackUICommonGabaritDefinition
+(
+    CircleColor = [255,0, 0,96]
+    CircleThickness = 1.0
+    TextStyle       = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorBottom = [255,0, 0,255]
+        ColorUp     = [255,0, 0,255]
+        ColorStroke = [ 0, 0, 0, 255]
+        Stroke = false
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+TacticalFeedbackMaxRangeGabaritResource is TTacticalFeedbackUICommonGabaritDefinition
+(
+    CircleColor = [255,0, 0,96]
+    CircleThickness = 1.0
+    TextStyle       = TTextStyleRTTI
+    (
+        FontSize    = 16
+        ColorBottom = [255,0, 0,255]
+        ColorUp     = [255,0, 0,255]
+        ColorStroke = [ 0, 0, 0, 255]
+        Stroke = false
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+InGameGabaritResources is TUICommonGabaritResources
+(
+    World3D = $/M3D/Scene/DefaultWorld
+    Scene3D = $/M3D/Scene/Scene_2D_Interface
+    Camera = $/M3D/Camera/CameraPrincipale
+    AreaOfEffectRangeGabarit     = ~/TacticalFeedbackAreaOfEffectRangeGabaritResource
+    AreaOfEffectRadiusGabarit    = ~/TacticalFeedbackAreaOfEffectRadiusGabaritResource
+    SplashGabarit                = ~/TacticalFeedbackSplashGabaritResource
+    CapacityGabarit              = ~/TacticalFeedbackCapacityGabaritResource
+    DispersionGabarit            = ~/TacticalFeedbackDispersionGabaritResource
+    MinRangeGabarit              = ~/TacticalFeedbackMinRangeGabaritResource
+    MaxRangeGabarit              = ~/TacticalFeedbackMaxRangeGabaritResource
+)

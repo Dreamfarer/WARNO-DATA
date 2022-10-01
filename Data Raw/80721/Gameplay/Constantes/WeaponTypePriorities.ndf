@@ -1,0 +1,35 @@
+// Voir EugIA_Common/WeaponTypePriorities.h
+
+//A maintenir synchro avec Engine\Code\Eugen\CPP\EugIA_Common\WeaponTypePriorities.h
+EWeaponRangeDependant is TBaseClass
+(
+    NotDefined is 0
+    DependOfRange_Near is 1
+    DependOfRange_Far is 2
+)
+
+WeaponTypePriorities is TWeaponTypePrioritiesHolder
+(
+    // Les types d'armes sont rangés par ordre de priorité. Le plus prioritaire étant en haut de la liste :
+    // Si la liste WeaponTypes a 10 elements, le premier element aura un score de 10
+    // Le second 9, et ainsi de suite
+    //
+    // Quelques particularites à savoir :
+    // - Si un type d'arme n'est pas dans la liste, il aura la priorité la plus faible -> 0
+    // - Si la pair "type d'arme + EWeaponRangeDependant" n'est pas trouvee ici,
+    // on choisir a la place la pair "type d'arme + NotDefined" si elle existe
+    WeaponTypes =
+    [
+        ("ap", EWeaponRangeDependant/DependOfRange_Near),
+        ("ap", EWeaponRangeDependant/NotDefined),
+        ("ap", EWeaponRangeDependant/DependOfRange_Far),
+        ("ap_missile", EWeaponRangeDependant/NotDefined),
+        ("he", EWeaponRangeDependant/NotDefined),
+        ("artillery", EWeaponRangeDependant/NotDefined),
+    ]
+
+    DistanceToConsiderAsFar = 1000 * Metre // Attention, cette valeur est dans l'unité du feedback de tir
+
+    Score_OnRange = 8 //Bonus au score selon que l'arme soit a portee ou pas
+    Score_OutOfRange = 0
+)

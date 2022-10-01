@@ -1,0 +1,21 @@
+
+export GfxProperties is TGfxProperties
+(
+    World                     = $/M3D/Scene/DefaultWorld
+    InfantryMimetic = ~/InfantryMimetic + MAP[('TestUnit_ModelInfantry', TacticDepiction_TestUnit_ModelInfantry_Squad)]
+)
+
+DefaultRenderLayerSelector is TRenderLayerSelector(
+    RenderLayerNames = [
+        'Calque_Opaque',
+        'Calque_Opaque_Transparency',
+        'Calque_Opaque_Depiction',
+        'Calque_Opaque_Depiction_SelectionMask',
+    ]
+)
+
+export DepictionProperties is TDepictionProperties
+(
+    DepictionMaterialPack = $/M3D/Shader/MultiRenderTypeMaterialPack_Depiction
+    RenderLayerSelector = ~/DefaultRenderLayerSelector
+)

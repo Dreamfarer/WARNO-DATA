@@ -1,9 +1,11 @@
 import copy
 import helper.analyze
 
+# Initialize gloabl variable
+rootDirectory = None
+
 def extractDamageResistance(subStr, index):
 
-    
     counterChar = 0
     counterUnit = 0
     temporaryStr = ""
@@ -23,7 +25,7 @@ def extractDamageResistance(subStr, index):
                 #Get ResistanceTypeList
                 if temporaryStr[1] == "TResistanceTypeRTTI":
                     TResistanceTypeRTTI.append(temporaryStr[0])
-                    rowString+= temporaryStr[0] + ";"
+                    rowString += temporaryStr[0] + ";"
                     
                 #Get DamageTypeList
                 else:
@@ -47,12 +49,15 @@ def extractDamageResistance(subStr, index):
 
     while counterChar < len(subStr):
         
+        # Beginning of a new list of resistance values for the specifc damage type
         if subStr[counterChar:counterChar+1] == "[" or counterChar == len(subStr)-1:
+            
+            # Enter condition only after ResistanceTypeList and DamageTypeList has been passed (algorithm goes through whole file again)
             if counterUnit > 3:
 
                 temporaryStr = temporaryStr[1:temporaryStr.find("]")-1]
-                temporaryStr = temporaryStr.translate({ord(' '):None})
-                temporaryStr = temporaryStr.translate({ord(','):ord(';')})
+                temporaryStr = temporaryStr.translate({ord(' '):None}) # Remove whitespaces
+                temporaryStr = temporaryStr.translate({ord(','):ord(';')}) # Replace "," with ";"
 
                 rowString += TDamageTypeRTTI[counterUnit-4] + ";" + temporaryStr + "\n"
 
@@ -67,4 +72,4 @@ def extractDamageResistance(subStr, index):
 def extract(filePath):
 
     #Return array with [column-names, data]
-    return extractDamageResistance(open(filePath,"r").read(), 0)
+    return extractDamageResistance(open(rootDirectory + filePath,"r").read(), 0)

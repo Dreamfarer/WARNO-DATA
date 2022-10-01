@@ -1,0 +1,13 @@
+
+EAutoresolveAvantage_NoRecoVersusReco     is 0
+EAutoresolveAvantage_NoAntiAirVersusAir   is 1
+EAutoresolveAvantage_NoAntiTankVersusTank is 2
+
+AutoresolveAvantage_Enum is EAutoresolveAdvantage
+(
+    Values = [
+        "EAutoresolveAvantage_NoRecoVersusReco",
+        "EAutoresolveAvantage_NoAntiAirVersusAir",
+        "EAutoresolveAvantage_NoAntiTankVersusTank",
+    ]
+)
