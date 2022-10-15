@@ -134,6 +134,7 @@ ammo = [
     ["AngleDispersion", "AngleDispersion", float],
     ["DispersionAtMaxRange", "DispersionAtMaxRange", float], #Metre
     ["DispersionAtMinRange", "DispersionAtMinRange", float], #Metre
+    ["DispersionWithoutSorting", "DispersionWithoutSorting", bool],
     ["RadiusSplashPhysicalDamages", "RadiusSplashPhysicalDamages", float], #Metre
     ["PhysicalDamages", " PhysicalDamages", float],
     ["RadiusSplashSuppressDamages", "RadiusSplashSuppressDamages", float], #Metre

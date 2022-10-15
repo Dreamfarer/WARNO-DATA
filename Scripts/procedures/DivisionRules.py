@@ -38,7 +38,7 @@ def extractDivisionRules(subStringDivisionRules, level, Divisions, divisionIndex
                         # Load 'Divisions.ndf' and cut out the relevant part
 
                         for listIndex in range(len(DivisionRules[-1])):
-
+                            
                             match listIndex:
                                 case 0:
                                     # Add 'DeckDescriptor' which is the same for the whole deck
@@ -47,8 +47,8 @@ def extractDivisionRules(subStringDivisionRules, level, Divisions, divisionIndex
                                     # Add 'DivisionName' which is the same for the whole deck (from Divisions.ndf)
                                     DivisionRules[-1][listIndex] = [DivisionRules[-1][listIndex][0], Divisions[divisionIndex][listIndex][1]] 
                                 case 2:
-                                     # Add 'DivisionTags' which is the same for the whole deck (from Divisions.ndf)
-                                     DivisionRules[-1][listIndex] = [DivisionRules[-1][listIndex][0], Divisions[divisionIndex][listIndex][1]] 
+                                    # Add 'DivisionTags' which is the same for the whole deck (from Divisions.ndf)
+                                    DivisionRules[-1][listIndex] = [DivisionRules[-1][listIndex][0], Divisions[divisionIndex][listIndex][1]] 
                                 case 3:
                                     # Add 'AvailableForPlay' which is the same for the whole deck (from Divisions.ndf)
                                     DivisionRules[-1][listIndex] = [DivisionRules[-1][listIndex][0], Divisions[divisionIndex][listIndex][1]] 
