@@ -1,0 +1,22 @@
+export ModelFile_M981_FISTV_US is 'GameData:/Assets/3D/Units/US/Antichar/M981_FISTV/M981_FISTV.Ase2NdfBin'
+
+Modele_M981_FISTV_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_M981_FISTV_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M981_FISTV_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Antichar/M981_FISTV_MID/M981_FISTV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M981_FISTV_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Antichar/LODS/M981_FISTV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

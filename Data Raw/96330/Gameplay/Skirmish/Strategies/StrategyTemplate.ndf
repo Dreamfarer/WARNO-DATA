@@ -1,0 +1,10 @@
+private template Template_SequenceConditionOpponentHasScoreHigher
+[
+    ScorePointType,
+    RatioValue
+]
+is TSequenceCondition_OpponentHasScoreHigher
+(
+    ScorePointType = <ScorePointType>
+    RatioValue = <RatioValue>
+)

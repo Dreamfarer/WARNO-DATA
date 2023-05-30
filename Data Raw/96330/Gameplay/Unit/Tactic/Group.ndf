@@ -1,0 +1,29 @@
+
+
+Tactic_GroupModuleDescriptor is TGroupModuleDescriptor
+(
+)
+
+
+Tactic_GroupStateEngineDescriptor is TStateEngineModuleDescriptor
+(
+    InitialStateId = "GroupIdle"
+)
+
+export Tactic_ModularUnitGroupDescriptor is TEntityDescriptor
+(
+    World = WorldIndices_Groups
+    DescriptorId = GUID:{00000000-0000-0000-0000-000012000000}
+    ClassNameForDebug = 'TacticGroup'
+
+
+    ModulesDescriptors =
+    [
+        ~/Tactic_GroupModuleDescriptor,
+        ~/Tactic_GroupStateEngineDescriptor,
+    ]
+)
+
+
+
+

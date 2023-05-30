@@ -1,0 +1,69 @@
+export ModelFile_DCA_FK20_2_20mm_Zwillinge_RFA is 'GameData:/Assets/3D/Units/RFA/Canon/DCA_FK20_2_20mm_Zwillinge/DCA_FK20_2_20mm_Zwillinge.Ase2NdfBin'
+
+Modele_DCA_FK20_2_20mm_Zwillinge_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_DCA_FK20_2_20mm_Zwillinge_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_FK20_2_20mm_Zwillinge_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Canon/DCA_FK20_2_20mm_Zwillinge_MID/DCA_FK20_2_20mm_Zwillinge_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_FK20_2_20mm_Zwillinge_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Canon/LODS/DCA_FK20_2_20mm_Zwillinge_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+DeployAnimation_DCA_FK20_2_20mm_Zwillinge_RFA is TResourceMatrixArrayAnimation
+(
+    FileName   = 'GameData:/Assets/3D/Units/RFA/Canon/DCA_FK20_2_20mm_Zwillinge/DCA_FK20_2_20mm_Zwillinge_Deploy.Ase2NdfBin'
+    UsefulnessMask = CivMask/Common + TypeMask/Common
+    PlayInLoop     = false
+)
+
+DepictionOperator_Deployable_DCA_FK20_2_20mm_Zwillinge_RFA is DepictionOperator_AnimationDeployable
+(
+    DeployAnimation = TResourceMatrixArrayAnimation
+    (
+        FileName   = 'GameData:/Assets/3D/Units/RFA/Canon/DCA_FK20_2_20mm_Zwillinge/DCA_FK20_2_20mm_Zwillinge_Deploy.Ase2NdfBin'
+        UsefulnessMask = CivMask/Common + TypeMask/Common
+        PlayInLoop     = false
+    )
+
+    FoldAnimation = TResourceMatrixArrayAnimation
+    (
+        FileName   = 'GameData:/Assets/3D/Units/RFA/Canon/DCA_FK20_2_20mm_Zwillinge/DCA_FK20_2_20mm_Zwillinge_Fold.Ase2NdfBin'
+        UsefulnessMask = CivMask/Common + TypeMask/Common
+        PlayInLoop     = false
+    )
+
+    IdleAnimation = TResourceMatrixArrayAnimation
+    (
+        FileName   = 'GameData:/Assets/3D/Units/RFA/Canon/DCA_FK20_2_20mm_Zwillinge/DCA_FK20_2_20mm_Zwillinge_Idle.Ase2NdfBin'
+        UsefulnessMask = CivMask/Common + TypeMask/Common
+        PlayInLoop     = true
+    )
+
+    MoveFrontAnimation = TResourceMatrixArrayAnimation
+    (
+        FileName   = 'GameData:/Assets/3D/Units/RFA/Canon/DCA_FK20_2_20mm_Zwillinge/DCA_FK20_2_20mm_Zwillinge_Move.Ase2NdfBin'
+        UsefulnessMask = CivMask/Common + TypeMask/Common
+        PlayInLoop     = true
+    )
+
+    MoveBackAnimation = TResourceMatrixArrayAnimation
+    (
+        FileName   = 'GameData:/Assets/3D/Units/RFA/Canon/DCA_FK20_2_20mm_Zwillinge/DCA_FK20_2_20mm_Zwillinge_Move_Back.Ase2NdfBin'
+        UsefulnessMask = CivMask/Common + TypeMask/Common
+        PlayInLoop     = true
+    )
+
+    DeployFromMoveTime  = 1.5
+    DeployFromTurnTime  = 1.5
+    FoldForMoveTime  = 1.5
+    FoldForTurnTime  = 1.5
+)

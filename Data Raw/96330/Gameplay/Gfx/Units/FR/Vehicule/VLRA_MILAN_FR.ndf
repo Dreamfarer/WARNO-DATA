@@ -1,0 +1,19 @@
+export ModelFile_VLRA_MILAN_FR is 'GameData:/Assets/3D/Units/FR/Antichar/VLRA_MILAN/VLRA_MILAN.Ase2NdfBin'
+
+Modele_VLRA_MILAN_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_VLRA_MILAN_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_VLRA_MILAN_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Antichar/VLRA_MILAN/VLRA_MILAN.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VLRA_MILAN_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Antichar/VLRA_MILAN/VLRA_MILAN.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

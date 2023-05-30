@@ -1,0 +1,19 @@
+export ModelFile_Super_Puma_FR is 'GameData:/Assets/3D/Units/FR/Helico/Super_Puma/Super_Puma.Ase2NdfBin'
+
+Modele_Super_Puma_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Super_Puma_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_Super_Puma_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Helico/Super_Puma_MID/Super_Puma_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Super_Puma_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Helico/LODS/Super_Puma_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

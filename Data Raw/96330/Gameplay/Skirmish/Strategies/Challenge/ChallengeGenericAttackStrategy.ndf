@@ -1,0 +1,156 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export ChallengeGenericAttackStrategy is TIAGeneralStrategy
+(
+    StrategyName = "ChalAtkAI"
+    FirstGenerator = ChalAttackGeneric_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        ChalAttackGeneric_Transition_StartToPhaseCommand,
+        ChalAttackGeneric_Transition_StartToGeneric,
+        ChalAttackGeneric_Transition_DeployToCommandPhase,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalAttackGeneric_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export ChalAttackGeneric_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalAttackGeneric_Transition_StartToPhaseCommand is TIAGeneralStrategyTransition
+(
+    Origine = ChalAttackGeneric_Choose_Strategy
+    Condition = ChalAttackGeneric_Condition_CommandPhase
+    Destination = ChalAttackGeneric_Phase_Command
+)
+export ChalAttackGeneric_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = ChalAttackGeneric_Choose_Strategy
+    Condition = ChalAttackGeneric_Condition_GotoGeneric
+    Destination = ChalAttackGeneric_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export ChalAttackGeneric_Transition_DeployToCommandPhase is TIAGeneralStrategyTransition
+(
+    Origine = ChalAttackGeneric_Phase_Deploiement
+    Condition = ChalAttackGeneric_Condition_CommandPhase
+    Destination = ChalAttackGeneric_Phase_Command
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export ChalAttackGeneric_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export ChalAttackGeneric_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+
+        ~/CaptureOneObjectif, //Dependant du deck estimation 125
+
+        ~/Defense_Objectif, //Chere mais dépendant du nombre d'objectif et de la capture
+
+        ~/Attack_Objectives, //Environ 300
+
+        ~/Attack_Main, //Environ 400
+
+        ~/Reco_Autogen,
+        ~/Attack_Adaptive,          // Environ 200
+
+        ~/Airstrike_Assault,
+        ~/Airstrike_Offense,
+
+        ~/Attack_Helo, //Environ 250
+
+        ~/Artillery_TriggerHappy_1for2Corridors,
+
+        ~/CaptureAllZoneObjectif,
+
+        ~/Artillery_Expensive,
+
+        ~/Airstrike_Defense,
+    ]
+    ScalingGeneratorList = ~/Challenge_Attack_Scaling
+)
+//-------------------------------------------------------------------------
+export ChalAttackGeneric_Phase_Command is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+
+        ~/CaptureOneObjectif, //Dependant du deck estimation 125
+
+        ~/Defense_Objectif, //Chere mais dépendant du nombre d'objectif et de la capture
+
+        ~/Attack_Objectives, //Environ 300
+
+        ~/Attack_Main, //Environ 400
+
+        ~/Reco_Autogen,
+        ~/Attack_Adaptive,          // Environ 200
+
+        ~/Airstrike_Assault,
+        ~/Airstrike_Offense,
+
+        ~/Attack_Helo, //Environ 250
+
+        ~/Artillery_TriggerHappy_1for2Corridors,
+
+        ~/CaptureAllZoneObjectif,
+
+        ~/Artillery_Expensive,
+        ~/Attack_Adaptive,          // Environ 200
+
+        ~/Airstrike_Defense,
+
+    ]
+    ScalingGeneratorList = ~/Challenge_Attack_Scaling
+)
+
+Challenge_Attack_Scaling is
+[
+    ~/Attack_Objectives_Autogen,
+
+    ~/Attack_Main_Autogen,
+    ~/Attack_Helo_Autogen,
+    ~/Attack_Adaptive_Autogen,
+    ~/Attack_Adaptive_Autogen,
+    ~/Attack_Adaptive_Autogen,
+
+    ~/Airstrike_Assault_Autogen,
+    ~/Airstrike_Offense_Autogen,
+    ~/Airstrike_Defense_Autogen,
+
+    ~/Artillery_TriggerHappy_Autogen,
+]

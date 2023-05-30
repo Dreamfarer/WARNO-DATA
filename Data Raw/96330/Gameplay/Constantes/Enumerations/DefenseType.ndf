@@ -1,0 +1,11 @@
+// Enum EDefenseType // A maintenir synchro avec EugIA_Specific/EnumDefenseType.h et ProductionDescriptorFileWriter.py
+EDefenseType is TBaseClass
+(
+    BarbedWire is 0
+    Trench is 1
+    Pit is 2
+    MineField is 3
+    MineMarsh is 4
+    GunnerNest is 5
+    Bunker is 6
+)

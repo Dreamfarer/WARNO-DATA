@@ -1,0 +1,25 @@
+export ModelFile_MiG_29_AA_SOV is 'GameData:/Assets/3D/Units/URSS/Avion/MiG_29_9_12/MiG_29_9_12.Ase2NdfBin'
+
+Modele_MiG_29_AA_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MiG_29_AA_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_29_AA_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/MiG_29_9_12_MID/MiG_29_9_12_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_29_AA_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/LODS/MiG_29_9_12_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_29_AA_SOV_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/MiG_29_9_12/MiG_29_9_12_Train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

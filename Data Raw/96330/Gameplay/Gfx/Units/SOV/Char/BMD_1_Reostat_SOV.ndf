@@ -1,0 +1,22 @@
+export ModelFile_BMD_1_Reostat_SOV is 'GameData:/Assets/3D/Units/URSS/APC/BMD_REOSTAT/BMD_REOSTAT.Ase2NdfBin'
+
+Modele_BMD_1_Reostat_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BMD_1_Reostat_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BMD_1_Reostat_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BMD_REOSTAT/BMD_REOSTAT.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BMD_1_Reostat_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BMD_REOSTAT/BMD_REOSTAT.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

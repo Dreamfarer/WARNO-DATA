@@ -1,0 +1,19 @@
+export ModelFile_CH47D_Chinook_supply_UK is 'GameData:/Assets/3D/Units/UK/Helico/CH_47D_Chinook/CH_47D_Chinook.Ase2NdfBin'
+
+Modele_CH47D_Chinook_supply_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_CH47D_Chinook_supply_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_CH47D_Chinook_supply_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/CH_47D_Chinook/CH_47D_Chinook.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_CH47D_Chinook_supply_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/CH_47D_Chinook/CH_47D_Chinook.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

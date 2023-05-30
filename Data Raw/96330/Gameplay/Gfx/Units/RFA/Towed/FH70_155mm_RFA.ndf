@@ -1,0 +1,19 @@
+export ModelFile_FH70_155mm_RFA is 'GameData:/Assets/3D/Units/RFA/Canon/FH70_155mm/FH70_155mm.Ase2NdfBin'
+
+Modele_FH70_155mm_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_FH70_155mm_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_FH70_155mm_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Canon/FH70_155mm_MID/FH70_155mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FH70_155mm_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Canon/LODS/FH70_155mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

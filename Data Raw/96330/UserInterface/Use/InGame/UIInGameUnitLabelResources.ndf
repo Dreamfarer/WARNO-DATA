@@ -1,0 +1,56 @@
+
+//A maintenir synchro avec WarGame\Code\Eugen\CPP\InterfaceSpecific\UISpecificUnitLabelFeedbackType.h
+InGameUnitLabelUpdateFeedbackType is TBaseClass
+(
+    Life is 0
+    Fuel is 1
+    Bullets is 2
+    Missile is 3
+    Shell is 4
+    Supply is 5
+    Length is 6
+)
+
+SpecificInGameUnitLabelResources is TUISpecificUnitLabelResources
+(
+    UILayer                         = $/UserInterface/UILayer_Labels
+    UI3DLayer                       = $/UserInterface/UI3DLayer_General
+    Camera                          = $/M3D/Camera/CameraPrincipale
+
+    CameraMoverHelperProxy          = $/M3D/Scene/IngameCameraMoverHelperProxy
+    FadeHeightTransitionStart       = 20*1000
+    FadeHeightTransitionEnd         = 10*1000
+    FadeFactorForShaderParameter    = $/M3D/Scene/MaskAlphaFade
+    // ---------
+
+    // pour configurer il faut ouvrir les ajustables : label et agregate
+    LabelInAggregatMagnifiableBox = [UnitLabelAggregationWidth, UnitLabelAggregationHeight]
+    LabelMagnifiableBox = [80, 30]
+    RatioToLabelInAggregatMagnifiableBox = [0.2, 0.4]
+    RatioToLabelMagnifiableBox = [0.20, 0.3]
+    MagnifiableOffsetCenter = [0.0, -37.0]
+    MagnifiableOffsetAggregatCenter = [0.0, -32.0]
+
+    NbMaxAggregatedUnits = 12
+
+    MagnificationMultiplier = 1
+    UI3DTransformation = TModernWarfareLabelTransformation
+    (
+        Camera = $/M3D/Camera/CameraPrincipale
+        ScalePerAltitudeConstReso = 1.0 // pas touche! - voir sebastien
+        Scene2D = $/M3D/Scene/Scene_2D_Interface
+        ConstnessFactor = 1
+        PreTranslate = [0.0, 0.0, 0.0]
+        PostTranslate = [0.0, 250.0, 0.0] // valeur pour régler la hauteur des étiquettes par rapport à l'unité
+        RefResolution = [ 1920.0, 1080.0 ]
+    )
+
+    DamageTypeNameToFeedbackType = MAP
+    [
+        ("balle", ~/InGameUnitLabelUpdateFeedbackType/Bullets),
+        ("balleaa", ~/InGameUnitLabelUpdateFeedbackType/Bullets),
+        ("balledca", ~/InGameUnitLabelUpdateFeedbackType/Bullets),
+        ("ap_missile", ~/InGameUnitLabelUpdateFeedbackType/Missile),
+    ]
+)
+

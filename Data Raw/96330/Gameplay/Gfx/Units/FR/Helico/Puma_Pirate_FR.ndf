@@ -1,0 +1,19 @@
+export ModelFile_Puma_Pirate_FR is 'GameData:/Assets/3D/Units/FR/Helico/Puma_Pirate/Puma_Pirate.Ase2NdfBin'
+
+Modele_Puma_Pirate_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Puma_Pirate_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_Puma_Pirate_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Helico/Puma_Pirate/Puma_Pirate.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Puma_Pirate_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Helico/Puma_Pirate/Puma_Pirate.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,21 @@
+private SpreadOrderButton is TUISpecificInGameHUDOrderButtonDescriptor
+(
+    LocalisationToken        = 'ORD_SPREAD'
+    HintLocalisationToken    = 'HNT_SPREAD'
+    Mapping                  = $/KeyboardOption/Mapping_Spread
+    DebugName                = "InGameCubeAction_ButtonSpread"
+
+    OrderToken = "Spread"
+    ActionType = OrderInstant
+)
+
+//-----------------------------------------------------------------------------
+HUDOrderButtonListDescriptor is TUISpecificInGameHUDOrderButtonListDescriptor
+(
+    UserInputLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+
+    CompanyOrderButtons =
+    [
+        ~/SpreadOrderButton,
+    ]
+)

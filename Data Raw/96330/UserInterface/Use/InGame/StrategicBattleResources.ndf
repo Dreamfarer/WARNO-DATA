@@ -1,0 +1,102 @@
+StrategicBattleResources is TStrategicBattleResources
+(
+    //Couleur des unités ne pouvant pas participer au combat lors de la préparation d'une bataille (0 partout = désactivé)
+    CantFightGhostColors = TGhostColors(
+        GhostColor = [0, 0, 0, 0]
+        GhostAlphas = [0.5, 0.5] //(cf. LabelTransparencyIfNoEngagementPhase)
+        GhostBlends = [0, 0]
+    )
+
+    // Couleur des unités ne pouvant plus bouger
+    CantMoveGhostColors = TGhostColors(
+        GhostColor = [0, 0, 0, 0]
+        GhostAlphas = [0.5, 0.5] //(cf. LabelTransparencyIfNoEngagementPhase)
+        GhostBlends = [0, 0]
+    )
+
+    //Pour un pion de support qui est mobilisé pour le combat
+    BattlePlanningSupportInBattleGroupStyleDescriptor = TLineFeedbackStyleDescriptor(
+                                                    Border = true
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 4000.0
+                                                                Color = [221, 30, 30, 180]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 4000.0
+                                                                Color = [221, 0, 0, 180]
+                                                            )
+                                                    ParabolicArrowHeight = 25000.0
+                                                )
+    //Pour un pion de support qui n'est pas encore mobilisé pour le combat mais qui est disponible à l'ajout
+    BattlePlanningSupportNotInBattleGroupStyleDescriptor = TLineFeedbackStyleDescriptor(
+                                                    Border = true
+                                                    Hatched = true
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 1200.0
+                                                                Color = [54, 54, 54, 150]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 1200.0
+                                                                Color = [0, 0, 0, 0]
+                                                            )
+                                                    ParabolicArrowHeight = 25000.0
+                                                )
+    //Pour un pion classique qui est mobilisé pour le combat
+    BattlePlanningPawnInBattleGroupStyleDescriptor = TArrowFeedbackStyleDescriptor(
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Color = [221, 30, 30, 180]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Color = [221, 0, 0, 180]
+                                                            )
+                                                    ArrowTipLength = 3000
+                                                    ArrowTipWidth = 3000
+                                                    ArrowLineStartWidth = 4000
+                                                    ArrowLineEndWidth = 2000
+                                                )
+    //Pour un pion classique qui est potentiellement attaquant en phase A
+    BattlePlanningPotentialAttackerPawnStyleDescriptor = TArrowFeedbackStyleDescriptor(
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Color = [221, 30, 30, 90]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Color = [221, 0, 0, 90]
+                                                            )
+                                                    ArrowTipLength = 3000
+                                                    ArrowTipWidth = 3000
+                                                    ArrowLineStartWidth = 4000
+                                                    ArrowLineEndWidth = 2000
+                                                )
+
+    //Pour un pion de support EN COMBAT qui est mobilisé pour le combat
+    FightingSupportPawnStyleDescriptor = TLineFeedbackStyleDescriptor(
+                                                    Border = true
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 4000.0
+                                                                Color = [221, 30, 30, 180]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Thickness = 4000.0
+                                                                Color = [221, 0, 0, 180]
+                                                            )
+                                                    ParabolicArrowHeight = 25000.0
+                                                )
+    //Pour un pion fighter EN COMBAT qui est mobilisé pour le combat
+    FightingFighterPawnStyleDescriptor = TArrowFeedbackStyleDescriptor(
+                                                    SelectedStyle = TFeedbackStyleDescriptor(
+                                                                Color = [221, 30, 30, 180]
+                                                            )
+                                                    UnselectedStyle = TFeedbackStyleDescriptor(
+                                                                Color = [221, 0, 0, 180]
+                                                            )
+                                                    ArrowTipLength = 3000
+                                                    ArrowTipWidth = 3000
+                                                    ArrowLineStartWidth = 4000
+                                                    ArrowLineEndWidth = 2000
+                                                )
+
+    //Data pour animer l'alpha fade des flèches des attaquants potentiels
+    PotentialAttackersAnimDuration = 1.0
+    MinAlphaForPotentialAttackers = 0
+    MaxAlphaForPotentialAttackers = 90
+)

@@ -1,0 +1,168 @@
+
+//-------------------------------------------------------------------------------------
+
+private DEBUG_UnitLabelUnitBUCKComponentDescriptorNameOnly is BUCKLocalLayerContainerDescriptor
+(
+    ElementName = "LocalLayerContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset  = [0.0, 20.0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    NbLayersToLock = 6
+
+    Components =
+    [
+        ~/DEBUG_StandardLabelListNameOnly,
+    ]
+)
+
+
+//----------------------------------------------------------------------
+
+private DEBUG_StandardLabelListNameOnly is BUCKListDescriptor
+(
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/DEBUG_UpperLabelNameOnly
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [40.0, 40.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                    AlignementToFather = [0.5, 0.0]
+                )
+
+                IsClippable = false
+
+                Components =
+                [
+                    // Icône de couverture
+                    DEBUG_UnitLabelCoverIcon
+                    (
+                        IsForMultiSelection = false
+                        LocalRenderLayer = 4
+                    ),
+
+                    DEBUG_UnitLabelBackground
+                    (
+                        LocalRenderLayer = 2
+                    ),
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor(ComponentDescriptor = ~/DEBUG_UnitLabelUnitLeavingDistrictBUCKComponent),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/DEBUG_UnitLabelUnitCriticalMessageBUCKComponent),
+    ]
+)
+
+
+//-------------------------------------------------------------------------------------
+private DEBUG_UpperLabelNameOnly is BUCKListDescriptor
+(
+    ElementName = "UpperLabel"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [150.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+
+    // Penser a modifier la taille en Pixel du LabelUnitBUCKComponent si on aggrandit ce composant !
+    Elements =
+    [
+        BUCKListElementDescriptor(ComponentDescriptor = ~/DEBUG_UnitLabelUnitEvacIconBUCKComponent),
+        BUCKListElementDescriptor(ComponentDescriptor = ~/DEBUG_UnitLabelUnitPlayerNameBUCKComponent),
+        BUCKListElementDescriptor(ComponentDescriptor = DEBUG_UnitLabelUnitReloadIconBUCKComponent(LocalRenderLayer = 1)),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/DEBUG_UnitNameAndRightListNameOnly
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DEBUG_UnitLabelUnitMoraleGaugeBUCKComponent
+            (
+                ElementName = "MoraleGauge"
+                LocalRenderLayer = 1
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DEBUG_UnitNameListSensibleArea
+            (
+                IsForCarriedUnit = true
+                LocalRenderLayer = 1
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private DEBUG_UnitNameAndRightListNameOnly is BUCKContainerDescriptor
+(
+     ComponentFrame = TUIFramePropertyRTTI
+     (
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+     )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    Components =
+    [
+        DEBUG_UnitNameListSensibleArea
+        (
+            IsForCarriedUnit = false
+            LocalRenderLayer = 1
+            ChildFitToContent = true
+        ),
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather = [1.0, 0.0]
+                MagnifiableWidthHeight = [0.0, 30.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength(Magnifiable = 2.0)
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/DEBUG_UnitLabelUnitSupplyGaugeBUCKComponent
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/DEBUG_UnitLabelUnitSupplyExtraGaugeText
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/DEBUG_LabelFeedbackIcons
+                ),
+            ]
+        ),
+    ]
+)
+
+UISpecificUnitLabelDebugViewDescriptorNameOnly is UISpecificInGameUnitLabelDebugViewDescriptor
+(
+    MainComponentDescriptor = ~/DEBUG_UnitLabelUnitBUCKComponentDescriptorNameOnly
+)

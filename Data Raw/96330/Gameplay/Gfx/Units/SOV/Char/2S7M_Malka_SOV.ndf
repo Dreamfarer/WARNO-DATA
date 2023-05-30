@@ -1,0 +1,19 @@
+export ModelFile_2S7M_Malka_SOV is 'GameData:/Assets/3D/Units/URSS/Artillerie/2S7M_Malka/2S7M_Malka.Ase2NdfBin'
+
+Modele_2S7M_Malka_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_2S7M_Malka_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_2S7M_Malka_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/2S7M_Malka_MID/2S7M_Malka_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_2S7M_Malka_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/LODS/2S7M_Malka_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

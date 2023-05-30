@@ -1,0 +1,22 @@
+export ModelFile_VLRA_Mortier81_FR is 'GameData:/Assets/3D/Units/FR/Artillerie/VLRA_Mortier_81/VLRA_Mortier_81.Ase2NdfBin'
+
+Modele_VLRA_Mortier81_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_VLRA_Mortier81_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_VLRA_Mortier81_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Artillerie/VLRA_Mortier_81/VLRA_Mortier_81.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VLRA_Mortier81_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Artillerie/VLRA_Mortier_81/VLRA_Mortier_81.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

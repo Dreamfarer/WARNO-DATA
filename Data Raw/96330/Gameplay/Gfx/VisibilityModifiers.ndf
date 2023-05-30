@@ -1,0 +1,22 @@
+
+export StandardWargameVisibilityRollRule is TModernWarfareVisibilityRollRuleDescriptor
+(
+    PourcentageCourteDistance               = 0.10  //0.25, 0.50
+    PourcentageMoyenneDistance              = 0.50  //75
+
+    ModificateurCourteDistance              = 1.0   //- de PourcentageCourteDistance de DetectionBase + BaseDissimulation //Changer cette valeur n'a pas trop de sens puisqu'une unite passera forcement en identifie si elle passe en dessous de PourcentageCourteDistance de DetectionBase + BaseDissimulation (il n'y aura pas de lancer de des !)
+    ModificateurMoyenneDistance             = 0.1   //de PourcentageCourteDistance a PourcentageMoyenneDistance de DetectionBase + BaseDissimulation
+    ModificateurLongueDistance              = 0.0   //de PourcentageMoyenneDistance a 100% de DetectionBase + BaseDissimulation
+
+    Time1ForReIdentModificateur             = 10.0
+    Time2ForReIdentModificateur             = 20.0
+    Time3ForReIdentModificateur             = 30.0
+
+    ModificateurReIdentAvantTime1            = 0.3   //Identification moins de Time1ForReIdentModificateur secondes apres disparition
+    ModificateurReIdentAvantTime2            = 0.2   //Identification moins de Time2ForReIdentModificateur secondes apres disparition
+    ModificateurReIdentAvantTime3            = 0.1   //Identification moins de Time3ForReIdentModificateur secondes apres disparition
+
+    ModificateurCibleEnMouvement            = 0.05
+    ModificateurPlusieursIdentSuccessive    = 0 //0.05
+
+)

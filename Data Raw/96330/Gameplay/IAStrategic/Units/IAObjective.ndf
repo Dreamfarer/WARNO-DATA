@@ -1,0 +1,19 @@
+
+Strategic_IAObjectiveEntityDescriptor is TEntityDescriptor
+(
+    World = WorldIndices_IA_Objective
+    DescriptorId = GUID:{00000000-0000-0000-0000-000154000000}
+
+    ModulesDescriptors =
+    [
+        TIAObjectiveZoneModuleDescriptor
+        (
+        ),
+        TIAObjectiveStrategyStateModuleDescriptor
+        (
+        ),
+        TIALinkToObjectivesModuleDescriptor
+        (
+        ),
+    ]
+)

@@ -1,0 +1,11 @@
+
+// CONSTANTES POUR LE GAME DESIGN
+
+export TransportConstantes is TTransportConstantesDescriptor
+(
+    // Vitesse maximale autorisée pour décharger les unités du transport
+    // 0.0 = le transport doit être arrêté pour décharger
+    // X = quand on donne l'ordre d'Unload, le transport ralenti et décharge les unités dès qu'il passe en dessous de X
+    // En unité ingame, cf. shift+F2 / Unit Infos / Speed
+    MaximalSpeedToUnload = 1000 //0.0
+)

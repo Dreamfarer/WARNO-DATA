@@ -1,0 +1,142 @@
+// Utiliser ce template pour les pions des unités stratégiques dans Steelman
+template StrategicPawnDepictionTemplate
+[
+    MeshSocle,
+    MeshTige,
+    ModelFilePawn,
+    SubDepictionGenerators = []
+]
+is TTimelyDepictionReceiverFactory
+(
+
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 6)
+        Selector = OnlyHighDepictionSelector
+        Operators = [DepictionOperator_Shader_Selection]
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = <MeshSocle> ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Selectable = True
+            Depiction = TDepictionTemplate
+            (
+                Selector = OnlyHighDepictionSelector
+                Operators = [DepictionOperator_Shader_Selection]
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = <MeshTige> ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Selectable = True
+                    Anchor = "sommet"
+                    Depiction = TDepictionTemplate
+                    (
+                        Selector = OnlyHighDepictionSelector
+                        Operators = [DepictionOperator_Shader_Selection]
+                        DepictionAlternatives = [
+                            DepictionDescriptor_LOD_High(
+                                MeshDescriptor = TResourceMultiMaterialMeshWithLod
+                                (
+                                    FileName = <ModelFilePawn>
+                                    CivMask =  CivMask/Common
+                                )
+                            )
+                        ]
+                        SubDepictionGenerators = <SubDepictionGenerators>
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)
+
+StrategicInfantryPoseOperator is TCosmeticFreezeSkeletalAnimationOperatorDesc
+(
+    Animation = FusilierRun
+    Cursor = 0.5
+)
+
+template StrategicInfantryPawnDepictionTemplate
+[
+    MeshSocle,
+    ModelFilePawn,
+]
+is TTimelyDepictionReceiverFactory
+(
+
+    DepictionTemplate = TDepictionTemplate
+    (
+        Scaler = TConstantScaler( Scale = 7)
+        Selector = OnlyHighDepictionSelector
+        Operators = [DepictionOperator_Shader_Selection]
+        DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = <MeshSocle> ) ]
+
+        SubDepictions = [ TSubDepiction
+        (
+            Selectable = True
+            Depiction = TDepictionTemplate
+            (
+                Selector = OnlyHighDepictionSelector
+                Operators = [DepictionOperator_Shader_Selection]
+                DepictionAlternatives = [ DepictionDescriptor_LOD_High( MeshDescriptor = MeshModele_Tige_courte ) ]
+
+                SubDepictions = [ TSubDepiction
+                (
+                    Selectable = True
+                    Anchor = "sommet"
+                    Depiction = TDepictionTemplate
+                    (
+                        Scaler = TConstantScaler( Scale = 2 )
+                        Selector = OnlyHighDepictionSelector
+                        Operators = [ DepictionOperator_Shader_Selection, StrategicInfantryPoseOperator ]
+                        DepictionAlternatives = [ DepictionDescriptor_LOD_High(
+                            MeshDescriptor = TResourceMultiMaterialMeshWithLod
+                            (
+                                FileName = <ModelFilePawn>
+                                CivMask =  CivMask/Common
+                            )
+                        ) ]
+                    )
+                ) ]
+            )
+        ) ]
+    )
+)
+
+template StrategicAirplanePawnDepictionTemplate
+[
+    MeshSocle,
+    ModelFilePawn,
+]
+is StrategicPawnDepictionTemplate
+(
+    MeshSocle = <MeshSocle>
+    ModelFilePawn = <ModelFilePawn>
+    MeshTige = MeshModele_Tige_moyenne //MeshModele_Tige_longue
+)
+
+template StrategicHelicopterPawnDepictionTemplate
+[
+    MeshSocle,
+    ModelFilePawn,
+]
+is StrategicPawnDepictionTemplate
+(
+    MeshSocle = <MeshSocle>
+    ModelFilePawn = <ModelFilePawn>
+    MeshTige = MeshModele_Tige_moyenne
+)
+
+template StrategicGroundVehiclePawnDepictionTemplate
+[
+    MeshSocle,
+    ModelFilePawn,
+    SubDepictionGenerators = []
+]
+is StrategicPawnDepictionTemplate
+(
+    MeshSocle = <MeshSocle>
+    ModelFilePawn = <ModelFilePawn>
+    MeshTige = MeshModele_Tige_courte
+    SubDepictionGenerators = <SubDepictionGenerators>
+)

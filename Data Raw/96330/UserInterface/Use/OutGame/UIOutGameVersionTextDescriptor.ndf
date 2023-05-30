@@ -1,0 +1,34 @@
+OutGameVersionTextDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [300.0, 40.0]
+        MagnifiableOffset = [10, -20]
+        RelativeOffset = [0.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = "Text"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableOffset = [0, 0]
+            )
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Left
+                VerticalAlignment = UIText_Up
+            )
+
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+            TextSize = "NumVersion"
+            TextColor = "Blanc"
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+        )
+    ]
+)

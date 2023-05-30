@@ -1,0 +1,1409 @@
+//---------------------------------------------------------------
+AutoResolveSeparator is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 2.0]
+        RelativeWidthHeight = [1, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "H2_bleu_1"
+
+    HasBorder = true
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "SD2_LigneBleuGris"
+    Components = []
+)
+
+LargeurMainComponent is 600.0
+//---------------------------------------------------------------
+template PertesSurTerrainBlade
+[
+    ContentToken : string,
+    ContentSize : string,
+] is BUCKListDescriptor
+(
+    ElementName = "PertesSurTerrainBlade"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight= [1.0, 0.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                HasBorder = true
+                BorderThicknessToken = "1"
+                BorderLineColorToken = "PureBlack"
+
+                HasBackground = true
+                BackgroundBlockColorToken = "SD2_Blanc184"
+
+                ElementName = "PertesSurTerrainBladeTitle"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 20.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                )
+
+                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                TextStyle = "Default"
+                TypefaceToken = "UIMainFont"
+
+                TextToken = "AR_ADCBT"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = "16"
+                TextColor = "PureBlack"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                HasBorder = true
+                BorderThicknessToken = "1"
+                BorderLineColorToken = "PureBlack"
+
+                HasBackground = true
+                BackgroundBlockColorToken = "Gris123"
+
+                ElementName = "PertesSurTerrainBladeText"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 30.0]
+                    AlignementToFather = [0.5, 0.5]
+                    AlignementToAnchor = [0.5, 0.5]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                    BigWordAction = ~/BigWordAction/BigWordCut
+                )
+
+                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+                BigLineAction = ~/BigLineAction/MultiLine
+
+                TextStyle = "Default"
+                TypefaceToken = "Eurostyle_Italic"
+
+                TextToken = <ContentToken>
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = <ContentSize>
+                TextColor = "PureBlack"
+            )
+        ),
+    ]
+)
+
+//---------------------------------------------------------------
+
+template AutoResolveLine
+[
+    LineName : string,
+    AttackerText : string,
+    TitleText : string,
+    DefenderText : string,
+    IsRapport : bool,
+    TextSize : string = "AutoResolve/Rapport",
+    TitleTypefaceToken : string = "Liberator",
+]
+is BUCKContainerDescriptor
+(
+    ElementName = <LineName> + "Container"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 32.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = <LineName> + "Line"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight= [0.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            FirstMargin  = TRTTILength (Magnifiable = 10.0)
+            LastMargin  = TRTTILength (Magnifiable = 10.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.25
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = <LineName> + "AttackerText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [0.0, 32.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Center
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                                TextStyle = "Default"
+                                TypefaceToken = "Bombardier"
+
+                                TextToken = <AttackerText>
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                TextSize = <TextSize>
+                                TextColor = "AutoResolve/ATQ"
+                            )
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = <LineName> + "Title"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [0.0, 32.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Center
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                                TextStyle = "Default"
+                                TypefaceToken = <TitleTypefaceToken>
+
+                                TextToken = <TitleText>
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                TextSize = <IsRapport> ? "18" : "12"
+                                TextColor = "BlancEquipe"
+                            )
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.25
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = <LineName> + "DefenderText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [0.0, 32.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Center
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                                TextStyle = "Default"
+                                TypefaceToken = "Bombardier"
+
+                                TextToken = <DefenderText>
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                TextSize = <TextSize>
+                                TextColor = "AutoResolve/DEF"
+                            )
+                        ]
+                    )
+                ),
+            ]
+
+            BackgroundComponents =
+            [
+                BUCKContainerDescriptor
+                (
+                    ElementName = <LineName> + (<IsRapport> ? "Rapport" : "Information") + "AttackerBackgroundContainer"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [0.5, 1.0]
+                    )
+                    HasBackground = true
+                ),
+                BUCKContainerDescriptor
+                (
+                    ElementName = <LineName> + (<IsRapport> ? "Rapport" : "Information") + "DefenderBackgroundContainer"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [0.5, 1.0]
+                        AlignementToFather = [0.5, 0.0]
+                    )
+                    HasBackground = true
+                ),
+            ]
+        )
+    ]
+)
+
+//---------------------------------------------------------------
+
+AutoResolveArmyForcesAndRatio is BUCKContainerDescriptor
+(
+    ElementName = "ArmyRatioContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 32.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "ArmyRatioMainLine"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight= [0.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            FirstMargin  = TRTTILength (Magnifiable = 10.0)
+            LastMargin  = TRTTILength (Magnifiable = 10.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.25
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = "ArmyRatioAttackerText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [0.0, 32.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Center
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                                TextStyle = "Default"
+                                TypefaceToken = "Bombardier"
+
+                                TextToken = "AR_ADCBT"
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                TextSize = "AutoResolve/Information"
+                                TextColor = "AutoResolve/ATQ"
+                            )
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = "BalanceOfPowerAttackerText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [0.0, 32.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Center
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                                TextStyle = "Default"
+                                TypefaceToken = "Eurostyle_Medium"
+
+                                TextToken = "AR_RATIO"
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                TextSize = "26"
+                                TextColor = "BlancEquipe"
+                            )
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.25
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = "ArmyRatioDefenderText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [0.0, 32.0]
+                                    AlignementToFather = [0.5, 0.5]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Center
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                                TextStyle = "Default"
+                                TypefaceToken = "Bombardier"
+
+                                TextToken = "AR_ADCBT"
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                TextSize = "AutoResolve/Information"
+                                TextColor = "AutoResolve/DEF"
+                            )
+                        ]
+                    )
+                ),
+            ]
+
+            BackgroundComponents =
+            [
+                BUCKContainerDescriptor
+                (
+                    ElementName = "OperatingForceInformationAttackerBackgroundContainer"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [0.5, 1.0]
+                    )
+                    HasBackground = true
+                ),
+                BUCKContainerDescriptor
+                (
+                    ElementName = "OperatingForceInformationDefenderBackgroundContainer"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [0.5, 1.0]
+                        AlignementToFather = [0.5, 0.0]
+                    )
+                    HasBackground = true
+                ),
+            ]
+        )
+    ]
+)
+
+//---------------------------------------------------------------
+
+template AutoResolveCombatResultSubTitle
+[
+    ElementName : string = "",
+    TextToken : string,
+] is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 20.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = ~/UIText_Center
+        VerticalAlignment = ~/UIText_VerticalCenter
+    )
+
+    TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+    TextStyle = "Default"
+    TypefaceToken = "Eurostyle"
+
+    TextToken = <TextToken>
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextSize = "14"
+    TextColor = "AutoResolve/Information"
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = <ElementName> + "AttackerBackgroundContainer"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.5, 1.0]
+            )
+            HasBackground = true
+        ),
+        BUCKContainerDescriptor
+        (
+            ElementName = <ElementName> + "DefenderBackgroundContainer"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.5, 1.0]
+                AlignementToFather = [0.5, 0.0]
+            )
+            HasBackground = true
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+ResultTableExternalMargin is 5.0
+ResultTableInternalMargin is 10.0
+private template PertesSurTerrainMainComponent
+[
+    BaseElementName : string,
+    TitleTextToken : string,
+    ContentToken : string,
+    ContentSize : string,
+] is BUCKListDescriptor
+(
+    ElementName = <BaseElementName> + "Container"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = <BaseElementName> + "Title"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 36.0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                )
+
+                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+
+                TextStyle = "Default"
+                TypefaceToken = "Eurostyle"
+
+                TextToken = <TitleTextToken>
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = "18"
+                TextColor = "AutoResolve/Information"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = <BaseElementName> + "TableAndTextureContainer"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+                Axis = ~/ListAxis/Horizontal
+
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                FirstMargin = TRTTILength(Magnifiable = ResultTableExternalMargin)
+                LastMargin = TRTTILength(Magnifiable = ResultTableExternalMargin)
+                InterItemMargin = TRTTILength(Magnifiable = ResultTableInternalMargin)
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 0.5
+                        ComponentDescriptor = BattleOutcomeHalfTable
+                        (
+                            ElementName = <BaseElementName> + "AttackerTableContainer"
+                            RackName = <BaseElementName> + "AttackerTable"
+                            BladeDescriptor = PertesSurTerrainBlade(ContentToken = <ContentToken> ContentSize = <ContentSize>)
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 0.5
+                        ComponentDescriptor = BattleOutcomeHalfTable
+                        (
+                            ElementName = <BaseElementName> + "DefenderTableContainer"
+                            RackName = <BaseElementName> + "DefenderTable"
+                            BladeDescriptor = PertesSurTerrainBlade(ContentToken = <ContentToken> ContentSize = <ContentSize>)
+                        )
+                    )
+                ]
+            )
+        )
+    ]
+)
+
+//---------------------------------------------------------------
+
+template BattleOutcomeHalfTable
+[
+    ElementName : string,
+    RackName : string,
+    BladeDescriptor : TBUCKContainerDescriptor,
+] is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    Components =
+    [
+        BUCKRackDescriptor
+        (
+            ElementName = <RackName>
+            ComponentFrame = TUIFramePropertyRTTI()
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+            Axis = ~/ListAxis/Horizontal
+            AssumeChildrenAreClippable = true
+
+            BladeDescriptor = <BladeDescriptor>
+        )
+    ]
+)
+
+//---------------------------------------------------------------
+
+private ResultOfBattleMainComponent is BUCKListDescriptor
+(
+    ElementName = "ResultOfBattleMainComponent"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight= [1.0, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "SM_Ebony"
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    FirstMargin  = TRTTILength (Magnifiable = 0.0)
+    InterItemMargin  = TRTTILength (Magnifiable = 0.0)
+    // LastMargin  = TRTTILength (Magnifiable = 10.0)
+
+    Elements =
+    [
+        //-------------------------------------------------------------------------------------
+        // résultat
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "AutoResolveTitleText"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1,0]
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                TextPadding = TRTTILength4(Magnifiable = [4.0, 10.0, 0.0, 10.0])
+                BigLineAction = ~/BigLineAction/MultiLine
+                TextStyle = "Default"
+                TypefaceToken = "Eurostyle_Heavy"
+
+
+                TextToken = "AR_Result"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = "AutoResolve/Title"
+                TextColor = "BlancEquipe"
+            )
+        ),
+        // BUCKListElementSpacer(Magnifiable = 25.0),
+        //-------------------------------------------------------------------------------------
+        // Détail du rapport de force
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "AutoResolveSubtitles"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 30.0]
+                )
+
+                Axis = ~/ListAxis/Horizontal
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = TitreJoueur
+                        (
+                            IsAttacker = true
+                            ElementName = "AutoResolveAttackerText"
+                            TextToken = "AR_ATQ"
+                            TextureToken = "CommonTexture_MotherCountryFlag_NATO"
+                            StrengthTextureToken = "UseStrategic_SelectionPanel_Attack"
+                            StrengthTextToken = "AR_AVAL"
+                            StrengthTextColor = "AutoResolve/ATQ"
+                            StrengthHorizontalAlignment = 0.3
+                        )
+                    ),
+                    BUCKListElementDescriptor
+                    (
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = TitreJoueur
+                        (
+                            IsAttacker = false
+                            ElementName = "AutoResolveDefenderText"
+                            TextToken = "AR_DEF"
+                            TextureToken = "CommonTexture_MotherCountryFlag_PACT"
+                            StrengthTextureToken = "UseStrategic_SelectionPanel_Defense"
+                            StrengthTextToken = "AR_ADEF"
+                            StrengthTextColor = "AutoResolve/DEF"
+                            StrengthHorizontalAlignment = 0.7
+                        )
+                    )
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = AutoResolveCombatResultSubTitle(TextToken = "AR_RDA" ElementName = "ArmyRatioTitle")
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = AutoResolveArmyForcesAndRatio
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = AutoResolveCombatResultSubTitle(TextToken = "AR_ADC" ElementName = "CombatAdvantageTitle")
+        ),
+        BUCKListElementDescriptor
+        (
+
+            ComponentDescriptor = BUCKRackDescriptor
+            (
+                ElementName = 'CombatAdvantageRack'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                AssumeChildrenAreClippable = true
+
+                BladeDescriptor = AutoResolveLine
+                (
+                    LineName = 'CombatAdvantageBlade'
+                    AttackerText = 'AR_ADCBT'
+                    TitleText = 'AR_ADCBT'
+                    DefenderText = 'AR_ADCBT'
+                    IsRapport = false
+                    TextSize = 'AutoResolve/Information'
+                    TitleTypefaceToken = "Eurostyle"
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = AutoResolveLine
+            (
+                LineName = "ResultOfCombat"
+                AttackerText = ""
+                TitleText = "AR_RDC"
+                DefenderText = ""
+                TitleTypefaceToken = "Eurostyle"
+                IsRapport = true
+            )
+        ),
+        BUCKListElementSpacer(Magnifiable = 40.0),
+        //-------------------------------------------------------------------------------------
+        // Répartition des pertes
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PertesSurTerrainMainComponent(BaseElementName = "CombatOutcome" TitleTextToken = "AR_RDC" ContentToken = "AR_ADCBT" ContentSize = "12")
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PertesSurTerrainMainComponent(BaseElementName = "CombatLosses" TitleTextToken = "AR_DDL" ContentToken = "AR_PCT" ContentSize = "16")
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PertesSurTerrainMainComponent(BaseElementName = "CombatFatigue" TitleTextToken = "sm_fatt" ContentToken = "AR_ADCBT" ContentSize = "16")
+        ),
+        BUCKListElementSpacer(Magnifiable = 40.0),
+        //-------------------------------------------------------------------------------------
+        // Détails des pertes
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = DisplayLosses
+        ),
+
+    ]
+)
+
+DisplayLosses is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI ( RelativeWidthHeight = [1,0] )
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI()
+
+            HasBackground = true
+            BackgroundBlockColorToken = "SM_DarkLava"
+
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+            InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+            LastMargin = TRTTILength( Magnifiable = 0.0 )
+            Axis = ~/ListAxis/Horizontal
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = ListOfLosses(ElementName = "Attacker")
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 0.5
+                    ComponentDescriptor = ListOfLosses(ElementName = "Defender")
+                ),
+            ]
+        )
+    ]
+)
+
+template ListOfLosses
+[
+    ElementName : string,
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1, 0.0]
+    )
+
+    FirstMargin = TRTTILength( Magnifiable = 15.0 )
+    LastMargin = TRTTILength( Magnifiable = 10.0 )
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = <ElementName> + "TotalLoss"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight =  [0,15]
+                )
+
+                ParagraphStyle = paragraphStyleTextCenter
+                TextStyle = "Default"
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/UserDefined
+                TypefaceToken = "Eurostyle_Medium"
+                BigLineAction = ~/BigLineAction/MultiLine
+                TextToken = "SBO_PTOT"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextColor = "BlancTexte"
+                TextSize = "16"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = LossesGrid(ElementName = <ElementName>)
+        ),
+    ]
+)
+
+template LossesGrid
+[
+    ElementName : string,
+] is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKGridDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            AlignementToAnchor = [0.5, 0.0]
+            AlignementToFather = [0.5, 0.0]
+        )
+
+        FirstElementMargin = TRTTILength2( Magnifiable = [0.0, 0.0])
+        InterElementMargin    = TRTTILength2 (Magnifiable = [0.0, 0.0])
+        LastElementMargin = TRTTILength2( Magnifiable = [0.0, 0.0])
+        ChildFitToContent = true
+        GridElements = MAP
+        [
+            (
+                [0,0],
+                DisplayTextLossesWIP
+                (
+                    ElementName = <ElementName> + "SoldierLoss"
+                    TextToken = "SBO_PSLD"
+                )
+            ),
+            (
+                [0,1],
+                DisplayTextLossesWIP
+                (
+                    ElementName = <ElementName> + "TankLoss"
+                    TextToken = "SBO_PTNK"
+                )
+            ),
+            (
+                [1,0],
+                DisplayTextLossesWIP
+                (
+                    ElementName = <ElementName> + "ArtilleryLoss"
+                    TextToken = "SBO_PART"
+                )
+            ),
+            (
+                [1,1],
+                DisplayTextLossesWIP
+                (
+                    ElementName = <ElementName> + "PlaneLoss"
+                    TextToken = "SBO_PPLA"
+                )
+            ),
+            (
+                [2,0],
+                DisplayTextLossesWIP
+                (
+                    ElementName = <ElementName> + "HelicopterLoss"
+                    TextToken = "SBO_PHEL"
+                )
+            )
+        ]
+    )
+)
+
+
+template DisplayTextLossesWIP
+[
+    ElementName : string,
+    TextToken : string,
+]
+is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [120.0, 20.0]
+    )
+    ParagraphStyle = paragraphStyleTextCenter
+    TextStyle = "Default"
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+    TypefaceToken = "Eurostyle"
+    BigLineAction = ~/BigLineAction/MultiLine
+    TextToken = <TextToken>
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextColor = "BlancTexte"
+    TextSize = "10"
+)
+
+
+//---------------------------------------------------------------
+
+private StrategicBattleResultMainComponent is BUCKListDescriptor
+(
+    ElementName = "StrategicBattleResultMainComponent"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [LargeurMainComponent, 0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    FirstMargin  = TRTTILength (Magnifiable = 10.0)
+    InterItemMargin  = TRTTILength (Magnifiable = 10.0)
+    LastMargin  = TRTTILength (Magnifiable = 15.0)
+
+    Elements =
+    [
+        // titre
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                )
+
+                TextPadding = TRTTILength4(Magnifiable = [4.0, 10.0, 4.0, 10.0])
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                TextStyle = "Default"
+                TypefaceToken = "Eurostyle_Heavy"
+
+                TextToken = "AR_TITLE"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = "30"
+                TextColor = "SM_paleSilver"
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ResultOfBattleMainComponent
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+                FitStyle = ~/ContainerFitStyle/FitToContent
+                Components =
+                [
+                    BoutonStartBattle
+                    (
+                        MagnifiableWidthHeight = [150.0, 30.0]
+                        ElementName = "EndBattleValidation"
+                        UniqueName = "EndBattleValidation"
+                        TextToken = "BtnEndBttl"
+                        HintBodyToken = "auto_phCb"
+                    )
+                ]
+            )
+        ),
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner
+        (
+            Radius = 10
+            BackgroundBlockColorToken = "SM_RifleGreen"
+            BorderLineColorToken = "SM_Grullo"
+        )
+    ]
+)
+
+
+//-------------------------------------------------------------------------------------
+template TitreJoueur
+[
+    IsAttacker : bool,
+    ElementName : string,
+    TextToken : string,
+    TextureToken : string,
+    StrengthTextureToken : string,
+    StrengthTextToken : string,
+    StrengthTextColor : string,
+    StrengthHorizontalAlignment : float,
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+            HasBackground = true
+            ElementName = <IsAttacker> ? "AutoResolveAttackerContainer" : "AutoResolveDefenderContainer"
+            Elements = (<IsAttacker> ?
+            [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI()
+                    )
+                ), ] : [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = <IsAttacker> ? "AutoResolveAttackerTexture" : "AutoResolveDefenderTexture"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [60.0, 0.0]
+                            AlignementToAnchor = [0.0, 0.0]
+                            AlignementToFather = [0.0, 0.0]
+                        )
+                        TextureToken = <TextureToken>
+                    )
+                ) ] ) + [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = <IsAttacker> ? "AutoResolveAttackerText" : "AutoResolveDefenderText"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        ParagraphStyle = paragraphStyleTextLeftAlign
+                        TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+                        TextStyle = "Default"
+                        TypefaceToken = "Eurostyle"
+
+                        TextToken = <IsAttacker> ? "AR_ATQ" : "AR_DEF"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextSize = "18"
+                        TextColor = "BlancEquipe"
+                    )
+                ) ] + (<IsAttacker> ? [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = <IsAttacker> ? "AutoResolveAttackerTexture" : "AutoResolveDefenderTexture"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [60.0, 0.0]
+                            AlignementToAnchor = [0.0, 0.0]
+                            AlignementToFather = [0.0, 0.0]
+                        )
+                        TextureToken = <TextureToken>
+                    )
+                ) ] : [
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI()
+                    )
+                ),
+            ] )
+        ),
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.25, 1.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [<StrengthHorizontalAlignment>, 0.5]
+            )
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ElementName = <ElementName> + "StrengthContainer"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToFather = [0.5, 0.5]
+                        AlignementToAnchor = [0.5, 0.5]
+                    )
+                    Axis = ~/ListAxis/Horizontal
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextureDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [16.0, 16.0]
+                                    AlignementToFather = [0.0, 0.5]
+                                    AlignementToAnchor = [0.0, 0.5]
+                                )
+
+                                ResizeMode = ~/TextureResizeMode/UserDefined
+
+                                TextureColorToken = "SM_paleSilver"
+                                TextureToken = <StrengthTextureToken>
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+                                ElementName = <ElementName> + "StrengthText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [0.0, 32.0]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Center
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                TextPadding = TRTTILength4(Magnifiable = [4.0, 0.0, 4.0, 0.0])
+                                HorizontalFitStyle = ~/FitStyle/FitToContent
+
+                                TextStyle = "Default"
+                                TypefaceToken = "Bombardier"
+
+                                TextToken = <StrengthTextToken>
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                TextSize = "AutoResolve/Information"
+                                TextColor = <StrengthTextColor>
+                            )
+                        )
+                    ]
+                )
+            ]
+        )
+    ]
+)
+
+
+//---------------------------------------------------------------
+
+BUCKSpecificStrategicAutoResolveMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ElementName = "AutoResolveMainComponent"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToAnchor = [0, 0.5]
+        AlignementToFather = [0, 0.5]
+        MagnifiableOffset = [10,0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        ~/StrategicBattleResultMainComponent,
+    ]
+)
+
+//---------------------------------------------------------------
+AutoresolveUnitSelectionButtonManager is TBUCKRadioButtonManager()
+UISpecificStrategicAutoResolveViewDescriptor is TUISpecificStrategicAutoResolveViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicAutoResolveMainComponentDescriptor
+    MainComponentContainerUniqueName = "SpecificAutoresolveViewDescriptor" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    UnitViewDescriptor = UISpecificSelectionPanelPawnUnitViewDescriptor( RadioButtonManager = ~/AutoresolveUnitSelectionButtonManager )
+
+    NATO_Texture = "CommonTexture_MotherCountryFlag_NATO"
+    PACT_Texture = "CommonTexture_MotherCountryFlag_PACT"
+
+    PositiveTextToken = "AR_BONUS"
+    NegativeTextToken = "AR_MALUS"
+
+    LossRackWidth = LargeurMainComponent - 2 * ResultTableExternalMargin
+
+    TerrainTypeTokens = ~/StrategicTerrainTypeTokens
+
+    ArmyRatioAttackerTextToken = "AR_RATIO"
+    ArmyRatioDefenderTextToken = "AR_RATIOI"
+
+    VictoryTokenByVictoryOutcome = MAP
+    [
+        (~/EVictoryType/TotalDefeat,  "SC_TOTDEFE"),
+        (~/EVictoryType/MajorDefeat,  "SC_MAJDEFE"),
+        (~/EVictoryType/MinorDefeat,  "SC_MINDEFE"),
+        (~/EVictoryType/Draw,         "SC_DRAW"),
+        (~/EVictoryType/MinorVictory, "SC_MINVICT"),
+        (~/EVictoryType/MajorVictory, "SC_MAJVICT"),
+        (~/EVictoryType/TotalVictory, "SC_TOTVICT"),
+        (~/EVictoryType/NotSpecified, "StAP_CON"),
+    ]
+
+    DefaultVictoryTokens = MAP
+    [
+        (~/EVictoryType/TotalDefeat,  "StAP_CDToW"),
+        (~/EVictoryType/MajorDefeat,  "StAP_CDMaW"),
+        (~/EVictoryType/MinorDefeat,  "StAP_CDMiW"),
+        (~/EVictoryType/Draw,         "StAP_DRA"),
+        (~/EVictoryType/MinorVictory, "StAP_CAMiW"),
+        (~/EVictoryType/MajorVictory, "StAP_CAMaW"),
+        (~/EVictoryType/TotalVictory, "StAP_CAToW"),
+        (~/EVictoryType/NotSpecified, "StAP_CON"),
+    ]
+
+    AirGroundVictoryTokens = MAP
+    [
+        (~/EVictoryType/TotalDefeat,  "AG_d"),
+        (~/EVictoryType/MajorDefeat,  "AG_d"),
+        (~/EVictoryType/MinorDefeat,  "AG_d"),
+        (~/EVictoryType/Draw,         "AG_draw"),
+        (~/EVictoryType/MinorVictory, "AG_v"),
+        (~/EVictoryType/MajorVictory, "AG_v"),
+        (~/EVictoryType/TotalVictory, "AG_v"),
+        (~/EVictoryType/NotSpecified, "StAP_CON"),
+    ]
+
+    GroundAirVictoryTokens = MAP
+    [
+        (~/EVictoryType/TotalDefeat,  "AUAiGr_vi"),
+        (~/EVictoryType/MajorDefeat,  "AUAiGr_vi"),
+        (~/EVictoryType/MinorDefeat,  "AUAiGr_vi"),
+        (~/EVictoryType/Draw,         "AUAiGr_dr"),
+        (~/EVictoryType/MinorVictory, "AUAiGr_def"),
+        (~/EVictoryType/MajorVictory, "AUAiGr_def"),
+        (~/EVictoryType/TotalVictory, "AUAiGr_def"),
+        (~/EVictoryType/NotSpecified, "StAP_CON"),
+    ]
+
+    AerialVictoryTokens = MAP
+    [
+        (~/EVictoryType/TotalDefeat,  "AUAiAi_def"),
+        (~/EVictoryType/MajorDefeat,  "AUAiAi_def"),
+        (~/EVictoryType/MinorDefeat,  "AUAiAi_def"),
+        (~/EVictoryType/Draw,         "AUAiAi_dr"),
+        (~/EVictoryType/MinorVictory, "AUAiAi_vi"),
+        (~/EVictoryType/MajorVictory, "AUAiAi_vi"),
+        (~/EVictoryType/TotalVictory, "AUAiAi_vi"),
+        (~/EVictoryType/NotSpecified, "StAP_CON"),
+    ]
+)

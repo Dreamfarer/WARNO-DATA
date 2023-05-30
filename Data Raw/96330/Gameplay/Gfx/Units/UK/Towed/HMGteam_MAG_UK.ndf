@@ -1,0 +1,22 @@
+export ModelFile_HMGteam_MAG_UK is 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/MAG_L7A2_HMG.fbx'
+
+Modele_HMGteam_MAG_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_HMGteam_MAG_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_MAG_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/MAG_L7A2_HMG.fbx'
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_MAG_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/MAG_L7A2_HMG.fbx'
+    CivMask =  CivMask/Common
+)
+
+
+

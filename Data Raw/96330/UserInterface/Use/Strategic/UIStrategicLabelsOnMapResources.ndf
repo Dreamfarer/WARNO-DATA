@@ -1,0 +1,251 @@
+
+StrategicLabelsOnMapResources is TUICommonGameplayLabelOnMapResources
+(
+    LabelsLayer = $/UserInterface/UI3DLayer_General
+    LabelsTransformation = TLabelTransformationComposition
+    (
+        Transformations = [
+            TLabelTransformPreTranslate
+            (
+                Translation = [0,0,4200]
+            ),
+            TLabelTransformFaceCam
+            (
+                Camera = $/M3D/Camera/CameraPrincipale
+            ),
+            TLabelTransformFakePerspective
+            (
+                ScalePerAltitudeConstReso = 1.5
+                Camera = $/M3D/Camera/CameraPrincipale
+                Scene2D = $/M3D/Scene/Scene_2D_Interface
+                ConstnessFactor = 0.6
+            ),
+        ]
+
+    )
+
+    Camera = $/M3D/Camera/CameraPrincipale
+    WorldFloorProxy = $/M3D/Scene/WorldFloorForIAProxy
+
+    Labels = MAP
+    [
+        (
+            'LabelVille',
+            TBUCKLabelContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [ 0.0, 30.0 ] // 0.0, 40.0
+                    MagnifiableOffset = [ 0.0, 0.0 ]
+                    AlignementToFather = [ 0.0, 0.0 ]
+                    AlignementToAnchor = [ 0.0, 0.0 ]
+                )
+
+                VisibilityRange = TVisibilityRange
+                (
+                    AltitudeMin = 75000
+                    AltitudeMax = 1000000
+                )
+
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI(
+                            RelativeWidthHeight = [0.0, 0.7]
+                            MagnifiableOffset = [0.0, 0.0]
+                            AlignementToFather = [0.5, 0.5]
+                            AlignementToAnchor = [0.5, 0.5]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                        InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+                        Elements =
+                        [
+                            //Left separator
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/StrategicLabelOnMapLeftRightBorder
+                            ),
+
+                            //Content
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = BUCKTextDescriptor
+                                (
+                                    ElementName = "IngameLabelText"
+                                    ComponentFrame = TUIFramePropertyRTTI
+                                    (
+                                        RelativeWidthHeight = [0.0, 1.0]
+                                        MagnifiableWidthHeight = [0.0, 0.0]
+                                        MagnifiableOffset = [0.0, 0.0]
+                                        AlignementToFather = [0.0, 0.0]
+                                        AlignementToAnchor = [0.0, 0.0]
+                                    )
+
+                                    TextSize = "Labels/Ville"
+                                    TextColor = "Labels/Ville"
+                                    TextToken = ""
+                                    TextDico = ~/LocalisationConstantes/dico_maps
+                                    TypefaceToken = "UIMainFont"
+
+                                    BigLineAction = ~/BigLineAction/CutByDots
+                                    TextStyle = "Default"
+                                    ParagraphStyle = TParagraphStyleRTTI
+                                    (
+                                        Alignment = UIText_Center
+                                        VerticalAlignment = UIText_VerticalCenter
+                                    )
+                                    HorizontalFitStyle = ~/FitStyle/FitToContent
+                                    VerticalFitStyle = ~/FitStyle/UserDefined
+                                )
+                            ),
+
+                            //Right separator
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/StrategicLabelOnMapLeftRightBorder
+                            ),
+                        ]
+
+                        BackgroundComponents = [
+                            TContainerDarkStyle
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                HidePointerEvents = false
+                                ShowLightTexture = false
+                            ),
+                        ]
+                    ),
+                ]
+            )
+        ),
+        (
+            'LabelVille_01', LabelStrat_Ville_taille( TextSize = '30')
+
+        ),
+        (
+            'LabelVille_02', LabelStrat_Ville_taille( TextSize = '26')
+
+        ),
+        (
+            'LabelVille_03', LabelStrat_Ville_taille( TextSize = '18' AltitudeMax = 1000000 div 2 )
+
+        ),
+        (
+            'LabelVille_04', LabelStrat_Ville_taille( AltitudeMax = 1000000 div 3 )
+
+        ),
+        (
+            'autoroute_low', LabelStrat_Ville_taille( AltitudeMax = 1000000 div 4 BackgroundBlockColorToken = 'labelVille_autoroute' TextStyle = 'Default')
+
+        ),
+        (
+            'autoroute_high', LabelStrat_Ville_taille( AltitudeMax = 1000000 BackgroundBlockColorToken = 'labelVille_autoroute' TextStyle = 'Default')
+
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+
+template LabelStrat_Ville_taille
+[
+    AltitudeMax : int = 1000000,
+    AltitudeMin : int = 2000,
+
+    TextSize : string = '15',
+    TextStyle : string = 'DefaultWithStroke_labelVille',
+    BackgroundBlockColorToken : string = 'Transparent',
+
+]
+
+is TBUCKLabelContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [ 0.0, 30.0 ] // 0.0, 40.0
+        MagnifiableOffset = [ 0.0, 0.0 ]
+        AlignementToFather = [ 0.0, 0.0 ]
+        AlignementToAnchor = [ 0.0, 0.0 ]
+    )
+
+    VisibilityRange = TVisibilityRange
+    (
+        AltitudeMin = <AltitudeMin>
+        AltitudeMax = <AltitudeMax>
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI(
+                //RelativeWidthHeight = [0.0, 0.7]
+                MagnifiableOffset = [0.0, 0.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+            InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+            Elements =
+            [
+
+                //Content
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "IngameLabelText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            //RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [0.0, 0.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+                        TextSize = <TextSize>
+                        TextColor = "Labels/Ville"
+                        TextToken = ""
+                        TextDico = ~/LocalisationConstantes/dico_maps
+                        TypefaceToken = "Eurostyle_Medium"
+                        TextPadding = TRTTILength4(Magnifiable = [5,2,5,2])
+                        BigLineAction = ~/BigLineAction/CutByDots
+                        TextStyle = <TextStyle>
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                    )
+                ),
+
+            ]
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+
+private StrategicLabelOnMapLeftRightBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [~/DistanceBetweenExternalAndInternalBorder + 7, 1.0]
+    )
+)
+

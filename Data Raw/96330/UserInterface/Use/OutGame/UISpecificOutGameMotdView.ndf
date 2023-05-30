@@ -1,0 +1,63 @@
+
+BUCKSpecificOutGameMotdMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+    Components =
+    [
+        BUCKButtonDescriptor
+        (
+            ElementName = "ButtonClickMotd"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+            Components =
+            [
+                BUCKTextDescriptor
+                (
+                    ElementName = "MotdText"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                    )
+
+                    ParagraphStyle = TParagraphStyleRTTI
+                    (
+                        Alignment = UIText_Left
+                        VerticalAlignment = UIText_Up
+                        BigWordAction = ~/BigWordAction/BigWordNewLine
+                        Balanced = false
+                    )
+
+                    TextStyle = "Default"
+
+                    HorizontalFitStyle = ~/FitStyle/UserDefined
+                    VerticalFitStyle = ~/FitStyle/FitToContent
+
+                    TypefaceToken = "UIMainFont"
+                    BigLineAction = ~/BigLineAction/CutByDots
+
+                    TextColor = "Blanc"
+                    TextSize = "Motd"
+                )
+            ]
+        )
+    ]
+)
+
+UISpecificOutGameMotdViewDescriptor is TUISpecificOutGameMotdViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameMotdMainComponentDescriptor
+    MainComponentContainerUniqueName = "MotdContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

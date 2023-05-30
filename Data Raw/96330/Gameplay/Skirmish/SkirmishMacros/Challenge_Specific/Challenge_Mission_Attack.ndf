@@ -1,0 +1,245 @@
+
+//-------------------------------------------------------------------------
+//------------------------------ Missions -----------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+
+private template Template_Challenge_Objective_Attack
+[
+    NumberLaunchBasedOnGenerationType = 1,
+    RatioMinimumPourAttaquer:float = 1.0,
+    MainAttackPoolModelList = [],
+]
+is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ParametresDeMission =
+    ~/Default_Support_Request_Attack_Settings
+    +
+    ~/Blitzkrieg_Attack_Settings
+    +
+    ~/AvoidFillerCorridors_Attack_Settings
+    +
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = <NumberLaunchBasedOnGenerationType>),
+        TCoordinationSettingHolder(CoordinationType = ESupportingStatus/NeedSupport),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible] PoolModelList = <MainAttackPoolModelList>
+            TaggedPoolModelList = [(["AttackMain"], <MainAttackPoolModelList>)] PrioritizeCorridorsForTaggedPoolModels = true LaunchASAP_RatioMin = 0.01),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = <RatioMinimumPourAttaquer> RatioPourAttaquerPerduAChaqueTick = 0.00084), // Perte de 0.1 de ratio toutes les 2 minutes
+        TCorridorPlacementSettingHolder(StayInCorridorIfp = true MargeDeRegroupementDepuisLaLigneDeFront = 1 ActiveComportementEnBoutDeCouloir = true),
+    ]
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Attack_Helo_Weighted is Template_Attack_Helo
+(
+    AdditionnalParameter = [TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [1,2])]
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Attack_Main_Weighted is Template_Main_Attack
+(
+    AdditionnalParameter = [TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [1,2])]
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Attack_Adaptative_Weighted is Template_Attack_Corridor
+(
+    AdditionnalParameter = [TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [1,2])]
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Attack_Helo_Weighted_Autogen is Template_Attack_Helo
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    AdditionnalParameter = [TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [1,2])]
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Attack_Main_Weighted_Autogen is Template_Main_Attack
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    AdditionnalParameter = [TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [1,2])]
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Attack_Adaptative_Weighted_Autogen is Template_Attack_Corridor
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+    AdditionnalParameter = [TForcedPlacementSettingHolder(OrderedPrioritaryZoneWeightList = [1,2])]
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Main_Attack_All is Template_Challenge_Objective_Attack
+(
+    RatioMinimumPourAttaquer = 0.85
+    MainAttackPoolModelList = [~/Pool_Max_AllUnits_Skirmish]
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Main_Attack_Cautious is Template_Challenge_Objective_Attack
+(
+    NumberLaunchBasedOnGenerationType = 1
+    MainAttackPoolModelList = [~/Pool_Main_Attack_Skirmish]
+    RatioMinimumPourAttaquer = 1.3
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Main_Attack_AlwaysAttack is Template_Challenge_Objective_Attack
+(
+    NumberLaunchBasedOnGenerationType = 3
+    MainAttackPoolModelList = [~/Pool_Main_Attack_Skirmish]
+    RatioMinimumPourAttaquer = 0.5
+)
+
+//-------------------------------------------------------------------------
+export Challenge_Main_Attack_All_AlwaysAttack is Template_Challenge_Objective_Attack
+(
+    MainAttackPoolModelList = [~/Pool_Max_AllUnits_Skirmish]
+    RatioMinimumPourAttaquer = 0.0
+)
+
+//-------------------------------------------------------------------------
+export Blackhorse_Side_Attack is TMacroActionDescriptor_CorridorAttack_Specific
+(
+    ParametresDeMission =
+    ~/Default_Support_Request_Attack_Settings
+    +
+    ~/Blitzkrieg_Attack_Settings
+    +
+    ~/AvoidFillerCorridors_Attack_Settings
+    +
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(ProdProperties = [TProdProperty_LaunchAsSoonAsPossible]
+        PoolModelList = [ Pool_BlackHorse_Attack, ] LaunchASAP_RatioMin = 0.01),
+        TAttackRatioSettingHolder(RatioMinimumPourAttaquer = 1.0 UtiliserMenaceLaPlusProcheAuLieuDeLaPlusFaible = true RatioPourAttaquerPerduAChaqueTick = 0.001),
+        TAntiStackingSettingHolder(),
+        TCorridorPlacementSettingHolder(StayInCorridorIfp = true MargeDeRegroupementDepuisLaLigneDeFront = 1 ActiveComportementEnBoutDeCouloir = true),
+    ]
+)
+
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_Max_AllUnits_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{8f5ecf62-2b23-4f68-9874-a38ab0e3fdbf}
+        Required = false
+        Nb = 99
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "AllUnits",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+export Pool_Main_Attack_Skirmish is TPoolModel
+(
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{e3c83b39-4db5-4dfc-b6fa-8e54ec33b8ff}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Helo_Gunship",
+                "Helo_AT",
+                "Char_Standard",
+                "Char",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{3a421650-357b-404c-9615-4216eb47e9ab}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Canon_AA_Porte",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{cb1064d4-d5fb-4f1b-921b-bda55ba5866e}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Reco",
+                "Vehicule_Reco",
+                "Infanterie_Reco",
+                "Infanterie_Standard",
+                "Helo_Reco",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{2fadf2c7-5e37-4f04-95a4-74be07737af3}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Char",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{7ed5371c-534c-4746-bb1b-3b497f806e1e}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Char_Standard",
+                "Vehicule_Appui",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{f7f71440-dbb1-4b97-9f5b-d481897a676c}
+            Required = false
+            IndexPriorityOverPrice = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Random
+            TagsPriority = [
+                "Infanterie_Spec_Attaque",
+                "Infanterie_Standard",
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+export Pool_BlackHorse_Attack is TPoolModel
+(
+    Budget = 300
+    ModelList = [
+        TPoolElement(
+            DescriptorId = GUID:{e0ec700a-6efc-4b8f-9fbe-45758594b17c}
+            Required = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            TagsPriority = [
+                "Char_Reco",
+            ]
+        ),
+        TPoolElement(
+            DescriptorId = GUID:{36e7289c-74bb-41b9-85a8-58d59dad1826}
+            Required = false
+            Nb = 1
+            PriceComparisonMethod = EPriceComparatorType/Cheapest
+            IndexPriorityOverPrice = true
+            TagsPriority = [
+                "Char_Standard",
+                "Char_Reco",
+            ]
+        ),
+    ]
+)

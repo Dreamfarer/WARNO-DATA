@@ -1,0 +1,19 @@
+export ModelFile_FV120_Spartan_MCT_UK is 'GameData:/Assets/3D/Units/UK/Antichar/FV120_Spartan_MCT/FV120_Spartan_MCT.Ase2NdfBin'
+
+Modele_FV120_Spartan_MCT_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FV120_Spartan_MCT_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_FV120_Spartan_MCT_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Antichar/FV120_Spartan_MCT_MID/FV120_Spartan_MCT_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV120_Spartan_MCT_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Antichar/LODS/FV120_Spartan_MCT_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

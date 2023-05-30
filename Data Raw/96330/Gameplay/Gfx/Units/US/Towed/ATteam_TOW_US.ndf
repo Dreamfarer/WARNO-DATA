@@ -1,0 +1,22 @@
+export ModelFile_ATteam_TOW_US is 'GameData:/Assets/3D/Units/US/Antichar/BGM71E_TOW_2A/BGM71E_TOW_2A.Ase2NdfBin'
+
+Modele_ATteam_TOW_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_ATteam_TOW_US
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_TOW_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Antichar/BGM71E_TOW_2A/BGM71E_TOW_2A.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_ATteam_TOW_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Antichar/BGM71E_TOW_2A/BGM71E_TOW_2A.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

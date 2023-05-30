@@ -1,0 +1,19 @@
+export ModelFile_2S9_Nona_SOV is 'GameData:/Assets/3D/Units/URSS/Artillerie/2S9_Nona/2S9_Nona.Ase2NdfBin'
+
+Modele_2S9_Nona_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_2S9_Nona_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_2S9_Nona_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/2S9_Nona/2S9_Nona.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_2S9_Nona_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/2S9_Nona/2S9_Nona.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

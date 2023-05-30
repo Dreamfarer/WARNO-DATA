@@ -1,0 +1,22 @@
+export ModelFile_HMGteam_AANF1_FR is 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/AANF1.Ase2NdfBin'
+
+Modele_HMGteam_AANF1_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_HMGteam_AANF1_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_AANF1_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/AANF1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_AANF1_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/AANF1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

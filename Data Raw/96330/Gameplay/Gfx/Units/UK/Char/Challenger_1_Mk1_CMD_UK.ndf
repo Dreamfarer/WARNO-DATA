@@ -1,0 +1,19 @@
+export ModelFile_Challenger_1_Mk1_CMD_UK is 'GameData:/Assets/3D/Units/UK/Char/Challenger_1_Mk1_CMD/Challenger_1_Mk1.Ase2NdfBin'
+
+Modele_Challenger_1_Mk1_CMD_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Challenger_1_Mk1_CMD_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Challenger_1_Mk1_CMD_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Char/Challenger_1_Mk1_CMD/Challenger_1_Mk1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Challenger_1_Mk1_CMD_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Char/Challenger_1_Mk1_CMD/Challenger_1_Mk1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

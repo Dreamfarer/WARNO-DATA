@@ -1,0 +1,17 @@
+export CaptureCommandZone_AllZoneOneUnit_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "CczAllIA"
+    FirstGenerator = TestAuto_CommandCaptureZone_AllZoneWithOneUnit
+    TransitionList =[]
+)
+
+
+export TestAuto_CommandCaptureZone_AllZoneWithOneUnit is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+
+    GeneratorList =
+    [
+        ~/CaptureAllZoneObjectif_OnlyTestAuto,
+    ]
+)

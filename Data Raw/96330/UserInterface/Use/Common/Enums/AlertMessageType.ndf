@@ -1,0 +1,66 @@
+// NOTA : laisser la valeur "None" (pas de message) associée au 0
+
+AlertMsg_None                          is 0
+AlertMsg_Par_ResteMoitieBataille       is 1
+AlertMsg_Par_ResteQuartBataille        is 2
+AlertMsg_Per_UniteDetruite             is 3
+AlertMsg_Zone_SecuredByPlayer          is 4
+AlertMsg_Zone_Lost                     is 5
+AlertMsg_Zone_SecuredByEnemy           is 6
+AlertMsg_Att_SupplyPrise               is 7
+AlertMsg_Per_SupplyPerdu               is 8
+AlertMsg_Aeri_AerialCorridorSecured    is 9
+AlertMsg_Aeri_AerialCorridorLost       is 10
+AlertMsg_Rens_AllyLaunchBeacon         is 11
+AlertMsg_Par_NewPhaseStarted           is 12
+AlertMsg_Rens_EnemyContact             is 13
+AlertMsg_Rens_UnitUnderAttack          is 14
+AlertMsg_Rens_OnAirplaneOutOfFuel      is 15
+AlertMsg_Rens_OnAirplaneOutOfAmmo      is 16
+AlertMsg_Arei_AirplanceContact         is 17
+AlertMsg_Arei_UnitSurrender            is 18
+AlertMsg_Arei_UnitSurrender_En         is 19
+AlertMsg_Arei_EnemyUnitDestroyed       is 20
+AlertMsg_Par_NewPhaseStartedForCampaign is 21
+AlertMsg_Par_OnObjectiveCaptured        is 22
+AlertMsg_Par_OnObjectiveLost            is 23
+AlertMsg_Per_UniteDetruiteREDReplay        is 24
+AlertMsg_Per_CommandZoneCapturedForReplay is 25
+AlertMsg_Per_CommandZoneLostForReplay   is 26
+AlertMsg_Per_UniteDetruiteBLUReplay        is 27
+
+
+
+export AlertMessage_Enum is TEnumAlertMessageType
+(
+    Values = [
+        "AlertMsg_None",
+        "AlertMsg_Par_ResteMoitieBataille",
+        "AlertMsg_Par_ResteQuartBataille",
+        "AlertMsg_Per_UniteDetruite",
+        "AlertMsg_Zone_SecuredByPlayer",
+        "AlertMsg_Zone_Lost",
+        "AlertMsg_Zone_SecuredByEnemy",
+        "AlertMsg_Att_SupplyPrise",
+        "AlertMsg_Per_SupplyPerdu",
+        "AlertMsg_Aeri_AerialCorridorSecured",
+        "AlertMsg_Aeri_AerialCorridorLost",
+        "AlertMsg_Rens_AllyLaunchBeacon",
+        "AlertMsg_Par_NewPhaseStarted",
+        "AlertMsg_Rens_EnemyContact",
+        "AlertMsg_Rens_UnitUnderAttack",
+        "AlertMsg_Rens_OnAirplaneOutOfFuel",
+        "AlertMsg_Rens_OnAirplaneOutOfAmmo",
+        "AlertMsg_Arei_AirplanceContact",
+        "AlertMsg_Arei_UnitSurrender",
+        "AlertMsg_Arei_UnitSurrenderEn",
+        "AlertMsg_Arei_EnemyUnitDestroyed ",
+        "AlertMsg_Par_NewPhaseStartedForCampaign",
+        "AlertMsg_Par_OnObjectiveCaptured",
+        "AlertMsg_Par_OnObjectiveLost",
+        "AlertMsg_Per_UniteDetruiteREDReplay",
+        "AlertMsg_Per_CommandZoneCapturedForReplay",
+        "AlertMsg_Per_CommandZoneLostForReplay",
+        "AlertMsg_Per_UniteDetruiteBLUReplay",
+    ]
+)

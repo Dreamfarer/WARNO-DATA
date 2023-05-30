@@ -1,0 +1,20 @@
+
+private deploiementZoneManagerDescriptor is TDeploiementZoneManagerDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/DeploymentZoneManagerProxy
+)
+
+private commandementZoneManagerDescriptor is TCommandementZoneManagerDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/CommandZoneManagerProxy
+)
+
+private zoneManagerForIAStratDescriptor is TZoneManagerForIAStratDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/IAStratZoneManagerProxy
+)
+
+private strategicZoneManagerForIAStratDescriptor is TStrategicIAZoneManagerDescriptor
+(
+    AreaManagerProxy = $/M3D/Scene/IAStratZoneManagerProxy
+)

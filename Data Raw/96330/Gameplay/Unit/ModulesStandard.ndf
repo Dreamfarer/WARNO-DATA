@@ -1,0 +1,70 @@
+
+DebugModuleDescriptor is TDebugModuleDescriptor()
+
+template TModuleSelectorFilterIfCadavre
+[ Descriptor ]
+is TModuleSelectorFilter
+(
+    Condition  = TModuleSelectorCondition_ParamEquals_Integer(ParamId=~/Parameter_ModuleCreationSelectionFilter  ParamValue=~/ModuleCreationFilter_Cadavre)
+    Descriptor = <Descriptor>
+)
+
+NilDescriptorIfCadavre is TModuleSelectorFilterIfCadavre
+(
+    Descriptor = nil
+)
+
+LinkTeamModuleDescriptor is TLinkTeamModuleDescriptor()
+InfluenceDataModuleDescriptor is TInfluenceDataModuleDescriptor()
+EffectApplierModuleDescriptor is TEffectApplierModuleDescriptor()
+OrderDisplayModuleDescriptor is TOrderDisplayModuleDescriptor()
+PackSignauxModuleDescriptor  is TPackSignauxModuleDescriptor()
+InflammableModuleDescriptorUnit  is TInflammableModuleDescriptor()
+
+public FXState is TBaseClass
+(
+    // Doit être synchro avec TActOfRuseBuildingAnimationStates/Type
+    // (BuildingAnimationModule_WarGame.h)
+
+    Idle            is 0x00000001
+    OnFire          is 0x00000002
+
+    // Merci de mettre à jour ce champ au besoin
+    All is Idle + OnFire
+)
+
+InflammableModuleDescriptorDistrict  is TInflammableModuleDescriptor
+(
+    FireFxStateId                   = ~/FXState/OnFire
+    IdleFxStateId                   = ~/FXState/Idle
+)
+
+TargetDataModuleDescriptor is TTargetDataModuleDescriptor()
+
+template TCadavreGeneratorModuleDescriptorUnit
+[ CadavreDescriptor ]
+is TCadavreGeneratorModuleDescriptor
+(
+    CadavreDescriptor = <CadavreDescriptor>
+)
+
+SimpleTypeUnitModuleDescriptor is TTypeUnitModuleDescriptor()
+
+SelectionModuleDescriptor is TSelectionModuleDescriptor
+(
+    IsSelectable        = True
+    IsHighlightable     = True
+    HasSelectionShader  = False // Disabled by [SDDEUX-1276]
+    HasHighlightShader  = True
+)
+
+DistrictSelectionModuleDescriptor is TSelectionModuleDescriptor
+(
+    IsSelectable        = True
+    IsHighlightable     = True
+    HasSelectionShader  = True
+    HasHighlightShader  = True
+)
+
+TemplateLinkTeam is TLinkTeamModuleDescriptor()
+EmptyTagsModuleDescriptor is TTagsModuleDescriptor()

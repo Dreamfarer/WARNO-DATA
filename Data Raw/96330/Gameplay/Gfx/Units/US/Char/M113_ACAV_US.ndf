@@ -1,0 +1,22 @@
+export ModelFile_M113_ACAV_US is 'GameData:/Assets/3D/Units/US/APC/M113_ACAV/M113_ACAV.Ase2NdfBin'
+
+Modele_M113_ACAV_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_M113_ACAV_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M113_ACAV_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/M113_ACAV_MID/M113_ACAV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M113_ACAV_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/APC/LODS/M113_ACAV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

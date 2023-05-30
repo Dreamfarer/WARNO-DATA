@@ -1,0 +1,19 @@
+export ModelFile_Osa_9K33M3_DDR is 'GameData:/Assets/3D/Units/DDR/DCA/Osa_9K33M3/Osa_9K33M3.Ase2NdfBin'
+
+Modele_Osa_9K33M3_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Osa_9K33M3_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_Osa_9K33M3_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/Osa_9K33M3/Osa_9K33M3.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Osa_9K33M3_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/Osa_9K33M3/Osa_9K33M3.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

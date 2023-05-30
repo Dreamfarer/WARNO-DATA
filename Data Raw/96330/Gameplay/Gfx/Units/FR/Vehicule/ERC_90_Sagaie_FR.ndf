@@ -1,0 +1,19 @@
+export ModelFile_ERC_90_Sagaie_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/ERC_90_Sagaie/ERC_90_Sagaie.fbx'
+
+Modele_ERC_90_Sagaie_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_ERC_90_Sagaie_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_ERC_90_Sagaie_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/ERC_90_Sagaie/ERC_90_Sagaie.fbx'
+    CivMask =  CivMask/Common
+)
+
+Modele_ERC_90_Sagaie_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/ERC_90_Sagaie/ERC_90_Sagaie.fbx'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,38 @@
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+//                   Boutons d'Action                   //
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+
+paragraphStyleTextRight is TParagraphStyleRTTI
+(
+    Alignment = UIText_Center
+    VerticalAlignment = UIText_VerticalCenter
+)
+
+template SecondaryInfos
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    TextToken : string = '',
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+]
+is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 36.0]
+    )
+
+    HorizontalFitStyle = ~/FitStyle/FitToContent
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    ParagraphStyle = ~/paragraphStyleTextRight
+    TextStyle = "Default"
+    TypefaceToken = "UIMainFont"
+    TextSize = "InfoSecondaire"
+    TextColor = "Blanc"
+    TextToken = <TextToken>
+    TextDico = <TextDico>
+)

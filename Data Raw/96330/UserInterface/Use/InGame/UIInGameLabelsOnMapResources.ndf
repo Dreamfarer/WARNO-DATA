@@ -1,0 +1,165 @@
+
+InGameLabelsOnMapResources is TUICommonGameplayLabelOnMapResources
+(
+    LabelsLayer = $/UserInterface/UI3DLayer_General
+    LabelsTransformation = TLabelTransformationComposition
+    (
+        Transformations = [
+            TLabelTransformPreTranslate
+            (
+                Translation = [0,0,12000]
+            ),
+            TLabelTransformFaceCam
+            (
+                Camera = $/M3D/Camera/CameraPrincipale
+            ),
+            TLabelTransformFakePerspective
+            (
+                ScalePerAltitudeConstReso = 1.5
+                Camera = $/M3D/Camera/CameraPrincipale
+                Scene2D = $/M3D/Scene/Scene_2D_Interface
+                ConstnessFactor = 0.6
+            ),
+        ]
+
+    )
+
+    Camera = $/M3D/Camera/CameraPrincipale
+    WorldFloorProxy = $/M3D/Scene/WorldFloorForIAProxy
+
+    Labels = MAP
+    [
+
+    //Labels Lieux
+
+        (
+            'LabelVille',  LabelTactique_Ville_taille(TextSize = '18' AltitudeMax = 1000000 BackgroundBlockColorToken = 'Transparent')
+        ),
+
+        (
+            'LabelVilleWithBackground', LabelTactique_Ville_taille(TextSize = '18' AltitudeMax = 1000000 AltitudeMin = 75000 BackgroundBlockColorToken = 'Noir30')
+        ),
+
+       //Labels Divisions
+
+        (
+            'LabelRedDivision', LabelTactique_Ville_taille(TextSize = '18' AltitudeMax = 1000000 AltitudeMin = 75000 BackgroundBlockColorToken = 'Rouge64')
+        ),
+
+        (
+            'LabelBlueDivision', LabelTactique_Ville_taille(TextSize = '18' AltitudeMax = 1000000 AltitudeMin = 75000 BackgroundBlockColorToken = 'SeaBlue50p')
+        ),
+
+        (
+            'LabelGreenDivision', LabelTactique_Ville_taille(TextSize = '18' AltitudeMax = 1000000 AltitudeMin = 75000 BackgroundBlockColorToken = 'Vert25p')
+        ),
+
+        //Labels Compagnies
+
+        (
+            'LabelRedCompagny', LabelTactique_Ville_taille(TextSize = '18' AltitudeMax = 1000000 AltitudeMin = 75000 BackgroundBlockColorToken = 'Rouge64')
+        ),
+
+        (
+            'LabelBlueCompagny', LabelTactique_Ville_taille(TextSize = '18' AltitudeMax = 1000000 AltitudeMin = 75000 BackgroundBlockColorToken = 'SeaBlue50p')
+        ),
+
+        (
+            'LabelGreenCompagny', LabelTactique_Ville_taille(TextSize = '18' AltitudeMax = 1000000 AltitudeMin = 75000 BackgroundBlockColorToken = 'Vert25p')
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+template LabelTactique_Ville_taille
+[
+    AltitudeMax : int = 1000000,
+    AltitudeMin : int = 200000,
+
+    TextSize : string = '15',
+    TextStyle : string = 'DefaultWithStroke_labelVille',
+    BackgroundBlockColorToken : string = 'Transparent',
+
+]
+
+is TBUCKLabelContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [ 0.0, 30.0 ] // 0.0, 40.0
+        MagnifiableOffset = [ 0.0, 0.0 ]
+        AlignementToFather = [ 0.0, 0.0 ]
+        AlignementToAnchor = [ 0.0, 0.0 ]
+    )
+
+    VisibilityRange = TVisibilityRange
+    (
+        AltitudeMin = <AltitudeMin>
+        AltitudeMax = <AltitudeMax>
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI(
+                //RelativeWidthHeight = [0.0, 0.7]
+                MagnifiableOffset = [0.0, 0.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+            InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+
+            Elements =
+            [
+
+                //Content
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "IngameLabelText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            //RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [0.0, 0.0]
+                            MagnifiableOffset = [0.0, 0.0]
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+                        TextSize = <TextSize>
+                        TextColor = "Labels/Ville"
+                        TextToken = ""
+                        TextDico = ~/LocalisationConstantes/dico_maps
+                        TypefaceToken = "Eurostyle_Medium"
+                        TextPadding = TRTTILength4(Magnifiable = [5,2,5,2])
+                        BigLineAction = ~/BigLineAction/CutByDots
+                        TextStyle = <TextStyle>
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Center
+                            VerticalAlignment = UIText_VerticalCenter
+                        )
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                    )
+                ),
+
+            ]
+        ),
+    ]
+)
+private InGameLabelOnMapLeftRightBorder is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [~/DistanceBetweenExternalAndInternalBorder + 7, 1.0]
+    )
+)
+

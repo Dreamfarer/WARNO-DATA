@@ -1,0 +1,22 @@
+export ModelFile_FV432_Rarden_UK is 'GameData:/Assets/3D/Units/UK/APC/FV432_Rarden/FV432_Rarden.Ase2NdfBin'
+
+Modele_FV432_Rarden_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_FV432_Rarden_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_FV432_Rarden_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/APC/FV432_Rarden_MID/FV432_Rarden_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV432_Rarden_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/APC/LODS/FV432_Rarden_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

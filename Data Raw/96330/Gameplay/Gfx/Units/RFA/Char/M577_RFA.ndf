@@ -1,0 +1,19 @@
+export ModelFile_M577_RFA is 'GameData:/Assets/3D/Units/RFA/CMD/M577/M577.Ase2NdfBin'
+
+Modele_M577_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M577_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_M577_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/CMD/M577_MID/M577_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M577_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/CMD/LODS/M577_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

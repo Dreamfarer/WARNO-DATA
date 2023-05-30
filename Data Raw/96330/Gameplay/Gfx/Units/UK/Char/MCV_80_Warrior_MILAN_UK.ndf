@@ -1,0 +1,25 @@
+export ModelFile_MCV_80_Warrior_MILAN_UK is 'GameData:/Assets/3D/Units/UK/Char/MCV_80_Warrior/MCV_80_Warrior.Ase2NdfBin'
+
+Modele_MCV_80_Warrior_MILAN_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_MCV_80_Warrior_MILAN_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_MCV_80_Warrior_MILAN_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Char/MCV_80_Warrior_MID/MCV_80_Warrior_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MCV_80_Warrior_MILAN_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Char/LODS/MCV_80_Warrior_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MCV_80_Warrior_MILAN_UK_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Antichar/Milan_F1/Milan_F1_t2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,22 @@
+export ModelFile_ZSU_23_Shilka_DDR is 'GameData:/Assets/3D/Units/DDR/DCA/ZSU_23_Shilka/ZSU_23_Shilka.Ase2NdfBin'
+
+Modele_ZSU_23_Shilka_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_ZSU_23_Shilka_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_ZSU_23_Shilka_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/ZSU_23_Shilka/ZSU_23_Shilka.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_ZSU_23_Shilka_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/ZSU_23_Shilka/ZSU_23_Shilka.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

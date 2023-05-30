@@ -1,0 +1,20 @@
+export AttackObjectif_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "AtkObjIA"
+    FirstGenerator = TestAuto_AttackObjectif
+    TransitionList = []
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_AttackObjectif is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Attack_Objectives_OnlyTestAuto,
+        ~/Attack_Objectives_OnlyTestAuto,
+        ~/Attack_Objectives_OnlyTestAuto,
+    ]
+)

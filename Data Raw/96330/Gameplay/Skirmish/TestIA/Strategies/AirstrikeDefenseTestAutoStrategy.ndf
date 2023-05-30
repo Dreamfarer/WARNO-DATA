@@ -1,0 +1,18 @@
+export Airstrike_Defense_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "AIRDEFENSE"
+    FirstGenerator = TestAuto_Airstrike_Defense
+    TransitionList = []
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Airstrike_Defense is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Airstrike_Defense_TestAutoOnly,
+    ]
+)

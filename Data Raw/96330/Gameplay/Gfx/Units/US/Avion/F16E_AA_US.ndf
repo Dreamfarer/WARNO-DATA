@@ -1,0 +1,25 @@
+export ModelFile_F16E_AA_US is 'GameData:/Assets/3D/Units/US/Avion/F16A_B15_Fighting_Falcon/F16A_B15_Fighting_Falcon.Ase2NdfBin'
+
+Modele_F16E_AA_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_F16E_AA_US
+    CivMask =  CivMask/Common
+)
+
+Modele_F16E_AA_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/F16A_B15_Fighting_Falcon_MID/F16A_B15_Fighting_Falcon_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F16E_AA_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/LODS/F16A_B15_Fighting_Falcon_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F16E_AA_US_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/F16A_B15_Fighting_Falcon/F16A_B15_Fighting_Falcon_Train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

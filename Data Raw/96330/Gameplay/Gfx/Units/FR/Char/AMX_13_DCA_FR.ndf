@@ -1,0 +1,22 @@
+export ModelFile_AMX_13_DCA_FR is 'GameData:/Assets/3D/Units/FR/DCA/AMX_13_DCA/AMX_13_DCA.Ase2NdfBin'
+
+Modele_AMX_13_DCA_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_AMX_13_DCA_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_13_DCA_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/DCA/AMX_13_DCA/AMX_13_DCA.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_13_DCA_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/DCA/AMX_13_DCA/AMX_13_DCA.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

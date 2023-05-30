@@ -1,0 +1,110 @@
+private template InfantryFiringFX
+[
+    Action,
+    Power,
+    WaitBetweenShot,
+]
+is TActionCall
+    (
+        Action = <Action>
+        LocalVariables =
+        [
+            private parPower            is TPinnableValue(ExpectedType = 'float'    InitialValue = <Power>),
+            private parShotCount        is TPinnableValue(ExpectedType = 'float'    InitialValue = 1),
+            private parShotOnGround     is TPinnableValue(ExpectedType = 'bool'     InitialValue = true),
+            private parTerrain          is TPinnableValue(ExpectedType = 'int'      InitialValue = 1),
+            private parWaitBetweenShot  is TPinnableValue(ExpectedType = 'float'    InitialValue = <WaitBetweenShot>),
+        ]
+        NamedParams = MAP
+        [
+            ('parPower',            parPower ),
+            ('parShotCount',        parShotCount ),
+            ('parShotOnGround',     parShotOnGround ),
+            ('parTerrain',          parTerrain ),
+            ('parWaitBetweenShot',  parWaitBetweenShot),
+        ]
+    )
+
+private template InfantryFiringHappening
+[
+    Action,
+    Power,
+    WaitBetweenShot,
+]
+is TSequencingActionHappening
+(
+    ActionDescriptor = InfantryFiringFX
+    (
+        Action = <Action>
+        Power = <Power>
+        WaitBetweenShot = <WaitBetweenShot>
+    )
+)
+
+private template InfantryProjectileFX
+[
+    Action,
+    Power,
+    WithoutPhysics,
+    FluidFriction,
+    InitialSpeed,
+    WaitBetweenShot,
+]
+is TActionCall
+    (
+        Action = <Action>
+        LocalVariables =
+        [
+            private parDestination      is TPinnableValue(ExpectedType = 'float3'),
+            private parFluidFriction    is TPinnableValue(ExpectedType = 'float'    InitialValue = <FluidFriction>),
+            private parImpactOnGround   is TPinnableValue(ExpectedType = 'bool'     InitialValue = true),
+            private parInitialShotDelay is TPinnableValue(ExpectedType = 'float'    InitialValue = 0.0),
+            private parInitialSpeed     is TPinnableValue(ExpectedType = 'float3'   InitialValue = <InitialSpeed> * $/VFX_Bank/MobileDirection),
+            private parPower            is TPinnableValue(ExpectedType = 'float'    InitialValue = <Power>),
+            private parShotCount        is TPinnableValue(ExpectedType = 'float'    InitialValue = 1),
+            private parShotOnGround     is TPinnableValue(ExpectedType = 'bool'     InitialValue = true),
+            private parTerrain          is TPinnableValue(ExpectedType = 'int'      InitialValue = 1),
+            private parTirPhysic        is TPinnableValue(ExpectedType = 'bool'     InitialValue = !<WithoutPhysics>),
+            private parTirTendu         is TPinnableValue(ExpectedType = 'bool'     InitialValue = false),
+            private parTravelDuration   is TPinnableValue(ExpectedType = 'float'),
+            private parWaitBetweenShot  is TPinnableValue(ExpectedType = 'float'    InitialValue = <WaitBetweenShot>),
+        ]
+        NamedParams = MAP
+        [
+            ('parDestination',      parDestination),
+            ('parFluidFriction',    parFluidFriction),
+            ('parFlyDuration',      parTravelDuration),
+            ('parImpactOnGround',   parImpactOnGround),
+            ('parInitialShotDelay', parInitialShotDelay),
+            ('parInitialSpeed',     parInitialSpeed),
+            ('parPower',            parPower),
+            ('parShotCount',        parShotCount),
+            ('parShotOnGround',     parShotOnGround),
+            ('parTerrain',          parTerrain),
+            ('parTirPhysic',        parTirPhysic),
+            ('parTirTendu',         parTirTendu),
+            ('parWaitBetweenShot',  parWaitBetweenShot),
+        ]
+    )
+
+private template InfantryProjectileHappening
+[
+    Action,
+    Power,
+    WithoutPhysics,
+    FluidFriction,
+    InitialSpeed,
+    WaitBetweenShot,
+]
+is TSequencingActionHappening
+(
+    ActionDescriptor = InfantryProjectileFX
+    (
+        Action = <Action>
+        Power = <Power>
+        WithoutPhysics = <WithoutPhysics>
+        FluidFriction = <FluidFriction>
+        InitialSpeed = <InitialSpeed>
+        WaitBetweenShot = <WaitBetweenShot>
+    )
+)

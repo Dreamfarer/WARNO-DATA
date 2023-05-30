@@ -1,0 +1,19 @@
+export ModelFile_BMD_2_SOV is 'GameData:/Assets/3D/Units/URSS/APC/BMD_2/BMD_2.Ase2NdfBin'
+
+Modele_BMD_2_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BMD_2_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BMD_2_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BMD_2/BMD_2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BMD_2_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BMD_2/BMD_2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

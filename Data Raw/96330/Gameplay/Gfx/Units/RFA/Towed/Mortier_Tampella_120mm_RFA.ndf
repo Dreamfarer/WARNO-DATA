@@ -1,0 +1,22 @@
+export ModelFile_Mortier_Tampella_120mm_RFA is 'GameData:/Assets/3D/Units/RFA/Canon/Tampella_120mm/Tampella_120mm.Ase2NdfBin'
+
+Modele_Mortier_Tampella_120mm_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Mortier_Tampella_120mm_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_Tampella_120mm_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Canon/Tampella_120mm_MID/Tampella_120mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_Tampella_120mm_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/RFA/Canon/LODS/Tampella_120mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

@@ -1,0 +1,19 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export ChallengeGotterdammerungStrategy_North is TIAGeneralStrategy
+(
+    StrategyName = "ChalGotNAI"
+    FirstGenerator = ChalGotterdammerung_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AuthorizedCorridorList = [1]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        ChalGotterdammerung_Transition_StartToPhaseCommand,
+        ChalGotterdammerung_Transition_StartToGeneric,
+        ChalGotterdammerung_Transition_DeployToCommandPhase,
+    ]
+)

@@ -1,0 +1,18 @@
+export Artillery_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "ArtyTAIA"
+    FirstGenerator = TestAuto_Artillery
+    TransitionList = []
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Artillery is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Artillery_OnlyTestAuto,
+    ]
+)

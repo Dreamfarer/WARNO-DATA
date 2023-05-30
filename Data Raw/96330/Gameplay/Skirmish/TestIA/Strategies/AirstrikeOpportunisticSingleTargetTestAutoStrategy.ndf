@@ -1,0 +1,18 @@
+export Airstrike_OpportunisticSingleTarget_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "AIRSINGLE"
+    FirstGenerator = TestAuto_Airstrike_OpportunisticSingleTarget
+    TransitionList = []
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Airstrike_OpportunisticSingleTarget is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Airstrike_OpportunisticSingleTarget_TestAutoOnly,
+    ]
+)

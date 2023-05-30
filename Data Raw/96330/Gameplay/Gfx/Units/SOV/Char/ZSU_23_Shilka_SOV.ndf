@@ -1,0 +1,22 @@
+export ModelFile_ZSU_23_Shilka_SOV is 'GameData:/Assets/3D/Units/URSS/DCA/ZSU_23_Shilka/ZSU_23_Shilka.Ase2NdfBin'
+
+Modele_ZSU_23_Shilka_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_ZSU_23_Shilka_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_ZSU_23_Shilka_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/ZSU_23_Shilka_MID/ZSU_23_Shilka_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_ZSU_23_Shilka_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/LODS/ZSU_23_Shilka_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

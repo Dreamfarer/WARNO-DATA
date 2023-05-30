@@ -1,0 +1,83 @@
+export GfxDescriptorChassis_HeavyTank is TGfxDescriptorChassis
+(
+    SousMobileName = 'chassis'
+    SpringX = 25
+    SpringY = 50
+    DamperX = 8
+    DamperY = 10
+    SpringDamperMultiplier = 10
+    NoiseGridSize = 5
+    NoiseGridHeight = 2
+    SpringDamperMaxX = 0.2
+    SpringDamperMaxY = 0.1
+    Force = 4
+)
+export GfxDescriptorChassis_MediumTank is TGfxDescriptorChassis
+(
+    SousMobileName = 'chassis'
+    SpringX = 30
+    SpringY = 50
+    DamperX = 2
+    DamperY = 6
+    SpringDamperMultiplier = 10
+    NoiseGridSize = 10
+    NoiseGridHeight = 1.5
+    SpringDamperMaxX = 0.2
+    SpringDamperMaxY = 0.1
+    Force = 4
+)
+export GfxDescriptorChassis_MediumTank_AutoCanon is TGfxDescriptorChassis
+(
+    SousMobileName = 'chassis'
+    SpringX = 30
+    SpringY = 50
+    DamperX = 6
+    DamperY = 6
+    SpringDamperMultiplier = 10
+    NoiseGridSize = 10
+    NoiseGridHeight = 1.5
+    SpringDamperMaxX = 0.2
+    SpringDamperMaxY = 0.1
+    Force = 0.4
+)
+export GfxDescriptorChassis_MediumTank_NoCanonRecoil is TGfxDescriptorChassis
+(
+    SousMobileName = 'chassis'
+    SpringX = 30
+    SpringY = 50
+    DamperX = 6
+    DamperY = 6
+    SpringDamperMultiplier = 10
+    NoiseGridSize = 10
+    NoiseGridHeight = 1.5
+    SpringDamperMaxX = 0.2
+    SpringDamperMaxY = 0.1
+)
+export GfxDescriptorChassis_SmallTank is TGfxDescriptorChassis
+(
+    SousMobileName = 'chassis'
+    SpringX = 30
+    SpringY = 50
+    DamperX = 4
+    DamperY = 6
+    SpringDamperMultiplier = 10
+    NoiseGridSize = 8
+    NoiseGridHeight = 1.5
+    SpringDamperMaxX = 0.2
+    SpringDamperMaxY = 0.1
+    Force = 4
+)
+export GfxDescriptorChassis_Vehicule is TGfxDescriptorChassis
+(
+    SousMobileName = 'chassis'
+    SpringX = 60
+    SpringY = 150
+    DamperX = 6
+    DamperY = 8
+    SpringDamperMultiplier = 10
+    NoiseGridSize = 5
+    NoiseGridHeight = 1.2
+    SpringDamperMaxX = 0.2
+    SpringDamperMaxY = 0.1
+    Force = 0.5
+)

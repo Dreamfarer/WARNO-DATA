@@ -1,0 +1,89 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export ChallengeTauroggenStrategy_West is TIAGeneralStrategy
+(
+    StrategyName = "TaurWestAI"
+    FirstGenerator = ChalTauroWest_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AuthorizedCorridorList = [0]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        ChalTauroWest_Transition_StartToPhaseCommand,
+        ChalTauroWest_Transition_StartToGeneric,
+        ChalTauroWest_Transition_DeployToCommandPhase,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalTauroWest_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export ChalTauroWest_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalTauroWest_Transition_StartToPhaseCommand is TIAGeneralStrategyTransition
+(
+    Origine = ChalTauroWest_Choose_Strategy
+    Condition = ChalTauroWest_Condition_CommandPhase
+    Destination = ChalTauroWest_Phase_Command
+)
+export ChalTauroWest_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = ChalTauroWest_Choose_Strategy
+    Condition = ChalTauroWest_Condition_GotoGeneric
+    Destination = ChalTauroWest_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export ChalTauroWest_Transition_DeployToCommandPhase is TIAGeneralStrategyTransition
+(
+    Origine = ChalTauroWest_Phase_Deploiement
+    Condition = ChalTauroWest_Condition_CommandPhase
+    Destination = ChalTauroWest_Phase_Command
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export ChalTauroWest_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export ChalTauroWest_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Challenge_Main_Attack_All,
+    ]
+)
+//-------------------------------------------------------------------------
+export ChalTauroWest_Phase_Command is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Challenge_Main_Attack_All,
+        ~/CaptureAllZoneObjectif,
+    ]
+)

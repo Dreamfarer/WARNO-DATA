@@ -1,0 +1,20 @@
+export ModelFile_AMX_13_90mm_FR is 'GameData:/Assets/3D/Units/FR/Char/AMX_13_90mm/AMX_13_90mm.Ase2NdfBin'
+
+Modele_AMX_13_90mm_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AMX_13_90mm_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_13_90mm_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/AMX_13_90mm_MID/AMX_13_90mm_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_13_90mm_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/LODS/AMX_13_90mm_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

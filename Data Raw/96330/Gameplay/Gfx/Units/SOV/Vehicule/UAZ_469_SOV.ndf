@@ -1,0 +1,22 @@
+export ModelFile_UAZ_469_SOV is 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_CMD/UAZ_469_CMD.Ase2NdfBin'
+
+Modele_UAZ_469_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_UAZ_469_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_UAZ_469_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_CMD_MID/UAZ_469_CMD_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_UAZ_469_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/LODS/UAZ_469_CMD_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

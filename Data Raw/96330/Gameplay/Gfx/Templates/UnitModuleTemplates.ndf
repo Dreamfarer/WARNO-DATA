@@ -1,0 +1,28 @@
+TemplateTargetCoordinator is TModuleSelector
+(
+    Default        = TTargetCoordinatorModuleDescriptor
+    (
+    )
+    Selection      = [ ~/NilDescriptorIfCadavre ]
+)
+
+template TemplateUnitCriticalModule
+[
+   Module
+] is TModuleSelector
+(
+    Default        = <Module>
+    Selection      = [ ~/NilDescriptorIfCadavre ]
+)
+
+template TemplateUnitMissileCarriage
+[
+    Connoisseur
+] is TModuleSelector
+(
+    Default        = TMissileCarriageModuleDescriptor
+    (
+        Connoisseur    = <Connoisseur>
+    )
+    Selection      = [~/NilDescriptorIfCadavre]
+)

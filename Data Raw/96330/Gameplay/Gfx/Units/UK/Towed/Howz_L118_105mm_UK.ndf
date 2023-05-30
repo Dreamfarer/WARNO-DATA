@@ -1,0 +1,22 @@
+export ModelFile_Howz_L118_105mm_UK is 'GameData:/Assets/3D/Units/UK/Canon/L118_Light_Gun/L118_Light_Gun.Ase2NdfBin'
+
+Modele_Howz_L118_105mm_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Howz_L118_105mm_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Howz_L118_105mm_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Canon/L118_Light_Gun_MID/L118_Light_Gun_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Howz_L118_105mm_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Canon/LODS/L118_Light_Gun_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

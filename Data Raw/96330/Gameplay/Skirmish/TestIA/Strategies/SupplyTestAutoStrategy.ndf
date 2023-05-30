@@ -1,0 +1,86 @@
+export Supply_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "SupTAIA"
+    FirstGenerator = TestAuto_Supply_Choose_Strategy
+    TransitionList =
+    [
+        TestAuto_Supply_Transition_StartToPhaseCommand,
+        TestAuto_Supply_Transition_StartToGeneric,
+        TestAuto_Supply_Transition_DeployToCommandPhase,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Supply_Condition_GotoGeneric is TSequenceCondition_Not
+(
+    Condition = ~/TestAuto_Supply_Condition_CommandPhase
+)
+//-------------------------------------------------------------------------
+export TestAuto_Supply_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Supply_Transition_StartToPhaseCommand is TIAGeneralStrategyTransition
+(
+    Origine = TestAuto_Supply_Choose_Strategy
+    Condition = TestAuto_Supply_Condition_CommandPhase
+    Destination = TestAuto_Supply_Phase_Command
+)
+export TestAuto_Supply_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = TestAuto_Supply_Choose_Strategy
+    Condition = TestAuto_Supply_Condition_GotoGeneric
+    Destination = TestAuto_Supply_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export TestAuto_Supply_Transition_DeployToCommandPhase is TIAGeneralStrategyTransition
+(
+    Origine = TestAuto_Supply_Phase_Deploiement
+    Condition = TestAuto_Supply_Condition_CommandPhase
+    Destination = TestAuto_Supply_Phase_Command
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Supply_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Supply_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/FOB_Skirmish,
+        ~/Supply_TestAutoOnly,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Supply_Phase_Command is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Supply_TestAutoOnly,
+    ]
+)
+

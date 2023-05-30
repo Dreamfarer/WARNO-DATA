@@ -1,0 +1,22 @@
+export ModelFile_M1025_Humvee_AGL_US is 'GameData:/Assets/3D/Units/US/Vehicule/M1025_Humvee_AGL/M1025_Humvee_AGL.Ase2NdfBin'
+
+Modele_M1025_Humvee_AGL_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_M1025_Humvee_AGL_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M1025_Humvee_AGL_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Vehicule/M1025_Humvee_AGL_MID/M1025_Humvee_AGL_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M1025_Humvee_AGL_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Vehicule/LODS/M1025_Humvee_AGL_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

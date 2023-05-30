@@ -1,0 +1,12 @@
+//-------------------------------------------------------------------------
+export Challenge_Defense_Dynamic_Filler is TMacroActionDescriptor_CorridorDynamicDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 1),
+        TAirStrikeSettingHolder(Setting = ~/BasicAirstrikeSupport),
+        TArtilleryAmountSettingHolder(ArtilleryAmount = 2),
+        TMacroActionProductionSettingHolder(PoolModelList = [ ~/Pool_Defense_Filler]),
+        TIgnoreSafePathSettingHolder(),
+    ]
+)

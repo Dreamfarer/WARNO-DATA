@@ -1,0 +1,559 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_District_Quartier_Gros is TEntityDescriptor(
+    DescriptorId        = GUID:{c3bee1ea-9a61-47ce-8e66-31c571c362ae}
+    ClassNameForDebug   = 'Quartier_Gros'
+    ModulesDescriptors  =
+    [
+        TTypeUnitModuleDescriptor
+        (
+        ),
+        TTagsModuleDescriptor
+        (
+            TagSet = [
+                "Standard",
+                "FOB",
+            ]
+        ),
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_Batiment,
+            ]
+        ),
+            TModuleSelector
+            (
+                Default        = TDistrictModuleDescriptor
+                (
+                    DamageTakenMultiplier           = MAP [
+                       ("artillerie", 1.0),
+                       ("bombe", 1.0),
+                       ("cluster", 1.0),
+                       ("flamme", 1.0),
+                       ("he", 1.0),
+                       ("roquette", 1.0),
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+            TModuleSelector
+            (
+                Default        = TDistrictUnitsContainerModuleDescriptor
+                (
+                    NbSlots                         = 4
+                    AllowedTagSet                   = [
+                        "Inf_quartier_ok",
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+            TModuleSelector
+            (
+                Default        = TDynamicTerrainModuleDescriptor
+                (
+                    TerrainToApplyOnInit  = ETerrainType/Batiment
+                    TerrainToApplyOnDeath = ETerrainType/Ruin
+                    OnlyOnProduction = False
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+        ~/InflammableModuleDescriptorDistrict,
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = False
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+            TDamageModuleDescriptor
+            (
+                CommonDamageDescriptor = TDamageDescriptor
+                (
+                    SuppressDamagesRegenRatio = ~/Building_SuppressDamagesRegenRatioList
+                    SuppressDamagesRegenRatioOutOfRange = ~/Building_SuppressDamagesRegenRatioOutOfRange
+                    StunDamagesRegen = ~/Building_StunDamagesRegen
+                    StunFreezesUnits = False
+                    BlindageProperties = TBlindageProperties
+                    (
+                        ArmorDescriptorFront = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorSides = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorRear = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorTop = ArmorDescriptor_Batiment_1
+                    )
+                    MaxSuppressionDamages = ~/Building_MaxSuppressionDamages
+                    MaxStunDamages = ~/Building_MaxStunDamages
+                )
+                MaxDamages = 45
+                KillWhenDamagesReachMax = True
+                HitRollSize = 5.0
+                HitRollECM = 0.0
+                AutoOrientation = False
+                SkipCadavreCreation  = True
+                UseTopArmorAgainstFire = True
+                PhysicalDamageLevelsPack = nil
+                SuppressDamageLevelsPack = nil
+                StunDamageLevelsPack = nil
+            ),
+        ~/DistrictSelectionModuleDescriptor,
+        TShootingPointsModuleDescriptor
+        (
+        ),
+    ApparenceModel is
+        TModuleSelector
+        (
+            Default            = TApparenceModelModuleDescriptor
+            (
+                PickableObject                     = True
+                Depiction = TimelyDescriptorMapBuilding_OnlyLevelBuild
+            )
+            Selection                              = [ ~/NilDescriptorIfCadavre ]
+        )
+,
+        ~/LinkTeamModuleDescriptor,
+        ~/DebugModuleDescriptor,
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfCadavre]
+            ),
+        TCadavreGeneratorModuleDescriptorUnit( CadavreDescriptor = ~/Descriptor_UnitCadavre_Quartier_Gros ),
+            TMinimapDisplayModuleDescriptor
+            (
+                Texture = "Texture_Minimap_Unit_inf"
+                IsAlwaysVisible = False
+                UseTeamColor = True
+                FollowUnitOrientation = True
+            ),
+        ~/PackSignauxModuleDescriptor,
+        ~/TargetDataModuleDescriptor,
+    ]
+)
+export Descriptor_District_Quartier_HLM is TEntityDescriptor(
+    DescriptorId        = GUID:{97cc18e2-21f5-4c6d-b0ea-82db7b12ca41}
+    ClassNameForDebug   = 'Quartier_HLM'
+    ModulesDescriptors  =
+    [
+        TTypeUnitModuleDescriptor
+        (
+        ),
+        TTagsModuleDescriptor
+        (
+            TagSet = [
+                "Standard",
+                "FOB",
+            ]
+        ),
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_Batiment,
+            ]
+        ),
+            TModuleSelector
+            (
+                Default        = TDistrictModuleDescriptor
+                (
+                    DamageTakenMultiplier           = MAP [
+                       ("artillerie", 1.0),
+                       ("bombe", 1.0),
+                       ("cluster", 1.0),
+                       ("flamme", 1.0),
+                       ("he", 1.0),
+                       ("roquette", 1.0),
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+            TModuleSelector
+            (
+                Default        = TDistrictUnitsContainerModuleDescriptor
+                (
+                    NbSlots                         = 4
+                    AllowedTagSet                   = [
+                        "Inf_quartier_ok",
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+            TModuleSelector
+            (
+                Default        = TDynamicTerrainModuleDescriptor
+                (
+                    TerrainToApplyOnInit  = ETerrainType/Batiment
+                    TerrainToApplyOnDeath = ETerrainType/Ruin
+                    OnlyOnProduction = False
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+        ~/InflammableModuleDescriptorDistrict,
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = False
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+            TDamageModuleDescriptor
+            (
+                CommonDamageDescriptor = TDamageDescriptor
+                (
+                    SuppressDamagesRegenRatio = ~/Building_SuppressDamagesRegenRatioList
+                    SuppressDamagesRegenRatioOutOfRange = ~/Building_SuppressDamagesRegenRatioOutOfRange
+                    StunDamagesRegen = ~/Building_StunDamagesRegen
+                    StunFreezesUnits = False
+                    BlindageProperties = TBlindageProperties
+                    (
+                        ArmorDescriptorFront = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorSides = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorRear = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorTop = ArmorDescriptor_Batiment_1
+                    )
+                    MaxSuppressionDamages = ~/Building_MaxSuppressionDamages
+                    MaxStunDamages = ~/Building_MaxStunDamages
+                )
+                MaxDamages = 90
+                KillWhenDamagesReachMax = False
+                HitRollSize = 5.0
+                HitRollECM = 0.0
+                AutoOrientation = False
+                SkipCadavreCreation  = True
+                UseTopArmorAgainstFire = True
+                PhysicalDamageLevelsPack = nil
+                SuppressDamageLevelsPack = nil
+                StunDamageLevelsPack = nil
+            ),
+        ~/DistrictSelectionModuleDescriptor,
+        TShootingPointsModuleDescriptor
+        (
+        ),
+    ApparenceModel is
+        TModuleSelector
+        (
+            Default            = TApparenceModelModuleDescriptor
+            (
+                PickableObject                     = True
+                Depiction = TimelyDescriptorMapBuilding_OnlyLevelBuild
+            )
+            Selection                              = [ ~/NilDescriptorIfCadavre ]
+        )
+,
+        ~/LinkTeamModuleDescriptor,
+        ~/DebugModuleDescriptor,
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfCadavre]
+            ),
+        TCadavreGeneratorModuleDescriptorUnit( CadavreDescriptor = ~/Descriptor_UnitCadavre_Quartier_HLM ),
+            TMinimapDisplayModuleDescriptor
+            (
+                Texture = "Texture_Minimap_Unit_inf"
+                IsAlwaysVisible = False
+                UseTeamColor = True
+                FollowUnitOrientation = True
+            ),
+        ~/PackSignauxModuleDescriptor,
+        ~/TargetDataModuleDescriptor,
+    ]
+)
+export Descriptor_District_Quartier_Moyen is TEntityDescriptor(
+    DescriptorId        = GUID:{b48192ea-4d1e-491b-a8a6-cb1244251f58}
+    ClassNameForDebug   = 'Quartier_Moyen'
+    ModulesDescriptors  =
+    [
+        TTypeUnitModuleDescriptor
+        (
+        ),
+        TTagsModuleDescriptor
+        (
+            TagSet = [
+                "Standard",
+                "FOB",
+            ]
+        ),
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_Batiment,
+            ]
+        ),
+            TModuleSelector
+            (
+                Default        = TDistrictModuleDescriptor
+                (
+                    DamageTakenMultiplier           = MAP [
+                       ("artillerie", 1.0),
+                       ("bombe", 1.0),
+                       ("cluster", 1.0),
+                       ("flamme", 1.0),
+                       ("he", 1.0),
+                       ("roquette", 1.0),
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+            TModuleSelector
+            (
+                Default        = TDistrictUnitsContainerModuleDescriptor
+                (
+                    NbSlots                         = 4
+                    AllowedTagSet                   = [
+                        "Inf_quartier_ok",
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+            TModuleSelector
+            (
+                Default        = TDynamicTerrainModuleDescriptor
+                (
+                    TerrainToApplyOnInit  = ETerrainType/Batiment
+                    TerrainToApplyOnDeath = ETerrainType/Ruin
+                    OnlyOnProduction = False
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+        ~/InflammableModuleDescriptorDistrict,
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = False
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+            TDamageModuleDescriptor
+            (
+                CommonDamageDescriptor = TDamageDescriptor
+                (
+                    SuppressDamagesRegenRatio = ~/Building_SuppressDamagesRegenRatioList
+                    SuppressDamagesRegenRatioOutOfRange = ~/Building_SuppressDamagesRegenRatioOutOfRange
+                    StunDamagesRegen = ~/Building_StunDamagesRegen
+                    StunFreezesUnits = False
+                    BlindageProperties = TBlindageProperties
+                    (
+                        ArmorDescriptorFront = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorSides = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorRear = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorTop = ArmorDescriptor_Batiment_1
+                    )
+                    MaxSuppressionDamages = ~/Building_MaxSuppressionDamages
+                    MaxStunDamages = ~/Building_MaxStunDamages
+                )
+                MaxDamages = 15
+                KillWhenDamagesReachMax = True
+                HitRollSize = 5.0
+                HitRollECM = 0.0
+                AutoOrientation = False
+                SkipCadavreCreation  = True
+                UseTopArmorAgainstFire = True
+                PhysicalDamageLevelsPack = nil
+                SuppressDamageLevelsPack = nil
+                StunDamageLevelsPack = nil
+            ),
+        ~/DistrictSelectionModuleDescriptor,
+        TShootingPointsModuleDescriptor
+        (
+        ),
+    ApparenceModel is
+        TModuleSelector
+        (
+            Default            = TApparenceModelModuleDescriptor
+            (
+                PickableObject                     = True
+                Depiction = TimelyDescriptorMapBuilding_OnlyLevelBuild
+            )
+            Selection                              = [ ~/NilDescriptorIfCadavre ]
+        )
+,
+        ~/LinkTeamModuleDescriptor,
+        ~/DebugModuleDescriptor,
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfCadavre]
+            ),
+        TCadavreGeneratorModuleDescriptorUnit( CadavreDescriptor = ~/Descriptor_UnitCadavre_Quartier_Moyen ),
+            TMinimapDisplayModuleDescriptor
+            (
+                Texture = "Texture_Minimap_Unit_inf"
+                IsAlwaysVisible = False
+                UseTeamColor = True
+                FollowUnitOrientation = True
+            ),
+        ~/PackSignauxModuleDescriptor,
+        ~/TargetDataModuleDescriptor,
+    ]
+)
+export Descriptor_District_Quartier_Petit is TEntityDescriptor(
+    DescriptorId        = GUID:{94b2df0a-d28f-4733-a456-6b242611009b}
+    ClassNameForDebug   = 'Quartier_Petit'
+    ModulesDescriptors  =
+    [
+        TTypeUnitModuleDescriptor
+        (
+        ),
+        TTagsModuleDescriptor
+        (
+            TagSet = [
+                "Standard",
+                "FOB",
+            ]
+        ),
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_Batiment,
+            ]
+        ),
+            TModuleSelector
+            (
+                Default        = TDistrictModuleDescriptor
+                (
+                    DamageTakenMultiplier           = MAP [
+                       ("artillerie", 0.8),
+                       ("bombe", 0.8),
+                       ("cluster", 0.8),
+                       ("flamme", 2.0),
+                       ("he", 0.8),
+                       ("roquette", 0.8),
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+            TModuleSelector
+            (
+                Default        = TDistrictUnitsContainerModuleDescriptor
+                (
+                    NbSlots                         = 4
+                    AllowedTagSet                   = [
+                        "Inf_quartier_ok",
+                    ]
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+            TModuleSelector
+            (
+                Default        = TDynamicTerrainModuleDescriptor
+                (
+                    TerrainToApplyOnInit  = ETerrainType/Batiment
+                    TerrainToApplyOnDeath = ETerrainType/Ruin
+                    OnlyOnProduction = False
+                )
+                Selection      = [ ~/NilDescriptorIfCadavre ]
+            ),
+        ~/InflammableModuleDescriptorDistrict,
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = False
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+            TDamageModuleDescriptor
+            (
+                CommonDamageDescriptor = TDamageDescriptor
+                (
+                    SuppressDamagesRegenRatio = ~/Building_SuppressDamagesRegenRatioList
+                    SuppressDamagesRegenRatioOutOfRange = ~/Building_SuppressDamagesRegenRatioOutOfRange
+                    StunDamagesRegen = ~/Building_StunDamagesRegen
+                    StunFreezesUnits = False
+                    BlindageProperties = TBlindageProperties
+                    (
+                        ArmorDescriptorFront = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorSides = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorRear = ArmorDescriptor_Batiment_1
+                        ArmorDescriptorTop = ArmorDescriptor_Batiment_1
+                    )
+                    MaxSuppressionDamages = ~/Building_MaxSuppressionDamages
+                    MaxStunDamages = ~/Building_MaxStunDamages
+                )
+                MaxDamages = 15
+                KillWhenDamagesReachMax = True
+                HitRollSize = 5.0
+                HitRollECM = 0.0
+                AutoOrientation = False
+                SkipCadavreCreation  = True
+                UseTopArmorAgainstFire = True
+                PhysicalDamageLevelsPack = nil
+                SuppressDamageLevelsPack = nil
+                StunDamageLevelsPack = nil
+            ),
+        ~/DistrictSelectionModuleDescriptor,
+        TShootingPointsModuleDescriptor
+        (
+        ),
+    ApparenceModel is
+        TModuleSelector
+        (
+            Default            = TApparenceModelModuleDescriptor
+            (
+                PickableObject                     = True
+                Depiction = TimelyDescriptorMapBuilding_OnlyLevelBuild
+            )
+            Selection                              = [ ~/NilDescriptorIfCadavre ]
+        )
+,
+        ~/LinkTeamModuleDescriptor,
+        ~/DebugModuleDescriptor,
+            TModuleSelector
+            (
+                Default        = TIAStratModuleDescriptor
+                (
+                    DatabaseId = 1
+                    GameplayBehavior = EGameplayBehavior/Nothing
+                )
+                Selection      = [~/NilDescriptorIfCadavre]
+            ),
+        TCadavreGeneratorModuleDescriptorUnit( CadavreDescriptor = ~/Descriptor_UnitCadavre_Quartier_Petit ),
+            TMinimapDisplayModuleDescriptor
+            (
+                Texture = "Texture_Minimap_Unit_inf"
+                IsAlwaysVisible = False
+                UseTeamColor = True
+                FollowUnitOrientation = True
+            ),
+        ~/PackSignauxModuleDescriptor,
+        ~/TargetDataModuleDescriptor,
+    ]
+)

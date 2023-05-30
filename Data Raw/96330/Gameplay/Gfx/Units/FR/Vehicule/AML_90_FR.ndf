@@ -1,0 +1,19 @@
+export ModelFile_AML_90_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/AML_90/AML_90.Ase2NdfBin'
+
+Modele_AML_90_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AML_90_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AML_90_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/AML_90_MID/AML_90_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AML_90_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/LODS/AML_90_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

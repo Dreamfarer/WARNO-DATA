@@ -1,0 +1,19 @@
+export ModelFile_Howz_D20_152mm_SOV is 'GameData:/Assets/3D/Units/URSS/Canon/Howz_D20_152mm/Howz_D20_152mm.Ase2NdfBin'
+
+Modele_Howz_D20_152mm_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Howz_D20_152mm_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Howz_D20_152mm_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/Howz_D20_152mm/Howz_D20_152mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Howz_D20_152mm_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/Howz_D20_152mm/Howz_D20_152mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

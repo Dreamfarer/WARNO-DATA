@@ -1,0 +1,17 @@
+export DynamicDefense_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "DDefTA"
+    FirstGenerator = TestAuto_DynamicDefense
+    TransitionList =[]
+)
+
+
+export TestAuto_DynamicDefense is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+
+    GeneratorList =
+    [
+        ~/Dynamic_Defense_OnlyTestAuto,
+    ]
+)

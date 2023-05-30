@@ -1,0 +1,19 @@
+export ModelFile_BTR_ZD_Skrezhet_SOV is 'GameData:/Assets/3D/Units/URSS/DCA/BTR_ZD_Skrezhet/BTR_ZD_Skrezhet.Ase2NdfBin'
+
+Modele_BTR_ZD_Skrezhet_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_BTR_ZD_Skrezhet_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_ZD_Skrezhet_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/DCA/BTR_ZD_Skrezhet/BTR_ZD_Skrezhet.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_ZD_Skrezhet_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/DCA/BTR_ZD_Skrezhet/BTR_ZD_Skrezhet.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,31 @@
+export ModelFile_Su_22_UPK_DDR is 'GameData:/Assets/3D/Units/DDR/Avion/Su_22/Su_22_UPK.Ase2NdfBin'
+
+Modele_Su_22_UPK_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Su_22_UPK_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_22_UPK_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/Su_22/Su_22_UPK.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_22_UPK_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/Su_22/Su_22_UPK.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_22_UPK_DDR_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/Su_22/Su_22_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_22_UPK_DDR_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Pod_UPK_t2
+    CivMask =  CivMask/Common
+)

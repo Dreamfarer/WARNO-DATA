@@ -1,0 +1,22 @@
+export ModelFile_AMX_10_P_MILAN_FR is 'GameData:/Assets/3D/Units/FR/APC/AMX_10P_MILAN/AMX_10P_MILAN.Ase2NdfBin'
+
+Modele_AMX_10_P_MILAN_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_AMX_10_P_MILAN_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_10_P_MILAN_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/APC/AMX_10P_MILAN_MID/AMX_10P_MILAN_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_10_P_MILAN_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/APC/LODS/AMX_10P_MILAN_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

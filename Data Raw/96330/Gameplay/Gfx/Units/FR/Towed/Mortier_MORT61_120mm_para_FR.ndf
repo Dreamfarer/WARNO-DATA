@@ -1,0 +1,22 @@
+export ModelFile_Mortier_MORT61_120mm_para_FR is 'GameData:/Assets/3D/Units/FR/Canon/Mortier_MORT61_120mm/Mortier_MORT61_120mm.fbx'
+
+Modele_Mortier_MORT61_120mm_para_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Mortier_MORT61_120mm_para_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_MORT61_120mm_para_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Canon/Mortier_MORT61_120mm/Mortier_MORT61_120mm.fbx'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_MORT61_120mm_para_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Canon/Mortier_MORT61_120mm/Mortier_MORT61_120mm.fbx'
+    CivMask =  CivMask/Common
+)
+
+
+

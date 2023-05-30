@@ -1,0 +1,19 @@
+export ModelFile_M728_CEV_US is 'GameData:/Assets/3D/Units/US/Char/M728_CEV/M728_CEV.Ase2NdfBin'
+
+Modele_M728_CEV_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M728_CEV_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M728_CEV_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M728_CEV_MID/M728_CEV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M728_CEV_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/LODS/M728_CEV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

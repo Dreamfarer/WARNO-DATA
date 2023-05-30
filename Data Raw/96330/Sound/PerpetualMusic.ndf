@@ -1,0 +1,83 @@
+
+
+Playlist_Outgame is
+[
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Brooding-Thoughts.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Canyon.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Clusters_Of_Desolation.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Crime-Scene-Investigation.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Dark_City_Beats.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Dimensional-Pulse.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Divine-Inspiration.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Floating_Consciousness.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Global-Lockdown.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Hollywood-Life.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Indifferent.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Into-The-Unknown.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Matrix-One.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Mysteries.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Peace_Within.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Quiet-Discovery.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Raging_Burn.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Ready-For-The-Count.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Resolution.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Rise_Forever.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Sheer-Drop.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Synchronicity.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Things_Are_Stranger.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Through-The-Night.wav" ),
+]
+
+
+Playlist_Ingame is
+[
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Canyon.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Clusters_Of_Desolation.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Depiction_Of_Fear.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Dark_City_Beats.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Dawn_On_Glendale.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Divine-Inspiration.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Get-Together-2.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Global-Lockdown.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Hollywood-Life.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Indifferent.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Into-The-Unknown.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Lap_Time.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Lets_Go.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Matrix-One.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Midnight_Runaway.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Mysteries.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Quiet-Discovery.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Raging_Burn.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Ready-For-The-Count.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Rise_Forever.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Sheer-Drop.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Silicon_Tribes.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Synchronicity.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/TRIPTIDON_Sinful.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Things_Are_Stranger.wav" ),
+    Music( FileName = "GameData:/Assets/Sons/PerpetualMusic/Third-Degree.wav" ),
+]
+
+template Music
+[
+    FileName
+]
+is TSoundDescriptor( TheSoundStream = TSoundStream( FileName = <FileName> ) )
+
+unnamed TPerpetualMusic
+(
+    DefaultPlaylistsGroup = "Outgame"
+    PlaylistsGroups = MAP
+    [
+        (
+            "Outgame",
+            ~/Playlist_Outgame
+        ),
+        (
+            "Ingame",
+            ~/Playlist_Ingame
+        ),
+    ]
+)
+

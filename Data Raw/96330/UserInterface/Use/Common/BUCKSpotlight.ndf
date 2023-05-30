@@ -1,0 +1,102 @@
+SpotlightDescriptor is AuraDescriptor
+(
+    TopTextureToken = "CommonTexture_Spotlight_TopTileTexture"
+    BottomTextureToken = "CommonTexture_Spotlight_BottomTileTexture"
+    LeftTextureToken = "CommonTexture_Spotlight_LeftTileTexture"
+    RightTextureToken = "CommonTexture_Spotlight_RightTileTexture"
+    TopLeftTexture = "CommonTexture_Spotlight_CornerTexture_TopLeft"
+    TopRightTexture = "CommonTexture_Spotlight_CornerTexture_TopRight"
+    BottomRightTexture = "CommonTexture_Spotlight_CornerTexture_BottomRight"
+    BottomLeftTexture = "CommonTexture_Spotlight_CornerTexture_BottomLeft"
+)
+
+template BUCKSpotlightDescriptor
+[
+    // ++ BUCKContainerDescriptor
+    ElementName : string = "",
+    UniqueName : string = "",
+    RequiredTags : LIST<string> = [],
+    ForbiddenTags : LIST<string> = [],
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+
+    MagnifierMultiplication : float = 0.0,
+
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+    HidePointerEvents : bool = false,
+
+    GridAlign : bool = false,
+
+    IsDroppable : bool = false,
+    ForegroundForDropBlockColor : string = "",
+    BorderForDropLineColor : string = "",
+    BorderForDropLineThicknessToken : string = "",
+
+    FitStyle : int = ~/ContainerFitStyle/None,
+    ChildFitToContent : bool = false,
+
+    ClipContent : bool = false,
+    IsClippable : bool = true,
+
+    HasBackground : bool = false,
+    BackgroundBlockColorToken : string = "",
+
+    HasBorder : bool = false,
+    BordersToDraw : int = ~/TBorderSide/Default,
+    BorderThicknessToken : string = "",
+    BorderLineColorToken : string = "",
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    BackgroundLocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+
+    ComponentStateLocked : bool = false,
+    Components : LIST<TBUCKContainerDescriptor> = [],
+    // -- BUCKContainerDescriptor
+]
+is TBUCKSpotlightDescriptor
+(
+    // ++ BUCKContainerDescriptor
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    RequiredTags = <RequiredTags>
+    ForbiddenTags = <ForbiddenTags>
+    ComponentFrame = <ComponentFrame>
+
+    MagnifierMultiplication = <MagnifierMultiplication>
+
+    PointerEventsToAllow = <PointerEventsToAllow>
+    HidePointerEvents = <HidePointerEvents>
+
+    GridAlign = <GridAlign>
+
+    IsDroppable = <IsDroppable>
+    ForegroundForDropBlockColor = <ForegroundForDropBlockColor>
+    BorderForDropLineColor = <BorderForDropLineColor>
+    BorderForDropLineThicknessToken = <BorderForDropLineThicknessToken>
+
+    FitStyle = <FitStyle>
+    ChildFitToContent = <ChildFitToContent>
+
+    ClipContent = <ClipContent>
+    IsClippable = <IsClippable>
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BordersToDraw = <BordersToDraw>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+
+    ComponentStateLocked = <ComponentStateLocked>
+    Components = <Components>
+    // -- BUCKContainerDescriptor
+
+    SpotlightComponent = ~/SpotlightDescriptor
+)

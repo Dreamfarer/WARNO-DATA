@@ -1,0 +1,332 @@
+
+// Liste de messages d'alertes affichées temporairement à l'écran
+
+AlertLineHeight is 20.0
+AlertLineWidth is 400.0
+
+//------------------------------------------------------------------------------
+
+EmptyLine is BUCKContainerDescriptor
+(
+    ElementName = "EmptyAlertLine"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, AlertLineHeight]
+    )
+)
+
+//------------------------------------------------------------------------------
+
+AlertLine is BUCKContainerDescriptor
+(
+    ElementName = "AlertLine"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, AlertLineHeight]
+    )
+
+    Components =
+    [
+        BUCKGradientDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            Transition0 = 0.1
+            Transition1 = 1.0
+            Transition2 = 1.0
+            Transition3 = 1.0
+
+            TransitionColor0 = "AlertPanel/Gradient0"
+            TransitionColor1 = "AlertPanel/Gradient1"
+            IsRelative = true
+            IsVertical = false
+        ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = 'AlertMessage'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [AlertLineWidth, AlertLineHeight]
+                AlignementToFather = [1.0, 0.0]
+                AlignementToAnchor = [1.0, 0.0]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Right
+                VerticalAlignment = UIText_VerticalCenter
+                InterLine = 0
+            )
+
+            TextStyle = "Default"
+
+            HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+            VerticalFitStyle = ~/FitStyle/UserDefined
+            TypefaceToken = "Liberator"
+            BigLineAction = ~/BigLineAction/CutByDots
+            TextPadding = TRTTILength4( Magnifiable = [0.0, 0.0, 7.0, 0.0])
+
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "AlertMessage/Text"
+            TextSize = "14"
+            Components =
+            [
+                BUCKButtonDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+                    ElementName = "AlertButton"
+                    MaskEvents  = false
+                    HasBorder = false
+                )
+            ]
+        )
+    ]
+)
+
+//------------------------------------------------------------------------------
+
+BUCKSpecificHUDAlertPanelMainComponentDescriptor is BUCKListDescriptor
+(
+    ElementName = "HUDAlertPanel"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [~/AlertLineWidth, 0.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    FirstMargin = TRTTILength(Magnifiable = 12.0)
+)
+
+//------------------------------------------------------------------------------
+
+UISpecificHUDAlertPanelViewDescriptor is TUISpecificHUDAlertPanelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificHUDAlertPanelMainComponentDescriptor
+    MainComponentContainerUniqueName = "UISpecificHUDAlertPanelMainContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    AlertLineDescriptor = ~/AlertLine
+    EmptyLineDescriptor = ~/EmptyLine
+    MaxLineNb = MinimapMagnifiableSize div AlertLineHeight - 1
+    LineDisplayDuration = 60
+
+    //------------------------------------------------------------------------------
+    // Les messages sont définies dans AlertMessageType.ndf
+    // Les tokens sont définis dans INTERFACE_INGAME.csv
+    //------------------------------------------------------------------------------
+    MessageList = MAP
+    [
+        (
+            ~/AlertMsg_None,// pas de message
+            (
+                "",
+                "AlertPanel/Line/AlertMsg_None"
+            )
+        ),
+        (
+            ~/AlertMsg_Par_ResteMoitieBataille,
+            (
+                "PAR_HALF_T",
+                "AlertPanel/Line/Par_ResteMoitieBataille"
+            )
+        ),
+        (
+            ~/AlertMsg_Par_ResteQuartBataille,
+            (
+                "PAR_QUAT_T",
+                "AlertPanel/Line/Par_ResteQuartBataille"
+            )
+        ),
+        (
+            ~/AlertMsg_Per_UniteDetruite,
+            (
+                "PER_UNITE",
+                "AlertPanel/Line/Per_UniteDetruite"
+            )
+        ),
+        (
+            ~/AlertMsg_Per_UniteDetruiteREDReplay,
+            (
+                "PER_UNITR",
+                "AlertPanel/Line/Per_UniteDetruiteREDReplay"
+            )
+        ),
+        (
+            ~/AlertMsg_Per_UniteDetruiteBLUReplay,
+            (
+                "PER_UNITR",
+                "AlertPanel/Line/Per_UniteDetruiteBLUReplay"
+            )
+        ),
+        (
+            ~/AlertMsg_Zone_SecuredByPlayer,
+            (
+                "ZONE_SECUR",
+                "AlertPanel/Line/Zone_SecuredByPlayer"
+            )
+        ),
+        (
+            ~/AlertMsg_Zone_Lost,
+            (
+                "ZONE_LOST",
+                "AlertPanel/Line/Zone_Lost"
+            )
+        ),
+        (
+            ~/AlertMsg_Per_CommandZoneCapturedForReplay,
+            (
+                "ZONE_CAPR",
+                "AlertPanel/Line/CommandZoneCapturedForReplay"
+            )
+        ),
+        (
+            ~/AlertMsg_Per_CommandZoneLostForReplay,
+            (
+                "ZONE_LOSR",
+                "AlertPanel/Line/CommandZoneLostForReplay"
+            )
+        ),
+        (
+            ~/AlertMsg_Zone_SecuredByEnemy,
+            (
+                "ZONE_ENEMY",
+                "AlertPanel/Line/Zone_SecuredByEnemy"
+            )
+        ),
+        (
+            ~/AlertMsg_Att_SupplyPrise,
+            (
+                "ATT_SUP_TK",
+                "AlertPanel/Line/Att_SupplyPrise"
+            )
+        ),
+        (
+            ~/AlertMsg_Per_SupplyPerdu,
+            (
+                "PER_SUP_LO",
+                "AlertPanel/Line/Per_SupplyPerdu"
+            )
+        ),
+        (
+            ~/AlertMsg_Aeri_AerialCorridorSecured,
+            (
+                "AER_COR_TK",
+                "AlertPanel/Line/Aeri_AerialCorridorSecured"
+            )
+        ),
+        (
+            ~/AlertMsg_Aeri_AerialCorridorLost,
+            (
+                 "AER_COR_LO",
+                "AlertPanel/Line/Aeri_AerialCorridorLost"
+            )
+        ),
+        (
+            ~/AlertMsg_Rens_AllyLaunchBeacon,
+            (
+                "RE_LAU_BEC",
+                "AlertPanel/Line/Rens_AllyLaunchBeacon"
+            )
+        ),
+        (
+            ~/AlertMsg_Par_NewPhaseStarted,
+            (
+                "PAR_NXTPHS",
+                "AlertPanel/Line/Par_NewPhaseStarted"
+            )
+        ),
+        (
+            ~/AlertMsg_Rens_EnemyContact,
+            (
+                "ENEMY_ENC",
+                "AlertPanel/Line/Rens_EnemyContact"
+            )
+        ),
+        (
+            ~/AlertMsg_Rens_UnitUnderAttack,
+            (
+                "UNIT_U_ATT",
+                "AlertPanel/Line/Rens_UnitUnderAttack"
+            )
+        ),
+        (
+            ~/AlertMsg_Rens_OnAirplaneOutOfFuel,
+            (
+                "PLANE_OOF",
+                "AlertPanel/Line/Rens_OnAirplaneOutOfFuel"
+            )
+        ),
+        (
+            ~/AlertMsg_Rens_OnAirplaneOutOfAmmo,
+            (
+                "PLANE_OOA",
+                "AlertPanel/Line/Rens_OnAirplaneOutOfAmmo"
+            )
+        ),
+        (
+            ~/AlertMsg_Arei_AirplanceContact,
+            (
+                "PLANE_CON",
+                "AlertPanel/Line/Arei_AirplanceContact"
+            )
+        ),
+        (
+            ~/AlertMsg_Arei_UnitSurrender,
+            (
+                "SURREND",
+                "AlertPanel/Line/Arei_UnitSurrender"
+            )
+        ),
+        (
+            ~/AlertMsg_Arei_UnitSurrender_En,
+            (
+                "SURREND_EN",
+                "AlertPanel/Line/Arei_UnitSurrenderEn"
+            )
+        ),
+        (
+            ~/AlertMsg_Arei_EnemyUnitDestroyed,
+            (
+                "ENEMY_DEST",
+                "AlertPanel/Line/Arei_EnemyUnitDestroyed"
+            )
+        ),
+        (
+            ~/AlertMsg_Par_NewPhaseStartedForCampaign,
+            (
+                "PAR_NXPHSC",
+                "AlertPanel/Line/Arei_NewPhaseStartedForCampaign"
+            )
+        ),
+        (
+            ~/AlertMsg_Par_OnObjectiveCaptured,
+            (
+                "SH_OBJS",
+                "AlertPanel/Line/Arei_OnObjectiveCaptured"
+            )
+        ),
+        (
+            ~/AlertMsg_Par_OnObjectiveLost,
+            (
+                "SH_OBJL",
+                "AlertPanel/Line/Arei_OnObjectiveLost"
+            )
+        ),
+    ]
+)

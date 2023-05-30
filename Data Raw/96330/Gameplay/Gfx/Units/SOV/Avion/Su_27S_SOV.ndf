@@ -1,0 +1,25 @@
+export ModelFile_Su_27S_SOV is 'GameData:/Assets/3D/Units/URSS/Avion/Su_27_Flanker/Su_27_Flanker.Ase2NdfBin'
+
+Modele_Su_27S_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Su_27S_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_27S_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/Su_27_Flanker_MID/Su_27_Flanker_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_27S_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/LODS/Su_27_Flanker_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_27S_SOV_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/Su_27_Flanker/Su_27_Flanker_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,19 @@
+export ModelFile_T62M_SOV is 'GameData:/Assets/3D/Units/URSS/Char/T62M/T62M.Ase2NdfBin'
+
+Modele_T62M_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_T62M_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_T62M_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Char/T62M/T62M.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_T62M_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Char/T62M/T62M.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

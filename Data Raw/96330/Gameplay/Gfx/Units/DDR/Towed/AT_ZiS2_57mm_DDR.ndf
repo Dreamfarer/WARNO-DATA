@@ -1,0 +1,22 @@
+export ModelFile_AT_ZiS2_57mm_DDR is 'GameData:/Assets/3D/Units/DDR/Canon/AT_ZiS2_57mm/AT_ZiS2_57mm.Ase2NdfBin'
+
+Modele_AT_ZiS2_57mm_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_AT_ZiS2_57mm_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_AT_ZiS2_57mm_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Canon/AT_ZiS2_57mm/AT_ZiS2_57mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AT_ZiS2_57mm_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Canon/AT_ZiS2_57mm/AT_ZiS2_57mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

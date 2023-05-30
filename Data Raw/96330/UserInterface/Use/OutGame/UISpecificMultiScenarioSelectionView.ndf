@@ -1,0 +1,1195 @@
+
+template MultiScenarioSelectionTitleText
+[
+    TextToken : string,
+    VerticalAlignment : int = UIText_VerticalCenter,
+    BigLineAction : int = ~/BigLineAction/CutByDots,
+]
+is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [100.0, 20.0]
+        MagnifiableOffset = [0.0, 40.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Left
+        VerticalAlignment = <VerticalAlignment>
+    )
+
+    BigLineAction = <BigLineAction>
+
+    TextStyle = 'Default'
+    TypefaceToken = "Eurostyle"
+    TextToken = <TextToken>
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextColor = "Noir"
+    TextSize = "14"
+    Rotation = -45
+    TextPadding = TRTTILength4 (Magnifiable = [30.0, 0.0, 0.0, 0.0])
+)
+
+//-------------------------------------------------------------------------------------
+template MultiScenarioSelectionNavigateButton
+[
+    ElementName : string,
+    RotationTexture : int,
+    BackMapping : TEugBMutablePBaseClass
+] is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [40.0, 40.0]
+    )
+
+    Mapping = <BackMapping>
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            TextureColorToken = 'bouton_selectScenario'
+            TextureToken = "fleche_navigate_scenarios"
+            Rotation = <RotationTexture>
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+MultiScenarioShowTopViewInTopOfAllButton is BUCKButtonDescriptor
+(
+    ElementName = "ShowTopViewInTopOfAllButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [526*0.8,526*0.8]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ElementName = "SelectedMapTopview"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+
+            ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+
+            Components =
+            [
+                BUCKTextureDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [20.0, 20.0]
+                        AlignementToAnchor = [1.0, 0.0]
+                        AlignementToFather = [1.0, 0.0]
+                        MagnifiableOffset = [-10.0, 10.0]
+                    )
+
+                    TextureFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+                    TextureColorToken = 'gris_loupe_scenarioListe'
+                    TextureToken = "magnifying_glass"
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private MultiScenarioSelectionNumberPlayersColumnWidth is 40
+private MultiScenarioSelectionIsRankedColumnWidth is 40
+private MultiScenarioSelectionMapSizeColumnWidth is 40
+private MultiScenarioSelectionDensityColumnWidth is 60
+private MultiScenarioSelectionRiversColumnWidth is 40
+private MultiScenarioSelectionCombatRuleColumnWidth is 60
+
+private MultiScenarioSelectionSelectButton is ConfirmButton
+(
+    ElementName = "SelectButton"
+    TextToken = "DS_SELECT"
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+    ButtonMagnifiableWidthHeight = [175.0, 35.0]
+    TextTypefaceToken = "Liberator"
+    // TextStyle = "TextStyleEcranMoniteur_cyan"
+    TextColorToken = "tampon_vert"
+    BorderLineColorToken = "tampon_vert"
+    HasBackground = false
+    BackgroundBlockColorToken = "loginBoutonBackground_cyan"
+    TextSizeToken = "32"
+    BorderThicknessToken = "3"
+    BigLineAction = ~/BigLineAction/ResizeFont
+    TextPadding = TRTTILength4( Magnifiable = [5.0, 0.0, 5.0, 0.0] )
+)
+
+//-------------------------------------------------------------------------------------
+private MultiScenarioSelectionBackButton is ConfirmButton
+(
+    ElementName = "BackButton"
+    TextToken = "BTN_CLOSE"
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+    ButtonMagnifiableWidthHeight = [175.0, 35.0]
+    TextTypefaceToken = "Liberator"
+    TextColorToken = "boutonFiltre"
+    BorderLineColorToken = "boutonFiltre"
+    HasBackground = false
+    BackgroundBlockColorToken = "loginBoutonBackground_cyan"
+    TextSizeToken = "32"
+    BorderThicknessToken = "3"
+)
+
+//-------------------------------------------------------------------------------------
+private MultiScenarioSelectionTitleColumns is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 60.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    LastMargin = TRTTILength (Magnifiable = 10.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "ScenarioNameMultiList"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+                CheckBoxBorderLineColorToken = 'gris_load'
+
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    MultiScenarioSelectionTitleText(TextToken = 'MSSNAME' ),
+                    parallelograme_englobant(largeur = 244 HintBodyToken = 'msnameh')
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "CombatRuleMultiList"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [~/MultiScenarioSelectionCombatRuleColumnWidth, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    MultiScenarioSelectionTitleText(TextToken = 'MSSCBTRUL' ),
+                    parallelograme_englobant(largeur = 120 HintBodyToken = 'MSSCBTRULh')
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "IsRankedMultiList"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [~/MultiScenarioSelectionIsRankedColumnWidth, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    MultiScenarioSelectionTitleText(TextToken = 'MSSRANKED' ),
+                    parallelograme_englobant(largeur = 100 HintBodyToken = 'MSSRANKEDh')
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "NumberPlayersMultiList"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [~/MultiScenarioSelectionNumberPlayersColumnWidth, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    MultiScenarioSelectionTitleText(TextToken = 'MSSNBPLAY' ),
+                    parallelograme_englobant(largeur = 100 HintBodyToken = 'MSSNBPLAYh')
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "MapSizeMultiList"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [~/MultiScenarioSelectionMapSizeColumnWidth, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    MultiScenarioSelectionTitleText(TextToken = 'MSSMAPSIZ' ),
+                    parallelograme_englobant(largeur = 100 HintBodyToken = 'MSSMAPSIZh')
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "DensityMultiList"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [~/MultiScenarioSelectionDensityColumnWidth, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    MultiScenarioSelectionTitleText(TextToken = 'MSSDENSIT' ),
+                    parallelograme_englobant(largeur = 120 HintBodyToken = 'MSSDENSITh')
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "RiversMultiList"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [~/MultiScenarioSelectionRiversColumnWidth, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    MultiScenarioSelectionTitleText(TextToken = 'MSSRIVERS' ),
+                    parallelograme_englobant(largeur = 100 HintBodyToken = 'MSSRIVERSh')
+                ]
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+polygone_englobant is BUCKPolygonDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+        MagnifiableWidthHeight = [180.0, 0.0]
+        MagnifiableOffset = [-20.0, 0.0]
+    )
+
+    PolygonShape = PolygonShapeManual
+    (
+        Corners =
+        [
+            [0.35, 0.0],
+            [1.0, 0.0],
+            [0.65, 1.0],
+            [0.0, 1.0],
+        ]
+    )
+    Color0 = 'Transparent'
+    HasBorder = true
+    BorderLineColorToken = 'gris_ligne_battlegroup'
+    BorderThicknessToken = '1'
+)
+
+//-------------------------------------------------------------------------------------
+template parallelograme_englobant
+[
+    largeur : float = 120.0,
+    HintBodyToken : string = '',
+]
+ is HUDBackgroundParallelogram
+(
+    MagnifiableOffset = [0.0, 0.0]
+    HasBorder = true
+    MagnifiableWidthHeight = [<largeur>, 60.0]
+    Color0 = 'fond_gris_liste_carte'
+    Color1 = 'fond_gris_liste_carte'
+
+    Components =
+    [
+         BUCKSpecificHintableArea
+        (
+            HintTitleToken = ''
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken =''
+            DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+template MultiScenarioSelectionOneContentElement
+[
+    ElementName : string,
+    TextElementName : string,
+    MagnifiableWidth : int,
+    TextSize : string = '12',
+    Alignment : int  = ~/UIText_Left,
+    TextPadding : TRTTILength4 = TRTTILength4( Magnifiable = [5.0, 0.0, 0.0, 0.0]),
+    HorizontalFitStyle : int = ~/FitStyle/UserDefined,
+]
+is BUCKMultiListContentElementDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [<MagnifiableWidth>, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+
+    HasBorder = true
+    BorderLineColorToken = 'gris_ligne_battlegroup'
+    BorderThicknessToken = '1'
+    BordersToDraw = ~/TBorderSide/Right
+
+    Components =
+    [
+        BUCKTextDescriptor
+        (
+            ElementName = <TextElementName>
+
+            ComponentFrame = TUIFramePropertyRTTI(RelativeWidthHeight = [1.0, 1.0])
+
+            HorizontalFitStyle = <HorizontalFitStyle>
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = <Alignment>
+                VerticalAlignment = ~/UIText_VerticalCenter
+            )
+            TextPadding = <TextPadding>
+            TextStyle = 'Default'
+            TypefaceToken = "Eurostyle"
+            TextSize = <TextSize>
+            TextDico = ~/LocalisationConstantes/dico_interface_outgame
+            TextColor = "Noir"
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private MultiScenarioSelectionMultiListOneLineContent is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    Axis = ~/ListAxis/Horizontal
+
+    InterItemMargin = TRTTILength (Magnifiable = 0.0)
+    LastMargin = TRTTILength (Magnifiable = 10)
+
+    HasBorder = true
+    BorderLineColorToken = 'gris_ligne_battlegroup'
+    BorderThicknessToken = '1'
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "ScenarioNameMultiList"
+                ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "ScenarioNameText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Left
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        TextPadding = TRTTILength4( Magnifiable = [20.0, 0.0, 0.0, 0.0])
+
+                        TextStyle = 'Default'
+                        TypefaceToken = "Eurostyle"
+                        TextSize = '12'
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                        TextColor = "noir_listeMission"
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [0.7, 1.1]
+                                    AlignementToAnchor = [0.1, 0.5]
+                                    AlignementToFather = [0.1, 0.5]
+                                )
+                                TextureToken = 'EffetSurvol_listeMission'
+                            )
+                        ]
+                    )
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = MultiScenarioSelectionOneContentElement
+            (
+                ElementName = "CombatRuleMultiList"
+                TextElementName = "CombatRuleText"
+                MagnifiableWidth = ~/MultiScenarioSelectionCombatRuleColumnWidth
+                TextSize = '8'
+                Alignment = ~/UIText_Right
+                TextPadding = TRTTILength4( Magnifiable = [0.0, 0.0, 5.0, 0.0])
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = MultiScenarioSelectionOneContentElement
+            (
+                ElementName = "IsRankedMultiList"
+                TextElementName = "IsRankedText"
+                MagnifiableWidth = ~/MultiScenarioSelectionIsRankedColumnWidth
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = MultiScenarioSelectionOneContentElement
+            (
+                ElementName = "NumberPlayersMultiList"
+                TextElementName = "NumberPlayersText"
+                MagnifiableWidth = ~/MultiScenarioSelectionNumberPlayersColumnWidth
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = MultiScenarioSelectionOneContentElement
+            (
+                ElementName = "MapSizeMultiList"
+                TextElementName = "MapSizeText"
+                MagnifiableWidth = ~/MultiScenarioSelectionMapSizeColumnWidth
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = MultiScenarioSelectionOneContentElement
+            (
+                ElementName = "DensityMultiList"
+                TextElementName = "DensityText"
+                MagnifiableWidth = ~/MultiScenarioSelectionDensityColumnWidth
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = MultiScenarioSelectionOneContentElement
+            (
+                ElementName = "RiversMultiList"
+                TextElementName = "RiversText"
+                MagnifiableWidth = ~/MultiScenarioSelectionRiversColumnWidth
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private MultiScenarioSelectionMultiListLineRadioButtonManager is TBUCKRadioButtonManager()
+
+private MultiScenarioSelectionMultiListOneLine is BUCKButtonDescriptor
+(
+    ElementName = "ScenarioLineButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 25.0]
+    )
+
+    IsTogglable = true
+    CannotDeselect = true
+
+    RadioButtonManager = ~/MultiScenarioSelectionMultiListLineRadioButtonManager
+
+    Components =
+    [
+        ~/MultiScenarioSelectionMultiListOneLineContent,
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private MultiScenarioSelectionMultiListContent is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = "ScenarioBriefsScrollingContainer"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [7.0, 0.0]
+        MagnifiableOffset = [0.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    ExternalScrollbar = true
+    HasVerticalScrollbar = true
+
+    Components =
+    [
+        BUCKRackDescriptor
+        (
+            ElementName = "ScenarioBriefsRack"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+
+            )
+
+            Axis = ~/ListAxis/Vertical
+            FirstMargin = TRTTILength(Magnifiable = 0.0)
+            InterItemMargin = TRTTILength(Magnifiable = 0.0)
+            BladeDescriptor = ~/MultiScenarioSelectionMultiListOneLine
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private HeaderWithFilterHeight is 30.0
+
+private MutliScenarioListHeaderWithFilter is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, ~/HeaderWithFilterHeight]
+        RelativeWidthHeight = [0.0, 0.0]
+    )
+
+    FirstMargin = TRTTILength( Magnifiable = 12.0 )
+    InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+    LastMargin = TRTTILength( Magnifiable = 12.0 )
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKCheckBoxListDescriptor
+            (
+                ElementName = "FiltersList"
+                ComponentFrame = TUIFramePropertyRTTI()
+                TextColor = "Gris_QuickServeur"
+                ShowFilter_TextColor = "loadTexte"
+                TextSize = "14"
+                ToggleListButtonText = 'filter'
+                BoxMagnifiableWidthHeight = [~/HeaderWithFilterHeight, ~/HeaderWithFilterHeight]
+                MagnifiableOffsetRack = [-10.0, 50.0]
+                TextureToken = 'outgame_icone_filter'
+                TextureColorToken = 'boutonFiltre'
+                CheckboxHasBackground = false
+                CheckboxHasBorder = false
+                CategorySeparation = ~/ECheckBoxListSeparatorConfiguration/ShowCategoryName
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "NumberScenarioShown"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, ~/HeaderWithFilterHeight]
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextRightAlign
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                TextStyle = 'Default'
+                TypefaceToken = "Eurostyle"
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextColor = "loadTexte"
+                TextSize = "14"
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private MultiScenarioListContainer is BUCKContainerDescriptor
+(
+    ElementName = "ScenarioListLeftPartContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+       MagnifiableWidthHeight = [526.0, 730.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.9, 0.0]
+                AlignementToAnchor = [0.4, 0.0]
+                AlignementToFather = [0.4, 0.0]
+            )
+
+            FirstMargin= TRTTILength( Magnifiable = 24.0 )
+            InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+            LastMargin = TRTTILength( Magnifiable = 0.0 )
+            Axis = ~/ListAxis/Vertical
+
+            Elements =
+            [   BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        ParagraphStyle = ~/paragraphStyleTextCenter
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+                        TextToken = "MSSLISSCEN"
+                        TextStyle = 'Default'
+                        TypefaceToken = "Eurostyle"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Noir"
+                        TextSize = "16"
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = ~/MutliScenarioListHeaderWithFilter
+                ),
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKMultiListDescriptor
+                    (
+                        ElementName = "ScenarioMultiList"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        ColumnNames = []
+
+                        SortableColumnNames =
+                        [
+                            "ScenarioNameMultiList",
+                            "NumberPlayersMultiList",
+                            "IsRankedMultiList",
+                            "MapSizeMultiList",
+                            "DensityMultiList",
+                            "RiversMultiList",
+                            "CombatRuleMultiList",
+                        ]
+
+                        SortingCriteriaListByPriority =
+                        [
+                            "NumberPlayersMultiList",
+                            "ScenarioNameMultiList",
+                        ]
+
+                        RackName = "ScenarioBriefsRack"
+
+                        TitleDescriptor = ~/MultiScenarioSelectionTitleColumns
+                        ContentDescriptor = ~/MultiScenarioSelectionMultiListContent
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+template MultiListScenarioSelectedMapDetailedInfoText
+[
+    TitleLineToken : string,
+    TextElementName : string,
+]
+is BUCKListElementDescriptor
+(
+    ComponentDescriptor = BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 25.0]
+            RelativeWidthHeight = [0.0, 0.0]
+        )
+
+        LastMargin = TRTTILength( Magnifiable = 0.0 )
+        Axis = ~/ListAxis/Horizontal
+
+
+        Elements =
+        [
+            BUCKListElementDescriptor
+            (
+                ExtendWeight = 0.5
+
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+
+                    ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                    TextToken = <TitleLineToken>
+                    TextStyle = 'Default'
+                    TypefaceToken = "Eurostyle"
+                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    TextColor = "Noir"
+                    TextSize = "14"
+
+                    TextPadding = TRTTILength4 (Magnifiable = [15,0,0,0])
+
+                    HasBorder = true
+                    BorderLineColorToken = 'gris_ligne_battlegroup'
+                    BorderThicknessToken = '1'
+                )
+            ),
+            BUCKListElementDescriptor
+            (
+                ExtendWeight = 0.5
+                ComponentDescriptor = BUCKTextDescriptor
+                (
+                    ElementName = <TextElementName>
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                    )
+
+                    ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                    TextStyle = 'Default'
+                    TypefaceToken = "Eurostyle"
+                    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                    TextColor = "Noir"
+                    TextSize = "14"
+
+                    TextPadding = TRTTILength4 (Magnifiable = [15.0, 0.0, 0.0, 0.0])
+
+                    HasBorder = true
+                    BorderLineColorToken = 'gris_ligne_battlegroup'
+                    BorderThicknessToken = '1'
+                )
+            ),
+        ]
+    )
+)
+
+//-------------------------------------------------------------------------------------
+private MultiScenarioListDescriptionContainer is BUCKContainerDescriptor
+(
+    ElementName = "ScenarioDescription"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [526.0, 745.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.95, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength ( Magnifiable = 24)
+            InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+            LastMargin = TRTTILength( Magnifiable = 12.0 )
+
+            Elements =
+            [
+                // description selected scenario
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "SelectedMapNameText"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [0.0, 40.0]
+                        )
+
+                        HasBorder = true
+                        BorderLineColorToken = 'gris_ligne_battlegroup'
+                        BorderThicknessToken = '1'
+                        BordersToDraw = ~/TBorderSide/Bottom
+
+                        ParagraphStyle = ~/paragraphStyleTextCenter
+
+                        TextStyle = 'Default'
+                        TypefaceToken = "Eurostyle"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Noir"
+                        TextSize = "20"
+                    )
+                ),
+                MultiListScenarioSelectedMapDetailedInfoText
+                (
+                    TitleLineToken = "MSSNBPLAYF"
+                    TextElementName = "SelectedMapNbPlayers"
+                ),
+                MultiListScenarioSelectedMapDetailedInfoText
+                (
+                    TitleLineToken = "MSSRANKEDF"
+                    TextElementName = "SelectedMapIsRanked"
+                ),
+                MultiListScenarioSelectedMapDetailedInfoText
+                (
+                    TitleLineToken = "MSSMAPSIZF"
+                    TextElementName = "SelectedMapMapSize"
+                ),
+                MultiListScenarioSelectedMapDetailedInfoText
+                (
+                    TitleLineToken = "MSSDENSIT"
+                    TextElementName = "SelectedMapDensity"
+                ),
+                MultiListScenarioSelectedMapDetailedInfoText
+                (
+                    TitleLineToken = "MSSRIVERS"
+                    TextElementName = "SelectedMapHasRivers"
+                ),
+                MultiListScenarioSelectedMapDetailedInfoText
+                (
+                    TitleLineToken = "MSSCBTRUL"
+                    TextElementName = "SelectedMapCombatRule"
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 25.0]
+                        )
+                    )
+                ),
+
+                // navigation
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = MultiScenarioSelectionNavigateButton
+                                (
+                                    ElementName = "NavigateBackwardButton"
+                                    RotationTexture = 90
+                                    BackMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_LEFT_ARROW ) )
+                                )
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = ~/MultiScenarioShowTopViewInTopOfAllButton
+                            ),
+                            BUCKListElementDescriptor
+                            (
+                                ComponentDescriptor = MultiScenarioSelectionNavigateButton
+                                (
+                                    ElementName = "NavigateForwardButton"
+                                    RotationTexture = -90
+                                    BackMapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_RIGHT_ARROW ) )
+                                )
+                            ),
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI (MagnifiableWidthHeight = [0.0, 40.0])
+                    )
+                ),
+                // liste des boutons
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKListDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            MagnifiableWidthHeight = [0.0, 38.0]
+                        )
+
+                        Axis = ~/ListAxis/Horizontal
+                        InterItemMargin = TRTTILength(Magnifiable = 10.0)
+                        LastMargin = TRTTILength(Magnifiable = 0.0)
+
+                        Elements =
+                        [
+                            BUCKListElementDescriptor( ComponentDescriptor = ~/MultiScenarioSelectionSelectButton ),
+                            BUCKListElementDescriptor( ComponentDescriptor = MenuActionButtonSeparator()),
+                            BUCKListElementDescriptor( ComponentDescriptor = ~/MultiScenarioSelectionBackButton ),
+                        ]
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private BUCKSpecificMultiScenarioSelectionMainComponentDescriptor is BUCKTranslationAnimatedContainerDescriptor
+(
+    FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.8]
+    )
+
+    TriggerWhenSetVisible = true
+    AnimationTotalDuration = 0.15
+
+    FramePropertyAfterAnimation = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        AlignementToFather = [0.5, 1.0]
+    )
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = "ScenarioListBackground"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+            MagnifierMultiplication = 1.4
+            Components =
+            [
+                BUCKTextureDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        MagnifiableWidthHeight = [1214.0, 806.0]
+                        AlignementToFather = [0.5, 1.0]
+                        AlignementToAnchor = [0.5, 1.0]
+                    )
+                    TextureToken = "mission_dossierVide"
+                    HidePointerEvents = true
+
+                    Components =
+                    [
+                        page_de_gauche,
+                        page_de_droite,
+                    ]
+                ),
+            ]
+        ),
+        BUCKButtonDescriptor
+        (
+            ElementName = "OverallMapTopViewButton"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "Noir80"
+
+            Components =
+            [
+                BUCKTextureDescriptor
+                (
+                    ElementName = "OverallMapTopViewTexture"
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 1.0]
+                        AlignementToFather = [0.5, 0.5]
+                        AlignementToAnchor = [0.5, 0.5]
+                    )
+                    ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+
+                    TextureFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToFather = [0.5, 0.5]
+                        AlignementToAnchor = [0.5, 0.5]
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+page_de_gauche is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+       MagnifiableWidthHeight = [526.0, 745.0]
+       MagnifiableOffset = [71.0, 31.0]
+    )
+
+    Components =
+    [
+        BUCKPerspectiveWarpOffscreenContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            DistortTextureDrawer = $/UserInterface/UIDistortTextureDrawer
+            PointerEventsToAllow = ~/EAllowablePointerEventType/Move
+
+            MagnifiableTopLeftOffset = [0.0,  0.0]
+            MagnifiableTopRightOffset = [0.0, -5.0]
+            MagnifiableBottomLeftOffset = [6.0, 0.0]
+            MagnifiableBottomRightOffset = [7.0, -5.0]
+
+            Components =
+            [
+                ~/MultiScenarioListContainer,
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+page_de_droite is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [520.0,741.0]
+        MagnifiableOffset = [285.0, 25.0]
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+    )
+
+    Components =
+    [
+        BUCKPerspectiveWarpOffscreenContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            DistortTextureDrawer = $/UserInterface/UIDistortTextureDrawer
+            PointerEventsToAllow = ~/EAllowablePointerEventType/Move
+
+            MagnifiableTopLeftOffset = [0.0, 0.0]
+            MagnifiableTopRightOffset = [5.0, 5.0]
+            MagnifiableBottomLeftOffset = [-9.0, 1.0]
+            MagnifiableBottomRightOffset = [-4.0, 10.0]
+
+            Components =
+            [
+                ~/MultiScenarioListDescriptionContainer,
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+UISpecificMultiScenarioSelectionViewDescriptor is TUISpecificOutGameMultiScenarioSelectionViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificMultiScenarioSelectionMainComponentDescriptor
+    MainComponentContainerUniqueName = "LobbyForegroundContainer"
+)

@@ -1,0 +1,19 @@
+export ModelFile_BTR_D_Robot_SOV is 'GameData:/Assets/3D/Units/URSS/APC/BTR_D_Robot/BTR_D_Robot.Ase2NdfBin'
+
+Modele_BTR_D_Robot_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BTR_D_Robot_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_D_Robot_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BTR_D_Robot/BTR_D_Robot.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_D_Robot_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BTR_D_Robot/BTR_D_Robot.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

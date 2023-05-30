@@ -1,0 +1,1165 @@
+
+TutorielMissionListBackground is "mission_dossierVide"
+ChallengeMissionListBackground is "mission_dossierVide"
+StrategicMissionListBackground is "mission_dossierVide"
+
+//-------------------------------------------------------------------------------------
+private ScenarioBriefButtonRadioManager is TBUCKRadioButtonManager()
+
+private template ScenarioBriefDescriptor
+[
+    GameType : int,
+] is BUCKButtonDescriptor
+(
+    ElementName = "ScenarioBriefButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 25.0]
+    )
+
+    IsTogglable = true
+    CannotDeselect = true
+    LeftClickSound = SoundEvent_SelectTutorialOrChallenge
+
+    RadioButtonManager = ~/ScenarioBriefButtonRadioManager
+
+    Components =
+    [
+        Texte_Mission(GameType = <GameType>),
+        BUCKButtonDescriptor
+        (
+            ElementName = "ButtonDLC"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            HasBackground = true
+            BackgroundBlockColorToken = "DivisionBrief/ButtonOverlay"
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToAnchor = [0.5, 0.5]
+                        AlignementToFather = [0.5, 0.5]
+                    )
+
+                    Axis = ~/ListAxis/Horizontal
+
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextureDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [40.0, 40.0]
+                                    AlignementToFather = [0.0, 0.5]
+                                    AlignementToAnchor = [0.0, 0.5]
+                                )
+
+                                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+                                TextureToken = "UseOutGame_Cadenas"
+                            )
+                        ),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+                                ElementName = "ContentName"
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = UIText_Center
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    AlignementToFather = [0.0, 0.5]
+                                    AlignementToAnchor = [0.0, 0.5]
+                                )
+
+                                HorizontalFitStyle = ~/FitStyle/FitToContent
+                                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                                BigLineAction = ~/BigLineAction/CutByDots
+
+                                TextStyle = "Default"
+                                TypefaceToken = "UIMainFont"
+
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+
+                                TextColor = "Glacier"
+                                TextSize = "20"
+
+                                TextPadding = TRTTILength4(Magnifiable = [20.0, 0.0, 20.0, 0.0])
+                            )
+                        )
+                    ]
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private template Texte_Mission
+[
+    GameType : int,
+] is BUCKListDescriptor
+(
+    ElementName = "ScenarioBriefInfos"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength (Magnifiable = 10.0)
+    InterItemMargin = TRTTILength (Magnifiable = 5.0)
+    LastMargin = TRTTILength (Magnifiable = 10.0)
+
+    Elements =
+    [
+        // status
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "IsCompletedMultilist"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [ChallengeDoneColumnWidth, 0.0]
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                Components =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        ElementName = "IsCompletedTexture"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            //RelativeWidthHeight = [0.8, 1.0]
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                        TextureColorToken = 'Noir'
+                        ResizeMode = ~/TextureResizeMode/FitToContent
+
+                        TextureFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+                    ),
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "OperationNameMultilist"
+                ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+
+                Components =
+                [
+                    BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        Components =
+                        [
+                            BUCKTextDescriptor
+                            (
+                                ElementName = "MissionName"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                ParagraphStyle = TParagraphStyleRTTI
+                                (
+                                    Alignment = ~/UIText_Left
+                                    VerticalAlignment = ~/UIText_VerticalCenter
+                                )
+
+                                TextStyle = 'Default'
+                                TypefaceToken = "Eurostyle"
+                                TextSize = '16'
+                                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                                TextColor = "noir_listeMission"
+
+                                Components =
+                                [
+                                    BUCKTextureDescriptor
+                                    (
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [1.1, 1.1]
+                                            AlignementToAnchor = [0.5, 0.5]
+                                            AlignementToFather = [0.5, 0.5]
+                                        )
+                                        TextureToken = 'EffetSurvol_listeMission'
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                ]
+            )
+        ) ] + ((<GameType> == ~/GameChallenge) ? [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "OperationCountryMultilist"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [ChallengeCountryColumnWidth, 0.0]
+                )
+
+                Components =
+                [
+                    BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [30.0, 25.0]
+                            AlignementToAnchor = [0.5, 0.5]
+                            AlignementToFather = [0.5, 0.5]
+                        )
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ElementName = "OperationCountryTexture"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                TextureFrame   = TUIFramePropertyRTTI
+                                (
+                                    AlignementToAnchor = [0.5, 0.5]
+                                    AlignementToFather = [0.5, 0.5]
+                                )
+
+                                ClipTextureToComponent = true
+                                ResizeMode = ~/TextureResizeMode/FitToParentConservingRatio
+                            )
+                        ]
+                    )
+                ]
+            )
+        ) ] : []) + [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListContentElementDescriptor
+            (
+                ElementName = "OperationDurationMultilist"
+                ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [0.0, 1.0] )
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = "MissionDuration"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [ChallengeDurationColumnWidth, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = ~/UIText_Center
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+
+                        TextStyle = 'Default'
+                        TypefaceToken = "Eurostyle"
+                        TextSize = '12'
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Noir"
+                        TextToken = "CL_DIFF"
+                    )
+                ]
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+private template ScenarioBriefsRack
+[
+    GameType : int,
+] is BUCKRackDescriptor
+(
+    ElementName = "ScenarioBriefsRack"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength(Magnifiable = 10.0)
+    InterItemMargin = TRTTILength(Magnifiable = 0.0)
+    BladeDescriptor = ScenarioBriefDescriptor(GameType = <GameType>)
+)
+
+//-------------------------------------------------------------------------------------
+
+private ScenarioDifficultyChoiceRadioManager is TBUCKRadioButtonManager()
+
+private ScenarioDifficultyComponent is BUCKButtonDescriptor
+(
+    ElementName = "DifficultyButton"
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    RadioButtonManager = ~/ScenarioDifficultyChoiceRadioManager
+    IsTogglable = true
+    CannotDeselect = true
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [120.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+            InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "DifficultyName"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [0.0, 20.0]
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        ParagraphStyle = ~/paragraphStyleTextCenter
+                        BigLineAction = ~/BigLineAction/ResizeFont
+
+                        TextStyle = 'Default'
+                        TypefaceToken = "Eurostyle"
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextColor = "Noir"
+                        TextSize = "20"
+                        TextPadding = TRTTILength4( Magnifiable = [20.0, 0.0, 20.0, 0.0] )
+
+                        Components =
+                        [
+                            BUCKTextureDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.1, 1.1]
+                                    AlignementToAnchor = [0.5, 0.5]
+                                    AlignementToFather = [0.5, 0.5]
+                                )
+                                TextureToken = 'EffetSurvol_listeMission'
+                            )
+                        ]
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ElementName = "DifficultyTexture"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToFather = [0.5, 0.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                        )
+                        TextureFrame = TUIFramePropertyRTTI()
+                        ResizeMode = ~/TextureResizeMode/FitToContent
+                        TextureColorToken = 'Noir'
+                    )
+                ),
+            ]
+        )
+    ]
+)
+
+
+//-------------------------------------------------------------------------------------
+
+private SoloLaunchButtonHeight is 35.0
+
+private template SoloLaunchButton
+[
+    ElementName : string = "SelectButton",
+    TextToken : string = "DS_SELECT",
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+] is ConfirmButton
+(
+    ElementName = <ElementName>
+    TextToken = <TextToken>
+    TextDico = <TextDico>
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ENTER ) )
+    ButtonMagnifiableWidthHeight = [175.0, ~/SoloLaunchButtonHeight]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonMagnifiableOffset = [0.0, 0.0]
+    TextTypefaceToken = "Liberator"
+    TextColorToken = "tampon_vert"
+    BorderLineColorToken = "tampon_vert"
+    HasBackground = false
+    BackgroundBlockColorToken = "loginBoutonBackground_cyan"
+    TextSizeToken = "32"
+    BorderThicknessToken = "3"
+    BigLineAction = ~/BigLineAction/ResizeFont
+    TextPadding = TRTTILength4( Magnifiable = [5.0, 0.0, 5.0, 0.0] )
+)
+
+private template SoloQuitButton
+[
+    TextToken : string = "BTN_CLOSE",
+    ElementName : string = "BackButton",
+
+] is ConfirmButton
+(
+    ElementName = <ElementName>
+    TextToken = <TextToken>
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+    ButtonMagnifiableWidthHeight = [175.0, 35.0]
+    ButtonAlignementToAnchor = [0.5, 0.0]
+    ButtonAlignementToFather = [0.5, 0.0]
+    ButtonMagnifiableOffset = [0.0, 0.0]
+    TextTypefaceToken = "Liberator"
+    TextColorToken = "tampon_gris"
+    BorderLineColorToken = "tampon_gris"
+    HasBackground = false
+    BackgroundBlockColorToken = "loginBoutonBackground_cyan"
+    TextSizeToken = "32"
+    BorderThicknessToken = "3"
+)
+
+//-------------------------------------------------------------------------------------
+
+private template ScenarioDescriptionContainer
+[
+    ElementName : string,
+    ComponentFrame : TUIFramePropertyRTTI,
+    IsChallenge : bool,
+] is BUCKContainerDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = <ComponentFrame>
+
+    Components =
+    [
+        BUCKPerspectiveWarpOffscreenContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            DistortTextureDrawer = $/UserInterface/UIDistortTextureDrawer
+            PointerEventsToAllow = ~/EAllowablePointerEventType/Move
+
+            MagnifiableTopLeftOffset = [0.0, 0.0]
+            MagnifiableTopRightOffset = [5.0, 5.0]
+            MagnifiableBottomLeftOffset = [-9.0, 1.0]
+            MagnifiableBottomRightOffset = [-4.0, 10.0]
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+                    // FirstMargin = TRTTILength( Magnifiable = 10.0 )
+                    LastMargin = TRTTILength( Magnifiable = 10.0 )
+
+                    Elements =
+                    [
+                        // Description
+                        BUCKListElementDescriptor
+                        (
+                            ExtendWeight = 1.0
+                            ComponentDescriptor = BUCKContainerDescriptor
+                            (
+                                ElementName = "ScenarioDescriptionContainer"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                // envoie ResumeCampagneTypeHistorique ou ChallengeMoreDescriptionType pour les challenge
+                                // envoie ResumeCampagneType3 pour campagne et tuto
+                            )
+                        ),
+                    ]
+                    + (<IsChallenge> ?
+                    [
+                        // Choix difficulté
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKRackDescriptor
+                            (
+                                ElementName = "ScenarioDifficultyChoiceRack"
+
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    AlignementToAnchor = [0.5, 0.0]
+                                    AlignementToFather = [0.5, 0.0]
+                                )
+
+                                Axis = ~/ListAxis/Horizontal
+                                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+                                InterItemMargin = TRTTILength( Magnifiable = 10.0 )
+                                BladeDescriptor = ~/ScenarioDifficultyComponent
+                            )
+                        ),
+                        BUCKListElementSpacer( Magnifiable = 20.0),
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKTextDescriptor
+                            (
+                                ElementName = "SelectedDifficultyDescriptionText"
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    AlignementToAnchor = [0.5, 0.0]
+                                    AlignementToFather = [0.5, 0.0]
+                                )
+
+                                ParagraphStyle = ~/paragraphStyleTextCenter
+                                BigLineAction = ~/BigLineAction/MultiLine
+
+                                TextStyle = 'Default'
+                                TextPadding = TRTTILength4(Magnifiable = [20,0,50,0])
+                                TypefaceToken = "Eurostyle"
+                                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                                TextColor = "Noir"
+                                TextSize = "14"
+                            )
+                        ),
+                        BUCKListElementSpacer( Magnifiable = 60.0),
+                    ] : [])
+
+                    +
+                    [
+
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKContainerDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 0.0]
+                                    MagnifiableWidthHeight = [0.0, (<IsChallenge> ? 26 : ~/SoloLaunchButtonHeight)]
+                                    AlignementToAnchor = [0.5, 0.0]
+                                    AlignementToFather = [0.5, 0.0]
+                                )
+
+                                Components = (<IsChallenge> ?
+                                [
+                                    SoloLaunchButton
+                                    (
+                                        ElementName = "ShowMissionDetailsButton"
+                                    ),
+                                    SoloLaunchButton
+                                    (
+                                        TextToken = "cha_titre"
+                                        TextDico = ~/LocalisationConstantes/dico_maps
+
+                                    )
+                                ] :
+                                [
+                                    SoloLaunchButton(),
+                                ])
+                            )
+                        ),
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template ScenarioListContainer
+[
+    ListTitle : string,
+    GameType : int,
+] is BUCKContainerDescriptor
+(
+    ElementName = "ScenarioListContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+       MagnifiableWidthHeight = [526.0, 745.0]
+       MagnifiableOffset = [71.0, 31.0]
+    )
+
+    Components =
+    [
+        BUCKPerspectiveWarpOffscreenContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            DistortTextureDrawer = $/UserInterface/UIDistortTextureDrawer
+            PointerEventsToAllow = ~/EAllowablePointerEventType/Move
+
+            MagnifiableTopLeftOffset = [0.0,  0.0]
+            MagnifiableTopRightOffset = [0.0, -5.0]
+            MagnifiableBottomLeftOffset = [6.0, 0.0]
+            MagnifiableBottomRightOffset = [7.0, -5.0]
+
+            Components =
+            [
+                BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        RelativeWidthHeight = [1.0, 0.0]
+                    )
+
+                    Axis = ~/ListAxis/Vertical
+                    LastMargin = TRTTILength( Magnifiable = 10.0 )
+
+                    Elements =
+                    [
+                        // Description
+                        BUCKListElementDescriptor
+                        (
+                            ExtendWeight = 1.0
+                            ComponentDescriptor = BUCKContainerDescriptor
+                            (
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    RelativeWidthHeight = [1.0, 1.0]
+                                )
+
+                                Components = ((<GameType> == ~/GameChallenge) ?
+                                [
+                                    BUCKContainerDescriptor
+                                    (
+                                        ElementName = "ScenarioDetailsContainer"
+                                        ComponentFrame = TUIFramePropertyRTTI
+                                        (
+                                            RelativeWidthHeight = [1.0, 1.0]
+                                        )
+
+                                        // Envoie ChallengeDescriptionType pour les challenge
+                                    ),
+                                ] : []) +
+                                [
+                                    ScenarioMultiList
+                                    (
+                                        ListTitle = <ListTitle>
+                                        GameType = <GameType>
+                                    ),
+                                ]
+                            )
+                        ),
+                        //Bouton back
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = SoloQuitButton()
+                        ),
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template ScenarioMultiList
+[
+    ListTitle : string,
+    GameType : int,
+] is BUCKMultiListDescriptor
+(
+    ElementName = "ScenarioMultiList"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    ColumnNames =
+    [
+        "IsCompletedMultilist",
+        "OperationNameMultilist",
+        "OperationDurationMultilist"
+    ] + ((<GameType> == ~/GameChallenge) ? ["OperationCountryMultilist"] : [])
+
+    SortableColumnNames = ((<GameType> == ~/GameCampaign) ? [] :
+    [
+        "IsCompletedMultilist",
+        "OperationNameMultilist",
+        "OperationDurationMultilist"
+    ]) + ((<GameType> == ~/GameChallenge) ? ["OperationCountryMultilist"] : [])
+
+    RackName = "ScenarioBriefsRack"
+
+    TitleDescriptor = ScenarioTitleContainer(ListTitle = <ListTitle> GameType = <GameType>)
+    ContentDescriptor = Scenario_List_ScrollingContainer(GameType = <GameType>)
+)
+
+//-------------------------------------------------------------------------------------
+
+private template Scenario_List_ScrollingContainer
+[
+    GameType : int,
+] is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    Components =
+    [
+        BUCKSpecificScrollingContainerDescriptor
+        (
+            ElementName = "ScenarioBriefsScrollingContainer"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+
+            VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [7.0, 0.0]
+                MagnifiableOffset = [-6.0, 0.0]
+                AlignementToFather = [1.0, 0.0]
+                AlignementToAnchor = [1.0, 0.0]
+            )
+
+            ExternalScrollbar = true
+            HasVerticalScrollbar = true
+
+            Components =
+            [
+                ScenarioBriefsRack(GameType = <GameType>)
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template ChallengeTitleTextComponent
+[
+    TextToken : string,
+    HorizontalAlignment : int = UIText_Center,
+    HintBodyToken: string = ''
+]
+is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = <HorizontalAlignment>
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    BigLineAction = ~/BigLineAction/ResizeFont
+
+    TextStyle = 'Default'
+    TypefaceToken = "Eurostyle"
+    TextToken = <TextToken>
+    TextDico = ~/LocalisationConstantes/dico_interface_outgame
+    TextColor = "Noir"
+    TextSize = "14"
+    TextPadding = TRTTILength4( Magnifiable = [2.0, 0.0, 2.0, 0.0] )
+
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_outgame
+        HintTitleToken = <TextToken>
+        HintBodyToken = <HintBodyToken>
+    )
+)
+
+//-------------------------------------------------------------------------------------
+
+template ScenarioTitleContainer
+[
+    ListTitle : string,
+    GameType : int,
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                    MagnifiableWidthHeight = [0.0, 70.0]
+                )
+                ParagraphStyle = paragraphStyleTextCenter
+                TextStyle = "Default"
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+                VerticalFitStyle = ~/FitStyle/UserDefined
+                TypefaceToken = "Eurostyle"
+                BigLineAction = ~/BigLineAction/MultiLine
+                TextToken = <ListTitle>
+                TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                TextColor = "Noir"
+                TextSize = "20"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = titleColumnMissionList(GameType = <GameType>)
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.95, 0.0]
+                    MagnifiableWidthHeight = [0.0, 2.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                    AlignementToFather = [0.5, 0.0]
+                )
+
+                HasBorder = true
+                BorderThicknessToken = '1'
+                BorderLineColorToken = 'Noir'
+                BordersToDraw = ~/TBorderSide/Bottom
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+ChallengeDoneColumnWidth is 60
+ChallengeCountryColumnWidth is 70
+ChallengeDurationColumnWidth is 70
+
+template titleColumnMissionList
+[
+    GameType : int,
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 25.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength (Magnifiable = 10.0)
+    InterItemMargin = TRTTILength (Magnifiable = 5.0)
+    LastMargin = TRTTILength (Magnifiable = 10.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "IsCompletedMultilist"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [ChallengeDoneColumnWidth, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    ChallengeTitleTextComponent
+                    (
+                        TextToken = 'CL_GAMSTS'
+                        HintBodyToken = 'CL_statb'
+                    ),
+                ]
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "OperationNameMultilist"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    ChallengeTitleTextComponent
+                    (
+                        TextToken = 'OP_TITLE'
+                        HintBodyToken = 'CL_nameb'
+                    )
+                ]
+            )
+        ) ] + ((<GameType> == ~/GameChallenge) ? [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "OperationCountryMultilist"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [ChallengeCountryColumnWidth, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/String
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    ChallengeTitleTextComponent
+                    (
+                        TextToken = "OLB_CNTRY"
+                        HintBodyToken = 'CL_counb'
+                    )
+                ]
+            )
+        ) ] : []) + [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKMultiListTitleButtonDescriptor
+            (
+                ElementName = "OperationDurationMultilist"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [ChallengeDurationColumnWidth, 0.0]
+                )
+
+                SortingType = ~/MultiListSorting/Integer
+                ShowCheckbox = false
+                HidePointerEvents = true
+                Components =
+                [
+                    ChallengeTitleTextComponent
+                    (
+                        TextToken = 'LS_Dur'
+                        HintBodyToken = 'CL_durab'
+                    )
+                ]
+            )
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private template BUCKSpecificScenarioMainComponentDescriptor
+[
+    GameType : int,
+    IsSubView : bool
+] is WindowFrame
+(
+    HasBackground = false
+    TitleToken = (<GameType> == ~/GameCampaign) ? "TACT_TUTO" : ((<GameType> == ~/GameStrategic) ? "new_AG" : "new_HB")
+    HasTitle =  (<IsSubView> ? false : true)
+    ContentExtendWeight = (<IsSubView> ? 0.2 : 1.0)
+    ContentRelativeWidthHeight = [1.0, 1.0]
+    MargeHorizontale = 0
+    ButtonList = []
+
+    ContentComponents =
+    [
+        BUCKTranslationAnimatedContainerDescriptor
+        (
+            FramePropertyBeforeAnimation = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.8]
+            )
+
+            TriggerWhenSetVisible = true
+            AnimationTotalDuration = 0.15
+
+            FramePropertyAfterAnimation = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToAnchor = [0.5, 1.0]
+                AlignementToFather = [0.5, 1.0]
+            )
+
+            Components = []+ ((<GameType> == ~/GameChallenge) ?
+            [
+                ~/FullPanelPreviewMission,
+            ] :
+            [
+                FullPanelLoadMission
+                (
+                    ListTitle = (<GameType> == ~/GameCampaign) ? "tuto_list" : ((<GameType> == ~/GameStrategic) ? "str_list" : "op_list")
+                    BackgroundTexture = (<GameType> == ~/GameCampaign) ? ~/TutorielMissionListBackground : ((<GameType> == ~/GameStrategic) ? ~/StrategicMissionListBackground : ~/ChallengeMissionListBackground)
+                    GameType = <GameType>
+                ),
+            ])
+        )
+    ]
+)
+//-------------------------------------------------------------------------------------
+template FullPanelLoadMission
+[
+    BackgroundTexture : string,
+    ListTitle : string,
+    GameType : int,
+] is BUCKTextureDescriptor
+(
+    ElementName = "LoadMissionFullPanel"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1214.0, 806.0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        MagnifiableOffset = [0,25]
+    )
+
+    TextureToken = <BackgroundTexture>
+    HidePointerEvents = true
+
+    Components =
+    [
+        // page de gauche
+        ScenarioListContainer
+        (
+            ListTitle = <ListTitle>
+            GameType = <GameType>
+        ),
+        // page de droite
+        ScenarioDescriptionContainer
+        (
+            ElementName = "ScenarioDescription"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [520.0,741.0]
+                MagnifiableOffset = [285.0, 25.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+            IsChallenge = false
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+FullPanelPreviewMission is BUCKTextureDescriptor
+(
+    ElementName = "FullPanelPreviewMission"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1214.0, 806.0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        MagnifiableOffset = [0,25]
+
+    )
+
+    TextureToken = ~/ChallengeMissionListBackground
+    HidePointerEvents = true
+
+    Components =
+    [
+        // page de gauche
+        ScenarioListContainer
+        (
+            ListTitle = "op_list"
+            GameType = ~/GameChallenge
+        ),
+        // page de droite
+        ScenarioDescriptionContainer
+        (
+            ElementName = "ScenarioMap"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [520.0,741.0]
+                MagnifiableOffset = [285.0, 15.0]
+                AlignementToFather = [0.5, 0.0]
+                AlignementToAnchor = [0.5, 0.0]
+            )
+            IsChallenge = true
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template UISpecificScenarioViewDescriptor
+[
+    GameType : int = ~/Unknown,
+    ComponentContainerUniqueName : string = "",
+    IsSubView : bool = false,
+] is TUISpecificScenarioSelectionViewDescriptor
+(
+    MainComponentDescriptor = BUCKSpecificScenarioMainComponentDescriptor(GameType = <GameType> IsSubView = <IsSubView>)
+    MainComponentContainerUniqueName = <ComponentContainerUniqueName> // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    ChallengeDescriptionType = "SummaryCampaignShowroom" // Left page
+    ChallengeMoreDescriptionType = "ScenarioMapDescription" // Right page
+
+    CloseButtonText = "BTN_CLOSE"
+    BackButtonText = "BTN_BACK"
+)

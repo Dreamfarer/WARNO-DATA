@@ -1,0 +1,22 @@
+export ModelFile_DCA_53T2_20mm_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/TRM_2000_20mm/DCA_53T2_20mm.Ase2NdfBin'
+
+Modele_DCA_53T2_20mm_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_DCA_53T2_20mm_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_53T2_20mm_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Vehicule/TRM_2000_20mm/DCA_53T2_20mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_53T2_20mm_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Vehicule/TRM_2000_20mm/DCA_53T2_20mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

@@ -1,0 +1,38 @@
+export ModelFile_M1_Abrams_CMD_US is 'GameData:/Assets/3D/Units/US/Char/M1_Abrams_CMD/M1_Abrams_CMD.Ase2NdfBin'
+
+Modele_M1_Abrams_CMD_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M1_Abrams_CMD_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_CMD_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M1_Abrams_CMD/M1_Abrams_CMD.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_CMD_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M1_Abrams_CMD/M1_Abrams_CMD.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_CMD_US_Test is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M1_Abrams_CMD_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_CMD_US_Test_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M1_Abrams_CMD/M1_Abrams_CMD.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M1_Abrams_CMD_US_Test_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M1_Abrams_CMD/M1_Abrams_CMD.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

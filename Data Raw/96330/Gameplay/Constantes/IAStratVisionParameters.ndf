@@ -1,0 +1,30 @@
+//----------------------------------------------------------------------------------------------------------------//
+// CONSTANTES POUR LE GAME DESIGN
+//----------------------------------------------------------------------------------------------------------------//
+// Empiriquement traverser la map sur fulda prend environ 5 minutes dans le meileur des cas (route  + aucun ennemi)
+// Prenons en compte le temps de production de l'unité + le temsp d'avoir les fonds
+// Easy = Traverser la moitié du terrain + 1 minute
+// Medium = traverser la moitié du terrain + 2.5 minutes de regroupement devant le point d'attente
+// Hard = traverser la totalité de la map + 2.5 minutes
+//----------------------------------------------------------------------------------------------------------------//
+export IAStratVisionNoShootDetection is TIAStratVisionParameters
+(
+    UnitsKnowledge = ~/EUnitsKnowledge/Seen
+    KnowledgeMemoTimer = 210 // Une fois une unité repérée, elle est mémorisée ce nombre de secondes (0 = infini)
+    KnowledgeTimerForAttackBehavior = 60
+)
+//----------------------------------------------------------------------------------------------------------------//
+export IAStratVisionShootDetectionLittleMemory is TIAStratVisionParameters
+(
+    UnitsKnowledge = ~/EUnitsKnowledge/Seen | ~/EUnitsKnowledge/HasShot
+    KnowledgeMemoTimer = 320 // Une fois une unité repérée, elle est mémorisée ce nombre de secondes (0 = infini)
+    KnowledgeTimerForAttackBehavior = 60
+)
+//----------------------------------------------------------------------------------------------------------------//
+export IAStratVisionShootDetectionInfiniteMemory is TIAStratVisionParameters
+(
+    UnitsKnowledge = ~/EUnitsKnowledge/Seen | ~/EUnitsKnowledge/HasShot
+    KnowledgeMemoTimer = 450 // Une fois une unité repérée, elle est mémorisée ce nombre de secondes (0 = infini)
+    KnowledgeTimerForAttackBehavior = 60
+)
+//----------------------------------------------------------------------------------------------------------------//

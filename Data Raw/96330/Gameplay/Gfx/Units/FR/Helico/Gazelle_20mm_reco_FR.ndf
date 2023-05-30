@@ -1,0 +1,19 @@
+export ModelFile_Gazelle_20mm_reco_FR is 'GameData:/Assets/3D/Units/FR/Helico/Gazelle_Reco_20mm/Gazelle_20mm.Ase2NdfBin'
+
+Modele_Gazelle_20mm_reco_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Gazelle_20mm_reco_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_Gazelle_20mm_reco_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Helico/Gazelle_Reco_20mm/Gazelle_20mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Gazelle_20mm_reco_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Helico/Gazelle_Reco_20mm/Gazelle_20mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

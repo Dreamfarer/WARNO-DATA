@@ -1,0 +1,68 @@
+
+GameDifficultyListConfig is TGameDifficultyListConfiguration
+(
+    DefaultConfig = MAP
+    [
+        (
+            EGameDifficulty/Easy,
+            TGameDifficultyConfigurationRTTI
+            (
+                Name = "AB_GM_0"
+                Texture = "challenge_star"
+            )
+        ),
+        (
+            EGameDifficulty/Medium,
+            TGameDifficultyConfigurationRTTI
+            (
+                Name = "AB_GM_1"
+                Texture = "challenge_star"
+            )
+        ),
+        (
+            EGameDifficulty/Hard,
+            TGameDifficultyConfigurationRTTI
+            (
+                Name = "AB_GM_2"
+                Texture = "challenge_star"
+            )
+        )
+    ]
+
+    MissionTypeToDifficulties = MAP
+    [
+        (
+            MissionType_Challenge,
+            MAP
+            [
+                (
+                    EGameDifficulty/Easy,
+                    TGameDifficultyConfigurationRTTI
+                    (
+                        Name = "OP_GM_0"
+                        Description = "OP_GM_0_D"
+                        Texture = "difficulty_easy"
+                    )
+                ),
+                (
+                    EGameDifficulty/Medium,
+                    TGameDifficultyConfigurationRTTI
+                    (
+                        Name = "OP_GM_1"
+                        Description = "OP_GM_1_D"
+                        Texture = "difficulty_medium"
+                    )
+                ),
+                (
+                    EGameDifficulty/Hard,
+                    TGameDifficultyConfigurationRTTI
+                    (
+                        Name = "OP_GM_2"
+                        Description = "OP_GM_2_D"
+                        Texture = "difficulty_hard"
+                    )
+                )
+            ]
+        )
+    ]
+)

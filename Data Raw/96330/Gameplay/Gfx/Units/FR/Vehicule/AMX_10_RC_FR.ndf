@@ -1,0 +1,25 @@
+export ModelFile_AMX_10_RC_FR is 'GameData:/Assets/3D/Units/FR/Char/AMX_10RC/AMX_10RC.Ase2NdfBin'
+
+Modele_AMX_10_RC_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AMX_10_RC_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_10_RC_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/AMX_10RC/AMX_10RC.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_10_RC_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/AMX_10RC/AMX_10RC.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_10_RC_FR_Tourelle_02 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/AMX_10RC_Surblinde/NF1_t2.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

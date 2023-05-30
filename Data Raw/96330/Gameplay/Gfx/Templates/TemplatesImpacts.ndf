@@ -1,0 +1,60 @@
+private template ImpactWrapper
+[
+    Action
+]
+is TSequencingActionHappening
+(
+    ActionDescriptor = TSimultaneousAction
+    (
+        LocalVariables =
+        [
+            parPower is TPinnableValue(ExpectedType: float InitialValue = 5),
+            parPosition is TPinnableValue(ExpectedType: float3),
+            parDirection is TPinnableValue(ExpectedType: float3),
+            parRadiusPhysical is TPinnableValue(ExpectedType: float InitialValue = 0),
+            parRadiusSuppress is TPinnableValue(ExpectedType: float InitialValue = 0),
+            parTerrain is TPinnableValue(ExpectedType: float),
+        ]
+        Mobile = TMobileWithLocalRepereMatrixFactory
+        (
+            Position = parPosition
+            Orientation = -parDirection
+            InitialScale = 1
+            MaxScale = 1
+            UsePreviousMobileAsCenterOfScale = false
+            DoNotInheritCentroid = false
+            ForceIntroduceCentroid = true
+            CentroidIgnoreMobileVisibility = false
+            CentroidRelative = false
+            UseMobileScale = true
+        )
+        Actions =
+        [
+            TActionDescriptorScaleMobile_PixelConstant
+            (
+                Camera = $/M3D/Camera/CameraPrincipale
+                ScaleFactor = $/GFX/Everything/PixelConstantValuesSpecific/ImpactFactor
+                ScaleMinReferenceAltitude = $/GFX/Everything/PixelConstantValuesSpecific/ImpactMinReferenceAltitude
+                ScaleMax = $/GFX/Everything/PixelConstantValuesSpecific/ImpactScaleMax
+                ScaleOption = $/GUIOption/UnitScalingEnabled
+
+                PeriodInFrames = 1
+                DurationInSec = 20
+                SkipWhenTimeServerPaused = false
+            ),
+            TActionCall
+            (
+                Action = <Action>
+
+                NamedParams = MAP[
+                    ('parPosition', [0, 0, 0]),
+                    ('parPower', parPower),
+                    ('parDirection', [1,0,0]),
+                    ('parRadiusPhysical', parRadiusPhysical),
+                    ('parRadiusSuppress', parRadiusSuppress),
+                    ('parTerrain', parTerrain),
+                ]
+            )
+        ]
+    )
+)

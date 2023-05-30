@@ -1,0 +1,112 @@
+private LodHighNoneLimit_Missile is 400  //100
+
+template DepictionMissileSelector
+[
+    PhysicalProperty,
+    Value
+]
+is TSubDepictionMissileSelector
+(
+    HighNoneLimitInMeter = LodHighNoneLimit_Missile
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    PhysicalProperty = <PhysicalProperty>
+    ThresholdAsUInt = <Value>
+)
+
+template DepictionTowedMissileSelector
+[
+    TowedUnit,
+    Value
+] is TSubDepictionTowedMissileSelector
+(
+    HighNoneLimitInMeter = LodHighNoneLimit_Missile
+    CameraMoverManagerModernWarfare = $/Camera/CameraMoverManager
+    ThresholdAsUInt = <Value>
+    TowedUnit = <TowedUnit>
+)
+
+template TemplateDepictionMissile
+[
+    Selector,
+    ProjectileModelFile,
+    ShadowLessInitialValue,
+]
+is TDepictionTemplate
+(
+    ShadowLessInitialValue = <ShadowLessInitialValue>
+    Selector = <Selector>
+    DepictionAlternatives = [
+        TDepictionDescriptor(
+            SelectorId = ['high']
+            MeshDescriptor = TResourceMultiMaterialMesh
+                (
+                    FileName = <ProjectileModelFile>
+                    UsefulnessMask = CivMask/Common + TypeMask/Common
+                )
+            ),
+    ]
+    Operators = [
+        DepictionOperator_Shader_Ghost,
+    ]
+)
+
+template TemplateDepictionMissileTowed
+[
+    TowedUnit,
+    MissileNumber,
+    ProjectileModelFile
+]
+is TemplateDepictionMissile
+(
+    ShadowLessInitialValue = False
+    Selector = DepictionTowedMissileSelector( TowedUnit = <TowedUnit> Value = <MissileNumber> )
+    ProjectileModelFile = <ProjectileModelFile>
+)
+
+template TemplateDepictionMissileGroundUnit
+[
+    PhysicalProperty,
+    MissileNumber,
+    ProjectileModelFile
+]
+is TemplateDepictionMissile
+(
+    ShadowLessInitialValue = False
+    Selector = DepictionMissileSelector( PhysicalProperty = <PhysicalProperty> Value = <MissileNumber> )
+    ProjectileModelFile = <ProjectileModelFile>
+)
+
+template TemplateDepictionMissileAirUnit
+[
+    PhysicalProperty,
+    MissileNumber,
+    ProjectileModelFile
+]
+is TemplateDepictionMissile
+(
+    ShadowLessInitialValue = True
+    Selector = DepictionMissileSelector( PhysicalProperty = <PhysicalProperty> Value = <MissileNumber> )
+    ProjectileModelFile = <ProjectileModelFile>
+)
+
+template TemplateDepictionMissileShowroom
+[
+    ProjectileModelFile
+]
+is TDepictionTemplate
+(
+    Selector = OnlyHighDepictionSelector
+    DepictionAlternatives = [
+        TDepictionDescriptor(
+            SelectorId = ['high']
+            MeshDescriptor = TResourceMultiMaterialMesh
+                (
+                    FileName = <ProjectileModelFile>
+                    UsefulnessMask = CivMask/Common + TypeMask/Common
+                )
+            )
+    ]
+    //Francis (9/3/23) : on réutilise les depictions de showroom des missiles pour les pions steelman, du coup on active le shader de sélection dessus
+    Operators = [ DepictionOperator_Shader_Selection ]
+)
+

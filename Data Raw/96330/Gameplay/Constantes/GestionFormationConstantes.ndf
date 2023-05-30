@@ -1,0 +1,302 @@
+// -*- coding: utf-8 -*-
+
+FrontLineModeDirectDraw is 0
+FrontLineModePerpendicular is 1
+
+export ArrivalFormationConstantesWargame is TArrivalFormationConstantes
+(
+    UnitSpacingWidth = 24 * OneMeterInGameUnits
+    FrontLineMinimalSize = 12 * OneMeterInGameUnits
+    DefaultFormationWidthToDepthRatio = 1.0 // Définit vers quel ratio largeur/profondeur la formation essaie de tendre à l'arrivée d'un move avec clic droit non glissé.
+)
+
+template TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+[
+    UnitTypes,
+    SpacingWidth : float = 50.0 * Metre,
+    SpacingDepth : float = 35.0 * Metre,
+    FrontMargin : float = 35.0 * Metre,
+]
+is TUnitFormationLineDescriptor
+(
+    SpacingWidth = <SpacingWidth>
+    SpacingDepth = <SpacingDepth>
+    FrontMargin = <FrontMargin>
+    UnitSorter = TUnitFormationUnitSorter_SortByUnitType
+    (
+        UnitTypes = <UnitTypes>
+    )
+    AcceptedUnitFilter = [
+        TUnitFormationUnitFilter_TypeUnitFormation
+        (
+            UnitTypes = <UnitTypes>
+        )
+    ]
+)
+
+template TemplateUnitFormationLineDescription_NoSort_NoFilter
+[
+    SpacingWidth : float = 50.0 * Metre,
+    SpacingDepth : float = 35.0 * Metre,
+    FrontMargin : float = 35.0 * Metre,
+]
+is TUnitFormationLineDescriptor
+(
+    SpacingWidth = <SpacingWidth>
+    SpacingDepth = <SpacingDepth>
+    FrontMargin = <FrontMargin>
+    UnitSorter = TUnitFormationUnitSorter_NoSort()
+    AcceptedUnitFilter = [
+        TUnitFormationUnitFilter_NoFilter
+        (
+        )
+    ]
+)
+
+FormationResource is TUnitFormationDescriptor
+(
+    FrontLineMode = ~/FrontLineModePerpendicular
+    FormationLines = [
+        TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Char', 'Vehicule', 'Transport' ]
+            SpacingWidth = 50 * OneMeterInGameUnits
+            SpacingDepth = 35 * OneMeterInGameUnits
+            FrontMargin = 35 * OneMeterInGameUnits
+        ),
+        TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Reconnaissance', 'HelicoReco', 'InfanterieReco', 'InfanterieEliteReco']
+            SpacingWidth = 50 * OneMeterInGameUnits
+            SpacingDepth = 35 * OneMeterInGameUnits
+            FrontMargin = 35 * OneMeterInGameUnits
+        ),
+        TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Infanterie', 'InfanterieLAAD', 'Infanterie reguliere', 'Infanterie elite', 'InfanterieATGM', 'InfanterieCommand', 'InfanterieSpecOp', 'InfanterieIngenieurs']
+            SpacingWidth = 50 * OneMeterInGameUnits
+            SpacingDepth = 35 * OneMeterInGameUnits
+            FrontMargin = 35 * OneMeterInGameUnits
+        ),
+        TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Helico', 'AntiAir', 'Supply']
+            SpacingWidth = 50 * OneMeterInGameUnits
+            SpacingDepth = 35 * OneMeterInGameUnits
+            FrontMargin = 35 * OneMeterInGameUnits
+        ),
+
+         TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Artillerie']
+            SpacingWidth = 50 * OneMeterInGameUnits
+            SpacingDepth = 35 * OneMeterInGameUnits
+            FrontMargin = 35 * OneMeterInGameUnits
+        ),
+
+
+        TemplateUnitFormationLineDescription_NoSort_NoFilter
+        (
+            SpacingWidth = 50 * OneMeterInGameUnits
+            SpacingDepth = 35 * OneMeterInGameUnits
+            FrontMargin = 35 * OneMeterInGameUnits
+        ),
+    ]
+)
+
+DeploymentFormationResource is TUnitFormationDescriptor
+(
+    FrontLineMode = ~/FrontLineModePerpendicular //ça change pas grand chose pour le déploiment, On laisse comme avant
+    FormationLines = [
+        TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Char', 'Vehicule', 'Transport' ]
+            SpacingWidth = 24 * OneMeterInGameUnits
+            SpacingDepth = 16 * OneMeterInGameUnits
+            FrontMargin = 16 * OneMeterInGameUnits
+        ),
+        TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Reconnaissance', 'HelicoReco', 'InfanterieReco', 'InfanterieEliteReco']
+            SpacingWidth = 24 * OneMeterInGameUnits
+            SpacingDepth = 16 * OneMeterInGameUnits
+            FrontMargin = 16 * OneMeterInGameUnits
+        ),
+        TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Infanterie', 'InfanterieLAAD', 'Infanterie reguliere', 'Infanterie elite', 'InfanterieATGM', 'InfanterieCommand', 'InfanterieSpecOp', 'InfanterieIngenieurs']
+            SpacingWidth = 24 * OneMeterInGameUnits
+            SpacingDepth = 16 * OneMeterInGameUnits
+            FrontMargin = 16 * OneMeterInGameUnits
+        ),
+        TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Helico', 'AntiAir', 'Supply']
+            SpacingWidth = 24 * OneMeterInGameUnits
+            SpacingDepth = 16 * OneMeterInGameUnits
+            FrontMargin = 16 * OneMeterInGameUnits
+        ),
+         TemplateUnitFormationLineDescription_SortByUnitType_FilterByUnitTypeFormation
+        (
+            UnitTypes = ['Artillerie']
+            SpacingWidth = 24 * OneMeterInGameUnits
+            SpacingDepth = 16 * OneMeterInGameUnits
+            FrontMargin = 16 * OneMeterInGameUnits
+        ),
+        TemplateUnitFormationLineDescription_NoSort_NoFilter
+        (
+            SpacingWidth = 24 * OneMeterInGameUnits
+            SpacingDepth = 16 * OneMeterInGameUnits
+            FrontMargin = 16 * OneMeterInGameUnits
+        ),
+    ]
+)
+
+export FormationConstantes is TFormationConstantes
+(
+    UnitFormationDescriptor = FormationResource
+    UnitDeploymentFormationDescriptor = DeploymentFormationResource
+
+    TempsMaintienClicPourDeplacementGhost = 4.0
+    DistanceMaintienClicPourDeplacementGhost = 1 * Metre
+
+    // -----------------------------------------------------------------------
+    // Réglage de la distance max. de snap des destinations lors du mouvement.
+    // -----------------------------------------------------------------------
+    // Une distance max. négative ou nulle désactive le snapping.
+    // Le debug visuel correspondant est celui du système de recherche de position : il faut activer les ajustables "PositionFinder/Show" et "PositionFinder/Show Positions".
+    // Les croix blanches sont les positions considérées et la croix verte est la position choisie parmi celles-ci.
+    // Les distances sont en mètre RTS
+
+    // Distance max. par défaut (utilisée pour les types d'unités n'ayant pas de distance max. définie)
+    SnapToFavorableTerrainDefaultRadius = 100 * Metre
+
+    // Distance max. par type d'unité (les types d'unité sont définis dans Globals.ndf)
+    SnapToFavorableTerrainRadiusForMovementSubType = MAP
+    [
+        (LandVehicleSubType/Infantry, 100 * Metre),
+        (LandVehicleSubType/Tracked, 100 * Metre),
+        (LandVehicleSubType/Wheeled, 100 * Metre),
+        (LandVehicleSubType/TrackedAmphibious, 100 * Metre),
+        // (LandVehicleSubType/WheeledAmphibious, 100 * Metre), // il faudra préciser un jour
+    ]
+    // -----------------------------------------------------------------------
+
+// NE PAS INTERVERTIR LES LIGNES, ON PEUT JUSTE CHANGER LES VALEURS !!
+    // Definition en Unités de jeu.
+    DefaultEspaceEntreSectionProfondeur  is 24.2*OneMeterInGameUnits  // 24.2 metres = 200 metres rts.
+
+    EspaceEntreSectionProfondeur = [
+        DefaultEspaceEntreSectionProfondeur, //NotDefined
+        DefaultEspaceEntreSectionProfondeur, //Reco
+        DefaultEspaceEntreSectionProfondeur, //Char
+        DefaultEspaceEntreSectionProfondeur, //Infanterie, cohorte
+        DefaultEspaceEntreSectionProfondeur, //CanonAT
+        DefaultEspaceEntreSectionProfondeur, //DCA
+        DefaultEspaceEntreSectionProfondeur, //Artillerie
+        DefaultEspaceEntreSectionProfondeur, //Parachutiste
+        DefaultEspaceEntreSectionProfondeur, //Batiment
+
+        DefaultEspaceEntreSectionProfondeur, //Cohorte
+
+    ]
+
+// NE PAS INTERVERTIR LES LIGNES, ON PEUT JUSTE CHANGER LES VALEURS !!
+    // Definition en Unités de jeu.
+    DefaultEspaceEntreSection  is 85*OneMeterInGameUnits  // 60.46 metres = 500 metres rts.
+
+    EspaceEntreSection = [
+        DefaultEspaceEntreSection, //NotDefined
+        DefaultEspaceEntreSection, //Reco
+        DefaultEspaceEntreSection, //Char 20000
+        DefaultEspaceEntreSection, //Infanterie, cohorte
+        DefaultEspaceEntreSection, //CanonAT
+        DefaultEspaceEntreSection, //DCA
+        DefaultEspaceEntreSection, //Artillerie
+        DefaultEspaceEntreSection, //Parachutiste
+        DefaultEspaceEntreSection, //Batiment
+
+        DefaultEspaceEntreSection, //Cohorte
+    ]
+
+
+    // NE PAS INTERVERTIR LES LIGNES, ON PEUT JUSTE CHANGER LES VALEURS !!
+    // Definition en Unités de jeu.
+    DefaultEspaceEntreSectionProfondeurEnMouvement is 36.3*OneMeterInGameUnits  // 36.3 metres = 300 metres rts.
+
+
+    EspaceEntreSectionProfondeurEnMouvement = [
+        0, //NotDefined
+        DefaultEspaceEntreSectionProfondeurEnMouvement, //Reco
+        DefaultEspaceEntreSectionProfondeurEnMouvement, //Char
+        DefaultEspaceEntreSectionProfondeurEnMouvement, //Infanterie, cohorte
+        DefaultEspaceEntreSectionProfondeurEnMouvement, //CanonAT
+        DefaultEspaceEntreSectionProfondeurEnMouvement, //DCA
+        DefaultEspaceEntreSectionProfondeurEnMouvement, //Artillerie
+        DefaultEspaceEntreSectionProfondeurEnMouvement, //Parachutiste
+        60.5*OneMeterInGameUnits, //Batiment
+        DefaultEspaceEntreSectionProfondeurEnMouvement, //Batiment
+
+        DefaultEspaceEntreSectionProfondeurEnMouvement, //Cohorte
+
+    ]
+
+    // NE PAS INTERVERTIR LES LIGNES, ON PEUT JUSTE CHANGER LES VALEURS !!
+    // Definition en Unités de jeu.
+
+    EspaceEntreSectionEnMouvement = [
+        30.2*OneMeterInGameUnits, //NotDefined
+        30.2*OneMeterInGameUnits, //Reco
+        96.7*OneMeterInGameUnits, //Char
+        30.2*OneMeterInGameUnits, //Infanterie, cohorte
+        30.2*OneMeterInGameUnits, //CanonAT
+        30.2*OneMeterInGameUnits, //DCA
+        30.2*OneMeterInGameUnits, //Artillerie
+        12.1*OneMeterInGameUnits, //Parachutiste
+        60.5*OneMeterInGameUnits, //Batiment
+
+        36.3*OneMeterInGameUnits, //Cohorte
+    ]
+
+// NE PAS INTERVERTIR LES LIGNES, ON PEUT JUSTE CHANGER LES VALEURS !!
+    // Definition en Unités de jeu.
+
+    DefaultLargeurLigne is 362.8*OneMeterInGameUnits
+
+    LargeurLigne = [
+        DefaultLargeurLigne, //NotDefined
+        DefaultLargeurLigne, //Reco
+        DefaultLargeurLigne, //Char
+        DefaultLargeurLigne, //Infanterie cohorte
+        DefaultLargeurLigne, //CanonAT
+        DefaultLargeurLigne, //DCA
+        DefaultLargeurLigne, //Artillerie
+        DefaultLargeurLigne, //Parachutiste
+        DefaultLargeurLigne, //Batiment
+
+        DefaultLargeurLigne, //cohorte
+
+    ]
+
+
+// NE PAS INTERVERTIR LES LIGNES, ON PEUT JUSTE CHANGER LES VALEURS !!
+
+    LargeLargeurLigneEnMouvement is 241.9 * OneMeterInGameUnits
+    MidLargeurLigneEnMouvement is 120.9 * OneMeterInGameUnits
+    SmallLargeurLigneEnMouvement is 60.46 * OneMeterInGameUnits
+
+    LargeurLigneEnMouvement = [
+        LargeLargeurLigneEnMouvement, //NotDefined
+        LargeLargeurLigneEnMouvement, //Reco
+        LargeLargeurLigneEnMouvement, //Char
+        MidLargeurLigneEnMouvement, //Infanterie cohorte
+        LargeLargeurLigneEnMouvement, //CanonAT
+        LargeLargeurLigneEnMouvement, //DCA
+        LargeLargeurLigneEnMouvement, //Artillerie
+        SmallLargeurLigneEnMouvement, //Parachutiste
+        LargeLargeurLigneEnMouvement, //Batiment
+
+        MidLargeurLigneEnMouvement, //cohorte
+
+    ]
+)

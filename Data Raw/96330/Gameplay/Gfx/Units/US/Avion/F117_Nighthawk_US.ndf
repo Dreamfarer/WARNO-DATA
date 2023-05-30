@@ -1,0 +1,25 @@
+export ModelFile_F117_Nighthawk_US is 'GameData:/Assets/3D/Units/US/Avion/F117_Nighthawk/F117_Nighthawk.Ase2NdfBin'
+
+Modele_F117_Nighthawk_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_F117_Nighthawk_US
+    CivMask =  CivMask/Common
+)
+
+Modele_F117_Nighthawk_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/F117_Nighthawk_MID/F117_Nighthawk_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F117_Nighthawk_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/LODS/F117_Nighthawk_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_F117_Nighthawk_US_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Avion/F117_Nighthawk/F117_Nighthawk_Train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

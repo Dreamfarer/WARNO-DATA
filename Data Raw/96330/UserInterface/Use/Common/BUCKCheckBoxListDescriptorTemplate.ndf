@@ -1,0 +1,609 @@
+private template CheckboxDefinition
+[
+    ElementName : string = "",
+    ToggleListButtonText : string = "",
+    Margins : TRTTILength = TRTTILength(Magnifiable = 0.0),
+    IsMainCheckbox : bool = false,
+    TextColor : string = "Blanc",
+    TextSize : string = "12",
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+    BoxMagnifiableWidthHeight : float2 = [16,16],
+    TextureToken : string = "StyleDeskTexture_CheckBox",
+    TextureColorToken : string = '',
+    CheckboxHasBorder : bool = true,
+    CheckboxHasBackground : bool = true,
+    ForegroundComponents : LIST<TBUCKContainerDescriptor> = [],
+]
+is BUCKListDescriptor
+(
+    ElementName = <ElementName> + 'CheckBoxComponent'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    InterItemMargin = TRTTILength( Magnifiable = 6.0)
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = <Margins>
+    LastMargin = <Margins>
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKSpecificCheckBoxDescriptor
+            (
+                ElementName = <ElementName> + 'CheckBox'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = <BoxMagnifiableWidthHeight>
+                )
+                TextureToken = <TextureToken>
+                TextureColorToken = <TextureColorToken>
+                HasBorder = <CheckboxHasBorder>
+                HasBackground = <CheckboxHasBackground>
+                LeftClickSound = ~/SoundEvent_CheckBoxTick
+
+
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKButtonDescriptor
+            (
+                ElementName = <ElementName>
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                )
+
+                IsTogglable = true
+
+                FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+                Components =
+                [
+                    BUCKTextDescriptor
+                    (
+                        ElementName = <ElementName> + 'CheckBoxText'
+
+                        TextDico = <TextDico>
+                        TextToken = <ToggleListButtonText>
+                        TextSize = <TextSize>
+                        TextColor = <TextColor>
+                        TextStyle = 'Default'
+                        TypefaceToken = "Eurostyle"
+
+                        ComponentStateLocked = (<IsMainCheckbox> ? false : true)
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToParent
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                        )
+                        TextPadding = TRTTILength4( Magnifiable = [5.0, 5.0, 25.0, 5.0] )
+                    ),
+                ]
+            )
+        ),
+    ]
+
+    ForegroundComponents = <ForegroundComponents>
+
+
+)
+
+private template CheckboxExcelDefinition
+[
+    ElementName : string = "",
+    ToggleListButtonText : string = "",
+    Margins : TRTTILength = TRTTILength(Magnifiable = 0.0),
+    IsMainCheckbox : bool = false,
+    BoxMagnifiableWidthHeight : float2 = [16.0, 16.0],
+    TextureToken : string = "StyleDeskTexture_CheckBox",
+    TextureColorToken : string = '',
+    CheckboxHasBorder : bool = true,
+    CheckboxHasBackground : bool = true,
+    ArrowBoxMagnifiableWidthHeight : float2 = [16.0, 16.0],
+    ArrowTextureToken : string = "StyleDeskTexture_SortingCheckBox",
+    ArrowTextureColorToken : string = '',
+]
+is BUCKListDescriptor
+(
+    ElementName = <ElementName> + 'CheckBoxComponent'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    InterItemMargin = TRTTILength( Magnifiable = 6.0)
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = <Margins>
+    LastMargin = <Margins>
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKSpecificCheckBoxDescriptor
+            (
+                ElementName = <ElementName> + 'CheckBox'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = <BoxMagnifiableWidthHeight>
+                )
+                TextureToken = <TextureToken>
+                TextureColorToken = <TextureColorToken>
+                HasBorder = <CheckboxHasBorder>
+                HasBackground = <CheckboxHasBackground>
+                LeftClickSound = ~/SoundEvent_CheckBoxTick
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKButtonDescriptor
+            (
+                ElementName = <ElementName>
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = <ArrowBoxMagnifiableWidthHeight>
+                )
+
+                IsTogglable = true
+
+                Components =
+                [
+                    BUCKTextureDescriptor
+                    (
+                        ElementName = <ElementName> + 'CheckBoxExcelTexture'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+
+                        TextureToken = <ArrowTextureToken>
+                        TextureColorToken = <ArrowTextureColorToken>
+                    )
+                ]
+            )
+        ),
+    ]
+)
+
+//------------------------------------------------
+
+private template CheckboxRackDescriptor
+[
+    ElementName : string = "",
+    FirstMargin : float,
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+] is BUCKRackDescriptor
+(
+    ElementName = <ElementName> + "CheckboxRack"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength(Magnifiable = 10.0)
+    InterItemMargin = TRTTILength(Magnifiable = 10.0)
+
+    BladeDescriptor = CheckboxDefinition
+    (
+        Margins = TRTTILength(Magnifiable = 2.0 + <FirstMargin>)
+        TextDico = <TextDico>
+    )
+)
+
+//------------------------------------------------
+
+private template LineSeparator
+[
+    Alignment,
+] is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        PixelWidthHeight = [0, 1]
+        AlignementToFather = <Alignment>
+        AlignementToAnchor = <Alignment>
+    )
+
+    HasBorder = true
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "SD2_LigneBleuGris"
+)
+
+//------------------------------------------------
+
+private template CategoryNameSeparator
+[
+    Alignment,
+    TextDico : string,
+    TextColor : string,
+] is BUCKTextDescriptor
+(
+    ElementName = "CategoryName"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        AlignementToFather = <Alignment>
+        AlignementToAnchor = <Alignment>
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = (<Alignment>[0] == 0.0 ? ~/UIText_Left : ~/UIText_Center)
+        VerticalAlignment = ~/UIText_VerticalCenter
+        BigWordAction = ~/BigWordAction/BigWordCut
+    )
+
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TextStyle = 'Default'
+    TypefaceToken = "UIMainFont"
+    TextSize = '12'
+    TextColor = <TextColor>
+    TextDico = <TextDico>
+)
+
+//------------------------------------------------
+
+private template SeparationListElement
+[
+    CategorySeparation : int,
+    ExtendWeight : float,
+    Alignment,
+    TextDico : string,
+    TextColor : string,
+] is BUCKListElementDescriptor
+(
+    ExtendWeight = <ExtendWeight>
+    ComponentDescriptor =
+    (
+        <CategorySeparation> == ~/ECheckBoxListSeparatorConfiguration/ShowLine ?
+        LineSeparator
+        (
+            Alignment = <Alignment>
+        ) :
+        (   <CategorySeparation> == ~/ECheckBoxListSeparatorConfiguration/ShowCategoryName ?
+            CategoryNameSeparator
+            (
+                Alignment = <Alignment>
+                TextDico = <TextDico>
+                TextColor = <TextColor>
+            ) : nil
+        )
+    )
+)
+
+//------------------------------------------------
+
+private template CategoryComponent
+[
+    ElementName : string = "",
+    CategorySeparation : int,
+    CheckboxForCategory : bool,
+    TextDico : string,
+    TextColor : string,
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestBetweenFatherAndChildren
+
+    FirstMargin = TRTTILength(Magnifiable = 1.0)
+
+    Elements =
+    (   <CheckboxForCategory> ?
+        [
+            BUCKListElementDescriptor
+            (
+                ComponentDescriptor = BUCKListDescriptor
+                (
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                    )
+
+                    Axis = ~/ListAxis/Horizontal
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                    FirstMargin = TRTTILength(Magnifiable = 2.0)
+                    InterItemMargin = TRTTILength(Magnifiable = 6.0)
+                    LastMargin = TRTTILength(Magnifiable = 2.0)
+
+                    Elements =
+                    [
+                        BUCKListElementDescriptor
+                        (
+                            ComponentDescriptor = BUCKSpecificCheckBoxDescriptor
+                            (
+                                ElementName = 'CategoryCheckBox'
+                                ComponentFrame = TUIFramePropertyRTTI
+                                (
+                                    MagnifiableWidthHeight = [16.0, 16.0]
+                                )
+
+                                LeftClickSound = ~/SoundEvent_CheckBoxTick
+                            )
+                        )
+                    ] +
+                    (   <CategorySeparation> != ~/ECheckBoxListSeparatorConfiguration/DoNotShow ?
+                        [
+                            SeparationListElement
+                            (
+                                CategorySeparation = <CategorySeparation>
+                                ExtendWeight = 1.0
+                                Alignment = [0.0, 0.5]
+                                TextDico = <TextDico>
+                                TextColor = <TextColor>
+                            )
+                        ] : []
+                    )
+                )
+            )
+        ] :
+        (   <CategorySeparation> != ~/ECheckBoxListSeparatorConfiguration/DoNotShow ?
+            [
+                SeparationListElement
+                (
+                    CategorySeparation = <CategorySeparation>
+                    ExtendWeight = 0.0
+                    Alignment = [0.5, 0.0]
+                    TextDico = <TextDico>
+                    TextColor = <TextColor>
+                )
+            ] : []
+        )
+    ) +
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = CheckboxRackDescriptor
+            (
+                FirstMargin = (<CheckboxForCategory> ? 8.0 : 0.0)
+                TextDico = <TextDico>
+            )
+        )
+    ]
+)
+
+//------------------------------------------------
+
+ECheckBoxListSeparatorConfiguration is TBaseClass
+(
+    DoNotShow           is 0
+    ShowLine            is 1
+    ShowCategoryName    is 2
+)
+
+//------------------------------------------------
+
+template BUCKCheckBoxListDescriptor
+[
+    // ++ BUCKContainerDescriptor
+    ElementName : string = "",
+    UniqueName : string = "",
+    RequiredTags : LIST<string> = [],
+    ForbiddenTags : LIST<string> = [],
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI(),
+
+    MagnifierMultiplication : float = 0.0,
+
+    PointerEventsToAllow : int = ~/EAllowablePointerEventType/None,
+    HidePointerEvents : bool = false,
+
+    GridAlign : bool = false,
+
+    IsDroppable : bool = false,
+    ForegroundForDropBlockColor : string = "",
+    BorderForDropLineColor : string = "",
+    BorderForDropLineThicknessToken : string = "",
+
+    FitStyle : int = ~/ContainerFitStyle/FitToContent,
+    ChildFitToContent : bool = false,
+
+    ClipContent : bool = false,
+    IsClippable :bool = true,
+
+    HasBackground : bool = true,
+    ItemListBackgroundBlockColorToken : string = 'SD2_BleuGris',
+    BackgroundBlockColorToken : string = "",
+
+    HasBorder : bool = false,
+    BordersToDraw : int = ~/TBorderSide/Default,
+    BorderThicknessToken : string = "",
+    BorderLineColorToken : string = "",
+    BorderColorTokenBySide : LIST<PAIR<int, string>> = [],
+
+    BackgroundLocalRenderLayer : int = 0,
+    BorderLocalRenderLayer : int = 0,
+
+    ComponentStateLocked : bool = false,
+
+    // -- BUCKContainerDescriptor
+
+    ToggleListButtonText : string = "BTN_FILTER",
+
+    ListData : LIST<PAIR<string,LIST<Pair<string,int>>>> = [], // [ ("CategoryName", [("CheckboxName", DataValue),]),]
+
+    CheckboxForCategory : bool = false,
+    CategorySeparation : int = ~/ECheckBoxListSeparatorConfiguration/ShowLine,
+
+    MainButtonElementName : string = "ButtonComponent",
+    CategoryRackElementName : string = "CheckboxCategoryRack",
+
+    TextDico : string = ~/LocalisationConstantes/dico_interface_outgame,
+
+    TextColor : string = "ButtonSimple/TextBleuGris",
+    ShowFilter_TextColor : string = "ButtonSimple/TextBleuGris",
+    TextSize : string = "15",
+    BoxMagnifiableWidthHeight : float2 = [15.0, 15.0],
+    TextureToken : string = "StyleDeskTexture_CheckBox",
+    TextureColorToken : string = '',
+    CheckboxHasBorder : bool = true,
+    CheckboxHasBackground : bool = true,
+    MagnifiableOffsetRack : float2 = [0.0, 16],
+
+    UseExcelStyle : bool = false,
+    ArrowTextureToken : string = "StyleDeskTexture_SortingCheckBox",
+    ArrowTextureColorToken : string = '',
+    ArrowBoxMagnifiableWidthHeight : float2 = [15.0, 15.0],
+    BackgroundAllBlockColorToken : string = 'Orange',
+    HasBackgroundAll : bool = false,
+    IsForModale : bool = false,
+]
+is TBUCKCheckBoxListDescriptor
+(
+    // ++ BUCKContainerDescriptor
+    ElementName = <ElementName>
+    UniqueName = <UniqueName>
+    RequiredTags = <RequiredTags>
+    ForbiddenTags = <ForbiddenTags>
+    ComponentFrame = <ComponentFrame>
+
+    MagnifierMultiplication = <MagnifierMultiplication>
+
+    PointerEventsToAllow = <PointerEventsToAllow>
+    HidePointerEvents = <HidePointerEvents>
+
+    GridAlign = <GridAlign>
+
+    IsDroppable = <IsDroppable>
+    ForegroundForDropBlockColor = <ForegroundForDropBlockColor>
+    BorderForDropLineColor = <BorderForDropLineColor>
+    BorderForDropLineThicknessToken = <BorderForDropLineThicknessToken>
+
+    FitStyle = <FitStyle>
+    ChildFitToContent = <ChildFitToContent>
+
+    ClipContent = <ClipContent>
+    IsClippable = <IsClippable>
+
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = false
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = <HasBorder>
+    BordersToDraw = <BordersToDraw>
+    BorderThicknessToken = <BorderThicknessToken>
+    BorderLineColorToken = <BorderLineColorToken>
+    BorderColorTokenBySide = <BorderColorTokenBySide>
+
+    BackgroundLocalRenderLayer = <BackgroundLocalRenderLayer>
+    BorderLocalRenderLayer = <BorderLocalRenderLayer>
+
+    ComponentStateLocked = <ComponentStateLocked>
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, <BoxMagnifiableWidthHeight>[1]]
+            )
+            HasBackground = <HasBackgroundAll>
+            BackgroundBlockColorToken = <BackgroundAllBlockColorToken>
+            ChildFitToContent = true
+
+            FitStyle = ~/ContainerFitStyle/FitToContentHorizontally
+
+            Components =
+            <UseExcelStyle> ?
+            [
+                CheckboxExcelDefinition
+                (
+                    ElementName = <MainButtonElementName>
+                    IsMainCheckbox = true
+                    BoxMagnifiableWidthHeight = <BoxMagnifiableWidthHeight>
+                    TextureToken = <TextureToken>
+                    TextureColorToken = <TextureColorToken>
+                    CheckboxHasBorder = <CheckboxHasBorder>
+                    CheckboxHasBackground = <CheckboxHasBackground>
+                    ArrowTextureToken = <ArrowTextureToken>
+                    ArrowTextureColorToken = <ArrowTextureColorToken>
+                    ArrowBoxMagnifiableWidthHeight = <ArrowBoxMagnifiableWidthHeight>
+                )
+            ]
+            :
+            [
+                CheckboxDefinition
+                (
+                    ElementName = <MainButtonElementName>
+                    ToggleListButtonText = <ToggleListButtonText>
+                    TextDico = <TextDico>
+                    IsMainCheckbox = true
+                    TextColor = <ShowFilter_TextColor>
+                    BoxMagnifiableWidthHeight = <BoxMagnifiableWidthHeight>
+                    TextureToken = <TextureToken>
+                    TextureColorToken = <TextureColorToken>
+                    CheckboxHasBorder = <CheckboxHasBorder>
+                    CheckboxHasBackground = <CheckboxHasBackground>
+                )
+            ]
+        ),
+    ]
+
+    // -- BUCKContainerDescriptor
+
+    ListData = <ListData>
+    FilterDico = <TextDico>
+    CategorySeparation = <CategorySeparation>
+
+    CheckboxListCategoryRack = BUCKRackDescriptor
+    (
+        ElementName = <CategoryRackElementName>
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableOffset = <MagnifiableOffsetRack>
+        )
+
+        Axis = ~/ListAxis/Vertical
+        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+        HasBackground = <HasBackground>
+        BackgroundBlockColorToken = <ItemListBackgroundBlockColorToken>
+
+        HidePointerEvents = true
+
+        FirstMargin = TRTTILength(Magnifiable = 5.0)
+        InterItemMargin = TRTTILength(Magnifiable = 10.0)
+        LastMargin = TRTTILength(Magnifiable = 10.0)
+
+        BladeDescriptor = CategoryComponent
+        (
+            CategorySeparation = <CategorySeparation>
+            CheckboxForCategory = <CheckboxForCategory>
+            TextDico = <TextDico>
+            TextColor = <TextColor>
+        )
+    )
+    LayerForFloatingComponent = <IsForModale> ? $/UserInterface/UILayer_InterfaceModal_Foreground : $/UserInterface/UILayer_2DInterfaceDropDown_OutGame
+
+    MainButtonElementName = <MainButtonElementName>
+    MainCheckboxElementName = <MainButtonElementName> + "CheckBox"
+    CategoryRackElementName = <CategoryRackElementName>
+)

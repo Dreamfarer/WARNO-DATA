@@ -1,0 +1,19 @@
+export ModelFile_Ural_4320_DDR is 'GameData:/Assets/3D/Units/DDR/Vehicule/Ural_4320/Ural_4320.Ase2NdfBin'
+
+Modele_Ural_4320_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Ural_4320_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_Ural_4320_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/Ural_4320/Ural_4320.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Ural_4320_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/Ural_4320/Ural_4320.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

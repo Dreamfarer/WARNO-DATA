@@ -1,0 +1,19 @@
+export ModelFile_VLRA_HMG_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/VLRA_HMG/VLRA_HMG.Ase2NdfBin'
+
+Modele_VLRA_HMG_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_VLRA_HMG_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_VLRA_HMG_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/VLRA_HMG/VLRA_HMG.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VLRA_HMG_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/VLRA_HMG/VLRA_HMG.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

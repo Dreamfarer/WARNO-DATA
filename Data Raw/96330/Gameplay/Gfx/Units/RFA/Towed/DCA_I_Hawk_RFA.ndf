@@ -1,0 +1,19 @@
+export ModelFile_DCA_I_Hawk_RFA is 'GameData:/Assets/3D/Units/US/DCA/DCA_I_Hawk/DCA_I_Hawk.Ase2NdfBin'
+
+Modele_DCA_I_Hawk_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_DCA_I_Hawk_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_I_Hawk_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/DCA/DCA_I_Hawk/DCA_I_Hawk.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_I_Hawk_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/DCA/DCA_I_Hawk/DCA_I_Hawk.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

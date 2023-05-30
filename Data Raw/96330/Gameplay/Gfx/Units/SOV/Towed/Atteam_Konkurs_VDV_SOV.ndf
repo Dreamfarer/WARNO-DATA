@@ -1,0 +1,22 @@
+export ModelFile_Atteam_Konkurs_VDV_SOV is 'GameData:/Assets/3D/Units/URSS/Antichar/Konkurs/Konkurs.Ase2NdfBin'
+
+Modele_Atteam_Konkurs_VDV_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Atteam_Konkurs_VDV_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Atteam_Konkurs_VDV_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/Konkurs/Konkurs.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Atteam_Konkurs_VDV_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Antichar/Konkurs/Konkurs.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

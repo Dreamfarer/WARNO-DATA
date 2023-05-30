@@ -1,0 +1,148 @@
+template SwapUnitButtonDescriptor
+[
+    ElementName : string,
+    LookLeft : bool
+] is BUCKButtonDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [26.0, 26.0]
+        MagnifiableOffset = [-8, 8]
+        AlignementToAnchor = [1.0, 0.0]
+        AlignementToFather = [1.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [26.0, 26.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+            )
+            TextureToken = <LookLeft> ? "UseInGame_UnitInfoPanel_TurnPageLeft" : "UseInGame_UnitInfoPanel_TurnPageRight"
+            TextureColorToken = 'MarronPanel_noir_clicked'
+        ),
+        BUCKTextureDescriptor
+        (
+            ElementName = <ElementName> + "Texture"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [20.0, 20.0]
+                AlignementToAnchor = [0.5, 0.5]
+                AlignementToFather = [0.5, 0.5]
+                MagnifiableOffset = [<LookLeft> ? 2 : -2, -6]
+            )
+            TextureColorToken = 'MarronPanel_noir_clicked'
+        ),
+        BUCKSpecificHintableArea
+        (
+            ElementName = <ElementName> + "HintableArea"
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HIP_DISPT"
+            HintBodyToken = "HIP_DISPB"
+            HintExtendedToken = "HIP_DISPE"
+        )
+    ]
+)
+
+SwapUnitInfoButtonLeft is SwapUnitButtonDescriptor
+(
+    ElementName = "SwapUnitButtonLeft"
+    LookLeft = true
+)
+
+SwapUnitInfoButtonRight is SwapUnitButtonDescriptor
+(
+    ElementName = "SwapUnitButtonRight"
+    LookLeft = false
+)
+
+BUCKSpecificInGameHUDTransportAndUnitsInfoMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [30.0, 30.0]
+        MagnifiableOffset = [15.0, -1.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = 'DisplayContainer'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [15.0, 0.0]
+            )
+
+            FitStyle = ~/ContainerFitStyle/FitToContent
+
+            Components =
+            [
+                BUCKContainerDescriptor
+                (
+                    ElementName = 'TransporterContainer'
+                    ComponentFrame = TUIFramePropertyRTTI()
+                    FitStyle = ~/ContainerFitStyle/FitToContent
+                    ChildFitToContent = true
+                ),
+                ~/SwapUnitInfoButtonLeft
+            ]
+        ),
+
+        BUCKListDescriptor
+        (
+            ElementName = 'DisplayList'
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableOffset = [0.0, -15.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+            ChildFitToContent = true
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI()
+                        FitStyle = ~/ContainerFitStyle/FitToContent
+                        Components =
+                        [
+                            BUCKContainerDescriptor
+                            (
+                                ElementName = 'UnitContainer'
+                                ComponentFrame = TUIFramePropertyRTTI()
+                                FitStyle = ~/ContainerFitStyle/FitToContent
+                                ChildFitToContent = true
+                            ),
+                            ~/SwapUnitInfoButtonRight
+                        ]
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+UISpecificInGameHUDTransportAndUnitsInfoViewDescriptor is TUISpecificInGameHUDTransportAndUnitsInfoViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificInGameHUDTransportAndUnitsInfoMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    DefaultInfantryTextureName = "UseInGame_UnitInfoPanel_DefaultInfantry"
+    DefaultTransportTextureName = "UseInGame_UnitInfoPanel_DefaultVehicle"
+    DefaultHelicoTextureName = "UseInGame_UnitInfoPanel_DefaultHelico"
+)

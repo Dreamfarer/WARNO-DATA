@@ -1,0 +1,19 @@
+export ModelFile_TOS1_Buratino_SOV is 'GameData:/Assets/3D/Units/URSS/Artillerie/TOS1_Buratino/TOS1_Buratino.Ase2NdfBin'
+
+Modele_TOS1_Buratino_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_TOS1_Buratino_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_TOS1_Buratino_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/TOS1_Buratino_MID/TOS1_Buratino_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_TOS1_Buratino_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Artillerie/LODS/TOS1_Buratino_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

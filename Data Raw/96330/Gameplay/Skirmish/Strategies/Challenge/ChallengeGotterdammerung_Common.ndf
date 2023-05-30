@@ -1,0 +1,133 @@
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalGotterdammerung_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export ChalGotterdammerung_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalGotterdammerung_Transition_StartToPhaseCommand is TIAGeneralStrategyTransition
+(
+    Origine = ChalGotterdammerung_Choose_Strategy
+    Condition = ChalGotterdammerung_Condition_CommandPhase
+    Destination = ChalGotterdammerung_Phase_Command
+)
+export ChalGotterdammerung_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = ChalGotterdammerung_Choose_Strategy
+    Condition = ChalGotterdammerung_Condition_GotoGeneric
+    Destination = ChalGotterdammerung_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export ChalGotterdammerung_Transition_DeployToCommandPhase is TIAGeneralStrategyTransition
+(
+    Origine = ChalGotterdammerung_Phase_Deploiement
+    Condition = ChalGotterdammerung_Condition_CommandPhase
+    Destination = ChalGotterdammerung_Phase_Command
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export ChalGotterdammerung_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export ChalGotterdammerung_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+
+        ~/CaptureOneObjectif, //Dependant du deck estimation 125
+
+        ~/Defense_Objectif, //Chere mais dépendant du nombre d'objectif et de la capture
+
+        ~/Challenge_Attack_Main_Weighted, //Environ 400
+
+        ~/Reco_Autogen,
+        ~/Challenge_Attack_Adaptative_Weighted,          // Environ 200
+
+        ~/Airstrike_Assault,
+        ~/Airstrike_Offense,
+
+        ~/Challenge_Attack_Helo_Weighted, //Environ 250
+
+        ~/Artillery_TriggerHappy_1for2Corridors,
+
+        ~/CaptureAllZoneObjectif,
+
+        ~/Artillery_Expensive,
+
+        ~/Airstrike_Defense,
+    ]
+    ScalingGeneratorList = ~/Challenge_Attack_Scaling
+)
+//-------------------------------------------------------------------------
+export ChalGotterdammerung_Phase_Command is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+
+        ~/CaptureOneObjectif, //Dependant du deck estimation 125
+
+        ~/Defense_Objectif, //Chere mais dépendant du nombre d'objectif et de la capture
+
+        ~/Challenge_Attack_Main_Weighted, //Environ 400
+
+        ~/Reco_Autogen,
+        ~/Challenge_Attack_Adaptative_Weighted,          // Environ 200
+
+        ~/Airstrike_Assault,
+        ~/Airstrike_Offense,
+
+        ~/Challenge_Attack_Helo_Weighted, //Environ 250
+
+        ~/Artillery_TriggerHappy_1for2Corridors,
+
+        ~/CaptureAllZoneObjectif,
+
+        ~/Artillery_Expensive,
+        ~/Challenge_Attack_Adaptative_Weighted,          // Environ 200
+
+        ~/Airstrike_Defense,
+
+    ]
+    ScalingGeneratorList = ~/Challenge_Gotterdammerung_Scaling
+)
+
+Challenge_Gotterdammerung_Scaling is
+[
+    ~/Attack_Objectives_Autogen,
+
+    ~/Challenge_Attack_Main_Weighted_Autogen,
+    ~/Challenge_Attack_Helo_Weighted_Autogen,
+    ~/Challenge_Attack_Adaptative_Weighted_Autogen,
+    ~/Challenge_Attack_Adaptative_Weighted_Autogen,
+    ~/Challenge_Attack_Adaptative_Weighted_Autogen,
+
+    ~/Airstrike_Assault_Autogen,
+    ~/Airstrike_Offense_Autogen,
+    ~/Airstrike_Defense_Autogen,
+
+    ~/Artillery_TriggerHappy_Autogen,
+]

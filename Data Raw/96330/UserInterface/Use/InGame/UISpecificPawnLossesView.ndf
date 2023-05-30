@@ -1,0 +1,195 @@
+
+template Display2ColumnsPerte
+[
+    UnitType : string,
+]
+
+ is BUCKContainerDescriptor
+ (
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,0]
+        MagnifiableWidthHeight = [0,15]
+    )
+    Components =
+    [
+    BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI     (    )
+        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+        //InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+        FirstMargin = TRTTILength( Magnifiable = 10.0 )
+        LastMargin = TRTTILength( Magnifiable = 10.0 )
+        Axis = ~/ListAxis/Horizontal
+        Elements =
+        [
+        BUCKListElementDescriptor
+            (
+                ExtendWeight = 0.85
+                ComponentDescriptor = TemplateTextLosses
+                (
+                    ElementName = "OneUnitName_" + <UnitType>
+                    TextDico = ~/LocalisationConstantes/dico_unites
+                )
+            ),
+            BUCKListElementDescriptor
+            (
+                ExtendWeight = 0.15
+                ComponentDescriptor = TemplateTextLosses
+                (
+                    ElementName = "OneUnitAmount_" + <UnitType>
+                    Alignment = UIText_Right
+                )
+            ),
+        ]
+    )
+    ]
+)
+
+
+template TemplateTextLosses
+[
+    ElementName : string = '',
+    TextToken : string = '',
+    Alignment : int  = UIText_Left,
+    IsTitre : bool = false,
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+]
+
+ is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = <Alignment>
+        VerticalAlignment = UIText_VerticalCenter
+    )
+    HasBackground = false
+    BackgroundBlockColorToken = 'SM_Noir'
+
+    HasBorder = (<IsTitre> ? true : false)
+    BorderLineColorToken = 'SM_Grullo'
+    BorderThicknessToken = '1'
+    BordersToDraw = ~/TBorderSide/Bottom
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TextToken = <TextToken>
+    TypefaceToken = (<IsTitre> ? 'Eurostyle_Heavy' : 'Eurostyle')
+    BigLineAction = ~/BigLineAction/CutByDots
+
+    TextDico = <TextDico>
+
+    TextColor = "SM_paleSilver"
+    TextSize = (<IsTitre> ? "14" : "12")
+)
+
+
+//-------------------------------------------------------------------------------------
+private template OneCategoryRack
+[
+    UnitType : string
+] is BUCKRackDescriptor
+(
+    ElementName = "CategoryRack_" + <UnitType>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1,0]
+        AlignementToFather = [0.5,0]
+        AlignementToAnchor = [0.5,0]
+    )
+    InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+    HasBackground = false
+    BackgroundBlockColorToken = 'SM_RifleGreen'
+
+    BladeDescriptor = Display2ColumnsPerte(UnitType = <UnitType>)
+)
+
+
+
+private PawnContentOneLine is BUCKListDescriptor
+(
+    ElementName = "PawnContentOnePawnList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength(Magnifiable = 20.0)
+    InterItemMargin = TRTTILength(Magnifiable = 10.0)
+    LastMargin = TRTTILength(Magnifiable = 0.0)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = OneCategoryRack(UnitType = "Pawn")
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = OneCategoryRack(UnitType = "Infantry")
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = OneCategoryRack(UnitType = "Cannon")
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = OneCategoryRack(UnitType = "Tank")
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = OneCategoryRack(UnitType = "Plane")
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = OneCategoryRack(UnitType = "Helicopter")
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = OneCategoryRack(UnitType = "Supply")
+        ),
+    ]
+)
+
+
+
+BUCKSpecificPawnLossesMainComponentDescriptor is BUCKRackDescriptor
+(
+    ElementName = "LossesForPawnRack"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    BladeDescriptor = PawnContentOneLine
+)
+
+
+UISpecificPawnLossesViewDescriptor is TUISpecificPawnLossesViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificPawnLossesMainComponentDescriptor
+    MainComponentContainerUniqueName = "LossesForPawnRack" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

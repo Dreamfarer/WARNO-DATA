@@ -1,0 +1,190 @@
+// -------------------------------------------------------------------------------------------------
+
+SmartGroupUnitList is BUCKListDescriptor
+(
+    ElementName = "SmartGroupUnitList"
+    ComponentFrame = TUIFramePropertyRTTI()
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    FirstMargin = TRTTILength(Magnifiable = 5.0)
+    InterItemMargin = TRTTILength(Magnifiable = 5.0)
+    LastMargin = TRTTILength(Magnifiable = 5.0)
+
+    Elements = []
+)
+
+// -------------------------------------------------------------------------------------------------
+
+private SmartGroupProductionRadioButtonManager is TBUCKRadioButtonManager()
+template SmartGroupProductionButton
+[
+    ElementNamePrefix : string,
+    ComponentFrame : TUIFramePropertyRTTI = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 30.0]
+    ),
+    TextToken : string = "",
+] is BUCKButtonDescriptor
+(
+    ElementName = <ElementNamePrefix> + "Button"
+
+    ComponentFrame = <ComponentFrame>
+
+    HasBackground = true
+    BackgroundBlockColorToken  = "BoutonSelectionMultiple"
+
+    HasBorder = true
+    BorderLineColorToken = 'H2_bleu_2_40p'
+
+    IsTogglable = true
+    CannotDeselect = true
+    RadioButtonManager = ~/SmartGroupProductionRadioButtonManager
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [0.0, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+
+            FirstMargin = TRTTILength(Magnifiable = 2.0)
+            LastMargin = TRTTILength(Magnifiable = 2.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = <ElementNamePrefix> + "Name"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TextToken = <TextToken>
+
+                        TypefaceToken = "UIMainFont"
+                        TextStyle = "Default"
+                        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                        TextColor = "BlancEquipe"
+                        TextSize = "15"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                    )
+                ),
+                // Filler
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKContainerDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                        )
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = <ElementNamePrefix> + "Price"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            AlignementToFather = [0.0, 0.5]
+                            AlignementToAnchor = [0.0, 0.5]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            Alignment = UIText_Left
+                            VerticalAlignment = UIText_VerticalCenter
+                            InterLine = 0
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/FitToContent
+                        VerticalFitStyle = ~/FitStyle/FitToContent
+
+                        TypefaceToken = "UIMainFont"
+                        TextStyle = "Default"
+                        UniformDrawer = $/UserInterface/UIUniformDrawer
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                        TextColor = "Orange"
+                        TextSize = "15"
+                        BigLineAction = ~/BigLineAction/MultiLine
+                    )
+                ),
+            ]
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+
+SmartGroupsList is BUCKListDescriptor
+(
+    ElementName = "SmartGroupsList"
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+)
+
+// -------------------------------------------------------------------------------------------------
+
+SmartGroupsProductionComponent is BUCKListDescriptor
+(
+    ElementName = "SmartGroupsProductionComponent"
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/SmartGroupsList
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/SmartGroupUnitList
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                UniqueName = "UISpecificSmartGroupSelectionPanelViewForProduction"
+                ComponentFrame = TUIFramePropertyRTTI()
+                FitStyle = ~/ContainerFitStyle/FitToContent
+            )
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
