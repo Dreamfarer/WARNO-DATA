@@ -15,7 +15,7 @@ class Descriptor(ABC):
         self.content = content
         self.variables = variables
         for variable in self.variables:
-            variable.getValue(self.content)
+            variable.extractValue(self.content)
 
     # Extract whole descriptors from a given string
     @classmethod
