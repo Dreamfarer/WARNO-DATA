@@ -38,8 +38,6 @@ class Variable:
 
     # Extract variable from .ndf with RegEx (called from descriptor.py)
     def extractValue(self, raw_ndf: str) -> None:
-        print(self.__var_type)
-        print("Autsch")
         match = re.search(self.__regEx, raw_ndf, re.DOTALL)
         if match:
             if self.__var_type == "list":
