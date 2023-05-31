@@ -1,0 +1,146 @@
+
+private OutGameChatMessageListHeaderDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 15.0]
+    )
+
+    Components =
+    [
+
+    ]
+
+    HasBackground = true
+    BackgroundBlockColorToken = "ListeExcel/Cartouche"
+)
+
+private OutGameChatEditableText is BUCKSpecificEditableTextDescriptor
+(
+    ElementName = "OutgameChatEditableText"
+    HidePointerEvents = true
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [-30.0, 20.0]
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "Black80"
+
+    ClippingContainerFrameProperty = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-10.0, -6.0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    TextSizeToken = "14"
+    TypefaceToken = "UISecondFont"
+
+    Flags = EditableTextFlag/H_LEFT + EditableTextFlag/ONE_LINE
+
+    MaxChars = 255
+
+    TextStyle = "Default"
+
+    HintComponentName = "EditableTextHint"
+    HintComponentDescriptor = BUCKTextDescriptor
+    (
+        ElementName = 'EditableTextHint'
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+        )
+
+        ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+        TextStyle = "Default"
+
+        HorizontalFitStyle = ~/FitStyle/FitToContent
+        VerticalFitStyle = ~/FitStyle/FitToParent
+
+        TypefaceToken = "UISecondFont"
+        BigLineAction = ~/BigLineAction/CutByDots
+
+        TextColor = "SD2_Blanc30"
+        TextSize = "SD2_Petit"
+
+        TextFormatScript = nil
+    )
+)
+
+BUCKSpecificOutGameChatMessageListMainComponentDescriptor is BUCKListDescriptor
+(
+    ElementName = "ChatMessageListMainComponent"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [-112.0, 0.0]
+        MagnifiableOffset = [80,0]
+    )
+
+    InterItemMargin = TRTTILength()
+    FirstMargin = TRTTILength()
+    LastMargin = TRTTILength()
+
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    HasBackground = false
+    BackgroundBlockColorToken = 'Noir'
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor = BUCKSpecificScrollingContainerDescriptor
+            (
+                ElementName = 'MessageScrollingContainer'
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                    MagnifiableWidthHeight = [0.0, 0.0]
+                    MagnifiableOffset = [0,0]
+                    AlignementToAnchor = [0, 0.0]
+                    AlignementToFather = [0, 0.0]
+                )
+
+                HasVerticalScrollbar = true
+                Components =
+                [
+                    BUCKListDescriptor
+                    (
+                        ElementName = 'MessageList'
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [-30.0, 0.0]
+                        )
+
+                        FirstMargin = TRTTILength(Magnifiable = 4.0)
+                        InterItemMargin = TRTTILength(Magnifiable = 2.0)
+                        LastMargin = TRTTILength(Magnifiable = 4.0)
+
+                        Axis = ~/ListAxis/Vertical
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/OutGameChatEditableText
+        ),
+    ]
+)
+
+UISpecificOutGameChatMessageListViewDescriptor is TUISpecificOutGameChatMessageListViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameChatMessageListMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    MaxNameSizeInChat = 25
+)

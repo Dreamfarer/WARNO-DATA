@@ -1,0 +1,315 @@
+// Template de texte pour le titre du hint
+template HintTitleTextBUCKComponent
+[
+    ComponentFrame : TUIFramePropertyRTTI = nil,
+    ParagraphStyle : TParagraphStyleRTTI = nil,
+    TextStyle : string = "Default",
+    TextPadding : TRTTILength4 = TRTTILength4(),
+
+    HorizontalFitStyle : int = ~/FitStyle/FitToContent,
+    VerticalFitStyle : int = ~/FitStyle/FitToContent,
+
+    TypefaceToken : string = "",
+    BigLineAction : int = ~/BigLineAction/MultiLine,
+
+    TextDico : string = "",
+    TextSize : string = "",
+    TextColor : string = "",
+
+    Components : LIST<TBUCKContainerDescriptor> = [],
+]
+is BUCKTextDescriptor
+(
+    ElementName = 'TitleText'
+
+    ComponentFrame = <ComponentFrame>
+    ParagraphStyle = <ParagraphStyle>
+    TextStyle = <TextStyle>
+    TextPadding = <TextPadding>
+
+    HorizontalFitStyle = <HorizontalFitStyle>
+    VerticalFitStyle = <VerticalFitStyle>
+
+    TypefaceToken = <TypefaceToken>
+    BigLineAction = <BigLineAction>
+
+    TextDico = <TextDico>
+    TextSize = <TextSize>
+    TextColor = <TextColor>
+
+    Components = <Components>
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Template de texte pour le corps du hint
+template HintBodyTextBUCKComponent
+[
+    ComponentFrame : TUIFramePropertyRTTI = nil,
+    ParagraphStyle : TParagraphStyleRTTI = nil,
+    TextStyle : string = "Default",
+    TextPadding : TRTTILength4 = TRTTILength4(),
+
+    HorizontalFitStyle : int = ~/FitStyle/FitToContent,
+    VerticalFitStyle : int = ~/FitStyle/FitToContent,
+
+    TypefaceToken : string = "",
+    BigLineAction : int = ~/BigLineAction/MultiLine,
+
+    TextDico : string = "",
+    TextSize : string = "",
+    TextColor : string = "",
+]
+is BUCKTextDescriptor
+(
+    ElementName = 'BodyText'
+
+    ComponentFrame = <ComponentFrame>
+    ParagraphStyle = <ParagraphStyle>
+    TextStyle = <TextStyle>
+    TextPadding = <TextPadding>
+
+    HorizontalFitStyle = <HorizontalFitStyle>
+    VerticalFitStyle = <VerticalFitStyle>
+
+    TypefaceToken = <TypefaceToken>
+    BigLineAction = <BigLineAction>
+
+    TextDico = <TextDico>
+    TextSize = <TextSize>
+    TextColor = <TextColor>
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+template HintSeparatorTextBUCKComponent
+[
+    ComponentFrame : TUIFramePropertyRTTI = nil,
+    ParagraphStyle : TParagraphStyleRTTI = nil,
+    TextStyle : string = "Default",
+    TextPadding : TRTTILength4 = TRTTILength4(),
+
+    HorizontalFitStyle : int = ~/FitStyle/FitToContent,
+    VerticalFitStyle : int = ~/FitStyle/FitToContent,
+
+    TypefaceToken : string = "",
+    BigLineAction : int = ~/BigLineAction/MultiLine,
+
+    TextDico : string = "",
+    TextToken : string = "",
+    TextSize : string = "",
+    TextColor : string = "",
+    ElementName : string = "",
+]
+is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+
+    ComponentFrame = <ComponentFrame>
+    ParagraphStyle = <ParagraphStyle>
+    TextStyle = <TextStyle>
+    TextPadding = <TextPadding>
+
+    HorizontalFitStyle = <HorizontalFitStyle>
+    VerticalFitStyle = <VerticalFitStyle>
+
+    TypefaceToken = <TypefaceToken>
+    BigLineAction = <BigLineAction>
+
+    TextDico = <TextDico>
+    TextToken = <TextToken>
+    TextSize = <TextSize>
+    TextColor = <TextColor>
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Template de texte pour le corps étendu du hint
+template HintExtendedTextBUCKComponent
+[
+    ComponentFrame : TUIFramePropertyRTTI = nil,
+    ParagraphStyle : TParagraphStyleRTTI = nil,
+    TextStyle : string = "Default",
+    TextPadding : TRTTILength4 = TRTTILength4(),
+
+    HorizontalFitStyle : int = ~/FitStyle/FitToContent,
+    VerticalFitStyle : int = ~/FitStyle/FitToContent,
+
+    TypefaceToken : string = "",
+    BigLineAction : int = ~/BigLineAction/MultiLine,
+
+    TextDico : string = "",
+    TextSize : string = "",
+    TextColor : string = "",
+]
+is BUCKTextDescriptor
+(
+    ElementName = 'ExtendedText'
+
+    ComponentFrame = <ComponentFrame>
+    ParagraphStyle = <ParagraphStyle>
+    TextStyle = <TextStyle>
+    TextPadding = <TextPadding>
+
+    HorizontalFitStyle = <HorizontalFitStyle>
+    VerticalFitStyle = <VerticalFitStyle>
+
+    TypefaceToken = <TypefaceToken>
+    BigLineAction = <BigLineAction>
+
+    TextDico = <TextDico>
+    TextSize = <TextSize>
+    TextColor = <TextColor>
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Template pour le hint
+template HintBUCKComponent
+[
+    ComponentFrame : TUIFramePropertyRTTI = nil,
+
+    TitleBUCKTextComponent : TBUCKContainerDescriptor = nil,
+    SeparatorTitleBodyTextComponent : TBUCKContainerDescriptor = nil,
+    BodyBUCKTextComponent : TBUCKContainerDescriptor = nil,
+    SeparatorBodyExtendedTextComponent : TBUCKContainerDescriptor = nil,
+    ExtendedBUCKTextComponent : TBUCKContainerDescriptor = nil,
+
+    TitleElementName : string = 'TitleText',
+    SeparatorTitleBodyElementName : string = 'SeparatorTitleBodyText',
+    BodyElementName : string = 'BodyText',
+    SeparatorBodyExtendedElementName : string = 'SeparatorBodyExtendedText',
+    ExtendedElementName : string = 'ExtendedText',
+
+    ListFirstMargin : TRTTILength = TRTTILength(),
+    ListLastMargin : TRTTILength = TRTTILength(),
+    ListInterTextVerticalMargin : TRTTILength = TRTTILength( Magnifiable = 1.0 ),
+
+    ListBackgroundComponents : LIST<TBUCKContainerDescriptor> = [],
+    ListForegroundComponents : LIST<TBUCKContainerDescriptor> = [],
+
+    ListHasBorder : bool = false,
+    ListBorderLineColorToken : string = "",
+    ListBorderThicknessToken : string = "",
+    ListBordersToDraw : int = 0,
+
+    ListHasBackground : bool = false,
+    ListBackgroundBlockColorToken : string = "",
+]
+is BUCKHintDescriptor
+(
+    ComponentFrame = <ComponentFrame>
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    FirstMargin = <ListFirstMargin>
+    LastMargin = <ListLastMargin>
+    InterItemMargin = <ListInterTextVerticalMargin>
+
+    BackgroundComponents = <ListBackgroundComponents>
+    ForegroundComponents = <ListForegroundComponents>
+
+    HasBorder = <ListHasBorder>
+    BorderLineColorToken = <ListBorderLineColorToken>
+    BorderThicknessToken = <ListBorderThicknessToken>
+    BordersToDraw = <ListBordersToDraw>
+
+    HasBackground = <ListHasBackground>
+    BackgroundBlockColorToken = <ListBackgroundBlockColorToken>
+
+    TitleElementName = <TitleElementName>
+    BodyElementName = <BodyElementName>
+    SeparatorTitleBodyElementName = <SeparatorTitleBodyElementName>
+    SeparatorBodyExtendedElementName = <SeparatorBodyExtendedElementName>
+    ExtendedElementName = <ExtendedElementName>
+
+    Elements =
+    [
+        // Titre du hint
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = <TitleBUCKTextComponent>
+        ),
+    ] +
+
+    (<SeparatorTitleBodyTextComponent> != nil ?
+    [
+        // Texte séparateur
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = <SeparatorTitleBodyTextComponent>
+        ),
+    ] : []) +
+
+    [
+        // Texte du hint
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = <BodyBUCKTextComponent>
+        ),
+    ] +
+
+    (<SeparatorBodyExtendedTextComponent> != nil ?
+    [
+        // Texte séparateur
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = <SeparatorBodyExtendedTextComponent>
+        ),
+    ] : []) +
+
+    [
+        // Texte du hint étendu
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = <ExtendedBUCKTextComponent>
+        ),
+    ]
+)
+
+// -------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+
+// Surface déclenchant un hint
+template HintableAreaBUCKComponent
+[
+    ElementName : string = "",
+
+    ForbiddenTags : list<string> = [],
+
+    // hint standard
+    DicoToken : string = "",
+    HintTitleToken : string = "",
+    HintBodyToken : string = "",
+    HintExtendedToken : string = "",
+
+    // composant standard pour le hint : permet de gérer un titre, un corps et un corps étendu avec des tokens fixes
+    HintStandardBUCKComponent : TBUCKHintDescriptor = nil,
+
+    // hint avec un composant spécifique : les tokens et le composant standards ne seront pas utilisés
+    HintSpecificBUCKComponent : TBUCKHintDescriptor = nil,
+]
+is BUCKHintableAreaDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        AlignementToFather = [0.0, 0.0]
+        AlignementToAnchor = [0.0, 0.0]
+    )
+
+    ForbiddenTags = <ForbiddenTags>
+
+    MaskEvents = false
+
+    DicoToken = <DicoToken>
+    HintTitleToken = <HintTitleToken>
+    HintBodyToken = <HintBodyToken>
+    HintExtendedToken = <HintExtendedToken>
+
+    HintStandardBUCKComponent = <HintStandardBUCKComponent>
+    HintSpecificBUCKComponent = <HintSpecificBUCKComponent>
+)

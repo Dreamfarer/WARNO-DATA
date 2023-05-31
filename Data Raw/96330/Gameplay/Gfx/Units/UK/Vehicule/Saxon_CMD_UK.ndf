@@ -1,0 +1,22 @@
+export ModelFile_Saxon_CMD_UK is 'GameData:/Assets/3D/Units/UK/CMD/Saxon_CP/Saxon.Ase2NdfBin'
+
+Modele_Saxon_CMD_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Saxon_CMD_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Saxon_CMD_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/CMD/Saxon_CP/Saxon.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Saxon_CMD_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/CMD/Saxon_CP/Saxon.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

@@ -1,0 +1,19 @@
+export ModelFile_Mi_24VP_SOV is 'GameData:/Assets/3D/Units/URSS/Helico/Mi_24VP/Mi_24VP.Ase2NdfBin'
+
+Modele_Mi_24VP_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_24VP_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_24VP_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/Mi_24VP_MID/Mi_24VP_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_24VP_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/LODS/Mi_24VP_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

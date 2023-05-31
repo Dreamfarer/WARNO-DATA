@@ -1,0 +1,29 @@
+private GroupRules is TDeckGroupRules
+(
+    MaxNbSmartGroupByCombatGroup = 6
+    MaxNbPackBySmartGroup = 3
+    CanUseSamePackInSameSmartGroupSlot = true
+
+    MaxNbCombatGroupForGameMode = MAP
+    [
+    (GameSkirmish, 4),
+    (GameChallenge, 5)
+    ]
+
+    CombatGroupDefaultName = "SGRP_TAB"
+    SmartGroupDefaultName = "SGR_DEFLT"
+
+    SmartGroupLeaderNoGrade = "SGR_EMPT"
+    SmartGroupLeaderGradeList =
+    [
+        "SGR_GRD1",
+        "SGR_GRD2",
+        "SGR_GRD3",
+        "SGR_GRD4",
+        "SGR_GRD5",
+        "SGR_GRD6",
+        "SGR_GRD7",
+        "SGR_GRD8",
+        "SGR_GRD9",
+    ]
+)

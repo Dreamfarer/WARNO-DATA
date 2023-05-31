@@ -1,0 +1,22 @@
+export ModelFile_M151_MUTT_RCL_DDR is 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_SPG9/UAZ_469_SPG9.Ase2NdfBin'
+
+Modele_M151_MUTT_RCL_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_M151_MUTT_RCL_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_M151_MUTT_RCL_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_SPG9_MID/UAZ_469_SPG9_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M151_MUTT_RCL_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/LODS/UAZ_469_SPG9_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

@@ -1,0 +1,112 @@
+private ConnectedPlayerInfoLine is BUCKListDescriptor
+(
+    ElementName = "PlayerScoreLine"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, 18.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+
+    FirstMargin = TRTTILength( Magnifiable = 10.0)
+    InterItemMargin = TRTTILength( Magnifiable = 10.0)
+    LastMargin = TRTTILength( Magnifiable = 10.0)
+
+    HasBackground = true
+    BackgroundBlockColorToken = "SD2_Gris80"
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKSpecificAvatarDescriptor
+            (
+                ElementName = "PlayerAvatar"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [18.0, 0.0]
+                    PixelWidthHeight = [-2.0, -2.0]
+                    AlignementToFather = [0, 0.5]
+                    AlignementToAnchor = [0, 0.5]
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "PlayerName"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                TextStyle = "Default"
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextSize = "SD2_Petit"
+                TextColor = "SD2_Blanc184"
+                TextToken = ""
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TypefaceToken = "UIMainFont"
+
+                BigLineAction = ~/BigLineAction/CutByDots
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    ElementName = "HintName"
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = "PingArea"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [0.0, 1.0]
+                    MagnifiableWidthHeight = [30.0, 0.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+            )
+        )
+    ]
+)
+
+BUCKSpecificStrategicConnectedPlayersMainComponentDescriptor is BUCKRackDescriptor
+(
+    ElementName = "ConnectedPlayersList"
+    FirstMargin = TRTTILength( Magnifiable = 10.0)
+    InterItemMargin = TRTTILength( Magnifiable = 10.0)
+    LastMargin = TRTTILength( Magnifiable = 10.0)
+
+    HasBackground = true
+    BackgroundBlockColorToken = "SD2_Gris80"
+
+    Axis = ~/ListAxis/Vertical
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+    )
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    BladeDescriptor = ConnectedPlayerInfoLine
+)
+
+
+UISpecificStrategicConnectedPlayersViewDescriptor is TUISpecificStrategicConnectedPlayersViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicConnectedPlayersMainComponentDescriptor
+    MainComponentContainerUniqueName = "BUCKSpecificConnectedPlayersPanel" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

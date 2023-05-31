@@ -1,0 +1,25 @@
+export ModelFile_MiG_21bis_AA2_DDR is 'GameData:/Assets/3D/Units/DDR/Avion/MiG_21_PFM/MiG_21_PFM.Ase2NdfBin'
+
+Modele_MiG_21bis_AA2_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MiG_21bis_AA2_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_21bis_AA2_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/MiG_21_PFM/MiG_21_PFM.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_21bis_AA2_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/MiG_21_PFM/MiG_21_PFM.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_21bis_AA2_DDR_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Avion/MiG_21_PFM/MiG_21_PFM_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

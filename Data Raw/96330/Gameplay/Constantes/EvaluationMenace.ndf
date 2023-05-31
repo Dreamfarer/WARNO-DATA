@@ -1,0 +1,14 @@
+export EvaluationMenaceConstantes is TEvaluationMenaceConstantesDescriptor
+(
+    // Valeurs en metres
+    CercleMenace       = 1000 * Metre
+
+    EscapeRadius = 6500 * Metre
+
+    // Tant que l'unité a été vue pour la dernière fois il y a moins de X secondes, elle reste une menace valide
+    // sachant qu'on actualise la menace uniquement tous les 6 ticks (actuellement 0.6 secondes) dans tous les cas
+    DureeDeMemoireDeLaMenaceEnSecondes = 0.8
+
+    // Une menace directe empeche d'orienter le chassis pour aligner une tourelle de chassis (ex: mitrailleuse)
+    ConsidererLesMenacesEnMouvementCommeDirectes = true
+)

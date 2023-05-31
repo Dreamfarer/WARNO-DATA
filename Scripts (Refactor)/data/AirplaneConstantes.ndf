@@ -1,0 +1,39 @@
+// Paramètrage de piqué des Stukas //
+StukaDistanceNosedive is (1350 * Metre)
+StukaDistanceContournementCible is (800 * Metre)
+StukaAgilityMultiplicator is 2.5
+
+// Paramètrage du Dive //
+MinPitchForDive is (5 * Degre) // Pitch minimal autorisé pour un Dive
+MaxPitchForDive is (65 * Degre)  // Pitch maximal autorisé pour un Dive
+MinDiveAlignmentDuration is 0.5 // Durée minimale d'alignement lors d'un Dive, en secondes
+
+// Paramètrage du DiveBomb //
+MinPitchForDiveBomb is (10 * Degre) // Pitch minimal autorisé pour un DiveBomb
+PitchForDiveBomb is (45 * Degre) // Pitch à essayer d'atteindre pour un DiveBomb
+MaxPitchForDiveBomb is (65 * Degre)  // Pitch maximal autorisé pour un DiveBomb
+DiveBombRecoveryDuration is 10 // Temps en secondes pendant lequel l'avion vol à basse altitude après avoir largué ses bombes
+
+// Paramètrage du dogfight constre des avions plus lents //
+SpeedRatioForAttackOnVerySlowAirplaneStrategy is 0.45
+SpeedRatioForAttackOnSlowAirplaneStrategy is 0.85
+MinDistanceBetweenFighterAndTargetForAttackOnSlowAirplaneStrategy is 0.20      // en ratio de l'agility radius
+MaxDistanceBetweenFighterAndTargetForLateralMoveOnSlowAirplaneStrategy is 0.27 // en ratio de l'agility radius
+MaxAngleDifferenceWithTarget is (60 * Degre)
+MaxAngleToConsiderTargetAhead is (50 * Degre)
+AngleToFakeTargetPosition is (60 * Degre)
+FactorForTargetAltitudeOffset is 0 // à régler entre 0.0 (pas de variation d'altitude cible) et 1.0 (variation d'altitude cible standard)
+
+//Un avion qui veut lancer un missile air-sol ne remonte à son altitude de croisière que s'il est plus loin que X fois la portée du missile
+AirGroundMissileRangeRatioForCruiseAltitude is 2.0
+
+// Autres paramètres avions : DEMANDER AUX DEVS AVANT DE MODIFIER //
+MaxPitchSpeed is 30 // degrés/seconde
+MaxAltitude is (10000 * Metre)
+MinAltitudeForRoll is (2000 * Metre)
+MinRollSpeedForRoll is 65 // degrés/seconde
+
+//Paramètrage visuels des avions
+ElevatorRotationMax is 18
+AileronRotationMax is 18
+RudderRotationMax is 20

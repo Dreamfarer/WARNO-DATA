@@ -1,0 +1,19 @@
+export ModelFile_Gazelle_trans_UK is 'GameData:/Assets/3D/Units/UK/Helico/Gazelle/Gazelle.Ase2NdfBin'
+
+Modele_Gazelle_trans_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Gazelle_trans_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Gazelle_trans_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/Gazelle/Gazelle.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Gazelle_trans_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/Gazelle/Gazelle.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,22 @@
+export ModelFile_VAB_T20_FR is 'GameData:/Assets/3D/Units/FR/DCA/VAB_T20/VAB_T20.Ase2NdfBin'
+
+Modele_VAB_T20_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_VAB_T20_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_VAB_T20_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/DCA/VAB_T20/VAB_T20.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VAB_T20_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/DCA/VAB_T20/VAB_T20.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

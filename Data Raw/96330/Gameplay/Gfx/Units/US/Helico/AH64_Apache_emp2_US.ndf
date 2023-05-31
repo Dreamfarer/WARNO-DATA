@@ -1,0 +1,19 @@
+export ModelFile_AH64_Apache_emp2_US is 'GameData:/Assets/3D/Units/US/Helico/AH64A_Apache/AH64A_Apache_emp2.Ase2NdfBin'
+
+Modele_AH64_Apache_emp2_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AH64_Apache_emp2_US
+    CivMask =  CivMask/Common
+)
+
+Modele_AH64_Apache_emp2_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/AH64A_Apache_MID/AH64A_Apache_emp2_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AH64_Apache_emp2_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/LODS/AH64A_Apache_emp2_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,247 @@
+template EcranGaucheTextEditable
+[
+    TokenTitle : string = "",
+    ElementName : string,
+    IsPassword : bool = false,
+    AlignementToFather : float2 = [1.0, 0.0],
+    AlignementToAnchor : float2 = [1.0, 0.0],
+    texte : string = 'EditableText',
+
+] is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = <AlignementToFather>
+        AlignementToAnchor = <AlignementToAnchor>
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 18.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+
+            InterItemMargin = TRTTILength( Magnifiable = 6.0)
+            LastMargin = TRTTILength(Magnifiable = 20.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTypingTextDescriptor
+                    (
+                        ElementName = <ElementName> + "Label"
+
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [180.0, 0.0]
+                        )
+                        HorizontalFitStyle = ~/FitStyle/MinBetweenUserDefinedAndContent
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Right
+                        )
+
+                        TextStyle       = "TextStyleEcranMoniteur"
+                        TypefaceToken   = "UISecondFont"
+
+                        TextColor       = "Blanc"
+                        TextSize        = "14"
+                        BigLineAction = ~/BigLineAction/MultiLine
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = <TokenTitle>
+                        AnimDuration = 10000000
+                        AnimTextInSec = 0.1
+                    )
+                ),
+
+                BUCKListElementDescriptor
+                (
+                    ExtendWeight = 1.0
+                    ComponentDescriptor = BUCKEditableTextDescriptor
+                    (
+                        ElementName = <ElementName> + <texte>
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.0, 1.0]
+                            MagnifiableWidthHeight = [230.0, 0.0]
+                            AlignementToFather = [0, 0.5]
+                            AlignementToAnchor = [0, 0.5]
+                        )
+
+                        ClippingContainerFrameProperty = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 1.0]
+                            MagnifiableWidthHeight = [-6.0, -6.0]
+                            AlignementToFather = [0.5, 0.5]
+                            AlignementToAnchor = [0.5, 0.5]
+                        )
+
+                        HasBackground = true
+                        BackgroundBlockColorToken = "VertLogin"
+
+                        Flags = ~/EditableTextFlag/H_LEFT | ~/EditableTextFlag/V_TOP | ~/EditableTextFlag/ONE_LINE | (<IsPassword> ? ~/EditableTextFlag/PASSWORD : 0x0000)
+
+                        TextSizeToken = "14"
+                        TypefaceToken = "UISecondFont"
+                        TextColorToken = "Noir"
+                        SelectionColorToken = "DeckOverview/CaseGrisee/EditableText/Selected"
+
+                        MaxChars = 50
+                        SelectTextOnFocus = true
+                    )
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+BUCKSpecificOutGameRecoverLoginMainComponentDescriptor is LoginTvContainer
+(
+    ElementName = "RecoverLoginComponent"
+
+    Components =
+    [
+        BUCKListDescriptor
+        (
+            ElementName = "RecoverLoginContentList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [450.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            FirstMargin = TRTTILength( Magnifiable = 10.0)
+            InterItemMargin = TRTTILength( Magnifiable = 10.0)
+            LastMargin = TRTTILength( Magnifiable = 10.0)
+
+            BackgroundComponents =
+            [
+                ~/LoginPanelMonitorBackground
+            ]
+
+            ForegroundComponents =
+            [
+                ~/LoginPanelMonitorForeground
+            ]
+
+            Elements =
+            [
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTypingTextDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [0.9, 0.0]
+                            MagnifiableWidthHeight = [0.0, 150.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+
+                        HorizontalFitStyle = ~/FitStyle/UserDefined
+                        VerticalFitStyle = ~/FitStyle/UserDefined
+
+                        TextStyle = "TextStyleEcranMoniteur"
+                        TypefaceToken = "UISecondFont"
+
+                        TextColor       = "Blanc"
+                        TextSize        = "14"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = "ETG_log"
+
+                        AnimDuration = 10000000
+                        AnimTextInSec = 0.1
+                    )
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = EcranGaucheTextEditable(TokenTitle = "email" ElementName = "Email")
+                ),
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextDescriptor
+                    (
+                        ElementName = "ErrorMessage"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [250.0, 15.0]
+                            AlignementToAnchor = [0.5, 0.0]
+                            AlignementToFather = [0.5, 0.0]
+                        )
+
+                        ParagraphStyle = TParagraphStyleRTTI
+                        (
+                            VerticalAlignment = ~/UIText_VerticalCenter
+                            Alignment = UIText_Center
+                        )
+                        TextStyle       = "Default"
+                        TypefaceToken   = "UISecondFont"
+
+                        TextColor       = "SD2_Blanc184"
+                        TextSize        = "14"
+
+                        TextDico = ~/LocalisationConstantes/dico_interface_outgame
+                        TextToken = ""
+                    )
+                ),
+            ]
+        ),
+        BUCKListDescriptor
+        (
+            ElementName = "RecoverLoginButtonList"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [0.0, 50.0]
+                MagnifiableOffset = [0.0, -50.0]
+                AlignementToFather  = [0.5, 1.0]
+                AlignementToAnchor  = [0.5, 1.0]
+            )
+
+            Axis = ~/ListAxis/Horizontal
+            InterItemMargin = TRTTILength(Magnifiable = 5.0)
+
+            Elements =
+            [
+                BUCKListElementDescriptor(ComponentDescriptor = ~/LoginModalRecoverButtonDescriptor ),
+                BUCKListElementDescriptor(ComponentDescriptor = ~/LoginModalCancelButtonDescriptor ),
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+UISpecificOutGameRecoverLoginViewDescriptor is TUISpecificOutGameRecoverLoginViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificOutGameRecoverLoginMainComponentDescriptor
+    MainComponentContainerUniqueName = "LoginPanel" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    TokenEmailNotValid  = "MAIL_INVAL"
+    TokenEmailUnkwown   = "MAIL_UNKNW"
+    TokenEmailSent      = "MAILSENT"
+    TokenError          = "TEMP_ERR"
+
+    ColorError      = "Rouge"
+    ColorSuccess    = "AppleGreen"
+)

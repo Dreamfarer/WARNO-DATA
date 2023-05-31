@@ -1,0 +1,21 @@
+//========================
+// MODE DE JEU NORMAL
+//========================
+strategicGamePhaseManagerDescriptor is TGamePhaseManagerDescriptor
+(
+    GamePhaseDescriptorList =
+    [
+        strategicGamePhase,
+    ]
+
+    InitPhaseType = ~/StrategicGame
+)
+
+//------------------------------------------------------------------------
+// ------------------------  STRATEGIC ----------------------------------
+//------------------------------------------------------------------------
+
+private strategicGamePhase is TStrategicGamePhaseDescriptor
+(
+    GamePhaseType = ~/StrategicGame
+)

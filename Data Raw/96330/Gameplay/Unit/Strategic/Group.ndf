@@ -1,0 +1,28 @@
+
+
+Strategic_GroupModuleDescriptor is TGroupModuleDescriptor
+(
+)
+
+
+Strategic_GroupStateEngineDescriptor is TStateEngineModuleDescriptor
+(
+    InitialStateId = "GroupIdle"
+)
+
+export Strategic_ModularUnitGroupDescriptor is TEntityDescriptor
+(
+    World = WorldIndices_Groups
+    DescriptorId = GUID:{00000000-0000-0000-0000-000113000000}
+    ClassNameForDebug = 'StrategicGroup'
+
+    ModulesDescriptors =
+    [
+        ~/Strategic_GroupModuleDescriptor,
+        ~/Strategic_GroupStateEngineDescriptor,
+    ]
+)
+
+
+
+

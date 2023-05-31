@@ -1,0 +1,19 @@
+export ModelFile_BTR_60_SOV is 'GameData:/Assets/3D/Units/URSS/APC/BTR_60/BTR_60.Ase2NdfBin'
+
+Modele_BTR_60_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BTR_60_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_60_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BTR_60/BTR_60.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BTR_60_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/APC/BTR_60/BTR_60.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

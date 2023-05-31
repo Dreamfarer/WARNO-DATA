@@ -1,0 +1,93 @@
+
+export CriticalEffectModule_Vehicule_Arme is TemplateCriticalEffectModule_GroundUnit()
+export CriticalEffectModule_Vehicule_NonArme is TemplateCriticalEffectModule_GroundUnit( PackEffetCritique = PackEffetCritique_VehiculeNonArme )
+export CriticalEffectModule_Helico_NonArme is TemplateCriticalEffectModule_GroundUnit( PackEffetCritique = PackEffetCritique_HelicoNonArme )
+export CriticalEffectModule_Helico_Arme is TemplateCriticalEffectModule_GroundUnit( PackEffetCritique = PackEffetCritique_HelicoArme )
+
+private template TemplateCriticalEffectModule_GroundUnit
+[
+    EffectsFromTerrain = [],
+    PackEffetCritique = PackEffetCritique_VehiculeStandard,
+]
+is TCriticalEffectModuleDescriptor
+(
+    Bounds = (1,200)
+    TerrainCriticalEffectTimer = 1// 5.0
+
+    EffectsFromTerrain = <EffectsFromTerrain>
+
+    EffectsOnFront = <PackEffetCritique>
+    EffectsOnSides = <PackEffetCritique>
+    EffectsOnRear = <PackEffetCritique>
+    EffectsOnTop = <PackEffetCritique>
+
+    PierceEffectsOnFront = <PackEffetCritique>
+    PierceEffectsOnSides = <PackEffetCritique>
+    PierceEffectsOnRear = <PackEffetCritique>
+    PierceEffectsOnTop = []
+
+    RicochetEffectsOnFront = []
+    RicochetEffectsOnSides = []
+    RicochetEffectsOnRear = []
+    RicochetEffectsOnTop = []
+)
+
+
+export CriticalEffectModule_Chenilles is TemplateCriticalEffectModule_GroundUnit
+(
+    EffectsFromTerrain =
+    [
+        /////////// TCriticalEffect_IncreaseFuelConsumption(Token='CRITIC201' Roll=(1,13) Multiplier=10.0 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC202' Roll=(1,5) Multiplier=0.5 TimeOut=10.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC206' Roll=(6,12) Multiplier=0.0 TimeOut=15.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC204' Roll=(13,15) Multiplier=0.5 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC205' Roll=(16,17) Multiplier=0.0 TimeOut=35.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC23'Roll=(18,20) Multiplier=0.0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(18,20) Multiplier=0.5 TimeOut=-1),
+
+        /////////// TCriticalEffect_Disrupt(Token='CRITIC24' Roll=(1,20) TimeOut=5 KeepWhenLeavingTerrain = True),
+    ]
+)
+
+export CriticalEffectModule_ToutTerrain is TemplateCriticalEffectModule_GroundUnit
+(
+    EffectsFromTerrain =
+    [
+        /////////// TCriticalEffect_IncreaseFuelConsumption(Token='CRITIC201' Roll=(1,10) Multiplier=10.0 TimeOut=60.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC204' Roll=(1,8) Multiplier=0.5 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC205' Roll=(9,15) Multiplier=0.0 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC23'Roll=(16,20) Multiplier=0.0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(16,20) Multiplier=0.5 TimeOut=-1),
+
+        /////////// TCriticalEffect_Disrupt(Token='CRITIC24' Roll=(1,20) TimeOut=5 KeepWhenLeavingTerrain = True),
+
+
+    ]
+)
+
+export CriticalEffectModule_Roues is TemplateCriticalEffectModule_GroundUnit
+(
+    EffectsFromTerrain =
+    [
+        /////////// TCriticalEffect_IncreaseFuelConsumption(Token='CRITIC201' Roll=(1,6) Multiplier=10.0 TimeOut=60.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC204' Roll=(7,9) Multiplier=0.5 TimeOut=30.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC205' Roll=(10,14) Multiplier=0.0 TimeOut=60.0),
+
+        /////////// TCriticalEffect_ReduceSpeed(Token='CRITIC23'Roll=(15,20) Multiplier=0.0 TimeOut=-1),
+        /////////// TCriticalEffect_ReduceRotation(Roll=(15,20) Multiplier=0.5 TimeOut=-1),
+
+        /////////// TCriticalEffect_Disrupt(Token='CRITIC24' Roll=(1,20) TimeOut=5 KeepWhenLeavingTerrain = True),
+
+
+    ]
+)

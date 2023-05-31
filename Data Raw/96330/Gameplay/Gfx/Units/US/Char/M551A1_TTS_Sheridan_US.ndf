@@ -1,0 +1,19 @@
+export ModelFile_M551A1_TTS_Sheridan_US is 'GameData:/Assets/3D/Units/US/Char/M551A1_TTS_Sheridan/M551A1_TTS_Sheridan.Ase2NdfBin'
+
+Modele_M551A1_TTS_Sheridan_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_M551A1_TTS_Sheridan_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M551A1_TTS_Sheridan_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M551A1_TTS_Sheridan/M551A1_TTS_Sheridan.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M551A1_TTS_Sheridan_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Char/M551A1_TTS_Sheridan/M551A1_TTS_Sheridan.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

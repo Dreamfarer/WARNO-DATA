@@ -1,0 +1,278 @@
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+//         Panel HUD (spec. Hud générique)              //
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+template GenericPanelHUD [
+    UniqueName : string = '',
+    PanelRelativeWidth : float = 0.0,
+    PanelRelativeHeight : float = 0.0,
+    PanelMagnifiableWidth : float = 0.0,
+
+    LastExtendedWeight : bool = false,
+
+    TitleVisible : boolean = true,
+    TitleHeight : float = 0.0,
+    TitleTextToken : string = '',
+    TitleTextColorIndex : int = 0,
+    TitleTextSizeIndex : int = 0,
+    TitleTypeface : string = "Title",
+    TitleMagnifiableOffset : int = 0,
+    TitleAfterContent : boolean = false, //Le titre est placé avant le contenu si ce paramètre est faux
+
+    AlignementToFather : float2 = [0.0,0.0],
+    AlignementToAnchor : float2 = [0.0,0.0],
+
+    MagnifiableOffset : float2 = [0.0, 0.0],
+
+    ContentUniqueName : string = '',
+    ContentVisible : boolean = true,
+    ContentHeight : float = 0.0,
+    ContentMagnifiableLeftRightMargins : float = 0.0,
+    ContentMagnifiableTopBottomMargins : float = 0.0,
+    ContentBackgroundBlockColorToken : string = '0',
+    ContentHasGradient : boolean = true,
+    ContentBackgroundGradientBlockColor0 : string = "0",
+    ContentBackgroundGradientBlockColor1 : string = "1",
+    ContentGradientMagnifiableHeight : float = 0.0,
+    ContentComponents : LIST<TBUCKContainerDescriptor>,
+    HasBackground,
+
+    ClipContent = false,
+]
+is BUCKContainerDescriptor
+(
+    UniqueName = <UniqueName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [<PanelRelativeWidth>, <PanelRelativeHeight>]
+        MagnifiableWidthHeight = [
+            <PanelMagnifiableWidth>,
+            (<PanelRelativeHeight> == 0) ?
+                ((<TitleVisible> ? <TitleHeight> : 0) + (<ContentVisible> ? <ContentHeight> : 0)) :
+                0
+        ]
+        AlignementToFather = <AlignementToFather>
+        AlignementToAnchor = <AlignementToAnchor>
+        MagnifiableOffset = <MagnifiableOffset>
+    )
+
+    ClipContent = <ClipContent>
+
+    Components = [
+        BUCKListDescriptor
+        (
+            ElementName = "HUDPanelContentList_" + <UniqueName>
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            Axis = ~/ListAxis/Vertical
+
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            GridAlign = false
+            AssumeChildrenAreFixedSize = false
+            AssumeChildrenAreClippable = true
+
+            Elements =
+            ( !<TitleAfterContent> & <TitleVisible> ? [
+                BUCKListElementDescriptor(
+                    ComponentDescriptor = GenericPanelHUD_BlockTitle
+                    (
+                        ElementName = "GenericPanelHUD_FirstBlockTitle_" + <UniqueName>
+                        TextToken = <TitleTextToken>
+
+                        RelativeWidthHeight = [<PanelRelativeWidth>, 0]
+                        MagnifiableWidthHeight = [<PanelMagnifiableWidth>, <TitleHeight>]
+
+                        TextColorIndex = <TitleTextColorIndex>
+                        TextSizeIndex = <TitleTextSizeIndex>
+                        TypefaceToken = <TitleTypeface>
+                        HorizontalMagnifiableOffset = <TitleMagnifiableOffset>
+                    )
+                )
+            ] : [] ) +
+            ( <ContentVisible> ? [
+                BUCKListElementDescriptor(
+                    ComponentDescriptor = GenericPanelHUD_BlockContent
+                    (
+                        HasBackground = <HasBackground>
+                        UniqueName = <ContentUniqueName>
+                        HasGradient = <ContentHasGradient>
+                        Components = <ContentComponents>
+                        Height = <ContentHeight>
+                        Width = <PanelMagnifiableWidth>
+                        RelativeWidth = <PanelRelativeWidth>
+                        GradientMagnifiableHeight = <ContentGradientMagnifiableHeight>
+                        TopBottomMargin = <ContentMagnifiableTopBottomMargins>
+                        LeftRightMargin = <ContentMagnifiableLeftRightMargins>
+                        BackgroundBlockColorToken = <ContentBackgroundBlockColorToken>
+                        BackgroundGradientBlockColor0 = <ContentBackgroundGradientBlockColor0>
+                        BackgroundGradientBlockColor1 = <ContentBackgroundGradientBlockColor1>
+                        LastExtendedWeight = <LastExtendedWeight>
+                    )
+                    ExtendWeight = 1
+                )
+            ] : []) +
+            ( <TitleAfterContent> & <TitleVisible> ? [
+                BUCKListElementDescriptor(
+                    ComponentDescriptor = GenericPanelHUD_BlockTitle
+                    (
+                        ElementName = "GenericPanelHUD_SecondBlockTitle_" + <UniqueName>
+                        TextToken = <TitleTextToken>
+
+                        RelativeWidthHeight = [<PanelRelativeWidth>, 0]
+                        MagnifiableWidthHeight = [<PanelMagnifiableWidth>, <TitleHeight>]
+
+                        BackgroundColorIndex = <TitleBackgroundColorIndex>
+                        TextColorIndex = <TitleTextColorIndex>
+                        TextSizeIndex = <TitleTextSizeIndex>
+                        TypefaceToken = <TitleTypeface>
+                        HorizontalMagnifiableOffset = <TitleMagnifiableOffset>
+                    )
+                )
+            ] : [] )
+        )
+    ]
+)
+
+// Descipteur du block de titre du Panel
+template GenericPanelHUD_BlockTitle [
+    ElementName : string = '',
+    UniqueTagTextName: string = '',
+    TextToken : string = '',
+
+    RelativeWidthHeight : float2 = [0.0, 0.0],
+    MagnifiableWidthHeight : float2 = [0.0, 0.0],
+
+    TextColorIndex : int,
+    TextSizeIndex : int,
+    TypefaceToken : string,
+    HorizontalMagnifiableOffset : int,
+]
+is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = <RelativeWidthHeight>
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+    )
+    HidePointerEvents = true
+
+    Components =
+    ( <TextToken> != '' ?
+        [
+            BUCKTextDescriptor
+            (
+                ElementName = <ElementName>
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1, 1]
+                    MagnifiableWidthHeight = [-2.0*<HorizontalMagnifiableOffset> , 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                    AlignementToFather = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Left
+                    VerticalAlignment = UIText_VerticalCenter
+                    InterLine = 0
+                )
+                TextStyle = "GenericPanelHUD_BlockTitle"
+
+                HorizontalFitStyle = ~/FitStyle/UserDefined
+
+                TypefaceToken = <TypefaceToken>
+                BigLineAction = ~/BigLineAction/MultiLine
+                TextToken = <TextToken>
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                HasBackground = true
+
+                TextColorIndex = <TextColorIndex>
+                TextSizeIndex = <TextSizeIndex>
+            )
+        ] : []
+    )
+)
+
+// Descripteur du gradient
+template GenericPanelHUD_GradientComponent [
+    ColorGradientTop : string = "0",
+    ColorGradientBottom : string = "1",
+    VerticalPercentageHeight : float,
+]
+is BUCKGradientDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+
+    RelativeTransition0 = 1 - <VerticalPercentageHeight>
+    RelativeTransition1 = 1
+    RelativeTransition2 = 1
+    RelativeTransition3 = 1
+
+    BlockColorGradient0 = <ColorGradientTop>
+    BlockColorGradient1 = <ColorGradientBottom>
+    Vertical = true
+)
+
+NoGradientComponent_PanelHUD is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+)
+
+// Descipteur du block de contenu du Panel
+template GenericPanelHUD_BlockContent [
+    UniqueName : string = '',
+    HasGradient : boolean = true,
+    Components : LIST<TBUCKContainerDescriptor>,
+    Height : float,
+    Width : float,
+    RelativeWidth : float,
+    GradientMagnifiableHeight : float,
+    TopBottomMargin : float = 0,
+    LeftRightMargin : float = 0,
+    BackgroundBlockColorToken : string = '0',
+    BackgroundGradientBlockColor0 : string = "0",
+    BackgroundGradientBlockColor1 : string = "1",
+    LastExtendedWeight : boolean = false,
+    HasBackground : boolean = true,
+]
+is BUCKContainerDescriptor
+(
+    UniqueName = <UniqueName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = (<LastExtendedWeight>) ? [0, 1] : [<RelativeWidth>, 0]
+        MagnifiableWidthHeight = [<Width>, <Height>]
+    )
+    HasBackground = <HasBackground>
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    Components =
+        ( <HasGradient> ? [
+            GenericPanelHUD_GradientComponent
+            (
+                ColorGradientTop = <BackgroundGradientBlockColor0>
+                ColorGradientBottom = <BackgroundGradientBlockColor1>
+                VerticalPercentageHeight = <GradientMagnifiableHeight> div <Height>
+            )
+        ] : [ NoGradientComponent_PanelHUD ] ) +
+        [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-<LeftRightMargin> * 2, -<TopBottomMargin> * 2]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+            Components = <Components>
+        )
+        ]
+
+    HidePointerEvents = true
+)
+

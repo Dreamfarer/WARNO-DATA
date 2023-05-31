@@ -1,0 +1,22 @@
+export ModelFile_Mortier_2B9_Vasilek_SOV is 'GameData:/Assets/3D/Units/URSS/Canon/2B9_Vasilek/2B9_Vasilek.Ase2NdfBin'
+
+Modele_Mortier_2B9_Vasilek_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Mortier_2B9_Vasilek_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_2B9_Vasilek_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/2B9_Vasilek/2B9_Vasilek.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mortier_2B9_Vasilek_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Canon/2B9_Vasilek/2B9_Vasilek.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

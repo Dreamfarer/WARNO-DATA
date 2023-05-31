@@ -1,0 +1,22 @@
+export ModelFile_HMGteam_NSV_DDR is 'GameData:/Assets/3D/Units/URSS/Char/T64BV/NSV.Ase2NdfBin'
+
+Modele_HMGteam_NSV_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_HMGteam_NSV_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_NSV_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Char/T64BV/NSV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_NSV_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Char/T64BV/NSV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

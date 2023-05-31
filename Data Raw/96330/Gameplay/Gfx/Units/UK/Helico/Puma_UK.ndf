@@ -1,0 +1,19 @@
+export ModelFile_Puma_UK is 'GameData:/Assets/3D/Units/UK/Helico/Puma/Puma.Ase2NdfBin'
+
+Modele_Puma_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Puma_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Puma_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/Puma/Puma.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Puma_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/Puma/Puma.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,19 @@
+export ModelFile_TRM_2000_supply_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/TRM_2000/TRM_2000.Ase2NdfBin'
+
+Modele_TRM_2000_supply_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_TRM_2000_supply_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_TRM_2000_supply_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/TRM_2000_MID/TRM_2000_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_TRM_2000_supply_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/LODS/TRM_2000_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

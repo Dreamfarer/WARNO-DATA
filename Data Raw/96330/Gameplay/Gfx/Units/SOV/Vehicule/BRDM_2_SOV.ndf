@@ -1,0 +1,19 @@
+export ModelFile_BRDM_2_SOV is 'GameData:/Assets/3D/Units/URSS/Vehicule/BRDM2/BRDM2.Ase2NdfBin'
+
+Modele_BRDM_2_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BRDM_2_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_2_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/BRDM2_MID/BRDM2_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_2_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/LODS/BRDM2_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

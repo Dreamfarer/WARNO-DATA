@@ -1,0 +1,19 @@
+export ModelFile_Bedford_MJ_4t_UK is 'GameData:/Assets/3D/Units/UK/Vehicule/Bedford_MJ_4t/Bedford_MJ_4t.Ase2NdfBin'
+
+Modele_Bedford_MJ_4t_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Bedford_MJ_4t_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Bedford_MJ_4t_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Vehicule/Bedford_MJ_4t_MID/Bedford_MJ_4t_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Bedford_MJ_4t_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Vehicule/LODS/Bedford_MJ_4t_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

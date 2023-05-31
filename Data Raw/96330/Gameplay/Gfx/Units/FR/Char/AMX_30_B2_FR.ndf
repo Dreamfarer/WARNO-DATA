@@ -1,0 +1,19 @@
+export ModelFile_AMX_30_B2_FR is 'GameData:/Assets/3D/Units/FR/Char/AMX_30B2/AMX_30B2.Ase2NdfBin'
+
+Modele_AMX_30_B2_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AMX_30_B2_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_30_B2_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/AMX_30B2_MID/AMX_30B2_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_30_B2_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/LODS/AMX_30B2_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

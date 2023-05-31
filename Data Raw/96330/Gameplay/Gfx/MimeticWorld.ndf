@@ -1,0 +1,72 @@
+template FxBuildingDestruction
+[
+    Action,
+] is TSequencingActionHappening
+(
+    ActionDescriptor = TActionCall(Action = <Action>)
+)
+
+unnamed TMimeticWorldDescriptor
+(
+    World = $/M3D/Scene/DefaultWorld
+    Happenings = MAP[
+        (['test_weapon'], TIntroduceMobileHappening
+            (
+                Happening = InfantryFiringHappening
+                (
+                    Action          = $/GFX/GameFx/fx_tir_placeHolder
+                    Power           = 2.
+                    WaitBetweenShot = 0.5
+                )
+            )
+        ),
+        (['chaleur'], TIntroduceMobileHappening( Happening = TSequencingActionHappening( ActionDescriptor = TActionCall( Action = $/VFX_Bank/FX_BANK_Binder_Chaleur_Simple )))),
+        (['fumigene'], TIntroduceMobileHappening( Happening = TSequencingActionHappening( ActionDescriptor = FxFumigeneWithParams ))),
+        (['fumigene_ghost'], TIntroduceMobileHappening( Happening = TSequencingActionHappening( ActionDescriptor = FxFumigeneGhostWithParams ))),
+        (["districtCombat"], TIntroduceMobileHappening(
+            Happening = TRandomHappening
+            (
+                Alternatives =
+                [
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_1),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_2),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_3),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_4),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_5),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_6),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_7),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_8),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_9),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_10),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_11),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_Close_Quarter_Combat_Batiment_12),
+                ]
+            ))
+        ),
+        (['FOBDestruction'],             TIntroduceMobileHappening(
+            Happening = TRandomHappening
+            (
+                Alternatives =
+                [
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_destruction_FOB_01),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_destruction_FOB_02),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_destruction_FOB_03),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_destruction_FOB_04),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_destruction_FOB_05),
+                    FxBuildingDestruction(Action = $/GFX/GameFx/fx_destruction_FOB_06),
+                ]
+            ))
+        ),
+        (["helicoGroundPuff"], TIntroduceMobileHappening(
+            Happening = TSequencingActionHappening
+            (
+                ActionDescriptor = TActionCall
+                (
+                    Action = $/GFX/GameFx/fx_effet_sol_helicos
+                )
+            ))
+        ),
+    ] + AllImpactHappenings + InfantryHappenings
+
+    CameraMoverProxyForDebug = $/M3D/Scene/IngameCameraMoverHelperProxy
+)

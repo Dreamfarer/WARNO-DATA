@@ -1,0 +1,19 @@
+export ModelFile_AMX_30_B2_Brennus_FR is 'GameData:/Assets/3D/Units/FR/Char/AMX_30B2_Brennus/AMX_30B2_Brennus.Ase2NdfBin'
+
+Modele_AMX_30_B2_Brennus_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AMX_30_B2_Brennus_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_30_B2_Brennus_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/AMX_30B2_Brennus/AMX_30B2_Brennus.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_30_B2_Brennus_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Char/AMX_30B2_Brennus/AMX_30B2_Brennus.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

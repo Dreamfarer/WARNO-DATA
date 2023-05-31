@@ -1,0 +1,19 @@
+export ModelFile_Faun_kraka_RFA is 'GameData:/Assets/3D/Units/RFA/Vehicule/Faun_kraka/Faun_kraka.Ase2NdfBin'
+
+Modele_Faun_kraka_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Faun_kraka_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Faun_kraka_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Vehicule/Faun_kraka_MID/Faun_kraka_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Faun_kraka_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Vehicule/LODS/Faun_kraka_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

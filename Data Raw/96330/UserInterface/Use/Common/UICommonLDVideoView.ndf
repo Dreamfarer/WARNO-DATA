@@ -1,0 +1,54 @@
+
+private VideoSubtitleParagraphStyle is TParagraphStyleRTTI
+(
+    Alignment         = UIText_Center
+    VerticalAlignment = UIText_Bottom
+    InterLine         = 0
+    LineWidth         = 0
+    Balanced          = true
+)
+
+CommonFullScreenCutSceneVideo is BUCKVideoDescriptor
+(
+    ElementName = "CutSceneVideo"
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+    VideoFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [1920.0, 1080.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+    HasBackground = true
+    BackgroundBlockColorToken = "PureBlack"
+    SoundVolume = 1.0 //3
+)
+
+
+//-------------------------------------------------------------------------------------
+
+CommonDefaultSubtitleDescriptor is BUCKTextDescriptor
+(
+    ElementName = "SubtitleText"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 60.0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+        MagnifiableOffset = [0.0, -40.0]
+    )
+
+    ParagraphStyle = ~/VideoSubtitleParagraphStyle
+    TextStyle = "DefaultSubtitle"
+
+    TypefaceToken = "Liberator"
+
+    BigLineAction = ~/BigLineAction/MultiLine
+
+    TextColor = "Subtitle/Text"
+    TextSize = "Subtitle/ChallengeText"
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+)
+

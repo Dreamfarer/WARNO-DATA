@@ -1,0 +1,172 @@
+//-------------------------------------------------------------------------
+//----------------------------- MISC ---------------------------------
+//-------------------------------------------------------------------------
+MinimumResourceForLaunch_Stage_1 is 400
+MinimumResourceForLaunch_Economic is 1000
+
+//-------------------------------------------------------------------------
+//------------------------------ SUPPLY -----------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+export Supply_Skirmish is TMacroActionDescriptor_Supply_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 2),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Supply_Skirmish]),
+        TSupplySettingHolder(SupplyableMinimumRatio = MAP[
+            (ESupplyableType_Fuel, 0.3),
+            (ESupplyableType_Weapons, 0.3),
+            (ESupplyableType_Life, 0.5),
+        ]),
+    ]
+)
+//-------------------------------------------------------------------------
+export Supply_Skirmish_Allied is TMacroActionDescriptor_Supply_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Supply_Skirmish] DisableReinforcement = true),
+        TSupplySettingHolder(SupplyableMinimumRatio = MAP[
+            (ESupplyableType_Fuel, 0.2),
+            (ESupplyableType_Weapons, 0.2),
+            (ESupplyableType_Life, 0.4),
+        ]),
+        TCanTargetAlliedSettingHolder(),
+    ]
+)
+
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_Supply_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{e902f9de-d39e-11e8-8c68-88d7f642f58e}
+        Required = true
+        Nb = 1
+        TagsPriority = [
+            "Vehicule_Logistique",
+            "Helo_Logistique",
+        ]
+    ),
+    ]
+)
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//------------------------------- RECO ------------------------------------
+//-------------------------------------------------------------------------
+
+// Missions
+//-------------------------------------------------------------------------
+
+
+private template Template_Reco
+[
+    MinimumResourceForLaunch:int = 0,
+]
+is TMacroActionDescriptor_CorridorDefense_Specific
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_BasedOnNumberOfCorridors NumberLaunchBasedOnGenerationType = 2 AlsoConsiderTheseDescriptorsForMaintain = []),
+        TDefensePositionSettingHolder(IgnoreEnemyDirectionForDefensePosition = true),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_Reco_Skirmish]),
+        TMacroActionLifetimeSettingHolder(MinimumResourceForLaunch = <MinimumResourceForLaunch>),
+        TDefenseBehaviorSettingHolder(
+            DisableAttackDuringZoneDefense = true
+            DefensePointScoringFeature =
+                TDefensePointScoringFeature(DefensePointScoringValue =  MAP
+                [
+                    (EDefensePointScoringFeature/AltitudeCoeff, 0.0),                       // Bonus dépendant de l'altitude min et max sur la carte et appliqué sur toute la carte
+
+                    (EDefensePointScoringFeature/DistanceBonus, 1.0),                       // | Entre 0 et DistanceMargin => Bonus de DistanceBonus
+                    (EDefensePointScoringFeature/DistanceMargin, 500.0 * Metre),            // | Entre DistanceMargin et DistanceDecayLength => Diminution progressive du bonus jusqu'à 0
+                    (EDefensePointScoringFeature/DistanceDecayLength, 1000.0 * Metre),      // | Après DistanceDecayLength => Malus progressif
+                    (EDefensePointScoringFeature/DistanceDecayCoeff, 1.0),
+
+                    (EDefensePointScoringFeature/DistrictCoeff, 1.0),                       // | Bonus appliqués en fonction de la présence d'un quartier ou d'un terrain
+                    (EDefensePointScoringFeature/ForetDenseCoeff, 1.0),                     // | Seul le bonus le plus prioritaire est appliqué si plusieurs bonus sont applicables
+                    (EDefensePointScoringFeature/ForetLightCoeff, 1.0),                     // | Ordre de priorité : District > Foret Dense > Foret Legere
+
+                    (EDefensePointScoringFeature/IsObjectifCoeff, 0.0),                     // Bonus si la case contient un objectif
+                    (EDefensePointScoringFeature/MalusDefaultDefensePoint, 10.0),           // Malus si la case a été prise à défaut d'autres possibilités
+                    (EDefensePointScoringFeature/IsDefenseUnit, 0.0),                       // Bonus si la case contient une tranchée ou une position de tir
+                ]
+            DefensePointPositioning = EDefensePointPositioningType/Offensive)
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+export Reco is Template_Reco
+(
+)
+
+//-------------------------------------------------------------------------
+export Reco_Autogen is Template_Reco
+(
+    MinimumResourceForLaunch = ~/MinimumResourceForLaunch_Stage_1
+)
+
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_Reco_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{e902f9df-d39e-11e8-aa23-88d7f642f58e}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "Infanterie_Reco",
+            "Vehicule_Reco",
+            "Helo_Reco",
+        ]
+    ),
+    ]
+)
+
+//-------------------------------------------------------------------------
+BasicAirstrikeSupport is
+[
+    (["Avion_Assaut", "Chasseur_Bombardier", "Bombardier",], 2),
+]
+
+//-------------------------------------------------------------------------
+export FOB_Skirmish is TMacroActionDescriptor_ProduceBuilding
+(
+    ParametresDeMission =
+    [
+        TGenerationSettingHolder(GenerationType = TGenerationType_FixedSize NumberLaunchBasedOnGenerationType = 1),
+        TMacroActionProductionSettingHolder(PoolModelList = [~/Pool_FOB_Skirmish] DisableReinforcement = true),
+        TDisableProductionRoadSnappingSettingHolder(),
+    ]
+)
+
+//-------------------------------------------------------------------------
+// Pool Models
+//-------------------------------------------------------------------------
+export Pool_FOB_Skirmish is TPoolModel
+(
+    ModelList = [
+    TPoolElement(
+        DescriptorId = GUID:{ade6a527-109e-41c5-99b6-a830a332cf5f}
+        Required = true
+        Nb = 1
+        IndexPriorityOverPrice = true
+        PriceComparisonMethod = EPriceComparatorType/Random
+        TagsPriority = [
+            "FOB",
+        ]
+    ),
+    ]
+)

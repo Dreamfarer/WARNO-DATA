@@ -1,0 +1,34 @@
+DicoBaseUnite is TLocalisationDicoResource
+(
+    DicoToken = ~/LocalisationConstantes/dico_unites
+    FileName = "GameData:/Localisation/UNITES.csv"
+    ModFileName = "GameData:/Localisation/MODDING.csv"
+)
+
+DicoInterfaceInGame is TLocalisationDicoResource
+(
+    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+    FileName = "GameData:/Localisation/INTERFACE_INGAME.csv"
+    ModFileName = "GameData:/Localisation/MODDING.csv"
+)
+
+DicoEventPopup is TLocalisationDicoResource
+(
+    DicoToken = "EVTPOPUP"
+    FileName = "GameData:/Localisation/EVENT_POPUP.csv"
+    ModFileName = "GameData:/Localisation/MODDING.csv"
+)
+
+DicoTutorial is TLocalisationDicoResource
+(
+    DicoToken = ~/LocalisationConstantes/dico_tutorial
+    FileName = "GameData:/Localisation/TUTOS.csv"
+    ModFileName = "GameData:/Localisation/MODDING.csv"
+)
+
+DicoBriefing is TLocalisationDicoResource
+(
+    DicoToken = ~/LocalisationConstantes/dico_briefing
+    FileName = "GameData:/Localisation/BRIEFING.csv"
+    ModFileName = "GameData:/Localisation/MODDING.csv"
+)

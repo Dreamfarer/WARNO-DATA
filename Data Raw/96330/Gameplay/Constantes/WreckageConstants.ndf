@@ -1,0 +1,14 @@
+// Wreckage Constants
+WreckageConstants is TWreckageConstantsDescriptor
+(
+    // Le multiplicateur qu'on appliquera sur la masse de l'unité quand il devient cadavre.
+    // Une valeur < 1 sera plus "léger", > 1 sera plus "lourd".
+    MultiplicateurMasseObstacle = 0.2
+
+    // Est ce qu'on détruit le cadavre quand il est écrasé contre un mur ou un autre obstacle ?
+    DetruireQuandEcrase = true
+
+    // Quand on détruit un cadavre ecrasé, est-ce qu'on le fait exploser ?
+    // (DetruireQuandEcrase doit être à true)
+    ExploserQuandEcrase = true
+)

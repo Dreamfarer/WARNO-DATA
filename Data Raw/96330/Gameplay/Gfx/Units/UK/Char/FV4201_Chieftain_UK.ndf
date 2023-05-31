@@ -1,0 +1,19 @@
+export ModelFile_FV4201_Chieftain_UK is 'GameData:/Assets/3D/Units/UK/Char/Chieftain_Mk10/Chieftain_Mk10.Ase2NdfBin'
+
+Modele_FV4201_Chieftain_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FV4201_Chieftain_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_FV4201_Chieftain_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Char/Chieftain_Mk10_MID/Chieftain_Mk10_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV4201_Chieftain_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Char/LODS/Chieftain_Mk10_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

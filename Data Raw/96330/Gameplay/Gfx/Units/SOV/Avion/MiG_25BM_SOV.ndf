@@ -1,0 +1,25 @@
+export ModelFile_MiG_25BM_SOV is 'GameData:/Assets/3D/Units/URSS/Avion/MiG_25BM/MiG_25BM.Ase2NdfBin'
+
+Modele_MiG_25BM_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MiG_25BM_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_25BM_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/MiG_25BM/MiG_25BM.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_25BM_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/MiG_25BM/MiG_25BM.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_25BM_SOV_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/MiG_25BM/MiG_25BM_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

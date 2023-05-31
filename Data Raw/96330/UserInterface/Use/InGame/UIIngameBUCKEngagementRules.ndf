@@ -1,0 +1,850 @@
+private EngagementPanelWidth is CubeActionWargameWidth
+
+template EngagementButtonDescriptor
+[
+    UniqueName : string = "",
+    BigLineAction : int = ~/BigLineAction/BalancedMultiline,
+    BackgroundColor : string = "ButtonHUD/Background2",
+    LineBorderColor : string = "ButtonHUD/Border",
+    BorderColor : string = "ButtonHUD/BigBorder",
+    TextColor : string = "ButtonHUD/Text2",
+    TextSize : string = "16",
+    TextToken : string = "HUD_UNKN",
+    HintTitleToken : string = "HUD_UNKN",
+    HintBodyToken : string = "HUD_UNKN",
+    HintExtendedToken : string = "HUD_UNKN",
+    ElementName : string = "",
+    Mapping = nil,
+    RadioButtonManager = nil,
+    IsTogglable = true,
+    CannotDeselect = true,
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [120.0, 0.0]
+        RelativeWidthHeight = [0.0, 1.0]
+    )
+] is TCommonInGameCubeActionButtonDescriptor
+(
+    UniqueName = <UniqueName>
+    ComponentFrame = <ComponentFrame>
+
+    RadioButtonManager = <RadioButtonManager>
+
+    ElementName = <ElementName>
+    UniformDrawer = $/UserInterface/UIUniformDrawer
+
+    HasBackground = false
+    BackgroundBlockColorToken = <BackgroundColor>
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = <LineBorderColor>
+
+    IsClippable = true
+
+    IsTogglable = <IsTogglable>
+    CannotDeselect = <CannotDeselect>
+
+    MaskEvents = true
+    Mapping = <Mapping>
+
+    Components =
+    [
+        PanelRoundedCorner
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-4.0, -4.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Radius = 3
+            BackgroundBlockColorToken = "BoutonTemps"
+            BorderLineColorToken = "BoutonTemps"
+         ),
+
+        BUCKTextDescriptor
+        (
+            ElementName = <ElementName> + "TextDescriptor"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-6.0, -6.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+                BigWordAction = ~/BigWordAction/BigWordNewLine
+            )
+
+            HasBackground = false
+            BackgroundBlockColorToken = <BackgroundColor>
+
+            TextStyle = "Default"
+
+            BigLineAction   = <BigLineAction>
+            TextColor       = <TextColor>
+            TextSize        = <TextSize>
+            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+            TextToken       = <TextToken>
+
+            TypefaceToken   = "UIMainFont"
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            HintExtendedToken = <HintExtendedToken>
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template IconeTitreRoe
+[
+    TextureToken : string,
+    HintTitleToken : string,
+    HintBodyToken : string
+] is BUCKTextureDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [22.0, 22.0]
+        AlignementToAnchor = [0.0, 0.5]
+        AlignementToFather = [0.0, 0.5]
+    )
+    TextureToken = <TextureToken>
+    Components =
+    [
+        BUCKSpecificHintableArea
+        (
+            HintTitleToken = <HintTitleToken>
+            HintBodyToken = <HintBodyToken>
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template TextTitreRoE
+[
+    TextToken : string,
+    HintBodyToken : string,
+    HintTitleToken : string
+] is BUCKTextDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [140.0, 0.0]
+        AlignementToAnchor = [0.0, 0.5]
+        AlignementToFather = [0.0, 0.5]
+    )
+
+    ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+    TextStyle = "Default"
+    TextPadding = TRTTILength4 (Magnifiable = [5.0, 0.0, 0.0, 0.0])
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    BigLineAction = ~/BigLineAction/MultiLine
+    TextColor       = "BlancEquipe"
+    TextSize        = "16"
+    TextToken       = <TextToken>
+    TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+    TypefaceToken   = "UIMainFont"
+
+    Hint = BUCKSpecificHintableArea
+    (
+        DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+        HintTitleToken = <HintTitleToken>
+        HintBodyToken = <HintBodyToken>
+        HintExtendedToken = ''
+    )
+)
+
+//-------------------------------------------------------------------------------------
+// BOUTON POUR HIDE
+hideButton is BUCKButtonDescriptor
+(
+    ElementName = "EngagementRulesHideButton"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [0.0, 0.0]
+        MagnifiableWidthHeight = [20.0, 20.0]
+        AlignementToFather = [0.0, 0.5]
+        AlignementToAnchor = [0.0, 0.5]
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "ButtonHUD/Background"
+
+    HasBorder = false
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "ButtonHUD/Border"
+
+    IsTogglable = false
+    MaskEvents = true
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame =  TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [12.0, 12.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            TextureToken = "EngagementRulesHide"
+            TextureColorToken = "BoutonStandard"
+            TextureFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+            )
+        ),
+
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintTitleToken = "HNT_ENHIT"
+            HintBodyToken = "HNT_ENHIB"
+            HintExtendedToken = "HNT_ENHIE"
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+// BOUTON POUR Save as default et appliquer à toutes les unités
+saveAsDefaultAndApplyButton is BUCKListElementDescriptor
+(
+    ComponentDescriptor = EngagementButtonDescriptor
+    (
+        ElementName = "EngagementRulesSaveAsDefaultAndApplyButton"
+
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [150.0, 25.0]
+            RelativeWidthHeight = [0.0, 1.0]
+            AlignementToFather = [0.5, 0.0]
+            AlignementToAnchor = [0.5, 0.0]
+        )
+
+        Mapping = $/KeyboardOption/Mapping_EngagmentRules_SaveAndApply
+        TextToken       = "HNT_ERAPLE"
+        HintTitleToken = "HNT_ERAPLT"
+        HintBodyToken = "HNT_ERAPLB"
+        HintExtendedToken = "HNT_ERAPLE"
+        IsTogglable = false
+        CannotDeselect = false
+    )
+)
+
+//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- //
+
+EngagementRulesPanel is BUCKListDescriptor
+(
+    ElementName = "EngagementRulesPanel"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [670.0, 0.0]
+    )
+
+    HidePointerEvents = true
+    Axis = ~/ListAxis/Vertical
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+    Elements =
+    [
+        ///////////////////////////////////////////////////////////////////////
+        // Regles d'engagement
+        ///////////////////////////////////////////////////////////////////////
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ElementName = "EngagmentTitleList"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [0.0, 25.0]
+                    RelativeWidthHeight = [0.0, 0.0]
+                )
+
+                InterItemMargin = TRTTILength( Magnifiable = 5.0)
+                LastMargin = TRTTILength( Magnifiable = 5.0)
+
+                Axis = ~/ListAxis/Horizontal
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        // Title // ENGAGEMENT RULES
+                        ExtendWeight = 1.0
+                        ComponentDescriptor = BUCKTextDescriptor
+                        (
+                            ElementName = "EngagmentTitleText"
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 1.0]
+                            )
+
+                            TextPadding = TRTTILength4(Magnifiable = [6.0, 0.0, 6.0, 0.0])
+
+                            ParagraphStyle = ~/paragraphStyleTextLeftAlign
+
+                            TextStyle = "Default"
+
+                            HorizontalFitStyle = ~/FitStyle/UserDefined
+                            VerticalFitStyle = ~/FitStyle/UserDefined
+
+                            TextColor       = "BlancEquipe"
+                            TextSize        = "16"
+                            TextToken       = "ER_TITLE"
+                            TextDico        = ~/LocalisationConstantes/dico_interface_ingame
+
+                            TypefaceToken   = "UIMainFont"
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ~/hideButton
+                    )
+                ]
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKListDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+                FirstMargin = TRTTILength( Magnifiable = 5.0)
+                InterItemMargin = TRTTILength( Magnifiable = 5.0)
+                LastMargin = TRTTILength( Magnifiable = 10.0)
+
+                Elements =
+                [
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = BUCKListDescriptor
+                        (
+                            ElementName = "EngagmentButtonList"
+
+                            ComponentFrame = TUIFramePropertyRTTI
+                            (
+                                RelativeWidthHeight = [1.0, 0.0]
+                            )
+
+                            Axis = ~/ListAxis/Vertical
+                            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+
+                            InterItemMargin = TRTTILength( Magnifiable = 5.0)
+                        )
+                    ),
+
+                    BUCKListElementDescriptor
+                    (
+                        ComponentDescriptor = ~/EngagmentButtonSave
+                    ),
+                ]
+            )
+        ),
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner()
+    ]
+)
+//-------------------------------------------------------------------------------------
+EngagmentButtonSave is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 0.0]
+        MagnifiableWidthHeight = [0.0, 40.0]
+    )
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+    InterItemMargin = TRTTILength( Magnifiable = 1.0 )
+
+    Axis = ~/ListAxis/Horizontal
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = EngagementButtonDescriptor
+            (
+                ElementName = "EngagementRulesSaveAsDefaultAndApplyButton"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [150.0, 40.0]
+                )
+
+                Mapping = $/KeyboardOption/Mapping_EngagmentRules_SaveAndApply
+                TextToken       = "ER_APLE"
+                HintTitleToken = "HNT_ERAPLT"
+                HintBodyToken = "HNT_ERAPLB"
+                HintExtendedToken = "HNT_ERAPLE"
+                IsTogglable = false
+                CannotDeselect = false
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = EngagementButtonDescriptor
+            (
+                ElementName = "EngagementRulesSaveAsDefaultButton"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [150.0, 40.0]
+                )
+
+                Mapping = $/KeyboardOption/Mapping_EngagmentRules_SaveAsDefault
+                TextToken       = "ER_SAVE"
+                HintTitleToken = "HNT_ERSAVT"
+                HintBodyToken = "HNT_ERSAVB"
+                HintExtendedToken = "HNT_ERSAVE"
+                IsTogglable = false
+                CannotDeselect = false
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private advanceButtonManager is TBUCKRadioButtonManager()
+private useRoadButtonManager is TBUCKRadioButtonManager()
+private SmartMoveButtonManager is TBUCKRadioButtonManager()
+private IdleBehaviorButtonManager is TBUCKRadioButtonManager()
+private UnarmedVehiculeBehaviorButtonManager is TBUCKRadioButtonManager()
+private MissilesBehaviorButtonManager is TBUCKRadioButtonManager()
+private autoResaleButtonManager is TBUCKRadioButtonManager()
+private outrangedShotReactionButtonManager is TBUCKRadioButtonManager()
+
+//-------------------------------------------------------------------------------------
+
+private UISpecificTacticEngagementRulesViewDescriptor is TUISpecificEngagementRulesViewDescriptor
+(
+    MainComponentDescriptor = ~/EngagementRulesPanel
+    MainComponentContainerUniqueName = "UISpecificTacticEngagementRulesViewDescriptor"
+
+    ShortcutUILayer = $/M3D/Input/UserInputLayerHandler/InputLayer_InGameShortcuts
+    IdleMapping = $/KeyboardOption/Mapping_AutoCover
+
+    CategoryComponent = BUCKListDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            MagnifiableWidthHeight = [0.0, 30.0]
+        )
+
+        FirstMargin = TRTTILength (Magnifiable = 10.0)
+        InterItemMargin = TRTTILength( Magnifiable = 1.0)
+        LastMargin = TRTTILength( Magnifiable = 6.0)
+
+        HasBackground = true
+        BackgroundBlockColorToken = 'TypeC'
+
+        Axis = ~/ListAxis/Horizontal
+    )
+
+    CategoryToButtons = MAP
+    [
+        (
+            "EngagementAdvance",
+            TEngagementCategoryToButtonsDescriptor
+            (
+                CategoryIcon = IconeTitreRoe
+                (
+                    TextureToken = 'ROE_advance'
+                    HintTitleToken = 'ROE_adht'
+                    HintBodyToken = 'ROE_adhb'
+                )
+                // Title // ADVANCE
+                CategoryTitle = TextTitreRoE
+                (
+                    TextToken       = "ER_ADV"
+                    HintTitleToken = 'ROE_adht'
+                    HintBodyToken = 'ROE_adhb'
+                )
+                EngagementButtons =
+                [
+                    // Hunt
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementAdvance_Hunt"
+                        RadioButtonManager = ~/advanceButtonManager
+                        TextToken       = "ER_ADVHN"
+                        HintBodyToken = "HNT_ADVHNB"
+                        HintExtendedToken = "HNT_ADVHNE"
+                        TextColor = 'Gold'
+                    ),
+                    // Move
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementAdvance_Move"
+                        RadioButtonManager = ~/advanceButtonManager
+                        TextToken       = "ER_ADVMV"
+                        HintBodyToken = "HNT_ADVMVB"
+                        HintExtendedToken = "HNT_ADVMVE"
+                    ),
+                ]
+            )
+        ),
+        (
+            "EngagementUseRoad",
+            TEngagementCategoryToButtonsDescriptor
+            (
+                CategoryIcon = IconeTitreRoe
+                (
+                    TextureToken = 'ROE_pathfind'
+                    HintTitleToken = 'ROE_movht'
+                    HintBodyToken = 'ROE_movhb'
+                )
+                // Title // Use Road
+                CategoryTitle = TextTitreRoE
+                (
+                    TextToken       = "ER_UR"
+                    HintTitleToken = 'ROE_movht'
+                    HintBodyToken = 'ROE_movhb'
+                )
+                EngagementButtons =
+                [
+                    // fast
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementUseRoad_True"
+                        RadioButtonManager = ~/useRoadButtonManager
+                        TextToken       = "ER_URFA"
+                        HintBodyToken = "HNT_URFAB"
+                        HintExtendedToken = "HNT_URFAE"
+                        TextColor = 'Gold'
+                    ),
+                    // short
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementUseRoad_False"
+                        RadioButtonManager = ~/useRoadButtonManager
+                        TextToken       = "ER_URSH"
+                        HintBodyToken = "HNT_URSHB"
+                        HintExtendedToken = "HNT_URSHE"
+                    ),
+                ]
+            )
+        ),
+        (
+            "EngagementSmartMove",
+            TEngagementCategoryToButtonsDescriptor
+            (
+                CategoryIcon = IconeTitreRoe
+                (
+                    TextureToken = 'ROE_foot'
+                    HintTitleToken = 'ROE_foot'
+                    HintBodyToken = 'ROE_footb'
+                )
+                // Title // smart move pour inf
+                CategoryTitle = TextTitreRoE
+                (
+                    TextToken       = "ER_SM"
+                    HintTitleToken = 'ROE_foot'
+                    HintBodyToken = 'ROE_footb'
+                )
+                EngagementButtons =
+                [
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementSmartMove_True"
+                        Mapping = $/KeyboardOption/Mapping_EngagmentRules_Move
+                        RadioButtonManager = ~/SmartMoveButtonManager
+                        TextToken       = "ER_SMCO"
+                        HintBodyToken = "HNT_SMCOB"
+                        HintExtendedToken = "HNT_SMCOE"
+                        TextColor = 'Gold'
+                    ),
+                    // short
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementSmartMove_False"
+                        Mapping = $/KeyboardOption/Mapping_EngagmentRules_Move
+                        RadioButtonManager = ~/SmartMoveButtonManager
+                        TextToken       = "ER_SMSH"
+                        HintBodyToken = "HNT_SMSHB"
+                        HintExtendedToken = "HNT_SMSHE"
+                    ),
+                ]
+            )
+        ),
+        (
+            "EngagementIdleBehavior",
+            TEngagementCategoryToButtonsDescriptor
+            (
+                CategoryIcon = IconeTitreRoe
+                (
+                    TextureToken = 'ROE_idle'
+                    HintTitleToken = 'ROE_idle'
+                    HintBodyToken = 'ROE_idleb'
+                )
+                // Title //IdleBehavior
+                CategoryTitle = TextTitreRoE
+                (
+                    TextToken       = "ER_ID"
+                    HintTitleToken = 'ROE_idle'
+                    HintBodyToken = 'ROE_idleb'
+                )
+                EngagementButtons =
+                [
+                    // Cover
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementIdleBehavior_AutoCover"
+                        RadioButtonManager = ~/IdleBehaviorButtonManager
+                        TextToken       = "ER_IDCO"
+                        HintBodyToken = "HNT_IDCOB"
+                        HintExtendedToken = "HNT_IDCOE"
+                        TextColor = 'Gold'
+                    ),
+                    // Nothing
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementIdleBehavior_Nothing"
+                        RadioButtonManager = ~/IdleBehaviorButtonManager
+                        TextToken       = "ER_IDNO"
+                        HintBodyToken = "HNT_IDNOB"
+                        HintExtendedToken = "HNT_IDNOE"
+                    ),
+                    // Hold
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementIdleBehavior_Hold"
+                        RadioButtonManager = ~/IdleBehaviorButtonManager
+                        TextToken       = "ER_IDHO"
+                        HintBodyToken = "HNT_IDHOB"
+                        HintExtendedToken = "HNT_AIDEF"
+                    ),
+                ]
+            )
+        ),
+        (
+            "EngagementAutoResale",
+            TEngagementCategoryToButtonsDescriptor
+            (
+                CategoryIcon = IconeTitreRoe
+                (
+                    TextureToken = 'ROE_sell'
+                    HintTitleToken = 'ROE_sell'
+                    HintBodyToken = 'ROE_sellb'
+                )
+                // Title // Use Road
+                CategoryTitle = TextTitreRoE
+                (
+                    TextToken       = "ER_AR"
+                    HintTitleToken = 'ROE_sell'
+                    HintBodyToken = 'ROE_sellb'
+                )
+                EngagementButtons =
+                [
+                    // true
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementAutoResale_True"
+                        RadioButtonManager = ~/autoResaleButtonManager
+                        TextToken       = "ER_ARY"
+                        HintBodyToken = "HNT_ARYB"
+                        HintExtendedToken = "HNT_ARYE"
+                        TextColor = 'Gold'
+                    ),
+                    // false
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementAutoResale_False"
+                        RadioButtonManager = ~/autoResaleButtonManager
+                        TextToken       = "ER_ARN"
+                        HintBodyToken = "HNT_ARNB"
+                        HintExtendedToken = "HNT_ARNE"
+                    ),
+                ]
+            )
+        ),
+        (
+            "EngagementUnarmedVehiculeBehavior",
+            TEngagementCategoryToButtonsDescriptor
+            (
+                CategoryIcon = IconeTitreRoe
+                (
+                    TextureToken = 'ROE_unarmed'
+                    HintTitleToken = 'ROE_peace'
+                    HintBodyToken = 'ROE_peaceb'
+                )
+                // Title // IdleBehavior
+                CategoryTitle = TextTitreRoE
+                (
+                    TextToken       = "ER_UV"
+                    HintTitleToken = 'ROE_peace'
+                    HintBodyToken = 'ROE_peaceb'
+                )
+                EngagementButtons =
+                [
+                    // Hold Fire
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementUnarmedVehiculeBehavior_HoldFire"
+                        RadioButtonManager = ~/UnarmedVehiculeBehaviorButtonManager
+                        TextToken       = "ER_UVHF"
+                        HintBodyToken = "ROE_phh"
+                        TextColor = 'Gold'
+                    ),
+                    // Fire At Will
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementUnarmedVehiculeBehavior_FireAtWill"
+                        RadioButtonManager = ~/UnarmedVehiculeBehaviorButtonManager
+                        TextToken       = "ER_UVFW"
+                        HintBodyToken = "ROE_phf"
+                    ),
+                ]
+            )
+        ),
+        (
+            "EngagementOutrangedShotReaction",
+            TEngagementCategoryToButtonsDescriptor
+            (
+                CategoryIcon = IconeTitreRoe
+                (
+                    TextureToken = 'ROE_outranged'
+                    HintTitleToken = 'ROE_outrt'
+                    HintBodyToken = 'ROE_outrb'
+                )
+                // Title // Use Road
+                CategoryTitle = TextTitreRoE
+                (
+                    TextToken       = "ER_OS"
+                    HintTitleToken = 'ROE_outrt'
+                    HintBodyToken = 'ROE_outrb'
+                )
+                EngagementButtons =
+                [
+                    // Defensive
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "OutrangedShotReaction_Defensive"
+                        RadioButtonManager = ~/outrangedShotReactionButtonManager
+                        TextToken       = "ER_OSD"
+                        HintTitleToken = "HNT_OSDT"
+                        HintBodyToken = "HNT_OSDB"
+                        HintExtendedToken = "HNT_OSDE"
+                        TextColor = 'Gold'
+                    ),
+                    // Passive
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "OutrangedShotReaction_Passive"
+                        RadioButtonManager = ~/outrangedShotReactionButtonManager
+                        TextToken       = "ER_OSP"
+                        HintTitleToken = "HNT_OSPT"
+                        HintBodyToken = "HNT_OSPB"
+                        HintExtendedToken = "HNT_OSPE"
+                    ),
+                    // Agressive
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "OutrangedShotReaction_Agressive"
+                        RadioButtonManager = ~/outrangedShotReactionButtonManager
+                        TextToken       = "ER_OSA"
+                        HintTitleToken = "HNT_OSAT"
+                        HintBodyToken = "HNT_OSAB"
+                        HintExtendedToken = "HNT_OSAE"
+                    ),
+                    // Use Smoke
+                    //Si on veut réactiver ce bouton, il faudra résoudre le probleme de son positionnement dans l'interface et le reactiver dans GameSpecificOptionList.ndf
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "OutrangedShotReaction_UseSmoke"
+                        TextToken       = "ER_OSS"
+                        HintTitleToken = "HNT_OSST"
+                        HintBodyToken = "HNT_OSSB"
+                        HintExtendedToken = "HNT_OSSE"
+                        CannotDeselect = false
+                    ),
+                ]
+            )
+        ),
+        (
+            "EngagementMissilesBehavior",
+            TEngagementCategoryToButtonsDescriptor
+            (
+                CategoryIcon = IconeTitreRoe
+                (
+                    TextureToken = 'ROE_atgm'
+                    HintTitleToken = 'ROE_miss'
+                    HintBodyToken = 'ROE_missb'
+                )
+                // Title
+                CategoryTitle = TextTitreRoE
+                (
+                    TextToken       = "ER_GM"
+                    HintTitleToken = 'ROE_miss'
+                    HintBodyToken = 'ROE_missb'
+                )
+                EngagementButtons =
+                [
+                    // Hold Fire
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementMissilesBehavior_NeverLooktAtTransport"
+                        RadioButtonManager = ~/MissilesBehaviorButtonManager
+                        TextToken       = "ER_UVHF"
+                        HintBodyToken = "ROE_mhh"
+                        TextColor = 'Gold'
+                    ),
+                    // LookAtNonEmptyTransport
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementMissilesBehavior_LookAtNonEmptyTransport"
+                        RadioButtonManager = ~/MissilesBehaviorButtonManager
+                        TextToken       = "ER_GMTT"
+                        HintBodyToken = "ROE_mnef"
+                    ),
+                    // LookAtAllTransport
+                    EngagementButtonDescriptor
+                    (
+                        ElementName = "EngagementMissilesBehavior_LookAtAllTransport"
+                        RadioButtonManager = ~/MissilesBehaviorButtonManager
+                        TextToken       = "ER_UVFW"
+                        HintBodyToken = "ROE_mhf"
+                    ),
+                ]
+            )
+        ),
+    ]
+)

@@ -1,0 +1,19 @@
+export ModelFile_MFRW_RM70_DDR is 'GameData:/Assets/3D/Units/DDR/Artillerie/MFRW_RM70/MFRW_RM70.Ase2NdfBin'
+
+Modele_MFRW_RM70_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MFRW_RM70_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_MFRW_RM70_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Artillerie/MFRW_RM70/MFRW_RM70.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MFRW_RM70_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Artillerie/MFRW_RM70/MFRW_RM70.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

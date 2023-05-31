@@ -1,0 +1,19 @@
+export ModelFile_UH1H_Huey_US is 'GameData:/Assets/3D/Units/US/Helico/UH_1H_Huey/UH_1H_Huey.Ase2NdfBin'
+
+Modele_UH1H_Huey_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_UH1H_Huey_US
+    CivMask =  CivMask/Common
+)
+
+Modele_UH1H_Huey_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/UH_1H_Huey_MID/UH_1H_Huey_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_UH1H_Huey_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/LODS/UH_1H_Huey_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

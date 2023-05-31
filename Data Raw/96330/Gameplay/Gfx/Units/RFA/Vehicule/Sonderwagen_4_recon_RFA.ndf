@@ -1,0 +1,19 @@
+export ModelFile_Sonderwagen_4_recon_RFA is 'GameData:/Assets/3D/Units/RFA/Vehicule/Sonderwagen_4_recon/Sonderwagen_4_recon.fbx'
+
+Modele_Sonderwagen_4_recon_RFA is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Sonderwagen_4_recon_RFA
+    CivMask =  CivMask/Common
+)
+
+Modele_Sonderwagen_4_recon_RFA_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Vehicule/Sonderwagen_4_recon/Sonderwagen_4_recon.fbx'
+    CivMask =  CivMask/Common
+)
+
+Modele_Sonderwagen_4_recon_RFA_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/RFA/Vehicule/Sonderwagen_4_recon/Sonderwagen_4_recon.fbx'
+    CivMask =  CivMask/Common
+)

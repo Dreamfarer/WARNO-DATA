@@ -1,0 +1,22 @@
+export ModelFile_HMGteam_PKM_FJ_DDR is 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/PKM.Ase2NdfBin'
+
+Modele_HMGteam_PKM_FJ_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_HMGteam_PKM_FJ_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_PKM_FJ_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/PKM.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_PKM_FJ_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/PKM.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

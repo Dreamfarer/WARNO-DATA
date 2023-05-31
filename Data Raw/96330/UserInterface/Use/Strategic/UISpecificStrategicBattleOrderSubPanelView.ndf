@@ -1,0 +1,66 @@
+// • BUCKSpecificStrategicBattleOrderSubPanelMainComponentDescriptor (template)
+// • UISpecificStrategicBattleOrderSubPanelViewDescriptor (template)
+
+// ----------------------------------------------------------
+
+BUCKSpecificStrategicBattleOrderSubPanelMainComponentDescriptor is BUCKSpecificScrollingContainerDescriptor
+(
+    ElementName = 'fullpanel'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+        MagnifiableWidthHeight = [-36.0, -16.0]
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    ExternalScrollbar = true
+    HasVerticalScrollbar = true
+    VerticalScrollbarComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [10.0, 0.0]
+        MagnifiableOffset = [14,0]
+        AlignementToFather = [1.0, 0.0]
+        AlignementToAnchor = [1.0, 0.0]
+    )
+
+    Components =
+    [
+        BUCKTreeViewDescriptor
+        (
+            ElementName = "OOBTreeView"
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 0.0]
+            )
+
+            LineMainComponentExtendWeight = 1.0
+            TreeViewLineComponentDescriptor = BUCKContainerDescriptor
+            (
+                ElementName = "LineMainComponent"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                FitStyle = ~/ContainerFitStyle/FitToContentVertically
+
+                // voir ci-dessous pour ce qui envoyé
+            )
+        ),
+    ]
+)
+
+// ----------------------------------------------------------
+CompanyRadioButtonManager is TBUCKRadioButtonManager()
+
+UISpecificStrategicBattleOrderSubPanelViewDescriptor is TUISpecificStrategicBattleOrderSubPanelViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicBattleOrderSubPanelMainComponentDescriptor
+
+    PawnLineViewDescriptor      = UISpecificStrategicBattleOrderPanelDefaultLineViewDescriptor( TitleTextDico = ~/LocalisationConstantes/dico_packs )
+    CompanyLineViewDescriptor   = UISpecificStrategicBattleOrderPanelCompanyLineViewDescriptor( RadioButtonManager = ~/CompanyRadioButtonManager )
+
+    CompanyRadioButtonManager = ~/CompanyRadioButtonManager
+)

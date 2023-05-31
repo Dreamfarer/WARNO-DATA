@@ -1,0 +1,25 @@
+export ModelFile_Harrier_HE2_UK is 'GameData:/Assets/3D/Units/UK/Avion/Harrier_GR3/Harrier_GR3_RKT.Ase2NdfBin'
+
+Modele_Harrier_HE2_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Harrier_HE2_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Harrier_HE2_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Avion/Harrier_GR3_MID/Harrier_GR3_RKT_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Harrier_HE2_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Avion/LODS/Harrier_GR3_RKT_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Harrier_HE2_UK_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Avion/Harrier_GR3/Harrier_GR3_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

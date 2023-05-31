@@ -1,0 +1,24 @@
+outGameActionScreensContainerResource is TUISpecificOutGameActionScreensContainerResource
+(
+    UILayerContainer = $/UserInterface/UILayer_2DInterfaceAboveBlur_OutGame
+    UILayerEventBlocker = $/UserInterface/UILayer_2DInterfaceBlur_OutGame
+
+    ContainerDescriptor = BUCKContainerDescriptor
+    (
+        ElementName = 'ActionScreenContainer'
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 1.0]
+            AlignementToFather = [0.5, 0.5]
+            AlignementToAnchor = [0.5, 0.5]
+        )
+    )
+
+    DummyComponent = BUCKContainerDescriptor
+    (
+        ComponentFrame = TUIFramePropertyRTTI
+        (
+            RelativeWidthHeight = [1.0, 1.0]
+        )
+    )
+)

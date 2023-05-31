@@ -1,0 +1,33 @@
+// utfhuité
+
+FxFumigeneWithParams is TActionCall
+(
+    Action = $/GFX/GameFx/FX_Fumigene
+    LocalVariables =
+    [
+        Par_Fumigene_Color is TPinnableValue(ExpectedType : float3),
+        Par_Fumigene_Alpha is TPinnableValue(ExpectedType : float),
+    ]
+
+    NamedParams =
+    MAP[
+        ('Par_Fumigene_Color', Par_Fumigene_Color),
+        ('Par_Fumigene_Alpha', Par_Fumigene_Alpha),
+    ]
+)
+
+FxFumigeneGhostWithParams is TActionCall
+(
+    Action = $/GFX/GameFx/FX_Fumigene_Ghost
+    LocalVariables =
+    [
+        Par_Fumigene_Color is TPinnableValue(ExpectedType : float3),
+        Par_Fumigene_Alpha is TPinnableValue(ExpectedType : float),
+    ]
+
+    NamedParams =
+    MAP[
+        ('Par_Fumigene_Color', Par_Fumigene_Color),
+        ('Par_Fumigene_Alpha', Par_Fumigene_Alpha),
+    ]
+)

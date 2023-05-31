@@ -1,0 +1,22 @@
+export ModelFile_HMGteam_AGS17_DDR is 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_AGL/AGS17.Ase2NdfBin'
+
+Modele_HMGteam_AGS17_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_HMGteam_AGS17_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_AGS17_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_AGL/AGS17.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_AGS17_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/Vehicule/UAZ_469_AGL/AGS17.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

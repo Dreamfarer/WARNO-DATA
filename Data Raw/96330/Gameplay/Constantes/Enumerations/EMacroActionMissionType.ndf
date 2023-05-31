@@ -1,0 +1,25 @@
+//-----------------------------------------------------------------------------
+// Differents types de macro actions
+//-----------------------------------------------------------------------------
+//Correspondance : EnumMacroAction.h
+//-----------------------------------------------------------------------------
+EMacroActionMissionType is TBaseClass
+(
+    Undefined is 0
+    Attack is 1
+    Defense is 2
+    Support is 3
+    Supply is 4
+    AirStrike is 5
+    AirReco is 6
+    Reco is 7
+    CorridorAttack is 8
+    CorridorDefense is 9
+    CorridorArtillery is 10
+    CorridorDynamicDefense is 11
+    ObjectiveAttack is 12
+    PlayerMissionAttack is 13
+    PlayerMissionArtillery is 14
+    CaptureCommandZone is 15
+    ProduceBuilding is 16
+)

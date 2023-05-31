@@ -1,0 +1,297 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Descriptor_UnitCadavre_FOB_DDR is TEntityDescriptor
+(
+    DescriptorId       = GUID:{1d614751-10ed-439e-adcf-074cd077bb91}
+    ClassNameForDebug  = 'BuildingCadavre_FOB_DDR'
+    ModulesDescriptors = [
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_LdDetectable,
+            ]
+        ),
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+        ~/LinkTeamModuleDescriptor,
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                CadavreDuration = $/GFX/Everything/CadavreDurationApresFeu
+                CadavreFireDurationMin = $/GFX/Everything/CadavrePeriodeEnFeu_Minimum_Batiment
+                CadavreFireDurationMax = $/GFX/Everything/CadavrePeriodeEnFeu_Maximum_Batiment
+                FadingDuration = 6
+                DeathExplosionAmmo = nil
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_FOB_DDR/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_FOB_DDR/ApparenceModel,
+        ~/PackSignauxModuleDescriptor,
+        ~/DebugModuleDescriptor,
+    ]
+)
+export Descriptor_UnitCadavre_FOB_FR is TEntityDescriptor
+(
+    DescriptorId       = GUID:{479b599b-449e-43a7-828d-c626fc56d7be}
+    ClassNameForDebug  = 'BuildingCadavre_FOB_FR'
+    ModulesDescriptors = [
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_LdDetectable,
+            ]
+        ),
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+        ~/LinkTeamModuleDescriptor,
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                CadavreDuration = $/GFX/Everything/CadavreDurationApresFeu
+                CadavreFireDurationMin = $/GFX/Everything/CadavrePeriodeEnFeu_Minimum_Batiment
+                CadavreFireDurationMax = $/GFX/Everything/CadavrePeriodeEnFeu_Maximum_Batiment
+                FadingDuration = 6
+                DeathExplosionAmmo = nil
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_FOB_FR/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_FOB_FR/ApparenceModel,
+        ~/PackSignauxModuleDescriptor,
+        ~/DebugModuleDescriptor,
+    ]
+)
+export Descriptor_UnitCadavre_FOB_RFA is TEntityDescriptor
+(
+    DescriptorId       = GUID:{f2f8d4f5-5023-45df-bd1d-f1c38b87ba5d}
+    ClassNameForDebug  = 'BuildingCadavre_FOB_RFA'
+    ModulesDescriptors = [
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_LdDetectable,
+            ]
+        ),
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+        ~/LinkTeamModuleDescriptor,
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                CadavreDuration = $/GFX/Everything/CadavreDurationApresFeu
+                CadavreFireDurationMin = $/GFX/Everything/CadavrePeriodeEnFeu_Minimum_Batiment
+                CadavreFireDurationMax = $/GFX/Everything/CadavrePeriodeEnFeu_Maximum_Batiment
+                FadingDuration = 6
+                DeathExplosionAmmo = nil
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_FOB_RFA/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_FOB_RFA/ApparenceModel,
+        ~/PackSignauxModuleDescriptor,
+        ~/DebugModuleDescriptor,
+    ]
+)
+export Descriptor_UnitCadavre_FOB_SOV is TEntityDescriptor
+(
+    DescriptorId       = GUID:{bee6f6eb-ccc9-4c61-a7ad-121c5bbf514e}
+    ClassNameForDebug  = 'BuildingCadavre_FOB_SOV'
+    ModulesDescriptors = [
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_LdDetectable,
+            ]
+        ),
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+        ~/LinkTeamModuleDescriptor,
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                CadavreDuration = $/GFX/Everything/CadavreDurationApresFeu
+                CadavreFireDurationMin = $/GFX/Everything/CadavrePeriodeEnFeu_Minimum_Batiment
+                CadavreFireDurationMax = $/GFX/Everything/CadavrePeriodeEnFeu_Maximum_Batiment
+                FadingDuration = 6
+                DeathExplosionAmmo = nil
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_FOB_SOV/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_FOB_SOV/ApparenceModel,
+        ~/PackSignauxModuleDescriptor,
+        ~/DebugModuleDescriptor,
+    ]
+)
+export Descriptor_UnitCadavre_FOB_UK is TEntityDescriptor
+(
+    DescriptorId       = GUID:{c1603df4-5bbd-4ec3-87ac-b7276c9ebefa}
+    ClassNameForDebug  = 'BuildingCadavre_FOB_UK'
+    ModulesDescriptors = [
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_LdDetectable,
+            ]
+        ),
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+        ~/LinkTeamModuleDescriptor,
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                CadavreDuration = $/GFX/Everything/CadavreDurationApresFeu
+                CadavreFireDurationMin = $/GFX/Everything/CadavrePeriodeEnFeu_Minimum_Batiment
+                CadavreFireDurationMax = $/GFX/Everything/CadavrePeriodeEnFeu_Maximum_Batiment
+                FadingDuration = 6
+                DeathExplosionAmmo = nil
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_FOB_UK/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_FOB_UK/ApparenceModel,
+        ~/PackSignauxModuleDescriptor,
+        ~/DebugModuleDescriptor,
+    ]
+)
+export Descriptor_UnitCadavre_FOB_US is TEntityDescriptor
+(
+    DescriptorId       = GUID:{06786af2-d58c-4404-a6bf-144080ca0ec9}
+    ClassNameForDebug  = 'BuildingCadavre_FOB_US'
+    ModulesDescriptors = [
+        TFlagsModuleDescriptor
+        (
+            InitialFlagSet =
+            [
+                Flag_Detectable,
+                Flag_LdDetectable,
+            ]
+        ),
+            TPositionModuleDescriptor
+            (
+                UseFollowCam               = False
+                StickToGround              = True
+                InGeoDb                    = True
+                PorteurMustBeVisible       = True
+                ClampInWorld               = True
+                ClampOutMap                = False
+                RelativeScanningPosition   = ~/DecalageParDefautDuPointDeVision
+                LowAltitudeFlyingAltitude  = ((0) * Metre)
+                NearGroundFlyingAltitude   = ((0) * Metre)
+            ),
+        ~/LinkTeamModuleDescriptor,
+            TCadavreModuleDescriptor
+            (
+                ExplodeAtEnd = False
+                KillAsVehicule = False
+                KillAsInfanterie = False
+                KillAsHelico = False
+                KillAsAirplane = False
+                KillAsBatiment = True
+                CadavreDuration = $/GFX/Everything/CadavreDurationApresFeu
+                CadavreFireDurationMin = $/GFX/Everything/CadavrePeriodeEnFeu_Minimum_Batiment
+                CadavreFireDurationMax = $/GFX/Everything/CadavrePeriodeEnFeu_Maximum_Batiment
+                FadingDuration = 6
+                DeathExplosionAmmo = nil
+                ModuleDescriptorsToSteal =
+                [
+                   $/GFX/Everything/Descriptor_Unit_FOB_US/ApparenceModel,
+                ]
+            ),
+            $/GFX/Everything/Descriptor_Unit_FOB_US/ApparenceModel,
+        ~/PackSignauxModuleDescriptor,
+        ~/DebugModuleDescriptor,
+    ]
+)

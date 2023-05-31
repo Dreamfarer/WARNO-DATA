@@ -1,0 +1,25 @@
+export ModelFile_Lynx_AH_Mk1_UK is 'GameData:/Assets/3D/Units/UK/Helico/Lynx_AH_Mk1/Lynx_AH_Mk1.Ase2NdfBin'
+
+Modele_Lynx_AH_Mk1_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Lynx_AH_Mk1_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Lynx_AH_Mk1_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/Lynx_AH_Mk1/Lynx_AH_Mk1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Lynx_AH_Mk1_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Helico/Lynx_AH_Mk1/Lynx_AH_Mk1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Lynx_AH_Mk1_UK_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/UH_1H_Huey/MAG_t1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

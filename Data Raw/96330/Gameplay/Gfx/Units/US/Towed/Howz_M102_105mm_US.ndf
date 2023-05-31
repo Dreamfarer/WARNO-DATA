@@ -1,0 +1,19 @@
+export ModelFile_Howz_M102_105mm_US is 'GameData:/Assets/3D/Units/US/Canon/Howz_M102_105mm/Howz_M102_105mm.Ase2NdfBin'
+
+Modele_Howz_M102_105mm_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Howz_M102_105mm_US
+    CivMask =  CivMask/Common
+)
+
+Modele_Howz_M102_105mm_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Canon/Howz_M102_105mm/Howz_M102_105mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Howz_M102_105mm_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Canon/Howz_M102_105mm/Howz_M102_105mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

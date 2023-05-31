@@ -1,0 +1,14 @@
+
+WorldInterfaceStrategic is TWorldInterfaceDescriptor
+(
+    World3D = $/M3D/Scene/DefaultWorld
+    HelperVisibility = ~/World_Constante.HelperVisibility
+    GamePhaseManagerDescriptor = ~/strategicGamePhaseManagerDescriptor
+    ZoneManagerDescriptors =
+    [
+        ~/strategicZoneManagerForIAStratDescriptor,
+    ]
+
+    PathDrawingManager = ~/PathDrawingManager
+    SoundAndMusicSwitchDescriptor = soundAndMusic
+)

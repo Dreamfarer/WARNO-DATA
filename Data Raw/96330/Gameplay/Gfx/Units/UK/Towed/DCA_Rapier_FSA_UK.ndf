@@ -1,0 +1,22 @@
+export ModelFile_DCA_Rapier_FSA_UK is 'GameData:/Assets/3D/Units/UK/DCA/Towed_Rapier/Towed_Rapier.Ase2NdfBin'
+
+Modele_DCA_Rapier_FSA_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_DCA_Rapier_FSA_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_Rapier_FSA_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/DCA/Towed_Rapier/Towed_Rapier.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_Rapier_FSA_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/DCA/Towed_Rapier/Towed_Rapier.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

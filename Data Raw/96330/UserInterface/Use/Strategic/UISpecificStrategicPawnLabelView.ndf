@@ -1,0 +1,794 @@
+// Liste d'icones à afficher à coté du label
+UnitLabelIcon_Defense       is 0
+UnitLabelIcon_Fortified     is 1
+UnitLabelIcon_NoSupplied    is 2
+UnitLabelIcon_Boxing        is 3
+UnitLabelIcon_DenyArea      is 4
+
+// L'etiquette d'un pion
+// -----------------------------------------------
+
+PawnLabelMainComponentDescriptor is BUCKSensibleAreaDescriptor
+(
+    ElementName = 'Background'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0.0, 20]
+        AlignementToAnchor = [0.5,0.5]
+        AlignementToFather = [0.5,0.5]
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+    MagnifierMultiplication = 1.1
+    Components =
+    [
+        ~/UpperLabelList,
+        ~/MainLabelList,
+        ~/LowerLabelList,
+    ]
+)
+
+// Upper label List
+// -----------------------------------------------
+
+private IconeSize is 31.0
+UnitLabelIconList is BUCKListDescriptor
+(
+    ElementName = 'LabelIconList'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [0.0, IconeSize]
+        MagnifiableOffset = [10.0, -15.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    Elements =
+    [
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = 'DefenseIcon'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [IconeSize, IconeSize]
+                )
+
+                TextureToken = "UseStrategic_Labels_FortificationEnCours"
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ),
+
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = 'FortifyIcon'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [IconeSize, IconeSize]
+                )
+
+                TextureToken = "UseStrategic_Labels_Fortified"
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = 'FortifyAntiAirInProgressIcon'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [IconeSize, IconeSize]
+                )
+
+                TextureToken = "UseStrategic_Labels_FortificationAntiAirEnCours"
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ),
+
+        // BUCKListElementDescriptor
+        // (
+        //     ComponentDescriptor = BUCKTextureDescriptor
+        //     (
+        //         ElementName = 'FortifyAntiAirIcon'
+        //         ComponentFrame = TUIFramePropertyRTTI
+        //         (
+        //             MagnifiableWidthHeight = [IconeSize, IconeSize]
+        //         )
+
+        //         TextureToken = "UseStrategic_Labels_FortificationAntiAir"
+        //         TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+        //     )
+        // ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = 'StationaryIcon'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [1.0, 1.0]
+                    AlignementToFather = [0.0, 0.5]
+                    AlignementToAnchor = [0.0, 0.5]
+                )
+
+                TextureToken = "UseStrategic_Labels_Stationary"
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = 'BoxingIcon'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [IconeSize, IconeSize]
+                )
+
+                TextureToken = "UseStrategic_Labels_Boxing"
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ),
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = 'DenyAreaIcon'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [IconeSize, IconeSize]
+                )
+
+                TextureToken = "UseStrategic_Labels_DenyArea"
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = 'RecoAreaIcon'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [IconeSize, IconeSize]
+                )
+
+                TextureToken = "UseStrategic_Labels_RecoArea"
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ),
+    ]
+)
+
+// -----------------------------------------------
+
+MainLabelList is TBUCKLocalLayerContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [60.0, 40.0]
+        MagnifiableOffset = [-10.0, 0.0]
+    )
+
+    NbLayersToLock = 3
+    ChildFitToContent = true
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ElementName = "MainLabel"
+
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                 MagnifiableWidthHeight = [60.0, 40.0]
+            )
+
+            ChildFitToContent = true
+
+            Components =
+            [
+                ~/IconeUnit_and_PA,
+                ~/FortifyAntiAirIcon,
+                ~/CombatValue,
+                ~/NoSupplied,
+                ~/DivisionLabel,
+                ~/Fatigue,
+                ~/UnitLabelIconList,
+            ]
+        )
+    ]
+)
+
+// -----------------------------------------------
+
+UpperLabelList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 0.0]
+        AlignementToAnchor = [0.5, 1.0]
+        MagnifiableOffset = [0.0, -10.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    LastMargin = TRTTILength(Magnifiable = 5.0)
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'BombardedFeedback'
+                ComponentFrame = TUIFramePropertyRTTI()
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "SD2_Bombarded"
+
+                TextStyle = "Default"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                TextPadding = TRTTILength4(Magnifiable = [2.0, 2.0, 2.0, 2.0])
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextToken = "LBS_BOMBED"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "SD2_Noir"
+                TextSize = "12"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'InOrderFeedback'
+                ComponentFrame = TUIFramePropertyRTTI()
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "SD2_InOrder"
+
+                TextStyle = "Default"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                TextPadding = TRTTILength4(Magnifiable = [2.0, 2.0, 2.0, 2.0])
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextToken = "LBS_BUSY"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "SD2_Noir"
+                TextSize = "12"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'IncapacitatedFeedback'
+                ComponentFrame = TUIFramePropertyRTTI()
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "SD2_Routed"
+
+                TextStyle = "Default"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                TextPadding = TRTTILength4(Magnifiable = [2.0, 2.0, 2.0, 2.0])
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextToken = "LBS_OOC"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "SD2_Blanc184"
+                TextSize = "12"
+            )
+        ),
+
+
+
+    ]
+)
+
+// Under label List
+// -----------------------------------------------
+
+private IconeUnit_and_PA is BUCKTextureDescriptor
+(
+    ElementName = 'UnitTexture'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+         MagnifiableWidthHeight = [40.0, 20.0]
+         // MagnifiableOffset = [20.0, 20.0]
+         MagnifiableOffset = [20.0, -15.0]
+    )
+
+    HasBackground = true
+
+    TextureFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 20.0]
+    )
+
+    Components =
+    [
+        ~/PANumber
+    ]
+
+)
+private FortifyAntiAirIcon is BUCKTextureDescriptor
+(
+    ElementName = 'FortifyAntiAirIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+         MagnifiableWidthHeight = [40.0, 20.0]
+         // MagnifiableOffset = [20.0, 20.0]
+         MagnifiableOffset = [20.0, -15.0]
+    )
+
+    TextureToken = "UseStrategic_Labels_FortificationAntiAir"
+    TextureFrame = TUIFramePropertyRTTI( MagnifiableWidthHeight = [20.0, 20.0] )
+)
+// -----------------------------------------------
+private CombatValue is BUCKListDescriptor
+(
+    ElementName = 'PowerValueGaugesContainer'
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [1.0, 1.0]
+        AlignementToAnchor = [1.0, 0.5]
+        // MagnifiableOffset = [0.0, 5.0]
+        MagnifiableOffset = [0.0, -30.0]
+
+
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextureDescriptor
+            (
+                ElementName = "TerrainIcon"
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    MagnifiableWidthHeight = [13.0, 13.0]
+                )
+
+                TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PowerValueContainer
+            (
+                ElementName = "Attack"
+                BackgroundBlockColorToken = "Noir"
+                TextColorToken = "BlancEquipe"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PowerValueContainer
+            (
+                ElementName = "Defense"
+                BackgroundBlockColorToken = "BlancEquipe"
+                TextColorToken = "PureBlack"
+            )
+        ),
+        // BUCKListElementDescriptor
+        // (
+        //     ComponentDescriptor = PowerValueContainer
+        //     (
+        //         ElementName = "Bonus"
+        //         BackgroundBlockColorToken = "Noir"
+        //         TextColorToken = "Cyan"
+        //         TextToken = "FRM_PLUS"
+        //     )
+        // ),
+    ]
+
+    BackgroundComponents =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                AlignementToAnchor = [1.0, 0.0]
+                AlignementToFather = [1.0, 0.0]
+                )
+            Components =
+            [
+                PowerValueContainer
+                (
+                    ElementName = "Bonus"
+                    BackgroundBlockColorToken = "Noir"
+                    TextColorToken = "Cyan"
+                    TextToken = "FRM_PLUS"
+                )
+            ]
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private Fatigue is BUCKTextureDescriptor
+(
+    ElementName = 'FatigueIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [40.0, 5.0]
+        MagnifiableOffset = [20.0, -20.0]
+    )
+
+    TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+)
+
+//-------------------------------------------------------------------------------------
+
+private NoSupplied is BUCKTextureDescriptor
+(
+    ElementName = 'NoSuppliedIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [30.0, 30.0]
+        MagnifiableOffset = [-10.0, -25.0]
+    )
+
+    TextureToken = "UseStrategic_Labels_NoSupply"
+    TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+)
+
+//-------------------------------------------------------------------------------------
+
+private DivisionLabel is BUCKTextureDescriptor
+(
+    ElementName = 'DivisionIcon'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 20.0]
+        AlignementToFather = [0.0, 1.0]
+        AlignementToAnchor = [0.0, 1.0]
+    )
+    TextureToken = "UseInGame_division_icone"
+    TextureFrame = TUIFramePropertyRTTI( MagnifiableWidthHeight = [1.0, 1.0] )
+)
+
+//-------------------------------------------------------------------------------------
+
+private ArrowTexture is BUCKTextureDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [10.0, 10.0]
+        AlignementToAnchor = [0.0, 0.5]
+        AlignementToFather = [0.0, 0.5]
+    )
+
+    TextureToken = "UseStrategic_Labels_Arrow"
+    TextureFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1.0, 1.0] )
+)
+
+
+// -----------------------------------------------
+
+private PANumber is BUCKTextDescriptor
+(
+    ElementName = "ActionPoints"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 20.0]
+        MagnifiableOffset = [20.0, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    HasBackground = false
+    BackgroundBlockColorToken = "Red"
+
+    HasBorder = false
+    BorderLineColorToken = "PawnLabel/ActionPoints"
+    BorderThicknessToken = "PawnLabel/ActionPoints"
+
+    TextStyle = "ActionPoint"
+    TextPadding = TRTTILength4(Magnifiable = [1.0, 1.0, 1.0, 1.0])
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/ResizeFont
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = "SD2_Blanc184"
+    TextSize = "17"
+    // TextSize = "1"
+)
+
+// -----------------------------------------------
+
+template PowerValueContainer
+[
+    ElementName : string,
+    BackgroundBlockColorToken : string,
+    TextColorToken : string,
+    TextToken : string = "SBO_VAL",
+]
+is BUCKTextDescriptor
+(
+    ElementName = 'PowerValueText_' + <ElementName>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [20.0, 13.0]
+    )
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    HasBorder = true
+    BorderThicknessToken = "1"
+    BorderLineColorToken = "Noir"
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    TextPadding = TRTTILength4(Magnifiable = [1.0, 1.0, 1.0, 1.0])
+
+    TextStyle = "Default"
+    TypefaceToken = "UIMainFont"
+    BigLineAction = ~/BigLineAction/ResizeFont
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = <TextColorToken>
+    TextSize = "13"
+
+    TextToken = <TextToken>
+)
+
+// -----------------------------------------------
+
+LowerLabelList is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 0.0]
+        MagnifiableOffset = [0,-25]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    FirstMargin = TRTTILength(Pixel = 4.0)
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'EngagementText'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+                HasBackground = true
+                BackgroundBlockColorToken = "Gris_leaderboard"
+                TextStyle = "Engagement"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                TextPadding = TRTTILength4(Magnifiable = [2.0, 2.0, 2.0, 2.0])
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                ColorMode = ~/ColorMode/Multiply
+
+                TextColor = "Noir"
+                TextSize = "12"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'FleeingFeedback'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                HasBackground = true
+                BackgroundBlockColorToken = "SD2_Routed"
+
+                TextStyle = "Default"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+                TextPadding = TRTTILength4(Magnifiable = [2.0, 2.0, 2.0, 2.0])
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextToken = "LBS_FLEE"
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "SD2_Blanc184"
+                TextSize = "12"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = 'UnitName'
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    AlignementToFather = [0.5, 0.0]
+                    AlignementToAnchor = [0.5, 0.0]
+                )
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = UIText_Center
+                    VerticalAlignment = UIText_VerticalCenter
+                )
+
+                TextPadding = TRTTILength4(Magnifiable = [2.0, 2.0, 2.0, 2.0])
+                TextStyle = "Default"
+                HasBackground = true
+                BackgroundBlockColorToken = "SD2_Gris39_avecTransparence200"
+                HorizontalFitStyle = ~/FitStyle/FitToContent
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TypefaceToken = "UIMainFont"
+                BigLineAction = ~/BigLineAction/CutByDots
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+                TextColor = "SD2_Blanc184"
+                TextSize = "12"
+            )
+        ),
+    ]
+)
+
+// -----------------------------------------------
+
+UISpecificStrategicPawnLabelViewDescriptor is PawnLabelViewDescriptor
+(
+    MainComponentDescriptor = ~/PawnLabelMainComponentDescriptor
+)
+
+// -----------------------------------------------
+
+template PawnLabelViewDescriptor
+[
+    MainComponentDescriptor : TBUCKContainerDescriptor,
+] is TUISpecificStrategicPawnLabelViewDescriptor
+(
+    MainComponentDescriptor = <MainComponentDescriptor> // Doit contenir tout les composants ! (pour des raisons d'opti)
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    FightingPawnEngagementTextColor    = "PawnPhaseFighting"
+    NonFightingPawnEngagementTextColor = "PawnPhaseNotFighting"
+
+    EngagementTextReadyToken = "LAB_AVAI"
+    EngagementTextAttackedToken = "LABEL_ATT"
+    EngagementTextEngagedToken = "LABEL_ENGD"
+
+    EngagementAnimDuration = 3 // Durée de l'animation de grossissement, en secondes
+    EngagementAnimScale = 0.1 // L'échelle va varier de 1 à (1+EngagementPhaseAnimScale). Négatif autorisé
+    EngagementAnimRandomStart = 0.5 // Décalage aléatoire max en secondes au démarrage.
+    LabelTransparencyIfNoEngagement = 0.2 //Transparence de l'étiquette des unités qui ne peuvent pas participer au combat (cf. CantFightUnitAlpha)
+
+    BonusBackgroundColorTokenByTerrainType = MAP
+    [
+        (~/ETerrainType/StrategicForest,    "Vert"),
+        (~/ETerrainType/StrategicSemiUrban, "Red"),
+        (~/ETerrainType/Urbain,             "Red"),
+    ]
+    BonusTextColorTokenByTerrainType = MAP
+    [
+        (~/ETerrainType/StrategicForest,    "Noir"),
+        (~/ETerrainType/StrategicSemiUrban, "BlancEquipe"),
+        (~/ETerrainType/Urbain,             "BlancEquipe"),
+    ]
+    NbDigitToDisplayForBonus = 1
+
+    FatigueTextures =
+    [
+        "UseStrategic_Labels_Fatigue_0",
+        "UseStrategic_Labels_Fatigue_1",
+        "UseStrategic_Labels_Fatigue_2",
+        "UseStrategic_Labels_Fatigue_3",
+        "UseStrategic_Labels_Fatigue_4",
+        "UseStrategic_Labels_Fatigue_5",
+        "UseStrategic_Labels_Fatigue_0",
+    ]
+
+    StrategicTerrainTypeIcons = MAP
+    [
+        ( ~/ETerrainType/Urbain, "UseStrategic_Labels_Terrain_TerrainUrbain" ),
+        ( ~/ETerrainType/StrategicSemiUrban, "UseStrategic_Labels_Terrain_TerrainUrbain" ),
+        ( ~/ETerrainType/StrategicPlain, "UseStrategic_Labels_Terrain_TerrainPlaine" ),
+        ( ~/ETerrainType/StrategicForest, "UseStrategic_Labels_Terrain_TerrainForet" ),
+    ]
+
+    StrategicTerrainTypeIconColors = MAP
+    [
+        ( ~/ETerrainType/Urbain, "Gris_leaderboard" ),
+        ( ~/ETerrainType/StrategicSemiUrban, "Gris_leaderboard" ),
+        ( ~/ETerrainType/StrategicPlain, "Vert" ),
+        ( ~/ETerrainType/StrategicForest, "Vert" ),
+    ]
+)

@@ -1,0 +1,35 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+
+export Resource_DefaultMunitions is 0
+export Resource_CommandPoints is 1
+export Resource_StrategicPoints is 2
+export Resource_Tickets is 3
+export Resource_munitions is 4
+export Resource_munitions_artillerie is 5
+
+
+
+export Generated_ResourceList_Enum is TEnumResourceList
+(
+    Values = [
+        "Resource_DefaultMunitions",
+        "Resource_CommandPoints",
+        "Resource_StrategicPoints",
+        "Resource_Tickets",
+        "Resource_munitions",
+        "Resource_munitions_artillerie",
+    ]
+    Alias = MAP [
+        ("Resource_test_resource_0", 0),
+        ("Resource_test_resource_1", 1),
+        ("Resource_test_resource_2", 2),
+        ("Resource_test_resource_3", 3),
+        ("Resource_test_resource_4", 4),
+        ("Resource_test_resource_5", 5),
+        ("Resource_test_resource_6", 6),
+        ("Resource_test_resource_7", 7),
+        ("Resource_test_resource_8", 8),
+        ("Resource_test_resource_9", 9),
+    ]
+)

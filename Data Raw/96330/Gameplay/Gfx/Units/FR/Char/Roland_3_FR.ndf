@@ -1,0 +1,22 @@
+export ModelFile_Roland_3_FR is 'GameData:/Assets/3D/Units/FR/DCA/Roland_3/Roland_3.Ase2NdfBin'
+
+Modele_Roland_3_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Roland_3_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_Roland_3_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/DCA/Roland_3/Roland_3.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Roland_3_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/DCA/Roland_3/Roland_3.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

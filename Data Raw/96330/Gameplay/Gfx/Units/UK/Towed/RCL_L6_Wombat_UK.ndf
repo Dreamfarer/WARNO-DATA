@@ -1,0 +1,20 @@
+export ModelFile_RCL_L6_Wombat_UK is 'GameData:/Assets/3D/Units/UK/Vehicule/LandRover_Para_WOMBAT/RCL_L6_Wombat.Ase2NdfBin'
+
+Modele_RCL_L6_Wombat_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_RCL_L6_Wombat_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_RCL_L6_Wombat_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Vehicule/LandRover_Para_WOMBAT/RCL_L6_Wombat.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_RCL_L6_Wombat_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Vehicule/LandRover_Para_WOMBAT/RCL_L6_Wombat.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+

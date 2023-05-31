@@ -1,0 +1,19 @@
+export ModelFile_Mi_26_SOV is 'GameData:/Assets/3D/Units/URSS/Helico/Mi_26/Mi_26.Ase2NdfBin'
+
+Modele_Mi_26_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mi_26_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_26_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/Mi_26_MID/Mi_26_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mi_26_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/LODS/Mi_26_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

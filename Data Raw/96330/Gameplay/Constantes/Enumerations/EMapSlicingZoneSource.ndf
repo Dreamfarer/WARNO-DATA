@@ -1,0 +1,12 @@
+//-----------------------------------------------------------------------------
+// Differents types de provenance des zones du MapSlicing
+//-----------------------------------------------------------------------------
+//Correspondance : MapSlicingENum.h
+//-----------------------------------------------------------------------------
+EMapSlicingZoneSource is TBaseClass
+(
+    ScenarioIAStrat is 0
+    PlayerMission is 1
+    ScenarioCommand is 2
+    ScenarioDeployment is 3
+)

@@ -1,0 +1,55 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+// Laisser la valeur "None" pour gérer les cas invalides/non-définis
+
+export MinMax_None is 0
+
+export MinMax_AutocanonHE is 1
+export MinMax_Bombe is 2
+export MinMax_CanonAP is 3
+export MinMax_FLAME is 4
+export MinMax_DCA is 5
+export MinMax_inf_MMG is 6
+export MinMax_Gatling is 7
+export MinMax_Grenade is 8
+export MinMax_MMG_HMG is 9
+export MinMax_obusier is 10
+export MinMax_Mortier is 11
+export MinMax_Cluster is 12
+export MinMax_LAW is 13
+export MinMax_Roquette_AS is 14
+export MinMax_MLRS is 15
+export MinMax_inf_sniper is 16
+
+export MinMax_AAM is 17
+export MinMax_AGM is 18
+export MinMax_ATGM is 19
+export MinMax_SEAD is 20
+export MinMax_SAM is 21
+export MinMaxCategory_Enum is TWeaponMinMaxCategory
+(
+    Values = [
+        "None",
+        "AutocanonHE",
+        "Bombe",
+        "CanonAP",
+        "FLAME",
+        "DCA",
+        "inf_MMG",
+        "Gatling",
+        "Grenade",
+        "MMG_HMG",
+        "obusier",
+        "Mortier",
+        "Cluster",
+        "LAW",
+        "Roquette_AS",
+        "MLRS",
+        "inf_sniper",
+        "AAM",
+        "AGM",
+        "ATGM",
+        "SEAD",
+        "SAM",
+    ]
+)

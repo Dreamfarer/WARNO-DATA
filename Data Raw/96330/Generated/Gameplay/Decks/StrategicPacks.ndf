@@ -1,0 +1,21 @@
+// Ne pas éditer, ce fichier est auto-généré !
+
+template DeckPackDescriptor
+[
+    GUID : TGUID,
+    Transport : TEntityDescriptor = nil,
+    Unit : TEntityDescriptor,
+] is TDeckPackDescriptor
+(
+    DescriptorId = <GUID>
+    TransporterAndUnitsList =
+    [
+        TDeckTransporterAndUnitsDescriptor
+        (
+            TransporterDescriptor = <Transport>
+            UnitDescriptor = <Unit>
+        ),
+    ]
+)
+
+

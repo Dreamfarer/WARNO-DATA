@@ -1,0 +1,19 @@
+export ModelFile_FV4003_Centurion_AVRE_UK is 'GameData:/Assets/3D/Units/UK/Char/Centurion_AVRE/Centurion_AVRE.Ase2NdfBin'
+
+Modele_FV4003_Centurion_AVRE_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_FV4003_Centurion_AVRE_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_FV4003_Centurion_AVRE_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Char/Centurion_AVRE_MID/Centurion_AVRE_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_FV4003_Centurion_AVRE_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Char/LODS/Centurion_AVRE_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

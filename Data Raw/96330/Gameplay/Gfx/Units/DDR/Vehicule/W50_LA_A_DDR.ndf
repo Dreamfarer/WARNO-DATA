@@ -1,0 +1,19 @@
+export ModelFile_W50_LA_A_DDR is 'GameData:/Assets/3D/Units/DDR/Vehicule/W50_LA_A_truck/W50_LA_A_truck.Ase2NdfBin'
+
+Modele_W50_LA_A_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_W50_LA_A_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_W50_LA_A_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/W50_LA_A_truck/W50_LA_A_truck.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_W50_LA_A_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/W50_LA_A_truck/W50_LA_A_truck.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,25 @@
+export ModelFile_Jaguar_HE1_UK is 'GameData:/Assets/3D/Units/UK/Avion/Jaguar/Jaguar.Ase2NdfBin'
+
+Modele_Jaguar_HE1_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Jaguar_HE1_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Jaguar_HE1_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Avion/Jaguar/Jaguar.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Jaguar_HE1_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Avion/Jaguar/Jaguar.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Jaguar_HE1_UK_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Avion/Jaguar/Jaguar_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

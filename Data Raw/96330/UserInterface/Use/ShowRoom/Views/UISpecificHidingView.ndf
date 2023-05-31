@@ -1,0 +1,22 @@
+
+BUCKSpecificHidingMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ElementName = "BlackWindow"
+    ComponentFrame = TUIFramePropertyRTTI( RelativeWidthHeight = [1,1] )
+    HasBackground = true
+    BackgroundBlockColorToken = "PureBlack"
+)
+
+UISpecificHidingViewDescriptor is TUISpecificHidingViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificHidingMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+
+    FadedAnimation = TUIAnimFactorRTTI
+    (
+        ParamsAnim = [0.5]
+        AnimDuration = 1
+        Modificator = ~/AnimModificator/SquareAccelerate
+    )
+)

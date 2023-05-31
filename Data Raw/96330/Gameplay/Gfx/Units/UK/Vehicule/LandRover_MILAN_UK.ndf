@@ -1,0 +1,19 @@
+export ModelFile_LandRover_MILAN_UK is 'GameData:/Assets/3D/Units/UK/Vehicule/LandRover_MILAN/LandRover_Para_MILAN.Ase2NdfBin'
+
+Modele_LandRover_MILAN_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_LandRover_MILAN_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_LandRover_MILAN_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Vehicule/LandRover_MILAN_MID/LandRover_Para_MILAN_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_LandRover_MILAN_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Vehicule/LODS/LandRover_MILAN_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

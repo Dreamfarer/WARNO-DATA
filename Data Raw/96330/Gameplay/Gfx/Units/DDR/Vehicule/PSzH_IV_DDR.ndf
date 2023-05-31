@@ -1,0 +1,19 @@
+export ModelFile_PSzH_IV_DDR is 'GameData:/Assets/3D/Units/DDR/Vehicule/PSzH_IV/PSzH_IV.Ase2NdfBin'
+
+Modele_PSzH_IV_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_PSzH_IV_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_PSzH_IV_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Vehicule/PSzH_IV/PSzH_IV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_PSzH_IV_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Vehicule/PSzH_IV/PSzH_IV.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

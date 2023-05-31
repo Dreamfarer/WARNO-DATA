@@ -1,0 +1,14 @@
+InfluenceMapSelector is TInfluenceMapConstantesSelector
+(
+    InfluenceConstByGameMode = MAP
+    [
+        (
+            'Tactic',
+            influenceMapsTactic
+        ),
+        (
+            'Strategic',
+            influenceMapsStrategic
+        )
+    ]
+)

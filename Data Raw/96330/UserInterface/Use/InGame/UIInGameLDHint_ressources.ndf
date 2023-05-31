@@ -1,0 +1,476 @@
+SpecificInGameLDHintResource is TUICommonInGameLDHintResource
+(
+    UserInputLayer = $/M3D/Input/UserInputLayerHandler/InputLayer_SkipLDHint
+
+    PauseButton = ~/LDHintDefaultButton
+
+    DontMaskUserInputEvents = true
+
+    ComponentByName = MAP[
+        ( "DefaultComponent", LDHintDefaultComponent ),
+        ( "HintComponent", LDHintDefaultComponentWithoutPause ),
+
+        ( "ScoreMessageEconomyOrDestruction", LDHintDefaultComponentWithoutPause ),
+        ( "CampaignComponent", LDHintDefaultComponentWithoutPause_2 ),
+        ( "CampaignComponentWithoutPause", LDHintDefaultComponent ),
+        ( "AlertComponent", LDHintAlertComponent ),
+
+        ( "RemainingTimeAlertComponent", LDHintInfoIngameScore(FeedbackType = 'alert') ),
+        ( "SuddenDeathAlertComponent", LDHintInfoIngameScore(FeedbackType = 'alert')),
+        ( "SuddenDeathWarningComponent", LDHintInfoIngameScore(FeedbackType = 'negative')),
+        ( "SuddenDeathVictoryComponent", LDHintInfoIngameScore(FeedbackType = 'positive')),
+
+
+
+        // affichage du moral dans Steelman
+        // attention, on affiche les seuils de perte de morale
+        ( "LocalPlayerAllianceMoralComponent", LDHintInfoIngameScore(FeedbackType = 'negative') ),
+        ( "EnemyAllianceMoralComponent", LDHintInfoIngameScore(FeedbackType = 'positive') ),
+        // affichage des seuil de conquête dans Steelman
+        // les seuils sont 20%, 50%
+        ( "ConquestLocalPlayerHasAdvantageComponent", LDHintInfoIngameScore(FeedbackType = 'positive') ),
+        ( "ConquestOpponentHasAdvantageComponent", LDHintInfoIngameScore(FeedbackType = 'negative') ),
+
+        ( "StrategicPlayerTurn", LDHintInfoIngameScore_Steelman (FeedbackType = 'Steelman')        ),
+
+
+
+        ( "SuperHint", SuperHint() ),
+        ( "shint", SuperHint() ),
+        ( "shint_droit", SuperHint( alignementGauche = false) ),
+        ( "shint_op", SuperHint( alignementGauche = false challenge = true) ),
+
+        //-------------------------------------------------------------------------------------
+        // spotlight pour tuto
+        ( "Spotlight_mortier", Spotlight_mortier),
+        ( "Spotlight_sellUnit", Spotlight_mortier),
+        ( "Spotlight_movefast",     Spotlight_LD
+            (
+                UniqueName = "Spotlight_movefast"
+                MagnifiableWidthHeight = [115.0, 36.0]
+                MagnifiableOffset = [-138-129-5,-140+14]
+                AlignementToAnchor = [1.0, 1.0]
+                AlignementToFather = [1.0, 1.0]
+            )
+        ),
+        ( "Spotlight_move",         Spotlight_LD
+            (
+                UniqueName = "Spotlight_move"
+                MagnifiableWidthHeight = [115.0, 36.0]
+                MagnifiableOffset = [-14.0-252-6, -90.0+2]
+                AlignementToAnchor = [1.0, 1.0]
+                AlignementToFather = [1.0, 1.0]
+            )
+        ),
+        ( "Spotlight_FirePos",         Spotlight_LD
+            (
+                UniqueName = "Spotlight_FirePos"
+                MagnifiableWidthHeight = [115.0, 36.0]
+                MagnifiableOffset = [-7.0-137, -135.0-19-10]
+                AlignementToAnchor = [1.0, 1.0]
+                AlignementToFather = [1.0, 1.0]
+            )
+        ),
+        ( "Spotlight_CB",         Spotlight_LD
+            (
+                UniqueName = "Spotlight_CB"
+                MagnifiableWidthHeight = [115.0, 36.0]
+                MagnifiableOffset = [-7.0-137-128, -135.0-19-10-78]
+                AlignementToAnchor = [1.0, 1.0]
+                AlignementToFather = [1.0, 1.0]
+            )
+        ),
+        ( "Spotlight_logInf",         Spotlight_LD
+            (
+                UniqueName = "Spotlight_logInf"
+                MagnifiableWidthHeight = [58.0, 35.0]
+                MagnifiableOffset = [23.0, 2.0]
+                AlignementToAnchor = [0.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+            )
+        ),
+        ( "Spotlight_logRec",         Spotlight_LD
+            (
+                UniqueName = "Spotlight_logRec"
+                MagnifiableWidthHeight = [57.0, 35.0]
+                MagnifiableOffset = [82.0, 2.0]
+                AlignementToAnchor = [0.0, 0.0]
+                AlignementToFather = [0.0, 0.0]
+            )
+        ),
+        ( "Spotlight_StarDeploy",         Spotlight_LD
+            (
+                UniqueName = "Spotlight_StarDeploy"
+                MagnifiableWidthHeight = [193.0, 34.0]
+                MagnifiableOffset = [-94.0, 163.0+13]
+                AlignementToAnchor = [0.5, 0.0]
+                AlignementToFather = [0.5, 0.0]
+            )
+        ),
+        ("Spotlight_sellButton",         Spotlight_LD
+            (
+            UniqueName = "Spotlight_sellButton"
+            MagnifiableWidthHeight = [124.0, 46.0]
+            MagnifiableOffset =  [-12, -45]
+            AlignementToAnchor = [1.0, 1.0]
+            AlignementToFather = [1.0, 1.0]
+            )
+        ),
+
+        //-------------------------------------------------------------------------------------
+        // ajouter ici le composant
+        //-------------------------------------------------------------------------------------
+        // testTuto
+        ( "testTuto", MES_PauseAndTexture (TextureToken = "Image_testTuto") ),
+        ( "Recon3", MES_PauseAndTexture (TextureToken = "Recon3") ),
+        ( "redhat_radio2", MES_PauseAndTexture (TextureToken = "redhat_radio2") ),
+        ( "tanker3", MES_PauseAndTexture (TextureToken = "tanker3") ),
+        ( "combat_char", Hint_PauseAndTexture (TextureToken = "combat_char") ),
+        ( "combat_charTop", Hint_PauseAndTexture (TextureToken = "combat_charTop") ),
+        ( "combat_charLeft", Hint_PauseAndTexture (TextureToken = "combat_charLeft") ),
+        ( "combat_charRight", Hint_PauseAndTexture (TextureToken = "combat_charRight") ),
+        ( "test_hint", Hint_PauseAndTexture (TextureToken = "test_hint") ),
+        ( "hint", PORTRAIT_PauseAndTexture (TextureToken = "") ),
+        ( "cutscene_10", LDHint_cutscene_10 ),
+        ( "hint_noPause", PORTRAIT_PauseAndTexture (TextureToken = "" HasButtons = false) ),
+
+        //-------------------------------------------------------------------------------------
+        // test_tuto_5
+        ( "test_Tuto_5_shootAircraft", MES_PauseAndTexture (TextureToken = "Image_test_Tuto_5_shootAircraft") ),
+        ( "aigle", PORTRAIT_PauseAndTexture (TexturePortrait = "Image_aigle") ),
+        ( "portrait_aigle", PORTRAIT_Narration  (TextureToken = "Image_aigle") ),
+
+
+
+
+        // z_tuto_camera
+        ( "tuto_camera_videoCamera",        PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/hint_camera.webm"    HasButtons = false   )),
+        ( "tuto_camera_videoPanelInfo",     PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/tuto_camera_panelinfo.webm"  HasButtons = false)),
+        ( "tuto_camera_label",              PORTRAIT_PauseAndTexture (TextureToken = 'tuto_camera_label'                            )),
+        ( "tuto_camera_planelArme",         PORTRAIT_PauseAndTexture (TextureToken = 'tuto_camera_planelArme'                       )),
+        ( "tuto_camera_planelInfo",         PORTRAIT_PauseAndTexture (TextureToken = 'tuto_camera_planelInfo'                       )),
+        ( "tuto_camera_planelSelection",    PORTRAIT_PauseAndTexture (TextureToken = 'tuto_camera_planelSelection' HasButtons = false )),
+        ( "tuto_camera_cubeAction",         PORTRAIT_PauseAndTexture (TextureToken = 'tuto_camera_cubeAction' HasButtons = false )),
+
+        // tuto persos
+        ( "dragon",                         PORTRAIT_PauseAndTexture (TexturePortrait = 'dragon'                        )),
+        ( "dragon_noPause",                 PORTRAIT_PauseAndTexture (TexturePortrait = 'dragon'                        HasButtons = false    )),
+
+        ( "sabre",                          PORTRAIT_PauseAndTexture (TexturePortrait = 'Image_aigle'                               )),
+        ( "sabre2",                         PORTRAIT_PauseAndTexture (TexturePortrait = 'Image_aigle'                               HasButtons = false)),
+
+        //( "able",                           PORTRAIT_PauseAndTexture (TexturePortrait = 'able'                        HasButtons = false    )),
+        ( "general_test",                   PORTRAIT_PauseAndTexture (TexturePortrait = 'tuto_camera_general_test'                  HasButtons = false )),
+        ( "noPortrait",                     PORTRAIT_PauseAndTexture (HasButtons = false NoImage = true)),
+        ( "noPortrait_Pause",               PORTRAIT_PauseAndTexture (HasButtons = true NoImage = true)),
+
+
+        ( "sabre6",                         PORTRAIT_PauseAndTexture (NoImage = true        HasButtons = false)),
+        ( "sabre6_pause",                   PORTRAIT_PauseAndTexture (NoImage = true        HasButtons = true)),
+        ( "able",                           PORTRAIT_PauseAndTexture (NoImage = true        HasButtons = false)),
+        ( "able_pause",                     PORTRAIT_PauseAndTexture (NoImage = true        HasButtons = true)),
+        ( "dragon2",                        PORTRAIT_PauseAndTexture (NoImage = true        HasButtons = false)),
+        ( "dragon2_pause",                  PORTRAIT_PauseAndTexture (NoImage = true                               HasButtons = true)),
+        ( "stampede",                       PORTRAIT_PauseAndTexture (NoImage = true                               HasButtons = false)),
+        ( "stampede_pause",                 PORTRAIT_PauseAndTexture (NoImage = true                               HasButtons = true)),
+        ( "yankee",                         PORTRAIT_PauseAndTexture (NoImage = true                               HasButtons = false)),
+        ( "yankee_pause",                   PORTRAIT_PauseAndTexture (NoImage = true                               HasButtons = true)),
+        ( "hammer",                         PORTRAIT_PauseAndTexture (NoImage = true                               HasButtons = false)),
+        ( "hammer_pause",                   PORTRAIT_PauseAndTexture (NoImage = true                               HasButtons = true)),
+        ( "charlie",                        PORTRAIT_PauseAndTexture (NoImage = true                               HasButtons = false)),
+        ( "charlie_pause",                  PORTRAIT_PauseAndTexture (NoImage = true                               HasButtons = true)),
+
+        //
+
+        ( "Steelman_test_tuto_general2",    PORTRAIT_PauseAndTexture (TextureSteelman_FullScreen = 'Steelman_test_general2' HasButtons = false)),
+        ( "Steelman_test_tuto_general2_fin",    PORTRAIT_PauseAndTexture (TextureSteelman_FullScreen = 'Steelman_test_general2' )),
+
+        ( "panel_selection_centre",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'panel_selection_centre'                        HasButtons = true    )),
+        ( "panel_selection_droit",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'panel_selection_droit'                        HasButtons = true    )),
+        ( "panel_selection_gauche",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'panel_selection_gauche'                        HasButtons = true    )),
+
+        ( "label_all",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'label_all'                        HasButtons = true    )),
+        ( "label_icone",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'label_icone'                        HasButtons = false    )),
+        ( "label_name",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'label_name'                        HasButtons = true    )),
+        ( "label_transported_name",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'label_transported_name'                        HasButtons = true    )),
+        ( "label_xp",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'label_xp'                        HasButtons = true    )),
+        ( "label_transported",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'label_transported'                        HasButtons = true    )),
+        ( "label_quality",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'label_quality'                        HasButtons = true    )),
+        ( "label_icone_2",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'label_icone_2'                        HasButtons = true    )),
+
+        // z_tuto_reco
+        ( "tuto_reco_los",              PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/video_los.webm" )),
+        ( "tuto_reco_stealth",          PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/tuto_reco_stealth.webm" HasButtons = false )),
+
+        ( "vision_foret",       PORTRAIT_PauseAndTexture (TextureSteelman = 'vision_foret'                        HasButtons = true    )),
+        ( "vision_bocage",       PORTRAIT_PauseAndTexture (TextureSteelman = 'vision_bocage'                        HasButtons = true    )),
+        ( "vision_batiment",       PORTRAIT_PauseAndTexture (TextureSteelman = 'vision_batiment'                        HasButtons = true    )),
+        ( "vision_all",       PORTRAIT_PauseAndTexture (TextureSteelman = 'vision_all'                        HasButtons = true    )),
+        ( "vision_limite",       PORTRAIT_PauseAndTexture (TextureSteelman = 'vision_limite'                        HasButtons = true    )),
+
+        // tuto_combat infanterie
+        ( "tuto_stunned",                       PORTRAIT_PauseAndTexture (TextureToken = 'tuto_stunned'                        HasButtons = false    )),
+        ( "tuto_routing",                       PORTRAIT_PauseAndTexture (TextureToken = 'tuto_routing'                        HasButtons = false    )),
+        ( "tuto_stress",                       PORTRAIT_PauseAndTexture (TextureToken = 'tuto_stress'                        HasButtons = false    )),
+        ( "tuto_stress2",                       PORTRAIT_PauseAndTexture (TextureToken = 'tuto_stress'                        HasButtons = false    )),
+        ( "tuto_cohesion",                       PORTRAIT_PauseAndTexture (TextureToken = 'tuto_cohesion'                        HasButtons = false    )),
+        ( "tuto_m16",                       PORTRAIT_PauseAndTexture (TextureToken = 'tuto_m16'                        HasButtons = false    )),
+        ( "tuto_m249",                       PORTRAIT_PauseAndTexture (TextureToken = 'tuto_m249'                        HasButtons = false    )),
+        ( "tuto_dragonMissile",                       PORTRAIT_PauseAndTexture (TextureToken = 'tuto_dragonMissile'                        HasButtons = false    )),
+        ( "tuto_UnloadAtPosition",        PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/tuto_UnloadAtPosition.webm"    HasButtons = false   )),
+
+        // z_tuto_infanterieCaC
+        ( "greenBeret",                       PORTRAIT_PauseAndTexture (TexturePortrait = 'greenBeret'                        HasButtons = false    )),
+        ( "mp5",                       PORTRAIT_PauseAndTexture (TextureToken = 'mp5'                        HasButtons = false    )),
+        ( "satchel",                       PORTRAIT_PauseAndTexture (TextureToken = 'satchel'                        HasButtons = false    )),
+        // z_tuto_charBasic
+        ( "ap",                       PORTRAIT_PauseAndTexture (TextureSteelman = 'ap'                        HasButtons = true    )),
+        ( "armor",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'armor'                        HasButtons = true    )),
+        ( "damage",                   PORTRAIT_PauseAndTexture (TextureSteelman = 'damage'                        HasButtons = true    )),
+        ( "chance_to_hit",            PORTRAIT_PauseAndTexture (TextureSteelman = 'chance_to_hit'                        HasButtons = true    )),
+        ( "tankGun",                  PORTRAIT_PauseAndTexture (TextureSteelman = 'tankGun'                        HasButtons = true    )),
+        ( "range",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'range'                        HasButtons = true    )),
+        ( "chance_to_win",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'chance_to_win'                        HasButtons = true    )),
+        ( "tuto_curseurTactique",     PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/tuto_Curseurtactique3.webm"    HasButtons = false   )),
+        ( "tuto_orientUnit",     PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/tuto_Curseurtactique3.webm"    HasButtons = true   )),
+        ( "tuto_orientMultipleUnit",     PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/tuto_Curseurtactique3.webm"    HasButtons = true   )),
+
+        // z_tuto_atgm
+        ( "patton",                       PORTRAIT_PauseAndTexture (TexturePortrait = 'patton'                        HasButtons = false    )),
+        ( "tow2",                       PORTRAIT_PauseAndTexture (TexturePortrait = 'tow2'                        HasButtons = false    )),
+        ( "Penetrationimpossible",        PORTRAIT_PauseAndTexture (VideoName = "GameData:/Assets/Videos/tutorials/Penetrationimpossible.webm"    HasButtons = false   )),
+
+        // logistic_base
+        ( "panel_ressource_gauche",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'panel_ressource_gauche'                        HasButtons = true    )),
+        ( "panel_ressource_gauche_2",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'panel_ressource_gauche_2'                        HasButtons = true    )),
+        ( "panel_ressource_droite",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'panel_ressource_droite'                        HasButtons = true    )),
+        ( "panel_ressource_centre",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'panel_ressource_centre'                        HasButtons = true    )),
+        ( "panel_ressource_full",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'panel_ressource_full'                        HasButtons = false    )),
+
+        ( "affichage_zone_full_score",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'affichage_zone_full_score'                        HasButtons = true    )),
+        ( "affichage_zone_full_percent",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'affichage_zone_full_percent'                        HasButtons = true    )),
+        ( "affichage_zone_full_name",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'affichage_zone_full_name'                        HasButtons = true    )),
+        ( "affichage_zone_full",                    PORTRAIT_PauseAndTexture (TextureSteelman = 'affichage_zone_full'                        HasButtons = true    )),
+        //-------------------------------------------------------------------------------------
+        // challenge
+
+        ("titre" , TitreMissionFullscreen()),
+        ("titre_BlackHorsesLastStand" , TitreMissionFullscreen
+            (
+                ImageSize = [800,1038]
+                HasImage = true
+                TextureToken = 'challenge_11acr'
+            )
+        ),
+        ("BlackHorsesLastStand_01" ,    TitreChallenge2( TextureToken = 'BlackHorsesLastStand_01' )),
+        ("BlackHorsesLastStand_02" ,    TitreChallenge2 (TextureToken = 'BlackHorsesLastStand_02' )),
+        ("BlackHorsesLastStand_03" ,    TitreChallenge2 (TextureToken = 'BlackHorsesLastStand_03' )),
+        ("BlackHorsesLastStand_04" ,    TitreChallenge2 (TextureToken = 'BlackHorsesLastStand_04' )),
+
+
+        ( "challenge_test",                     challenge (TextureToken = 'challenge_test' )),
+        ( "challenge_test_armory0",             challenge (TextureToken = 'challenge_test_armory0' )),
+        ( "challenge_test_armory1",             challenge (TextureToken = 'challenge_test_armory1' )),
+
+        // BlackHorsesLastStand
+        ( "challenge_defense_1",             PORTRAIT_PauseAndTexture (TextureSteelman = 'challenge_defense_1' IsBriefing = true )),
+        ("panoramique" , CutscenePanoramique (VideoName = "GameData:Map/Scenario/challenge_BlackHorsesLastStand/Scripting/Videos/panoramique.webm" )),
+
+        // RedJuggernaut
+        ( "RedJuggernaut_difficulty",               Difficulte (texture = 'RedJuggernaut' )),
+
+        // BackhandBlow
+
+        ( "steelbeast_difficulty",               Difficulte (texture = 'Steelbeast_Last_Frame_No_Effects' )),
+
+        //-------------------------------------------------------------------------------------
+        // Steelman
+
+        ( "Steelman_test_officier1",             PORTRAIT_PauseAndTexture (TextureSteelman = 'Steelman_test_officier1' )),
+        ( "Steelman_test_officier2",             PORTRAIT_PauseAndTexture (TextureSteelman = 'Steelman_test_officier2' )),
+        ( "Steelman_test_perso_wrd",             PORTRAIT_PauseAndTexture (TextureSteelman_FullScreen = 'test_perso_wrd' )),
+        ( "Steelman_test_perso_wrd2",             PORTRAIT_PauseAndTexture (TextureSteelman_FullScreen = 'test_perso_wrd2' )),
+        ( "Steelman_test_perso_wrd2_renfort1",             PORTRAIT_PauseAndTexture (TextureSteelman_FullScreen = 'test_perso_wrd2_renfort1' )),
+        ( "Steelman_test_perso_wrd2_renfort2",             PORTRAIT_PauseAndTexture (TextureSteelman_FullScreen = 'test_perso_wrd2_renfort2' )),
+        ( "Steelman_test_general1",             PORTRAIT_PauseAndTexture (TextureSteelman = 'Steelman_test_general1' )),
+        ( "Steelman_test_general2",             PORTRAIT_PauseAndTexture (TextureSteelman_FullScreen = 'Steelman_test_general2' )),
+        ( "Steelman_test_regles",             PORTRAIT_PauseAndTexture (TextureSteelman = 'Steelman_test_regles' )),
+
+        // generaux vide
+        ( "general_DDR",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'general_DDR' )),
+        ( "general_DDR_noPause",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'general_DDR' HasButtons = false  )),
+        ( "general_US",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'general_US' )),
+        // tuto_1
+        ( "Steelman_tuto_0",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman = 'Steelman_tuto_0' )),
+        ( "Steelman_tuto_1",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman = 'Steelman_tuto_1' )),
+        ( "Steelman_tuto_2",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman = 'Steelman_tuto_2' )),
+        ( "Steelman_tuto_3",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman = 'Steelman_tuto_3' )),
+
+        // bad h.
+        ( "bad_hersfeld_sov_01",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'bad_hersfeld_sov_01' )),
+        ( "bad_hersfeld_sov_02",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'bad_hersfeld_sov_02' )),
+        ( "bad_hersfeld_sov_03",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'bad_hersfeld_sov_03' )),
+        ( "bad_hersfeld_sov_04",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'bad_hersfeld_sov_04' )),
+        ( "bad_hersfeld_sov_05",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'bad_hersfeld_sov_05' )),
+        ( "bad_hersfeld_sov_wip",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'bad_hersfeld_sov_wip' )),
+
+        ( "otan_bad_1",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'otan_bad_1' )),
+        ( "otan_bad_1a",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'otan_bad_1a' )),
+        ( "otan_bad_2",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'otan_bad_2' )),
+        ( "otan_bad_2a",             PORTRAIT_PauseAndTexture_Steelman (TextureSteelman_FullScreen = 'otan_bad_2a' )),
+   ]
+)
+
+//-------------------------------------------------------------------------------------
+// Liste des Textures
+//-------------------------------------------------------------------------------------
+
+UseInGame_AdditionalLDHintTextureBank is TBUCKToolAdditionalTextureBank
+(
+    Textures = MAP
+    [
+    ("LDHintCampaign_PortraitHintPauseTexture",                     MAP [(~/ComponentState/Normal, ~/LDHintCampaign_PortraitHintPauseTexture)] ),
+    ("LDHintCampaign_InfoTexture",                                  MAP [(~/ComponentState/Normal, ~/LDHintCampaign_InfoTexture)] ),
+
+    //-------------------------------------------------------------------------------------
+    ( "Image_testTuto", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/Image_testTuto.png' ))] ),
+    ( "tanker3", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/tanker3.png' ))] ),
+    ( "redhat_radio2", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/redhat_radio2.png' ))] ),
+    ( "Recon3", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/Recon3.png' ))] ),
+    ( "combat_char", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/combat_char.png' ))] ),
+    ( "combat_charTop", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/combat_charTop.png' ))] ),
+    ( "combat_charRight", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/combat_charRight.png' ))] ),
+    ( "combat_charLeft", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/combat_charLeft.png' ))] ),
+    ( "test_hint", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_hint.png' ))] ),
+
+    //-------------------------------------------------------------------------------------
+    // test_tuto_5
+    ( "Image_test_Tuto_5_shootAircraft", MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/shootAircraft.png' ))] ),
+    ( "Image_aigle",                     MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/test_tuto_5/aigle.png' ))] ),
+
+
+    //-------------------------------------------------------------------------------------
+
+    // z_tuto_camera
+    ( "tuto_camera_label",                  MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_label2.png' ))] ),
+    ( "tuto_camera_planelArme",             MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_planelArme.png' ))] ),
+    ( "tuto_camera_planelInfo",             MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_planelInfo.png' ))] ),
+    ( "tuto_camera_planelSelection",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_planelSelection.png' ))] ),
+    ( "tuto_camera_dragon",                 MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_dragon.png' ))] ),
+    ( "tuto_camera_cubeAction",                 MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/tuto_camera_cubeAction.png' ))] ),
+    ( "tuto_camera_general_test",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/general_test.png' ))] ),
+    ( "dragon",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/dragon.png' ))] ),
+
+    ( "panel_selection_gauche",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/panel_selection_gauche.png' ))] ),
+    ( "panel_selection_droit",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/panel_selection_droit.png' ))] ),
+    ( "panel_selection_centre",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/panel_selection_centre.png' ))] ),
+
+    ( "label_all",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/label_all.png' ))] ),
+    ( "label_transported_name",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/label_transported_name.png' ))] ),
+    ( "label_name",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/label_name.png' ))] ),
+    ( "label_icone",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/label_icone.png' ))] ),
+    ( "label_icone_2",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/label_icone_2.png' ))] ),
+    ( "label_quality",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/label_quality.png' ))] ),
+    ( "label_transported",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/label_transported.png' ))] ),
+    ( "label_xp",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_camera/label_xp.png' ))] ),
+
+    //zz_tuto_recon
+    ( "able",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_reco/able.png' ))] ),
+    ( "vision_all",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_reco/vision_all.png' ))] ),
+    ( "vision_limite",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_reco/vision_limite.png' ))] ),
+    ( "vision_batiment",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_reco/vision_batiment.png' ))] ),
+    ( "vision_bocage",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_reco/vision_bocage.png' ))] ),
+    ( "vision_foret",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_reco/vision_foret.png' ))] ),
+    // tuto_combatInfanterie
+    ( "tuto_cohesion",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_combatInfanterie/cohesion.png' ))] ),
+    ( "tuto_stress",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_combatInfanterie/stressbargradient.png' ))] ),
+    ( "tuto_routing",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_combatInfanterie/routing.png' ))] ),
+    ( "tuto_stunned",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_combatInfanterie/stunned.png' ))] ),
+    ( "tuto_m249",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_combatInfanterie/m249.png' ))] ),
+    ( "tuto_m16",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_combatInfanterie/m16.png' ))] ),
+    ( "tuto_dragonMissile",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_combatInfanterie/dragon2.png' ))] ),
+    // z_tuto_infanterieCaC
+    ( "greenBeret",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_infanterieCaC/greenBeret.png' ))] ),
+    ( "mp5",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_infanterieCaC/mp5.png' ))] ),
+    ( "satchel",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_infanterieCaC/satchel.png' ))] ),
+    // z_tuto_charBasic
+    ( "ap",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_charBasic/ap.png' ))] ),
+    ( "armor",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_charBasic/armor.png' ))] ),
+    ( "chance_to_hit",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_charBasic/chance_to_hit.png' ))] ),
+    ( "damage",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_charBasic/damage.png' ))] ),
+    ( "range",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_charBasic/range.png' ))] ),
+    ( "tankGun",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_charBasic/tankGun.png' ))] ),
+    ( "chance_to_win",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_charBasic/chance_to_win.png' ))] ),
+    // z_tuto_atgm
+    ( "patton",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_atgm/patton.png' ))] ),
+    ( "tow2",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_atgm/tow2.png' ))] ),
+    // logistic_base
+    ( "panel_ressource_centre",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_logistiqueBase/panel_ressource_centre.png' ))] ),
+    ( "panel_ressource_droite",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_logistiqueBase/panel_ressource_droite.png' ))] ),
+    ( "panel_ressource_gauche",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_logistiqueBase/panel_ressource_gauche.png' ))] ),
+    ( "panel_ressource_gauche_2",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_logistiqueBase/panel_ressource_gauche_2.png' ))] ),
+    ( "panel_ressource_full",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_logistiqueBase/panel_ressource_full.png' ))] ),
+
+    ( "affichage_zone_full",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_logistiqueBase/affichage_zone_full.png' ))] ),
+    ( "affichage_zone_full_name",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_logistiqueBase/affichage_zone_full_name.png' ))] ),
+    ( "affichage_zone_full_percent",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_logistiqueBase/affichage_zone_full_percent.png' ))] ),
+    ( "affichage_zone_full_score",           MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/z_tuto_logistiqueBase/affichage_zone_full_score.png' ))] ),
+    //-------------------------------------------------------------------------------------
+    // challenge
+    ( "challenge_test",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/challenge_test.png' ))] ),
+    ( "challenge_test_armory0",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/test_armory0.png' ))] ),
+    ( "challenge_test_armory1",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/test_armory1.png' ))] ),
+
+    // defense en profondeur
+    ( "challenge_defense_1",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/challenge_defense_1.png' ))] ),
+    ( "challenge_11acr",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/11ACR.png' ))] ),
+
+    ( "BlackHorsesLastStand_01",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/BlackHorsesLastStand/39guard.png' ))] ),
+    ( "BlackHorsesLastStand_02",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/BlackHorsesLastStand/a10.png' ))] ),
+    ( "BlackHorsesLastStand_03",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/BlackHorsesLastStand/vkk.png' ))] ),
+    ( "BlackHorsesLastStand_04",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/BlackHorsesLastStand/cmd.png' ))] ),
+    // RedJuggernaut
+    ( "RedJuggernaut",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/RedJuggernaut.png' ))] ),
+    // steelbeast
+    ( "Steelbeast_Last_Frame_No_Effects",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/challenge/Steelbeast_Last_Frame_No_Effects.png' ))] ),
+
+    //-------------------------------------------------------------------------------------
+    // Steelman
+    //-------------------------------------------------------------------------------------
+    ( "Steelman_test_officier1",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/steelman/test_officier1.png' ))] ),
+    ( "Steelman_test_officier2",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/steelman/test_officier2.png' ))] ),
+    ( "test_perso_wrd",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/Fulda_1/test_perso_wrd.png' ))] ),
+    ( "test_perso_wrd2",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/Fulda_1/test_perso_wrd2.png' ))] ),
+    ( "test_perso_wrd2_renfort1",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/Fulda_1/test_perso_wrd2_renfort1.png' ))] ),
+    ( "test_perso_wrd2_renfort2",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/Fulda_1/test_perso_wrd2_renfort2.png' ))] ),
+    ( "Steelman_test_general1",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/steelman/test_general1.png' ))] ),
+    ( "Steelman_test_regles",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/steelman/test_regles.png' ))] ),
+    ( "Steelman_test_general2",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseInGame/LDHint/steelman/Steelman_test_general2b.png' ))] ),
+
+
+    // tuto 1
+    ( "Steelman_tuto_0",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/tuto_1/tuto_0.png' ))] ),
+    ( "Steelman_tuto_1",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/tuto_1/tuto_1.png' ))] ),
+    ( "Steelman_tuto_2",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/tuto_1/tuto_2.png' ))] ),
+    ( "Steelman_tuto_3",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/tuto_1/tuto_3.png' ))] ),
+
+    ( "general_DDR",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/general_DDR.png' ))] ),
+    ( "general_US",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/general_US.png' ))] ),
+    // bad h.
+    ( "bad_hersfeld_sov_01",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/sov_01.png' ))] ),
+    ( "bad_hersfeld_sov_02",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/sov_02.png' ))] ),
+    ( "bad_hersfeld_sov_03",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/sov_03.png' ))] ),
+    ( "bad_hersfeld_sov_04",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/sov_04.png' ))] ),
+    ( "bad_hersfeld_sov_05",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/sov_05.png' ))] ),
+    ( "bad_hersfeld_sov_wip",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/sov_wip.png' ))] ),
+    ( "otan_bad_1",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/otan_bad_1.png' ))] ),
+    ( "otan_bad_1a",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/otan_bad_1a.png' ))] ),
+    ( "otan_bad_2",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/otan_bad_2.png' ))] ),
+    ( "otan_bad_2a",        MAP [(~/ComponentState/Normal, TUIResourceTexture_InGame( FileName='GameData:/Assets/2D/Interface/UseStrategic/LDHint/bad_hersfeld/otan_bad_2a.png' ))] ),
+    //-------------------------------------------------------------------------------------
+    // animation
+
+    ]
+
+)
+

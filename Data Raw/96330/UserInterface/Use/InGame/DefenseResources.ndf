@@ -1,0 +1,22 @@
+DefenseResources is TDefenseResources
+(
+    ValidPoseColor = [9, 219, 30, 128]
+    InvalidPoseColor = [219, 9, 41, 128]
+
+    LineThickness = 1500.0
+    CircleRadius = 1500.0
+
+    BlockedTerrainColor = [219, 9, 41, 128]
+    BlockedTerrainThickness = 1.0
+
+    ValidGhostColors = TGhostColors(
+        GhostColor = [9, 219, 30, 200]
+        GhostAlphas = [0.6, 0.8]
+        GhostBlends = [0.78, 0.78]
+    )
+    InvalidGhostColors = TGhostColors(
+        GhostColor = [255, 0, 0, 255]
+        GhostAlphas = [1, 1]
+        GhostBlends = [1, 1]
+    )
+)

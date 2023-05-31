@@ -1,0 +1,19 @@
+export ModelFile_AH6C_Little_Bird_US is 'GameData:/Assets/3D/Units/US/Helico/AH_6C_Little_Bird/AH_6C_Little_Bird.Ase2NdfBin'
+
+Modele_AH6C_Little_Bird_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AH6C_Little_Bird_US
+    CivMask =  CivMask/Common
+)
+
+Modele_AH6C_Little_Bird_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/AH_6C_Little_Bird_MID/AH_6C_Little_Bird_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AH6C_Little_Bird_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/LODS/AH_6C_Little_Bird_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

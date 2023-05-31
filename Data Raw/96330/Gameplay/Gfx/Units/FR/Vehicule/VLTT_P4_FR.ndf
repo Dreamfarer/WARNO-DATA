@@ -1,0 +1,19 @@
+export ModelFile_VLTT_P4_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/VLTT_P4/VLTT_P4.Ase2NdfBin'
+
+Modele_VLTT_P4_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_VLTT_P4_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_VLTT_P4_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/VLTT_P4_MID/VLTT_P4_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VLTT_P4_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/LODS/VLTT_P4_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

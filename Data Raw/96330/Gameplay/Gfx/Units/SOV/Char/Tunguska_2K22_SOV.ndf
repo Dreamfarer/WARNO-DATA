@@ -1,0 +1,22 @@
+export ModelFile_Tunguska_2K22_SOV is 'GameData:/Assets/3D/Units/URSS/DCA/Tunguska_2K22/Tunguska_2K22.Ase2NdfBin'
+
+Modele_Tunguska_2K22_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_Tunguska_2K22_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Tunguska_2K22_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/Tunguska_2K22_MID/Tunguska_2K22_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Tunguska_2K22_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/URSS/DCA/LODS/Tunguska_2K22_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

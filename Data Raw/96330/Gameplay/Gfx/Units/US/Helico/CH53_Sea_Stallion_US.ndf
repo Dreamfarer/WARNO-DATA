@@ -1,0 +1,19 @@
+export ModelFile_CH53_Sea_Stallion_US is 'GameData:/Assets/3D/Units/US/Helico/CH53_SeaStallion/CH53_SeaStallion.Ase2NdfBin'
+
+Modele_CH53_Sea_Stallion_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_CH53_Sea_Stallion_US
+    CivMask =  CivMask/Common
+)
+
+Modele_CH53_Sea_Stallion_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/CH53_SeaStallion_MID/CH53_SeaStallion_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_CH53_Sea_Stallion_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/US/Helico/LODS/CH53_SeaStallion_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

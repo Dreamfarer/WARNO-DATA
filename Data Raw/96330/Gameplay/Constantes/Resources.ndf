@@ -1,0 +1,10 @@
+
+//Export pour etre utilisable dans Map/Template/NdfScriptingDefine
+
+specificResourcesAccesser is TSpecificResourcesAccesser
+(
+    CommandPointResource = ~/Resource_CommandPoints
+    StrategicPointResource = ~/Resource_StrategicPoints
+    TicketResource = ~/Resource_Tickets
+    FactoryResources = ~/FactoryResources
+)

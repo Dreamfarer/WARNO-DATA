@@ -1,0 +1,185 @@
+//Ce composant décrit une position de point de spawn.
+//Elle peut être partagée par plusieurs groupes de renforts, en tant que point principal ou secondaire
+BUCKSpecificStrategicSpawnPointMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+
+    )
+
+    Components =
+    [
+        //Petit drapeau de spawn secondaire
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [ 38.7, 52.5 ] // [ 31.0, 42.0 ]
+                MagnifiableOffset = [ -2.0, 0.0 ]
+                AlignementToAnchor = [ 0.0, 1.0 ]
+            )
+            TextureToken = "UseStrategic_SpawnPoint"
+            ElementName = "SpawnPointTexture"
+        ),
+        //Pancarte pour les points de spawn principaux de chaque groupe de renforts
+        BUCKListDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [95.0, 0.0] //69
+                AlignementToAnchor = [ 0.5, 1.0 ]
+            )
+            BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            Axis = ~/ListAxis/Vertical
+            ElementName = "SpawnPointMain"
+
+            Elements =
+            [
+                //Bordure du haut
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [ 0.0, 2.0 ]
+                        )
+                        Rotation = 180
+                        TextureToken = "UseStrategic_SpawnPointMain_HorizontalBorder"
+                        ElementName = "TopTexture"
+                    )
+                ),
+                //Rack des noms des groupes de renforts
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKRackDescriptor
+                    (
+                        ElementName = "ReinforcementGroupsRack"
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                        )
+
+                        Axis = ~/ListAxis/Vertical
+                        BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+                        InterItemMargin = TRTTILength(Magnifiable = 0.0)
+
+                        BladeDescriptor = ~/ReinforcementGroupBlade
+                        AssumeChildrenAreFixedSize = true
+                    )
+                ),
+                //Bordure du bas
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            RelativeWidthHeight = [1.0, 0.0]
+                            MagnifiableWidthHeight = [ 0.0, 2.0 ]
+                        )
+                        TextureToken = "UseStrategic_SpawnPointMain_HorizontalBorder"
+                        ElementName = "BottomTexture"
+                    )
+                ),
+                //Poteau de la pancarte
+                BUCKListElementDescriptor
+                (
+                    ComponentDescriptor = BUCKTextureDescriptor
+                    (
+                        ComponentFrame = TUIFramePropertyRTTI
+                        (
+                            MagnifiableWidthHeight = [ 5.0, 100.0] //hauteur pour que la pancarte passe par dessus les labels des pions  //71 //41
+                            RelativeOffset = [0.5, 0.0]
+                            AlignementToAnchor = [ 0.5, 0.0 ]
+                        )
+                        TextureToken = "UseStrategic_SpawnPointMain_Pole"
+                        ElementName = "PoleTexture"
+                    )
+                )
+            ]
+        )
+    ]
+
+)
+
+//Nom court (ShortDisplayName) d'un groupe de renfort inséré dans une pancarte
+private ReinforcementGroupBlade is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+        MagnifiableWidthHeight = [0.0, 18.0]
+    )
+
+    Components =
+    [
+        BUCKTextureDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [ 1.0, 1.0 ]
+            )
+            TextureToken = "UseStrategic_SpawnPointMain_Fill"
+            ElementName = "FillTexture"
+        ),
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [ 1.0, 1.0 ]
+            )
+            ElementName = "ReinforcementGroupName"
+
+            TextStyle = "Default"
+            TypefaceToken = "UIMainFont"
+
+            ParagraphStyle = TParagraphStyleRTTI
+            (
+                Alignment = UIText_Center
+                VerticalAlignment = UIText_VerticalCenter
+            )
+
+            ClipContent = true
+            TextSize = '12'
+            TextColor = 'SD2_Blanc184'
+        )
+    ]
+)
+
+UISpecificStrategicSpawnPointViewDescriptor is TUISpecificStrategicSpawnPointViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicSpawnPointMainComponentDescriptor
+
+    LabelsLayer = $/UserInterface/UI3DLayer_General
+
+    LabelsTransformation = TLabelTransformationComposition
+    (
+        Transformations = [
+            TLabelTransformFaceCam
+            (
+                Camera = $/M3D/Camera/CameraPrincipale
+            ),
+            TLabelTransformFakePerspective
+            (
+                ScalePerAltitudeConstReso = 1.5
+                Camera = $/M3D/Camera/CameraPrincipale
+                Scene2D = $/M3D/Scene/Scene_2D_Interface
+                ConstnessFactor = 0.6
+            ),
+        ]
+
+    )
+
+    //Transparence appliquée aux pancartes quand un autre groupe de renfort est ouvert
+    TransparencyForNotSelectedReinforcementGroup = 0.25  //0.0 = invisible, 1.0 = opaque
+
+    //cf. BlockColorsMap dans DefaultStyleGuides.ndf
+    ColorTokenSpawnCapturedByEnemy = "BeigeSteelman"
+    ColorTokenSpawnCapturedByLocalPlayer = "GrisSteelman"
+    ColorTokenSpawnPointMain = "GrisSteelman"
+
+    //Période d'un cycle de clignotement d'un point de spawn contrôlé bloqué par un ennemi (en seconde)
+    BlinkingFlagPeriod = 3
+)

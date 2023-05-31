@@ -1,0 +1,134 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export ChallengeRedJuggernautStrategy is TIAGeneralStrategy
+(
+    StrategyName = "ChalRedJAI"
+    FirstGenerator = ChalRedJuggernaut_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        ChalRedJuggernaut_Transition_StartToPhaseCommand,
+        ChalRedJuggernaut_Transition_StartToGeneric,
+        ChalRedJuggernaut_Transition_DeployToCommandPhase,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalRedJuggernaut_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export ChalRedJuggernaut_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalRedJuggernaut_Transition_StartToPhaseCommand is TIAGeneralStrategyTransition
+(
+    Origine = ChalRedJuggernaut_Choose_Strategy
+    Condition = ChalRedJuggernaut_Condition_CommandPhase
+    Destination = ChalRedJuggernaut_Phase_Command
+)
+export ChalRedJuggernaut_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = ChalRedJuggernaut_Choose_Strategy
+    Condition = ChalRedJuggernaut_Condition_GotoGeneric
+    Destination = ChalRedJuggernaut_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export ChalRedJuggernaut_Transition_DeployToCommandPhase is TIAGeneralStrategyTransition
+(
+    Origine = ChalRedJuggernaut_Phase_Deploiement
+    Condition = ChalRedJuggernaut_Condition_CommandPhase
+    Destination = ChalRedJuggernaut_Phase_Command
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export ChalRedJuggernaut_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export ChalRedJuggernaut_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+
+        ~/CaptureOneObjectif, //Dependant du deck estimation 125
+
+        ~/Defense_Objectif, //Chere mais dépendant du nombre d'objectif et de la capture
+
+        ~/Challenge_Main_Attack_Cautious, //400
+
+        ~/Challenge_Defense_Dynamic_Filler,
+        ~/Defense_Dynamic_Adaptive,
+
+        ~/Airstrike_Defense,
+        ~/Artillery_TriggerHappy_1for2Corridors,
+
+        ~/CaptureAllZoneObjectif,
+
+        ~/Artillery_Expensive,
+        ~/Airstrike_SEAD,
+    ]
+
+    ScalingGeneratorList = ~/Challenge_RedJuggernaut_Scaling
+)
+//-------------------------------------------------------------------------
+export ChalRedJuggernaut_Phase_Command is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+
+        ~/CaptureOneObjectif, //Dependant du deck estimation 125
+
+        ~/Defense_Objectif, //Chere mais dépendant du nombre d'objectif et de la capture
+
+        ~/Challenge_Main_Attack_Cautious, //300
+
+        ~/Challenge_Defense_Dynamic_Filler,
+        ~/Defense_Dynamic_Adaptive,
+
+        ~/Airstrike_Defense,
+        ~/Artillery_TriggerHappy_1for2Corridors,
+
+        ~/CaptureAllZoneObjectif,
+
+        ~/Artillery_Expensive,
+        ~/Airstrike_SEAD,
+    ]
+    ScalingGeneratorList = ~/Challenge_RedJuggernaut_Scaling
+)
+
+Challenge_RedJuggernaut_Scaling is
+[
+    ~/Challenge_Defense_Dynamic_Filler,
+    ~/Defense_Dynamic_Adaptive,
+    ~/Defense_Objectif,
+    ~/Artillery_TriggerHappy_1for2Corridors,
+    ~/Airstrike_Defense,
+    ~/Challenge_Main_Attack_Cautious,
+]

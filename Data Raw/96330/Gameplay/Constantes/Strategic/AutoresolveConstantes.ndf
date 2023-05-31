@@ -1,0 +1,271 @@
+// à maintenir synchro avec EugIA_Specific\StrategicBattleState.h, EStrategicBattleType
+EStrategicBattleType_None is 0
+EStrategicBattleType_GroundStrategicBattle is 1
+EStrategicBattleType_GroundAirStrategicBattle is 2
+EStrategicBattleType_AirGroundStrategicBattle is 3
+EStrategicBattleType_AerialStrategicBattle is 4
+
+private AirUnitTagsToCheck is [ 'Helo', 'Avion' ]
+
+private NoRecoAdvantage is TCombatAdvantageDefinition
+(
+    AdvantageValue = 1
+    // Alexis test à remplacer quand NoInfantryAdvantage fonctionnera
+    TextToken = 'CA_INF'
+    TagToCheck = ['Infanterie']
+    TagToCheckAgainst = ['Infanterie']
+)
+
+private NoAAAdvantage is TCombatAdvantageDefinition
+(
+    AdvantageValue = 0
+    TextToken = 'CA_AA'
+    TagToCheck = [ 'Helo', 'Avion' ]
+    TagToCheckAgainst = [ 'Canon_AA', 'Avion_Chasseur','Canon_AA_Standard', 'Avion' ]
+)
+
+private NoATAdvantage is TCombatAdvantageDefinition
+(
+    AdvantageValue = 1
+    TextToken = 'CA_AT'
+    TagToCheck = [ 'Char' ]
+    TagToCheckAgainst = [ 'Char', 'ChasseurDeChar','Avion_AT','Infanterie_Spec_Defense']
+)
+private NoInfantryAdvantage is TCombatAdvantageDefinition
+(
+    AdvantageValue = 2
+    TextToken = 'CA_INF'
+    TagToCheck = [ 'Infanterie' ]
+    TagToCheckAgainst = [ 'Infanterie']
+)
+private DCA_air is TCombatAdvantageDefinition
+(
+    AdvantageValue = 2
+    TextToken = 'CA_DCA'
+    TagToCheck = [ 'Canon_AA' ]
+    TagToCheckAgainst = [ 'Avion_SEAD']
+)
+
+private VeryLuckyDefender is TStrategicAutoresolveAlea
+(
+    TriggerWeight = 5
+    ModificationValue = -1.0
+    TextToken = "AAR_DVL"
+)
+
+private LuckyDefender is TStrategicAutoresolveAlea
+(
+    TriggerWeight = 20
+    ModificationValue = -0.25
+    TextToken = "AAR_DL"
+)
+
+private NeutralLuck is TStrategicAutoresolveAlea
+(
+    TriggerWeight = 60
+)
+
+private LuckyAttacker is TStrategicAutoresolveAlea
+(
+    TriggerWeight = 20
+    ModificationValue = 0.25
+    TextToken = "AAR_AL"
+)
+
+private VeryLuckyAttacker is TStrategicAutoresolveAlea
+(
+    TriggerWeight = 5
+    ModificationValue = 1.0
+    TextToken = "AAR_AVL"
+)
+
+StrategicAutoresolveConstantes is TStrategicAutoResolveConstantes
+(
+    Aleas = [
+        // ~/VeryLuckyDefender,
+        ~/LuckyDefender,
+        ~/NeutralLuck,
+        ~/LuckyAttacker,
+        // ~/VeryLuckyAttacker,
+    ]
+
+    PertesAttaquant = perte_mixte_0
+    PertesDefenseur = perte_mixte_0
+
+    PawnPowerBonusFactorByTerrainTypeAndPlayerSide = [
+        // EStrategicBattlePlayerSide::Attacker
+        MAP
+        [
+        ],
+        // EStrategicBattlePlayerSide::Defender
+        MAP
+        [
+            (~/ETerrainType/StrategicForest,    0.33),
+            (~/ETerrainType/StrategicSemiUrban, 0.66),
+            (~/ETerrainType/Urbain,             1.0),
+        ],
+    ]
+    ApplyPawnPowerBonusOnSupportUnit = true
+
+    AvantagesByCombatType = MAP
+    [
+        ( EStrategicBattleType_GroundStrategicBattle, MAP
+            [
+                ( ~/EAutoresolveAvantage_NoRecoVersusReco,     ~/NoRecoAdvantage ),
+                ( ~/EAutoresolveAvantage_NoAntiAirVersusAir,   ~/NoAAAdvantage ),
+                ( ~/EAutoresolveAvantage_NoAntiTankVersusTank, ~/NoATAdvantage ),
+            ]
+        ),
+        ( EStrategicBattleType_AerialStrategicBattle, MAP
+            [
+                ( ~/EAutoresolveAvantage_NoAntiAirVersusAir,   ~/NoAAAdvantage ),
+            ]
+        ),
+        ( EStrategicBattleType_AirGroundStrategicBattle, MAP
+            [
+                ( ~/EAutoresolveAvantage_DCA_air,   ~/DCA_air ),
+            ]
+        ),
+    ]
+    CombatNoAntiAirAdvantageType = ~/EAutoresolveAvantage_NoAntiAirVersusAir
+
+    AirUnitTags = ~/AirUnitTagsToCheck
+
+    VictoryTypeByBalanceOfPowerByTerrainType =MAP
+    [
+        (
+            ~/ETerrainType/Default,
+            [
+                ( -1.5,     EVictoryType/TotalDefeat),
+                ( -1.0,     EVictoryType/MajorDefeat),
+                ( -0.5,     EVictoryType/MinorDefeat),
+
+                ( 0.0,      EVictoryType/Draw),
+
+                ( 0.5,      EVictoryType/MinorVictory),
+                ( 1.0,      EVictoryType/MajorVictory),
+                ( 1.5,      EVictoryType/TotalVictory),
+            ]
+        ),
+    ]
+
+    // -------------
+    // Combat Aerien
+    // -------------
+
+    PertePourAttaquantSelonDecalageCombatAerien = PertePourAttaquantSelonDecalageForCombatAerien//PertePourAttaquantSelonDecalageForCombatAerien
+    PertePourDefenseurSelonDecalageCombatAerien = PertePourAttaquantSelonDecalageForCombatAerien//PertePourDefenseurSelonDecalageForCombatAerien
+
+    VictoryTypeByBalanceOfPowerCombatAerien =
+    [
+        ( -2,    EVictoryType/TotalDefeat),
+        ( -1,    EVictoryType/MajorDefeat),
+        ( -0,    EVictoryType/MinorDefeat),
+        ( 1,    EVictoryType/Draw),
+        ( 2,    EVictoryType/MinorVictory),
+        ( 3,     EVictoryType/MajorVictory),
+        ( 4,    EVictoryType/TotalVictory),
+    ]
+
+
+    // -------------
+    // Combat Sol Air \ combat Attaquant Defenseur : cas où l'avion est en supériorité sur une zonee t qu'une DCA devient active (cas rare)
+    // -------------
+
+    PertePourAttaquantSelonDecalageCombatSolAir = PertePourAttaquantSelonDecalageForCombatAerien
+    PertePourDefenseurSelonDecalageCombatSolAir = PertePourAttaquantSelonDecalageForCombatAerien
+
+    VictoryTypeByBalanceOfPowerCombatSolAir =
+    [
+        ( -0.01,    EVictoryType/MinorDefeat),
+        ( 0,    EVictoryType/MinorVictory),
+    ]
+
+
+    //-------------------------------------------------------------------------------------
+    // Combat Air Sol // combat attaquant defenseur : cas où l'avion entre dans le cercle d'une DCA / l'avion est attaquant et DCA
+    //-------------------------------------------------------------------------------------
+
+    PertePourAttaquantSelonDecalageCombatAirSol = testPerte
+    PertePourDefenseurSelonDecalageCombatAirSol = testPerte
+
+    VictoryTypeByBalanceOfPowerCombatAirSol =
+    [
+        ( -0.01,    EVictoryType/MinorDefeat),
+        ( 0,    EVictoryType/MinorVictory),
+    ]
+
+    //-1 = perdre tous les PA possibles
+    APLossForInterceptorAndPassingPawnByVictoryTypeForAttackerAirBattle =
+    [
+        (1 , -1), //TotalDefeat
+        (1 , -1), //MajorDefeat
+        (1 , -1), //MinorDefeat
+        (0 , 0), //Draw
+        (-1 , 1), //MinorVictory
+        (-1 , 1), //MajorVictory
+        (-1 , 1), //TotalVictory
+        (-1 , 1), //NotSpecified
+    ]
+
+    APLossForInterceptorAndPassingPawnByVictoryTypeForAttackerAirGroundBattle =
+    [
+        (3 , 0), //TotalDefeat
+        (3 , 0), //MajorDefeat
+        (3 , 0), //MinorDefeat
+        (3 , 0), //Draw
+        (3 , 0), //MinorVictory
+        (3 , 0), //MajorVictory
+        (3 , 0), //TotalVictory
+        (3 , 0), //NotSpecified
+    ]
+
+    APLossForInterceptorAndPassingPawnByVictoryTypeForAttackerGroundAirBattle =
+    [
+        (0 , 3), //TotalDefeat
+        (0 , 3), //MajorDefeat
+        (0 , 3), //MinorDefeat
+        (0 , 3), //Draw
+        (0 , 3), //MinorVictory
+        (0 , 3), //MajorVictory
+        (0 , 3), //TotalVictory
+        (0 , 3), //NotSpecified
+    ]
+)
+
+// Pertes.
+// négatif = défavorable à  la défense et attaque ;  positif = favorable à  l'attaque et défense.
+// en cas de victoire de l'ATQ avec un ratio de 3.5 par exemple,
+// on appliquera une perte en ATQ correspondante au lerp entre les ratios 3 et 4
+// on appliquera une perte en DEF correspondante au lerp entre les ratios -3 et -4
+
+// ATTENTION: les colonnes sont affiché dynamiquement dans UISpecificStrategicAutoResolveViewDescriptor/PertesSurTerrainBlade
+// il n'est pas nécessaire que les colonnes soit consécutive
+perte_mixte_0 is
+[
+(-2 ,   0.74),
+(-1.5 , 0.55),
+(-1 ,   0.42),
+(-0.5 , 0.32),
+(0 ,    0.24),
+(0.5 ,  0.17),
+(1 ,    0.11),
+(1.5 ,  0.06),
+(2 ,    0.01),
+]
+
+//-------------------------------------------------------------------------------------/
+testPerte is
+[
+       // (-0.5,    0.30),
+       // (0,       0.0),
+        ( -0.01,    0.1),
+        ( 0,    0.05),
+       // (0.5,     0.10),
+]
+PertePourAttaquantSelonDecalageForCombatAerien is
+[
+       (-0.5,    0.30),
+       (0,       0.20),
+       (0.5,     0.10),
+]

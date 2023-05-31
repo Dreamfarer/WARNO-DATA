@@ -1,0 +1,788 @@
+hauteurTexte is 25
+
+
+//-------------------------------------------------------------------------------------
+
+private ScorePanelRemainingTurns is BUCKTextDescriptor
+(
+    ElementName = "RemainingTurns"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    ParagraphStyle = ~/paragraphStyleTextCenter
+
+    TextStyle = "Default"
+    TypefaceToken = "UIMainFont"
+
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+    TextToken = "SSC_RTURN"
+    TextSize = "SD2_Moyen"
+    TextColor = "SD2_BleuVariable"
+)
+
+//-------------------------------------------------------------------------------------
+
+template BoutonDesCamps
+[
+    ElementName : string,
+]
+is
+BUCKTextureDescriptor
+(
+    ElementName = <ElementName> + 'Flag'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [320.0*0.8, 192.0*0.8]
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+        // MagnifiableOffset = [10,0]
+        )
+
+    )
+//-------------------------------------------------------------------------------------
+
+private VictoryRatio is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    Axis = ~/ListAxis/Vertical
+    InterItemMargin = TRTTILength ( Magnifiable = 10)
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "VictoryRatioTitle"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextCenter
+
+                TextStyle = "Default"
+                TypefaceToken = "Eurostyle_Medium"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "SSC_VRATIT"
+                TextSize = "26"
+                TextColor = "SM_paleSilver"
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = ''
+                    HintBodyToken = 'ops_ratiob'
+                    HintExtendedToken = ''
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ScoreTable
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "VictoryRatio"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextCenter
+
+                TextStyle = "Default"
+                TypefaceToken = "Eurostyle_Heavy"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "SSC_VRATIO"
+                TextSize = "40"
+                TextColor = "BlancEquipe"
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "VictoryType"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextCenter
+
+                TextStyle = "Default"
+                TypefaceToken = "Eurostyle_Heavy"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = "40"
+                TextColor = "BlancEquipe"
+            )
+        ),
+        // Dummy
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1
+            ComponentDescriptor = BUCKContainerDescriptor
+            (
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 1.0]
+                )
+            )
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+template BoutonScore
+[
+    UniqueName : string = '',
+    ElementName : string = '',
+    TextToken : string = '',
+    HintBodyToken : string= '',
+    MagnifiableWidthHeight : float2 = [160,40],
+    Mapping : TEugBMutablePBaseClass = nil,
+
+] is BUCKButtonDescriptor
+(
+    UniqueName = <UniqueName>
+    ElementName = <ElementName>
+    Mapping  = <Mapping>
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = <MagnifiableWidthHeight>
+        AlignementToAnchor = [0.5, 0.5]
+        AlignementToFather = [0.5, 0.5]
+    )
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                MagnifiableWidthHeight = [-4.0, -4.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            Components =
+            [
+                PanelRoundedCorner
+                (
+                    Radius = 3
+                    BackgroundBlockColorToken = "SM_Feldgrau"
+                    BorderLineColorToken = "SM_Grullo"
+                )
+            ]
+        ),
+        BUCKTextDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                RelativeWidthHeight = [1.0, 1.0]
+                AlignementToFather = [0.5, 0.5]
+                AlignementToAnchor = [0.5, 0.5]
+            )
+
+            BigLineAction = ~/BigLineAction/MultiLine
+            ParagraphStyle = ~/CenteredParagraphStyle
+            TextStyle = "Default"
+            TypefaceToken = "Liberator"
+
+
+            TextToken = <TextToken>
+            TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+            TextColor = "SM_Grullo"
+            TextSize = '16'
+        ),
+        BUCKSpecificHintableArea
+        (
+            DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+            HintBodyToken = <HintBodyToken>
+        )
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private ScorePanelButtonExit is BoutonScore
+(
+    MagnifiableWidthHeight = [160,40]
+    ElementName = 'ExitButton'
+    TextToken = "EXIT_BTN"
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+private ScorePanelButtonOk is BoutonScore
+(
+    MagnifiableWidthHeight = [160,40]
+    ElementName = 'OkButton'
+    TextToken = "OK_BTN"
+    Mapping = TEugBMutablePBaseClass( Value = TUserInputMapping( KeyboardEventID = UserInputKeyboard/KEY_ESCAPE ) )
+)
+
+//-------------------------------------------------------------------------------------
+
+// container principal
+template BUCKSpecificStrategicScorePanelMainComponentDescriptor
+[
+    PanelButton : TBUCKButtonDescriptor,
+] is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    HidePointerEvents = true
+
+    Components =
+    [
+        MainPanelScore ( PanelButton = <PanelButton>)
+    ]
+)
+//-------------------------------------------------------------------------------------
+template MainPanelScore
+[
+    PanelButton : TBUCKButtonDescriptor,
+] is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [ 1000,0]
+        AlignementToFather = [0.5, 0.5]
+        AlignementToAnchor = [0.5, 0.5]
+    )
+
+    InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+    Axis = ~/ListAxis/Vertical
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = SteelmanMainTitle(TextToken =  'SSC_TITLE')
+        ),
+        //-------------------------------------------------------------------------------------
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                ParagraphStyle = ~/paragraphStyleTextCenter
+
+                TextStyle = "Default"
+                TypefaceToken = "Eurostyle_Medium"
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextToken = "SSC_sco"
+                TextSize = "26"
+                TextColor = "SM_paleSilver"
+
+                Hint = BUCKSpecificHintableArea
+                (
+                    DicoToken = ~/LocalisationConstantes/dico_interface_ingame
+                    HintTitleToken = ''
+                    HintBodyToken = 'ops_ratiob'
+                    HintExtendedToken = ''
+                )
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PlayersTerritory
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PlayersScore
+        ),
+        //-------------------------------------------------------------------------------------
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/ScorePanelRemainingTurns
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ~/VictoryRatio
+        ),
+        //-------------------------------------------------------------------------------------
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = PanelBottomButton
+            (
+                Bouton = <PanelButton>
+            )
+        ),
+    ]
+
+    BackgroundComponents =
+    [
+        PanelRoundedCorner
+        (
+            Radius = 15
+            BackgroundBlockColorToken = 'SM_RifleGreen'
+            BorderLineColorToken = 'SM_Grullo'
+        )
+    ]
+ )
+//-------------------------------------------------------------------------------------
+
+PlayersTerritory is BUCKListDescriptor
+(
+    ElementName = 'PlayersTerritory'
+    ComponentFrame = TUIFramePropertyRTTI ()
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+    Axis = ~/ListAxis/Horizontal
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = TerritoryPerSideDisplay () // allié
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = TerritoryPerSideDisplay
+            (
+                ElementName_Camp = 'Axis'
+                Camp = 'Axis'
+                TextToken_Camp = 'SSC_HAXIS'
+                BackgroundBlockColorToken = 'UIPlayerSpecific/Pact_light'
+            ) // allié
+
+        ),
+    ]
+ )
+PlayersScore is BUCKListDescriptor
+(
+    ElementName = 'PlayersScore'
+    ComponentFrame = TUIFramePropertyRTTI ()
+
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    InterItemMargin = TRTTILength( Magnifiable = 0.0 )
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+    Axis = ~/ListAxis/Horizontal
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ScorePerSideDisplay () // allié
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = ScorePerSideDisplay
+            (
+                ElementName_Camp = 'Axis'
+                Camp = 'Axis'
+                TextToken_Camp = 'SSC_HAXIS'
+                BackgroundBlockColorToken = 'UIPlayerSpecific/Pact_light'
+            ) // allié
+
+        ),
+    ]
+ )
+
+//-------------------------------------------------------------------------------------
+
+
+template TerritoryPerSideDisplay
+[
+
+    ElementName_Camp : string = 'Allies',
+    Camp : string = 'Allies',
+    TextToken_Camp : string = 'SSC_HALLIE',
+    BackgroundBlockColorToken : string = 'playerHelper/Otan_background_light'
+]
+
+is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [500,0]
+    )
+
+    InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+    Axis = ~/ListAxis/Vertical
+
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BoutonDesCamps (ElementName = <ElementName_Camp> )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor =  TemplateTextScore ( TextToken = 'SSC_TCTRL' IsTitre = true)
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1.0
+            ComponentDescriptor =  BUCKListDescriptor
+            (
+                ElementName = "Territories" + <Camp>
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                Axis = ~/ListAxis/Vertical
+                FirstMargin = TRTTILength( Magnifiable = 8.0 )
+                InterItemMargin = TRTTILength( Magnifiable = 8.0 )
+                LastMargin = TRTTILength( Magnifiable = 8.0 )
+                BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromFrameProperty
+            )
+        ),
+    ]
+)
+
+template ScorePerSideDisplay
+[
+
+    ElementName_Camp : string = 'Allies',
+    Camp : string = 'Allies',
+    TextToken_Camp : string = 'SSC_HALLIE',
+    BackgroundBlockColorToken : string = 'playerHelper/Otan_background_light'
+]
+
+is BUCKListDescriptor
+(
+    ElementName = 'ScorePerSideDisplay' + <Camp>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [500,0]
+
+        )
+
+    HasBackground = true
+    BackgroundBlockColorToken = <BackgroundBlockColorToken>
+
+    //BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+    InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+
+        //-------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor =  TemplateTextScore ( TextToken = 'SSC_terr' IsTitre = true)
+        ),
+        //-------------------------------------------------------------------------------------
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = Display2ColumnsScore
+            (
+                TextToken = 'SSC_SCORET'
+                ElementName = 'TerritoryTotalScore'
+                Camp  = <Camp>
+            )
+        ),
+        //-------------------------------------------------------------------------------------
+
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = Display2ColumnsScore
+            (
+                TextToken = 'SSC_SCOREG'
+                ElementName = 'CurrentScoreGain'
+                Camp  = <Camp>
+            )
+        ),
+        //-------------------------------------------------------------------------------------
+        BUCKListElementDescriptor
+        (
+            // UniteDetruite
+            ComponentDescriptor = TemplateTextScore ( TextToken = 'SSC_INFDAM' IsTitre = true)
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = Display2ColumnsScore
+            (
+                TextToken = 'SSC_BAT'
+                ElementName = 'BataillonKilled'
+                Camp  = <Camp>
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = Display2ColumnsScore
+            (
+                TextToken = 'SSC_KPTS'
+                ElementName = 'PointsFromKills'
+                Camp  = <Camp>
+            )
+        ),
+        //-------------------------------------------------------------------------------------
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor =  TemplateTextScore ( TextToken = 'SSC_Recap' IsTitre = true)
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = Display2ColumnsScore
+            (
+                TextToken = 'SSC_TTERRI'
+                ElementName = 'TotalPointsTerritories'
+                Camp  = <Camp>
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = Display2ColumnsScore
+            (
+                TextToken = 'SSC_TKILL'
+                ElementName = 'TotalPointsKills'
+                Camp  = <Camp>
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = Display2ColumnsScore
+            (
+                TextToken = 'SSC_TTOTAL'
+                ElementName = 'TotalPoints'
+                Camp  = <Camp>
+                IsBold = true
+            )
+        ),
+        //-------------------------------------------------------------------------------------
+
+    ]
+)
+
+template Display2ColumnsScore
+[
+    ElementName : string,
+    Camp : string = 'Allies',
+    TextToken : string,
+    IsBold : bool = false
+]
+
+ is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI     (    )
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    InterItemMargin = TRTTILength( Magnifiable = 6.0 )
+    LastMargin = TRTTILength( Magnifiable = 0.0 )
+    Axis = ~/ListAxis/Horizontal
+    Elements =
+    [
+    BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.9
+            ComponentDescriptor = TemplateTextScore
+            (
+                TextToken = <TextToken>
+                IsBold = <IsBold>
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 0.1
+            ComponentDescriptor = TemplateTextScore
+            (
+                ElementName = <ElementName> + <Camp>
+                Alignment = UIText_Right
+                TextToken = 'SSC_PLUSV'
+                IsBold = <IsBold>
+            )
+        ),
+    ]
+)
+//-------------------------------------------------------------------------------------
+ScoreTable is BUCKGridDescriptor
+(
+    ElementName = 'ScoreTable'
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToAnchor = [0.5, 0.0]
+        AlignementToFather = [0.5, 0.0]
+    )
+
+     FirstElementMargin = TRTTILength2( Magnifiable = [35.0, 0.0])
+        InterElementMargin    = TRTTILength2 (Magnifiable = [0.0, 0.0])
+        LastElementMargin = TRTTILength2( Magnifiable = [8.0, 10.0])
+        ChildFitToContent = true
+    GridElements = MAP
+    [
+
+    ([0,0], TemplateTextVictory (TextToken = 'SC_TOTVICT' IsTitre = true )),
+        ([0,1], TemplateTextVictory (TextToken = 'SC_MAJVICT' IsTitre = true)),
+            ([0,2], TemplateTextVictory (TextToken = 'SC_MINVICT' IsTitre = true)),
+                    ([0,3], TemplateTextVictory (TextToken = 'SC_DRAW' IsTitre = true)),
+                        ([0,4], TemplateTextVictory (TextToken = 'SC_MINDEFE' IsTitre = true)),
+                            ([0,5], TemplateTextVictory (TextToken = 'SC_MAJDEFE' IsTitre = true)),
+                                ([0,6], TemplateTextVictory (TextToken = 'SC_TOTDEFE' IsTitre = true)),
+
+    ([1,0], TemplateTextVictory (TextToken = 'SSC_v_5' BackgroundBlockColorToken = 'score_01')),
+        ([1,1], TemplateTextVictory (TextToken = 'SSC_v_4' BackgroundBlockColorToken = 'score_02')),
+                ([1,2], TemplateTextVictory (TextToken = 'SSC_v_2' BackgroundBlockColorToken = 'score_03')),
+                    ([1,3], TemplateTextVictory (TextToken = 'SSC_d_1' BackgroundBlockColorToken = 'score_04')),
+                        ([1,4], TemplateTextVictory (TextToken = 'SSC_v_2' BackgroundBlockColorToken = 'score_05')),
+                            ([1,5], TemplateTextVictory (TextToken = 'SSC_v_4' BackgroundBlockColorToken = 'score_06')),
+                                ([1,6], TemplateTextVictory (TextToken = 'SSC_v_5')),
+
+    ]
+)
+
+
+//-------------------------------------------------------------------------------------
+
+template TemplateTextScore
+[
+    ElementName : string = '',
+    TextToken : string = '',
+    Alignment : int  = UIText_Left,
+    IsTitre : bool = false,
+    IsBold : bool = false,
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+]
+
+ is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = <Alignment>
+        VerticalAlignment = UIText_VerticalCenter
+    )
+    HasBackground = false
+    BackgroundBlockColorToken = 'Orange'
+
+    HasBorder = (<IsTitre> ? true : false)
+    BorderLineColorToken = 'SM_Grullo'
+    BorderThicknessToken = '1'
+    BordersToDraw = ~/TBorderSide/Bottom
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/FitToContent
+
+    TextToken = <TextToken>
+    TypefaceToken = (<IsTitre> ? 'Eurostyle_Heavy' : (<IsBold> ? "Eurostyle_Heavy" : 'Eurostyle'))
+    BigLineAction = ~/BigLineAction/MultiLine
+    TextPadding = TRTTILength4( Magnifiable = (<IsTitre> ? [10.0, 20, 10.0, 3.0] : [10.0, 3, 10.0, 3.0] ))
+
+    TextDico = <TextDico>
+
+    TextColor = "SM_paleSilver"
+    TextSize = "16"
+)
+
+template TemplateTextVictory
+[
+    ElementName : string = '',
+    TextToken : string = '',
+    IsTitre : bool = false,
+    Color : string = 'Value_5',
+    BackgroundBlockColorToken : string = 'ColorCode/rouge'
+]
+
+ is BUCKTextDescriptor
+(
+    ElementName = <ElementName>
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableWidthHeight = [100,(<IsTitre> ? 40 : 20)]
+    )
+
+    ParagraphStyle = TParagraphStyleRTTI
+    (
+        Alignment = UIText_Center
+        VerticalAlignment = UIText_VerticalCenter
+    )
+
+    HasBorder = true
+    BorderLineColorToken = 'SM_Grullo'
+    BorderThicknessToken = '1'
+
+    HasBackground = true
+    BackgroundBlockColorToken = (<IsTitre> ? "SM_Ebony" : <BackgroundBlockColorToken>)
+
+    TextStyle = "Default"
+
+    HorizontalFitStyle = ~/FitStyle/UserDefined
+    VerticalFitStyle = ~/FitStyle/UserDefined
+
+    TextToken = <TextToken>
+    TypefaceToken = (<IsTitre> ? 'Eurostyle' : 'Eurostyle_Italic')
+    BigLineAction = ~/BigLineAction/MultiLine
+    TextPadding = TRTTILength4( Magnifiable = (<IsTitre> ? [10.0, 0, 10.0, 3.0] : [0.0, 0, 0.0, 0.0] ))
+
+    TextDico = ~/LocalisationConstantes/dico_interface_ingame
+
+    TextColor = (<IsTitre> ? 'SM_paleSilver' : 'SM_Noir')
+    TextSize = "12"
+)
+
+//-------------------------------------------------------------------------------------
+
+private TerritoryLine is TemplateTextScore
+(
+)
+
+//-------------------------------------------------------------------------------------
+
+template UISpecificStrategicScorePanelViewDescriptor
+[
+    isEndgame : bool,
+] is TUISpecificStrategicScorePanelViewDescriptor
+(
+    MainComponentDescriptor = <isEndgame> ? BUCKSpecificStrategicScorePanelMainComponentDescriptor(PanelButton = ~/ScorePanelButtonExit) : BUCKSpecificStrategicScorePanelMainComponentDescriptor(PanelButton = ~/ScorePanelButtonOk)
+    MainComponentContainerUniqueName = ""
+    TerritoryToken = "SSC_TERRIT"
+    TerritoryLine = ~/TerritoryLine
+)

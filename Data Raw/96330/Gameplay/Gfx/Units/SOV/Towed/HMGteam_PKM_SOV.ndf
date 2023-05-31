@@ -1,0 +1,22 @@
+export ModelFile_HMGteam_PKM_SOV is 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/PKM.Ase2NdfBin'
+
+Modele_HMGteam_PKM_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_HMGteam_PKM_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_PKM_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/PKM.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_HMGteam_PKM_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/Ammo/Armes/HMG_trepied/PKM.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

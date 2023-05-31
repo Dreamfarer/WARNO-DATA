@@ -1,0 +1,19 @@
+export ModelFile_Ka_50_AA_SOV is 'GameData:/Assets/3D/Units/URSS/Helico/Ka_50/Ka_50_AA.Ase2NdfBin'
+
+Modele_Ka_50_AA_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Ka_50_AA_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Ka_50_AA_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/Ka_50_MID/Ka_50_AA_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Ka_50_AA_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Helico/LODS/Ka_50_AA_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

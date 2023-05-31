@@ -1,0 +1,22 @@
+export ModelFile_DCA_Javelin_LML_UK is 'GameData:/Assets/3D/Units/UK/Canon/Javelin_LML/Javelin_LML.Ase2NdfBin'
+
+Modele_DCA_Javelin_LML_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_DCA_Javelin_LML_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_Javelin_LML_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Canon/Javelin_LML/Javelin_LML.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_DCA_Javelin_LML_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/UK/Canon/Javelin_LML/Javelin_LML.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

@@ -1,0 +1,25 @@
+export ModelFile_SPW_152K_DDR is 'GameData:/Assets/3D/Units/DDR/Vehicule/SPW_152K/SPW_152K.Ase2NdfBin'
+
+Modele_SPW_152K_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_SPW_152K_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_SPW_152K_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/SPW_152K/SPW_152K.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_SPW_152K_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/Vehicule/SPW_152K/SPW_152K.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_SPW_152K_DDR_Tourelle_01 is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/DDR/APC/BTR_50/SGMB_t1.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

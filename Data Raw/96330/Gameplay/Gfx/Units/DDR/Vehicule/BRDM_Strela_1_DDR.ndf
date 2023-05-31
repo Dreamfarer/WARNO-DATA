@@ -1,0 +1,22 @@
+export ModelFile_BRDM_Strela_1_DDR is 'GameData:/Assets/3D/Units/DDR/DCA/BRDM_Strela_1/BRDM_Strela_1.Ase2NdfBin'
+
+Modele_BRDM_Strela_1_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_BRDM_Strela_1_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_Strela_1_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/BRDM_Strela_1_MID/BRDM_Strela_1_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_BRDM_Strela_1_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/DCA/LODS/BRDM_Strela_1_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

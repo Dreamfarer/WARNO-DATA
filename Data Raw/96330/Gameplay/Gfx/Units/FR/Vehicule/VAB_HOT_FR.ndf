@@ -1,0 +1,22 @@
+export ModelFile_VAB_HOT_FR is 'GameData:/Assets/3D/Units/FR/Antichar/VAB_HOT/VAB_HOT.Ase2NdfBin'
+
+Modele_VAB_HOT_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_VAB_HOT_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_VAB_HOT_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Antichar/VAB_HOT_MID/VAB_HOT_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VAB_HOT_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Antichar/LODS/VAB_HOT_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

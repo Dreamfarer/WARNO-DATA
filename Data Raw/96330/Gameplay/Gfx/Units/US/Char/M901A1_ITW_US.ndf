@@ -1,0 +1,22 @@
+export ModelFile_M901A1_ITW_US is 'GameData:/Assets/3D/Units/US/Antichar/M901A1_ITV/M901A1_ITV.Ase2NdfBin'
+
+Modele_M901A1_ITW_US is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_M901A1_ITW_US
+    CivMask =  CivMask/Common
+)
+
+Modele_M901A1_ITW_US_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Antichar/M901A1_ITV_MID/M901A1_ITV_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_M901A1_ITW_US_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/US/Antichar/LODS/M901A1_ITV_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

@@ -1,0 +1,27 @@
+
+BUCKSpecificStrategicUnitLabelAggregateMainComponentDescriptor is BUCKListDescriptor
+(
+    ElementName = "AggregateList"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        MagnifiableOffset = [0, 0]
+        AlignementToFather = [0.5, 1.0]
+        AlignementToAnchor = [0.5, 1.0]
+    )
+
+    Axis = ~/ListAxis/Horizontal
+    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+    Elements =
+    [
+    ]
+)
+
+UISpecificStrategicUnitLabelAggregateContainerDescriptor is TUISpecificStrategicUnitLabelAggregateViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificStrategicUnitLabelAggregateMainComponentDescriptor
+    MainComponentContainerUniqueName = "" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+
+    UnitLabelResources = ~/SpecificStrategicUnitLabelResources
+)

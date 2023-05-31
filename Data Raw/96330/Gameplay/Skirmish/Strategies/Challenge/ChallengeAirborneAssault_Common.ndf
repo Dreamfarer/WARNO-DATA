@@ -1,0 +1,33 @@
+//-------------------------------------------------------------------------
+export ChalAirborneAssault_DestroyPlayer is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+
+        ~/CaptureAllZoneObjectif,
+
+        ~/Attack_Objectives, //Environ 300
+
+        ~/Attack_Main, //Environ 400
+        ~/Attack_Adaptive,          // Environ 200
+
+        ~/Airstrike_Assault,
+        ~/Airstrike_Offense,
+
+        ~/Attack_Helo, //Environ 250
+
+        ~/Artillery_TriggerHappy_1for2Corridors,
+        ~/Artillery_Expensive,
+
+        ~/Airstrike_Defense,
+    ]
+    ScalingGeneratorList = ~/ChalAirborneAssault_DestroyPlayer_Scaling
+)
+
+ChalAirborneAssault_DestroyPlayer_Scaling is
+[
+    ~/Attack_Main,
+]

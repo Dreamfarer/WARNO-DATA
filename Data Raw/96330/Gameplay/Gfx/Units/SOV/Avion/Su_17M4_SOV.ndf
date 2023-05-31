@@ -1,0 +1,25 @@
+export ModelFile_Su_17M4_SOV is 'GameData:/Assets/3D/Units/URSS/Avion/Su_17M4/Su_17M4.Ase2NdfBin'
+
+Modele_Su_17M4_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Su_17M4_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_17M4_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/Su_17M4/Su_17M4.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_17M4_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/Su_17M4/Su_17M4.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Su_17M4_SOV_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/Su_17M4/Su_17M4_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

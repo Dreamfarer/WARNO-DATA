@@ -1,0 +1,104 @@
+//-------------------------------------------------------------------------
+//----------------------------- STRATEGY ----------------------------------
+//-------------------------------------------------------------------------
+export ChallengeHoldem is TIAGeneralStrategy
+(
+    StrategyName = "HoldemAI"
+    FirstGenerator = ChalHoldem_Choose_Strategy
+    ConstantesMap = MAP[
+        ("ForceTacticalMoveAndAttack", TEugBBoolean(Value = true)),
+    ]
+    AllowToByPassNbMacroActionAllowedToProduceSimultaneous = true
+    TransitionList =
+    [
+        ChalHoldem_Transition_StartToPhaseCommand,
+        ChalHoldem_Transition_StartToGeneric,
+        ChalHoldem_Transition_DeployToCommandPhase,
+    ]
+)
+
+//-------------------------------------------------------------------------
+//---------------------------- CONDITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalHoldem_Condition_GotoGeneric is TSequenceCondition_True
+(
+)
+//-------------------------------------------------------------------------
+export ChalHoldem_Condition_CommandPhase is TSequenceCondition_Phase
+(
+    PhaseType = CommandPhase
+)
+
+//-------------------------------------------------------------------------
+//--------------------------- TRANSITIONS ---------------------------------
+//-------------------------------------------------------------------------
+export ChalHoldem_Transition_StartToPhaseCommand is TIAGeneralStrategyTransition
+(
+    Origine = ChalHoldem_Choose_Strategy
+    Condition = ChalHoldem_Condition_CommandPhase
+    Destination = ChalHoldem_Phase_Command
+)
+export ChalHoldem_Transition_StartToGeneric is TIAGeneralStrategyTransition
+(
+    Origine = ChalHoldem_Choose_Strategy
+    Condition = ChalHoldem_Condition_GotoGeneric
+    Destination = ChalHoldem_Phase_Deploiement
+)
+//-------------------------------------------------------------------------
+export ChalHoldem_Transition_DeployToCommandPhase is TIAGeneralStrategyTransition
+(
+    Origine = ChalHoldem_Phase_Deploiement
+    Condition = ChalHoldem_Condition_CommandPhase
+    Destination = ChalHoldem_Phase_Command
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export ChalHoldem_Choose_Strategy is TSequenceGeneratorDescriptor
+(
+    // Fake phase qui permet juste d'orienter la strategie dans la direction voulue
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/Supply_Skirmish,
+    ]
+)
+//-------------------------------------------------------------------------
+export ChalHoldem_Phase_Deploiement is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 4
+    GeneratorList =
+    [
+        ~/Support_Transports,
+
+        ~/CaptureAllZoneObjectif,
+
+        ~/Attack_Main,
+        ~/Attack_Main,
+        ~/Attack_Main,
+    ]
+)
+//-------------------------------------------------------------------------
+export ChalHoldem_Phase_Command is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 3
+    GeneratorList =
+    [
+        ~/Support_Transports,
+        ~/CaptureAllZoneObjectif,
+
+        ~/Attack_Main,
+        ~/Attack_Main,
+        ~/Attack_Main,
+    ]
+
+    ScalingGeneratorList = ~/Holdem_Scaling
+)
+
+Holdem_Scaling is
+[
+    ~/Attack_Objectives,
+    ~/Defense_Objectif,
+]

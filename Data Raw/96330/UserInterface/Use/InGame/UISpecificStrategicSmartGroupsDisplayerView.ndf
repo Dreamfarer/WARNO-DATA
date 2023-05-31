@@ -1,0 +1,107 @@
+//-------------------------------------------------------------------------------------
+
+template SmartGroupRackContainerStrategic
+[
+    Alignment : float2 = [0.0, 0.0],
+] is PanelRoundedCorner
+(
+    ElementName = "SmartGroupsRackContainer"
+
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        AlignementToAnchor = <Alignment>
+        AlignementToFather = <Alignment>
+    )
+
+    FitStyle = ~/ContainerFitStyle/FitToContent
+
+    Radius = 15
+    HasBackground = true
+    BackgroundBlockColorToken =  "SM_Grullo"
+    HasBorder = true
+    BorderLineColorToken = 'SM_Noir'
+    RoundedVertexes = [false, true, true, false]
+
+    Components =
+    [
+        BUCKContainerDescriptor
+        (
+            ComponentFrame = TUIFramePropertyRTTI
+            (
+                MagnifiableWidthHeight = [500.0, 0.0]
+            )
+
+            FitStyle = ~/ContainerFitStyle/MaxBetweenUserDefinedAndContent
+
+            ChildFitToContent = true
+            HidePointerEvents = true
+
+            Components =
+            [
+                BUCKRackDescriptor
+                (
+                    ElementName = "SmartGroupsRack"
+
+                    ComponentFrame = TUIFramePropertyRTTI
+                    (
+                        AlignementToFather = [0.5, 0.0]
+                        AlignementToAnchor = [0.5, 0.0]
+                    )
+
+                    Axis  = ~/ListAxis/Horizontal
+                    BreadthComputationMode = ~/BreadthComputationMode/ComputeBreadthFromLargestChild
+
+                    ChildFitToContent = true
+
+                    FirstMargin = TRTTILength(Magnifiable = 5.0)
+                    InterItemMargin = TRTTILength(Magnifiable = 5.0)
+                    LastMargin = TRTTILength(Magnifiable = 5.0)
+
+                    BladeDescriptor = ~/SmartGroupContainer
+                ),
+            ]
+        ),
+    ]
+)
+
+//-------------------------------------------------------------------------------------
+
+private PawnUnitsButtonManager is TBUCKRadioButtonManager()
+
+template UISpecificStrategicSmartGroupsDisplayerViewDescriptor
+[
+    Alignment : float2 = [0.0, 0.0],
+    MainComponentContainerUniqueName : string = "",
+]
+is TUISpecificStrategicSmartGroupsDisplayerViewDescriptor
+(
+    MainComponentContainerUniqueName = <MainComponentContainerUniqueName>
+    MainComponentDescriptor = SmartGroupRackContainerStrategic
+    (
+        Alignment = <Alignment>
+    )
+
+    UnitPackComponentDescriptor = UISpecificUnitButtonViewDescriptor
+    (
+        ComponentFrameAlignment = [0.0, 0.0]
+        IsTogglable = true
+        IsFocusable = false
+
+        RadioButtonManager = ~/PawnUnitsButtonManager
+
+        TextureDrawerWhenUnitNotAvailable = "ColorMultiply_Grayscale"
+        UnitNameBackgroundColorWhenUnitNotAvailable = "Gris123"
+
+        AceUnitNameColor = "Fulda2_Orange100"
+        AceUnitBorderColorBySide =
+        [
+            (~/TBorderSide/Top | ~/TBorderSide/Left, "Fulda2_Orange100"),
+            (~/TBorderSide/Bottom | ~/TBorderSide/Right, "Fulda2_Orange100"),
+        ]
+
+        AceUnitBorderThickness = "1"
+
+        OpacityPercentWhenUnitNotAvailable = 1.0
+        TimeInSecondBeforeAdditionalUnitSpecificContainerShowUp = 0.2
+    )
+)

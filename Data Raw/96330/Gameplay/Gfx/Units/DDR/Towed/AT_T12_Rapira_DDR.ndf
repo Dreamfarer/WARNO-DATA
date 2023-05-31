@@ -1,0 +1,19 @@
+export ModelFile_AT_T12_Rapira_DDR is 'GameData:/Assets/3D/Units/DDR/Canon/AT_T12_Rapira/AT_T12_Rapira.Ase2NdfBin'
+
+Modele_AT_T12_Rapira_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_AT_T12_Rapira_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_AT_T12_Rapira_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Canon/AT_T12_Rapira/AT_T12_Rapira.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AT_T12_Rapira_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Canon/AT_T12_Rapira/AT_T12_Rapira.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

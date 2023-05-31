@@ -1,0 +1,19 @@
+export ModelFile_VBL_PC_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/VBL_PC/VBL_PC.Ase2NdfBin'
+
+Modele_VBL_PC_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_VBL_PC_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_VBL_PC_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/VBL_PC/VBL_PC.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VBL_PC_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/VBL_PC/VBL_PC.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

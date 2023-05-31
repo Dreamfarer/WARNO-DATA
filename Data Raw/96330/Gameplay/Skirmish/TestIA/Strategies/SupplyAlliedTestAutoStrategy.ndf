@@ -1,0 +1,18 @@
+export SupplyAllied_TestAuto_Strategy is TIAGeneralStrategy
+(
+    StrategyName = "SupAlTAIA"
+    FirstGenerator = TestAuto_Supply_Allied
+    TransitionList = []
+)
+
+//-------------------------------------------------------------------------
+//------------------------------ PHASES -----------------------------------
+//-------------------------------------------------------------------------
+export TestAuto_Supply_Allied is TSequenceGeneratorDescriptor
+(
+    NbMacroActionAllowedToProduceSimultaneous = 9001
+    GeneratorList =
+    [
+        ~/Supply_Allied_TestAutoOnly,
+    ]
+)

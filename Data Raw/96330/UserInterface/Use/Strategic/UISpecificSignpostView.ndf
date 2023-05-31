@@ -1,0 +1,99 @@
+
+BUCKSpecificSimpleSignMainComponentDescriptor is BUCKListDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 0.0]
+    )
+
+    HasBackground = true
+    BackgroundBlockColorToken = "DarkGray"
+
+    InterItemMargin = TRTTILength( Pixel = 2.0 )
+
+    Axis = ~/ListAxis/Vertical
+
+    Elements =
+    [
+        BUCKListElementDescriptor
+        (
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "TitleComponent"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                )
+
+                TextStyle = 'Default'
+                TypefaceToken = "UIMainFont"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = 'Strategic/Signpost/Title'
+                TextColor = 'LighterGray'
+            )
+        ),
+        BUCKListElementDescriptor
+        (
+            ExtendWeight = 1
+
+            ComponentDescriptor = BUCKTextDescriptor
+            (
+                ElementName = "BodyComponent"
+
+                ComponentFrame = TUIFramePropertyRTTI
+                (
+                    RelativeWidthHeight = [1.0, 0.0]
+                )
+
+                VerticalFitStyle = ~/FitStyle/FitToContent
+
+                ParagraphStyle = TParagraphStyleRTTI
+                (
+                    Alignment = ~/UIText_Center
+                    VerticalAlignment = ~/UIText_VerticalCenter
+                )
+
+                BigLineAction = ~/BigLineAction/BalancedMultiline
+                TextPadding = TRTTILength4(Magnifiable = [2.0, 2.0, 2.0, 2.0])
+                TextStyle = 'Default'
+                TypefaceToken = "UIMainFont"
+
+                TextDico = ~/LocalisationConstantes/dico_interface_ingame
+                TextSize = 'Strategic/Signpost/Body'
+                TextColor = 'LightestGray'
+            )
+        ),
+    ]
+)
+
+UISpecificSimpleSignViewDescriptor is TUISimpleSignViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificSimpleSignMainComponentDescriptor
+)
+
+
+BUCKSpecificSignpostMainComponentDescriptor is BUCKContainerDescriptor
+(
+    ElementName = "SignContainer"
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+)
+
+UISpecificSignpostViewDescriptor is TUISpecificSignpostViewDescriptor
+(
+    MainComponentDescriptor = ~/BUCKSpecificSignpostMainComponentDescriptor
+    SimpleSignDescriptor = ~/UISpecificSimpleSignViewDescriptor
+    MainComponentContainerUniqueName = "SpecificSignpostViewMainContainer" // Permet d'indiquer l'endroit ou le composant doit s'insérer
+)

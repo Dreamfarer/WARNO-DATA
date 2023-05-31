@@ -1,0 +1,19 @@
+export ModelFile_OT_65_DDR is 'GameData:/Assets/3D/Units/DDR/Vehicule/OT_65/OT_65.fbx'
+
+Modele_OT_65_DDR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_OT_65_DDR
+    CivMask =  CivMask/Common
+)
+
+Modele_OT_65_DDR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Vehicule/OT_65/OT_65.fbx'
+    CivMask =  CivMask/Common
+)
+
+Modele_OT_65_DDR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Vehicule/OT_65/OT_65.fbx'
+    CivMask =  CivMask/Common
+)

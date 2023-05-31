@@ -1,0 +1,22 @@
+export ModelFile_AMX_10_HOT_FR is 'GameData:/Assets/3D/Units/FR/Antichar/AMX_10P_HOT/AMX_10P_HOT.Ase2NdfBin'
+
+Modele_AMX_10_HOT_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_AMX_10_HOT_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_10_HOT_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Antichar/AMX_10P_HOT_MID/AMX_10P_HOT_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AMX_10_HOT_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Antichar/LODS/AMX_10P_HOT_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

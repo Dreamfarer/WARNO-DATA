@@ -1,0 +1,16 @@
+
+private CutSceneVideoContainer is BUCKContainerDescriptor
+(
+    ComponentFrame = TUIFramePropertyRTTI
+    (
+        RelativeWidthHeight = [1.0, 1.0]
+    )
+
+    UniqueName = 'CutSceneVideoContainer'
+)
+
+outGameCutSceneResources is TUISpecificOutGameCutSceneResources
+(
+    UILayer = $/UserInterface/UILayer_Calque_CutScene_Video
+    MainContainer = ~/CutSceneVideoContainer
+)

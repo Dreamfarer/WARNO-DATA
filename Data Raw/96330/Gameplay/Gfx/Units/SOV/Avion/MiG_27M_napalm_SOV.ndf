@@ -1,0 +1,25 @@
+export ModelFile_MiG_27M_napalm_SOV is 'GameData:/Assets/3D/Units/URSS/Avion/MiG_27/MiG_27_rkt.Ase2NdfBin'
+
+Modele_MiG_27M_napalm_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_MiG_27M_napalm_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_27M_napalm_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/MiG_27_MID/MiG_27_rkt_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_27M_napalm_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/LODS/MiG_27_rkt_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_MiG_27M_napalm_SOV_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/URSS/Avion/MiG_27/MiG_27_Train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,22 @@
+export ModelFile_AT_D44_85mm_SOV is 'GameData:/Assets/3D/Units/DDR/Canon/AT_D44_85mm/AT_D44_85mm.Ase2NdfBin'
+
+Modele_AT_D44_85mm_SOV is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_AT_D44_85mm_SOV
+    CivMask =  CivMask/Common
+)
+
+Modele_AT_D44_85mm_SOV_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Canon/AT_D44_85mm/AT_D44_85mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_AT_D44_85mm_SOV_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/DDR/Canon/AT_D44_85mm/AT_D44_85mm.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+
+

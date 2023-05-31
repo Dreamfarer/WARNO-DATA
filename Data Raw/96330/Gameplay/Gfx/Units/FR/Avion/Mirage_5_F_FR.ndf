@@ -1,0 +1,25 @@
+export ModelFile_Mirage_5_F_FR is 'GameData:/Assets/3D/Units/FR/Avion/Mirage_5_F/Mirage_5_F.Ase2NdfBin'
+
+Modele_Mirage_5_F_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Mirage_5_F_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_Mirage_5_F_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Avion/Mirage_5_F_MID/Mirage_5_F_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mirage_5_F_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Avion/LODS/Mirage_5_F_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Mirage_5_F_FR_train is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Avion/Mirage_5_F/Mirage_5_F_train.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

@@ -1,0 +1,19 @@
+export ModelFile_AML_60_Gendarmerie_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/AML_60_Gendarmerie/AML_60_Gendarmerie.fbx'
+
+Modele_AML_60_Gendarmerie_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_AML_60_Gendarmerie_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_AML_60_Gendarmerie_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/AML_60_Gendarmerie/AML_60_Gendarmerie.fbx'
+    CivMask =  CivMask/Common
+)
+
+Modele_AML_60_Gendarmerie_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/FR/Vehicule/AML_60_Gendarmerie/AML_60_Gendarmerie.fbx'
+    CivMask =  CivMask/Common
+)

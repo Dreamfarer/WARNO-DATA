@@ -1,0 +1,19 @@
+export ModelFile_VLTT_P4_MILAN_para_FR is 'GameData:/Assets/3D/Units/FR/Vehicule/VLTT_P4_MILAN/VLTT_P4_MILAN.Ase2NdfBin'
+
+Modele_VLTT_P4_MILAN_para_FR is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = ModelFile_VLTT_P4_MILAN_para_FR
+    CivMask =  CivMask/Common
+)
+
+Modele_VLTT_P4_MILAN_para_FR_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Vehicule/VLTT_P4_MILAN_MID/VLTT_P4_MILAN_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_VLTT_P4_MILAN_para_FR_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName     = 'GameData:/Assets/3D/Units/FR/Vehicule/LODS/VLTT_P4_MILAN_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)

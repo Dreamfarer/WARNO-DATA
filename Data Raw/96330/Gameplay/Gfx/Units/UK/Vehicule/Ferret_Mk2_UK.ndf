@@ -1,0 +1,19 @@
+export ModelFile_Ferret_Mk2_UK is 'GameData:/Assets/3D/Units/UK/Vehicule/Ferret_Mk2/Ferret_Mk2.Ase2NdfBin'
+
+Modele_Ferret_Mk2_UK is TResourceMultiMaterialMeshWithLod
+(
+    FileName = ModelFile_Ferret_Mk2_UK
+    CivMask =  CivMask/Common
+)
+
+Modele_Ferret_Mk2_UK_MID is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Vehicule/Ferret_Mk2_MID/Ferret_Mk2_MID.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
+
+Modele_Ferret_Mk2_UK_LOW is TResourceMultiMaterialMeshWithLod
+(
+    FileName = 'GameData:/Assets/3D/Units/UK/Vehicule/LODS/Ferret_Mk2_LOW.Ase2NdfBin'
+    CivMask =  CivMask/Common
+)
