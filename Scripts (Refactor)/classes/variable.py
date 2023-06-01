@@ -23,8 +23,9 @@ class Variable:
     def value(self):
         return self.__value
 
-    # Build RegEx dependent on variable type
     def buildRegEx(self) -> None:
+        """Build RegEx dependent on variable type"""
+
         if self.__var_type in ["bool", "float", "integer"]:
             self.__regEx = rf"{self.__name}\s+=\s+(\S+)"
         elif self.__var_type == "reference":
@@ -36,8 +37,9 @@ class Variable:
         else:
             raise ValueError("Invalid variable type!")
 
-    # Extract variable from .ndf with RegEx (called from descriptor.py)
     def extractValue(self, raw_ndf: str) -> None:
+        """Extract variable from .ndf with RegEx (called from descriptor.py)"""
+      
         match = re.search(self.__regEx, raw_ndf, re.DOTALL)
         if match:
             if self.__var_type == "list":
@@ -46,6 +48,6 @@ class Variable:
             else:
                 self.__value = match.group(1)
 
-    # Debug representation
     def __repr__(self) -> str:
+        """String representation of this object for debug purposes."""
         return f"{self.__name} = {self.__value}"
