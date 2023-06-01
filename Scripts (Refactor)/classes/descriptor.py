@@ -24,7 +24,7 @@ class DescriptorMaster:
         for variable in self.__variables:
             variable.extractValue(self.__raw_ndf)
         return
-
+      
     @property
     def file_name(self):
         return self.__file_name

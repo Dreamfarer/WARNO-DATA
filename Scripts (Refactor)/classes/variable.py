@@ -25,6 +25,7 @@ class Variable:
 
     def buildRegEx(self) -> None:
         """Build RegEx dependent on variable type"""
+
         if self.__var_type in ["bool", "float", "integer"]:
             self.__regEx = rf"{self.__name}\s+=\s+(\S+)"
         elif self.__var_type == "reference":
@@ -38,6 +39,7 @@ class Variable:
 
     def extractValue(self, raw_ndf: str) -> None:
         """Extract variable from .ndf with RegEx (called from descriptor.py)"""
+      
         match = re.search(self.__regEx, raw_ndf, re.DOTALL)
         if match:
             if self.__var_type == "list":
