@@ -2,7 +2,7 @@ from classes.descriptor import Descriptor
 from classes.descriptor import SubDescriptor
 
 """
-ach of the following objects represents a descriptor to be read from a .ndf file. However, please be aware that there are two different types of descriptors that can be instantiated:
+Each of the following objects represents a descriptor to be read from a .ndf file. However, please be aware that there are two different types of descriptors that can be instantiated:
 - Descriptor: Top-level descriptors of each file, such as each weapon in "WeaponDescriptor.ndf."
 - SubDescriptor: Descriptors inside top-level descriptors, such as turretTwoAxis descriptors inside the weapon descriptors of "WeaponDescriptor.ndf."
 
@@ -69,7 +69,7 @@ turretBombardier = SubDescriptor(
 weaponDescriptor = Descriptor(
     file_name="WeaponDescriptor.ndf",
     file_name_parent="UniteDescriptor.ndf",
-    file_name_child=["Ammunition.ndf"],
+    reference_variable_parent="WeaponManager",
     regex=r"export\s+(\w+)\s+is\s+TWeaponManagerModuleDescriptor\s*(([\s\S]*?)(\s+\)\n\s+\]\n\)))",
     variables=[
         ["HasMainSalvo", "bool"],

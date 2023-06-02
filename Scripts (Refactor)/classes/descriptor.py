@@ -1,13 +1,14 @@
 import re
-from typing import List
-from classes.variable import Variable
 from abc import ABC, abstractmethod
+from typing import List
 from typing import List, Union
+from classes.variable import Variable
 
 
 class DescriptorMaster:
     """
-    The actual non-template class for a descriptor in a .ndf file. This class should never be instantiated by the user themselves because the 'File' class initiates the process of creating objects based on the template 'Descriptor' class.
+    The actual non-template class for a descriptor in a .ndf file.
+    This class should never be instantiated by the user themselves because the 'File' class initiates the process of creating objects based on the template 'Descriptor' class.
     """
 
     def __init__(
@@ -105,8 +106,8 @@ class DescriptorMaster:
 
 class DescriptorTemplate(ABC):
     """
-    A descriptor in .ndf files defines the boundaries between two configurations, such as two vehicles.
-    To convert a raw .ndf file to Python objects, instantiate a 'File' class with this descriptor. These objects can then be used to export data to .csv files or create SQL query templates.
+    The template class for descriptors in .ndf files. Be aware that this class represents a template which is used to instantiate the data-holding "DescriptorMaster" automatically in a later step.
+    This class should never be instantiated by the user themselves, rather use the "Descriptor" or "SubDescriptor" class.
     """
 
     def __init__(
@@ -114,14 +115,12 @@ class DescriptorTemplate(ABC):
         regex: str,
         file_name: str,
         file_name_parent: str,
-        file_name_child: list[str],
         variables: list[list[str]] = [],
         sub_descriptors: List["SubDescriptor"] = [],
     ) -> None:
         self.__regex = regex
         self.__file_name = file_name
         self.__file_name_parent = file_name_parent
-        self.__file_name_child = file_name_child
         self.__variables = variables
         self.__sub_descriptors = sub_descriptors
 
@@ -151,26 +150,50 @@ class DescriptorTemplate(ABC):
 
 
 class Descriptor(DescriptorTemplate):
+    """
+    Represents a top-level descriptor to be read from a ".ndf" file. This class is used for descriptors that are directly contained within ".ndf" files, such as each weapon in the "WeaponDescriptor.ndf" file.
+
+    To create instances of descriptors that are nested within top-level descriptors, use the "SubDescriptor" class.
+
+    Attributes:
+        regex (str): Regular expression pattern to extract this descriptor (create with https://regex101.com/)
+        file_name (str): Name of to-be read .ndf file
+        file_name_parent (str): Name of parent file which links to this file via an identifier variable
+        reference_variable_parent (str): Name of variable in parent file that links to this descriptor
+        variables (list[list[str]]): List that contains to-be read variables in from of ["variable_name", "type"]
+        sub_descriptors (List["SubDescriptor"]): List that contains "SubDescriptor" objects, meaning non-top-level descriptors inside this descriptor.
+    """
+
     def __init__(
         self,
         regex: str,
         file_name: str,
         file_name_parent: str,
-        file_name_child: list[str],
+        reference_variable_parent: str,
         variables: list[list[str]] = [],
-        sub_descriptors: List["Descriptor"] = [],
+        sub_descriptors: List["SubDescriptor"] = [],
     ) -> None:
         super().__init__(
             regex,
             file_name,
             file_name_parent,
-            file_name_child,
             variables,
             sub_descriptors,
         )
 
 
 class SubDescriptor(DescriptorTemplate):
+    """
+    Represents a non-top-level descriptor to be read from a ".ndf" file. This class is used for descriptors that are nested within top-level descriptors, such as the turrets of each weapon descriptor in the "WeaponDescriptor.ndf" file.
+
+    To create instances of top-level descriptors, use the "Descriptor" class.
+
+    Attributes:
+        regex (str): Regular expression pattern to extract this descriptor (create with https://regex101.com/)
+        variables (list[list[str]]): List that contains to-be read variables in from of ["variable_name", "type"]
+        sub_descriptors (List["SubDescriptor"]): List that contains "SubDescriptor" objects, meaning non-top-level descriptors inside this descriptor.
+    """
+
     def __init__(
         self,
         regex: str,
@@ -181,7 +204,6 @@ class SubDescriptor(DescriptorTemplate):
             regex,
             None,
             None,
-            [],
             variables,
             sub_descriptors,
         )
