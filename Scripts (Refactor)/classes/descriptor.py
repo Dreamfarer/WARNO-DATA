@@ -1,6 +1,8 @@
 import re
 from typing import List
 from classes.variable import Variable
+from abc import ABC, abstractmethod
+from typing import List, Union
 
 
 class DescriptorMaster:
@@ -42,7 +44,9 @@ class DescriptorMaster:
         return self.__name
 
     @classmethod
-    def extract(cls, reference: "Descriptor", raw_ndf: str) -> List["DescriptorMaster"]:
+    def extract(
+        cls, reference: Union["Descriptor", "SubDescriptor"], raw_ndf: str
+    ) -> List["DescriptorMaster"]:
         """
         Receive the full, raw .ndf file and extract all descriptors of 'reference' type.
         Please mind that this function receives the descriptor template defined by you in 'configuration.py'. However, it returns a list of non-template Descriptors that actually hold the data in the end.
@@ -62,8 +66,8 @@ class DescriptorMaster:
         return descriptors
 
     def __extract_sub_descriptors(
-        sub_descriptors: List["Descriptor"], raw_ndf: str
-    ) -> List["Descriptor"]:
+        sub_descriptors: List["SubDescriptor"], raw_ndf: str
+    ) -> List["SubDescriptor"]:
         """
         Recurively instanciate all nested descriptors within 'Descriptor'.
         """
@@ -99,7 +103,7 @@ class DescriptorMaster:
         return "Bla"
 
 
-class Descriptor:
+class DescriptorTemplate(ABC):
     """
     A descriptor in .ndf files defines the boundaries between two configurations, such as two vehicles.
     To convert a raw .ndf file to Python objects, instantiate a 'File' class with this descriptor. These objects can then be used to export data to .csv files or create SQL query templates.
@@ -108,11 +112,11 @@ class Descriptor:
     def __init__(
         self,
         regex: str,
-        file_name: str = None,
-        file_name_parent: str = None,
-        file_name_child: list[str] = [],
+        file_name: str,
+        file_name_parent: str,
+        file_name_child: list[str],
         variables: list[list[str]] = [],
-        sub_descriptors: List["Descriptor"] = [],
+        sub_descriptors: List["SubDescriptor"] = [],
     ) -> None:
         self.__regex = regex
         self.__file_name = file_name
@@ -120,26 +124,6 @@ class Descriptor:
         self.__file_name_child = file_name_child
         self.__variables = variables
         self.__sub_descriptors = sub_descriptors
-        self.__checkFile()
-
-    def __checkFile(self):
-        """Check whether all three name-variables are set for the descriptor to represent a file."""
-        if (
-            self.__file_name == None
-            or self.__file_name_parent == None
-            or self.__file_name_child == []
-        ):
-            if not (
-                self.__file_name == None
-                and self.__file_name_parent == None
-                and self.__file_name_child == []
-            ):
-                print(self.__file_name)
-                print(self.__file_name_parent)
-                print(self.__file_name_child)
-                raise ValueError(
-                    "For the descriptor to represent a file, all three names must be set in 'configuration.py' for this descriptor."
-                )
 
     @property
     def regex(self):
@@ -164,3 +148,40 @@ class Descriptor:
     @property
     def sub_descriptors(self):
         return self.__sub_descriptors
+
+
+class Descriptor(DescriptorTemplate):
+    def __init__(
+        self,
+        regex: str,
+        file_name: str,
+        file_name_parent: str,
+        file_name_child: list[str],
+        variables: list[list[str]] = [],
+        sub_descriptors: List["Descriptor"] = [],
+    ) -> None:
+        super().__init__(
+            regex,
+            file_name,
+            file_name_parent,
+            file_name_child,
+            variables,
+            sub_descriptors,
+        )
+
+
+class SubDescriptor(DescriptorTemplate):
+    def __init__(
+        self,
+        regex: str,
+        variables: list[list[str]] = [],
+        sub_descriptors: List["Descriptor"] = [],
+    ) -> None:
+        super().__init__(
+            regex,
+            None,
+            None,
+            [],
+            variables,
+            sub_descriptors,
+        )

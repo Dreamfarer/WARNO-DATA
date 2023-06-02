@@ -1,8 +1,12 @@
 from classes.descriptor import Descriptor
+from classes.descriptor import SubDescriptor
 
 """
-Linkings between output files:
+ach of the following objects represents a descriptor to be read from a .ndf file. However, please be aware that there are two different types of descriptors that can be instantiated:
+- Descriptor: Top-level descriptors of each file, such as each weapon in "WeaponDescriptor.ndf."
+- SubDescriptor: Descriptors inside top-level descriptors, such as turretTwoAxis descriptors inside the weapon descriptors of "WeaponDescriptor.ndf."
 
+Please find the linkages between the descriptors below. Be aware that this structure represents a mixture of "Descriptor" and "SubDescriptor."
 .
 └── DivisionRules/
     ├── DeckDivisionDescriptor
@@ -17,7 +21,7 @@ Linkings between output files:
                 └── DamageResistance (Attack)
 """
 
-mountedWeapon = Descriptor(
+mountedWeapon = SubDescriptor(
     regex=r"(TMountedWeaponDescriptor).*?\n\s+([\s\S]*?\))",
     variables=[
         ["Ammunition", "reference"],
@@ -26,12 +30,12 @@ mountedWeapon = Descriptor(
     ],
 )
 
-turretInfanterie = Descriptor(
+turretInfanterie = SubDescriptor(
     regex=r"(TTurretInfanterieDescriptor).*?\n\s+([\s\S]*? \)[\s\S]*? \))",
     sub_descriptors=[mountedWeapon],
 )
 
-turretTwoAxis = Descriptor(
+turretTwoAxis = SubDescriptor(
     regex=r"(TTurretTwoAxisDescriptor).*?\n\s+([\s\S]*? \)[\s\S]*? \))",
     variables=[
         ["AngleRotationMax", "float"],
@@ -43,7 +47,7 @@ turretTwoAxis = Descriptor(
     sub_descriptors=[mountedWeapon],
 )
 
-turretUnit = Descriptor(
+turretUnit = SubDescriptor(
     regex=r"(TTurretUnitDescriptor).*?\n\s+([\s\S]*? \)[\s\S]*? \))",
     variables=[
         ["AngleRotationMax", "float"],
@@ -53,7 +57,7 @@ turretUnit = Descriptor(
     sub_descriptors=[mountedWeapon],
 )
 
-turretBombardier = Descriptor(
+turretBombardier = SubDescriptor(
     regex=r"(TTurretBombardierDescriptor).*?\n\s+([\s\S]*? \)[\s\S]*? \))",
     variables=[
         ["FlyingAltitude", "meters"],
