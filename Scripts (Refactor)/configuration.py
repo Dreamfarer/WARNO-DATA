@@ -1,5 +1,22 @@
 from classes.descriptor import Descriptor
 
+"""
+Linkings between output files:
+
+.
+└── DivisionRules/
+    ├── DeckDivisionDescriptor
+    └── UnitDescriptor/
+        ├── OrderAvailability
+        ├── DamageResistance (Defend)
+        └── WeaponDescriptor/
+            ├── TurretDescriptor/
+            │   └── TurretDescriptor/
+            │       └── MountedWeaponDescriptor
+            └── AmmunitionDescriptor/
+                └── DamageResistance (Attack)
+"""
+
 mountedWeapon = Descriptor(
     regex=r"(TMountedWeaponDescriptor).*?\n\s+([\s\S]*?\))",
     variables=[
@@ -47,6 +64,8 @@ turretBombardier = Descriptor(
 
 weaponDescriptor = Descriptor(
     file_name="WeaponDescriptor.ndf",
+    file_name_parent="UniteDescriptor.ndf",
+    file_name_child=["Ammunition.ndf"],
     regex=r"export\s+(\w+)\s+is\s+TWeaponManagerModuleDescriptor\s*(([\s\S]*?)(\s+\)\n\s+\]\n\)))",
     variables=[
         ["HasMainSalvo", "bool"],

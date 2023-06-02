@@ -24,7 +24,7 @@ class DescriptorMaster:
         for variable in self.__variables:
             variable.extractValue(self.__raw_ndf)
         return
-      
+
     @property
     def file_name(self):
         return self.__file_name
@@ -109,13 +109,37 @@ class Descriptor:
         self,
         regex: str,
         file_name: str = None,
-        variables: list = [],
+        file_name_parent: str = None,
+        file_name_child: list[str] = [],
+        variables: list[list[str]] = [],
         sub_descriptors: List["Descriptor"] = [],
     ) -> None:
         self.__regex = regex
         self.__file_name = file_name
+        self.__file_name_parent = file_name_parent
+        self.__file_name_child = file_name_child
         self.__variables = variables
         self.__sub_descriptors = sub_descriptors
+        self.__checkFile()
+
+    def __checkFile(self):
+        """Check whether all three name-variables are set for the descriptor to represent a file."""
+        if (
+            self.__file_name == None
+            or self.__file_name_parent == None
+            or self.__file_name_child == []
+        ):
+            if not (
+                self.__file_name == None
+                and self.__file_name_parent == None
+                and self.__file_name_child == []
+            ):
+                print(self.__file_name)
+                print(self.__file_name_parent)
+                print(self.__file_name_child)
+                raise ValueError(
+                    "For the descriptor to represent a file, all three names must be set in 'configuration.py' for this descriptor."
+                )
 
     @property
     def regex(self):
@@ -124,6 +148,14 @@ class Descriptor:
     @property
     def file_name(self):
         return self.__file_name
+
+    @property
+    def file_name_parent(self):
+        return self.__file_name_parent
+
+    @property
+    def file_name_child(self):
+        return self.__file_name_child
 
     @property
     def variables(self):
