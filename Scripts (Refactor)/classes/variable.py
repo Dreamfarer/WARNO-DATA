@@ -39,7 +39,7 @@ class Variable:
 
     def extractValue(self, raw_ndf: str) -> None:
         """Extract variable from .ndf with RegEx (called from descriptor.py)"""
-      
+
         match = re.search(self.__regEx, raw_ndf, re.DOTALL)
         if match:
             if self.__var_type == "list":
