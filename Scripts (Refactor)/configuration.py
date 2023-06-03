@@ -79,3 +79,78 @@ weaponDescriptor = Descriptor(
     ],
     sub_descriptors=[turretInfanterie, turretTwoAxis, turretBombardier, turretUnit],
 )
+
+"""
+Special variables:
+- "Arme"
+
+Removed since last time:
+- Puissance
+- RayonPinned
+- CanHarmInfantry
+- CanHarmVehicles
+- CanHarmHelicopters
+- CanHarmGuidedMissiles
+
+Added since last time:
+- ShowDamageInUI
+"""
+AmmunitionDescriptor = Descriptor(
+    file_name="Ammunition.ndf",
+    file_name_parent="WeaponDescriptor.ndf",
+    reference_variable_parent="Ammunition",
+    regex=r"(Ammo_\w+)\s*is\s*TAmmunitionDescriptor\s*(\([\s\S]*?\n\))",
+    variables=[
+        ["Name", "string"],
+        ["TypeCategoryName", "string"],
+        ["Caliber", "string"],
+        ["AlwaysOrientArmorTowardsThreat", "bool"],
+        ["TraitsToken", "list"],
+        ["Level", "integer"],
+        ["ShotsBeforeMaxNoise", "integer"],
+        ["NbTirParSalves", "int"],
+        ["TempsEntreDeuxTirs", "float"],
+        ["TempsEntreDeuxSalves", "float"],
+        ["PorteeMaximale", "meters"],
+        ["PorteeMinimale", "meters"],
+        ["PorteeMaximaleTBA", "meters"],
+        ["PorteeMinimaleTBA", "meters"],
+        ["PorteeMaximaleHA", "meters"],
+        ["PorteeMinimaleHA", "meters"],
+        ["AltitudeAPorteeMaximale", "meters"],
+        ["AltitudeAPorteeMinimale", "meters"],
+        ["AffecteParNombre", "bool"],
+        ["AngleDispersion", "float"],
+        ["DispersionAtMaxRange", "metres"],
+        ["DispersionAtMinRange", "meters"],
+        ["DispersionWithoutSorting", "bool"],
+        ["RadiusSplashPhysicalDamages", "meters"],
+        ["PhysicalDamages", "float"],
+        ["RadiusSplashSuppressDamages", "meters"],
+        ["SuppressDamages", "float"],
+        ["AllowSuppressDamageWhenNoImpact", "bool"],
+        ["TirIndirect", "bool"],
+        ["TirReflexe", "bool"],
+        ["InterdireTirReflexe", "bool"],
+        ["NoiseDissimulationMalus", "float"],
+        ["BaseCriticModifier", "integer"],
+        ["EBaseHitValueModifier/Idling", "integer"],
+        ["EBaseHitValueModifier/Moving", "integer"],
+        ["MaxSuccessiveHitCount", "int"],
+        ["TempsDeVisee", "float"],
+        ["SupplyCost", "int"],
+        ["CanShootOnPosition", "bool"],
+        ["CanShootWhileMoving", "bool"],
+        ["NbrProjectilesSimultanes", "int"],
+        ["MissileDescriptor", "reference"],
+        ["SmokeDescriptor", "reference"],
+        ["FireDescriptor", "reference"],
+        ["CanHarmAirplanes", "bool"],
+        ["IsHarmlessForAllies", "bool"],
+        ["PiercingWeapon", "bool"],
+        ["DamageTypeEvolutionOverRangeDescriptor", "reference"],
+        ["FlightTimeForSpeed", "float"],
+        ["DistanceForSpeed", "meters"],
+    ],
+    sub_descriptors=[turretInfanterie, turretTwoAxis, turretBombardier, turretUnit],
+)
