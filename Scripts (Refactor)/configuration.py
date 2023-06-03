@@ -95,7 +95,7 @@ Removed since last time:
 Added since last time:
 - ShowDamageInUI
 """
-AmmunitionDescriptor = Descriptor(
+ammunitionDescriptor = Descriptor(
     file_name="Ammunition.ndf",
     file_name_parent="WeaponDescriptor.ndf",
     reference_variable_parent="Ammunition",
@@ -104,11 +104,10 @@ AmmunitionDescriptor = Descriptor(
         ["Name", "string"],
         ["TypeCategoryName", "string"],
         ["Caliber", "string"],
-        ["AlwaysOrientArmorTowardsThreat", "bool"],
         ["TraitsToken", "list"],
         ["Level", "integer"],
         ["ShotsBeforeMaxNoise", "integer"],
-        ["NbTirParSalves", "int"],
+        ["NbTirParSalves", "integer"],
         ["TempsEntreDeuxTirs", "float"],
         ["TempsEntreDeuxSalves", "float"],
         ["PorteeMaximale", "meters"],
@@ -121,7 +120,7 @@ AmmunitionDescriptor = Descriptor(
         ["AltitudeAPorteeMinimale", "meters"],
         ["AffecteParNombre", "bool"],
         ["AngleDispersion", "float"],
-        ["DispersionAtMaxRange", "metres"],
+        ["DispersionAtMaxRange", "meters"],
         ["DispersionAtMinRange", "meters"],
         ["DispersionWithoutSorting", "bool"],
         ["RadiusSplashPhysicalDamages", "meters"],
@@ -136,12 +135,12 @@ AmmunitionDescriptor = Descriptor(
         ["BaseCriticModifier", "integer"],
         ["EBaseHitValueModifier/Idling", "integer"],
         ["EBaseHitValueModifier/Moving", "integer"],
-        ["MaxSuccessiveHitCount", "int"],
+        ["MaxSuccessiveHitCount", "integer"],
         ["TempsDeVisee", "float"],
-        ["SupplyCost", "int"],
+        ["SupplyCost", "integer"],
         ["CanShootOnPosition", "bool"],
         ["CanShootWhileMoving", "bool"],
-        ["NbrProjectilesSimultanes", "int"],
+        ["NbrProjectilesSimultanes", "integer"],
         ["MissileDescriptor", "reference"],
         ["SmokeDescriptor", "reference"],
         ["FireDescriptor", "reference"],

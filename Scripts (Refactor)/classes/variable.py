@@ -29,7 +29,7 @@ class Variable:
         if self.__var_type in ["bool", "float", "integer"]:
             self.__regEx = rf"[\s(]{self.__name}\s*[,=]\s+(\S+)[\n,)]"
         elif self.__var_type == "string":
-            self.__regEx = rf"[\s(]{self.__name}\s=\s+'(\S+)'"
+            self.__regEx = rf"[\s(]{self.__name}\s*=\s+'(\S+)'"
         elif self.__var_type == "reference":
             self.__regEx = rf"[\s(]{self.__name}\s+=\s+~?\/?(\S+)"
         elif self.__var_type == "meters":
