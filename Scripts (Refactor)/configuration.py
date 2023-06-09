@@ -82,7 +82,7 @@ weaponDescriptor = Descriptor(
 
 """
 Special variables:
-- "Arme"
+- "Arme" YET TO IMPLEMENT
 
 Removed since last time:
 - Puissance
@@ -151,5 +151,4 @@ ammunitionDescriptor = Descriptor(
         ["FlightTimeForSpeed", "float"],
         ["DistanceForSpeed", "meters"],
     ],
-    sub_descriptors=[turretInfanterie, turretTwoAxis, turretBombardier, turretUnit],
 )
