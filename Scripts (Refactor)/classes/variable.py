@@ -27,13 +27,17 @@ class Variable:
         """Build RegEx dependent on variable type"""
 
         if self.__var_type in ["bool", "float", "integer"]:
-            self.__regEx = rf"{self.__name}\s+=\s+(\S+)"
+            self.__regEx = rf"[\s(]{self.__name}\s*[,=]\s+(\S+)[\n,)]"
+        elif self.__var_type == "string":
+            self.__regEx = rf"[\s(]{self.__name}\s*=\s+'(\S+)'"
         elif self.__var_type == "reference":
-            self.__regEx = rf"{self.__name}\s+=\s+~\/(\S+)"
+            self.__regEx = rf"[\s(]{self.__name}\s+=\s+~?\/?(\S+)"
         elif self.__var_type == "meters":
-            self.__regEx = rf"{self.__name}\s+=\s+\(\((\d+)\)\s*\*\s*Metre\)"
+            self.__regEx = (
+                rf"[\s(]{self.__name}\s+=\s*\({{0,2}}(\d+(?:\.\d+)?)\){{0,2}}\s*\*"
+            )
         elif self.__var_type == "list":
-            self.__regEx = rf"{self.__name}\s+=\s+\[(.*?)\]"
+            self.__regEx = rf"[\s(]{self.__name}\s+=\s+\[(.*?)\]"
         else:
             raise ValueError("Invalid variable type!")
 
@@ -43,10 +47,18 @@ class Variable:
         match = re.search(self.__regEx, raw_ndf, re.DOTALL)
         if match:
             if self.__var_type == "list":
-                result = re.findall(r"(-?\d+|True|False)", match.group(1))
+                result = re.findall(
+                    r"(-?\d+|True|False|(?<=')[^',]*?(?='))", match.group(1)
+                )
                 self.__value = "[" + ",".join(result) + "]"
             else:
                 self.__value = match.group(1)
+        self.__translateValue()
+
+    def __translateValue(self) -> None:
+        """Translate the variable value based on here defined rules. E.g. transform 'nil' into 'None'."""
+        if self.__value == "nil":
+            self.__value = None
 
     def __repr__(self) -> str:
         """String representation of this object for debug purposes."""
