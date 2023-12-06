@@ -1,40 +1,22 @@
-### About WARNO
-WARNO is the newest addition to the French studio [Eugen Systems'](https://eugensystems.com/) glorious range of real time tactics games. It is currently available as Early Access on [Steam](https://store.steampowered.com/app/1611600/WARNO/). As the spiritual successor to the acclaimed *Wargame* series, WARNO is the ultimate next-gen World War III battle simulator, boasting hundreds of the Cold War-era's most legendary units from NATO and the Warsaw Pact.
+## About WARNO
+WARNO is the latest addition to the renowned French studio Eugen Systems' portfolio of real-time tactics games. Available as an Early Access title on [Steam](https://store.steampowered.com/app/1611600/WARNO/), WARNO emerges as the spiritual successor to the acclaimed Wargame series. It features hundreds of the Cold War era's most iconic units from NATO and the Warsaw Pact, offering an immersive tactical experience.
 
-One of the game's draws is its fine-grained level of combat simulation. You will be building "decks" of units based on a multitude of different stats displayed on its unit "card": From road speed over supply cost to armored-piercing capabilities, just to name a few.
+## About WARNO-DATA
+In WARNO, game behaviour and unit data is stored within Eugen Systems' proprietary .ndf files. While Eugen Systems provides a brief [modding manual](https://github.com/Perytron/WARNO-DATA/blob/main/docs/Modding%20Manual.pdf) and an [.ndf reference guide](https://github.com/Perytron/WARNO-DATA/blob/main/docs/NDF%20Reference%20Manual.pdf), outlining the file format, it lacks explanations of the contained data, which is distributed across thousands of .ndf files.
 
-Unfortunately, you will eventually come to the realization that these cards withhold much important information and crucial characteristics. Heck, they even display inaccuracies frequently. Here at **WARNO-DATE** we are determined to change exactly that:
+**WARNO-DATA** aims to bridge this gap by providing a comprehensive wiki. It meticulously documents every key property of the most important .ndf files and explains core game mechanics, including but not limited to damage and accuracy calculations.
 
-### The Goal of This Project
-* Provide easy readable ***.csv*** (comma-separated values) files of the important data files like *UniteDescriptor.ndf*, *WeaponDescriptor.ndf* and many more. Import of the csv-format is natively supported by applications like Excel and MySQL Workbench.
-* ***SQL query templates*** in order to simply create tables for these before created .csv files.
-* ***Guide*** on how to adjust the python data exporter scripts to support further .ndf files.
-* ***Wiki*** containing a dictionary which explains every important data variable and a documentation for the most crucial game mechanics like accuracy, damage calculation and many more.
-* Unlimited and free of charge ***API*** where everyone will be able to receive data on units over the internet via the industry standard data interchange format ***.json***.
+## Official Wiki
+The official **WARNO-DATA** wiki is accessible [here](https://github.com/Perytron/WARNO-DATA/wiki) on GitHub.
 
-### Official Wiki
-This project's own official wiki is hosted here on [GitHub](https://github.com/BE3dARt/WARNO-DATA/wiki). Use the following table of content to navigate its various subsections.
+[Data Dictionary](https://github.com/Perytron/WARNO-DATA/wiki/Data-Dictionary)\
+Contains a comprehensive dictionary, outlining significant properties of crucial .ndf files such as UniteDescriptor.ndf, WeaponDescriptor.ndf, and others.
 
-[Data Dictionary](https://github.com/BE3dARt/WARNO-DATA/wiki/Data-Dictionary)\
-This chapter maintains a dictionary which states and explains the most important variables of the most used .ndf game files like UniteDescriptor.ndf, WeaponDescriptor.ndf and many more. 
+[In-Depth Guide to Game Mechanics](https://github.com/Perytron/WARNO-DATA/wiki/In-Depth-Guide)\
+Here, you'll find detailed insights into various fundamental game mechanics, including accuracy and damage calculation, among others.
 
-[In Depth-Guide to Game Mechanics](https://github.com/BE3dARt/WARNO-DATA/wiki/In-Depth-Guide)\
-Holds relevant game mechanics like accuracy, damage calculation, just to name a few.
+## Contributing
+Help decipher the yet undocumented properties listed in [this](https://github.com/Perytron/WARNO-DATA/issues/2) thread. For any issues or questions, please open an [issue](https://github.com/Perytron/WARNO-DATA/issues/new), and I'll be happy to assist.
 
-[Getting the Data](https://github.com/BE3dARt/WARNO-DATA/wiki/Getting-the-Data)\
-A tutorial on how to download and further process the exported .csv configuration files.
-
-[Python Data Exporter](https://github.com/BE3dARt/WARNO-DATA/wiki/Python-Data-Exporter)\
-Although each python script is commented, this chapter will guide you through various parts of the python exporter; structure, requirements, how to run it and what needs to be changed in order to add new files to the extractor.
-
-### Word of Thanks
-I wanted to thank the following beautiful people and the whole WARNO community on [Discord](https://discord.gg/ruDBq9SFB4). Without them, this project would have gone nowhere:
-* **eMeM** for the *calculation of road speed*, a guess on *recource tickets*, help with *experience & veterancy* and the discussion over *stress, suppression, cohesion and morale* and *damage calculation*.
-* **unipus** for pointing me towards the right direction in *AP damage for kinetic weapons*.
-* **gagarin** for helping me finding the variable causing *filter by category* in the in-game armory.
-* **Iris** for helping me getting in-game displayed *accuracy* right.
-* **Terminus Est** for defining *Salves* and *SalvoStockIndex* in WeaponDescriptor.ndf and having a discussion with me about the accuracy and damage calculation.
-* **swizzlewizzle** for having a discussion with me about the damage calculation.
-
-### Copyright Notice
-Each and every bit of the gathered data belongs to [Eugen Systems](https://eugensystems.com/). This project will always be free of charge and dedicated to serve the awesome WARNO community.
+## Copyright Notice
+All data presented belongs to [Eugen Systems](https://eugensystems.com/). WARNO-DATA is a community-driven project, operating under the [GPL-3.0](https://github.com/Perytron/WARNO-DATA/blob/main/LICENSE) licence, and is dedicated to enriching the WARNO community.
