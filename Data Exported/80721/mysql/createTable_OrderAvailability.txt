@@ -1,8 +1,0 @@
-CREATE TABLE `perytron_warno`.`OrderAvailability` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `OrderAvailability` VARCHAR(255) NULL,
-  `Orders` JSON NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_bin;
